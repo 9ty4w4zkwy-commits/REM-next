@@ -3,7 +3,7 @@ import {el,button} from './ui.js';
 const KEY='rem-next-v1:highlight:';
 export function createHighlights(bookId,chapterId,textNode,onSwitch){
  const key=KEY+bookId+':'+chapterId;
- let marks=[];try{marks=JSON.parse(localStorage.getItem(key)||'[]');if(!Array.isArray(marks))marks=[]}catch{marks=[]}
+ let selectedQuote='';let marks=[];try{marks=JSON.parse(localStorage.getItem(key)||'[]');if(!Array.isArray(marks))marks=[]}catch{marks=[]}
  const toolbar=el('div',{className:'selection-actions'});
  const hint=el('p',{className:'selection-hint',text:'Seleziona una frase del testo per evidenziarla e scegliere se passare a Cartaceo o Audio.'});
  const quote=el('p',{className:'selection-quote'});
@@ -18,8 +18,8 @@ export function createHighlights(bookId,chapterId,textNode,onSwitch){
  function persist(){try{localStorage.setItem(key,JSON.stringify(marks))}catch{}}
  function getSelectionText(){const sel=window.getSelection();if(!sel||sel.isCollapsed||!textNode.contains(sel.anchorNode)||!textNode.contains(sel.focusNode))return '';return sel.toString().trim()}
  function hide(){toolbar.hidden=true;window.getSelection()?.removeAllRanges()}
- function go(mode){const s=getSelectionText()||quote.textContent;onSwitch(mode,s);hide()}
- function show(){const s=getSelectionText();if(!s)return;quote.textContent='“'+s.slice(0,170)+(s.length>170?'…':'')+'”';toolbar.hidden=false}
+ function go(mode){const s=getSelectionText()||selectedQuote;onSwitch(mode,s);hide()}
+ function show(){const s=getSelectionText();if(!s)return;selectedQuote=s;quote.textContent='“'+s.slice(0,170)+(s.length>170?'…':'')+'”';toolbar.hidden=false}
  function draw(){
   const raw=source.value;textNode.replaceChildren();
   const ordered=marks.filter(m=>Number.isInteger(m.start)&&Number.isInteger(m.end)&&m.start>=0&&m.end<=raw.length&&m.end>m.start&&raw.slice(m.start,m.end)===m.quote).sort((a,b)=>a.start-b.start);
