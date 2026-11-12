@@ -2,7 +2,7 @@ import {loadCatalog,loadChapter} from './catalog.js';
 import {getProgress,saveProgress,getSetting,saveSetting} from './progress.js';
 import {el,button,panel,heading} from './ui.js';
 import {getMode,formatSwitch,paperView,audioView} from './formats.js';
-import {createReaderTools} from './reader-tools.js';
+import {createReaderTools} from './reader-tools.js?v=rem-ebook-42';
 import {createHighlights} from './highlights.js';
 import {createEbookJourney} from './ebook-journey.js?v=rem-ebook-32';
 import {phraseSearch,getPhrase,savePhrase} from './synchronization.js?v=rem-switch-31';
