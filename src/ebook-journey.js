@@ -12,6 +12,6 @@ export function createEbookJourney(bookId,onSwitch){
  const bookmark=el('p',{className:'ebook-journey-bookmark',attrs:{role:'status','aria-live':'polite'}});
  function refresh(){const point=getPhrase(bookId);bookmark.textContent=point?.phrase?'Segnalibro: '+(point.page?'pagina '+point.page+' · ':'')+'«'+point.phrase.slice(0,115)+(point.phrase.length>115?'…':'')+'»':'Nessun segnalibro ancora selezionato. Tocca una parola nel testo per iniziare.'}
  function enableImmersive(){document.body.classList.remove('ebook-immersive-active')}
- root.append(heading,hint,bookmark);refresh();
+ root.append(heading,hint);refresh();
  return {root,refresh,enableImmersive};
 }
