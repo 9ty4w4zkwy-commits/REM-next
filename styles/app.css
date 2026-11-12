@@ -118,3 +118,9 @@ main{max-width:1180px;padding:0 24px 70px}
 @media(max-width:650px){.top{padding:16px 16px 12px}.wordmark{font-size:1.3rem}.wordmark span{font-size:.55rem}.top nav button{font-size:.79rem;padding:9px 11px;min-height:43px;border-radius:14px}main{padding:0 16px 65px}.rem-home-intro{padding:18px 0 8px}.rem-home-intro h1{font-size:clamp(2.65rem,10vw,4.2rem);margin:14px 0 20px}.rem-home-subtitle{margin-bottom:24px}.rem-book-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.rem-book-card{padding:10px;border-radius:18px}.rem-book-card .cover{height:210px;min-height:210px;padding:11px}.rem-book-card .cover-copy strong{font-size:1.05rem}.rem-book-card h3{font-size:.94rem;min-height:2.8em;margin-top:13px}.rem-card-subtitle{font-size:.79rem;margin-bottom:20px}.rem-book-card .primary{font-size:.83rem;padding:9px 5px}.rem-section-title{font-size:1.95rem}}@media(max-width:350px){.rem-book-grid{gap:8px}.rem-book-card .cover{height:185px;min-height:185px}}
 
 .rem-empty-section{border:1px dashed #38526a;border-radius:16px;padding:19px 20px;background:#102033;color:#9cb2c2;font-size:.9rem;margin:0}
+
+/* Optional cinematic covers: show image only when its file has loaded. */
+.cover .cover-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:5;border-radius:inherit}
+.cover.has-cover-image .cover-art,.cover.has-cover-image .cover-imprint,.cover.has-cover-image .cover-copy{visibility:hidden}
+.cover.has-cover-image::after{display:none}
+.preview-notice{border:1px solid #507087;border-radius:14px;padding:16px;background:#15283d;color:#b9cbd6}
