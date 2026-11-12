@@ -1,0 +1,7 @@
+import {getSetting,saveSetting} from './progress.js';
+import {el,button,panel} from './ui.js';
+const MODES=[['ebook','Ebook'],['paper','Cartaceo'],['audio','Audio']];
+export function getMode(bookId){const mode=getSetting('format:'+bookId,'ebook');return MODES.some(([id])=>id===mode)?mode:'ebook'}
+export function formatSwitch(bookId,selected,onSelect){return el('div',{className:'format-switch',attrs:{role:'group','aria-label':'Formato di lettura'}},MODES.map(([id,label])=>{const b=button(label,()=>{saveSetting('format:'+bookId,id);onSelect(id)},id===selected);b.setAttribute('aria-pressed',String(id===selected));return b}))}
+export function paperView(book,chapter,onChapter){const intro=el('p',{text:'Stai leggendo la copia cartacea? Seleziona il capitolo raggiunto. Il progresso viene salvato solo su questo dispositivo.'});const select=el('select',{attrs:{'aria-label':'Capitolo raggiunto sul cartaceo'}});for(const c of book.chapters)select.append(el('option',{text:c.title,attrs:{value:c.id}}));select.value=chapter?.id||book.chapters[0]?.id||'';select.addEventListener('change',()=>onChapter(select.value));return panel([el('h2',{text:'Lettura cartacea'}),intro,select,el('p',{text:'Questa modalità non visualizza il testo digitale.'})])}
+export function audioView(){return panel([el('h2',{text:'Ascolto audio'}),el('p',{text:'Modalità audio in preparazione. Nessuna traccia è ancora disponibile per questo libro: non verrà avviata una riproduzione fittizia.'})])}
