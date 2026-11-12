@@ -2,7 +2,7 @@ import {getSetting,saveSetting} from './progress.js';
 import {el,button} from './ui.js';
 
 // Self-contained reader presentation. Focus overlay is mounted inside the reader.
-const SIZES=['small','normal','large','xlarge'];
+const SIZES=['small','normal','large','xlarge','xxlarge','xxxlarge','max'];
 export function createReaderTools({focusOnly=false}={}){
  const state={theme:getSetting('reader-theme','moon'),size:getSetting('reader-size','normal'),focus:false,seconds:0,running:false,choice:5};
  if(!['sun','moon'].includes(state.theme))state.theme='moon';
@@ -48,7 +48,7 @@ export function createReaderTools({focusOnly=false}={}){
  function update(){
   sun.setAttribute('aria-pressed',String(state.theme==='sun'));moon.setAttribute('aria-pressed',String(state.theme==='moon'));
   five.setAttribute('aria-pressed',String(state.choice===5));ten.setAttribute('aria-pressed',String(state.choice===10));
-  smaller.setAttribute('aria-disabled',String(state.size==='small'));bigger.setAttribute('aria-disabled',String(state.size==='xlarge'));
+  smaller.setAttribute('aria-disabled',String(state.size==='small'));bigger.setAttribute('aria-disabled',String(state.size==='max'));
   activeBar.hidden=!state.focus;
   clock.textContent=String(Math.floor(state.seconds/60)).padStart(2,'0')+':'+String(state.seconds%60).padStart(2,'0');
   if(shell){shell.dataset.theme=state.theme;shell.dataset.fontSize=state.size;shell.classList.toggle('focus-active',state.focus)}
