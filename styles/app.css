@@ -91,3 +91,28 @@ button,input,select{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','
 .home-manifesto h2{color:var(--accent)}
 .feature-label,.home-overline{color:var(--accent)}
 .feature-actions button:not(.primary){background:#ffffff0b}
+
+
+/* REM 5.6-inspired home: flat midnight background, expressive serif headings */
+body{background:#0b1424}
+.top{max-width:1180px;padding:22px 24px;border-bottom:0}
+.wordmark{font-family:-apple-system,BlinkMacSystemFont,system-ui,sans-serif;font-size:1.6rem;letter-spacing:.15em}
+.top nav{gap:8px}
+.top nav button{background:#173653;border:1px solid #476783;border-radius:18px;padding:11px 15px;font-size:.92rem;font-weight:700;color:#f3f7f8;min-height:46px}
+.top nav button:hover,.top nav button:focus-visible{background:#58d6a6;color:#102438}
+main{max-width:1180px;padding:0 24px 70px}
+.rem-home-intro{padding:22px 0 14px}
+.rem-home-intro .eyebrow{font-family:-apple-system,BlinkMacSystemFont,system-ui,sans-serif;font-size:.75rem;letter-spacing:.21em;color:#75deb2;font-weight:800}
+.rem-home-intro h1{font-family:Georgia,'Times New Roman',serif;font-weight:800;font-size:clamp(2.6rem,6.6vw,5.3rem);line-height:1.08;letter-spacing:-.045em;max-width:820px;margin:14px 0 24px}
+.mint-word{color:#65dbaa}
+.rem-home-subtitle{font-size:clamp(1rem,2.5vw,1.25rem);line-height:1.6;color:#b9c5d2;max-width:730px;margin-bottom:26px}
+.rem-home-section{margin:22px 0 50px}
+.rem-section-title{font-family:Georgia,'Times New Roman',serif;font-size:clamp(1.8rem,4vw,2.7rem);font-weight:800;letter-spacing:-.035em;margin:0 0 18px}
+.rem-book-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:18px}
+.rem-book-card{display:flex;flex-direction:column;align-items:stretch;min-width:0;padding:14px;background:#13263d;border:1px solid #46607b;border-radius:22px}
+.rem-book-card .cover{height:275px;min-height:275px;max-width:none;width:100%;border-radius:14px}
+.rem-book-card h3{font-family:-apple-system,BlinkMacSystemFont,system-ui,sans-serif;font-size:1.08rem;font-weight:800;letter-spacing:-.025em;line-height:1.35;margin:15px 0 6px;min-height:2.8em}
+.rem-card-subtitle{font-size:.86rem;color:#7bdab0;margin:0 0 25px;line-height:1.4;flex:1}
+.rem-book-card .primary{width:100%;min-height:48px;border-radius:14px;background:#64dca8;color:#0a2530;font-size:.95rem;font-weight:800;box-shadow:0 4px 0 #183b37}
+.rem-book-card .primary:hover{background:#8ff0c4}
+@media(max-width:650px){.top{padding:16px 16px 12px}.wordmark{font-size:1.3rem}.wordmark span{font-size:.55rem}.top nav button{font-size:.79rem;padding:9px 11px;min-height:43px;border-radius:14px}main{padding:0 16px 65px}.rem-home-intro{padding:18px 0 8px}.rem-home-intro h1{font-size:clamp(2.65rem,10vw,4.2rem);margin:14px 0 20px}.rem-home-subtitle{margin-bottom:24px}.rem-book-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.rem-book-card{padding:10px;border-radius:18px}.rem-book-card .cover{height:210px;min-height:210px;padding:11px}.rem-book-card .cover-copy strong{font-size:1.05rem}.rem-book-card h3{font-size:.94rem;min-height:2.8em;margin-top:13px}.rem-card-subtitle{font-size:.79rem;margin-bottom:20px}.rem-book-card .primary{font-size:.83rem;padding:9px 5px}.rem-section-title{font-size:1.95rem}}@media(max-width:350px){.rem-book-grid{gap:8px}.rem-book-card .cover{height:185px;min-height:185px}}
