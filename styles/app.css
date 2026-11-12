@@ -144,3 +144,24 @@ main{max-width:1180px;padding:0 24px 70px}
 .library-card .cover{padding:0!important;overflow:hidden;aspect-ratio:2/3;height:auto!important;min-height:0!important;background:#102238}
 .library-card .cover .cover-photo{object-fit:contain!important;object-position:center!important;background:#102238}
 .library-card>div:last-child{min-width:0;flex:1}
+
+/* Episodic reading entry and dashboard */
+.reading-path-book{color:#b8cddd;font-size:1.05rem;margin-bottom:1.25rem}
+.reading-path-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:1rem;margin:1.25rem 0}
+.reading-path-option,.episode-card{background:#14283e;border:1px solid #416580;border-radius:22px;padding:1.25rem;color:#f7f9fa}
+.reading-path-option h2{font-family:Georgia,serif;font-size:1.6rem;margin:.15rem 0 .65rem}
+.reading-path-option p{color:#bdd0dc;line-height:1.55;min-height:4.5rem}
+.reading-path-option button{margin-top:.7rem}
+.episodes-intro{color:#c0d2df}
+.episodes-list{display:grid;gap:1rem;margin:1.25rem 0 2rem}
+.episode-card{display:grid;grid-template-columns:3.2rem minmax(0,1fr);gap:1rem}
+.episode-number{display:flex;align-items:center;justify-content:center;width:3rem;height:3rem;border:1px solid #6c8ba0;border-radius:14px;background:#203d57;font-family:Georgia,serif;font-weight:700;font-size:1.35rem}
+.episode-info{min-width:0}
+.episode-info h3{margin:0 0 .4rem;font-size:1.15rem}
+.episode-recap{margin:.3rem 0 .75rem;color:#c0d0dc;line-height:1.5}
+.episode-meta{display:flex;gap:.6rem;flex-wrap:wrap;margin:.7rem 0}
+.episode-meta span{border:1px solid #49657a;border-radius:99px;padding:.25rem .65rem;color:#c7d6df;font-size:.85rem}
+.episode-meta .episode-current{background:#224a43;border-color:#60dcb1;color:#83efc5}
+.episode-actions{display:flex;flex-wrap:wrap;gap:.5rem}
+.episode-actions button{font-size:.95rem;padding:.65rem .8rem}
+@media(max-width:430px){.episode-card{grid-template-columns:2.7rem minmax(0,1fr);gap:.7rem;padding:1rem}.episode-number{width:2.55rem;height:2.55rem}.episode-actions button{flex:1 1 auto}}
