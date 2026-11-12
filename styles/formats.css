@@ -258,3 +258,14 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 .sync-match p{font-family:Georgia,serif;color:#dce7e4}
 .sync-status{color:#85dcb0}
 .sync-anchor{background:#80d9aa;color:#163d35;font-weight:900;border-radius:4px}
+
+/* v25: paper/audio focus controls and clean paper synchronization */
+.paper-sync-shell>h2{font-family:Georgia,serif;font-size:clamp(1.6rem,6vw,2.2rem);margin:10px 0}
+.paper-sync-shell>p{line-height:1.6}
+.paper-sync-shell .sync-search{background:#102840;border:1px solid #436b8b;padding:18px 14px}
+.sync-search label{display:block;font-weight:700;margin:15px 0 8px;color:inherit}
+.sync-search input[type="number"]{display:block;width:100%;box-sizing:border-box;min-height:48px;border-radius:11px;background:#091b30;border:1px solid #66859b;color:#f4f8fa;padding:10px 13px;font-size:16px}
+.sync-search input[type="file"]{display:block;width:100%;box-sizing:border-box;min-height:48px;border-radius:11px;border:1px solid #66859b;padding:10px;background:#091b30;color:#f4f8fa;font-size:14px}
+.sync-search .sync-photo-note{color:#b5c7d8;font-size:.85rem}
+.sync-search h3{margin:20px 0 12px}
+.reader-shell[data-theme="sun"] .sync-search,.reader-shell[data-theme="sun"] .sync-search h2,.reader-shell[data-theme="sun"] .sync-search label{color:#f4f8fa!important}
