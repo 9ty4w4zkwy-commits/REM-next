@@ -9,7 +9,7 @@ export function createHighlights(bookId,chapterId,textNode,onSwitch,onBookmark=(
  const hint=el('p',{className:'selection-hint',text:'Tocca una parola: REM evidenzia automaticamente le ultime 10 parole fino a quel punto.'});
  const clear=button('Rimuovi evidenziazioni',()=>{marks=[];persist();draw()});
  clear.classList.add('selection-clear');
- const wrap=el('div',{className:'highlight-tools'},[hint,clear]);
+ const wrap=el('div',{className:'highlight-tools'},[hint]);
  function persist(){try{localStorage.setItem(key,JSON.stringify(marks))}catch{}}
  function draw(){
   const raw=source.value;textNode.replaceChildren();
