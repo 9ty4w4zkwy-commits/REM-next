@@ -1,0 +1,3 @@
+Questo è il secondo capitolo dimostrativo.
+
+Puoi aggiungere nuovi capitoli creando un file .txt e aggiornando catalog.json. Non è necessario modificare il codice JavaScript.
