@@ -308,3 +308,16 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 .sync-search .sync-switch-actions button:active,
 .sync-search .sync-switch-actions button:focus-visible,
 .sync-search .sync-switch-actions button.is-selected{background:#7eddb1!important;color:#102538!important;border-color:#7eddb1!important}
+
+/* v32 — ebook journey: blue navigation, mint primary switch, live bookmark */
+.ebook-reading-shell .ebook-journey{background:#17283e!important;color:#f3f6fa!important;border:1px solid #42617b;border-radius:17px;padding:16px;margin:0 0 18px}
+.ebook-journey h2{font-family:Georgia,serif!important;color:#f7f7f6!important;font-size:clamp(1.4rem,5.8vw,2rem)!important;line-height:1.16;margin:0 0 12px}
+.ebook-journey>p:not(.ebook-journey-bookmark){color:#bfcddd!important;line-height:1.5;margin:0 0 12px}
+.ebook-journey-actions{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0 15px}
+.ebook-journey-actions button{min-height:47px!important;border-radius:12px!important;padding:10px 16px!important;font-weight:800!important;font-size:clamp(.85rem,3.8vw,1rem)!important;line-height:1.2!important}
+.ebook-journey-actions button:first-child{background:#68dbaa!important;color:#10263b!important;border:1px solid #68dbaa!important}
+.ebook-journey-actions button:last-child{background:#20364f!important;color:#f5f7fa!important;border:1px solid #617e98!important}
+.ebook-journey-actions button:active{filter:brightness(1.15)}
+.ebook-journey-bookmark{background:#233e5c!important;color:#75e4b3!important;border-radius:12px;padding:12px 14px;margin:0!important;line-height:1.5;overflow-wrap:anywhere}
+.ebook-reading-shell[data-theme="sun"] .ebook-journey,.ebook-reading-shell[data-theme="moon"] .ebook-journey{background:#17283e!important;color:#f3f6fa!important}
+.ebook-reading-shell[data-theme="sun"] .ebook-journey h2{color:#f7f7f6!important}
