@@ -96,3 +96,21 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 .reading-shell[data-font-size="large"] .reading-text{font-size:1.32rem!important}
 .reading-shell[data-font-size="xlarge"] .reading-text{font-size:1.62rem!important}
 @media(max-width:390px){.reader-tools-row .reader-font-button{flex-basis:34px;height:36px;min-height:36px!important;max-height:36px}}
+
+/* v16 — consistent navy controls; mint only on interaction/active state */
+.reader-tools-row .reader-font-button,
+.reader-tools-row .reader-focus-button{
+ background:#283e56!important;
+ color:#f3f5fa!important;
+ border:1px solid #577188!important;
+ box-shadow:none!important;
+}
+.reader-tools-row .reader-font-button:active,
+.reader-tools-row .reader-focus-button:active,
+.reader-tools-row .reader-font-button:focus-visible,
+.reader-tools-row .reader-focus-button:focus-visible{
+ background:#80d9aa!important;
+ color:#0d2638!important;
+ border-color:#80d9aa!important;
+}
+.reader-tools-row .reader-font-button:disabled{opacity:.48}
