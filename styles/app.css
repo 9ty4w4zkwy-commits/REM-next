@@ -165,3 +165,5 @@ main{max-width:1180px;padding:0 24px 70px}
 .episode-actions{display:flex;flex-wrap:wrap;gap:.5rem}
 .episode-actions button{font-size:.95rem;padding:.65rem .8rem}
 @media(max-width:430px){.episode-card{grid-template-columns:2.7rem minmax(0,1fr);gap:.7rem;padding:1rem}.episode-number{width:2.55rem;height:2.55rem}.episode-actions button{flex:1 1 auto}}
+
+.reading-path-note{color:#86e3bb;line-height:1.5;margin:.5rem 0 1.2rem}.reading-path-switch{display:inline-flex;margin:.4rem 0 1rem;background:#1b3850;color:#8aeac4;border:1px solid #65cfa7;border-radius:13px;font-weight:700}.episode-card .episode-actions button{background:#214460;color:#f4f8fa;border:1px solid #537991}.episode-card .episode-actions button:active{background:#69dfae;color:#092039}
