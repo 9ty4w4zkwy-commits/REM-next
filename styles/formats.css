@@ -527,3 +527,10 @@ body:not(.ebook-immersive-active) .ebook-reading-shell .ebook-page-frame .readin
 .paper-sync-shell .paper-resume-location{display:block;color:#ffcf9d;font-size:1rem;line-height:1.45;margin:0 0 14px}
 .paper-sync-shell .paper-resume-quote{font-family:Georgia,'Times New Roman',serif!important;color:#fff8f0!important;font-size:clamp(1.2rem,4.8vw,1.5rem);line-height:1.6;margin:0 0 12px;overflow-wrap:anywhere}
 .paper-sync-shell .paper-resume-note{font-size:.86rem;color:#bdccda!important;line-height:1.55;margin:0}
+
+/* v43 — chapter navigation directly below the ebook page, before format switches */
+.ebook-reading-shell .ebook-chapter-nav{display:flex!important;justify-content:space-between!important;align-items:center!important;margin:14px 0 8px!important;gap:12px!important}
+.ebook-reading-shell .ebook-chapter-nav button{display:flex!important;align-items:center!important;justify-content:center!important;width:62px!important;height:50px!important;min-height:50px!important;padding:0!important;border-radius:14px!important;background:#23415e!important;color:#f4f8fc!important;border:1px solid #65829a!important;box-shadow:none!important;font-size:1.65rem!important;font-weight:650!important;line-height:1!important}
+.ebook-reading-shell .ebook-chapter-nav button:disabled{opacity:.3!important}
+.ebook-reading-shell .ebook-chapter-nav button:active{background:#80d9aa!important;color:#10283b!important}
+.ebook-reading-shell .highlight-tools .ebook-inline-switches{margin:10px 0 18px!important}
