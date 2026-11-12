@@ -1,0 +1,4 @@
+export function el(tag,{text='',className='',onClick,attrs={}}={},children=[]){const node=document.createElement(tag);if(text)node.textContent=text;if(className)node.className=className;for(const [key,value] of Object.entries(attrs))node.setAttribute(key,value);if(onClick)node.addEventListener('click',onClick);node.append(...children);return node}
+export function button(text,onClick,primary=false){return el('button',{text,className:primary?'primary':'',onClick,attrs:{type:'button'}})}
+export function panel(children=[]){return el('section',{className:'panel'},children)}
+export function heading(title,kicker){return el('div',{},[el('p',{className:'eyebrow',text:kicker}),el('h1',{text:title})])}
