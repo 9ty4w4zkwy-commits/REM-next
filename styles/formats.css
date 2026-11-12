@@ -294,3 +294,9 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 .paper-sync-shell[data-theme="sun"] .sync-search h2{color:#eef4f7!important}
 .paper-sync-shell .sync-search textarea{background:#0b1b2f!important;color:#f3f6fa!important;border-color:#68879e!important}
 .paper-sync-shell .reader-tools-focus-only,.audio-sync-shell .reader-tools-focus-only{margin:0 0 20px!important}
+
+/* v28 — contextual switches from paper reading */
+.sync-switch-actions{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0 8px}
+.sync-switch-actions button{flex:1 1 155px;margin:0!important;min-height:49px;border-radius:13px;font-size:1rem;font-weight:800;padding:11px 14px}
+.sync-switch-actions .sync-switch-audio{background:#20354e!important;border:1px solid #627c94!important;color:#f5f7fa!important;box-shadow:none!important}
+.sync-switch-actions .sync-switch-audio:active{background:#315879!important}
