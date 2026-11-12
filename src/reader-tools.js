@@ -48,7 +48,7 @@ export function createReaderTools(){
  function update(){
   sun.setAttribute('aria-pressed',String(state.theme==='sun'));moon.setAttribute('aria-pressed',String(state.theme==='moon'));
   five.setAttribute('aria-pressed',String(state.choice===5));ten.setAttribute('aria-pressed',String(state.choice===10));
-  smaller.disabled=state.size==='small';bigger.disabled=state.size==='xlarge';
+  smaller.setAttribute('aria-disabled',String(state.size==='small'));bigger.setAttribute('aria-disabled',String(state.size==='xlarge'));
   activeBar.hidden=!state.focus;
   clock.textContent=String(Math.floor(state.seconds/60)).padStart(2,'0')+':'+String(state.seconds%60).padStart(2,'0');
   if(shell){shell.dataset.theme=state.theme;shell.dataset.fontSize=state.size;shell.classList.toggle('focus-active',state.focus)}
