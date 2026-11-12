@@ -1,6 +1,10 @@
 import {getSetting,saveSetting} from './progress.js';
 import {el,button,panel} from './ui.js';
-const ICON_PATHS={paper:['M4 19.5A2.5 2.5 0 0 1 6.5 17H20','M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z'],ebook:['M5 2h14a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2Z','M10 18h4'],audio:['M3 14v-3a9 9 0 0 1 18 0v3','M3 14h3v7H5a2 2 0 0 1-2-2v-5Z','M18 14h3v5a2 2 0 0 1-2 2h-1v-7Z']};
+const ICON_PATHS={
+paper:['M12 7c-2.5-2-5.5-2.6-9-2v14c3.5-.6 6.5 0 9 2','M12 7c2.5-2 5.5-2.6 9-2v14c-3.5-.6-6.5 0-9 2','M12 7v14'],
+ebook:['M6 2.5h12a2 2 0 0 1 2 2v15a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-15a2 2 0 0 1 2-2Z','M10 18.5h4'],
+audio:['M3 14v-3a9 9 0 0 1 18 0v3','M3 14h3v7H5a2 2 0 0 1-2-2v-5Z','M18 14h3v5a2 2 0 0 1-2 2h-1v-7Z']
+};
 function formatIcon(id){const ns='http://www.w3.org/2000/svg';const svg=document.createElementNS(ns,'svg');svg.setAttribute('viewBox','0 0 24 24');svg.setAttribute('fill','none');svg.setAttribute('stroke','currentColor');svg.setAttribute('stroke-width','1.8');svg.setAttribute('stroke-linecap','round');svg.setAttribute('stroke-linejoin','round');svg.setAttribute('aria-hidden','true');svg.classList.add('format-icon');for(const d of ICON_PATHS[id]){const path=document.createElementNS(ns,'path');path.setAttribute('d',d);svg.append(path)}return svg}
 const MODES=[['ebook','Ebook'],['paper','Cartaceo'],['audio','Audio']];
 export function getMode(bookId){const mode=getSetting('format:'+bookId,'ebook');return MODES.some(([id])=>id===mode)?mode:'ebook'}
