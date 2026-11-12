@@ -3,11 +3,11 @@
   "books": [
     {
       "id": "libro-demo",
-      "title": "Il primo libro di REM",
-      "author": "Contenuto dimostrativo",
-      "status": "draft",
+      "title": "Laboratorio lettura REM",
+      "author": "Contenuti dimostrativi",
+      "status": "published",
       "coverStyle": "classic",
-      "description": "Libro segnaposto per provare la gestione del catalogo. Sostituiscilo con contenuti autorizzati prima dei test reali.",
+      "description": "Area di prova per testare Sole/Luna, Focus Mode, dimensione testo e passaggio tra formati. I testi non appartengono ai romanzi del catalogo.",
       "chapters": [
         {
           "id": "capitolo-1",
@@ -21,9 +21,7 @@
         }
       ],
       "access": "free",
-      "homeSections": [
-        "recommended"
-      ]
+      "homeSections": []
     },
     {
       "id": "montecristo",
