@@ -349,3 +349,48 @@ body.ebook-immersive-active .ebook-journey>*:not(.ebook-expand){display:none!imp
 body.ebook-immersive-active .reader-tools{margin:0 0 10px!important}
 body.ebook-immersive-active .reader-controls{margin-bottom:10px!important}
 body.ebook-immersive-active .ebook-reading-shell .reading-text{max-width:75ch!important}
+
+/* v34 — navy reader chrome, white ONLY the ebook page in daylight */
+.reading-shell.ebook-reading-shell,
+.reading-shell.ebook-reading-shell[data-theme="sun"],
+.reading-shell.ebook-reading-shell[data-theme="moon"]{
+ background:#17283e!important;color:#f2f6fa!important;border-color:#3b5772!important;color-scheme:dark!important;
+}
+.ebook-reading-shell[data-theme="sun"]>h2,
+.ebook-reading-shell[data-theme="moon"]>h2{color:#f5f7fb!important}
+.ebook-reading-shell .reading-text,
+.ebook-reading-shell .reading-text.normal,
+.ebook-reading-shell .reading-text.large,
+.ebook-reading-shell .reading-text.xlarge{
+ background:#101b2d!important;color:#f5f7fb!important;
+ border:1px solid #405a74!important;border-radius:16px!important;
+ padding:22px 20px!important;box-sizing:border-box!important;
+}
+.ebook-reading-shell[data-theme="sun"] .reading-text,
+.ebook-reading-shell[data-theme="sun"] .reading-text.normal,
+.ebook-reading-shell[data-theme="sun"] .reading-text.large,
+.ebook-reading-shell[data-theme="sun"] .reading-text.xlarge{
+ background:#fff!important;color:#191c21!important;border-color:#e3e5e8!important;
+}
+.ebook-reading-shell[data-theme="sun"] .reader-tools,
+.ebook-reading-shell[data-theme="sun"] .ebook-journey{color:#f4f7fb!important;background:#17283e!important}
+.ebook-reading-shell[data-theme="sun"] .reader-tools-title,
+.ebook-reading-shell[data-theme="sun"] .ebook-journey h2{color:#f5f7fb!important}
+body.ebook-immersive-active,
+body.ebook-immersive-active #app,
+body.ebook-immersive-active main{background:#0b1424!important}
+body.ebook-immersive-active{height:auto!important;min-height:100%!important;overflow-y:auto!important;overflow-x:hidden!important;position:static!important;touch-action:pan-y!important}
+body.ebook-immersive-active #app,
+body.ebook-immersive-active .ebook-reading-shell{
+ height:auto!important;max-height:none!important;overflow:visible!important;touch-action:pan-y!important;
+}
+body.ebook-immersive-active .ebook-reading-shell .reading-text{
+ height:auto!important;max-height:none!important;overflow:visible!important;
+ touch-action:pan-y!important;-webkit-overflow-scrolling:touch!important;
+}
+@media(max-width:600px){
+ .ebook-reading-shell .reading-text,
+ .ebook-reading-shell .reading-text.normal,
+ .ebook-reading-shell .reading-text.large,
+ .ebook-reading-shell .reading-text.xlarge{padding:20px 15px!important}
+}
