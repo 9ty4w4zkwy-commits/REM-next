@@ -37,13 +37,15 @@ export function phraseSearch(book,onFound){
  const phraseLabel=el('label',{text:'Ultime 4 parole o una frase'});
  const field=el('textarea',{attrs:{rows:'3',placeholder:'Inserisci una frase del libro…','aria-label':'Frase da cercare'}});
  const submit=button('Passa a Ebook',async()=>{
-  results.replaceChildren();submit.classList.add('is-selected');submit.disabled=true;
+  results.replaceChildren();submit.classList.add('is-selected');submit.setAttribute('aria-pressed','true');
+  if(!field.value.trim()){onFound(null,'ebook');return}
+  submit.disabled=true;
   status.textContent='Ricerca in corso…';
-  try{const found=await findPhrase(book,field.value);status.textContent=found.error||(!found.matches.length?'Nessuna corrispondenza trovata. Controlla la frase e l’edizione.':found.matches.length+' corrispondenza/e trovata/e.');
+  try{const found=await findPhrase(book,field.value);if(found.matches?.length===1){const item=found.matches[0];savePhrase(book.id,item.chapter,item.phrase,item.offset);onFound(item,'ebook');return}status.textContent=found.error||(!found.matches.length?'Nessuna corrispondenza trovata. Controlla la frase e l’edizione.':found.matches.length+' corrispondenza/e trovata/e.');
    for(const item of found.matches.slice(0,12)){const action=button('Apri qui nell’Ebook',()=>{savePhrase(book.id,item.chapter,item.phrase,item.offset);onFound(item,'ebook')});results.append(el('div',{className:'sync-match'},[el('strong',{text:item.title}),el('p',{text:'…'+item.context+'…'}),action]))}
-  }catch(e){status.textContent='Impossibile cercare nel testo: '+e.message}finally{submit.disabled=false;submit.classList.remove('is-selected')}
+  }catch(e){status.textContent='Impossibile cercare nel testo: '+e.message}finally{submit.disabled=false;submit.classList.remove('is-selected');submit.setAttribute('aria-pressed','false')}
  },true);
- const audioSwitch=button('Passa ad Audio',()=>onFound(null,'audio'));
+ const audioSwitch=button('Passa ad Audio',()=>{audioSwitch.classList.add('is-selected');audioSwitch.setAttribute('aria-pressed','true');onFound(null,'audio')});
  audioSwitch.classList.add('sync-switch-audio');
  const switchActions=el('div',{className:'sync-switch-actions'},[submit,audioSwitch]);
  const status=el('p',{className:'sync-status',attrs:{role:'status'}});
