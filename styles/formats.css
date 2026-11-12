@@ -458,3 +458,33 @@ body.ebook-immersive-active .ebook-reading-shell .reading-text .ebook-expand{
 body.ebook-immersive-active .ebook-page-frame .ebook-expand{
  position:sticky!important;top:12px!important;float:right!important;margin-top:-58px!important;
 }
+
+/* v40 — two independent vertical scroll areas: the ebook page and the outer app */
+body:not(.ebook-immersive-active) .ebook-reading-shell .ebook-page-frame{
+ position:relative!important;min-height:0!important;overflow:visible!important;
+}
+body:not(.ebook-immersive-active) .ebook-reading-shell .ebook-page-frame .reading-text,
+body:not(.ebook-immersive-active) .ebook-reading-shell .ebook-page-frame .reading-text.normal,
+body:not(.ebook-immersive-active) .ebook-reading-shell .ebook-page-frame .reading-text.large,
+body:not(.ebook-immersive-active) .ebook-reading-shell .ebook-page-frame .reading-text.xlarge{
+ display:block!important;height:58dvh!important;min-height:320px!important;max-height:650px!important;
+ overflow-y:scroll!important;overflow-x:hidden!important;
+ -webkit-overflow-scrolling:touch!important;overscroll-behavior-y:contain!important;
+ touch-action:pan-y!important;scrollbar-width:thin!important;
+ scrollbar-color:#6bdcaf #e0e7ed!important;
+ padding:22px 24px 28px 16px!important;
+}
+.ebook-reading-shell .ebook-page-frame .reading-text::-webkit-scrollbar{width:7px!important;display:block!important}
+.ebook-reading-shell .ebook-page-frame .reading-text::-webkit-scrollbar-thumb{background:#67d9aa!important;border-radius:8px!important}
+.ebook-reading-shell .ebook-page-frame .reading-text::-webkit-scrollbar-track{background:#cbd6dd!important;border-radius:8px!important}
+.ebook-reading-shell .ebook-scroll-rail{
+ position:absolute;top:10px;bottom:10px;right:5px;width:5px;border-radius:8px;
+ background:rgba(100,137,160,.32);pointer-events:none;opacity:0;z-index:2;
+}
+.ebook-reading-shell .ebook-scroll-rail.is-scrollable{opacity:1}
+.ebook-reading-shell .ebook-scroll-thumb{
+ position:absolute;left:0;right:0;top:0;height:20%;border-radius:8px;background:#60d9a6;
+ box-shadow:0 0 0 1px rgba(15,45,54,.12);
+}
+.ebook-reading-shell .ebook-page-frame .ebook-expand{display:none!important}
+.ebook-reading-shell .ebook-page-frame .reading-text{padding-top:22px!important}
