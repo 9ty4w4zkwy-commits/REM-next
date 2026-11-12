@@ -69,3 +69,25 @@ footer{max-width:1180px;color:#718e95}
 .library-card .cover-copy strong{font-size:1rem}
 main>.cover{width:min(300px,100%);height:380px}
 @media(max-width:650px){.top{padding:15px 18px}main{padding:0 18px 70px}.home-intro{padding:38px 0 28px}.home-intro h1{font-size:clamp(2.3rem,10vw,3.8rem)}.home-lead{font-size:1rem}.feature-hero{grid-template-columns:1fr;gap:0;padding:26px 22px 0;min-height:0}.feature-content h2{font-size:2.3rem}.feature-description{margin:14px 0 20px}.feature-visual{height:225px;overflow:hidden;margin-top:8px}.feature-visual .cover{width:170px;height:220px;min-height:0;transform:rotate(7deg) translateY(18px)}.feature-visual .cover-copy strong{font-size:1.2rem}.editorial-section{margin:42px 0}.editorial-shelf{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:13px;padding:3px 3px 14px;scrollbar-width:thin}.editorial-book{flex:0 0 145px;scroll-snap-align:start}.editorial-book .cover{height:215px;min-height:0}.home-manifesto{padding:28px 22px}.shelf-heading h2{font-size:1.6rem}.library-card .cover{width:115px;height:160px;min-height:160px}.library-card .cover-copy strong{font-size:.86rem}}
+
+
+/* Palette and typography refinement — midnight blue, mint accents, native iOS type */
+:root{--bg:#0b1322;--surface:#152238;--surface2:#1c2d43;--text:#f5f7fa;--muted:#afbecd;--accent:#80dfb1;font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','Segoe UI',system-ui,sans-serif}
+body{background:#0b1322;color:var(--text)}
+h1,h2,h3,.wordmark,.cover-copy strong{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','Segoe UI',system-ui,sans-serif;letter-spacing:-.035em}
+button,input,select{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Segoe UI',system-ui,sans-serif}
+.feature-hero{background:#142339;border-color:#ffffff18}
+.feature-glow{display:none}
+.home-manifesto{background:#142339;border-color:#ffffff18}
+.cover{background:linear-gradient(155deg,#24374c,#111d31)}
+.cover.classic{background:linear-gradient(155deg,#47424c,#1b2637)}
+.art-moon{background:radial-gradient(circle at 30% 30%,#dce8f6,#8fa7c1 50%,#405779);box-shadow:0 0 50px #8ca7c13b}
+.classic .art-moon{background:radial-gradient(circle at 30% 30%,#e9d8c3,#b1a1a0 55%,#62586a);box-shadow:0 0 45px #c1aeb03b}
+.art-orbit{border-color:#d1deed3b}.art-orbit::after{border-color:#d1deed22}
+.art-horizon{background:linear-gradient(165deg,#1e344c,#091626)}
+.classic .art-horizon{background:linear-gradient(165deg,#3b3847,#111827)}
+.home-intro h1{max-width:800px}
+.home-intro h1::first-line{color:var(--accent)}
+.home-manifesto h2{color:var(--accent)}
+.feature-label,.home-overline{color:var(--accent)}
+.feature-actions button:not(.primary){background:#ffffff0b}
