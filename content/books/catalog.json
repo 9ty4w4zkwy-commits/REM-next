@@ -5,7 +5,7 @@
       "id": "libro-demo",
       "title": "Il primo libro di REM",
       "author": "Contenuto dimostrativo",
-      "status": "published",
+      "status": "draft",
       "coverStyle": "classic",
       "description": "Libro segnaposto per provare la gestione del catalogo. Sostituiscilo con contenuti autorizzati prima dei test reali.",
       "chapters": [
@@ -24,6 +24,51 @@
       "homeSections": [
         "recommended"
       ]
+    },
+    {
+      "id": "montecristo",
+      "title": "Il conte di Montecristo",
+      "author": "Alexandre Dumas",
+      "description": "Un grande romanzo di avventura, ingiustizia e riscatto.",
+      "status": "published",
+      "access": "free",
+      "homeSections": [
+        "recommended",
+        "new"
+      ],
+      "availability": "preview",
+      "coverImage": "./assets/covers/montecristo.jpg",
+      "chapters": []
+    },
+    {
+      "id": "alice",
+      "title": "Alice nel Paese delle Meraviglie",
+      "author": "Lewis Carroll",
+      "description": "Un viaggio fantastico oltre i confini dell'immaginazione.",
+      "status": "published",
+      "access": "free",
+      "homeSections": [
+        "recommended",
+        "new"
+      ],
+      "availability": "preview",
+      "coverImage": "./assets/covers/alice.jpg",
+      "chapters": []
+    },
+    {
+      "id": "dracula",
+      "title": "Dracula",
+      "author": "Bram Stoker",
+      "description": "Il classico gotico che ha dato forma al mito del vampiro.",
+      "status": "published",
+      "access": "free",
+      "homeSections": [
+        "recommended",
+        "new"
+      ],
+      "availability": "preview",
+      "coverImage": "./assets/covers/dracula.jpg",
+      "chapters": []
     }
   ]
 }
