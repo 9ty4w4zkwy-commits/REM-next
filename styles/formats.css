@@ -414,3 +414,17 @@ body.ebook-immersive-active .ebook-reading-shell.ebook-immersive{
 body.ebook-immersive-active .ebook-reading-shell.ebook-immersive .reading-text{overflow:visible!important;height:auto!important;max-height:none!important}
 .ebook-reading-shell .highlight-tools .ebook-inline-switches{margin:4px 0 18px!important}
 .ebook-reading-shell .highlight-tools .ebook-inline-switches button{min-height:50px!important}
+
+/* v37: keep the app's three-format base stationary while ONLY reading content scrolls */
+body.ebook-immersive-active .format-switch-bottom{
+ display:flex!important;position:fixed!important;left:0!important;right:0!important;
+ bottom:0!important;z-index:10001!important;margin:0!important;
+ padding:10px 12px calc(env(safe-area-inset-bottom, 0px) + 10px)!important;
+ background:rgba(9,28,51,.97)!important;border-top:1px solid #355572!important;
+}
+body.ebook-immersive-active .ebook-reading-shell.ebook-immersive{
+ padding-bottom:calc(env(safe-area-inset-bottom, 0px) + 130px)!important;
+}
+body.ebook-immersive-active .ebook-reading-shell.ebook-immersive .ebook-expand{
+ position:sticky!important;top:0!important;z-index:3!important;
+}
