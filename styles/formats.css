@@ -239,3 +239,11 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 }
 .format-switch-bottom button[data-format]:focus-visible{outline:2px solid #80d9aa!important;outline-offset:-2px!important}
 .format-switch-bottom .format-emoji{display:block;font-size:1.65rem;line-height:1.1;min-height:29px}
+
+/* v23: original REM 5.6 icons — mint paper/audio, sky-blue ebook */
+.format-switch-bottom button[data-format="paper"] .format-icon,
+.format-switch-bottom button[data-format="audio"] .format-icon{color:#78dcb0!important}
+.format-switch-bottom button[data-format="ebook"] .format-icon{color:#86c8ff!important}
+.format-switch-bottom button[data-format] .format-icon{width:31px!important;height:31px!important;stroke-width:1.9px!important}
+.format-switch-bottom button[data-format][aria-pressed="false"]{background:transparent!important;border-color:transparent!important;box-shadow:none!important}
+.format-switch-bottom button[data-format][aria-pressed="true"]{background:#1b456c!important;border-color:transparent!important;box-shadow:none!important}
