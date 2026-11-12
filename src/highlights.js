@@ -18,6 +18,14 @@ export function createHighlights(bookId,chapterId,textNode,onSwitch,onBookmark=(
   textNode.append(document.createTextNode(raw.slice(at)));
  }
  function setText(value){source.value=value;draw()}
+ function highlightPhrase(offset,phrase){
+  const raw=source.value;
+  if(!Number.isInteger(offset)||offset<0||offset>=raw.length||!phrase)return null;
+  const end=offset+phrase.length;
+  if(raw.slice(offset,end)!==phrase)return null;
+  marks=[{start:offset,end,quote:phrase}];persist();draw();
+  return textNode.querySelector('mark.rem-highlight');
+ }
  function offsetFromPoint(x,y){
   let range=null;
   if(document.caretRangeFromPoint)range=document.caretRangeFromPoint(x,y);
@@ -46,5 +54,5 @@ export function createHighlights(bookId,chapterId,textNode,onSwitch,onBookmark=(
  textNode.addEventListener('touchend',touchEnd,{passive:false});
  textNode.addEventListener('click',click);
  function destroy(){textNode.removeEventListener('touchstart',touchStart);textNode.removeEventListener('touchmove',touchMove);textNode.removeEventListener('touchend',touchEnd);textNode.removeEventListener('click',click)}
- return {wrap,setText,destroy};
+ return {wrap,setText,highlightPhrase,destroy};
 }
