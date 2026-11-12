@@ -19,6 +19,10 @@
           "title": "Secondo capitolo",
           "file": "capitolo-2.txt"
         }
+      ],
+      "access": "free",
+      "homeSections": [
+        "recommended"
       ]
     }
   ]
