@@ -1,0 +1,5 @@
+Questo è un capitolo dimostrativo di REM Next.
+
+Serve soltanto a verificare che il lettore carichi un testo da un file separato e salvi il capitolo corrente.
+
+Prima di coinvolgere tester reali, sostituisci questi testi con libri che hai il diritto di distribuire.
