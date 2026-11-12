@@ -81,3 +81,18 @@
 .reader-focus-clock{font-variant-numeric:tabular-nums;font-weight:750;color:#80d9aa}
 .reading-shell.focus-active .reader-controls,.reading-shell.focus-active .chapter-actions{display:none}
 @media(max-width:390px){.reader-tools{padding:11px 8px}.reader-tools-row{gap:5px}.reader-tools-row button{font-size:.82rem;padding:6px 3px;min-height:65px}.reader-tools-row .reader-focus-button{font-size:.82rem}.reader-tools-divider{margin:0 1px}}
+
+/* iPhone layout and font sizing: v15 */
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+.reader-shell,.reader-tools,.reader-tools-row,.reading-shell .reading-text{min-width:0;max-width:100%}
+.reader-tools-row{width:100%}
+.reader-tools-row .reader-font-button{align-self:center;flex:0 1 39px;min-width:0;height:38px;min-height:38px!important;max-height:38px;padding:0 2px!important;font-size:.91rem!important;line-height:1!important}
+.reader-tools-row .reader-theme-button{flex:1 1 0}
+.reader-tools-row .reader-focus-button{flex:1 1 0}
+.reader-tools-row .reader-tools-divider{height:38px}
+.reading-shell .reading-text{overflow-wrap:break-word;word-break:normal;white-space:pre-wrap;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+.reading-shell[data-font-size="small"] .reading-text{font-size:.95rem!important}
+.reading-shell[data-font-size="normal"] .reading-text{font-size:1.08rem!important}
+.reading-shell[data-font-size="large"] .reading-text{font-size:1.32rem!important}
+.reading-shell[data-font-size="xlarge"] .reading-text{font-size:1.62rem!important}
+@media(max-width:390px){.reader-tools-row .reader-font-button{flex-basis:34px;height:36px;min-height:36px!important;max-height:36px}}
