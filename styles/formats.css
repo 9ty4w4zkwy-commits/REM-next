@@ -247,3 +247,14 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 .format-switch-bottom button[data-format] .format-icon{width:31px!important;height:31px!important;stroke-width:1.9px!important}
 .format-switch-bottom button[data-format][aria-pressed="false"]{background:transparent!important;border-color:transparent!important;box-shadow:none!important}
 .format-switch-bottom button[data-format][aria-pressed="true"]{background:#1b456c!important;border-color:transparent!important;box-shadow:none!important}
+
+/* v24 — paper-to-ebook phrase synchronization */
+.sync-search{background:#1b2e43;color:#eef4f7;border:1px solid #48647a;border-radius:16px;padding:18px;margin:20px 0}
+.sync-search h2{margin:0 0 10px;color:#fff}
+.sync-search p{line-height:1.5}
+.sync-search textarea{display:block;box-sizing:border-box;width:100%;min-height:96px;margin:12px 0;background:#f6f0e1;color:#17212b;border:1px solid #7c98a5;border-radius:12px;padding:12px;font-size:16px}
+.sync-search button{margin:4px 0 12px}
+.sync-match{border-top:1px solid #456077;padding:12px 0}
+.sync-match p{font-family:Georgia,serif;color:#dce7e4}
+.sync-status{color:#85dcb0}
+.sync-anchor{background:#80d9aa;color:#163d35;font-weight:900;border-radius:4px}
