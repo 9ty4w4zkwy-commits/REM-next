@@ -124,3 +124,14 @@ main{max-width:1180px;padding:0 24px 70px}
 .cover.has-cover-image .cover-art,.cover.has-cover-image .cover-imprint,.cover.has-cover-image .cover-copy{visibility:hidden}
 .cover.has-cover-image::after{display:none}
 .preview-notice{border:1px solid #507087;border-radius:14px;padding:16px;background:#15283d;color:#b9cbd6}
+
+
+/* Netflix-style independent horizontal shelves; works for 3 or 300 books. */
+.rem-home-section{min-width:0;overflow:hidden}
+.rem-book-grid{display:flex;flex-wrap:nowrap;align-items:stretch;gap:16px;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scroll-padding-inline:2px;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain;touch-action:pan-x pan-y;padding:3px 3px 18px;scrollbar-width:thin;scrollbar-color:#4b7283 transparent}
+.rem-book-grid::-webkit-scrollbar{height:5px}
+.rem-book-grid::-webkit-scrollbar-thumb{background:#4b7283;border-radius:20px}
+.rem-book-card{flex:0 0 clamp(190px,24vw,260px);scroll-snap-align:start;scroll-snap-stop:normal}
+.rem-book-card .cover{height:290px;min-height:290px}
+@media(max-width:650px){.rem-home-section{overflow:visible}.rem-book-grid{gap:12px;margin-right:-16px;padding-right:16px}.rem-book-card{flex:0 0 min(45vw,185px)}.rem-book-card .cover{height:210px;min-height:210px}}
+@media(max-width:350px){.rem-book-card{flex-basis:46vw}.rem-book-card .cover{height:185px;min-height:185px}}
