@@ -12,12 +12,16 @@
         {
           "id": "capitolo-1",
           "title": "Capitolo 1 · Prova di lettura",
-          "file": "capitolo-1.txt"
+          "file": "capitolo-1.txt",
+          "recap": "Un laboratorio di lettura per sperimentare il segnalibro, il testo e il passaggio tra formati.",
+          "minutes": 12
         },
         {
           "id": "capitolo-2",
           "title": "Capitolo 2 · Continuazione",
-          "file": "capitolo-2.txt"
+          "file": "capitolo-2.txt",
+          "recap": "La prova continua: ritrova il punto salvato e verifica il passaggio tra Ebook, Cartaceo e Audio.",
+          "minutes": 3
         }
       ],
       "access": "free",
