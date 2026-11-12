@@ -4,7 +4,7 @@ import {el,button,panel,heading} from './ui.js';
 import {getMode,formatSwitch,paperView,audioView} from './formats.js';
 import {createReaderTools} from './reader-tools.js';
 import {createHighlights} from './highlights.js';
-import {phraseSearch,getPhrase,savePhrase} from './synchronization.js';
+import {phraseSearch,getPhrase,savePhrase} from './synchronization.js?v=rem-switch-29';
 import {HOME_SECTIONS,booksForHomeSection} from './home-config.js';
 const app=document.getElementById('app');let books=[];let currentView='home';let activeReaderTools=null;let activeHighlights=null;
 const render=(...nodes)=>{if(activeHighlights){activeHighlights.destroy();activeHighlights=null}if(activeReaderTools){activeReaderTools.destroy();activeReaderTools=null}app.replaceChildren(...nodes)};
