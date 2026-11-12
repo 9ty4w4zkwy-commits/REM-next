@@ -11,12 +11,12 @@
       "chapters": [
         {
           "id": "capitolo-1",
-          "title": "Primo capitolo",
+          "title": "Capitolo 1 · Prova di lettura",
           "file": "capitolo-1.txt"
         },
         {
           "id": "capitolo-2",
-          "title": "Secondo capitolo",
+          "title": "Capitolo 2 · Continuazione",
           "file": "capitolo-2.txt"
         }
       ],
