@@ -300,3 +300,11 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 .sync-switch-actions button{flex:1 1 155px;margin:0!important;min-height:49px;border-radius:13px;font-size:1rem;font-weight:800;padding:11px 14px}
 .sync-switch-actions .sync-switch-audio{background:#20354e!important;border:1px solid #627c94!important;color:#f5f7fa!important;box-shadow:none!important}
 .sync-switch-actions .sync-switch-audio:active{background:#315879!important}
+
+/* v30 — equal navy switches, side by side on iPhone; mint on selection */
+.sync-search .sync-switch-actions{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;gap:9px!important;align-items:stretch!important}
+.sync-search .sync-switch-actions button,
+.sync-search .sync-switch-actions .sync-switch-audio{width:100%!important;min-width:0!important;min-height:54px!important;padding:10px 6px!important;margin:0!important;white-space:normal!important;line-height:1.2!important;font-size:clamp(.78rem,3.6vw,1rem)!important;border-radius:13px!important;background:#203e5c!important;color:#f4f8fb!important;border:1px solid #63819c!important;box-shadow:none!important;transition:background .12s,color .12s,border-color .12s!important}
+.sync-search .sync-switch-actions button:active,
+.sync-search .sync-switch-actions button:focus-visible,
+.sync-search .sync-switch-actions button.is-selected{background:#7eddb1!important;color:#102538!important;border-color:#7eddb1!important}
