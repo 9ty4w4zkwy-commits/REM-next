@@ -199,3 +199,25 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 .format-switch-bottom .format-icon{display:block;width:27px;height:27px;color:#80d9aa;flex:none}
 .format-switch-bottom button[aria-pressed="true"] .format-icon{color:#8fc8ff}
 .format-switch:not(.format-switch-bottom) .format-icon{display:none}
+
+/* v21 — unselected formats have no box; selected blue with thin mint outline */
+.format-switch-bottom button,
+.format-switch-bottom button[aria-pressed="false"],
+.format-switch-bottom button[aria-pressed="false"]:focus{
+ background:transparent!important;
+ border:1.5px solid transparent!important;
+ border-radius:17px!important;
+ box-shadow:none!important;
+ outline:none!important;
+}
+.format-switch-bottom button[aria-pressed="true"],
+.format-switch-bottom button[aria-pressed="true"]:focus{
+ background:#21466d!important;
+ border:1.5px solid #80d9aa!important;
+ border-radius:17px!important;
+ box-shadow:none!important;
+ outline:none!important;
+ color:#fff!important;
+}
+.format-switch-bottom button:focus-visible{outline:2px solid #a4e9c5!important;outline-offset:2px!important}
+.format-switch-bottom .format-icon{width:29px!important;height:29px!important;stroke-width:1.8px}
