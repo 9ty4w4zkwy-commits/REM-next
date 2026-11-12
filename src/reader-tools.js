@@ -3,7 +3,7 @@ import {el,button} from './ui.js';
 
 // Self-contained reader presentation. Focus overlay is mounted inside the reader.
 const SIZES=['small','normal','large','xlarge'];
-export function createReaderTools(){
+export function createReaderTools({focusOnly=false}={}){
  const state={theme:getSetting('reader-theme','moon'),size:getSetting('reader-size','normal'),focus:false,seconds:0,running:false,choice:5};
  if(!['sun','moon'].includes(state.theme))state.theme='moon';
  if(!SIZES.includes(state.size))state.size='normal';
@@ -53,7 +53,7 @@ export function createReaderTools(){
   clock.textContent=String(Math.floor(state.seconds/60)).padStart(2,'0')+':'+String(state.seconds%60).padStart(2,'0');
   if(shell){shell.dataset.theme=state.theme;shell.dataset.fontSize=state.size;shell.classList.toggle('focus-active',state.focus)}
  }
- row.append(sun,moon,divider,smaller,bigger,focus);root.append(title,row);
+ if(focusOnly){root.classList.add('reader-tools-focus-only');root.append(focus)}else{row.append(sun,moon,divider,smaller,bigger,focus);root.append(title,row)}
  presets.append(five,ten);actions.append(start,cancel);
  dialog.append(heading,question,presets,custom,customBox,notice,actions);
  overlay.append(dialog);
