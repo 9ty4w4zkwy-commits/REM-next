@@ -41,8 +41,13 @@ export function phraseSearch(book,onFound){
   if(!field.value.trim()){onFound(null,'ebook');return}
   submit.disabled=true;
   status.textContent='Ricerca in corso…';
-  try{const found=await findPhrase(book,field.value);if(found.matches?.length===1){const item=found.matches[0];savePhrase(book.id,item.chapter,item.phrase,item.offset);onFound(item,'ebook');return}status.textContent=found.error||(!found.matches.length?'Nessuna corrispondenza trovata. Controlla la frase e l’edizione.':found.matches.length+' corrispondenza/e trovata/e.');
-   for(const item of found.matches.slice(0,12)){const action=button('Apri qui nell’Ebook',()=>{savePhrase(book.id,item.chapter,item.phrase,item.offset);onFound(item,'ebook')});results.append(el('div',{className:'sync-match'},[el('strong',{text:item.title}),el('p',{text:'…'+item.context+'…'}),action]))}
+  try{const found=await findPhrase(book,field.value);
+   if(found.matches?.length){
+    const item=found.matches[0];
+    savePhrase(book.id,item.chapter,item.phrase,item.offset);
+    onFound(item,'ebook');return;
+   }
+   status.textContent=found.error||'Nessuna corrispondenza trovata. Controlla la frase e l’edizione.';
   }catch(e){status.textContent='Impossibile cercare nel testo: '+e.message}finally{submit.disabled=false;submit.classList.remove('is-selected');submit.setAttribute('aria-pressed','false')}
  },true);
  const audioSwitch=button('Passa ad Audio',()=>{audioSwitch.classList.add('is-selected');audioSwitch.setAttribute('aria-pressed','true');onFound(null,'audio')});
