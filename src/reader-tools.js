@@ -60,7 +60,7 @@ export function createReaderTools({focusOnly=false}={}){
  overlay.addEventListener('click',e=>{if(e.target===overlay)closeDialog()});
  overlay.addEventListener('keydown',e=>{if(e.key==='Escape')closeDialog()});
  activeBar.append(el('span',{text:'Focus attivo'}),clock,pause,end);
- function mount(target){shell=target;shell.classList.add('reader-shell');shell.prepend(root,activeBar);document.body.append(overlay);overlay.hidden=true;activeBar.hidden=true;update()}
+ function mount(target){shell=target;shell.classList.add('reader-shell');shell.prepend(activeBar);if(focusOnly){const heading=shell.querySelector(':scope > h2');if(heading)heading.after(root);else shell.prepend(root)}else shell.prepend(root);document.body.append(overlay);overlay.hidden=true;activeBar.hidden=true;update()}
  function destroy(){stopTimer();overlay.remove()}
  update();return {mount,destroy};
 }
