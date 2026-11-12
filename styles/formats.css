@@ -534,3 +534,9 @@ body:not(.ebook-immersive-active) .ebook-reading-shell .ebook-page-frame .readin
 .ebook-reading-shell .ebook-chapter-nav button:disabled{opacity:.3!important}
 .ebook-reading-shell .ebook-chapter-nav button:active{background:#80d9aa!important;color:#10283b!important}
 .ebook-reading-shell .highlight-tools .ebook-inline-switches{margin:10px 0 18px!important}
+
+/* v44 — no redundant ebook instruction panels; arrows before inline format actions */
+.ebook-reading-shell .ebook-journey:empty{display:none!important}
+.ebook-reading-shell .highlight-tools>.selection-hint{display:none!important}
+.ebook-reading-shell .ebook-chapter-nav{margin:16px 0 12px!important}
+.paper-sync-shell .paper-resume-card{scroll-margin-top:18px}
