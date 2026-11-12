@@ -27,8 +27,14 @@ export async function findPhrase(book,query){
 }
 export function phraseSearch(book,onFound){
  const wrap=el('section',{className:'sync-search'});
- const title=el('h2',{text:'Trova il punto esatto'});
+ const title=el('h2',{text:'Indica il punto di lettura'});
  const intro=el('p',{text:'Scrivi almeno quattro parole consecutive del libro cartaceo. Cercheremo la frase nel testo digitale di questa edizione.'});
+ const photoLabel=el('label',{text:'1 · Carica una foto del cartaceo (opzionale)'});
+ const photo=el('input',{attrs:{type:'file',accept:'image/*','aria-label':'Foto della pagina cartacea'}});
+ const photoNote=el('p',{className:'sync-photo-note',text:'La foto resta sul dispositivo. Il riconoscimento automatico del testo non è ancora disponibile.'});
+ const pageLabel=el('label',{text:'Pagina cartacea (opzionale)'});
+ const page=el('input',{attrs:{type:'number',min:'1',inputmode:'numeric',placeholder:'Es. 7','aria-label':'Numero pagina cartacea'}});
+ const phraseLabel=el('label',{text:'Ultime 4 parole o una frase'});
  const field=el('textarea',{attrs:{rows:'3',placeholder:'Inserisci una frase del libro…','aria-label':'Frase da cercare'}});
  const submit=button('Cerca nel libro',async()=>{
   results.replaceChildren();submit.disabled=true;
@@ -39,5 +45,5 @@ export function phraseSearch(book,onFound){
  },true);
  const status=el('p',{className:'sync-status',attrs:{role:'status'}});
  const results=el('div',{className:'sync-results'});
- wrap.append(title,intro,field,submit,status,results);return wrap;
+ wrap.append(title,intro,photoLabel,photo,photoNote,el('h3',{text:'2 · Indica il punto di lettura'}),pageLabel,page,phraseLabel,field,submit,status,results);return wrap;
 }
