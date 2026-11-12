@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "books": [
+    {
+      "id": "libro-demo",
+      "title": "Il primo libro di REM",
+      "author": "Contenuto dimostrativo",
+      "status": "published",
+      "coverStyle": "classic",
+      "description": "Libro segnaposto per provare la gestione del catalogo. Sostituiscilo con contenuti autorizzati prima dei test reali.",
+      "chapters": [
+        {
+          "id": "capitolo-1",
+          "title": "Primo capitolo",
+          "file": "capitolo-1.txt"
+        },
+        {
+          "id": "capitolo-2",
+          "title": "Secondo capitolo",
+          "file": "capitolo-2.txt"
+        }
+      ]
+    }
+  ]
+}
