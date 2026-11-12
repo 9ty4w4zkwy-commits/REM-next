@@ -69,6 +69,34 @@
       "availability": "preview",
       "coverImage": "./assets/covers/dracula.jpg",
       "chapters": []
+    },
+    {
+      "id": "pinocchio",
+      "title": "Le avventure di Pinocchio",
+      "author": "Carlo Collodi",
+      "description": "Le avventure di un burattino che sogna di diventare un bambino vero.",
+      "status": "published",
+      "access": "premium",
+      "homeSections": [
+        "new"
+      ],
+      "availability": "preview",
+      "coverImage": "./assets/covers/pinocchio.jpg",
+      "chapters": []
+    },
+    {
+      "id": "zeno",
+      "title": "La coscienza di Zeno",
+      "author": "Italo Svevo",
+      "description": "Tra ricordi, ironia e autoanalisi, il racconto di una coscienza inquieta nella Trieste del Novecento.",
+      "status": "published",
+      "access": "premium",
+      "homeSections": [
+        "new"
+      ],
+      "availability": "preview",
+      "coverImage": "./assets/covers/zeno.jpg",
+      "chapters": []
     }
   ]
 }
