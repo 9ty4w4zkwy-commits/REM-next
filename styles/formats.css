@@ -138,3 +138,54 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 .selection-buttons button{flex:1;min-width:100px;font-size:.85rem;padding:9px}
 .selection-actions>button{margin-top:8px;font-size:.8rem}
 .switch-context{padding:12px;border-left:3px solid #80d9aa;background:#182e43;overflow-wrap:anywhere}
+
+/* v19 — REM 5.6-inspired bottom dock and consistent reader borders */
+.reader-tools-row .reader-theme-button[aria-pressed="false"],
+.reader-tools-row .reader-theme-button[aria-pressed="false"]:focus,
+.reader-tools-row .reader-theme-button[aria-pressed="false"]:focus-visible{
+ border:1px solid #577188!important;
+ outline:none!important;
+ box-shadow:none!important;
+}
+.reader-tools-row .reader-focus-button,
+.reader-tools-row .reader-focus-button:focus{
+ border:1.5px solid #80d9aa!important;
+ color:#80d9aa!important;
+ background:#1b3545!important;
+ box-shadow:none!important;
+}
+.reader-tools-row .reader-focus-button:active,
+.reader-tools-row .reader-focus-button:focus-visible{
+ background:#80d9aa!important;color:#102638!important;
+}
+.format-switch-bottom{
+ position:fixed!important;
+ left:0;right:0;bottom:0!important;
+ width:100%;max-width:100%;
+ margin:0!important;
+ padding:8px max(12px,env(safe-area-inset-right)) calc(8px + env(safe-area-inset-bottom)) max(12px,env(safe-area-inset-left));
+ display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:3px;
+ background:rgba(10,27,49,.96)!important;
+ border:0!important;border-top:1px solid #37536c!important;
+ border-radius:0!important;box-shadow:0 -8px 24px #06101d55!important;
+ z-index:100;
+ box-sizing:border-box;
+}
+.format-switch-bottom button{
+ min-height:72px!important;
+ border:0!important;border-radius:15px!important;
+ background:transparent!important;
+ color:#d7e2ef!important;
+ font-weight:700!important;
+ font-size:1rem!important;
+ padding:8px 3px!important;
+ box-shadow:none!important;
+}
+.format-switch-bottom button[aria-pressed="true"]{
+ background:#21466d!important;color:#fff!important;
+ border:0!important;
+}
+.format-switch-bottom button::before{font-size:1.55rem!important;color:#80d9aa!important}
+.format-switch-bottom button[aria-pressed="true"]::before{color:#8fc8ff!important}
+#app:has(.format-switch-bottom){padding-bottom:calc(112px + env(safe-area-inset-bottom))}
+@media(min-width:760px){.format-switch-bottom{left:50%;right:auto;transform:translateX(-50%);max-width:650px;border-radius:18px 18px 0 0!important;border:1px solid #37536c!important}}
