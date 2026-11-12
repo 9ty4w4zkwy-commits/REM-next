@@ -394,3 +394,9 @@ body.ebook-immersive-active .ebook-reading-shell .reading-text{
  .ebook-reading-shell .reading-text.large,
  .ebook-reading-shell .reading-text.xlarge{padding:20px 15px!important}
 }
+
+/* v35 — switching after the text remains accessible in immersive reading */
+.ebook-inline-switches{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:18px 0 22px}
+.ebook-inline-switches button{min-width:0!important;white-space:normal!important;background:#23415e!important;color:#f5f8fc!important;border:1px solid #65829a!important;border-radius:13px!important;padding:13px 7px!important;font-weight:700!important}
+.ebook-inline-switches button:active,.ebook-inline-switches button:focus-visible{background:#80d9aa!important;color:#10283b!important}
+body.ebook-immersive-active .ebook-inline-switches{margin-bottom:30px}
