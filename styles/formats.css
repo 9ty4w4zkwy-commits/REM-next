@@ -275,3 +275,22 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 .reader-tools-focus-only .reader-focus-button{display:inline-flex!important;align-items:center!important;justify-content:center!important;flex-direction:row!important;gap:7px!important;width:auto!important;min-width:0!important;min-height:44px!important;padding:9px 16px!important;border:1.5px solid #64dfa9!important;border-radius:13px!important;background:#122b40!important;color:#64dfa9!important;font-size:1rem!important;font-weight:700!important;box-shadow:none!important}
 .reader-tools-focus-only .reader-focus-button:active,.reader-tools-focus-only .reader-focus-button:focus-visible{background:#64dfa9!important;color:#102638!important}
 .reader-tools-focus-only .reader-theme-icon{font-size:1.1rem!important}
+
+/* v27 — navy is the only background for paper/audio, regardless of ebook theme */
+.reading-shell.paper-sync-shell,.reading-shell.audio-sync-shell,
+.reading-shell.paper-sync-shell[data-theme="sun"],.reading-shell.paper-sync-shell[data-theme="moon"],
+.reading-shell.audio-sync-shell[data-theme="sun"],.reading-shell.audio-sync-shell[data-theme="moon"]{
+ background:#17283e!important;color:#f2f6fa!important;border:1px solid #3b5772!important;color-scheme:dark!important;
+}
+.paper-sync-shell>h2,.audio-sync-shell>h2,
+.paper-sync-shell[data-theme="sun"]>h2,.audio-sync-shell[data-theme="sun"]>h2{
+ color:#f5f7fb!important;font-family:Georgia,serif!important;
+}
+.paper-sync-shell>p,.audio-sync-shell>p{color:#c0cddd!important}
+.paper-sync-shell .sync-search,.audio-sync-shell .sync-search{background:#102840!important;color:#eef4f7!important}
+.paper-sync-shell .sync-search p{color:#bdcddd!important}
+.paper-sync-shell .sync-search label,.paper-sync-shell .sync-search h2,
+.paper-sync-shell[data-theme="sun"] .sync-search label,
+.paper-sync-shell[data-theme="sun"] .sync-search h2{color:#eef4f7!important}
+.paper-sync-shell .sync-search textarea{background:#0b1b2f!important;color:#f3f6fa!important;border-color:#68879e!important}
+.paper-sync-shell .reader-tools-focus-only,.audio-sync-shell .reader-tools-focus-only{margin:0 0 20px!important}
