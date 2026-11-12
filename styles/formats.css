@@ -517,3 +517,13 @@ body:not(.ebook-immersive-active) .ebook-reading-shell .ebook-page-frame .readin
 .ebook-reading-shell .ebook-page-frame .reading-text{
  border-radius:0 0 16px 16px!important;border-top:0!important;
 }
+
+/* v42 — five additional A+ levels and print-resume bookmark */
+.ebook-reading-shell[data-font-size="xxlarge"] .reading-text{font-size:2rem!important}
+.ebook-reading-shell[data-font-size="xxxlarge"] .reading-text{font-size:2.3rem!important}
+.ebook-reading-shell[data-font-size="max"] .reading-text{font-size:2.65rem!important}
+.paper-sync-shell .paper-resume-card{background:#2a3f5c!important;border:2px solid #ffb87c!important;border-radius:18px;padding:20px 18px;margin:4px 0 24px;color:#f8f6f2!important}
+.paper-sync-shell .paper-resume-card h2{font-family:Georgia,'Times New Roman',serif!important;color:#ffbe88!important;font-weight:800!important;font-size:clamp(1.6rem,6vw,2.25rem)!important;line-height:1.2;margin:0 0 12px}
+.paper-sync-shell .paper-resume-location{display:block;color:#ffcf9d;font-size:1rem;line-height:1.45;margin:0 0 14px}
+.paper-sync-shell .paper-resume-quote{font-family:Georgia,'Times New Roman',serif!important;color:#fff8f0!important;font-size:clamp(1.2rem,4.8vw,1.5rem);line-height:1.6;margin:0 0 12px;overflow-wrap:anywhere}
+.paper-sync-shell .paper-resume-note{font-size:.86rem;color:#bdccda!important;line-height:1.55;margin:0}
