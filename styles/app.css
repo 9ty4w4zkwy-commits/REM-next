@@ -139,3 +139,8 @@ main{max-width:1180px;padding:0 24px 70px}
 /* Preserve the complete artwork, including author names printed at the top. */
 .rem-book-card .cover{height:auto;min-height:0;aspect-ratio:2 / 3;padding:0;overflow:hidden}
 .rem-book-card .cover .cover-photo{object-fit:contain;object-position:center;background:#102238}
+
+/* Library covers: preserve complete cinematic artwork and author lettering */
+.library-card .cover{padding:0!important;overflow:hidden;aspect-ratio:2/3;height:auto!important;min-height:0!important;background:#102238}
+.library-card .cover .cover-photo{object-fit:contain!important;object-position:center!important;background:#102238}
+.library-card>div:last-child{min-width:0;flex:1}
