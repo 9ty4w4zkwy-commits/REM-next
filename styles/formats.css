@@ -114,3 +114,7 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
  border-color:#80d9aa!important;
 }
 .reader-tools-row .reader-font-button:disabled{opacity:.48}
+
+/* v17: prevent iOS double-tap zoom on rapid font-size adjustments */
+.reader-tools-row button{touch-action:manipulation;-webkit-tap-highlight-color:transparent;user-select:none;-webkit-user-select:none}
+.reader-tools-row .reader-font-button[aria-disabled="true"]{opacity:.55;cursor:default}
