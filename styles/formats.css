@@ -221,3 +221,21 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 }
 .format-switch-bottom button:focus-visible{outline:2px solid #a4e9c5!important;outline-offset:2px!important}
 .format-switch-bottom .format-icon{width:29px!important;height:29px!important;stroke-width:1.8px}
+
+/* v22: transparent inactive dock buttons, only active blue highlight */
+.format-switch-bottom button,
+.format-switch-bottom button[data-format],
+.format-switch-bottom button[data-format][aria-pressed="false"],
+.format-switch-bottom button[data-format][aria-pressed="false"]:focus,
+.format-switch-bottom button[data-format][aria-pressed="false"]:active{
+ background:transparent!important;background-color:transparent!important;
+ border:1px solid transparent!important;box-shadow:none!important;
+ outline:0!important;
+}
+.format-switch-bottom button[data-format][aria-pressed="true"],
+.format-switch-bottom button[data-format][aria-pressed="true"]:focus{
+ background:#21466d!important;background-color:#21466d!important;
+ border:1px solid transparent!important;box-shadow:none!important;
+}
+.format-switch-bottom button[data-format]:focus-visible{outline:2px solid #80d9aa!important;outline-offset:-2px!important}
+.format-switch-bottom .format-emoji{display:block;font-size:1.65rem;line-height:1.1;min-height:29px}
