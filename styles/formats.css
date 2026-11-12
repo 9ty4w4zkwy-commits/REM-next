@@ -1,1 +1,23 @@
 .format-switch{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:20px 0}.format-switch button{min-width:0;padding:10px 5px;font-size:.94rem}.format-switch button[aria-pressed="true"]{box-shadow:0 0 0 2px #64dfa955}.format-switch button:not([aria-pressed="true"]){background:#213c52}.format-switch+section select{width:100%}@media(max-width:360px){.format-switch button{font-size:.83rem}}
+/* Reader tools are scoped: home, library and book covers remain untouched. */
+.reading-shell{background:#091622;color:#f5f7f8;border:1px solid #314458;border-radius:18px;padding:16px;margin:12px 0 26px;transition:background .2s,color .2s}
+.reading-shell[data-theme="sun"]{background:#fffaf0;color:#1b2530;border-color:#d8cbb5}
+.reading-shell .reader-tools{margin-bottom:18px}
+.reader-tools-row{display:flex;gap:7px;flex-wrap:wrap}
+.reader-tools button,.focus-panel button{border-radius:12px;padding:10px 12px;min-height:42px}
+.reader-tools-row button{flex:1;min-width:65px}
+.reader-tools button[aria-pressed="true"]{outline:2px solid #64dfa9;outline-offset:1px}
+.focus-panel{margin-top:12px;padding:12px;border:1px solid #506273;border-radius:12px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.focus-panel[hidden]{display:none}
+.focus-panel label{font-size:.88rem;width:100%}
+.focus-panel select{max-width:115px;min-height:42px}
+.focus-clock{font-variant-numeric:tabular-nums;font-size:1.25rem;font-weight:700;min-width:62px}
+.reading-shell .reading-text{font-family:Georgia,serif;font-size:1.08rem;line-height:1.85;white-space:pre-wrap;color:inherit;max-width:70ch;margin:0 auto 20px}
+.reading-shell[data-font-size="small"] .reading-text{font-size:.95rem}
+.reading-shell[data-font-size="normal"] .reading-text{font-size:1.08rem}
+.reading-shell[data-font-size="large"] .reading-text{font-size:1.32rem}
+.reading-shell[data-font-size="xlarge"] .reading-text{font-size:1.62rem}
+.reading-shell.focus-active .reader-controls,.reading-shell.focus-active .chapter-actions{display:none}
+.reading-shell.focus-active .reading-text{max-width:62ch}
+.reading-shell[data-theme="sun"] .reader-tools button{color:#f7fbfb}
+@media(max-width:400px){.reader-tools-row button{padding:9px 7px;font-size:.86rem}.focus-panel{gap:6px}}
