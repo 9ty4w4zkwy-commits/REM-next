@@ -18,7 +18,7 @@ export function createEbookJourney(bookId,onSwitch){
  immersive.setAttribute('aria-pressed','false');
  let shell=null;
  function toggle(force){if(!shell)return;const active=typeof force==='boolean'?force:!shell.classList.contains('ebook-immersive');shell.classList.toggle('ebook-immersive',active);document.body.classList.toggle('ebook-immersive-active',active);immersive.textContent=active?'⤡':'⛶';immersive.setAttribute('aria-label',active?'Riduci lettura':'Espandi lettura');immersive.setAttribute('title',active?'Riduci lettura':'Espandi lettura');immersive.setAttribute('aria-pressed',String(active));if(active){shell.scrollTop=0}else{shell.style.removeProperty('scroll-behavior')}}
- function enableImmersive(target){shell=target;target.querySelector('.reading-text')?.append(immersive);const observer=new MutationObserver(()=>{if(!shell.isConnected){document.body.classList.remove('ebook-immersive-active');observer.disconnect()}});observer.observe(document.getElementById('app'),{childList:true})}
+ function enableImmersive(target){shell=target;target.querySelector('.ebook-page-frame')?.append(immersive);const observer=new MutationObserver(()=>{if(!shell.isConnected){document.body.classList.remove('ebook-immersive-active');observer.disconnect()}});observer.observe(document.getElementById('app'),{childList:true})}
  root.append(heading,hint,bookmark);refresh();
  return {root,refresh,enableImmersive};
 }
