@@ -6,4 +6,4 @@ export function validateCatalog(data){
  return data.books.filter(b=>b.status==='published');
 }
 export async function loadCatalog(){const r=await fetch(BASE+'catalog.json',{cache:'no-store'});if(!r.ok)throw Error('Catalogo non disponibile ('+r.status+')');return validateCatalog(await r.json())}
-export async function loadChapter(book,chapter){const r=await fetch(BASE+encodeURIComponent(book.id)+'/'+chapter.file);if(!r.ok)throw Error('Capitolo non disponibile');return r.text()}
+export async function loadChapter(book,chapter){const r=await fetch(BASE+encodeURIComponent(book.id)+'/'+chapter.file,{cache:'no-store'});if(!r.ok)throw Error('Capitolo non disponibile');return r.text()}
