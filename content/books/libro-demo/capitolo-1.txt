@@ -1,5 +1,123 @@
-Questo è un capitolo dimostrativo di REM Next.
+TESTO DIMOSTRATIVO ORIGINALE — Capitolo 1 · Prova di lettura
 
-Serve soltanto a verificare che il lettore carichi un testo da un file separato e salvi il capitolo corrente.
+Questo capitolo è stato esteso appositamente per testare lo scorrimento continuo, il segnalibro e il passaggio tra formati. Non appartiene a un romanzo del catalogo.
 
-Prima di coinvolgere tester reali, sostituisci questi testi con libri che hai il diritto di distribuire.
+1. La finestra aperta
+
+La luce del mattino entrava dalla finestra e disegnava un rettangolo luminoso sul pavimento. In strada qualcuno trascinava una valigia, mentre il rumore distante di un tram segnava l'inizio della giornata. Sul tavolo c'era un libro aperto, con una pagina piegata nell'angolo e una tazza ormai fredda. Nessuno aveva ancora deciso se fosse il momento di riprendere la lettura oppure di uscire.
+
+2. Una pausa necessaria
+
+Il protagonista del nostro piccolo racconto di prova rimase qualche minuto immobile. Ascoltò i passi sulle scale, il ronzio del frigorifero e il vento che muoveva le foglie nel cortile. Poi tornò alla pagina. Rilesse l'ultima frase, cercando quel punto preciso in cui il pensiero si era interrotto la sera precedente. Era sorprendente quanto bastassero poche parole per ritrovare un'intera scena.
+
+3. Il segnalibro
+
+Con un dito seguì la riga e si fermò su una parola. Quel gesto minuscolo bastò a segnare il punto di ritorno. Non serviva ricordare il numero della pagina, né appuntare il paragrafo su un foglio. La storia poteva aspettare, custodita in una frase. Più tardi sarebbe stato possibile ritrovarla, anche cambiando il modo di leggere.
+
+4. La città
+
+Fuori, la città aveva accelerato. Le biciclette attraversavano la piazza e le voci si sovrapponevano davanti al bar. Una ragazza cercava qualcosa nello zaino; un uomo osservava l'orologio senza smettere di camminare. Da una finestra aperta arrivava una musica appena percettibile. Tutto sembrava muoversi in fretta, ma dentro la stanza il tempo seguiva il ritmo tranquillo delle pagine.
+
+5. Un'altra prospettiva
+
+Il lettore provò a immaginare la stessa scena ascoltata in cuffia. Forse le voci avrebbero avuto un timbro diverso, forse una pausa avrebbe reso più importante un dettaglio. La trama sarebbe rimasta identica. A cambiare sarebbe stata soltanto la strada percorsa per raggiungerla. Era proprio questo che voleva mettere alla prova: la continuità di una storia tra forme differenti.
+
+6. La porta
+
+Quando qualcuno bussò alla porta, il lettore non si affrettò. Terminò il periodo che aveva davanti, appoggiò il dito su una parola e alzò lo sguardo. Il suono si ripeté, questa volta più leggero. Attraversò il corridoio e aprì. Sul pianerottolo non c'era nessuno, soltanto una busta appoggiata con cura vicino allo stipite.
+
+7. Una lettera
+
+La busta non portava un nome. Conteneva un foglio con poche righe scritte a mano: «Le storie cambiano quando impariamo a guardarle da un altro punto». Non era una spiegazione, e non sembrava neppure un invito. Il lettore la rilesse lentamente, poi tornò al tavolo. Il libro era ancora aperto nello stesso punto, come se nulla fosse successo.
+
+8. La scelta
+
+Avrebbe potuto chiudere tutto e occuparsi delle incombenze della giornata. Invece decise di concedersi ancora qualche minuto. Sistemò la sedia, spostò la tazza e riprese dalla frase segnata. Le parole tornarono a scorrere, una dopo l'altra. Non c'era alcuna fretta di raggiungere la fine: il piacere era anche nel percorso.
+
+9. Verso la fine
+
+La luce cambiò posizione sul pavimento. Le ombre si allungarono e la stanza assunse un colore più caldo. Il lettore si accorse di aver percorso molte righe senza interrompersi. Sorrise, perché l'esperimento stava funzionando: poteva fermarsi dove desiderava, ritrovare il segno e continuare senza perdere il filo.
+
+10. Il prossimo passo
+
+Prima di chiudere il libro, tornò ancora una volta su una frase e la toccò. Era un piccolo gesto di fiducia nella memoria della lettura. Domani avrebbe ripreso da lì, magari su uno schermo più grande, magari in un altro formato. La storia non chiedeva altro che attenzione, e il tempo necessario per lasciarsi raccontare.
+
+11. La finestra aperta
+
+La luce del mattino entrava dalla finestra e disegnava un rettangolo luminoso sul pavimento. In strada qualcuno trascinava una valigia, mentre il rumore distante di un tram segnava l'inizio della giornata. Sul tavolo c'era un libro aperto, con una pagina piegata nell'angolo e una tazza ormai fredda. Nessuno aveva ancora deciso se fosse il momento di riprendere la lettura oppure di uscire.
+
+12. Una pausa necessaria
+
+Il protagonista del nostro piccolo racconto di prova rimase qualche minuto immobile. Ascoltò i passi sulle scale, il ronzio del frigorifero e il vento che muoveva le foglie nel cortile. Poi tornò alla pagina. Rilesse l'ultima frase, cercando quel punto preciso in cui il pensiero si era interrotto la sera precedente. Era sorprendente quanto bastassero poche parole per ritrovare un'intera scena.
+
+13. Il segnalibro
+
+Con un dito seguì la riga e si fermò su una parola. Quel gesto minuscolo bastò a segnare il punto di ritorno. Non serviva ricordare il numero della pagina, né appuntare il paragrafo su un foglio. La storia poteva aspettare, custodita in una frase. Più tardi sarebbe stato possibile ritrovarla, anche cambiando il modo di leggere.
+
+14. La città
+
+Fuori, la città aveva accelerato. Le biciclette attraversavano la piazza e le voci si sovrapponevano davanti al bar. Una ragazza cercava qualcosa nello zaino; un uomo osservava l'orologio senza smettere di camminare. Da una finestra aperta arrivava una musica appena percettibile. Tutto sembrava muoversi in fretta, ma dentro la stanza il tempo seguiva il ritmo tranquillo delle pagine.
+
+15. Un'altra prospettiva
+
+Il lettore provò a immaginare la stessa scena ascoltata in cuffia. Forse le voci avrebbero avuto un timbro diverso, forse una pausa avrebbe reso più importante un dettaglio. La trama sarebbe rimasta identica. A cambiare sarebbe stata soltanto la strada percorsa per raggiungerla. Era proprio questo che voleva mettere alla prova: la continuità di una storia tra forme differenti.
+
+16. La porta
+
+Quando qualcuno bussò alla porta, il lettore non si affrettò. Terminò il periodo che aveva davanti, appoggiò il dito su una parola e alzò lo sguardo. Il suono si ripeté, questa volta più leggero. Attraversò il corridoio e aprì. Sul pianerottolo non c'era nessuno, soltanto una busta appoggiata con cura vicino allo stipite.
+
+17. Una lettera
+
+La busta non portava un nome. Conteneva un foglio con poche righe scritte a mano: «Le storie cambiano quando impariamo a guardarle da un altro punto». Non era una spiegazione, e non sembrava neppure un invito. Il lettore la rilesse lentamente, poi tornò al tavolo. Il libro era ancora aperto nello stesso punto, come se nulla fosse successo.
+
+18. La scelta
+
+Avrebbe potuto chiudere tutto e occuparsi delle incombenze della giornata. Invece decise di concedersi ancora qualche minuto. Sistemò la sedia, spostò la tazza e riprese dalla frase segnata. Le parole tornarono a scorrere, una dopo l'altra. Non c'era alcuna fretta di raggiungere la fine: il piacere era anche nel percorso.
+
+19. Verso la fine
+
+La luce cambiò posizione sul pavimento. Le ombre si allungarono e la stanza assunse un colore più caldo. Il lettore si accorse di aver percorso molte righe senza interrompersi. Sorrise, perché l'esperimento stava funzionando: poteva fermarsi dove desiderava, ritrovare il segno e continuare senza perdere il filo.
+
+20. Il prossimo passo
+
+Prima di chiudere il libro, tornò ancora una volta su una frase e la toccò. Era un piccolo gesto di fiducia nella memoria della lettura. Domani avrebbe ripreso da lì, magari su uno schermo più grande, magari in un altro formato. La storia non chiedeva altro che attenzione, e il tempo necessario per lasciarsi raccontare.
+
+21. La finestra aperta
+
+La luce del mattino entrava dalla finestra e disegnava un rettangolo luminoso sul pavimento. In strada qualcuno trascinava una valigia, mentre il rumore distante di un tram segnava l'inizio della giornata. Sul tavolo c'era un libro aperto, con una pagina piegata nell'angolo e una tazza ormai fredda. Nessuno aveva ancora deciso se fosse il momento di riprendere la lettura oppure di uscire.
+
+22. Una pausa necessaria
+
+Il protagonista del nostro piccolo racconto di prova rimase qualche minuto immobile. Ascoltò i passi sulle scale, il ronzio del frigorifero e il vento che muoveva le foglie nel cortile. Poi tornò alla pagina. Rilesse l'ultima frase, cercando quel punto preciso in cui il pensiero si era interrotto la sera precedente. Era sorprendente quanto bastassero poche parole per ritrovare un'intera scena.
+
+23. Il segnalibro
+
+Con un dito seguì la riga e si fermò su una parola. Quel gesto minuscolo bastò a segnare il punto di ritorno. Non serviva ricordare il numero della pagina, né appuntare il paragrafo su un foglio. La storia poteva aspettare, custodita in una frase. Più tardi sarebbe stato possibile ritrovarla, anche cambiando il modo di leggere.
+
+24. La città
+
+Fuori, la città aveva accelerato. Le biciclette attraversavano la piazza e le voci si sovrapponevano davanti al bar. Una ragazza cercava qualcosa nello zaino; un uomo osservava l'orologio senza smettere di camminare. Da una finestra aperta arrivava una musica appena percettibile. Tutto sembrava muoversi in fretta, ma dentro la stanza il tempo seguiva il ritmo tranquillo delle pagine.
+
+25. Un'altra prospettiva
+
+Il lettore provò a immaginare la stessa scena ascoltata in cuffia. Forse le voci avrebbero avuto un timbro diverso, forse una pausa avrebbe reso più importante un dettaglio. La trama sarebbe rimasta identica. A cambiare sarebbe stata soltanto la strada percorsa per raggiungerla. Era proprio questo che voleva mettere alla prova: la continuità di una storia tra forme differenti.
+
+26. La porta
+
+Quando qualcuno bussò alla porta, il lettore non si affrettò. Terminò il periodo che aveva davanti, appoggiò il dito su una parola e alzò lo sguardo. Il suono si ripeté, questa volta più leggero. Attraversò il corridoio e aprì. Sul pianerottolo non c'era nessuno, soltanto una busta appoggiata con cura vicino allo stipite.
+
+27. Una lettera
+
+La busta non portava un nome. Conteneva un foglio con poche righe scritte a mano: «Le storie cambiano quando impariamo a guardarle da un altro punto». Non era una spiegazione, e non sembrava neppure un invito. Il lettore la rilesse lentamente, poi tornò al tavolo. Il libro era ancora aperto nello stesso punto, come se nulla fosse successo.
+
+28. La scelta
+
+Avrebbe potuto chiudere tutto e occuparsi delle incombenze della giornata. Invece decise di concedersi ancora qualche minuto. Sistemò la sedia, spostò la tazza e riprese dalla frase segnata. Le parole tornarono a scorrere, una dopo l'altra. Non c'era alcuna fretta di raggiungere la fine: il piacere era anche nel percorso.
+
+29. Verso la fine
+
+La luce cambiò posizione sul pavimento. Le ombre si allungarono e la stanza assunse un colore più caldo. Il lettore si accorse di aver percorso molte righe senza interrompersi. Sorrise, perché l'esperimento stava funzionando: poteva fermarsi dove desiderava, ritrovare il segno e continuare senza perdere il filo.
+
+30. Il prossimo passo
+
+Prima di chiudere il libro, tornò ancora una volta su una frase e la toccò. Era un piccolo gesto di fiducia nella memoria della lettura. Domani avrebbe ripreso da lì, magari su uno schermo più grande, magari in un altro formato. La storia non chiedeva altro che attenzione, e il tempo necessario per lasciarsi raccontare.
