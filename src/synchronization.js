@@ -36,14 +36,17 @@ export function phraseSearch(book,onFound){
  const page=el('input',{attrs:{type:'number',min:'1',inputmode:'numeric',placeholder:'Es. 7','aria-label':'Numero pagina cartacea'}});
  const phraseLabel=el('label',{text:'Ultime 4 parole o una frase'});
  const field=el('textarea',{attrs:{rows:'3',placeholder:'Inserisci una frase del libro…','aria-label':'Frase da cercare'}});
- const submit=button('Cerca nel libro',async()=>{
+ const submit=button('Passa a Ebook',async()=>{
   results.replaceChildren();submit.disabled=true;
   status.textContent='Ricerca in corso…';
   try{const found=await findPhrase(book,field.value);status.textContent=found.error||(!found.matches.length?'Nessuna corrispondenza trovata. Controlla la frase e l’edizione.':found.matches.length+' corrispondenza/e trovata/e.');
-   for(const item of found.matches.slice(0,12)){const action=button('Apri qui nell’Ebook',()=>{savePhrase(book.id,item.chapter,item.phrase,item.offset);onFound(item)});results.append(el('div',{className:'sync-match'},[el('strong',{text:item.title}),el('p',{text:'…'+item.context+'…'}),action]))}
+   for(const item of found.matches.slice(0,12)){const action=button('Apri qui nell’Ebook',()=>{savePhrase(book.id,item.chapter,item.phrase,item.offset);onFound(item,'ebook')});results.append(el('div',{className:'sync-match'},[el('strong',{text:item.title}),el('p',{text:'…'+item.context+'…'}),action]))}
   }catch(e){status.textContent='Impossibile cercare nel testo: '+e.message}finally{submit.disabled=false}
  },true);
+ const audioSwitch=button('Passa ad Audio',()=>onFound(null,'audio'));
+ audioSwitch.classList.add('sync-switch-audio');
+ const switchActions=el('div',{className:'sync-switch-actions'},[submit,audioSwitch]);
  const status=el('p',{className:'sync-status',attrs:{role:'status'}});
  const results=el('div',{className:'sync-results'});
- wrap.append(title,intro,photoLabel,photo,photoNote,el('h3',{text:'2 · Indica il punto di lettura'}),pageLabel,page,phraseLabel,field,submit,status,results);return wrap;
+ wrap.append(title,intro,photoLabel,photo,photoNote,el('h3',{text:'2 · Indica il punto di lettura'}),pageLabel,page,phraseLabel,field,switchActions,status,results);return wrap;
 }
