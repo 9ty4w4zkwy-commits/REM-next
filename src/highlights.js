@@ -1,13 +1,13 @@
 import {el,button} from './ui.js';
 // Isolated text selection/highlight module. Quotes are stored locally per book/chapter.
 const KEY='rem-next-v1:highlight:';
-export function createHighlights(bookId,chapterId,textNode,onSwitch){
+export function createHighlights(bookId,chapterId,textNode,onSwitch,onBookmark=()=>{}){
  const key=KEY+bookId+':'+chapterId;
  let selectedQuote='';let marks=[];try{marks=JSON.parse(localStorage.getItem(key)||'[]');if(!Array.isArray(marks))marks=[]}catch{marks=[]}
  const toolbar=el('div',{className:'selection-actions'});
  const hint=el('p',{className:'selection-hint',text:'Seleziona una frase del testo per evidenziarla e scegliere se passare a Cartaceo o Audio.'});
  const quote=el('p',{className:'selection-quote'});
- const highlight=button('Evidenzia',()=>{const s=getSelectionText()||selectedQuote;if(!s)return;const start=selectionOffset(s);if(start<0)return;marks.push({start,end:start+s.length,quote:s});persist();draw();hide()});
+ const highlight=button('Evidenzia',()=>{const s=getSelectionText()||selectedQuote;if(!s)return;const start=selectionOffset(s);if(start<0)return;marks.push({start,end:start+s.length,quote:s});persist();draw();onBookmark(s);hide()});
  const paper=button('Passa a Cartaceo',()=>go('paper'));
  const audio=button('Passa ad Audio',()=>go('audio'));
  const clear=button('Rimuovi evidenziazioni',()=>{marks=[];persist();draw();hide()});
@@ -20,7 +20,7 @@ export function createHighlights(bookId,chapterId,textNode,onSwitch){
  function selectionOffset(s){const sel=window.getSelection();if(sel&&!sel.isCollapsed&&textNode.contains(sel.anchorNode)){const range=sel.getRangeAt(0).cloneRange();const before=range.cloneRange();before.selectNodeContents(textNode);before.setEnd(range.startContainer,range.startOffset);return before.toString().length}return plainText().indexOf(s)}
  function hide(){toolbar.hidden=true;window.getSelection()?.removeAllRanges()}
  function go(mode){const s=getSelectionText()||selectedQuote;if(!s)return;const start=selectionOffset(s);if(start>=0&&!marks.some(m=>m.start===start&&m.quote===s)){marks.push({start,end:start+s.length,quote:s});persist()}onSwitch(mode,s);hide()}
- function show(){const s=getSelectionText();if(!s)return;selectedQuote=s;quote.textContent='“'+s.slice(0,170)+(s.length>170?'…':'')+'”';toolbar.hidden=false}
+ function show(){const s=getSelectionText();if(!s)return;selectedQuote=s;quote.textContent='“'+s.slice(0,170)+(s.length>170?'…':'')+'”';toolbar.hidden=false;onBookmark(s)}
  function draw(){
   const raw=source.value;textNode.replaceChildren();
   const ordered=marks.filter(m=>Number.isInteger(m.start)&&Number.isInteger(m.end)&&m.start>=0&&m.end<=raw.length&&m.end>m.start&&raw.slice(m.start,m.end)===m.quote).sort((a,b)=>a.start-b.start);
