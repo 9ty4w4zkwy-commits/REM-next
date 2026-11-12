@@ -1,7 +1,7 @@
 import {el,button} from './ui.js';
 // Tap-to-bookmark: the tapped word and up to nine preceding words.
 const KEY='rem-next-v1:highlight:';
-const WORD=/[\\p{L}\\p{N}]+(?:['’][\\p{L}\\p{N}]+)*/gu;
+const WORD=/[\p{L}\p{N}]+(?:['’][\p{L}\p{N}]+)*/gu;
 export function createHighlights(bookId,chapterId,textNode,onSwitch,onBookmark=()=>{}){
  const key=KEY+bookId+':'+chapterId;
  let marks=[];try{marks=JSON.parse(localStorage.getItem(key)||'[]');if(!Array.isArray(marks))marks=[]}catch{marks=[]}
