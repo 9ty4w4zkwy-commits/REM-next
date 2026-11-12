@@ -7,7 +7,7 @@ export function createHighlights(bookId,chapterId,textNode,onSwitch){
  const toolbar=el('div',{className:'selection-actions'});
  const hint=el('p',{className:'selection-hint',text:'Seleziona una frase del testo per evidenziarla e scegliere se passare a Cartaceo o Audio.'});
  const quote=el('p',{className:'selection-quote'});
- const highlight=button('Evidenzia',()=>{const s=getSelectionText();if(!s)return;const start=plainText().indexOf(s);if(start<0)return;marks.push({start,end:start+s.length,quote:s});persist();draw();hide()});
+ const highlight=button('Evidenzia',()=>{const s=getSelectionText()||selectedQuote;if(!s)return;const start=plainText().indexOf(s);if(start<0)return;marks.push({start,end:start+s.length,quote:s});persist();draw();hide()});
  const paper=button('Passa a Cartaceo',()=>go('paper'));
  const audio=button('Passa ad Audio',()=>go('audio'));
  const clear=button('Rimuovi evidenziazioni',()=>{marks=[];persist();draw();hide()});
