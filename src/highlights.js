@@ -7,7 +7,7 @@ export function createHighlights(bookId,chapterId,textNode,onSwitch){
  const toolbar=el('div',{className:'selection-actions'});
  const hint=el('p',{className:'selection-hint',text:'Seleziona una frase del testo per evidenziarla e scegliere se passare a Cartaceo o Audio.'});
  const quote=el('p',{className:'selection-quote'});
- const highlight=button('Evidenzia',()=>{const s=getSelectionText()||selectedQuote;if(!s)return;const start=plainText().indexOf(s);if(start<0)return;marks.push({start,end:start+s.length,quote:s});persist();draw();hide()});
+ const highlight=button('Evidenzia',()=>{const s=getSelectionText()||selectedQuote;if(!s)return;const start=selectionOffset(s);if(start<0)return;marks.push({start,end:start+s.length,quote:s});persist();draw();hide()});
  const paper=button('Passa a Cartaceo',()=>go('paper'));
  const audio=button('Passa ad Audio',()=>go('audio'));
  const clear=button('Rimuovi evidenziazioni',()=>{marks=[];persist();draw();hide()});
@@ -17,8 +17,9 @@ export function createHighlights(bookId,chapterId,textNode,onSwitch){
  function plainText(){return source.value}
  function persist(){try{localStorage.setItem(key,JSON.stringify(marks))}catch{}}
  function getSelectionText(){const sel=window.getSelection();if(!sel||sel.isCollapsed||!textNode.contains(sel.anchorNode)||!textNode.contains(sel.focusNode))return '';return sel.toString().trim()}
+ function selectionOffset(s){const sel=window.getSelection();if(sel&&!sel.isCollapsed&&textNode.contains(sel.anchorNode)){const range=sel.getRangeAt(0).cloneRange();const before=range.cloneRange();before.selectNodeContents(textNode);before.setEnd(range.startContainer,range.startOffset);return before.toString().length}return plainText().indexOf(s)}
  function hide(){toolbar.hidden=true;window.getSelection()?.removeAllRanges()}
- function go(mode){const s=getSelectionText()||selectedQuote;onSwitch(mode,s);hide()}
+ function go(mode){const s=getSelectionText()||selectedQuote;if(!s)return;const start=selectionOffset(s);if(start>=0&&!marks.some(m=>m.start===start&&m.quote===s)){marks.push({start,end:start+s.length,quote:s});persist()}onSwitch(mode,s);hide()}
  function show(){const s=getSelectionText();if(!s)return;selectedQuote=s;quote.textContent='“'+s.slice(0,170)+(s.length>170?'…':'')+'”';toolbar.hidden=false}
  function draw(){
   const raw=source.value;textNode.replaceChildren();
@@ -29,6 +30,7 @@ export function createHighlights(bookId,chapterId,textNode,onSwitch){
  function setText(value){source.value=value;draw()}
  function onSelection(){if(getSelectionText())show()}
  textNode.addEventListener('mouseup',onSelection);
+ textNode.addEventListener('keyup',onSelection);
  textNode.addEventListener('touchend',()=>setTimeout(onSelection,180));
  toolbar.addEventListener('click',e=>e.stopPropagation());
  const wrap=el('div',{className:'highlight-tools'},[hint,toolbar]);
