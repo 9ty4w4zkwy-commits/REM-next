@@ -269,3 +269,9 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 .sync-search .sync-photo-note{color:#b5c7d8;font-size:.85rem}
 .sync-search h3{margin:20px 0 12px}
 .reader-shell[data-theme="sun"] .sync-search,.reader-shell[data-theme="sun"] .sync-search h2,.reader-shell[data-theme="sun"] .sync-search label{color:#f4f8fa!important}
+
+/* v26: standalone mint Focus control for paper and audio */
+.reader-tools.reader-tools-focus-only{background:transparent!important;border:0!important;border-radius:0!important;padding:0!important;margin:0 0 18px!important;display:flex;justify-content:flex-start}
+.reader-tools-focus-only .reader-focus-button{display:inline-flex!important;align-items:center!important;justify-content:center!important;flex-direction:row!important;gap:7px!important;width:auto!important;min-width:0!important;min-height:44px!important;padding:9px 16px!important;border:1.5px solid #64dfa9!important;border-radius:13px!important;background:#122b40!important;color:#64dfa9!important;font-size:1rem!important;font-weight:700!important;box-shadow:none!important}
+.reader-tools-focus-only .reader-focus-button:active,.reader-tools-focus-only .reader-focus-button:focus-visible{background:#64dfa9!important;color:#102638!important}
+.reader-tools-focus-only .reader-theme-icon{font-size:1.1rem!important}
