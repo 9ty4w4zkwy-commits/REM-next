@@ -443,3 +443,18 @@ body.ebook-immersive-active .ebook-reading-shell.ebook-immersive .ebook-expand{
 body.ebook-immersive-active .ebook-reading-shell .reading-text .ebook-expand{
  position:sticky!important;top:12px!important;float:right!important;margin-top:-58px!important;
 }
+
+/* v39 — stable page frame survives highlight re-render */
+.ebook-reading-shell .ebook-page-frame{position:relative!important}
+.ebook-reading-shell .ebook-page-frame .reading-text{padding-top:72px!important}
+.ebook-reading-shell .ebook-page-frame .ebook-expand{
+ position:absolute!important;top:12px!important;right:12px!important;left:auto!important;
+ display:flex!important;align-items:center!important;justify-content:center!important;
+ width:46px!important;height:46px!important;min-width:46px!important;min-height:46px!important;
+ padding:0!important;margin:0!important;border-radius:12px!important;
+ background:#eaf3f8!important;color:#18364f!important;border:1px solid #8ca9b8!important;
+ font-size:1.7rem!important;line-height:1!important;z-index:5!important;
+}
+body.ebook-immersive-active .ebook-page-frame .ebook-expand{
+ position:sticky!important;top:12px!important;float:right!important;margin-top:-58px!important;
+}
