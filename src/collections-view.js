@@ -4,7 +4,7 @@ const node=(tag,cls,text)=>el(tag,{className:cls,text});
 const subtitle=(text)=>node('p','rem-violet-muted',text);
 export function createCollectionsView({books,openBook,continueBook,back}){
  const root=el('section',{className:'rem-violet'});
- const render=()=>{const db=readCollections();root.replaceChildren();
+ const db=readCollections();root.replaceChildren();
  const head=el('div',{className:'rem-violet-hero'},[node('p','rem-violet-eyebrow','LA MIA BIBLIOTECA'),node('h1','','Le storie che porti con te.'),subtitle('Libri, idee e pensieri. La tua collezione prende forma.')]);root.append(head);
  const tabs=el('div',{className:'rem-violet-tabs'});root.append(tabs);
  const body=el('div');root.append(body);
@@ -23,6 +23,6 @@ export function createCollectionsView({books,openBook,continueBook,back}){
  if(section==='shelves'){sectionTitle('Le mie collezioni');createShelf();if(!db.shelves.length)body.append(subtitle('Le tue collezioni nasceranno qui.'));for(const s of db.shelves)body.append(makeShelf(s))}
  if(section==='thoughts'){sectionTitle('I miei pensieri');createThought();const input=el('input',{attrs:{type:'search',placeholder:'Cerca nei tuoi pensieri','aria-label':'Cerca pensieri'}});const list=el('div');body.append(input,list);const update=()=>{list.replaceChildren();for(const t of readCollections().thoughts.filter(t=>t.text.toLocaleLowerCase('it').includes(input.value.toLocaleLowerCase('it'))))list.append(thoughtCard(t))};input.addEventListener('input',update);update()}
  if(section==='books'){sectionTitle('I miei libri');const input=el('input',{attrs:{type:'search',placeholder:'Cerca per titolo o autore'}}),list=el('div');body.append(input,list);const update=()=>{list.replaceChildren();for(const b of books.filter(b=>(b.title+' '+(b.author||'')).toLocaleLowerCase('it').includes(input.value.toLocaleLowerCase('it')))){const card=bookCard(b);card.append(button('+ Aggiungi a collezione',()=>chooseShelf('book',b.id,'books')));list.append(card)}};input.addEventListener('input',update);update()}
- };show(section)};
+ };
  show('overview');return root;
 }
