@@ -6,7 +6,7 @@ import {getMode,formatSwitch,paperView,audioView} from './formats.js';
 import {createReaderTools} from './reader-tools.js?v=rem-ebook-42';
 import {createHighlights} from './highlights.js?v=rem-ebook-44';
 import {createEbookJourney} from './ebook-journey.js?v=rem-ebook-44';
-import {phraseSearch,getPhrase,savePhrase} from './synchronization.js?v=rem-switch-31';
+import {phraseSearch,getPhrase,savePhrase} from './synchronization.js?v=rem-switch-68';
 import {HOME_SECTIONS,booksForHomeSection} from './home-config.js';
 import {summaryView} from './summary-view.js?v=rem-summary-50';
 const app=document.getElementById('app');let books=[];let currentView='home';let activeReaderTools=null;let activeHighlights=null;
