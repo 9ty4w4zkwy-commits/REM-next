@@ -12,10 +12,10 @@ export function createCollectionsView({books,openBook,continueBook,isSavedBook=(
  body.replaceChildren();
  const sectionTitle=(label)=>body.append(node('h2','rem-violet-heading',label));
  const shelfThemes=[
- {title:'Le storie che mi hanno cambiato',description:'Libri e pensieri che hanno lasciato un segno.',tone:'rose',symbol:'✳'},
- {title:"Da leggere quest’inverno",description:'Storie da tenere vicine, una pagina alla volta.',tone:'blue',symbol:'❄'},
- {title:'Libri che fanno viaggiare',description:'Luoghi, incontri e mondi da esplorare.',tone:'amber',symbol:'✦'},
- {title:'Pensieri da custodire',description:'Frasi e riflessioni da ritrovare.',tone:'sage',symbol:'❋'}
+ {title:'Libri che mi hanno emozionato',description:'Storie che mi sono rimaste nel cuore.',tone:'rose',symbol:'♡'},
+ {title:'Libri che mi hanno fatto ridere',description:'Le letture che mi hanno regalato un sorriso.',tone:'amber',symbol:'✳'},
+ {title:'Libri da leggere quest’inverno',description:'Storie da leggere al caldo, senza fretta.',tone:'blue',symbol:'❄'},
+ {title:'Libri che fanno viaggiare',description:'Luoghi e mondi da esplorare, pagina dopo pagina.',tone:'sage',symbol:'✦'}
  ];
  const collectionLock=(s,returnTo)=>{const locked=s.private!==false;const lock=button(locked?'🔒':'🔓',()=>{const makePublic=locked;if(makePublic){if(!confirm('Vuoi segnare questa collezione come pubblica?\\n\\nLa preferenza resta sul dispositivo: la collezione NON sarà visibile ad altri finché REM non avrà una Community online.'))return}else if(!confirm('Vuoi riportare questa collezione a privata?'))return;setShelfVisibility(s.id,makePublic);show(returnTo)});
  lock.className='rem-collection-lock';lock.title=locked?'Collezione privata: cambia visibilità':'Visibilità pubblica (solo locale): rendi privata';lock.setAttribute('aria-label',lock.title);return lock};
