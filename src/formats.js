@@ -20,13 +20,20 @@ export function audioView({bookId,chapter,content,onPosition}={}){
  let position=0,playing=false,utterance=null,session=0;
  try{const stored=JSON.parse(getSetting(key,'null'));if(stored?.chapter===chapter.id)position=Math.max(0,Math.min(content.length-1,Number(stored.offset)||0))}catch{}
  const status=el('p',{className:'rem-audio-status',text:'Pronto per ascoltare'});
+ // Speech synthesis does not expose a real duration; display explicitly estimated time.
+ const estimatedSeconds=Math.max(1,Math.round(content.trim().split(/\\s+/).length/150*60));
+ const clock=el('div',{className:'rem-audio-clock',attrs:{'aria-label':'Tempi audio stimati'}});
+ const elapsed=el('span',{text:'~00:00'}),duration=el('span',{text:'~'+formatClock(estimatedSeconds)});
+ clock.append(elapsed,duration);
+ function formatClock(seconds){const n=Math.max(0,Math.floor(seconds));return String(Math.floor(n/60)).padStart(2,'0')+':'+String(n%60).padStart(2,'0')}
+ function updateClock(value){elapsed.textContent='~'+formatClock(estimatedSeconds*Math.max(0,Math.min(1,value/content.length)))}
  const progress=el('input',{className:'rem-audio-seek',attrs:{type:'range',min:'0',max:'100',value:String(Math.round(position/content.length*100)),'aria-label':'Posizione audio'}});
  const play=button('',()=>{if(playing)stop();else startAudio()});
  const setPlay=(isPlaying,label)=>{play.replaceChildren(el('span',{className:'rem-audio-play-icon',attrs:{'aria-hidden':'true'}},[el('span',{className:isPlaying?'rem-pause-glyph':'rem-play-glyph'})]),el('span',{text:label}));play.setAttribute('aria-label',label)};
  setPlay(false,'Ascolta');
  play.classList.add('rem-audio-play');const restart=button('↺ Ricomincia',()=>{stop();position=0;persist();startAudio()});
  restart.classList.add('rem-audio-restart');const persist=()=>{saveSetting(key,JSON.stringify({chapter:chapter.id,offset:position}));onPosition?.(position)};
- const update=()=>{if(seeking)return;progress.value=String(Math.round(position/content.length*100));progress.style.setProperty('--audio-progress',progress.value+'%');status.textContent=playing?'Riproduzione in corso · '+Math.round(position/content.length*100)+'%':'Punto salvato · '+Math.round(position/content.length*100)+'%'};
+ const update=()=>{if(seeking)return;progress.value=String(Math.round(position/content.length*100));progress.style.setProperty('--audio-progress',progress.value+'%');status.textContent=playing?'Riproduzione in corso':'Punto salvato';updateClock(position)};
  function stop(){session++;synth.cancel();playing=false;setPlay(false,'Riprendi');update();persist()}
  function startAudio(){
   if(!content.trim())return;
@@ -40,7 +47,7 @@ export function audioView({bookId,chapter,content,onPosition}={}){
  }
  let seeking=false;
  progress.addEventListener('pointerdown',()=>{seeking=true});
- progress.addEventListener('input',()=>{seeking=true;progress.style.setProperty('--audio-progress',progress.value+'%');status.textContent='Vai al punto · '+Math.round(Number(progress.value))+'%'});
+ progress.addEventListener('input',()=>{seeking=true;progress.style.setProperty('--audio-progress',progress.value+'%');status.textContent='Spostamento del punto di ascolto';updateClock(Number(progress.value)/100*content.length)});
  const commitSeek=()=>{
   if(!seeking)return;
   const target=Math.max(0,Math.min(content.length-1,Math.floor(Number(progress.value)/100*content.length)));
@@ -53,6 +60,6 @@ export function audioView({bookId,chapter,content,onPosition}={}){
  progress.addEventListener('pointerup',commitSeek);
  progress.addEventListener('pointercancel',commitSeek);
  progress.addEventListener('blur',commitSeek);
- wrap.append(el('p',{className:'eyebrow',text:'REM · AUDIO'}),status,progress,el('div',{className:'rem-audio-actions'},[play,restart]),el('p',{className:'format-mode-note',text:'Voce sintetica dimostrativa del dispositivo. Il punto viene salvato per riprendere nell’Ebook.'}));
- wrap.stopAudio=()=>{if(playing)stop()};return wrap;
+ wrap.append(el('p',{className:'eyebrow',text:'REM · AUDIO'}),status,clock,progress,el('div',{className:'rem-audio-actions'},[play,restart]),el('p',{className:'format-mode-note',text:'Voce sintetica dimostrativa del dispositivo. Il punto viene salvato per riprendere nell’Ebook.'}));
+ wrap.stopAudio=()=>{if(playing)stop()};update();return wrap;
 }
