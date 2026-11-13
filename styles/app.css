@@ -401,3 +401,6 @@ main{max-width:1180px;padding:0 24px 70px}
 .episode-recap-part + .episode-recap-part{margin-top:1rem}
 .episode-recap-part strong{display:block;color:#86dfb2;font-size:.92rem;margin-bottom:.3rem}
 .episode-recap-part p{margin:0;color:#e0e7ed;line-height:1.65;font-size:.95rem}
+
+/* Evidenzia la sezione di navigazione corrente anche all'apertura della Home. */
+.top nav button.is-active{background:#58d6a6;color:#102438;border-color:#58d6a6}
