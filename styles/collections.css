@@ -47,3 +47,24 @@
 .rem-home-cover-wrap .rem-cover-save{position:absolute!important;z-index:5;top:8px;right:8px;width:36px!important;height:36px!important;min-width:36px!important;min-height:36px!important;padding:0!important;margin:0!important;border:1px solid #ffffffa8!important;border-radius:50%!important;background:#091622b8!important;color:#fff!important;font:400 1.55rem/1 system-ui,sans-serif!important;display:flex!important;align-items:center!important;justify-content:center!important;box-shadow:0 2px 12px #0007!important;backdrop-filter:blur(6px)}
 .rem-home-cover-wrap .rem-cover-save.is-saved{color:#9bf5c8!important;border-color:#9bf5c8!important;font-size:1.25rem!important}
 .rem-home-cover-wrap .rem-cover-save:focus-visible{outline:3px solid #64dfa9!important;outline-offset:2px}
+
+/* Quiet bookmark affordance: tiny glyph, nearly invisible until interaction.
+   Retain a 36px transparent touch target for mobile accessibility. */
+.rem-home-cover-wrap .rem-cover-save{
+ top:3px!important;right:3px!important;
+ width:36px!important;height:36px!important;
+ min-width:36px!important;min-height:36px!important;
+ background:transparent!important;border:0!important;
+ border-radius:50%!important;
+ color:rgba(255,255,255,.74)!important;
+ font:400 15px/1 system-ui,sans-serif!important;
+ text-shadow:0 1px 5px rgba(0,0,0,.9)!important;
+ box-shadow:none!important;backdrop-filter:none!important;
+ opacity:.62;transition:opacity .18s ease,color .18s ease;
+}
+.rem-home-cover-wrap .rem-cover-save:hover,
+.rem-home-cover-wrap .rem-cover-save:focus-visible{opacity:1}
+.rem-home-cover-wrap .rem-cover-save.is-saved{
+ color:#9bf5c8!important;border:0!important;
+ font-size:13px!important;opacity:.8
+}
