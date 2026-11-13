@@ -12,18 +12,19 @@ export function createCollectionsView({books,openBook,continueBook,isSavedBook=(
  body.replaceChildren();
  const sectionTitle=(label)=>body.append(node('h2','rem-violet-heading',label));
  const shelfThemes=[
- {title:'Libri che mi hanno emozionato',description:'Storie che mi sono rimaste nel cuore.',tone:'rose',symbol:'♡'},
- {title:'Libri che mi hanno fatto ridere',description:'Le letture che mi hanno regalato un sorriso.',tone:'amber',symbol:'✳'},
- {title:'Libri da leggere quest’inverno',description:'Storie da leggere al caldo, senza fretta.',tone:'blue',symbol:'❄'},
- {title:'Libri che fanno viaggiare',description:'Luoghi e mondi da esplorare, pagina dopo pagina.',tone:'sage',symbol:'✦'}
+ {title:'Libri che mi hanno emozionato',description:'Storie che mi sono rimaste nel cuore.',tone:'rose'},
+ {title:'Libri che mi hanno fatto ridere',description:'Le letture che mi hanno regalato un sorriso.',tone:'amber'},
+ {title:'Libri da leggere quest’inverno',description:'Storie da leggere al caldo, senza fretta.',tone:'blue'},
+ {title:'Libri che fanno viaggiare',description:'Luoghi e mondi da esplorare, pagina dopo pagina.',tone:'sage'}
  ];
+ const coverStack=(tone)=>{const stack=el('div',{className:'rem-collection-cover-stack',attrs:{'aria-hidden':'true'}});for(const index of [0,1]){const mini=el('div',{className:'rem-collection-mini-cover mini-'+index+' art-'+tone});mini.append(el('div',{className:'rem-mini-cover-shape'}),el('div',{className:'rem-mini-cover-lines'},[el('i'),el('i'),el('i')]));stack.append(mini)}return stack};
  const collectionLock=(s,returnTo)=>{const locked=s.private!==false;const lock=button(locked?'🔒':'🔓',()=>{const makePublic=locked;if(makePublic){if(!confirm('Vuoi segnare questa collezione come pubblica?\\n\\nLa preferenza resta sul dispositivo: la collezione NON sarà visibile ad altri finché REM non avrà una Community online.'))return}else if(!confirm('Vuoi riportare questa collezione a privata?'))return;setShelfVisibility(s.id,makePublic);show(returnTo)});
  lock.className='rem-collection-lock';lock.title=locked?'Collezione privata: cambia visibilità':'Visibilità pubblica (solo locale): rendi privata';lock.setAttribute('aria-label',lock.title);return lock};
  const makeShelf=(s)=>{const index=shelfThemes.findIndex(t=>t.title===s.title);const tone=index>=0?shelfThemes[index].tone:['rose','blue','amber','sage'][db.shelves.findIndex(x=>x.id===s.id)%4]||'sage';const card=el('article',{className:'rem-collection-card tone-'+tone});
- const head=el('div',{className:'rem-collection-top'},[node('span','rem-collection-kicker','LA TUA COLLEZIONE'),collectionLock(s,'shelves')]);card.append(head,node('h3','',s.title),subtitle(s.description||'Una raccolta che cresce con te.'));
+ const head=el('div',{className:'rem-collection-top'},[node('span','rem-collection-kicker','LA TUA COLLEZIONE'),collectionLock(s,'shelves')]);card.append(head,coverStack(tone),node('h3','',s.title),subtitle(s.description||'Una raccolta che cresce con te.'));
  const entries=db.items.filter(i=>i.shelfId===s.id);const foot=el('div',{className:'rem-collection-foot'},[node('small','',entries.length+' elementi'),button('Apri ↗',()=>showShelf(s))]);card.append(foot);return card};
  const makeSuggestion=(theme)=>{const card=el('article',{className:'rem-collection-card rem-collection-suggestion tone-'+theme.tone});
- card.append(node('span','rem-collection-kicker','UN’IDEA PER TE'),node('span','rem-collection-symbol',theme.symbol),node('h3','',theme.title),subtitle(theme.description));
+ card.append(node('span','rem-collection-kicker','UN’IDEA PER TE'),coverStack(theme.tone),node('h3','',theme.title),subtitle(theme.description));
  const action=button('+ Crea questa collezione',()=>{const existing=readCollections().shelves.find(s=>s.title===theme.title);if(existing){showShelf(existing);return}const created=addShelf(theme.title,theme.description);if(created)show('shelves')});action.className='rem-collection-suggestion-action';card.append(action);return card};
  const bookCard=(b)=>{const card=el('article',{className:'rem-violet-book rem-saved-book-card'});const visual=el('div',{className:'rem-saved-cover'},[coverBook?coverBook(b):node('strong','',b.title)]);card.append(visual,el('div',{className:'rem-saved-book-info'},[node('strong','',b.title),subtitle(b.author||''),button('Scopri il libro',()=>openBook(b.id))]));return card};
  const thoughtCard=(t)=>{const card=el('article',{className:'rem-violet-thought'});
