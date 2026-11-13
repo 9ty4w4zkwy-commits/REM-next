@@ -570,3 +570,17 @@ body:not(.ebook-immersive-active) .ebook-reading-shell .ebook-page-frame .readin
 .audio-sync-shell .rem-audio-restart{display:inline-flex!important;align-items:center!important;justify-content:flex-end!important;background:transparent!important;color:#dce6ee!important;font-weight:500!important}
 .audio-sync-shell .audio-inline-switches{margin-top:14px!important}
 .audio-sync-shell .audio-inline-switches button{background:#253d58!important;border:1px solid #68869d!important;border-radius:15px!important;color:#f4f8fb!important}
+
+/* v85 — reset inherited input padding/min-height so iOS range is truly a thin track */
+.audio-sync-shell input.rem-audio-seek[type="range"]{
+ -webkit-appearance:none!important;appearance:none!important;
+ display:block!important;box-sizing:border-box!important;
+ width:100%!important;height:5px!important;min-height:0!important;
+ padding:0!important;border:0!important;border-radius:99px!important;
+ margin:24px 0 30px!important;
+ background:linear-gradient(to right,#83dcb1 0%,#83dcb1 var(--audio-progress,0%),#40546b var(--audio-progress,0%),#40546b 100%)!important;
+}
+.audio-sync-shell input.rem-audio-seek[type="range"]::-webkit-slider-runnable-track{
+ -webkit-appearance:none!important;height:5px!important;border-radius:99px!important;background:transparent!important;border:0!important;
+}
+.audio-sync-shell input.rem-audio-seek[type="range"]::-moz-range-track{height:5px!important;background:transparent!important;border:0!important}
