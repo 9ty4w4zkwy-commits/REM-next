@@ -26,7 +26,7 @@ export function audioView({bookId,chapter,content,onPosition}={}){
  setPlay(false,'Ascolta');
  play.classList.add('rem-audio-play');const restart=button('↺ Ricomincia',()=>{stop();position=0;persist();startAudio()});
  restart.classList.add('rem-audio-restart');const persist=()=>{saveSetting(key,JSON.stringify({chapter:chapter.id,offset:position}));onPosition?.(position)};
- const update=()=>{progress.value=String(Math.round(position/content.length*100));progress.style.setProperty('--audio-progress',progress.value+'%');status.textContent=playing?'Riproduzione in corso · '+Math.round(position/content.length*100)+'%':'Punto salvato · '+Math.round(position/content.length*100)+'%'};
+ const update=()=>{if(seeking)return;progress.value=String(Math.round(position/content.length*100));progress.style.setProperty('--audio-progress',progress.value+'%');status.textContent=playing?'Riproduzione in corso · '+Math.round(position/content.length*100)+'%':'Punto salvato · '+Math.round(position/content.length*100)+'%'};
  function stop(){session++;synth.cancel();playing=false;setPlay(false,'Riprendi');update();persist()}
  function startAudio(){
   if(!content.trim())return;
@@ -38,7 +38,21 @@ export function audioView({bookId,chapter,content,onPosition}={}){
   utterance.onerror=()=>{if(token!==session)return;playing=false;play.textContent='▶ Riprendi';status.textContent='Riproduzione interrotta. Puoi riprovare.'};
   update();synth.speak(utterance);
  }
- progress.addEventListener('change',()=>{const wasPlaying=playing;stop();position=Math.min(content.length-1,Math.floor(Number(progress.value)/100*content.length));persist();update();if(wasPlaying)startAudio()});
+ let seeking=false;
+ progress.addEventListener('pointerdown',()=>{seeking=true});
+ progress.addEventListener('input',()=>{seeking=true;progress.style.setProperty('--audio-progress',progress.value+'%');status.textContent='Vai al punto · '+Math.round(Number(progress.value))+'%'});
+ const commitSeek=()=>{
+  if(!seeking)return;
+  const target=Math.max(0,Math.min(content.length-1,Math.floor(Number(progress.value)/100*content.length)));
+  const wasPlaying=playing;
+  if(playing)stop();
+  position=target;seeking=false;persist();update();
+  if(wasPlaying)startAudio();
+ };
+ progress.addEventListener('change',commitSeek);
+ progress.addEventListener('pointerup',commitSeek);
+ progress.addEventListener('pointercancel',commitSeek);
+ progress.addEventListener('blur',commitSeek);
  wrap.append(el('p',{className:'eyebrow',text:'REM · AUDIO'}),status,progress,el('div',{className:'rem-audio-actions'},[play,restart]),el('p',{className:'format-mode-note',text:'Voce sintetica dimostrativa del dispositivo. Il punto viene salvato per riprendere nell’Ebook.'}));
  wrap.stopAudio=()=>{if(playing)stop()};return wrap;
 }
