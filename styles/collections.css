@@ -68,3 +68,22 @@
  color:#9bf5c8!important;border:0!important;
  font-size:13px!important;opacity:.8
 }
+
+/* REM cover save control: small outlined circle in the bottom-right corner. */
+.rem-home-cover-wrap .rem-cover-save{
+ top:auto!important;bottom:8px!important;right:8px!important;
+ width:36px!important;height:36px!important;min-width:36px!important;min-height:36px!important;
+ background:rgba(8,22,32,.65)!important;border:1px solid rgba(255,255,255,.7)!important;
+ border-radius:50%!important;color:#fff!important;opacity:.9!important;
+ font:400 17px/1 system-ui,sans-serif!important;text-shadow:none!important;
+ box-shadow:0 2px 9px #0005!important;backdrop-filter:blur(3px)!important;
+}
+.rem-home-cover-wrap .rem-cover-save.is-saved{color:#9bf5c8!important;border:1px solid rgba(155,245,200,.85)!important;font-size:15px!important}
+/* Saved book cards reuse exactly the same cover DOM as Home. */
+.rem-saved-book-card{display:flex;align-items:flex-start;gap:14px}
+.rem-saved-cover{width:min(38%,150px);flex:0 0 min(38%,150px);min-width:0}
+.rem-saved-cover .cover{width:100%;height:auto;min-height:180px;aspect-ratio:2/3;border-radius:12px}
+.rem-saved-book-info{min-width:0;flex:1;display:flex;flex-direction:column;gap:8px}
+.rem-saved-book-info strong{line-height:1.3}
+.rem-saved-book-info button{align-self:flex-start}
+@media(max-width:430px){.rem-saved-cover{width:38%;flex-basis:38%}.rem-saved-cover .cover{min-height:155px}}
