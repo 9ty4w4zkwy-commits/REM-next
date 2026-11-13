@@ -27,11 +27,23 @@ function feedbackBook(id){
  const caption=para('Seleziona da 1 a 5 stelle','feedback-stars-caption');
  const submit=button('Invia',()=>{if(!rating)return;saveSetting(ratingKey(id),rating);detail(id)},true);
  const refresh=()=>{starButtons.forEach((b,i)=>{b.classList.toggle('selected',i<rating);b.setAttribute('aria-pressed',String(i+1===rating))});caption.textContent=rating?rating+' stelle su 5':'Seleziona da 1 a 5 stelle';submit.disabled=!rating};
- for(let n=1;n<=5;n++){const star=button('★',()=>{rating=n;refresh()});star.classList.add('feedback-star');star.setAttribute('aria-label',n+' stelle');starButtons.push(star);stars.append(star)}
+ for(let n=1;n<=5;n++){
+  const star=button('',()=>{rating=rating===n?0:n;refresh()});
+  star.classList.add('feedback-star');star.setAttribute('aria-label',n+' stelle');
+  const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');
+  svg.setAttribute('viewBox','0 0 24 24');svg.setAttribute('aria-hidden','true');
+  const shape=document.createElementNS('http://www.w3.org/2000/svg','path');
+  shape.setAttribute('d','M12 2.4 15 8.6l6.9 1-5 4.9 1.2 6.9L12 18.1l-6.1 3.3 1.2-6.9-5-4.9 6.9-1z');
+  svg.append(shape);star.append(svg);starButtons.push(star);stars.append(star)
+ }
  refresh();
  const skip=button('Non ora',()=>detail(id));skip.classList.add('feedback-skip');
  render(backArrow(()=>detail(id)),el('section',{className:'feedback-card'},[
- el('div',{className:'feedback-sparkle',text:'✦',attrs:{'aria-hidden':'true'}}),
+ el('div',{className:'feedback-sparkle',attrs:{'aria-hidden':'true'}},[
+  el('span',{className:'feedback-sparkle-main',text:'✦'}),
+  el('span',{className:'feedback-sparkle-small feedback-sparkle-one',text:'✧'}),
+  el('span',{className:'feedback-sparkle-small feedback-sparkle-two',text:'✦'})
+ ]),
  el('h1',{text:'Hai terminato il libro!'}),para(book.title,'feedback-book-title'),
  para('Quanto ti è piaciuta questa lettura?','feedback-question'),stars,caption,
  para('La tua opinione ci aiuterà a conoscerti meglio e a suggerirti nuove storie in linea con i tuoi gusti.','feedback-explanation'),
