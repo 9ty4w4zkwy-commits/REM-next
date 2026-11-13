@@ -540,3 +540,18 @@ body:not(.ebook-immersive-active) .ebook-reading-shell .ebook-page-frame .readin
 .ebook-reading-shell .highlight-tools>.selection-hint{display:none!important}
 .ebook-reading-shell .ebook-chapter-nav{margin:16px 0 12px!important}
 .paper-sync-shell .paper-resume-card{scroll-margin-top:18px}
+
+/* Audio player — v83 */
+.audio-sync-shell .rem-audio-player{background:transparent!important;border:0!important;box-shadow:none!important;padding:0!important;margin:0!important;color:#edf4f5!important}
+.audio-sync-shell .rem-audio-title{font-family:Georgia,'Times New Roman',serif!important;font-size:clamp(1.5rem,5vw,2rem)!important;line-height:1.2!important;color:#f7f8f5!important;margin:12px 0 18px!important}
+.audio-sync-shell .rem-audio-status{color:#b8c9d5!important;font-size:.95rem!important;margin:8px 0 18px!important}
+.audio-sync-shell .rem-audio-seek{display:block;width:100%;height:8px;margin:24px 0 30px;appearance:none;-webkit-appearance:none;border-radius:100px;border:0;background:linear-gradient(to right,#83dcb1 0%,#83dcb1 var(--audio-progress,0%),#40546b var(--audio-progress,0%),#40546b 100%);outline:none}
+.audio-sync-shell .rem-audio-seek::-webkit-slider-thumb{-webkit-appearance:none;width:23px;height:23px;border-radius:50%;background:#e9fff3;border:4px solid #67d8a3;box-shadow:0 2px 9px #07142088}
+.audio-sync-shell .rem-audio-seek::-moz-range-thumb{width:17px;height:17px;border-radius:50%;background:#e9fff3;border:4px solid #67d8a3}
+.audio-sync-shell .rem-audio-actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:0 0 18px}
+.audio-sync-shell .rem-audio-actions button{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text',system-ui,sans-serif!important;font-size:1rem!important;font-weight:700!important;min-height:54px;border-radius:16px;padding:12px 17px}
+.audio-sync-shell .rem-audio-play{background:#83dcb1!important;color:#0c2330!important;border:1px solid #83dcb1!important;min-width:145px}
+.audio-sync-shell .rem-audio-restart{background:#22354d!important;color:#f1f5f8!important;border:1px solid #5a7690!important}
+.audio-sync-shell .format-mode-note{color:#a8b9c8!important;font-size:.85rem!important;line-height:1.5!important}
+.audio-sync-shell .audio-inline-switches{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px}
+.audio-sync-shell .audio-inline-switches button{min-height:54px;background:#243a54;color:#f4f8fb;border:1px solid #63829b;border-radius:15px;font-weight:700;font-size:.95rem}
