@@ -293,3 +293,7 @@ main{max-width:1180px;padding:0 24px 70px}
 .finish-book-box{background:transparent;border:0;padding:0;margin:1.1rem 0 1.4rem;display:block}
 .finish-book-box button,.finish-book-box button.primary{background:transparent!important;color:#f3b36f!important;border:1.5px solid #e7a361!important;border-radius:14px!important;box-shadow:none!important;padding:.8rem 1.15rem!important;font-weight:750!important;min-height:48px}
 .finish-book-box button:focus-visible{outline:2px solid #f3b36f;outline-offset:3px}
+
+/* Approved completion button: subtle mint outline on navy */
+.finish-book-box button,.finish-book-box button.primary{background:#0b1322!important;color:#86dfb2!important;border:1.5px solid #86dfb2!important;border-radius:14px!important;box-shadow:none!important}
+.finish-book-box button:focus-visible{outline:2px solid #86dfb2;outline-offset:3px}
