@@ -51,8 +51,7 @@ function feedbackBook(id){
  ]));
 }
 const finishControl=id=>el('section',{className:'finish-book-box'},[
- para(isFinished(id)?'Hai terminato questo libro.':'Hai finito la lettura?','finish-book-question'),
- button(isFinished(id)?'Valuta il libro':'✓ Termina libro',()=>isFinished(id)?feedbackBook(id):finishBook(id),true)
+ button('Termina il libro',()=>finishBook(id),true)
 ]);
 
 const episodeKey=id=>'episode-done:'+id;
