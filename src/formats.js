@@ -21,7 +21,7 @@ export function audioView({bookId,chapter,content,onPosition}={}){
  try{const stored=JSON.parse(getSetting(key,'null'));if(stored?.chapter===chapter.id)position=Math.max(0,Math.min(content.length-1,Number(stored.offset)||0))}catch{}
  const status=el('p',{className:'rem-audio-status',text:'Pronto per ascoltare'});
  // Speech synthesis does not expose a real duration; display explicitly estimated time.
- const estimatedSeconds=Math.max(1,Math.round(content.trim().split(/\\s+/).length/150*60));
+ const estimatedSeconds=Math.max(1,Math.round(content.trim().split(/\s+/).length/150*60));
  const clock=el('div',{className:'rem-audio-clock',attrs:{'aria-label':'Tempi audio stimati'}});
  const elapsed=el('span',{text:'~00:00'}),duration=el('span',{text:'~'+formatClock(estimatedSeconds)});
  clock.append(elapsed,duration);
