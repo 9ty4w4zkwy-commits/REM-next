@@ -7,10 +7,10 @@ export const HOME_SECTIONS=[
  {id:'premium',title:'Contenuti Premium',empty:'I contenuti Premium non sono ancora disponibili.'},
  {id:'new',title:'Novità',empty:'Qui troverai le nuove uscite.'}
 ];
-export function booksForHomeSection(id,books,getProgress){
+export function booksForHomeSection(id,books,getProgress,getReadingPath=()=>'',getEpisode=()=>null){
  switch(id){
   case 'recommended': return books.filter(b=>b.homeSections?.includes('recommended'));
-  case 'continue': return books.filter(b=>Boolean(getProgress(b.id)));
+  case 'continue': return books.filter(b=>Boolean(getProgress(b.id))||Boolean(getReadingPath(b.id))||Boolean(getEpisode(b.id)));
   case 'free': return books.filter(b=>b.access==='free');
   case 'premium': return books.filter(b=>b.access==='premium');
   case 'new': return books.filter(b=>b.homeSections?.includes('new'));
