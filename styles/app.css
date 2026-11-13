@@ -275,3 +275,15 @@ main{max-width:1180px;padding:0 24px 70px}
 .onboard-actions .primary:disabled{opacity:.45}
 .onboard-privacy{font-size:.78rem;color:#91a5b6;margin:1.6rem 0 0;line-height:1.55}
 @media(max-width:360px){.onboard-option{min-height:90px;padding:.7rem .45rem!important;font-size:.82rem!important}.onboard-actions button{padding:.65rem .75rem!important}}
+
+
+/* Polished feedback icon and outlined mint stars */
+.feedback-star{display:inline-flex!important;align-items:center;justify-content:center;min-width:44px!important;min-height:48px!important}
+.feedback-star svg{display:block;width:clamp(35px,9vw,45px);height:clamp(35px,9vw,45px);overflow:visible}
+.feedback-star svg path{fill:transparent;stroke:#86e4ba;stroke-width:1.5;stroke-linejoin:round;transition:fill .16s ease,stroke .16s ease}
+.feedback-star.selected svg path{fill:#86e4ba;stroke:#86e4ba}
+.feedback-sparkle{position:relative;display:block;width:78px;height:78px;margin:.2rem auto .9rem;line-height:1}
+.feedback-sparkle-main{position:absolute;left:13px;top:8px;font-size:64px;line-height:1;color:#86e4ba;text-shadow:0 0 23px #86e4ba35}
+.feedback-sparkle-small{position:absolute;color:#b9f5d7;line-height:1}
+.feedback-sparkle-one{right:0;top:5px;font-size:24px}
+.feedback-sparkle-two{left:1px;bottom:4px;font-size:15px}
