@@ -1,5 +1,5 @@
 import {loadCatalog,loadChapter} from './catalog.js';
-import {createCollectionsView} from './collections-view.js?v=rem-mint-96';
+import {createCollectionsView} from './collections-view.js?v=rem-mint-97';
 import {isBookSaved,toggleSavedBook} from './collections-store.js?v=rem-mint-94';
 import {showOnboarding,onboardingCompleted} from './onboarding.js?v=rem-ui-56';
 import {getProgress,saveProgress,getSetting,saveSetting} from './progress.js';
