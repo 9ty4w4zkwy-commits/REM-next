@@ -132,3 +132,12 @@
 .rem-collection-card{border-color:rgba(255,255,255,.12)}
 .rem-collection-card:before{border-color:rgba(255,255,255,.11)}
 .rem-collection-card .rem-collection-symbol{opacity:.13}
+
+/* Emotion-led saturated palette, inspired by Spotify's lively browse tiles. */
+.rem-collection-card.tone-rose{background:#E32778}
+.rem-collection-card.tone-amber{background:#EBAF19}
+.rem-collection-card.tone-blue{background:#3155D9}
+.rem-collection-card.tone-sage{background:#009D82}
+.rem-collection-card{border-color:rgba(255,255,255,.13)}
+.rem-collection-card .rem-collection-symbol{opacity:.25}
+.rem-collection-card:before{border-color:rgba(255,255,255,.2)}
