@@ -350,3 +350,11 @@ main{max-width:1180px;padding:0 24px 70px}
  .rem-home-section[data-section="free"] .rem-section-title,
  .rem-home-section[data-section="premium"] .rem-section-title{font-size:clamp(1.55rem,7vw,1.95rem)!important;letter-spacing:-.045em}
 }
+
+
+/* Trailer pause: navy circle with white outline and crisp dark-on-mint style bars */
+.rem-trailer-control .rem-trailer-pause-icon{background:#17354b!important;border:2px solid #f1f6f5!important;box-sizing:border-box;box-shadow:none!important;position:relative;padding:0!important}
+.rem-trailer-control .rem-trailer-pause-icon::before,
+.rem-trailer-control .rem-trailer-pause-icon::after{content:"";position:absolute;top:9px;height:14px;width:4px;border-radius:1.5px;background:#f1f6f5}
+.rem-trailer-control .rem-trailer-pause-icon::before{left:10px}
+.rem-trailer-control .rem-trailer-pause-icon::after{right:10px}
