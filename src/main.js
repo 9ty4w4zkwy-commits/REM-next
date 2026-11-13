@@ -182,6 +182,7 @@ function episodes(id,selectedSeason){
   const item={...ep,season:selected.number,number:i+1};
   const isCurrent=current?.id===ep.id&&(saved||getSetting('episode-current:'+id,''));
   const open=mode=>{rememberEpisode(id,item);saveSetting('format:'+id,mode);reader(id,chapter?.id,mode,null,true,item.id)};
+  const cardRecapSlot=el('div',{className:'episode-card-recap-slot'});
   return el('article',{className:'episode-card'},[
    el('span',{className:'episode-number',text:String(i+1)}),
    el('div',{className:'episode-info'},[
@@ -190,12 +191,13 @@ function episodes(id,selectedSeason){
     para(ep.recap||'Il recap di questo episodio sarà disponibile presto.','episode-recap'),
     el('div',{className:'episode-meta'},[el('span',{text:ep.minutes?'circa '+ep.minutes+' min':'Durata da definire'}),...(isCurrent?[el('span',{className:'episode-current',text:'Sei qui'})]:[]),...(done[ep.id]?[el('span',{className:'episode-done',text:'Letto'})]:[])]),
     el('div',{className:'episode-actions'},[
-     ...(episodeRecap(book,item)?[button('✦ La storia finora',()=>open('ebook'))]:[]),
+     ...(episodeRecap(book,item)?[button('✦ La storia finora',()=>{const box=recapPrompt(book,item);const existing=cardRecapSlot.firstChild;if(existing){cardRecapSlot.replaceChildren();return}if(box){cardRecapSlot.append(box);const trigger=box.querySelector('button');trigger?.click()}})]:[]),
      button('Ebook',()=>open('ebook')),
      button('Audio',()=>open('audio')),
      button('Cartaceo',()=>open('paper')),
      button(done[ep.id]?'✓ Letto sul cartaceo':'Segna letto sul cartaceo',()=>{setEpisodeDone(id,ep.id,!done[ep.id]);episodes(id,selected.number)})
-    ])
+    ]),
+    cardRecapSlot
    ])
   ]);
  });
