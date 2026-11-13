@@ -102,7 +102,7 @@ function trailerView(id){
  const kicker=stage.querySelector('.rem-trailer-kicker'),line=stage.querySelector('.rem-trailer-line'),progress=stage.querySelector('.rem-trailer-progress span');
  const play=button('',()=>{if(playing){stop();return}playing=true;updatePlay();advance()});
  const updatePlay=()=>{play.replaceChildren(el('span',{className:playing?'rem-trailer-overlay-pause':'rem-trailer-overlay-play',attrs:{'aria-hidden':'true'}}));play.setAttribute('aria-label',playing?'Metti in pausa il trailer':'Riproduci il trailer');play.classList.toggle('is-playing',playing)};
- play.classList.add('rem-trailer-overlay-control');updatePlay();
+ play.classList.add('rem-trailer-below-toggle');updatePlay();
  const show=()=>{kicker.textContent=scenes[index][0];line.textContent=scenes[index][1];progress.style.width=((index+1)/scenes.length*100)+'%';stage.classList.remove('rem-trailer-enter');void stage.offsetWidth;stage.classList.add('rem-trailer-enter')};
  const stop=()=>{playing=false;clearTimeout(timer);updatePlay()};
  const advance=()=>{if(!stage.isConnected){stop();return}show();if(!playing)return;timer=setTimeout(()=>{if(!stage.isConnected){stop();return}if(index===scenes.length-1){stop();return}index++;advance()},3000)};
