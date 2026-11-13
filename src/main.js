@@ -101,7 +101,7 @@ function trailerView(id){
  ]);
  const kicker=stage.querySelector('.rem-trailer-kicker'),line=stage.querySelector('.rem-trailer-line'),progress=stage.querySelector('.rem-trailer-progress span');
  const play=button('',()=>{if(playing){stop();return}playing=true;updatePlay();advance()});
- const updatePlay=()=>{play.replaceChildren(el('span',{className:'rem-trailer-play',text:playing?'Ⅱ':'▶',attrs:{'aria-hidden':'true'}}),el('span',{className:'rem-trailer-label',text:playing?'Pausa':'Riproduci'}));play.setAttribute('aria-label',playing?'Metti in pausa il trailer':'Riproduci il trailer')};
+ const updatePlay=()=>{play.replaceChildren(el('span',{className:'rem-trailer-play'+(playing?' rem-trailer-pause-icon':''),text:playing?'':'▶',attrs:{'aria-hidden':'true'}}),el('span',{className:'rem-trailer-label',text:playing?'Pausa':'Riproduci'}));play.setAttribute('aria-label',playing?'Metti in pausa il trailer':'Riproduci il trailer')};
  play.classList.add('rem-trailer-control');updatePlay();
  const show=()=>{kicker.textContent=scenes[index][0];line.textContent=scenes[index][1];progress.style.width=((index+1)/scenes.length*100)+'%';stage.classList.remove('rem-trailer-enter');void stage.offsetWidth;stage.classList.add('rem-trailer-enter')};
  const stop=()=>{playing=false;clearTimeout(timer);updatePlay()};
