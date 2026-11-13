@@ -213,3 +213,16 @@ main{max-width:1180px;padding:0 24px 70px}
 .reading-extras .reading-path-switch{background:transparent!important;border:1.5px solid #79d9b0!important;color:#8ce5bf!important}
 .reading-extras .summary-launch{background:transparent!important;border:1px solid #8c9cb2!important;color:#e1e9f1!important}
 .reading-extras .reading-path-switch,.reading-extras .summary-launch{min-height:2.9rem;justify-content:center;text-align:center}
+
+/* Proposal C: story-mode navigation above content, warm summary at the end */
+.quiet-back{background:transparent!important;border:0!important;box-shadow:none!important;color:#c7d7e3!important;width:2.5rem!important;min-width:2.5rem!important;height:2.5rem!important;margin:.3rem 0 .65rem!important;font-size:1.6rem!important}
+.quiet-back:hover,.quiet-back:focus-visible{background:#1a3045!important;color:#89e4ba!important}
+.story-path-link{display:inline-flex;align-items:center;gap:.45rem;width:fit-content;max-width:100%;margin:.15rem 0 1.4rem;padding:.45rem .1rem;background:transparent!important;border:0!important;box-shadow:none!important;border-radius:4px!important;color:#86e4ba!important;font-size:.94rem;font-weight:700;min-height:44px}
+.story-path-link::before{content:'↗';font-size:1.15rem;line-height:1}
+.story-path-link::after{content:'›';font-size:1.3rem;margin-left:.15rem}
+.story-path-link:hover,.story-path-link:focus-visible{color:#b7ffdb!important;text-decoration:underline;text-underline-offset:5px}
+.summary-footer{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin:1.3rem 0 2rem;padding:1rem 1.15rem;background:#17283c;border:1px solid #354b61;border-radius:17px}
+.summary-footer-hint{color:#c0cbd5;font-size:.92rem;font-weight:600}
+.summary-footer .summary-warm{display:inline-flex;align-items:center;justify-content:center;width:auto;margin:0;padding:.75rem 1.05rem;min-height:45px;border:1.5px solid #db9d70!important;border-radius:13px;background:#392e39!important;color:#ffd0a3!important;font-size:.96rem;font-weight:800;white-space:nowrap}
+.summary-footer .summary-warm:hover,.summary-footer .summary-warm:focus-visible{background:#533847!important;border-color:#f2b885!important}
+@media(max-width:390px){.summary-footer{padding:.8rem;gap:.6rem}.summary-footer-hint{font-size:.82rem}.summary-footer .summary-warm{font-size:.86rem;padding:.7rem .8rem}}
