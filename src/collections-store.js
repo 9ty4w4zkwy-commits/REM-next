@@ -1,7 +1,7 @@
 // REM Biblioteca v1: local-first data, independent of reading progress.
 const KEY='rem-next-v1:collections';
-const blank=()=>({version:1,shelves:[],thoughts:[],items:[]});
-export function readCollections(){try{const v=JSON.parse(localStorage.getItem(KEY)||'null');return v&&v.version===1&&Array.isArray(v.shelves)&&Array.isArray(v.thoughts)&&Array.isArray(v.items)?v:blank()}catch{return blank()}}
+const blank=()=>({version:1,shelves:[],thoughts:[],items:[],savedBooks:[]});
+export function readCollections(){try{const v=JSON.parse(localStorage.getItem(KEY)||'null');return v&&v.version===1&&Array.isArray(v.shelves)&&Array.isArray(v.thoughts)&&Array.isArray(v.items)?{...v,savedBooks:Array.isArray(v.savedBooks)?v.savedBooks:[]}:blank()}catch{return blank()}}
 export function writeCollections(data){localStorage.setItem(KEY,JSON.stringify(data));window.dispatchEvent(new Event('rem-collections-changed'))}
 export function newId(){return globalThis.crypto?.randomUUID?.()||Date.now().toString(36)+'-'+Math.random().toString(36).slice(2)}
 export function addThought(text){const db=readCollections();const item={id:newId(),text:text.trim(),createdAt:new Date().toISOString(),private:true};if(!item.text)return null;db.thoughts.unshift(item);writeCollections(db);return item}
@@ -12,3 +12,7 @@ export function removeThought(id){const db=readCollections();db.thoughts=db.thou
 export function updateThought(id,text){const db=readCollections();const t=db.thoughts.find(t=>t.id===id);if(t&&text.trim()){t.text=text.trim();writeCollections(db)}}
 
 export function setThoughtVisibility(id,makePublic){const db=readCollections();const thought=db.thoughts.find(t=>t.id===id);if(!thought)return false;thought.private=!makePublic;writeCollections(db);return true}
+
+// Bookmarks are independent of reading progress and shelf membership.
+export function isBookSaved(id){return readCollections().savedBooks.includes(id)}
+export function toggleSavedBook(id){const db=readCollections();const index=db.savedBooks.indexOf(id);if(index<0)db.savedBooks.unshift(id);else db.savedBooks.splice(index,1);writeCollections(db);return index<0}
