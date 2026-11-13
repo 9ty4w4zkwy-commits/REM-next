@@ -4,7 +4,7 @@ import {getPhrase} from './synchronization.js';
 export function createEbookJourney(bookId,onSwitch){
  const root=el('section',{className:'ebook-journey'});
  const heading=el('h2',{text:'Leggi, tocca, continua.'});
- const hint=el('p',{text:'Tocca una parola: REM evidenzia automaticamente le 10 parole precedenti, inclusa quella toccata.'});
+ const hint=el('p',{text:'Tocca una parola: REM evidenzia automaticamente la parola toccata e le 8 successive.'});
  const audio=button('Passa ad Audio',()=>switchTo('audio',audio));
  const paper=button('Passa a Cartaceo',()=>switchTo('paper',paper));
  function switchTo(mode,clicked){clicked.classList.add('is-selected');clicked.setAttribute('aria-pressed','true');onSwitch(mode)}
