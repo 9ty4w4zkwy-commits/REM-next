@@ -101,7 +101,7 @@ function trailerView(id){
  const play=button('▶ Riproduci',()=>{if(playing){stop();return}playing=true;play.textContent='Ⅱ Pausa';advance()});
  const show=()=>{kicker.textContent=scenes[index][0];line.textContent=scenes[index][1];progress.style.width=((index+1)/scenes.length*100)+'%';stage.classList.remove('rem-trailer-enter');void stage.offsetWidth;stage.classList.add('rem-trailer-enter')};
  const stop=()=>{playing=false;clearTimeout(timer);play.textContent='▶ Riproduci'};
- const advance=()=>{show();if(!playing)return;timer=setTimeout(()=>{if(index===scenes.length-1){stop();return}index++;advance()},3000)};
+ const advance=()=>{if(!stage.isConnected){stop();return}show();if(!playing)return;timer=setTimeout(()=>{if(!stage.isConnected){stop();return}if(index===scenes.length-1){stop();return}index++;advance()},3000)};
  const close=()=>{stop();detail(id)};
  const replay=button('↺ Ricomincia',()=>{stop();index=0;show()});
  const note=demo?'Anteprima animata dimostrativa: non è ancora un trailer video definitivo.':'Anteprima grafica provvisoria: il trailer video di questo libro non è ancora disponibile.';
