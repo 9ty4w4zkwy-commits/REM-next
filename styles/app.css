@@ -319,3 +319,10 @@ main{max-width:1180px;padding:0 24px 70px}
 .rem-trailer-actions button:first-child{background:#86dfb2!important;color:#102333!important;border:0!important;font-weight:800!important}
 .rem-trailer-note{font-size:.85rem;color:#a7b9c7}
 @media(prefers-reduced-motion:reduce){.rem-trailer-enter .rem-trailer-scene{animation:none}}
+
+
+/* Approved trailer row: mint circular play and one-line label */
+.rem-book-card .rem-trailer-trigger{display:flex!important;align-items:center!important;justify-content:flex-start!important;gap:.65rem!important;text-align:left!important;padding:.8rem .7rem!important;white-space:nowrap!important}
+.rem-trailer-trigger{display:inline-flex!important;align-items:center!important;gap:.65rem!important;text-align:left!important}
+.rem-trailer-play{display:inline-flex;align-items:center;justify-content:center;flex:0 0 36px;width:36px;height:36px;border-radius:50%;background:#64dfa9;color:#102333;font-size:.93rem;line-height:1;padding-left:2px;box-shadow:0 0 12px #64dfa922}
+.rem-trailer-label{font-size:clamp(.73rem,2.7vw,.92rem);font-weight:750;white-space:nowrap;letter-spacing:-.015em}
