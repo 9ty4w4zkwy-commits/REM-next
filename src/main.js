@@ -10,7 +10,7 @@ import {phraseSearch,getPhrase,savePhrase} from './synchronization.js?v=rem-swit
 import {HOME_SECTIONS,booksForHomeSection} from './home-config.js';
 import {summaryView} from './summary-view.js?v=rem-summary-50';
 const app=document.getElementById('app');let books=[];let currentView='home';let activeReaderTools=null;let activeHighlights=null;
-const render=(...nodes)=>{if(activeHighlights){activeHighlights.destroy();activeHighlights=null}if(activeReaderTools){activeReaderTools.destroy();activeReaderTools=null}app.replaceChildren(...nodes);window.scrollTo({top:0,left:0,behavior:'instant'});document.documentElement.scrollTop=0;document.body.scrollTop=0};
+const render=(...nodes)=>{if(activeHighlights){activeHighlights.destroy();activeHighlights=null}if(activeReaderTools){activeReaderTools.destroy();activeReaderTools=null}app.replaceChildren(...nodes);for(const [id,active] of [['navHome',currentView==='home'],['navLibrary',currentView==='library']]){const nav=document.getElementById(id);nav?.classList.toggle('is-active',active);if(active)nav?.setAttribute('aria-current','page');else nav?.removeAttribute('aria-current')}window.scrollTo({top:0,left:0,behavior:'instant'});document.documentElement.scrollTop=0;document.body.scrollTop=0};
 const para=(text,cls='')=>el('p',{text,className:cls});
 const backArrow=(onClick,label='Torna indietro')=>{const b=button('←',onClick);b.classList.add('reader-back','quiet-back');b.setAttribute('aria-label',label);return b};
 const pathLink=(label,onClick)=>{const b=button(label,onClick);b.classList.add('story-path-link');return b};
