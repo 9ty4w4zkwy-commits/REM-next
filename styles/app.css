@@ -358,3 +358,15 @@ main{max-width:1180px;padding:0 24px 70px}
 .rem-trailer-control .rem-trailer-pause-icon::after{content:"";position:absolute;top:9px;height:14px;width:4px;border-radius:1.5px;background:#f1f6f5}
 .rem-trailer-control .rem-trailer-pause-icon::before{left:10px}
 .rem-trailer-control .rem-trailer-pause-icon::after{right:10px}
+
+
+/* Cinematic centered trailer controls: one overlay icon, restart underneath */
+.rem-trailer-stage .rem-trailer-overlay-control{position:absolute!important;z-index:3;top:50%;left:50%;transform:translate(-50%,-50%);width:66px!important;height:66px!important;min-width:66px!important;min-height:66px!important;padding:0!important;margin:0!important;display:flex!important;align-items:center!important;justify-content:center!important;border:1px solid #b9f3d9!important;border-radius:50%!important;background:#75dbad!important;color:#102333!important;box-shadow:0 8px 35px #07172566!important;transition:opacity .2s ease,background .2s ease!important;opacity:.96}
+.rem-trailer-stage .rem-trailer-overlay-control.is-playing{opacity:.17}
+.rem-trailer-stage .rem-trailer-overlay-control.is-playing:focus-visible,.rem-trailer-stage .rem-trailer-overlay-control.is-playing:hover{opacity:.95}
+.rem-trailer-stage .rem-trailer-overlay-control:focus-visible{outline:3px solid #fff;outline-offset:4px}
+.rem-trailer-overlay-play{width:0;height:0;border-top:12px solid transparent;border-bottom:12px solid transparent;border-left:19px solid #102333;margin-left:5px}
+.rem-trailer-overlay-pause{display:block;width:19px;height:24px;border-left:6px solid #102333;border-right:6px solid #102333;box-sizing:border-box;border-radius:1px}
+.rem-trailer-page .rem-trailer-actions{display:flex;justify-content:center;margin:.85rem 0 1rem}
+.rem-trailer-page .rem-trailer-actions button{flex:0 0 auto!important;background:transparent!important;color:#cbd8e3!important;border:1px solid #4e6b80!important;border-radius:12px!important;padding:.7rem 1.5rem!important;box-shadow:none!important;font-weight:600!important}
+@media(hover:none){.rem-trailer-stage .rem-trailer-overlay-control.is-playing{opacity:.22}}
