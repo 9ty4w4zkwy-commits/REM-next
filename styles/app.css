@@ -386,3 +386,18 @@ main{max-width:1180px;padding:0 24px 70px}
 .rem-trailer-page .rem-trailer-actions .rem-trailer-below-toggle{position:relative!important;inset:auto!important;transform:none!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;flex:0 0 54px!important;width:54px!important;height:54px!important;min-width:54px!important;min-height:54px!important;padding:0!important;margin:0!important;border:0!important;border-radius:50%!important;background:#86dfb2!important;color:#102333!important;opacity:1!important;box-shadow:none!important}
 .rem-trailer-page .rem-trailer-actions .rem-trailer-below-toggle .rem-trailer-overlay-play{border-top-width:10px;border-bottom-width:10px;border-left-width:16px}
 .rem-trailer-page .rem-trailer-actions .rem-trailer-below-toggle .rem-trailer-overlay-pause{height:20px;width:17px;border-left-width:5px;border-right-width:5px}
+
+
+/* Optional episodic recap: discreet entry, no automatic spoilers */
+.episode-recap-panel{margin-top:1rem;padding:1rem 1.1rem;border:1px solid #405e71;border-radius:16px;background:#12253a}
+.episode-recap-panel [hidden]{display:none!important}
+.episode-recap-eyebrow{display:block;color:#86dfb2;font-size:.72rem;letter-spacing:.15em;font-weight:800;margin-bottom:.55rem}
+.episode-recap-panel button{width:auto!important;min-height:40px;padding:.55rem .85rem;border-radius:10px}
+.episode-recap-panel > button{background:#203b50;color:#d8f9e7;border:1px solid #57816f;font-weight:700}
+.episode-recap-invite{display:flex;align-items:center;justify-content:space-between;gap:.75rem;margin-top:.55rem}
+.episode-recap-invite p{margin:0;color:#b9c9d5;font-size:.9rem;line-height:1.5}
+.episode-recap-invite button{flex:0 0 auto;background:transparent;border:1px solid #4a6579;color:#c9d5dd}
+.episode-recap-content{margin-top:1rem;border-top:1px solid #38536b;padding-top:.85rem}
+.episode-recap-part + .episode-recap-part{margin-top:1rem}
+.episode-recap-part strong{display:block;color:#86dfb2;font-size:.92rem;margin-bottom:.3rem}
+.episode-recap-part p{margin:0;color:#e0e7ed;line-height:1.65;font-size:.95rem}
