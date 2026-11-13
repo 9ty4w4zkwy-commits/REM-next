@@ -2,7 +2,7 @@ import {loadCatalog,loadChapter} from './catalog.js';
 import {showOnboarding,onboardingCompleted} from './onboarding.js?v=rem-ui-56';
 import {getProgress,saveProgress,getSetting,saveSetting} from './progress.js';
 import {el,button,panel,heading} from './ui.js';
-import {getMode,formatSwitch,paperView,audioView} from './formats.js?v=rem-audio-83';
+import {getMode,formatSwitch,paperView,audioView} from './formats.js?v=rem-audio-84';
 import {createReaderTools} from './reader-tools.js?v=rem-ebook-42';
 import {createHighlights} from './highlights.js?v=rem-ebook-44';
 import {createEbookJourney} from './ebook-journey.js?v=rem-ebook-44';
@@ -77,14 +77,28 @@ function episodeRecap(book,episode){
  }).filter(part=>part?.text);
  return parts.length?parts:null;
 }
-function recapPrompt(book,episode){
+function recapPrompt(book,episode,mode='ebook'){
  const parts=episodeRecap(book,episode);if(!parts)return null;
  const key='recap-skipped:'+book.id+':'+episode.id;
  const content=el('div',{className:'episode-recap-content',attrs:{hidden:''}},[
   ...parts.map(part=>el('div',{className:'episode-recap-part'},[el('strong',{text:part.title}),para(part.text)]))
  ]);
- const open=button('✦ Leggi il recap',()=>{content.hidden=!content.hidden;open.textContent=content.hidden?'✦ Leggi il recap':'Chiudi il recap';if(!content.hidden){invite.hidden=true;saveSetting(key,'yes')}});
- const skip=button('Salta',()=>{invite.hidden=true;saveSetting(key,'yes')});
+ const audioMode=mode==='audio';const label=audioMode?'✦ Ascolta il recap':'✦ Leggi il recap';let speaking=false;let recapSpeech=null;
+ const stopRecap=()=>{if(recapSpeech&&'speechSynthesis' in window){window.speechSynthesis.cancel();recapSpeech=null}speaking=false;open.textContent=label};
+ const open=button(label,()=>{
+  if(audioMode){
+   if(speaking){stopRecap();return}
+   if(!('speechSynthesis' in window)){open.textContent='Audio non disponibile';return}
+   const text=parts.map(part=>part.title+'. '+part.text).join('. ');
+   window.speechSynthesis.cancel();recapSpeech=new SpeechSynthesisUtterance(text);recapSpeech.lang='it-IT';recapSpeech.rate=.95;
+   recapSpeech.onend=()=>{speaking=false;recapSpeech=null;open.textContent=label};
+   recapSpeech.onerror=()=>{speaking=false;recapSpeech=null;open.textContent=label};
+   speaking=true;open.textContent='Ⅱ Ferma il recap';window.speechSynthesis.speak(recapSpeech);
+   invite.hidden=true;saveSetting(key,'yes');return;
+  }
+  content.hidden=!content.hidden;open.textContent=content.hidden?label:'Chiudi il recap';if(!content.hidden){invite.hidden=true;saveSetting(key,'yes')}
+ });
+ const skip=button('Salta',()=>{if(audioMode)stopRecap();invite.hidden=true;saveSetting(key,'yes')});
  const invite=el('div',{className:'episode-recap-invite',attrs:getSetting(key,'')==='yes'?{hidden:''}:{}},[
   para('Vuoi ritrovare il filo della storia prima di continuare?'),
   skip
@@ -213,7 +227,7 @@ function openSummary(id,chapterId,mode,inEpisode,episodeId){
  const continueAt=nextId=>{saveProgress(id,nextId);reader(id,nextId,mode,null,inEpisode,episodeId)};
  render(button('← Torna alla storia',goBack),heading(book.title,'RIASSUNTI · LIBRO COMPLETO'),summaryView(book,goBack,continueAt));
 }
-async function reader(id,chapterId,modeOverride,seekOffset=null,episodic=false,episodeId=null){const book=findBook(id);if(!book)return library();currentView='reader';const mode=modeOverride||getMode(id);const saved=getProgress(id);const chapter=book.chapters.find(c=>c.id===chapterId)||book.chapters.find(c=>c.id===saved?.chapter)||book.chapters[0];const inEpisode=episodic||getSetting('reading-path:'+id,'normal')==='episodes';const nav=button('←',()=>inEpisode?episodes(id):detail(id));nav.classList.add('reader-back');nav.setAttribute('aria-label',inEpisode?'Torna agli episodi':'Torna alla scheda libro');const pathChange=pathLink(inEpisode?'Passa al libro completo':'Passa a episodi',()=>{saveSetting('reading-path:'+id,inEpisode?'normal':'episodes');inEpisode?reader(id,chapter?.id,mode):episodes(id)});const episode= inEpisode?(allEpisodes(book).find(ep=>ep.id===episodeId)||currentEpisode(book)||episodeForChapter(book,chapter?.id)):null;if(episode)rememberEpisode(id,episode);const episodeHeading=episode?el('div',{className:'episode-reader-context'},[el('span',{text:episodeLabel(episode)}),el('strong',{text:episode.title||'Episodio'}),...(episodeRecap(book,episode)?[recapPrompt(book,episode)]:[])]):null;const summaryButton=button('✦ Riassumi',()=>openSummary(id,chapter?.id,mode,inEpisode,episode?.id));summaryButton.classList.add('summary-launch','summary-warm');const readingExtras=el('div',{className:'summary-footer'},[el('span',{className:'summary-footer-hint',text:'Vuoi un riepilogo?'}),summaryButton]);const switcher=formatSwitch(id,mode,next=>reader(id,chapter?.id,next,null,inEpisode,episode?.id));const quickSwitch=formatSwitch(id,mode,next=>reader(id,chapter?.id,next,null,inEpisode,episode?.id));quickSwitch.classList.add('format-switch-bottom');if(!chapter)return render(nav,heading(book.title,'IL TUO LIBRO'),switcher,para('Questo libro non contiene capitoli.'),pathChange);
+async function reader(id,chapterId,modeOverride,seekOffset=null,episodic=false,episodeId=null){const book=findBook(id);if(!book)return library();currentView='reader';const mode=modeOverride||getMode(id);const saved=getProgress(id);const chapter=book.chapters.find(c=>c.id===chapterId)||book.chapters.find(c=>c.id===saved?.chapter)||book.chapters[0];const inEpisode=episodic||getSetting('reading-path:'+id,'normal')==='episodes';const nav=button('←',()=>inEpisode?episodes(id):detail(id));nav.classList.add('reader-back');nav.setAttribute('aria-label',inEpisode?'Torna agli episodi':'Torna alla scheda libro');const pathChange=pathLink(inEpisode?'Passa a lettura continua':'Passa a episodi',()=>{saveSetting('reading-path:'+id,inEpisode?'normal':'episodes');inEpisode?reader(id,chapter?.id,mode):episodes(id)});const episode= inEpisode?(allEpisodes(book).find(ep=>ep.id===episodeId)||currentEpisode(book)||episodeForChapter(book,chapter?.id)):null;if(episode)rememberEpisode(id,episode);const episodeHeading=episode?el('div',{className:'episode-reader-context'},[el('span',{text:episodeLabel(episode)}),el('strong',{text:episode.title||'Episodio'}),...(episodeRecap(book,episode)?[recapPrompt(book,episode,mode)]:[])]):null;const summaryButton=button('✦ Riassumi',()=>openSummary(id,chapter?.id,mode,inEpisode,episode?.id));summaryButton.classList.add('summary-launch','summary-warm');const readingExtras=el('div',{className:'summary-footer'},[el('span',{className:'summary-footer-hint',text:'Vuoi un riepilogo?'}),summaryButton]);const switcher=formatSwitch(id,mode,next=>reader(id,chapter?.id,next,null,inEpisode,episode?.id));const quickSwitch=formatSwitch(id,mode,next=>reader(id,chapter?.id,next,null,inEpisode,episode?.id));quickSwitch.classList.add('format-switch-bottom');if(!chapter)return render(nav,heading(book.title,'IL TUO LIBRO'),switcher,para('Questo libro non contiene capitoli.'),pathChange);
 if(mode==='audio'){
  const shell=el('section',{className:'reading-shell audio-sync-shell'});
  render(nav,heading(book.title,'IL TUO LIBRO'),...(episodeHeading?[episodeHeading]:[]),shell,readingExtras,finishControl(id),pathChange,quickSwitch);
