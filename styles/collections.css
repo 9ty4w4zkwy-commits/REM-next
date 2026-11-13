@@ -35,3 +35,15 @@
 .rem-thought-actions{display:flex;flex-wrap:wrap;gap:8px}
 .rem-violet .rem-thought-actions button{margin:0;min-height:38px;font-size:.82rem;padding:7px 10px;background:transparent;border-color:#45655f}
 .rem-violet .rem-thought-actions button:last-child{color:#b8c8c5}
+
+/* Navigable overview tiles: retain the editorial layout and touch accessibility. */
+.rem-violet .rem-stats .rem-stat{position:relative;width:100%;text-align:left;cursor:pointer;color:inherit;font:inherit;margin:0;min-height:128px;box-shadow:none;transition:border-color .18s ease,transform .18s ease}
+.rem-violet .rem-stats .rem-stat:hover{border-color:#8cf0be;transform:translateY(-2px)}
+.rem-stat-arrow{position:absolute;top:15px;right:17px;color:#b4d7cb;font-size:1.15rem}
+.rem-violet .rem-stats .rem-stat:focus-visible{outline:3px solid #64dfa9;outline-offset:3px}
+/* White, discreet cover action. The overlay does not change the book-card layout. */
+.rem-home-cover-wrap{position:relative;isolation:isolate}
+.rem-home-cover-wrap>.cover{width:100%}
+.rem-home-cover-wrap .rem-cover-save{position:absolute!important;z-index:5;top:8px;right:8px;width:36px!important;height:36px!important;min-width:36px!important;min-height:36px!important;padding:0!important;margin:0!important;border:1px solid #ffffffa8!important;border-radius:50%!important;background:#091622b8!important;color:#fff!important;font:400 1.55rem/1 system-ui,sans-serif!important;display:flex!important;align-items:center!important;justify-content:center!important;box-shadow:0 2px 12px #0007!important;backdrop-filter:blur(6px)}
+.rem-home-cover-wrap .rem-cover-save.is-saved{color:#9bf5c8!important;border-color:#9bf5c8!important;font-size:1.25rem!important}
+.rem-home-cover-wrap .rem-cover-save:focus-visible{outline:3px solid #64dfa9!important;outline-offset:2px}
