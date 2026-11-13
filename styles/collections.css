@@ -1,22 +1,37 @@
-/* REM Violet — self-contained Biblioteca module; no reader or Home overrides. */
-.rem-violet{--violet:#C58AFF;--violet-soft:#E5C9FF;--violet-border:#79539E;color:#f8f4fc}
-.rem-violet-hero{padding:26px 20px 22px;border:1px solid #6f4a8b;border-radius:24px;background:radial-gradient(ellipse at 95% 10%,#50316d 0%,transparent 55%),linear-gradient(130deg,#111b2b,#1d1831);margin-bottom:20px}
+/* REM Mint — isolated Biblioteca module; reader and Home unchanged. */
+.rem-violet{--violet:#64dfa9;--violet-soft:#c3ffe2;--violet-border:#397d67;color:#f8f4fc}
+.rem-violet-hero{padding:26px 20px 22px;border:1px solid #35675e;border-radius:24px;background:radial-gradient(ellipse at 95% 10%,#245f53 0%,transparent 55%),linear-gradient(130deg,#111b2b,#112c32);margin-bottom:20px}
 .rem-violet h1{font:italic clamp(2.1rem,7vw,3.8rem)/1.08 Georgia,serif;max-width:590px;margin:12px 0}
 .rem-violet h2,.rem-violet h3{font-family:Georgia,serif}
 .rem-violet h3{font-size:1.55rem;margin:10px 0}
 .rem-violet-eyebrow{font-size:.72rem;letter-spacing:.15em;color:var(--violet);font-weight:750}
-.rem-violet-muted{color:#d0c6dd;line-height:1.5}
+.rem-violet-muted{color:#c3d6d1;line-height:1.5}
 .rem-violet-tabs{display:flex;gap:8px;overflow-x:auto;padding:4px 0 14px;margin-bottom:12px}
-.rem-violet-tabs button{white-space:nowrap;min-height:39px;border-radius:22px;border:1px solid #765b8d;background:#171c30;padding:8px 14px}
-.rem-violet-tabs button.selected{background:var(--violet);color:#171122;border-color:var(--violet);font-weight:700}
+.rem-violet-tabs button{white-space:nowrap;min-height:39px;border-radius:22px;border:1px solid #426c66;background:#142b36;padding:8px 14px}
+.rem-violet-tabs button.selected{background:var(--violet);color:#102b25;border-color:var(--violet);font-weight:700}
 .rem-violet-heading{margin:24px 0 12px}
-.rem-violet-shelf{background:radial-gradient(circle at 90% 15%,#684284,transparent 65%),linear-gradient(125deg,#20213a,#171e30);border:1px solid #71538a;border-radius:20px;padding:22px;margin:12px 0;min-height:165px}
-.rem-violet-shelf small{color:#d8c7e7;display:block;margin-bottom:12px}
+.rem-violet-shelf{background:radial-gradient(circle at 90% 15%,#245e50,transparent 65%),linear-gradient(125deg,#1a353a,#171e30);border:1px solid #416d63;border-radius:20px;padding:22px;margin:12px 0;min-height:165px}
+.rem-violet-shelf small{color:#b6d7cd;display:block;margin-bottom:12px}
 .rem-violet-book,.rem-violet-thought{background:#152437;border:1px solid #405169;border-radius:18px;padding:18px;margin:12px 0;overflow-wrap:anywhere}
 .rem-violet-book strong{font:1.25rem Georgia,serif}
-.rem-violet-thought>p:not(.rem-violet-muted){color:#f6efff;font:1.2rem/1.55 Georgia,serif}
-.rem-violet-book button,.rem-violet-thought button,.rem-violet-shelf button{margin:6px 8px 0 0;background:#29213d;border-color:#8064a2}
-.rem-violet .rem-violet-primary{width:100%;background:linear-gradient(105deg,#A767EA,#D9ABFF,#9C63DD);color:#1b1129;border:0;font-weight:800;margin:10px 0}
-.rem-violet input{width:100%;margin:10px 0;background:#182538;border-color:#765b8d}
+.rem-violet-thought>p:not(.rem-violet-muted){color:#f2fff9;font:1.2rem/1.55 Georgia,serif}
+.rem-violet-book button,.rem-violet-thought button,.rem-violet-shelf button{margin:6px 8px 0 0;background:#203d3b;border-color:#427c6c}
+.rem-violet .rem-violet-primary{width:100%;background:linear-gradient(105deg,#43bf91,#9bf5c8,#64dfa9);color:#102b25;border:0;font-weight:800;margin:10px 0}
+.rem-violet input{width:100%;margin:10px 0;background:#182538;border-color:#426c66}
 .rem-violet button:focus-visible,.rem-violet input:focus-visible{outline:3px solid var(--violet)}
 @media(max-width:540px){.rem-violet-hero{padding:24px 18px}.rem-violet-tabs{margin-right:-12px}}
+
+/* Dashboard: numbers first, no duplicate content lists. */
+.rem-stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:16px 0 20px}
+.rem-stat{min-height:128px;padding:20px 16px;background:linear-gradient(145deg,#193d42,#152738);border:1px solid #35675e;border-radius:20px;display:flex;flex-direction:column;justify-content:space-between}
+.rem-stat strong{font:normal clamp(2.4rem,10vw,3.6rem)/1 Georgia,serif;color:#8cf0be}
+.rem-stat span{color:#d5e6df;font-size:.85rem}
+.rem-dashboard-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+.rem-dashboard-actions button{flex:1 1 160px;background:#203d3b;border-color:#427c6c}
+.rem-dashboard-actions button:first-child{background:#64dfa9;color:#102b25;font-weight:750}
+.rem-thought-header{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.rem-violet .rem-thought-lock{margin:0;min-width:44px;min-height:44px;padding:6px 9px;border:1px solid #426c66;border-radius:13px;background:#203d3b;font-size:1.15rem}
+.rem-violet-thought .rem-thought-text{margin:16px 0 22px;color:#f2fff9;font:1.25rem/1.6 Georgia,serif}
+.rem-thought-actions{display:flex;flex-wrap:wrap;gap:8px}
+.rem-violet .rem-thought-actions button{margin:0;min-height:38px;font-size:.82rem;padding:7px 10px;background:transparent;border-color:#45655f}
+.rem-violet .rem-thought-actions button:last-child{color:#b8c8c5}
