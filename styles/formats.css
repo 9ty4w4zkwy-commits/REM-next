@@ -584,3 +584,11 @@ body:not(.ebook-immersive-active) .ebook-reading-shell .ebook-page-frame .readin
  -webkit-appearance:none!important;height:5px!important;border-radius:99px!important;background:transparent!important;border:0!important;
 }
 .audio-sync-shell input.rem-audio-seek[type="range"]::-moz-range-track{height:5px!important;background:transparent!important;border:0!important}
+
+/* v86 — align iOS audio thumb precisely to the 5px track */
+.audio-sync-shell input.rem-audio-seek[type="range"]::-webkit-slider-thumb{
+ margin-top:-4.5px!important;
+}
+.audio-sync-shell input.rem-audio-seek[type="range"]::-moz-range-thumb{
+ margin-top:0!important;
+}
