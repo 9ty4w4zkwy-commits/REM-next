@@ -16,3 +16,5 @@ export function setThoughtVisibility(id,makePublic){const db=readCollections();c
 // Bookmarks are independent of reading progress and shelf membership.
 export function isBookSaved(id){return readCollections().savedBooks.includes(id)}
 export function toggleSavedBook(id){const db=readCollections();const index=db.savedBooks.indexOf(id);if(index<0)db.savedBooks.unshift(id);else db.savedBooks.splice(index,1);writeCollections(db);return index<0}
+
+export function setShelfVisibility(id,makePublic){const db=readCollections();const shelf=db.shelves.find(s=>s.id===id);if(!shelf)return false;shelf.private=!makePublic;writeCollections(db);return true}
