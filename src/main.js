@@ -220,7 +220,7 @@ if(mode==='audio'){
  activeReaderTools=createReaderTools({focusOnly:true});activeReaderTools.mount(shell);
  try{
   const content=await loadChapter(book,chapter);if(!shell.isConnected)return;
-  const player=audioView({bookId:id,chapter,content,onPosition:offset=>{if(offset>=0&&offset<content.length){const excerpt=content.slice(offset,Math.min(content.length,offset+90)).trim();savePhrase(id,chapter.id,excerpt,offset)}saveProgress(id,chapter.id)}});
+  const point=getPhrase(id);if(point?.chapter===chapter.id&&!getSetting('audio-position:'+id,''))saveSetting('audio-position:'+id,JSON.stringify({chapter:chapter.id,offset:point.offset||0}));const player=audioView({bookId:id,chapter,content,onPosition:offset=>{if(offset>=0&&offset<content.length){const excerpt=content.slice(offset,Math.min(content.length,offset+90)).trim();savePhrase(id,chapter.id,excerpt,offset)}saveProgress(id,chapter.id)}});
   shell.append(player);activeAudioPlayer=player;
  }catch(error){if(shell.isConnected)shell.append(el('p',{text:'Impossibile caricare l’audio: '+error.message}))}
  return;
