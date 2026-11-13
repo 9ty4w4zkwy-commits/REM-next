@@ -87,3 +87,39 @@
 .rem-saved-book-info strong{line-height:1.3}
 .rem-saved-book-info button{align-self:flex-start}
 @media(max-width:430px){.rem-saved-cover{width:38%;flex-basis:38%}.rem-saved-cover .cover{min-height:155px}}
+
+/* Editorial collection tiles: Spotify-like color blocks, REM typography. */
+.rem-collection-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:16px 0 22px}
+.rem-collection-card{position:relative;min-width:0;min-height:225px;border-radius:19px;padding:17px;overflow:hidden;display:flex;flex-direction:column;isolation:isolate;border:1px solid rgba(255,255,255,.17)}
+.rem-collection-card:before{content:"";position:absolute;width:160px;height:160px;right:-85px;bottom:28px;transform:rotate(-24deg);border:1px solid rgba(255,255,255,.16);border-radius:28px;pointer-events:none}
+.rem-collection-card.tone-rose{background:linear-gradient(140deg,#8d425a,#522f58)}
+.rem-collection-card.tone-blue{background:linear-gradient(140deg,#356ca2,#234263)}
+.rem-collection-card.tone-amber{background:linear-gradient(140deg,#a56c39,#61412f)}
+.rem-collection-card.tone-sage{background:linear-gradient(140deg,#377d70,#25534f)}
+.rem-collection-card .rem-collection-kicker{font-size:.61rem;letter-spacing:.11em;font-weight:800;color:#fff;opacity:.85}
+.rem-collection-card h3{font:700 clamp(1.14rem,4vw,1.55rem)/1.17 Georgia,serif;color:#fff;margin:20px 0 10px;position:relative;z-index:1}
+.rem-collection-card .rem-violet-muted{color:#f3f5f5;font-size:.78rem;line-height:1.4;margin:0 0 15px;position:relative;z-index:1}
+.rem-collection-top,.rem-collection-detail-top{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.rem-collection-foot{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:auto}
+.rem-collection-foot small{color:#fff;opacity:.85;font-size:.72rem}
+.rem-violet .rem-collection-card button{position:relative;z-index:2;margin:0;border:1px solid rgba(255,255,255,.42);background:rgba(0,0,0,.16);color:#fff;font-size:.74rem;padding:8px 10px;min-height:34px;border-radius:12px}
+.rem-violet .rem-collection-card .rem-collection-lock,.rem-violet .rem-collection-detail-top .rem-collection-lock{font-size:1rem;line-height:1;min-width:38px;min-height:38px;padding:6px;border-radius:12px}
+.rem-collection-suggestion .rem-collection-symbol{position:absolute;right:13px;top:36px;font-size:3.5rem;color:#fff;opacity:.17;transform:rotate(-12deg);pointer-events:none}
+.rem-collection-suggestion .rem-collection-suggestion-action{margin-top:auto;width:100%;background:rgba(255,255,255,.16);font-weight:700}
+.rem-collection-detail-top{margin-top:18px}
+.rem-collection-detail-top .rem-violet-eyebrow{margin:0}
+.rem-violet .rem-collection-detail-top .rem-collection-lock{border:1px solid #426c66;background:#203d3b;color:#fff}
+@media(max-width:350px){.rem-collection-grid{gap:9px}.rem-collection-card{padding:12px;min-height:235px}.rem-collection-card h3{font-size:1.08rem}}
+/* A tiny, low-contrast circle, visually 22px but with a 36px touch target. */
+.rem-home-cover-wrap .rem-cover-save{
+ top:auto!important;right:4px!important;bottom:4px!important;
+ width:36px!important;height:36px!important;min-width:36px!important;min-height:36px!important;
+ background:transparent!important;border:0!important;box-shadow:none!important;backdrop-filter:none!important;
+ opacity:.72!important;color:rgba(255,255,255,.85)!important;font:400 13px/1 system-ui,sans-serif!important;
+}
+.rem-home-cover-wrap .rem-cover-save:before{
+ content:"";position:absolute;inset:7px;border:1px solid rgba(255,255,255,.42);border-radius:50%;background:rgba(8,22,32,.18);z-index:-1
+}
+.rem-home-cover-wrap .rem-cover-save.is-saved{color:rgba(155,245,200,.9)!important;font-size:12px!important;border:0!important}
+.rem-home-cover-wrap .rem-cover-save.is-saved:before{border-color:rgba(155,245,200,.5)}
+.rem-home-cover-wrap .rem-cover-save:hover,.rem-home-cover-wrap .rem-cover-save:focus-visible{opacity:1!important}
