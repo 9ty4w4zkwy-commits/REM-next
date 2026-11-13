@@ -28,7 +28,7 @@ function feedbackBook(id){
  const submit=button('Invia',()=>{if(!rating)return;saveSetting(ratingKey(id),rating);detail(id)},true);
  const refresh=()=>{starButtons.forEach((b,i)=>{b.classList.toggle('selected',i<rating);b.setAttribute('aria-pressed',String(i+1===rating))});caption.textContent=rating?rating+' stelle su 5':'Seleziona da 1 a 5 stelle';submit.disabled=!rating};
  for(let n=1;n<=5;n++){
-  const star=button('',()=>{rating=rating===n?0:n;refresh()});
+  const star=button('',()=>{rating=rating===n?n-1:n;refresh()});
   star.classList.add('feedback-star');star.setAttribute('aria-label',n+' stelle');
   const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');
   svg.setAttribute('viewBox','0 0 24 24');svg.setAttribute('aria-hidden','true');
