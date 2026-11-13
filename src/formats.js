@@ -20,11 +20,11 @@ export function audioView({bookId,chapter,content,onPosition}={}){
  let position=0,playing=false,utterance=null,session=0;
  try{const stored=JSON.parse(getSetting(key,'null'));if(stored?.chapter===chapter.id)position=Math.max(0,Math.min(content.length-1,Number(stored.offset)||0))}catch{}
  const status=el('p',{className:'rem-audio-status',text:'Pronto per ascoltare'});
- const progress=el('input',{attrs:{type:'range',min:'0',max:'100',value:String(Math.round(position/content.length*100)),'aria-label':'Posizione audio'}});
+ const progress=el('input',{className:'rem-audio-seek',attrs:{type:'range',min:'0',max:'100',value:String(Math.round(position/content.length*100)),'aria-label':'Posizione audio'}});
  const play=button('▶ Ascolta',()=>{if(playing)stop();else startAudio()});
- const restart=button('↺ Ricomincia',()=>{stop();position=0;persist();startAudio()});
- const persist=()=>{saveSetting(key,JSON.stringify({chapter:chapter.id,offset:position}));onPosition?.(position)};
- const update=()=>{progress.value=String(Math.round(position/content.length*100));status.textContent=playing?'Riproduzione in corso · '+Math.round(position/content.length*100)+'%':'Punto salvato · '+Math.round(position/content.length*100)+'%'};
+ play.classList.add('rem-audio-play');const restart=button('↺ Ricomincia',()=>{stop();position=0;persist();startAudio()});
+ restart.classList.add('rem-audio-restart');const persist=()=>{saveSetting(key,JSON.stringify({chapter:chapter.id,offset:position}));onPosition?.(position)};
+ const update=()=>{progress.value=String(Math.round(position/content.length*100));progress.style.setProperty('--audio-progress',progress.value+'%');status.textContent=playing?'Riproduzione in corso · '+Math.round(position/content.length*100)+'%':'Punto salvato · '+Math.round(position/content.length*100)+'%'};
  function stop(){session++;synth.cancel();playing=false;play.textContent='▶ Riprendi';update();persist()}
  function startAudio(){
   if(!content.trim())return;
@@ -37,6 +37,6 @@ export function audioView({bookId,chapter,content,onPosition}={}){
   update();synth.speak(utterance);
  }
  progress.addEventListener('change',()=>{const wasPlaying=playing;stop();position=Math.min(content.length-1,Math.floor(Number(progress.value)/100*content.length));persist();update();if(wasPlaying)startAudio()});
- wrap.append(el('p',{className:'eyebrow',text:'REM · AUDIO'}),el('h2',{text:'Ascolta la tua storia'}),status,progress,el('div',{className:'rem-audio-actions'},[play,restart]),el('p',{className:'format-mode-note',text:'Voce sintetica dimostrativa del dispositivo. Il punto viene salvato per riprendere nell’Ebook.'}));
+ wrap.append(el('p',{className:'eyebrow',text:'REM · AUDIO'}),el('h2',{className:'rem-audio-title',text:'Ascolta la tua storia'}),status,progress,el('div',{className:'rem-audio-actions'},[play,restart]),el('p',{className:'format-mode-note',text:'Voce sintetica dimostrativa del dispositivo. Il punto viene salvato per riprendere nell’Ebook.'}));
  wrap.stopAudio=()=>{if(playing)stop()};return wrap;
 }
