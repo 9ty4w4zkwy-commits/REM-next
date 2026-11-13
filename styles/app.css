@@ -341,3 +341,12 @@ main{max-width:1180px;padding:0 24px 70px}
  .rem-home-section[data-section="premium"] .rem-section-title{font-size:clamp(1.4rem,5.9vw,1.95rem)!important}
  .rem-section-heading{gap:.35rem}
 }
+
+/* Uniform, cinematic shelf headings after shorter approved labels */
+.rem-home-section .rem-section-title{font-size:clamp(1.8rem,4vw,2.7rem)!important;letter-spacing:-.035em;white-space:nowrap}
+.rem-shelf-subtitle{font-size:.9rem;color:#a9bdca;margin:-.55rem 0 1rem;line-height:1.35}
+@media(max-width:650px){
+ .rem-home-section .rem-section-title,
+ .rem-home-section[data-section="free"] .rem-section-title,
+ .rem-home-section[data-section="premium"] .rem-section-title{font-size:clamp(1.55rem,7vw,1.95rem)!important;letter-spacing:-.045em}
+}
