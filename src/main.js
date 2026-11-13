@@ -70,7 +70,9 @@ function resetDemo(id){if(!confirm('Ricominciare la demo da zero? Verranno cance
 const cover=book=>{const visual=el('div',{className:'cover '+(book.coverStyle==='classic'?'classic':'forest')},[el('div',{className:'cover-art',attrs:{'aria-hidden':'true'}},[el('span',{className:'art-orbit'}),el('span',{className:'art-moon'}),el('span',{className:'art-horizon'})]),el('span',{className:'cover-imprint',text:'R E M  /  STORIES'}),el('div',{className:'cover-copy'},[el('strong',{text:book.title}),el('small',{text:book.author||''})])]);if(book.coverImage){const img=el('img',{className:'cover-photo',attrs:{src:book.coverImage,alt:'Copertina di '+book.title,loading:'lazy'}});img.addEventListener('load',()=>visual.classList.add('has-cover-image'));img.addEventListener('error',()=>img.remove());visual.append(img)}return visual};
 
 const trailerButton=book=>{
- const b=button('▶  Guarda il trailer',()=>trailerView(book.id));
+ const b=button('',()=>trailerView(book.id));
+ b.append(el('span',{className:'rem-trailer-play',text:'▶',attrs:{'aria-hidden':'true'}}),el('span',{className:'rem-trailer-label',text:'Guarda il trailer'}));
+ b.setAttribute('aria-label','Guarda il trailer di '+book.title);
  b.classList.add('rem-trailer-trigger');
  return b;
 };
@@ -82,7 +84,7 @@ function trailerView(id){
   ['OGNI STORIA','comincia da una pagina.'],
   ['UN SOLO VIAGGIO','tanti modi di viverlo.'],
   ['LEGGI. ASCOLTA. RITROVA.','La storia continua con te.'],
-  ['REM NEXT','La tua prossima storia ti aspetta.']
+  ['REM NEXT','Il libro che ti segue.']
  ]:[
   [book.author||'REM PRESENTA',book.title],
   ['UNA STORIA DA SCOPRIRE',book.description||'Lasciati sorprendere da una nuova lettura.'],
