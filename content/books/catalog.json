@@ -25,7 +25,28 @@
         }
       ],
       "access": "free",
-      "homeSections": []
+      "homeSections": [],
+      "seasons": [
+        {
+          "number": 1,
+          "episodes": [
+            {
+              "id": "s1e1",
+              "title": "Il segnalibro",
+              "chapterId": "capitolo-1",
+              "recap": "Un laboratorio per sperimentare il segnalibro, la lettura e il passaggio tra formati.",
+              "minutes": 12
+            },
+            {
+              "id": "s1e2",
+              "title": "Il punto ritrovato",
+              "chapterId": "capitolo-2",
+              "recap": "La storia continua: ritrova il punto salvato e prova a cambiare formato.",
+              "minutes": 3
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "montecristo",
