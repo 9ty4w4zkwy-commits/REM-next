@@ -10,3 +10,5 @@ export function attachItem(shelfId,type,id){const db=readCollections();if(!db.sh
 export function detachItem(shelfId,type,id){const db=readCollections();db.items=db.items.filter(i=>!(i.shelfId===shelfId&&i.type===type&&i.refId===id));writeCollections(db)}
 export function removeThought(id){const db=readCollections();db.thoughts=db.thoughts.filter(t=>t.id!==id);db.items=db.items.filter(i=>!(i.type==='thought'&&i.refId===id));writeCollections(db)}
 export function updateThought(id,text){const db=readCollections();const t=db.thoughts.find(t=>t.id===id);if(t&&text.trim()){t.text=text.trim();writeCollections(db)}}
+
+export function setThoughtVisibility(id,makePublic){const db=readCollections();const thought=db.thoughts.find(t=>t.id===id);if(!thought)return false;thought.private=!makePublic;writeCollections(db);return true}
