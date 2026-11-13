@@ -14,14 +14,16 @@
           "title": "Capitolo 1 · Prova di lettura",
           "file": "capitolo-1.txt",
           "recap": "Un laboratorio di lettura per sperimentare il segnalibro, il testo e il passaggio tra formati.",
-          "minutes": 12
+          "minutes": 12,
+          "summary": "Nel primo capitolo del laboratorio REM viene introdotta una prova di lettura: un libro aperto, una stanza silenziosa e un lettore che deve decidere se proseguire. Il capitolo permette di sperimentare il segnalibro e di ritrovare il punto della storia passando tra formati. È un testo dimostrativo, non il riassunto di un romanzo pubblicato."
         },
         {
           "id": "capitolo-2",
           "title": "Capitolo 2 · Continuazione",
           "file": "capitolo-2.txt",
           "recap": "La prova continua: ritrova il punto salvato e verifica il passaggio tra Ebook, Cartaceo e Audio.",
-          "minutes": 3
+          "minutes": 3,
+          "summary": "Il secondo capitolo riprende l'esperimento di lettura e mostra come aggiungere capitoli separati al catalogo REM. Il suo scopo è verificare la continuità del segnalibro e il passaggio tra ebook, cartaceo e audio. Anche questo è un contenuto di prova, non un riassunto di un'opera del catalogo."
         }
       ],
       "access": "free",
@@ -43,6 +45,30 @@
               "chapterId": "capitolo-2",
               "recap": "La storia continua: ritrova il punto salvato e prova a cambiare formato.",
               "minutes": 3
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "episodes": [
+            {
+              "id": "s2e1",
+              "title": "Un nuovo esperimento",
+              "chapterId": "capitolo-2",
+              "recap": "Episodio dimostrativo della stagione 2: riutilizza temporaneamente il secondo capitolo per verificare la navigazione.",
+              "minutes": 3
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "episodes": [
+            {
+              "id": "s3e1",
+              "title": "Ritorno al laboratorio",
+              "chapterId": "capitolo-1",
+              "recap": "Episodio dimostrativo della stagione 3: riutilizza temporaneamente il primo capitolo per testare la selezione.",
+              "minutes": 12
             }
           ]
         }
