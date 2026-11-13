@@ -592,3 +592,9 @@ body:not(.ebook-immersive-active) .ebook-reading-shell .ebook-page-frame .readin
 .audio-sync-shell input.rem-audio-seek[type="range"]::-moz-range-thumb{
  margin-top:0!important;
 }
+
+/* v87 — larger invisible touch target while keeping the visible audio track slim */
+.audio-sync-shell input.rem-audio-seek[type="range"]{height:30px!important;min-height:30px!important;background:transparent!important;touch-action:pan-x!important;cursor:pointer!important;--track-fill:linear-gradient(to right,#83dcb1 0%,#83dcb1 var(--audio-progress,0%),#40546b var(--audio-progress,0%),#40546b 100%)}
+.audio-sync-shell input.rem-audio-seek[type="range"]::-webkit-slider-runnable-track{height:5px!important;background:var(--track-fill)!important;border-radius:99px!important}
+.audio-sync-shell input.rem-audio-seek[type="range"]::-moz-range-track{height:5px!important;background:var(--track-fill)!important;border-radius:99px!important}
+.audio-sync-shell input.rem-audio-seek[type="range"]::-webkit-slider-thumb{margin-top:-4.5px!important}
