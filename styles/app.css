@@ -370,3 +370,12 @@ main{max-width:1180px;padding:0 24px 70px}
 .rem-trailer-page .rem-trailer-actions{display:flex;justify-content:center;margin:.85rem 0 1rem}
 .rem-trailer-page .rem-trailer-actions button{flex:0 0 auto!important;background:transparent!important;color:#cbd8e3!important;border:1px solid #4e6b80!important;border-radius:12px!important;padding:.7rem 1.5rem!important;box-shadow:none!important;font-weight:600!important}
 @media(hover:none){.rem-trailer-stage .rem-trailer-overlay-control.is-playing{opacity:.22}}
+
+
+/* Trailer controls below the frame, flush with its left and right edges */
+.rem-trailer-page .rem-trailer-actions{display:flex!important;align-items:center!important;justify-content:space-between!important;gap:1rem!important;width:100%!important;margin:.9rem 0 1rem!important}
+.rem-trailer-page .rem-trailer-actions .rem-trailer-overlay-control{position:static!important;transform:none!important;flex:0 0 54px!important;width:54px!important;height:54px!important;min-width:54px!important;min-height:54px!important;border-radius:50%!important;background:#75dbad!important;border:0!important;padding:0!important;display:flex!important;align-items:center!important;justify-content:center!important;opacity:1!important;box-shadow:none!important}
+.rem-trailer-page .rem-trailer-actions .rem-trailer-overlay-control.is-playing{opacity:1!important}
+.rem-trailer-page .rem-trailer-actions .rem-trailer-overlay-play{border-top-width:10px;border-bottom-width:10px;border-left-width:16px;margin-left:4px}
+.rem-trailer-page .rem-trailer-actions .rem-trailer-overlay-pause{height:20px;width:17px;border-left-width:5px;border-right-width:5px}
+.rem-trailer-page .rem-trailer-actions button:last-child{margin-left:auto!important;border:0!important;background:transparent!important;padding:.65rem 0!important;color:#cbd8e3!important;box-shadow:none!important}
