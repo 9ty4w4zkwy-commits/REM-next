@@ -2,7 +2,7 @@ import {loadCatalog,loadChapter} from './catalog.js';
 import {showOnboarding,onboardingCompleted} from './onboarding.js?v=rem-ui-56';
 import {getProgress,saveProgress,getSetting,saveSetting} from './progress.js';
 import {el,button,panel,heading} from './ui.js';
-import {getMode,formatSwitch,paperView,audioView} from './formats.js?v=rem-audio-84';
+import {getMode,formatSwitch,paperView,audioView} from './formats.js?v=rem-audio-88';
 import {createReaderTools} from './reader-tools.js?v=rem-ebook-42';
 import {createHighlights} from './highlights.js?v=rem-ebook-44';
 import {createEbookJourney} from './ebook-journey.js?v=rem-ebook-44';
