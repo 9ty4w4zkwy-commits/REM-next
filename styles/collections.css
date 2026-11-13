@@ -123,3 +123,12 @@
 .rem-home-cover-wrap .rem-cover-save.is-saved{color:rgba(155,245,200,.9)!important;font-size:12px!important;border:0!important}
 .rem-home-cover-wrap .rem-cover-save.is-saved:before{border-color:rgba(155,245,200,.5)}
 .rem-home-cover-wrap .rem-cover-save:hover,.rem-home-cover-wrap .rem-cover-save:focus-visible{opacity:1!important}
+
+/* REM editorial palette v2: muted, warm, cohesive against midnight navy. */
+.rem-collection-card.tone-rose{background:linear-gradient(145deg,#845D78,#62465F)}
+.rem-collection-card.tone-amber{background:linear-gradient(145deg,#A38B53,#75653E)}
+.rem-collection-card.tone-blue{background:linear-gradient(145deg,#496C86,#344F69)}
+.rem-collection-card.tone-sage{background:linear-gradient(145deg,#427A70,#315D58)}
+.rem-collection-card{border-color:rgba(255,255,255,.12)}
+.rem-collection-card:before{border-color:rgba(255,255,255,.11)}
+.rem-collection-card .rem-collection-symbol{opacity:.13}
