@@ -100,9 +100,11 @@ function trailerView(id){
   el('div',{className:'rem-trailer-progress'},[el('span')])
  ]);
  const kicker=stage.querySelector('.rem-trailer-kicker'),line=stage.querySelector('.rem-trailer-line'),progress=stage.querySelector('.rem-trailer-progress span');
- const play=button('▶ Riproduci',()=>{if(playing){stop();return}playing=true;play.textContent='⏸ Pausa';advance()});
+ const play=button('',()=>{if(playing){stop();return}playing=true;updatePlay();advance()});
+ const updatePlay=()=>{play.replaceChildren(el('span',{className:'rem-trailer-play',text:playing?'Ⅱ':'▶',attrs:{'aria-hidden':'true'}}),el('span',{className:'rem-trailer-label',text:playing?'Pausa':'Riproduci'}));play.setAttribute('aria-label',playing?'Metti in pausa il trailer':'Riproduci il trailer')};
+ play.classList.add('rem-trailer-control');updatePlay();
  const show=()=>{kicker.textContent=scenes[index][0];line.textContent=scenes[index][1];progress.style.width=((index+1)/scenes.length*100)+'%';stage.classList.remove('rem-trailer-enter');void stage.offsetWidth;stage.classList.add('rem-trailer-enter')};
- const stop=()=>{playing=false;clearTimeout(timer);play.textContent='▶ Riproduci'};
+ const stop=()=>{playing=false;clearTimeout(timer);updatePlay()};
  const advance=()=>{if(!stage.isConnected){stop();return}show();if(!playing)return;timer=setTimeout(()=>{if(!stage.isConnected){stop();return}if(index===scenes.length-1){stop();return}index++;advance()},3000)};
  const close=()=>{stop();detail(id)};
  const replay=button('↺ Ricomincia',()=>{stop();index=0;show()});
@@ -114,7 +116,7 @@ function trailerView(id){
   para(note,'rem-trailer-note')
  ]));
  show();
- if(demo){playing=true;play.textContent='⏸ Pausa';advance()}
+ if(demo){playing=true;updatePlay();advance()}
 }
 
 function home(){currentView='home';const intro=el('section',{className:'rem-home-intro'},[el('p',{className:'eyebrow',text:'SCOPRI REM'}),el('h1',{},[document.createTextNode('La tua prossima storia '),el('span',{className:'mint-word',text:'ti aspetta.'})]),para('Scopri i libri disponibili, ritrova le tue letture e passa da un formato all’altro.','rem-home-subtitle')]);const shelf=(section)=>{const list=booksForHomeSection(section.id,books,getProgress,id=>getSetting('reading-path:'+id,''),id=>getSetting('episode-current:'+id,''));const cards=list.map(book=>{const saved=getProgress(book.id);const path=getSetting('reading-path:'+book.id,'');return el('article',{className:'rem-book-card'},[cover(book),el('h3',{text:book.title}),para(book.author||'Una storia da scoprire','rem-card-subtitle'),...(saved||path?[el('span',{className:'home-reading-label',text:path==='episodes'?'A EPISODI':'LIBRO COMPLETO'})]:[]),button(book.availability==='preview'?'Scopri il libro':resumeLabel(book),()=>book.availability==='preview'?detail(book.id):readingEntry(book.id),true),...(section.id==='continue'?[]:[trailerButton(book)])])});return el('section',{className:'rem-home-section',attrs:{'data-section':section.id}},[el('div',{className:'rem-section-heading'},[el('h2',{className:'rem-section-title'},section.id==='recommended'?[document.createTextNode('Scelti per te '),el('span',{className:'rem-recommend-sparkle',text:'✦',attrs:{'aria-hidden':'true'}})]:[document.createTextNode(section.title)]),...(section.id==='recommended'?[(()=>{const b=button('Riprova questionario',()=>showOnboarding(render,home));b.classList.add('onboard-retry');return b})()]:[])]),...(section.subtitle?[para(section.subtitle,'rem-shelf-subtitle')]:[]),...(cards.length?[el('div',{className:'rem-book-grid'},cards)]:[para(section.empty,'rem-empty-section')])])};render(intro,...HOME_SECTIONS.map(shelf))}
