@@ -3,9 +3,9 @@
 export const HOME_SECTIONS=[
  {id:'recommended',title:'Scelti per te ✦',empty:'I suggerimenti personalizzati arriveranno presto.'},
  {id:'continue',title:'Continua a leggere',empty:'I libri che inizi a leggere appariranno qui.'},
- {id:'free',title:'Contenuti gratis da leggere',empty:'Stiamo preparando i primi contenuti gratuiti.'},
- {id:'premium',title:'Contenuti Premium',empty:'I contenuti Premium non sono ancora disponibili.'},
- {id:'new',title:'Novità',empty:'Qui troverai le nuove uscite.'}
+ {id:'free',title:'Storie gratis',subtitle:'Da scoprire',empty:'Stiamo preparando i primi contenuti gratuiti.'},
+ {id:'premium',title:'Storie Premium',subtitle:'Da non perdere',empty:'I contenuti Premium non sono ancora disponibili.'},
+ {id:'new',title:'Novità su REM',empty:'Qui troverai le nuove uscite.'}
 ];
 export function booksForHomeSection(id,books,getProgress,getReadingPath=()=>'',getEpisode=()=>null){
  switch(id){
