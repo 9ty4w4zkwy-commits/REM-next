@@ -1,12 +1,12 @@
 import {el,button} from './ui.js';
-// Tap-to-bookmark: the tapped word and up to nine preceding words.
+// Tap-to-bookmark: the tapped word and up to eight following words.
 const KEY='rem-next-v1:highlight:';
 const WORD=/[\p{L}\p{N}]+(?:['’][\p{L}\p{N}]+)*/gu;
 export function createHighlights(bookId,chapterId,textNode,onSwitch,onBookmark=()=>{}){
  const key=KEY+bookId+':'+chapterId;
  let marks=[];try{marks=JSON.parse(localStorage.getItem(key)||'[]');if(!Array.isArray(marks))marks=[]}catch{marks=[]}
  const source={value:''};
- const hint=el('p',{className:'selection-hint',text:'Tocca una parola: REM evidenzia automaticamente le ultime 10 parole fino a quel punto.'});
+ const hint=el('p',{className:'selection-hint',text:'Tocca una parola: REM evidenzia automaticamente la parola toccata e le 8 parole successive.'});
  const clear=button('Rimuovi evidenziazioni',()=>{marks=[];persist();draw()});
  clear.classList.add('selection-clear');
  const wrap=el('div',{className:'highlight-tools'});
@@ -40,7 +40,7 @@ export function createHighlights(bookId,chapterId,textNode,onSwitch,onBookmark=(
   let index=words.findIndex(w=>offset>=w.start&&offset<=w.end);
   if(index<0)index=words.findIndex(w=>w.start>offset);
   if(index<0)return false;
-  const start=words[Math.max(0,index-9)].start,end=words[index].end,phrase=source.value.slice(start,end);
+  const start=words[index].start,end=words[Math.min(words.length-1,index+8)].end,phrase=source.value.slice(start,end);
   marks=[{start,end,quote:phrase}];persist();draw();onBookmark(phrase,start);
   window.getSelection()?.removeAllRanges();return true;
  }
