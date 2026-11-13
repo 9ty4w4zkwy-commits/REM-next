@@ -3,9 +3,9 @@ import {getSetting,saveSetting} from './progress.js';
 const KEY='onboarding-v1';
 const QUESTIONS=[
  {title:'Quali cose ti fanno perdere la cognizione del tempo?',hint:'Puoi scegliere fino a due risposte.',max:2,options:['Viaggiare e scoprire luoghi','Capire come funziona la mente','Arte, musica e creatività','Storie e relazioni umane','Misteri ed enigmi','Natura e avventura']},
- {title:'Quale di queste frasi ti rappresenta di più?',hint:'Scegli quella che senti più tua.',max:1,options:['Amo scoprire cose nuove','Mi piace capire tutto a fondo','Sono una persona sognatrice','Amo le sfide','Sono una persona sensibile']},
- {title:'Quando hai del tempo libero, cosa scegli più volentieri?',hint:'Scegli la risposta più spontanea.',max:1,options:['Esplorare posti nuovi','Stare con le persone che amo','Creare qualcosa','Imparare qualcosa di nuovo','Stare nella natura']},
- {title:'Cosa cerchi in un libro, adesso?',hint:'Potrai cambiare questa risposta quando vuoi.',max:1,options:['Evadere','Sorridere','Emozionarmi','Scoprire']}
+ {title:'Quale di queste frasi ti rappresenta di più?',hint:'Scegli quella che senti più tua.',max:1,options:['Amo scoprire cose nuove','Mi piace capire tutto a fondo','Sono una persona sognatrice','Amo le sfide','Sono una persona sensibile','Mi piace trovare soluzioni']},
+ {title:'Quando hai del tempo libero, cosa scegli più volentieri?',hint:'Scegli la risposta più spontanea.',max:1,options:['Esplorare posti nuovi','Stare con le persone che amo','Creare qualcosa','Imparare qualcosa di nuovo','Stare nella natura','Rilassarmi e ricaricarmi']},
+ {title:'Cosa cerchi in un libro, adesso?',hint:'Potrai cambiare questa risposta quando vuoi.',max:1,options:['Evadere','Sorridere','Emozionarmi','Scoprire','Riflettere','Sognare']}
 ];
 const loadAnswers=()=>{try{const a=JSON.parse(getSetting('onboarding-answers','[]'));return Array.isArray(a)?QUESTIONS.map((_,i)=>Array.isArray(a[i])?a[i]:[]):QUESTIONS.map(()=>[])}catch{return QUESTIONS.map(()=>[])}};
 export const onboardingCompleted=()=>getSetting(KEY,'')==='done';
