@@ -297,3 +297,25 @@ main{max-width:1180px;padding:0 24px 70px}
 /* Approved completion button: subtle mint outline on navy */
 .finish-book-box button,.finish-book-box button.primary{background:#0b1322!important;color:#86dfb2!important;border:1.5px solid #86dfb2!important;border-radius:14px!important;box-shadow:none!important}
 .finish-book-box button:focus-visible{outline:2px solid #86dfb2;outline-offset:3px}
+
+
+/* Trailer entry, kept secondary to the book's main action */
+.rem-book-card .rem-trailer-trigger{display:flex;align-items:center;justify-content:center;width:100%;background:transparent!important;border:0!important;border-top:1px solid #56718955!important;border-radius:0 0 12px 12px!important;color:#dce8ef!important;box-shadow:none!important;font-size:.86rem!important;font-weight:700!important;line-height:1.3!important;padding:.8rem .45rem!important;margin-top:.5rem}
+.rem-book-card .rem-trailer-trigger:focus-visible,.rem-trailer-trigger:focus-visible{outline:2px solid #86dfb2;outline-offset:2px}
+.rem-trailer-trigger{background:#1c3045!important;color:#cfe9df!important;border:1px solid #49657b!important;border-radius:12px!important;font-weight:700!important}
+.rem-trailer-page{max-width:650px;margin:0 auto 2rem}
+.rem-trailer-page h1{margin:.35rem 0 1.3rem}
+.rem-trailer-stage{position:relative;isolation:isolate;overflow:hidden;aspect-ratio:9/13;max-height:590px;border:1px solid #45657c;border-radius:22px;background:radial-gradient(ellipse at 65% 28%,#2c6c76 0%,#172e4c 38%,#0a1425 78%);display:flex;align-items:center;justify-content:center;text-align:center;padding:2rem}
+.rem-trailer-glow{position:absolute;z-index:-1;inset:10%;border:1px solid #86dfb255;border-radius:50%;transform:rotate(-26deg) scale(1.3);box-shadow:0 0 85px #86dfb222}
+.rem-trailer-scene{max-width:95%}
+.rem-trailer-kicker{color:#86dfb2!important;letter-spacing:.23em;font-size:.8rem;font-weight:800;line-height:1.7}
+.rem-trailer-line{font:500 clamp(1.9rem,7vw,3.5rem)/1.16 Georgia,serif;color:#f4f5f0;margin:.8rem 0}
+.rem-trailer-progress{position:absolute;bottom:0;left:0;width:100%;height:5px;background:#31465a}
+.rem-trailer-progress span{display:block;height:100%;width:0;background:#86dfb2;transition:width .4s ease}
+.rem-trailer-enter .rem-trailer-scene{animation:remTrailerReveal .7s ease both}
+@keyframes remTrailerReveal{from{opacity:0;transform:translateY(12px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
+.rem-trailer-actions{display:flex;gap:.75rem;margin:1rem 0}
+.rem-trailer-actions button{flex:1}
+.rem-trailer-actions button:first-child{background:#86dfb2!important;color:#102333!important;border:0!important;font-weight:800!important}
+.rem-trailer-note{font-size:.85rem;color:#a7b9c7}
+@media(prefers-reduced-motion:reduce){.rem-trailer-enter .rem-trailer-scene{animation:none}}
