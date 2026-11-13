@@ -287,3 +287,9 @@ main{max-width:1180px;padding:0 24px 70px}
 .feedback-sparkle-small{position:absolute;color:#b9f5d7;line-height:1}
 .feedback-sparkle-one{right:0;top:5px;font-size:24px}
 .feedback-sparkle-two{left:1px;bottom:4px;font-size:15px}
+
+
+/* Distinct completion action: warm orange outline, not the mint reading button */
+.finish-book-box{background:transparent;border:0;padding:0;margin:1.1rem 0 1.4rem;display:block}
+.finish-book-box button,.finish-book-box button.primary{background:transparent!important;color:#f3b36f!important;border:1.5px solid #e7a361!important;border-radius:14px!important;box-shadow:none!important;padding:.8rem 1.15rem!important;font-weight:750!important;min-height:48px}
+.finish-book-box button:focus-visible{outline:2px solid #f3b36f;outline-offset:3px}
