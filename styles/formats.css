@@ -598,3 +598,6 @@ body:not(.ebook-immersive-active) .ebook-reading-shell .ebook-page-frame .readin
 .audio-sync-shell input.rem-audio-seek[type="range"]::-webkit-slider-runnable-track{height:5px!important;background:var(--track-fill)!important;border-radius:99px!important}
 .audio-sync-shell input.rem-audio-seek[type="range"]::-moz-range-track{height:5px!important;background:var(--track-fill)!important;border-radius:99px!important}
 .audio-sync-shell input.rem-audio-seek[type="range"]::-webkit-slider-thumb{margin-top:-4.5px!important}
+
+/* v89 — podcast-like time labels. Tilde marks estimated speech-synthesis timing. */
+.audio-sync-shell .rem-audio-clock{display:flex;justify-content:space-between;align-items:center;color:#c8d7e4;font-size:.91rem;font-variant-numeric:tabular-nums;margin:12px 0 -10px;letter-spacing:.02em}
