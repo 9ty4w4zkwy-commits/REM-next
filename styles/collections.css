@@ -295,3 +295,17 @@
 .rem-violet .rem-stats .rem-stat-shelves .rem-stat-number,
 .rem-violet .rem-stats .rem-stat-shelves .rem-stat-title,
 .rem-violet .rem-stats .rem-stat-shelves .rem-stat-description{position:relative;z-index:2}
+
+/* Biblioteca photographic cards — quiet library and open book, teal translucent veil. */
+.rem-violet .rem-stats .rem-stat-shelves{
+ background:
+ linear-gradient(90deg,rgba(5,46,44,.92) 0%,rgba(5,48,46,.73) 48%,rgba(5,49,46,.53) 100%),
+ url('https://images.unsplash.com/photo-1507842217343-583bb7270b66?w=900&q=82') center center/cover no-repeat!important;
+}
+.rem-violet .rem-stats .rem-stat-shelves::before,
+.rem-violet .rem-stats .rem-stat-shelves::after{display:none!important}
+.rem-violet .rem-stats .rem-stat-words{
+ background:
+ linear-gradient(90deg,rgba(5,47,45,.90) 0%,rgba(5,48,46,.72) 48%,rgba(5,49,46,.47) 100%),
+ url('https://images.unsplash.com/photo-1491841550275-ad7854e35ca6?w=900&q=82') center center/cover no-repeat!important;
+}
