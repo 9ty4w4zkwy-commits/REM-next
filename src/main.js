@@ -292,5 +292,5 @@ const sizeSelect=el('select',{attrs:{'aria-label':'Dimensione testo'}});for(cons
  }
 }
 }catch(error){if(text.isConnected)text.textContent='Impossibile caricare il capitolo: '+error.message}finally{requestAnimationFrame(()=>{requestAnimationFrame(()=>{readerRestoring=false})})}}
-document.getElementById('brand').onclick=home;document.getElementById('navHome').onclick=home;document.getElementById('navLibrary').onclick=library;
+document.getElementById('brand').onclick=home;document.getElementById('navHome').onclick=home;document.getElementById('navLibrary').onclick=()=>library();
 try{books=await loadCatalog();if(onboardingCompleted()||getSetting('onboarding-v1','')==='later')home();else showOnboarding(render,home)}catch(error){render(heading('REM Next','ERRORE'),para('Impossibile caricare il catalogo: '+error.message),para('Avvia l’app tramite un server web, non aprendo index.html come file locale.'))}
