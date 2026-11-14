@@ -424,3 +424,10 @@ main{max-width:1180px;padding:0 24px 70px}
  main .rem-home-section .rem-book-card .rem-trailer-label{display:block!important;max-width:100%!important;font-size:10px!important;line-height:1.15!important;white-space:normal!important;overflow-wrap:break-word!important}
  main .rem-home-section .rem-book-card .rem-cover-save{min-width:30px!important;min-height:30px!important;width:30px!important;height:30px!important}
 }
+
+/* Compact inline trailer action in the Netflix-size mobile Home cards. */
+@media screen and (max-width:650px){
+ main .rem-home-section .rem-book-card .rem-trailer-trigger{display:flex!important;flex-direction:row!important;align-items:center!important;justify-content:center!important;gap:6px!important;min-height:35px!important;height:35px!important;margin-top:5px!important;padding:4px 2px!important;white-space:nowrap!important}
+ main .rem-home-section .rem-book-card .rem-trailer-play{flex:0 0 21px!important;width:21px!important;height:21px!important;font-size:9px!important;line-height:1!important}
+ main .rem-home-section .rem-book-card .rem-trailer-label{display:inline!important;width:auto!important;max-width:calc(100% - 29px)!important;font-size:10px!important;line-height:1!important;white-space:nowrap!important}
+}
