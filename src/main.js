@@ -1,7 +1,7 @@
 import {loadCatalog,loadChapter} from './catalog.js?v=pinocchio-121';
 import {loadEpisodeSegment} from './episode-segments.js?v=pinocchio-122';
 import {createCollectionsView} from './collections-view.js?v=rem-mint-108';
-import {readCollections,isBookSaved,saveBookToCollections,removeSavedBook} from './collections-store.js?v=rem-mint-103';
+import {readCollections,isBookSaved,saveBookToCollections,removeSavedBook,attachItem,detachItem} from './collections-store.js?v=rem-mint-103';
 import {showOnboarding,onboardingCompleted} from './onboarding.js?v=rem-ui-56';
 import {getProgress,saveProgress,getSetting,saveSetting} from './progress.js';
 import {el,button,panel,heading} from './ui.js';
@@ -177,7 +177,23 @@ function openHomeSaveSheet(book){const alreadySaved=isBookSaved(book.id);
  sheet.append(el('div',{className:'rem-save-book-info'},[el('div',{className:'rem-save-book-cover'},[cover(book)]),el('div',{},[el('strong',{text:book.title}),el('p',{text:book.author||''})])]));
  sheet.append(el('p',{className:'rem-save-hint',text:alreadySaved?'Questo libro è nella tua Biblioteca. Puoi rimuoverlo oppure organizzarlo nelle collezioni.':'Salva il libro nella tua Biblioteca e scegli, se vuoi, una o più collezioni.'}));
  if(!alreadySaved){const save=button('Salva nella Biblioteca',()=>{const db=readCollections();saveBookToCollections(book.id,db.items.filter(i=>i.type==='book'&&i.refId===book.id).map(i=>i.shelfId));refreshHomeSaveButtons();close()});save.className='rem-save-confirm';sheet.append(save)}
- const organize=button('+ Aggiungi alle collezioni',()=>{if(!isBookSaved(book.id)){const db=readCollections();saveBookToCollections(book.id,db.items.filter(i=>i.type==='book'&&i.refId===book.id).map(i=>i.shelfId));refreshHomeSaveButtons()}close();library('shelves',book.id)});organize.className='rem-save-collections';sheet.append(organize);
+ const db=readCollections();
+ if(db.shelves.length){
+  sheet.append(el('p',{className:'rem-save-shelves-label',text:'Le tue collezioni · tocca per aggiungere o togliere'}));
+  const list=el('div',{className:'rem-save-shelves'});
+  db.shelves.forEach(shelf=>{
+   const selected=()=>readCollections().items.some(i=>i.type==='book'&&i.refId===book.id&&i.shelfId===shelf.id);
+   const toggle=button('',()=>{
+    if(selected())detachItem(shelf.id,'book',book.id);
+    else{if(!isBookSaved(book.id))saveBookToCollections(book.id,[]);attachItem(shelf.id,'book',book.id)}
+    refreshHomeSaveButtons();draw();
+   });
+   const draw=()=>{const yes=selected();toggle.textContent=(yes?'✓  ':'+  ')+shelf.title;toggle.classList.toggle('is-selected',yes);toggle.setAttribute('aria-pressed',String(yes));toggle.setAttribute('aria-label',(yes?'Rimuovi da ':'Aggiungi a ')+shelf.title)};
+   toggle.className='rem-save-shelf-toggle';draw();list.append(toggle);
+  });
+  sheet.append(list);
+ }
+ const organize=button('+ Crea o gestisci collezioni',()=>{close();library('shelves',book.id)});organize.className='rem-save-collections';sheet.append(organize);
  if(alreadySaved){const remove=button('Rimuovi dalla Biblioteca',()=>{removeSavedBook(book.id);refreshHomeSaveButtons();close()});remove.className='rem-save-remove';sheet.append(remove)}
  overlay.append(sheet);document.body.append(overlay);top.querySelector('button')?.focus()}
 function home(){
@@ -187,7 +203,14 @@ function home(){
   const list=booksForHomeSection(section.id,books,getProgress,id=>getSetting('reading-path:'+id,''),id=>getSetting('episode-current:'+id,''));
   const cards=list.map(book=>{
    const image=el('div',{className:'rem-home-cover-wrap'},[cover(book)]);
-   if(book.coverImage&&book.author){const parts=book.author.trim().split(/\s+/);const first=parts.shift()||'';image.append(el('span',{className:'rem-cover-author-overlay'},[el('span',{text:first}),el('span',{text:parts.join(' ')})]));}
+   if(book.coverImage){
+    const title=el('div',{className:'rem-cover-title-overlay'},[
+     el('span',{className:'rem-cover-title-text',text:book.title}),
+     el('span',{className:'rem-cover-title-rule',attrs:{'aria-hidden':'true'}},[el('i'),el('b',{text:'◆'}),el('i')])
+    ]);
+    image.append(title);
+    if(book.author){const parts=book.author.trim().split(/\s+/);const first=parts.shift()||'';image.append(el('span',{className:'rem-cover-author-overlay'},[el('span',{text:first}),el('span',{text:parts.join(' ')})]));}
+   }
    const save=button(isBookSaved(book.id)?'✓':'+',()=>openHomeSaveSheet(book));
    save.className='rem-cover-save'+(isBookSaved(book.id)?' is-saved':'');
    save.dataset.bookId=String(book.id);save.dataset.bookTitle=book.title;
