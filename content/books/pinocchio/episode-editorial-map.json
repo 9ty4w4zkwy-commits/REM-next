@@ -1,0 +1,326 @@
+{
+  "version": 1,
+  "status": "editorial-draft",
+  "source": "https://it.wikisource.org/wiki/Le_avventure_di_Pinocchio",
+  "principle": "Original text must be contiguous; boundaries within chapters pending verified paragraph anchors. Do not publish this manifest as reader-ready.",
+  "seasons": [
+    {
+      "number": 1,
+      "title": "Un burattino fuori controllo",
+      "episodes": [
+        {
+          "id": "s1e1",
+          "title": "La voce nel legno",
+          "chapters": [
+            1
+          ],
+          "cutStatus": "needs-text-verified-boundary",
+          "estimatedMinutes": null
+        },
+        {
+          "id": "s1e2",
+          "title": "Un regalo per Geppetto",
+          "chapters": [
+            2
+          ],
+          "cutStatus": "needs-text-verified-boundary",
+          "estimatedMinutes": null
+        },
+        {
+          "id": "s1e3",
+          "title": "Nasce Pinocchio",
+          "chapters": [
+            3
+          ],
+          "cutStatus": "needs-text-verified-boundary",
+          "estimatedMinutes": null
+        },
+        {
+          "id": "s1e4",
+          "title": "Il Grillo parlante",
+          "chapters": [
+            4
+          ],
+          "cutStatus": "needs-text-verified-boundary",
+          "estimatedMinutes": null
+        },
+        {
+          "id": "s1e5",
+          "title": "Una fame da lupi",
+          "chapters": [
+            5,
+            6
+          ],
+          "cutStatus": "needs-text-verified-boundary",
+          "estimatedMinutes": null
+        },
+        {
+          "id": "s1e6",
+          "title": "Il sacrificio di Geppetto",
+          "chapters": [
+            7,
+            8
+          ],
+          "cutStatus": "needs-text-verified-boundary",
+          "estimatedMinutes": null
+        },
+        {
+          "id": "s1e7",
+          "title": "La tentazione del teatrino",
+          "chapters": [
+            9
+          ],
+          "cutStatus": "needs-text-verified-boundary",
+          "estimatedMinutes": null
+        },
+        {
+          "id": "s1e8",
+          "title": "Il fratello dei burattini",
+          "chapters": [
+            10
+          ],
+          "cutStatus": "needs-text-verified-boundary",
+          "estimatedMinutes": null
+        },
+        {
+          "id": "s1e9",
+          "title": "Davanti a Mangiafoco",
+          "chapters": [
+            11
+          ],
+          "cutStatus": "needs-text-verified-boundary",
+          "estimatedMinutes": null
+        },
+        {
+          "id": "s1e10",
+          "title": "Cinque monete d'oro",
+          "chapters": [
+            12
+          ],
+          "cutStatus": "needs-text-verified-boundary",
+          "estimatedMinutes": null
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "title": "La strada degli inganni",
+      "episodes": [
+        {
+          "id": "s2e1",
+          "title": "All'osteria del Gambero Rosso",
+          "chapters": [
+            13
+          ],
+          "cutStatus": "needs-text-verified-boundary",
+          "estimatedMinutes": null
+        },
+        {
+          "id": "s2e2",
+          "title": "Gli assassini",
+          "chapters": [
+            14
+          ],
+          "cutStatus": "needs-text-verified-boundary",
+          "estimatedMinutes": null
+        },
+        {
+          "id": "s2e3",
+          "title": "La Quercia grande",
+          "chapters": [
+            15
+          ],
+          "cutStatus": "needs-text-verified-boundary",
+          "estimatedMinutes": null
+        },
+        {
+          "id": "s2e4",
+          "title": "La Bambina dai capelli turchini",
+          "chapters": [
+            16
+          ],
+          "cutStatus": "needs-text-verified-boundary",
+          "estimatedMinutes": null
+        },
+        {
+          "id": "s2e5",
+          "title": "Le bugie hanno il naso lungo",
+          "chapters": [
+            17
+          ],
+          "cutStatus": "needs-text-verified-boundary",
+          "estimatedMinutes": null
+        },
+        {
+          "id": "s2e6",
+          "title": "Il Campo dei Miracoli",
+          "chapters": [
+            18
+          ],
+          "cutStatus": "needs-text-verified-boundary",
+          "estimatedMinutes": null
+        },
+        {
+          "id": "s2e7",
+          "title": "Derubato e punito",
+          "chapters": [
+            19
+          ],
+          "cutStatus": "needs-text-verified-boundary",
+          "estimatedMinutes": null
+        },
+        {
+          "id": "s2e8",
+          "title": "Il serpente e la tagliuola",
+          "chapters": [
+            20
+          ],
+          "cutStatus": "needs-text-verified-boundary",
+          "estimatedMinutes": null
+        },
+        {
+          "id": "s2e9",
+          "title": "Un cane da guardia",
+          "chapters": [
+            21,
+            22
+          ],
+          "cutStatus": "needs-text-verified-boundary",
+          "estimatedMinutes": null
+        },
+        {
+          "id": "s2e10",
+          "title": "Il mare e Geppetto",
+          "chapters": [
+            23
+          ],
+          "cutStatus": "needs-text-verified-boundary",
+          "estimatedMinutes": null
+        },
+        {
+          "id": "s2e11",
+          "title": "L'isola delle Api industriose",
+          "chapters": [
+            24
+          ],
+          "cutStatus": "needs-text-verified-boundary",
+          "estimatedMinutes": null
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "title": "La scelta di diventare grandi",
+      "episodes": [
+        {
+          "id": "s3e1",
+          "title": "Una promessa alla Fata",
+          "chapters": [
+            25
+          ],
+          "cutStatus": "needs-text-verified-boundary",
+          "estimatedMinutes": null
+        },
+        {
+          "id": "s3e2",
+          "title": "Il Pescecane",
+          "chapters": [
+            26
+          ],
+          "cutStatus": "needs-text-verified-boundary",
+          "estimatedMinutes": null
+        },
+        {
+          "id": "s3e3",
+          "title": "Una lite terribile",
+          "chapters": [
+            27
+          ],
+          "cutStatus": "needs-text-verified-boundary",
+          "estimatedMinutes": null
+        },
+        {
+          "id": "s3e4",
+          "title": "In padella",
+          "chapters": [
+            28
+          ],
+          "cutStatus": "needs-text-verified-boundary",
+          "estimatedMinutes": null
+        },
+        {
+          "id": "s3e5",
+          "title": "Domani sarai un ragazzo",
+          "chapters": [
+            29
+          ],
+          "cutStatus": "needs-text-verified-boundary",
+          "estimatedMinutes": null
+        },
+        {
+          "id": "s3e6",
+          "title": "L'invito di Lucignolo",
+          "chapters": [
+            30
+          ],
+          "cutStatus": "needs-text-verified-boundary",
+          "estimatedMinutes": null
+        },
+        {
+          "id": "s3e7",
+          "title": "Il Paese dei Balocchi",
+          "chapters": [
+            31
+          ],
+          "cutStatus": "needs-text-verified-boundary",
+          "estimatedMinutes": null
+        },
+        {
+          "id": "s3e8",
+          "title": "Le orecchie d'asino",
+          "chapters": [
+            32
+          ],
+          "cutStatus": "needs-text-verified-boundary",
+          "estimatedMinutes": null
+        },
+        {
+          "id": "s3e9",
+          "title": "Il circo",
+          "chapters": [
+            33
+          ],
+          "cutStatus": "needs-text-verified-boundary",
+          "estimatedMinutes": null
+        },
+        {
+          "id": "s3e10",
+          "title": "Di nuovo burattino",
+          "chapters": [
+            34
+          ],
+          "cutStatus": "needs-text-verified-boundary",
+          "estimatedMinutes": null
+        },
+        {
+          "id": "s3e11",
+          "title": "Nel ventre del Pescecane",
+          "chapters": [
+            35
+          ],
+          "cutStatus": "needs-text-verified-boundary",
+          "estimatedMinutes": null
+        },
+        {
+          "id": "s3e12",
+          "title": "Un ragazzo vero",
+          "chapters": [
+            36
+          ],
+          "cutStatus": "needs-text-verified-boundary",
+          "estimatedMinutes": null
+        }
+      ]
+    }
+  ]
+}
