@@ -183,6 +183,7 @@ function openHomeSaveSheet(book){const alreadySaved=isBookSaved(book.id);
 function home(){
  currentView='home';
  const featured=books.find(b=>b.id==='pinocchio')||books.find(b=>b.availability!=='preview')||books[0];
+ const intro=el('h1',{className:'rem-cinema-intro'},[document.createTextNode('La tua prossima storia '),el('span',{className:'mint-word',text:'ti aspetta.'})]);
  const hero=featured?el('section',{className:'rem-cinema-hero'},[
   el('div',{className:'rem-cinema-hero-art'},featured.coverImage?[el('img',{attrs:{src:featured.coverImage,alt:'',loading:'eager'}})]:[cover(featured)]),
   el('div',{className:'rem-cinema-hero-copy'},[
@@ -212,11 +213,11 @@ function home(){
    return el('article',{className:'rem-book-card rem-cinema-card'},[image,foot]);
   });
   return el('section',{className:'rem-home-section rem-cinema-section',attrs:{'data-section':section.id}},[
-   el('div',{className:'rem-section-heading'},[el('h2',{className:'rem-section-title',text:section.title})]),
+   el('div',{className:'rem-section-heading'},[el('h2',{className:'rem-section-title'},section.id==='recommended'?[document.createTextNode('Scelti per te '),el('span',{className:'rem-recommend-sparkle',text:'✦',attrs:{'aria-hidden':'true'}})]:[document.createTextNode(section.title)])]),
    ...(cards.length?[el('div',{className:'rem-book-grid'},cards)]:[para(section.empty,'rem-empty-section')])
   ]);
  };
- render(...(hero?[hero]:[]),...HOME_SECTIONS.map(shelf));
+ render(intro,...(hero?[hero]:[]),...HOME_SECTIONS.map(shelf));
 }
 function library(section='overview',bookId=null){currentView='library';render(createCollectionsView({books,openBook:detail,continueBook:readingEntry,isSavedBook:isBookSaved,coverBook:cover,back:home,initialSection:section,initialBookId:bookId}))}
 function detail(id){
