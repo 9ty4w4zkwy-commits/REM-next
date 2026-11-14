@@ -205,8 +205,7 @@ function home(){
    const image=el('div',{className:'rem-home-cover-wrap'},[cover(book)]);
    if(book.coverImage){
     const title=el('div',{className:'rem-cover-title-overlay'},[
-     el('span',{className:'rem-cover-title-text',text:book.title}),
-     el('span',{className:'rem-cover-title-rule',attrs:{'aria-hidden':'true'}},[el('i'),el('b',{text:'◆'}),el('i')])
+     el('span',{className:'rem-cover-title-text rem-cover-title-'+book.id,text:book.title})
     ]);
     image.append(title);
     if(book.author){const parts=book.author.trim().split(/\s+/);const first=parts.shift()||'';image.append(el('span',{className:'rem-cover-author-overlay'},[el('span',{text:first}),el('span',{text:parts.join(' ')})]));}
