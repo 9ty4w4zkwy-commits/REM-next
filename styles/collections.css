@@ -244,3 +244,17 @@
 .rem-saved-book-card>button{grid-column:1/-1;justify-self:stretch;width:100%;min-height:44px;white-space:normal}
 .rem-saved-book-info button{max-width:100%;white-space:normal}
 @media(max-width:360px){.rem-violet .rem-stats .rem-stat{min-height:205px;padding:14px 12px}.rem-violet .rem-stats .rem-stat-title{font-size:.95rem}.rem-violet .rem-stats .rem-stat-description{font-size:.7rem}.rem-saved-book-card{grid-template-columns:minmax(82px,34%) minmax(0,1fr);gap:11px}}
+
+/* REM Biblioteca: photographic editorial cards, no concentric-circle ornaments. */
+.rem-violet .rem-stats .rem-stat::before{display:none}
+.rem-violet .rem-stats .rem-stat{background-size:cover;background-position:center;background-repeat:no-repeat;border-color:#3a8874;min-height:220px}
+.rem-violet .rem-stats .rem-stat-books{background-image:linear-gradient(90deg,rgba(7,43,39,.96) 0%,rgba(7,43,39,.78) 51%,rgba(7,43,39,.34) 100%),url('https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=640&q=75')}
+.rem-violet .rem-stats .rem-stat-shelves{background-image:linear-gradient(90deg,rgba(6,48,53,.96) 0%,rgba(6,48,53,.77) 51%,rgba(6,48,53,.35) 100%),url('https://images.unsplash.com/photo-1512820790803-83ca734da794?w=640&q=75')}
+.rem-violet .rem-stats .rem-stat-reflections{background-image:linear-gradient(90deg,rgba(12,35,58,.96) 0%,rgba(12,35,58,.78) 53%,rgba(12,35,58,.38) 100%),url('https://images.unsplash.com/photo-1455390582262-044cdead277a?w=640&q=75')}
+.rem-violet .rem-stats .rem-stat-words{background-image:linear-gradient(90deg,rgba(9,46,45,.96) 0%,rgba(9,46,45,.77) 52%,rgba(9,46,45,.38) 100%),url('https://images.unsplash.com/photo-1476275466078-4007374efbbe?w=640&q=75')}
+.rem-violet .rem-stats .rem-stat-number{position:relative;z-index:1;text-shadow:0 2px 10px #001d1d55}
+.rem-violet .rem-stats .rem-stat-title,.rem-violet .rem-stats .rem-stat-description{position:relative;z-index:1;text-shadow:0 2px 9px #001b1dbb}
+.rem-violet .rem-visibility-control{display:inline-flex!important;align-items:center!important;justify-content:center!important;min-width:44px!important;min-height:44px!important;width:44px;height:44px;padding:0!important;background:#1b3d3d!important;border:1px solid #3e796c!important;color:#a7f4d3!important;border-radius:14px!important;box-shadow:none!important;line-height:1!important}
+.rem-violet .rem-visibility-control .rem-visibility-icon{display:inline-flex;align-items:center;justify-content:center}
+.rem-violet .rem-visibility-control svg{display:block;width:23px;height:23px}
+.rem-violet .rem-visibility-control:focus-visible{outline:3px solid #a7f4d3!important;outline-offset:3px}
