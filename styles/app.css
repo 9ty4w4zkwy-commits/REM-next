@@ -582,3 +582,37 @@ main .rem-cinema-section .rem-cover-author-overlay{
  main .rem-cinema-section .rem-book-grid{gap:2px!important;column-gap:2px!important}
  main .rem-cinema-section .rem-book-card{flex:0 0 calc((100vw - 73px)/3)!important;width:calc((100vw - 73px)/3)!important}
 }
+
+
+/* Unified cinematic card system for every Home section, matching "Scelti per te". */
+main .rem-home-section.rem-cinema-section .rem-book-grid{
+ display:flex!important;flex-wrap:nowrap!important;align-items:stretch!important;
+ gap:2px!important;column-gap:2px!important;grid-template-columns:none!important;
+ overflow-x:auto!important;overflow-y:hidden!important;scroll-snap-type:x proximity!important;
+ padding:4px 18px 10px 2px!important;margin-right:-18px!important;
+}
+main .rem-home-section.rem-cinema-section .rem-book-card{
+ box-sizing:border-box!important;flex:0 0 calc((100vw - 73px)/3)!important;
+ width:calc((100vw - 73px)/3)!important;min-width:0!important;max-width:none!important;
+ padding:0!important;margin:0!important;gap:0!important;
+ border:0!important;background:transparent!important;box-shadow:none!important;
+ scroll-snap-align:start!important;
+}
+main .rem-home-section.rem-cinema-section .rem-home-cover-wrap{
+ position:relative!important;width:100%!important;height:auto!important;aspect-ratio:2/3!important;
+ overflow:hidden!important;border-radius:12px!important;
+}
+main .rem-home-section.rem-cinema-section .rem-home-cover-wrap .cover{
+ position:absolute!important;inset:0!important;width:100%!important;height:100%!important;
+ min-height:0!important;max-height:none!important;aspect-ratio:2/3!important;
+ padding:0!important;border-radius:12px!important;overflow:hidden!important;
+}
+main .rem-home-section.rem-cinema-section .rem-home-cover-wrap .cover-photo{
+ display:block!important;width:100%!important;height:100%!important;object-fit:cover!important;
+}
+main .rem-home-section.rem-cinema-section .rem-cinema-card-foot{
+ min-height:58px!important;padding:7px 2px 0!important;
+}
+main .rem-home-section.rem-cinema-section .rem-cinema-card-foot strong{
+ display:block!important;font-size:12px!important;line-height:1.2!important;min-height:0!important;
+}
