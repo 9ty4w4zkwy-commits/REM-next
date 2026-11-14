@@ -175,10 +175,10 @@ function openHomeSaveSheet(book){const alreadySaved=isBookSaved(book.id);
  overlay.addEventListener('click',e=>{if(e.target===overlay)close()});
  const top=el('div',{className:'rem-save-sheet-top'},[el('h2',{text:alreadySaved?'Organizza il libro':'Salva nella Biblioteca'}),button('✕',close)]);sheet.append(top);
  sheet.append(el('div',{className:'rem-save-book-info'},[el('div',{className:'rem-save-book-cover'},[cover(book)]),el('div',{},[el('strong',{text:book.title}),el('p',{text:book.author||''})])]));
- sheet.append(el('p',{className:'rem-save-hint',text:'Salva il libro nella tua Biblioteca e scegli, se vuoi, una o più collezioni.'}));
+ sheet.append(el('p',{className:'rem-save-hint',text:alreadySaved?'Questo libro è nella tua Biblioteca. Puoi rimuoverlo oppure organizzarlo nelle collezioni.':'Salva il libro nella tua Biblioteca e scegli, se vuoi, una o più collezioni.'}));
  if(!alreadySaved){const save=button('Salva nella Biblioteca',()=>{const db=readCollections();saveBookToCollections(book.id,db.items.filter(i=>i.type==='book'&&i.refId===book.id).map(i=>i.shelfId));refreshHomeSaveButtons();close()});save.className='rem-save-confirm';sheet.append(save)}
  const organize=button('+ Aggiungi alle collezioni',()=>{if(!isBookSaved(book.id)){const db=readCollections();saveBookToCollections(book.id,db.items.filter(i=>i.type==='book'&&i.refId===book.id).map(i=>i.shelfId));refreshHomeSaveButtons()}close();library('shelves',book.id)});organize.className='rem-save-collections';sheet.append(organize);
- if(alreadySaved){const remove=button('Rimuovi dalla Biblioteca',()=>{if(!confirm('Rimuovere questo libro dalla Biblioteca e dalle collezioni?'))return;removeSavedBook(book.id);refreshHomeSaveButtons();close()});remove.className='rem-save-remove';sheet.append(remove)}
+ if(alreadySaved){const remove=button('Rimuovi dalla Biblioteca',()=>{removeSavedBook(book.id);refreshHomeSaveButtons();close()});remove.className='rem-save-remove';sheet.append(remove)}
  overlay.append(sheet);document.body.append(overlay);top.querySelector('button')?.focus()}
 function home(){
  currentView='home';
