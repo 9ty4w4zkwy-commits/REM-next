@@ -309,3 +309,13 @@
  linear-gradient(90deg,rgba(5,47,45,.90) 0%,rgba(5,48,46,.72) 48%,rgba(5,49,46,.47) 100%),
  url('https://images.unsplash.com/photo-1491841550275-ad7854e35ca6?w=900&q=82') center center/cover no-repeat!important;
 }
+
+/* Parole che restano: open book in warm light, without outdoor silhouettes. */
+.rem-violet .rem-stats .rem-stat-words{
+ background-image:
+ linear-gradient(90deg,rgba(4,44,43,.92) 0%,rgba(4,44,43,.69) 46%,rgba(4,44,43,.30) 100%),
+ url('https://images.unsplash.com/photo-1516979187457-637abb4f9353?w=900&q=85')!important;
+ background-position:center center,center center!important;
+ background-size:cover!important;
+ background-repeat:no-repeat!important;
+}
