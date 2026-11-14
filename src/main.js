@@ -182,17 +182,7 @@ function openHomeSaveSheet(book){const alreadySaved=isBookSaved(book.id);
  overlay.append(sheet);document.body.append(overlay);top.querySelector('button')?.focus()}
 function home(){
  currentView='home';
- const featured=books.find(b=>b.id==='pinocchio')||books.find(b=>b.availability!=='preview')||books[0];
  const intro=el('h1',{className:'rem-cinema-intro'},[document.createTextNode('La tua prossima storia '),el('span',{className:'mint-word',text:'ti aspetta.'})]);
- const hero=featured?el('section',{className:'rem-cinema-hero'},[
-  el('div',{className:'rem-cinema-hero-art'},featured.coverImage?[el('img',{attrs:{src:featured.coverImage,alt:'',loading:'eager'}})]:[cover(featured)]),
-  el('div',{className:'rem-cinema-hero-copy'},[
-   el('p',{className:'eyebrow',text:'IL CONSIGLIO DI REM'}),
-   el('h1',{text:featured.title}),
-   para(featured.author||'','rem-cinema-hero-author'),
-   button('Scopri il libro',()=>detail(featured.id),true)
-  ])
- ]):null;
  const shelf=section=>{
   const list=booksForHomeSection(section.id,books,getProgress,id=>getSetting('reading-path:'+id,''),id=>getSetting('episode-current:'+id,''));
   const cards=list.map(book=>{
@@ -208,6 +198,7 @@ function home(){
    const progress=getProgress(book.id);
    const foot=el('div',{className:'rem-cinema-card-foot'},[
     el('strong',{text:book.title}),
+    el('span',{className:'rem-cinema-card-author',text:book.author||''}),
     ...(section.id==='continue'&&progress?[el('span',{text:'Riprendi la storia'})]:[])
    ]);
    return el('article',{className:'rem-book-card rem-cinema-card'},[image,foot]);
@@ -217,7 +208,7 @@ function home(){
    ...(cards.length?[el('div',{className:'rem-book-grid'},cards)]:[para(section.empty,'rem-empty-section')])
   ]);
  };
- render(intro,...(hero?[hero]:[]),...HOME_SECTIONS.map(shelf));
+ render(intro,...HOME_SECTIONS.map(shelf));
 }
 function library(section='overview',bookId=null){currentView='library';render(createCollectionsView({books,openBook:detail,continueBook:readingEntry,isSavedBook:isBookSaved,coverBook:cover,back:home,initialSection:section,initialBookId:bookId}))}
 function detail(id){
