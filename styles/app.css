@@ -676,3 +676,14 @@ main .rem-home-section.rem-cinema-section .rem-cover-author-overlay{
  background:linear-gradient(180deg,#07121ff5 0%,#07121fee 76%,#07121f00 100%)!important;
 }
 main .rem-home-section.rem-cinema-section .rem-cover-author-overlay>span{display:block!important;width:100%!important;text-align:center!important;white-space:nowrap!important;}
+
+/* v147: eliminate inherited button rings and pseudo-element circles. */
+main .rem-home-section.rem-cinema-section .rem-cover-save{
+ appearance:none!important;-webkit-appearance:none!important;
+ box-shadow:none!important;outline:none!important;text-shadow:none!important;
+ background-image:none!important;transform:none!important;
+ border:1px solid rgba(255,255,255,.45)!important;
+ background-color:rgba(7,20,30,.4)!important;
+}
+main .rem-home-section.rem-cinema-section .rem-cover-save::before,
+main .rem-home-section.rem-cinema-section .rem-cover-save::after{content:none!important;display:none!important;}
