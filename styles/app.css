@@ -687,3 +687,21 @@ main .rem-home-section.rem-cinema-section .rem-cover-save{
 }
 main .rem-home-section.rem-cinema-section .rem-cover-save::before,
 main .rem-home-section.rem-cinema-section .rem-cover-save::after{content:none!important;display:none!important;}
+
+
+/* v148: subtle 19px save control, mint checked state, touchable on iPhone. */
+main .rem-home-section.rem-cinema-section .rem-cover-save{
+ top:auto!important;left:auto!important;right:5px!important;bottom:5px!important;
+ width:19px!important;min-width:19px!important;max-width:19px!important;
+ height:19px!important;min-height:19px!important;max-height:19px!important;
+ aspect-ratio:1!important;border-radius:50%!important;
+ border:1px solid rgba(255,255,255,.55)!important;
+ background:rgba(5,17,25,.35)!important;color:#f5faf8!important;
+ font-size:13px!important;font-weight:500!important;
+ box-shadow:none!important;padding:0!important;z-index:20!important;
+ -webkit-tap-highlight-color:transparent!important;
+}
+main .rem-home-section.rem-cinema-section .rem-cover-save.is-saved{
+ color:#66e4b1!important;border-color:rgba(102,228,177,.75)!important;
+ background:rgba(5,28,27,.45)!important;
+}
