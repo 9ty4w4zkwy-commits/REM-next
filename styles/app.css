@@ -451,3 +451,26 @@ main{max-width:1180px;padding:0 24px 70px}
   color:#fff!important;font-size:10px!important;font-weight:650!important;
  }
 }
+
+/* Trailer: separate circular play and adjacent text, no enclosing pill. */
+@media screen and (max-width:650px){
+ main .rem-home-section .rem-book-card .rem-trailer-trigger{
+  display:flex!important;flex-direction:row!important;justify-content:center!important;align-items:center!important;
+  gap:6px!important;width:100%!important;max-width:100%!important;
+  height:34px!important;min-height:34px!important;margin:5px 0 2px!important;
+  padding:3px 0!important;background:transparent!important;border:0!important;
+  border-radius:0!important;box-shadow:none!important;color:#91b5d0!important;
+ }
+ main .rem-home-section .rem-book-card .rem-trailer-play{
+  display:inline-flex!important;align-items:center!important;justify-content:center!important;
+  flex:0 0 23px!important;width:23px!important;height:23px!important;
+  border:1px solid rgba(151,189,211,.75)!important;border-radius:50%!important;
+  background:rgba(91,141,169,.18)!important;color:#91b5d0!important;
+  font-size:10px!important;line-height:1!important;padding-left:2px!important;box-shadow:none!important;
+ }
+ main .rem-home-section .rem-book-card .rem-trailer-label{
+  display:inline!important;width:auto!important;max-width:none!important;
+  color:#91b5d0!important;font-size:11px!important;font-weight:650!important;
+  line-height:1!important;white-space:nowrap!important;
+ }
+}
