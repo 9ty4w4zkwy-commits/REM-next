@@ -633,3 +633,27 @@ main .rem-home-section.rem-cinema-section{margin-bottom:22px!important;}
   width:calc((100vw - 46px)/3)!important;
  }
 }
+
+
+/* v144: slender, taller-looking covers; fourth cover peeks in from right. */
+@media(max-width:650px){
+ main .rem-home-section.rem-cinema-section .rem-book-grid{
+  gap:4px!important;column-gap:4px!important;
+ }
+ main .rem-home-section.rem-cinema-section .rem-book-card{
+  flex:0 0 calc((100vw - 82px)/3)!important;
+  width:calc((100vw - 82px)/3)!important;
+ }
+ main .rem-home-section.rem-cinema-section .rem-home-cover-wrap,
+ main .rem-home-section.rem-cinema-section .rem-home-cover-wrap .cover{
+  aspect-ratio:0.62!important;
+ }
+ main .rem-home-section.rem-cinema-section .rem-cover-save{
+  top:auto!important;left:auto!important;right:5px!important;bottom:5px!important;
+  width:23px!important;height:23px!important;min-height:23px!important;
+  padding:0!important;border-radius:50%!important;
+  background:rgba(5,16,25,.38)!important;border:1px solid rgba(255,255,255,.52)!important;
+  color:rgba(255,255,255,.88)!important;font-size:16px!important;font-weight:400!important;
+  line-height:1!important;backdrop-filter:blur(3px)!important;
+ }
+}
