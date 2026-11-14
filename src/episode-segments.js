@@ -7,7 +7,7 @@ export function episodeUnits(book){
 }
 export function segmentRange(content,part=0,parts=1){
  if(parts===1)return {start:0,end:content.length};
- const breaks=[0];const re=/\\n\\n/g;let match;
+ const breaks=[0];const re=/\n\n/g;let match;
  while((match=re.exec(content)))breaks.push(match.index+2);
  breaks.push(content.length);
  const edges=[0];
