@@ -196,10 +196,7 @@ function home(){
    const open=button('Apri '+book.title,()=>detail(book.id));
    open.className='rem-cinema-cover-open';open.setAttribute('aria-label','Scopri '+book.title);
    image.append(open);
-   const foot=el('div',{className:'rem-cinema-card-foot'},[
-    el('strong',{text:book.title})
-   ]);
-   return el('article',{className:'rem-book-card rem-cinema-card'},[image,foot]);
+   return el('article',{className:'rem-book-card rem-cinema-card',attrs:{'aria-label':book.title+' — '+(book.author||'')}},[image]);
   });
   return el('section',{className:'rem-home-section rem-cinema-section',attrs:{'data-section':section.id}},[
    el('div',{className:'rem-section-heading'},[el('h2',{className:'rem-section-title'},section.id==='recommended'?[document.createTextNode('Scelti per te '),el('span',{className:'rem-recommend-sparkle',text:'✦',attrs:{'aria-hidden':'true'}})]:[document.createTextNode(section.title)])]),
