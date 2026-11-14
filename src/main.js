@@ -1,4 +1,4 @@
-import {loadCatalog,loadChapter} from './catalog.js';
+import {loadCatalog,loadChapter} from './catalog.js?v=pinocchio-121';
 import {createCollectionsView} from './collections-view.js?v=rem-mint-108';
 import {readCollections,isBookSaved,saveBookToCollections,removeSavedBook} from './collections-store.js?v=rem-mint-103';
 import {showOnboarding,onboardingCompleted} from './onboarding.js?v=rem-ui-56';
