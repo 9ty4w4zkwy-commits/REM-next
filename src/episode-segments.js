@@ -14,7 +14,9 @@ export function segmentRange(content,part=0,parts=1){
  for(let i=1;i<parts;i++){
   const goal=content.length*i/parts;
   const options=breaks.filter(v=>v>edges[i-1]+80&&v<content.length-80);
-  edges.push(options.length?options.reduce((a,b)=>Math.abs(a-goal)<Math.abs(b-goal)?a:b):Math.round(goal));
+  const sentences=[...content.matchAll(/[.!?…][”»\"']?\\s+/g)].map(m=>m.index+m[0].length).filter(v=>v>edges[i-1]+80&&v<content.length-80);
+  const candidates=options.length?options:sentences;
+  edges.push(candidates.length?candidates.reduce((a,b)=>Math.abs(a-goal)<Math.abs(b-goal)?a:b):Math.round(goal));
  }
  edges.push(content.length);
  return {start:edges[part],end:edges[part+1]};
