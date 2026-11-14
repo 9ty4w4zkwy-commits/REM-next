@@ -262,3 +262,10 @@
 /* Same headline typography as REM Home, including the mint final word. */
 .rem-violet .rem-violet-hero h1.rem-library-title{font-family:Georgia,'Times New Roman',serif;font-style:normal;font-weight:800;font-size:clamp(2.6rem,6.6vw,5.3rem);line-height:1.08;letter-spacing:-.045em;max-width:820px;margin:14px 0 24px;color:#f8f4fc}
 .rem-violet .rem-violet-hero h1.rem-library-title .mint-word{color:#65dbaa}
+
+/* Obscure any readable text on book spines in the Collezioni illustration. */
+.rem-violet .rem-stats .rem-stat-shelves::after{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;backdrop-filter:blur(11px);-webkit-backdrop-filter:blur(11px);background:linear-gradient(90deg,rgba(5,47,49,.35),rgba(5,47,49,.15))}
+.rem-violet .rem-stats .rem-stat-shelves .rem-stat-number,.rem-violet .rem-stats .rem-stat-shelves .rem-stat-title,.rem-violet .rem-stats .rem-stat-shelves .rem-stat-description{z-index:1}
+.rem-saved-book-actions{grid-column:1/-1;display:flex;flex-direction:column;gap:9px;width:100%;min-width:0}
+.rem-violet .rem-saved-book-actions button{width:100%;min-height:43px;margin:0;white-space:normal;text-align:center}
+.rem-violet .rem-saved-book-actions .rem-saved-remove{background:transparent;color:#c9d9d6;border:1px solid #466369;font-size:.86rem}
