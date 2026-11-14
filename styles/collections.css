@@ -263,28 +263,35 @@
 .rem-violet .rem-violet-hero h1.rem-library-title{font-family:Georgia,'Times New Roman',serif;font-style:normal;font-weight:800;font-size:clamp(2.6rem,6.6vw,5.3rem);line-height:1.08;letter-spacing:-.045em;max-width:820px;margin:14px 0 24px;color:#f8f4fc}
 .rem-violet .rem-violet-hero h1.rem-library-title .mint-word{color:#65dbaa}
 
-/* Obscure any readable text on book spines in the Collezioni illustration. */
-.rem-violet .rem-stats .rem-stat-shelves::after{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;backdrop-filter:blur(11px);-webkit-backdrop-filter:blur(11px);background:linear-gradient(90deg,rgba(5,47,49,.35),rgba(5,47,49,.15))}
-.rem-violet .rem-stats .rem-stat-shelves .rem-stat-number,.rem-violet .rem-stats .rem-stat-shelves .rem-stat-title,.rem-violet .rem-stats .rem-stat-shelves .rem-stat-description{z-index:1}
 .rem-saved-book-actions{grid-column:1/-1;display:flex;flex-direction:column;gap:9px;width:100%;min-width:0}
 .rem-violet .rem-saved-book-actions button{width:100%;min-height:43px;margin:0;white-space:normal;text-align:center}
 .rem-violet .rem-saved-book-actions .rem-saved-remove{background:transparent;color:#c9d9d6;border:1px solid #466369;font-size:.86rem}
-
-/* Collezioni: text-free book spines drawn in CSS; no readable book titles. */
-.rem-violet .rem-stats .rem-stat-shelves{background-image:linear-gradient(110deg,rgba(6,44,48,.98),rgba(6,44,48,.70)),linear-gradient(145deg,#10484b,#092b37)!important}
-.rem-violet .rem-stats .rem-stat-shelves::after{content:"";position:absolute;inset:auto 7% 16% auto;width:49%;height:69%;z-index:0;pointer-events:none;backdrop-filter:none;-webkit-backdrop-filter:none;opacity:.66;border-radius:3px;background:linear-gradient(90deg,transparent 0 5%,#658f79 5% 17%,#284c52 17% 20%,#a58e71 20% 33%,#1b3c49 33% 37%,#537d78 37% 49%,#193c43 49% 53%,#b08b6e 53% 65%,#29434e 65% 69%,#638879 69% 82%,#1e4850 82% 86%,#947e6e 86% 96%,transparent 96%);box-shadow:0 11px 16px #001b2270;transform:perspective(320px) rotateY(-8deg)}
-.rem-violet .rem-stats .rem-stat-shelves .rem-stat-number,.rem-violet .rem-stats .rem-stat-shelves .rem-stat-title,.rem-violet .rem-stats .rem-stat-shelves .rem-stat-description{z-index:1}
-
-/* Crisp, legible text-free book-spine artwork — no photographic blur. */
-.rem-violet .rem-stats .rem-stat-shelves{background:#123f43!important}
-.rem-violet .rem-stats .rem-stat-shelves::after{content:"";display:block!important;position:absolute;top:10%;right:5%;bottom:12%;left:31%;width:auto;height:auto;opacity:1;filter:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;transform:none;border-radius:4px;background:linear-gradient(90deg,#b8a483 0 12%,#e0d4b9 12% 14%,#294d59 14% 31%,#7fa7a2 31% 33%,#ad755e 33% 46%,#e0b29a 46% 48%,#49777a 48% 66%,#a4c5b5 66% 68%,#c6a87d 68% 84%,#e5d6af 84% 86%,#30505a 86% 100%);box-shadow:0 15px 22px #001b2070;z-index:0}
-.rem-violet .rem-stats .rem-stat-shelves::before{display:block!important;content:"";position:absolute;inset:0;z-index:1;pointer-events:none;border:0;border-radius:0;transform:none;box-shadow:none;background:linear-gradient(90deg,rgba(5,41,43,.90) 0%,rgba(5,41,43,.52) 46%,rgba(5,41,43,.12) 100%)}
-.rem-violet .rem-stats .rem-stat-shelves .rem-stat-number,.rem-violet .rem-stats .rem-stat-shelves .rem-stat-title,.rem-violet .rem-stats .rem-stat-shelves .rem-stat-description{z-index:2}
-
-/* Simple neutral bookcase: two wooden shelves with untitled books, no blur. */
-.rem-violet .rem-stats .rem-stat-shelves{background:linear-gradient(135deg,#0b3539,#174b48)!important}
-.rem-violet .rem-stats .rem-stat-shelves::after{display:block!important;content:"";position:absolute;inset:10% 7% 17% 34%;width:auto;height:auto;opacity:.8;transform:none;filter:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;border-radius:2px;box-shadow:none;z-index:0;background:
- linear-gradient(0deg,transparent 0 4%,#987e5c 4% 8%,#493d32 8% 10%,transparent 10% 52%,#987e5c 52% 56%,#493d32 56% 58%,transparent 58%),
- repeating-linear-gradient(90deg,#b7a88d 0 10px,#e2d6b9 10px 12px,#48666a 12px 24px,#304d53 24px 26px,#a88b73 26px 36px,#d7bba1 36px 38px,#56746e 38px 52px,#315356 52px 54px);
+/* Collezioni: quiet row of matching, untitled clothbound books.
+   No shelves, no printed lettering, no blur; preserve the editorial dark overlay. */
+.rem-violet .rem-stats .rem-stat-shelves{
+ background:linear-gradient(135deg,#0c3737 0%,#164e4b 100%)!important;
+ isolation:isolate;
 }
-.rem-violet .rem-stats .rem-stat-shelves::before{display:block!important;content:"";position:absolute;inset:0;z-index:1;pointer-events:none;transform:none;border:0;box-shadow:none;background:linear-gradient(90deg,rgba(6,42,43,.83),rgba(6,42,43,.16))}
+.rem-violet .rem-stats .rem-stat-shelves::after{
+ content:"";display:block!important;position:absolute;
+ top:13%;right:7%;bottom:14%;left:29%;width:auto;height:auto;
+ opacity:.94;filter:none!important;backdrop-filter:none!important;
+ -webkit-backdrop-filter:none!important;transform:none!important;
+ border-radius:3px;z-index:0;pointer-events:none;
+ background:
+  linear-gradient(180deg,rgba(255,255,255,.24),transparent 14%,transparent 78%,rgba(0,0,0,.21)),
+  repeating-linear-gradient(90deg,
+   #b7aa91 0 3px,#d6cbb7 3px 20px,#9e927e 20px 23px,
+   #667c79 23px 26px,#819b94 26px 45px,#526b68 45px 48px,
+   #c4a98e 48px 51px,#d8bfa4 51px 70px,#a88e76 70px 73px,
+   #627f86 73px 76px,#819ba1 76px 96px,#4a6870 96px 99px);
+ box-shadow:8px 12px 24px rgba(0,19,23,.27);
+}
+.rem-violet .rem-stats .rem-stat-shelves::before{
+ content:"";display:block!important;position:absolute;inset:0;z-index:1;
+ pointer-events:none;border:0;transform:none!important;box-shadow:none;
+ background:linear-gradient(90deg,rgba(5,43,43,.83),rgba(5,43,43,.28) 65%,rgba(5,43,43,.12));
+}
+.rem-violet .rem-stats .rem-stat-shelves .rem-stat-number,
+.rem-violet .rem-stats .rem-stat-shelves .rem-stat-title,
+.rem-violet .rem-stats .rem-stat-shelves .rem-stat-description{position:relative;z-index:2}
