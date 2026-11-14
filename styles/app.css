@@ -666,3 +666,13 @@ main .rem-home-section.rem-cinema-section .rem-cover-save{
  height:23px!important;min-height:23px!important;max-height:23px!important;
  border-radius:50%!important;padding:0!important;line-height:1!important;
 }
+
+/* v146: consistent centered first-name / surname typography inside illustrated covers. */
+main .rem-home-section.rem-cinema-section .rem-cover-author-overlay{
+ display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;
+ height:17%!important;padding:3px 3px 8px!important;gap:0!important;
+ font-size:clamp(9px,2.35vw,12px)!important;line-height:1.12!important;
+ letter-spacing:.07em!important;font-weight:650!important;
+ background:linear-gradient(180deg,#07121ff5 0%,#07121fee 76%,#07121f00 100%)!important;
+}
+main .rem-home-section.rem-cinema-section .rem-cover-author-overlay>span{display:block!important;width:100%!important;text-align:center!important;white-space:nowrap!important;}
