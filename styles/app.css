@@ -405,3 +405,22 @@ main{max-width:1180px;padding:0 24px 70px}
 /* Evidenzia la sezione di navigazione corrente anche all'apertura della Home. */
 .top nav button.is-active{background:#58d6a6;color:#102438;border-color:#58d6a6}
 
+
+/* REM mobile Home: compact Netflix-style rails with complete, contained controls. */
+@media screen and (max-width:650px){
+ main .rem-home-section{margin:12px 0 22px!important;min-width:0;overflow:hidden}
+ main .rem-home-section .rem-section-heading{margin:0 0 9px!important}
+ main .rem-home-section .rem-section-title{margin:0!important;line-height:1.14!important}
+ main .rem-home-section .rem-shelf-subtitle{margin:3px 0 9px!important}
+ main .rem-home-section .rem-book-grid{display:flex!important;flex-wrap:nowrap!important;align-items:stretch!important;gap:9px!important;grid-template-columns:none!important;overflow-x:auto!important;overflow-y:hidden!important;scroll-snap-type:x proximity!important;padding:2px 18px 8px 2px!important;margin-right:-16px!important}
+ main .rem-home-section .rem-book-grid>.rem-book-card{box-sizing:border-box!important;flex:0 0 calc((100vw - 50px)/3.42)!important;width:calc((100vw - 50px)/3.42)!important;max-width:none!important;min-width:0!important;padding:5px!important;border-radius:12px!important;gap:0!important;scroll-snap-align:start}
+ main .rem-home-section .rem-book-card .cover{width:100%!important;height:auto!important;min-height:0!important;max-height:none!important;aspect-ratio:2/3!important;padding:0!important;border-radius:8px!important}
+ main .rem-home-section .rem-book-card h3{font-size:11px!important;line-height:1.2!important;min-height:2.4em!important;margin:7px 0 4px!important;overflow-wrap:anywhere!important}
+ main .rem-home-section .rem-book-card .rem-card-subtitle{font-size:10px!important;line-height:1.2!important;margin:0 0 8px!important;min-height:2.4em!important}
+ main .rem-home-section .rem-book-card .home-reading-label{font-size:9px!important}
+ main .rem-home-section .rem-book-card .primary{min-height:34px!important;padding:5px 2px!important;font-size:10px!important;line-height:1.2!important;border-radius:8px!important;white-space:normal!important}
+ main .rem-home-section .rem-book-card .rem-trailer-trigger{box-sizing:border-box!important;display:flex!important;flex-direction:column!important;justify-content:center!important;align-items:center!important;gap:4px!important;width:100%!important;min-width:0!important;max-width:100%!important;min-height:54px!important;margin-top:7px!important;padding:7px 2px 2px!important;white-space:normal!important;text-align:center!important;overflow:hidden!important}
+ main .rem-home-section .rem-book-card .rem-trailer-play{flex:0 0 26px!important;width:26px!important;height:26px!important;font-size:11px!important;padding-left:1px!important}
+ main .rem-home-section .rem-book-card .rem-trailer-label{display:block!important;max-width:100%!important;font-size:10px!important;line-height:1.15!important;white-space:normal!important;overflow-wrap:break-word!important}
+ main .rem-home-section .rem-book-card .rem-cover-save{min-width:30px!important;min-height:30px!important;width:30px!important;height:30px!important}
+}
