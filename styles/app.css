@@ -785,22 +785,6 @@ main .rem-home-section.rem-cinema-section .rem-cover-title-libro-demo{
 }
 
 
-/* v152: conceal the author credit printed at the top of original cover art.
-   The standardized author credit at the bottom remains visible. */
-main .rem-home-section.rem-cinema-section .rem-home-cover-wrap:has(.cover-photo)::before{
- content:""!important;display:block!important;position:absolute!important;
- top:0!important;left:0!important;right:0!important;height:12%!important;
- z-index:2!important;pointer-events:none!important;
- background:linear-gradient(to bottom,#081824 0%,#081824 65%,rgba(8,24,36,0) 100%)!important;
- border-radius:12px 12px 0 0!important;
-}
-main .rem-home-section.rem-cinema-section .rem-home-cover-wrap:has(.cover-photo[src*="alice"])::before{
- background:linear-gradient(to bottom,#071c18 0%,#071c18 65%,rgba(7,28,24,0) 100%)!important;
-}
-main .rem-home-section.rem-cinema-section .rem-home-cover-wrap:has(.cover-photo[src*="pinocchio"])::before{
- background:linear-gradient(to bottom,#0b141a 0%,#0b141a 65%,rgba(11,20,26,0) 100%)!important;
-}
-
 /* v153: show original upper author credit; never duplicate it at bottom. */
 main .rem-home-section.rem-cinema-section .rem-home-cover-wrap::before{content:none!important;display:none!important;}
 main .rem-home-section.rem-cinema-section .rem-cover-author-overlay{display:none!important;}
