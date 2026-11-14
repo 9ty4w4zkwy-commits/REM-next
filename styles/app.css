@@ -474,3 +474,11 @@ main{max-width:1180px;padding:0 24px 70px}
   line-height:1!important;white-space:nowrap!important;
  }
 }
+
+/* Home shelves: keep author close to discovery action; no spacer labels. */
+main .rem-home-section .rem-book-card .rem-card-subtitle{flex:0 0 auto!important;margin-bottom:9px!important;}
+main .rem-home-section .rem-book-card .primary{margin-top:0!important;}
+@media screen and (max-width:650px){
+ main .rem-home-section .rem-book-card .rem-card-subtitle{flex:0 0 auto!important;min-height:2.4em!important;margin-bottom:7px!important;}
+ main .rem-home-section .rem-book-card .primary{margin-top:0!important;}
+}
