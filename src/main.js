@@ -196,10 +196,8 @@ function home(){
    const open=button('Apri '+book.title,()=>detail(book.id));
    open.className='rem-cinema-cover-open';open.setAttribute('aria-label','Scopri '+book.title);
    image.append(open);
-   const progress=getProgress(book.id);
    const foot=el('div',{className:'rem-cinema-card-foot'},[
-    el('strong',{text:book.title}),
-    ...(section.id==='continue'&&progress?[el('span',{text:'Riprendi la storia'})]:[])
+    el('strong',{text:book.title})
    ]);
    return el('article',{className:'rem-book-card rem-cinema-card'},[image,foot]);
   });
