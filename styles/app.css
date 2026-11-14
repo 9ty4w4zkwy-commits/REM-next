@@ -404,3 +404,15 @@ main{max-width:1180px;padding:0 24px 70px}
 
 /* Evidenzia la sezione di navigazione corrente anche all'apertura della Home. */
 .top nav button.is-active{background:#58d6a6;color:#102438;border-color:#58d6a6}
+
+/* Netflix-like mobile shelves: three complete covers plus a peek at the fourth. */
+@media(max-width:650px){
+ .rem-home-section .rem-book-grid{gap:9px;margin-right:calc(-1 * var(--rem-home-gutter,16px));padding-right:var(--rem-home-gutter,16px);scroll-padding-inline:2px}
+ .rem-home-section .rem-book-card{box-sizing:border-box;flex:0 0 calc((100vw - 54px) / 3.42);min-width:0;padding:5px;border-radius:12px;gap:0}
+ .rem-home-section .rem-book-card .cover{width:100%;height:auto;min-height:0;aspect-ratio:2/3;border-radius:8px}
+ .rem-home-section .rem-book-card h3{font-size:.75rem;line-height:1.25;margin:8px 0 4px;min-height:2.5em;overflow-wrap:break-word}
+ .rem-home-section .rem-card-subtitle{font-size:.67rem;line-height:1.3;margin-bottom:9px}
+ .rem-home-section .rem-book-card .primary{font-size:.7rem;line-height:1.2;min-height:36px;padding:6px 3px;border-radius:9px}
+ .rem-home-section .rem-book-card .rem-trailer-trigger{font-size:.67rem!important;padding:7px 3px!important;white-space:normal!important;gap:4px!important}
+ .rem-home-section .rem-cover-save{min-width:32px;min-height:32px;width:32px;height:32px;font-size:1.1rem}
+}
