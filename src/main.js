@@ -205,11 +205,6 @@ function home(){
    const image=el('div',{className:'rem-home-cover-wrap'},[cover(book)]);
    // Preserve the distinct lettering, color and composition printed on each original cover.
    // No duplicated title or opaque title band is layered over the artwork.
-   if(book.coverImage&&book.author){
-    const parts=book.author.trim().split(/\s+/);
-    const first=parts.shift()||'';
-    image.append(el('span',{className:'rem-cover-author-overlay'},[el('span',{text:first}),el('span',{text:parts.join(' ')})]));
-   }
    const save=button(isBookSaved(book.id)?'✓':'+',()=>openHomeSaveSheet(book));
    save.className='rem-cover-save'+(isBookSaved(book.id)?' is-saved':'');
    save.dataset.bookId=String(book.id);save.dataset.bookTitle=book.title;
