@@ -187,6 +187,7 @@ function home(){
   const list=booksForHomeSection(section.id,books,getProgress,id=>getSetting('reading-path:'+id,''),id=>getSetting('episode-current:'+id,''));
   const cards=list.map(book=>{
    const image=el('div',{className:'rem-home-cover-wrap'},[cover(book)]);
+   if(book.coverImage&&book.author)image.append(el('span',{className:'rem-cover-author-overlay',text:book.author}));
    const save=button(isBookSaved(book.id)?'✓':'+',()=>openHomeSaveSheet(book));
    save.className='rem-cover-save'+(isBookSaved(book.id)?' is-saved':'');
    save.dataset.bookId=String(book.id);save.dataset.bookTitle=book.title;
@@ -198,7 +199,6 @@ function home(){
    const progress=getProgress(book.id);
    const foot=el('div',{className:'rem-cinema-card-foot'},[
     el('strong',{text:book.title}),
-    el('span',{className:'rem-cinema-card-author',text:book.author||''}),
     ...(section.id==='continue'&&progress?[el('span',{text:'Riprendi la storia'})]:[])
    ]);
    return el('article',{className:'rem-book-card rem-cinema-card'},[image,foot]);
