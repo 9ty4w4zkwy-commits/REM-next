@@ -269,3 +269,8 @@
 .rem-saved-book-actions{grid-column:1/-1;display:flex;flex-direction:column;gap:9px;width:100%;min-width:0}
 .rem-violet .rem-saved-book-actions button{width:100%;min-height:43px;margin:0;white-space:normal;text-align:center}
 .rem-violet .rem-saved-book-actions .rem-saved-remove{background:transparent;color:#c9d9d6;border:1px solid #466369;font-size:.86rem}
+
+/* Collezioni: text-free book spines drawn in CSS; no readable book titles. */
+.rem-violet .rem-stats .rem-stat-shelves{background-image:linear-gradient(110deg,rgba(6,44,48,.98),rgba(6,44,48,.70)),linear-gradient(145deg,#10484b,#092b37)!important}
+.rem-violet .rem-stats .rem-stat-shelves::after{content:"";position:absolute;inset:auto 7% 16% auto;width:49%;height:69%;z-index:0;pointer-events:none;backdrop-filter:none;-webkit-backdrop-filter:none;opacity:.66;border-radius:3px;background:linear-gradient(90deg,transparent 0 5%,#658f79 5% 17%,#284c52 17% 20%,#a58e71 20% 33%,#1b3c49 33% 37%,#537d78 37% 49%,#193c43 49% 53%,#b08b6e 53% 65%,#29434e 65% 69%,#638879 69% 82%,#1e4850 82% 86%,#947e6e 86% 96%,transparent 96%);box-shadow:0 11px 16px #001b2270;transform:perspective(320px) rotateY(-8deg)}
+.rem-violet .rem-stats .rem-stat-shelves .rem-stat-number,.rem-violet .rem-stats .rem-stat-shelves .rem-stat-title,.rem-violet .rem-stats .rem-stat-shelves .rem-stat-description{z-index:1}
