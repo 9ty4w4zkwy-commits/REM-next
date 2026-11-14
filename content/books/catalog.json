@@ -123,15 +123,464 @@
       "id": "pinocchio",
       "title": "Le avventure di Pinocchio",
       "author": "Carlo Collodi",
-      "description": "Le avventure di un burattino che sogna di diventare un bambino vero.",
+      "description": "Il testo integrale originale di Carlo Collodi: 36 capitoli da leggere, ascoltare e ritrovare passando da un formato all’altro. Fonte: Wikisource, edizione Bemporad 1902.",
       "status": "published",
-      "access": "premium",
+      "access": "free",
       "homeSections": [
         "new"
       ],
-      "availability": "preview",
       "coverImage": "./assets/covers/pinocchio.jpg",
-      "chapters": []
+      "chapters": [
+        {
+          "id": "capitolo-1",
+          "title": "Capitolo 1",
+          "file": "capitolo-1.txt",
+          "minutes": 8
+        },
+        {
+          "id": "capitolo-2",
+          "title": "Capitolo 2",
+          "file": "capitolo-2.txt",
+          "minutes": 8
+        },
+        {
+          "id": "capitolo-3",
+          "title": "Capitolo 3",
+          "file": "capitolo-3.txt",
+          "minutes": 8
+        },
+        {
+          "id": "capitolo-4",
+          "title": "Capitolo 4",
+          "file": "capitolo-4.txt",
+          "minutes": 8
+        },
+        {
+          "id": "capitolo-5",
+          "title": "Capitolo 5",
+          "file": "capitolo-5.txt",
+          "minutes": 8
+        },
+        {
+          "id": "capitolo-6",
+          "title": "Capitolo 6",
+          "file": "capitolo-6.txt",
+          "minutes": 8
+        },
+        {
+          "id": "capitolo-7",
+          "title": "Capitolo 7",
+          "file": "capitolo-7.txt",
+          "minutes": 8
+        },
+        {
+          "id": "capitolo-8",
+          "title": "Capitolo 8",
+          "file": "capitolo-8.txt",
+          "minutes": 8
+        },
+        {
+          "id": "capitolo-9",
+          "title": "Capitolo 9",
+          "file": "capitolo-9.txt",
+          "minutes": 8
+        },
+        {
+          "id": "capitolo-10",
+          "title": "Capitolo 10",
+          "file": "capitolo-10.txt",
+          "minutes": 8
+        },
+        {
+          "id": "capitolo-11",
+          "title": "Capitolo 11",
+          "file": "capitolo-11.txt",
+          "minutes": 8
+        },
+        {
+          "id": "capitolo-12",
+          "title": "Capitolo 12",
+          "file": "capitolo-12.txt",
+          "minutes": 8
+        },
+        {
+          "id": "capitolo-13",
+          "title": "Capitolo 13",
+          "file": "capitolo-13.txt",
+          "minutes": 8
+        },
+        {
+          "id": "capitolo-14",
+          "title": "Capitolo 14",
+          "file": "capitolo-14.txt",
+          "minutes": 8
+        },
+        {
+          "id": "capitolo-15",
+          "title": "Capitolo 15",
+          "file": "capitolo-15.txt",
+          "minutes": 8
+        },
+        {
+          "id": "capitolo-16",
+          "title": "Capitolo 16",
+          "file": "capitolo-16.txt",
+          "minutes": 8
+        },
+        {
+          "id": "capitolo-17",
+          "title": "Capitolo 17",
+          "file": "capitolo-17.txt",
+          "minutes": 8
+        },
+        {
+          "id": "capitolo-18",
+          "title": "Capitolo 18",
+          "file": "capitolo-18.txt",
+          "minutes": 8
+        },
+        {
+          "id": "capitolo-19",
+          "title": "Capitolo 19",
+          "file": "capitolo-19.txt",
+          "minutes": 8
+        },
+        {
+          "id": "capitolo-20",
+          "title": "Capitolo 20",
+          "file": "capitolo-20.txt",
+          "minutes": 8
+        },
+        {
+          "id": "capitolo-21",
+          "title": "Capitolo 21",
+          "file": "capitolo-21.txt",
+          "minutes": 8
+        },
+        {
+          "id": "capitolo-22",
+          "title": "Capitolo 22",
+          "file": "capitolo-22.txt",
+          "minutes": 8
+        },
+        {
+          "id": "capitolo-23",
+          "title": "Capitolo 23",
+          "file": "capitolo-23.txt",
+          "minutes": 8
+        },
+        {
+          "id": "capitolo-24",
+          "title": "Capitolo 24",
+          "file": "capitolo-24.txt",
+          "minutes": 8
+        },
+        {
+          "id": "capitolo-25",
+          "title": "Capitolo 25",
+          "file": "capitolo-25.txt",
+          "minutes": 8
+        },
+        {
+          "id": "capitolo-26",
+          "title": "Capitolo 26",
+          "file": "capitolo-26.txt",
+          "minutes": 8
+        },
+        {
+          "id": "capitolo-27",
+          "title": "Capitolo 27",
+          "file": "capitolo-27.txt",
+          "minutes": 8
+        },
+        {
+          "id": "capitolo-28",
+          "title": "Capitolo 28",
+          "file": "capitolo-28.txt",
+          "minutes": 8
+        },
+        {
+          "id": "capitolo-29",
+          "title": "Capitolo 29",
+          "file": "capitolo-29.txt",
+          "minutes": 8
+        },
+        {
+          "id": "capitolo-30",
+          "title": "Capitolo 30",
+          "file": "capitolo-30.txt",
+          "minutes": 8
+        },
+        {
+          "id": "capitolo-31",
+          "title": "Capitolo 31",
+          "file": "capitolo-31.txt",
+          "minutes": 8
+        },
+        {
+          "id": "capitolo-32",
+          "title": "Capitolo 32",
+          "file": "capitolo-32.txt",
+          "minutes": 8
+        },
+        {
+          "id": "capitolo-33",
+          "title": "Capitolo 33",
+          "file": "capitolo-33.txt",
+          "minutes": 8
+        },
+        {
+          "id": "capitolo-34",
+          "title": "Capitolo 34",
+          "file": "capitolo-34.txt",
+          "minutes": 8
+        },
+        {
+          "id": "capitolo-35",
+          "title": "Capitolo 35",
+          "file": "capitolo-35.txt",
+          "minutes": 8
+        },
+        {
+          "id": "capitolo-36",
+          "title": "Capitolo 36",
+          "file": "capitolo-36.txt",
+          "minutes": 8
+        }
+      ],
+      "seasons": [
+        {
+          "number": 1,
+          "episodes": [
+            {
+              "id": "s1e1",
+              "title": "Capitolo 1",
+              "chapterId": "capitolo-1",
+              "minutes": 8
+            },
+            {
+              "id": "s1e2",
+              "title": "Capitolo 2",
+              "chapterId": "capitolo-2",
+              "minutes": 8
+            },
+            {
+              "id": "s1e3",
+              "title": "Capitolo 3",
+              "chapterId": "capitolo-3",
+              "minutes": 8
+            },
+            {
+              "id": "s1e4",
+              "title": "Capitolo 4",
+              "chapterId": "capitolo-4",
+              "minutes": 8
+            },
+            {
+              "id": "s1e5",
+              "title": "Capitolo 5",
+              "chapterId": "capitolo-5",
+              "minutes": 8
+            },
+            {
+              "id": "s1e6",
+              "title": "Capitolo 6",
+              "chapterId": "capitolo-6",
+              "minutes": 8
+            },
+            {
+              "id": "s1e7",
+              "title": "Capitolo 7",
+              "chapterId": "capitolo-7",
+              "minutes": 8
+            },
+            {
+              "id": "s1e8",
+              "title": "Capitolo 8",
+              "chapterId": "capitolo-8",
+              "minutes": 8
+            },
+            {
+              "id": "s1e9",
+              "title": "Capitolo 9",
+              "chapterId": "capitolo-9",
+              "minutes": 8
+            },
+            {
+              "id": "s1e10",
+              "title": "Capitolo 10",
+              "chapterId": "capitolo-10",
+              "minutes": 8
+            },
+            {
+              "id": "s1e11",
+              "title": "Capitolo 11",
+              "chapterId": "capitolo-11",
+              "minutes": 8
+            },
+            {
+              "id": "s1e12",
+              "title": "Capitolo 12",
+              "chapterId": "capitolo-12",
+              "minutes": 8
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "episodes": [
+            {
+              "id": "s2e1",
+              "title": "Capitolo 13",
+              "chapterId": "capitolo-13",
+              "minutes": 8
+            },
+            {
+              "id": "s2e2",
+              "title": "Capitolo 14",
+              "chapterId": "capitolo-14",
+              "minutes": 8
+            },
+            {
+              "id": "s2e3",
+              "title": "Capitolo 15",
+              "chapterId": "capitolo-15",
+              "minutes": 8
+            },
+            {
+              "id": "s2e4",
+              "title": "Capitolo 16",
+              "chapterId": "capitolo-16",
+              "minutes": 8
+            },
+            {
+              "id": "s2e5",
+              "title": "Capitolo 17",
+              "chapterId": "capitolo-17",
+              "minutes": 8
+            },
+            {
+              "id": "s2e6",
+              "title": "Capitolo 18",
+              "chapterId": "capitolo-18",
+              "minutes": 8
+            },
+            {
+              "id": "s2e7",
+              "title": "Capitolo 19",
+              "chapterId": "capitolo-19",
+              "minutes": 8
+            },
+            {
+              "id": "s2e8",
+              "title": "Capitolo 20",
+              "chapterId": "capitolo-20",
+              "minutes": 8
+            },
+            {
+              "id": "s2e9",
+              "title": "Capitolo 21",
+              "chapterId": "capitolo-21",
+              "minutes": 8
+            },
+            {
+              "id": "s2e10",
+              "title": "Capitolo 22",
+              "chapterId": "capitolo-22",
+              "minutes": 8
+            },
+            {
+              "id": "s2e11",
+              "title": "Capitolo 23",
+              "chapterId": "capitolo-23",
+              "minutes": 8
+            },
+            {
+              "id": "s2e12",
+              "title": "Capitolo 24",
+              "chapterId": "capitolo-24",
+              "minutes": 8
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "episodes": [
+            {
+              "id": "s3e1",
+              "title": "Capitolo 25",
+              "chapterId": "capitolo-25",
+              "minutes": 8
+            },
+            {
+              "id": "s3e2",
+              "title": "Capitolo 26",
+              "chapterId": "capitolo-26",
+              "minutes": 8
+            },
+            {
+              "id": "s3e3",
+              "title": "Capitolo 27",
+              "chapterId": "capitolo-27",
+              "minutes": 8
+            },
+            {
+              "id": "s3e4",
+              "title": "Capitolo 28",
+              "chapterId": "capitolo-28",
+              "minutes": 8
+            },
+            {
+              "id": "s3e5",
+              "title": "Capitolo 29",
+              "chapterId": "capitolo-29",
+              "minutes": 8
+            },
+            {
+              "id": "s3e6",
+              "title": "Capitolo 30",
+              "chapterId": "capitolo-30",
+              "minutes": 8
+            },
+            {
+              "id": "s3e7",
+              "title": "Capitolo 31",
+              "chapterId": "capitolo-31",
+              "minutes": 8
+            },
+            {
+              "id": "s3e8",
+              "title": "Capitolo 32",
+              "chapterId": "capitolo-32",
+              "minutes": 8
+            },
+            {
+              "id": "s3e9",
+              "title": "Capitolo 33",
+              "chapterId": "capitolo-33",
+              "minutes": 8
+            },
+            {
+              "id": "s3e10",
+              "title": "Capitolo 34",
+              "chapterId": "capitolo-34",
+              "minutes": 8
+            },
+            {
+              "id": "s3e11",
+              "title": "Capitolo 35",
+              "chapterId": "capitolo-35",
+              "minutes": 8
+            },
+            {
+              "id": "s3e12",
+              "title": "Capitolo 36",
+              "chapterId": "capitolo-36",
+              "minutes": 8
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "zeno",
