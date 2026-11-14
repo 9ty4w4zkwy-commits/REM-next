@@ -6,4 +6,31 @@ export function validateCatalog(data){
  return data.books.filter(b=>b.status==='published');
 }
 export async function loadCatalog(){const r=await fetch(BASE+'catalog.json',{cache:'no-store'});if(!r.ok)throw Error('Catalogo non disponibile ('+r.status+')');return validateCatalog(await r.json())}
-export async function loadChapter(book,chapter){const r=await fetch(BASE+encodeURIComponent(book.id)+'/'+chapter.file+'?v=long-reading-38',{cache:'no-store'});if(!r.ok)throw Error('Capitolo non disponibile');return r.text()}
+// Pinocchio: read the original Italian public-domain text from Wikisource.
+// This avoids distributing an altered transcription and keeps all 36 chapters available.
+const pinocchioCache=new Map();
+async function loadPinocchioChapter(chapter){
+ const number=Number(chapter.id.match(/^capitolo-(\\d+)$/)?.[1]);
+ if(!Number.isInteger(number)||number<1||number>36)throw Error('Capitolo di Pinocchio non valido');
+ if(pinocchioCache.has(number))return pinocchioCache.get(number);
+ const page='Le_avventure_di_Pinocchio/Capitolo_'+number;
+ const url='https://it.wikisource.org/w/api.php?action=parse&format=json&formatversion=2&prop=text&origin=*&page='+encodeURIComponent(page);
+ const response=await fetch(url);
+ if(!response.ok)throw Error('Impossibile caricare il capitolo da Wikisource');
+ const payload=await response.json();
+ if(payload.error||!payload.parse?.text)throw Error('Testo del capitolo non disponibile su Wikisource');
+ const doc=new DOMParser().parseFromString(payload.parse.text,'text/html');
+ const root=doc.querySelector('.mw-parser-output')||doc.body;
+ root.querySelectorAll('style,script,table,.mw-editsection,.ws-noexport,.noprint,.mw-cite-backlink,.reference,.mw-references-wrap,.printfooter,.catlinks,.mw-parser-output > nav, .header-container, .ws-summary, .ws-title').forEach(node=>node.remove());
+ const paragraphs=[...root.querySelectorAll('p')].map(p=>p.textContent.replace(/\\s+/g,' ').trim()).filter(p=>p.length>25);
+ const content=paragraphs.join('\\n\\n');
+ if(content.length<450)throw Error('Il testo del capitolo non è stato estratto correttamente');
+ pinocchioCache.set(number,content);
+ return content;
+}
+export async function loadChapter(book,chapter){
+ if(book.id==='pinocchio')return loadPinocchioChapter(chapter);
+ const r=await fetch(BASE+encodeURIComponent(book.id)+'/'+chapter.file+'?v=long-reading-38',{cache:'no-store'});
+ if(!r.ok)throw Error('Capitolo non disponibile');
+ return r.text();
+}
