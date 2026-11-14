@@ -551,3 +551,15 @@ main .rem-cinema-section .rem-section-title .rem-recommend-sparkle{color:#64dfa9
  main .rem-cinema-section .rem-book-grid{gap:5px!important}
  main .rem-cinema-section .rem-book-card{flex:0 0 calc((100vw - 38px)/3.18)!important;width:calc((100vw - 38px)/3.18)!important}
 }
+
+
+/* Three complete cover cards plus a peek of the fourth, with 3px gutters. */
+main .rem-cinema-section .rem-book-grid{gap:3px!important;column-gap:3px!important;padding-right:16px!important}
+main .rem-cinema-section .rem-book-card{flex:0 0 calc((100vw - 73px)/3)!important;width:calc((100vw - 73px)/3)!important}
+main .rem-cinema-section .rem-cinema-card-foot{display:flex!important;flex-direction:column!important;min-height:90px!important;padding-top:9px!important}
+main .rem-cinema-section .rem-cinema-card-foot strong{font-size:12px!important;line-height:1.2!important;min-height:3.6em!important}
+main .rem-cinema-section .rem-cinema-card-author{font-size:12px!important;line-height:1.25!important;color:#c5d6dc!important;margin-top:8px!important}
+@media(max-width:650px){
+ main .rem-cinema-section .rem-book-grid{gap:3px!important;column-gap:3px!important}
+ main .rem-cinema-section .rem-book-card{flex:0 0 calc((100vw - 73px)/3)!important;width:calc((100vw - 73px)/3)!important}
+}
