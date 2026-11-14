@@ -119,7 +119,7 @@ const cover=book=>{const visual=el('div',{className:'cover '+(book.coverStyle===
 
 const trailerButton=book=>{
  const b=button('',()=>trailerView(book.id));
- b.append(el('span',{className:'rem-trailer-play',text:'▶',attrs:{'aria-hidden':'true'}}),el('span',{className:'rem-trailer-label',text:'Guarda il trailer'}));
+ b.append(el('span',{className:'rem-trailer-play',text:'▶',attrs:{'aria-hidden':'true'}}),el('span',{className:'rem-trailer-label',text:'Trailer'}));
  b.setAttribute('aria-label','Guarda il trailer di '+book.title);
  b.classList.add('rem-trailer-trigger');
  return b;
