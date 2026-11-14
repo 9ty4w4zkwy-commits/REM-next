@@ -431,3 +431,23 @@ main{max-width:1180px;padding:0 24px 70px}
  main .rem-home-section .rem-book-card .rem-trailer-play{flex:0 0 21px!important;width:21px!important;height:21px!important;font-size:9px!important;line-height:1!important}
  main .rem-home-section .rem-book-card .rem-trailer-label{display:inline!important;width:auto!important;max-width:calc(100% - 29px)!important;font-size:10px!important;line-height:1!important;white-space:nowrap!important}
 }
+
+/* Subtle secondary trailer action: navy pill with thin white outline. */
+@media screen and (max-width:650px){
+ main .rem-home-section .rem-book-card .rem-trailer-trigger{
+  width:calc(100% - 6px)!important;max-width:calc(100% - 6px)!important;
+  min-height:32px!important;height:32px!important;
+  margin:7px auto 3px!important;padding:4px 6px!important;
+  border:1px solid rgba(242,248,255,.82)!important;border-radius:999px!important;
+  background:#1d3d60!important;color:#fff!important;
+  box-shadow:none!important;gap:5px!important;
+ }
+ main .rem-home-section .rem-book-card .rem-trailer-play{
+  flex:0 0 16px!important;width:16px!important;height:16px!important;
+  border-radius:50%!important;background:transparent!important;
+  color:#fff!important;font-size:10px!important;box-shadow:none!important;
+ }
+ main .rem-home-section .rem-book-card .rem-trailer-label{
+  color:#fff!important;font-size:10px!important;font-weight:650!important;
+ }
+}
