@@ -280,3 +280,11 @@
 .rem-violet .rem-stats .rem-stat-shelves::after{content:"";display:block!important;position:absolute;top:10%;right:5%;bottom:12%;left:31%;width:auto;height:auto;opacity:1;filter:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;transform:none;border-radius:4px;background:linear-gradient(90deg,#b8a483 0 12%,#e0d4b9 12% 14%,#294d59 14% 31%,#7fa7a2 31% 33%,#ad755e 33% 46%,#e0b29a 46% 48%,#49777a 48% 66%,#a4c5b5 66% 68%,#c6a87d 68% 84%,#e5d6af 84% 86%,#30505a 86% 100%);box-shadow:0 15px 22px #001b2070;z-index:0}
 .rem-violet .rem-stats .rem-stat-shelves::before{display:block!important;content:"";position:absolute;inset:0;z-index:1;pointer-events:none;border:0;border-radius:0;transform:none;box-shadow:none;background:linear-gradient(90deg,rgba(5,41,43,.90) 0%,rgba(5,41,43,.52) 46%,rgba(5,41,43,.12) 100%)}
 .rem-violet .rem-stats .rem-stat-shelves .rem-stat-number,.rem-violet .rem-stats .rem-stat-shelves .rem-stat-title,.rem-violet .rem-stats .rem-stat-shelves .rem-stat-description{z-index:2}
+
+/* Simple neutral bookcase: two wooden shelves with untitled books, no blur. */
+.rem-violet .rem-stats .rem-stat-shelves{background:linear-gradient(135deg,#0b3539,#174b48)!important}
+.rem-violet .rem-stats .rem-stat-shelves::after{display:block!important;content:"";position:absolute;inset:10% 7% 17% 34%;width:auto;height:auto;opacity:.8;transform:none;filter:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;border-radius:2px;box-shadow:none;z-index:0;background:
+ linear-gradient(0deg,transparent 0 4%,#987e5c 4% 8%,#493d32 8% 10%,transparent 10% 52%,#987e5c 52% 56%,#493d32 56% 58%,transparent 58%),
+ repeating-linear-gradient(90deg,#b7a88d 0 10px,#e2d6b9 10px 12px,#48666a 12px 24px,#304d53 24px 26px,#a88b73 26px 36px,#d7bba1 36px 38px,#56746e 38px 52px,#315356 52px 54px);
+}
+.rem-violet .rem-stats .rem-stat-shelves::before{display:block!important;content:"";position:absolute;inset:0;z-index:1;pointer-events:none;transform:none;border:0;box-shadow:none;background:linear-gradient(90deg,rgba(6,42,43,.83),rgba(6,42,43,.16))}
