@@ -800,3 +800,7 @@ main .rem-home-section.rem-cinema-section .rem-home-cover-wrap:has(.cover-photo[
 main .rem-home-section.rem-cinema-section .rem-home-cover-wrap:has(.cover-photo[src*="pinocchio"])::before{
  background:linear-gradient(to bottom,#0b141a 0%,#0b141a 65%,rgba(11,20,26,0) 100%)!important;
 }
+
+/* v153: show original upper author credit; never duplicate it at bottom. */
+main .rem-home-section.rem-cinema-section .rem-home-cover-wrap::before{content:none!important;display:none!important;}
+main .rem-home-section.rem-cinema-section .rem-cover-author-overlay{display:none!important;}
