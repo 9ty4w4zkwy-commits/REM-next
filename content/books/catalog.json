@@ -127,6 +127,7 @@
       "status": "published",
       "access": "free",
       "homeSections": [
+        "recommended",
         "new"
       ],
       "coverImage": "./assets/covers/pinocchio.jpg",
