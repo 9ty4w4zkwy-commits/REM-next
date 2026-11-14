@@ -532,3 +532,22 @@ main .rem-cinema-section .rem-cover-save{position:absolute!important;top:8px!imp
  .rem-cinema-hero-copy{padding:20px;width:82%}
  .rem-cinema-detail-info{grid-template-columns:35% 1fr;gap:13px}
 }
+
+
+/* Cinematic Home refinements: intact Pinocchio cover and tight aligned shelves. */
+.rem-cinema-intro{font-family:Georgia,serif;font-size:clamp(1.8rem,6vw,2.7rem);line-height:1.12;margin:4px 0 22px;max-width:600px}
+.rem-cinema-hero{background:linear-gradient(110deg,#06242c,#102638);min-height:295px}
+.rem-cinema-hero-art{display:flex;justify-content:flex-end;align-items:center;inset:0}
+.rem-cinema-hero-art img{height:100%!important;width:auto!important;max-width:58%!important;object-fit:contain!important;object-position:center!important;filter:none!important}
+.rem-cinema-hero-art:after{background:linear-gradient(90deg,#061c29 0%,#061c29 37%,#061c29a6 58%,transparent 84%)!important}
+.rem-cinema-hero-copy{width:65%;padding:22px}
+main .rem-cinema-section .rem-book-grid{gap:5px!important}
+main .rem-cinema-section .rem-section-title .rem-recommend-sparkle{color:#64dfa9!important;font-size:.58em!important;vertical-align:middle!important}
+@media(max-width:650px){
+ .rem-cinema-hero{min-height:265px}
+ .rem-cinema-hero-art img{max-width:62%!important}
+ .rem-cinema-hero-copy{width:70%;padding:17px}
+ .rem-cinema-hero-copy h1{font-size:clamp(1.55rem,5.8vw,2.2rem)}
+ main .rem-cinema-section .rem-book-grid{gap:5px!important}
+ main .rem-cinema-section .rem-book-card{flex:0 0 calc((100vw - 38px)/3.18)!important;width:calc((100vw - 38px)/3.18)!important}
+}
