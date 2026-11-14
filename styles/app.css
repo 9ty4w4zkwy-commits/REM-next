@@ -482,3 +482,53 @@ main .rem-home-section .rem-book-card .primary{margin-top:0!important;}
  main .rem-home-section .rem-book-card .rem-card-subtitle{flex:0 0 auto!important;min-height:2.4em!important;margin-bottom:7px!important;}
  main .rem-home-section .rem-book-card .primary{margin-top:0!important;}
 }
+
+
+/* REM cinematic discovery: same-sized covers across every Home shelf. */
+.rem-cinema-hero{position:relative;min-height:310px;overflow:hidden;border-radius:22px;background:#092c35;margin-bottom:32px;display:flex;align-items:flex-end}
+.rem-cinema-hero-art{position:absolute;inset:0;overflow:hidden}
+.rem-cinema-hero-art img{width:100%;height:100%;object-fit:cover;object-position:center 32%;filter:brightness(.72)}
+.rem-cinema-hero-art:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(3,18,26,.96),rgba(3,18,26,.55) 55%,transparent),linear-gradient(0deg,rgba(3,18,26,.5),transparent 70%)}
+.rem-cinema-hero-copy{position:relative;z-index:1;padding:25px;width:min(76%,440px)}
+.rem-cinema-hero-copy h1{font-size:clamp(1.9rem,6vw,3rem);margin:8px 0;line-height:1.07}
+.rem-cinema-hero-copy .eyebrow{font-size:10px;letter-spacing:.14em}
+.rem-cinema-hero-author{margin:0 0 18px;color:#f1f6f6}
+.rem-cinema-hero-copy button{background:#64dfa9;color:#09241f;font-weight:750}
+main .rem-cinema-section{margin-bottom:28px}
+main .rem-cinema-section .rem-section-title{font-family:Georgia,serif;font-size:clamp(1.45rem,5vw,1.9rem)}
+main .rem-cinema-section .rem-book-grid{display:flex!important;flex-wrap:nowrap!important;gap:12px!important;overflow-x:auto!important;overflow-y:hidden!important;scroll-snap-type:x proximity!important;grid-template-columns:none!important;padding:4px 18px 10px 2px!important;margin-right:-18px!important}
+main .rem-cinema-section .rem-book-card{box-sizing:border-box!important;flex:0 0 clamp(135px,32vw,190px)!important;width:clamp(135px,32vw,190px)!important;min-width:0!important;max-width:none!important;padding:0!important;gap:0!important;background:transparent!important;border:0!important;box-shadow:none!important;scroll-snap-align:start}
+main .rem-cinema-section .rem-home-cover-wrap{position:relative!important;display:block!important;width:100%!important;aspect-ratio:2/3!important;overflow:hidden!important;border-radius:12px!important}
+main .rem-cinema-section .rem-home-cover-wrap .cover{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;min-height:0!important;max-height:none!important;aspect-ratio:2/3!important;border-radius:12px!important;padding:0!important;overflow:hidden!important}
+main .rem-cinema-section .rem-home-cover-wrap .cover-photo{width:100%!important;height:100%!important;object-fit:cover!important;object-position:center!important}
+main .rem-cinema-section .rem-cover-save{position:absolute!important;top:8px!important;right:8px!important;left:auto!important;bottom:auto!important;z-index:5!important;width:34px!important;height:34px!important;min-height:34px!important;padding:0!important;border:1px solid #ffffff80!important;border-radius:50%!important;background:#07151f9c!important;color:#fff!important;font-size:23px!important;line-height:1!important;backdrop-filter:blur(6px)}
+.rem-cinema-cover-open{position:absolute!important;inset:0!important;z-index:3!important;width:100%!important;height:100%!important;min-height:0!important;opacity:0!important;cursor:pointer!important}
+.rem-cinema-card-foot{padding:8px 2px 0;min-height:42px}
+.rem-cinema-card-foot strong{display:block;color:#f4f7f8;font-size:13px;line-height:1.3}
+.rem-cinema-card-foot span{font-size:11px;color:#8adfbc}
+.rem-cinema-detail{margin-top:12px}
+.rem-cinema-trailer{height:auto;aspect-ratio:16/9;position:relative;overflow:hidden;border-radius:18px;background:#0c2733;margin-bottom:24px}
+.rem-cinema-trailer-image{position:absolute;inset:0}
+.rem-cinema-trailer-image img{width:100%;height:100%;object-fit:cover;object-position:center 35%;filter:brightness(.7)}
+.rem-cinema-trailer-image:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,#03121a77,transparent)}
+.rem-cinema-trailer-label{position:absolute;top:14px;left:14px;border-radius:20px;background:#051720b8;color:#fff;padding:7px 12px;font-size:11px;font-weight:700;letter-spacing:.06em}
+.rem-cinema-trailer-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:66px;height:66px;min-height:66px;border-radius:50%;border:2px solid white;background:#06131fbb;color:white;font-size:26px}
+.rem-cinema-detail-info{display:grid;grid-template-columns:minmax(105px,35%) 1fr;gap:18px;align-items:start}
+.rem-cinema-detail-info>.cover{width:100%;height:auto;min-height:0;aspect-ratio:2/3;overflow:hidden}
+.rem-cinema-detail-info .cover-photo{object-fit:cover}
+.rem-cinema-detail-title{display:flex;gap:6px;align-items:start;justify-content:space-between}
+.rem-cinema-detail-title h1{font-size:clamp(1.5rem,5vw,2.3rem);margin:0}
+.rem-detail-save{flex:none;width:40px;height:40px;min-height:40px;border-radius:50%;background:#0b2831aa;border:1px solid #64dfa980;color:#fff;font-size:25px;padding:0}
+.rem-cinema-detail-author{margin:8px 0 12px;color:#b6c8d3}
+.rem-cinema-detail-copy>p:last-child{font-size:14px;line-height:1.55}
+.rem-cinema-path-actions{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:24px 0 12px}
+.rem-cinema-path-actions button{min-height:60px;padding:10px;font-weight:750;font-size:clamp(12px,3.3vw,16px)}
+.rem-cinema-path-actions button:first-child{background:#64dfa9;color:#09241f}
+.rem-cinema-path-actions button:last-child{background:transparent;color:#fff;border:1px solid #a8e7d6}
+.rem-cinema-path-note{color:#c4d9da;font-size:13px;line-height:1.5;margin:8px 0 24px}
+@media(max-width:650px){
+ main .rem-cinema-section .rem-book-card{flex:0 0 calc((100vw - 56px)/3)!important;width:calc((100vw - 56px)/3)!important}
+ .rem-cinema-hero{min-height:265px;margin-top:0}
+ .rem-cinema-hero-copy{padding:20px;width:82%}
+ .rem-cinema-detail-info{grid-template-columns:35% 1fr;gap:13px}
+}
