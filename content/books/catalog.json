@@ -351,232 +351,667 @@
       "seasons": [
         {
           "number": 1,
+          "title": "Un burattino fuori controllo",
           "episodes": [
             {
               "id": "s1e1",
-              "title": "Capitolo 1",
+              "title": "La voce nel legno · Prima parte",
               "chapterId": "capitolo-1",
-              "minutes": 8
+              "part": 0,
+              "parts": 2,
+              "minutes": 5,
+              "recap": "Dal capitolo 1: La voce nel legno."
             },
             {
               "id": "s1e2",
-              "title": "Capitolo 2",
-              "chapterId": "capitolo-2",
-              "minutes": 8
+              "title": "La voce nel legno · Seconda parte",
+              "chapterId": "capitolo-1",
+              "part": 1,
+              "parts": 2,
+              "minutes": 5,
+              "recap": "La storia prosegue nel capitolo 1, senza salti nel testo originale."
             },
             {
               "id": "s1e3",
-              "title": "Capitolo 3",
-              "chapterId": "capitolo-3",
-              "minutes": 8
+              "title": "Geppetto e maestro Ciliegia · Prima parte",
+              "chapterId": "capitolo-2",
+              "part": 0,
+              "parts": 2,
+              "minutes": 5,
+              "recap": "Dal capitolo 2: Geppetto e maestro Ciliegia."
             },
             {
               "id": "s1e4",
-              "title": "Capitolo 4",
-              "chapterId": "capitolo-4",
-              "minutes": 8
+              "title": "Geppetto e maestro Ciliegia · Seconda parte",
+              "chapterId": "capitolo-2",
+              "part": 1,
+              "parts": 2,
+              "minutes": 5,
+              "recap": "La storia prosegue nel capitolo 2, senza salti nel testo originale."
             },
             {
               "id": "s1e5",
-              "title": "Capitolo 5",
-              "chapterId": "capitolo-5",
-              "minutes": 8
+              "title": "Nasce Pinocchio · Prima parte",
+              "chapterId": "capitolo-3",
+              "part": 0,
+              "parts": 2,
+              "minutes": 5,
+              "recap": "Dal capitolo 3: Nasce Pinocchio."
             },
             {
               "id": "s1e6",
-              "title": "Capitolo 6",
-              "chapterId": "capitolo-6",
-              "minutes": 8
+              "title": "Nasce Pinocchio · Seconda parte",
+              "chapterId": "capitolo-3",
+              "part": 1,
+              "parts": 2,
+              "minutes": 5,
+              "recap": "La storia prosegue nel capitolo 3, senza salti nel testo originale."
             },
             {
               "id": "s1e7",
-              "title": "Capitolo 7",
-              "chapterId": "capitolo-7",
-              "minutes": 8
+              "title": "Il Grillo parlante · Prima parte",
+              "chapterId": "capitolo-4",
+              "part": 0,
+              "parts": 2,
+              "minutes": 5,
+              "recap": "Dal capitolo 4: Il Grillo parlante."
             },
             {
               "id": "s1e8",
-              "title": "Capitolo 8",
-              "chapterId": "capitolo-8",
-              "minutes": 8
+              "title": "Il Grillo parlante · Seconda parte",
+              "chapterId": "capitolo-4",
+              "part": 1,
+              "parts": 2,
+              "minutes": 5,
+              "recap": "La storia prosegue nel capitolo 4, senza salti nel testo originale."
             },
             {
               "id": "s1e9",
-              "title": "Capitolo 9",
-              "chapterId": "capitolo-9",
-              "minutes": 8
+              "title": "Una fame da lupi · Prima parte",
+              "chapterId": "capitolo-5",
+              "part": 0,
+              "parts": 2,
+              "minutes": 5,
+              "recap": "Dal capitolo 5: Una fame da lupi."
             },
             {
               "id": "s1e10",
-              "title": "Capitolo 10",
-              "chapterId": "capitolo-10",
-              "minutes": 8
+              "title": "Una fame da lupi · Seconda parte",
+              "chapterId": "capitolo-5",
+              "part": 1,
+              "parts": 2,
+              "minutes": 5,
+              "recap": "La storia prosegue nel capitolo 5, senza salti nel testo originale."
             },
             {
               "id": "s1e11",
-              "title": "Capitolo 11",
-              "chapterId": "capitolo-11",
-              "minutes": 8
+              "title": "Una notte al freddo · Prima parte",
+              "chapterId": "capitolo-6",
+              "part": 0,
+              "parts": 2,
+              "minutes": 5,
+              "recap": "Dal capitolo 6: Una notte al freddo."
             },
             {
               "id": "s1e12",
-              "title": "Capitolo 12",
+              "title": "Una notte al freddo · Seconda parte",
+              "chapterId": "capitolo-6",
+              "part": 1,
+              "parts": 2,
+              "minutes": 5,
+              "recap": "La storia prosegue nel capitolo 6, senza salti nel testo originale."
+            },
+            {
+              "id": "s1e13",
+              "title": "Il ritorno di Geppetto · Prima parte",
+              "chapterId": "capitolo-7",
+              "part": 0,
+              "parts": 2,
+              "minutes": 5,
+              "recap": "Dal capitolo 7: Il ritorno di Geppetto."
+            },
+            {
+              "id": "s1e14",
+              "title": "Il ritorno di Geppetto · Seconda parte",
+              "chapterId": "capitolo-7",
+              "part": 1,
+              "parts": 2,
+              "minutes": 5,
+              "recap": "La storia prosegue nel capitolo 7, senza salti nel testo originale."
+            },
+            {
+              "id": "s1e15",
+              "title": "Il sacrificio di Geppetto · Prima parte",
+              "chapterId": "capitolo-8",
+              "part": 0,
+              "parts": 2,
+              "minutes": 5,
+              "recap": "Dal capitolo 8: Il sacrificio di Geppetto."
+            },
+            {
+              "id": "s1e16",
+              "title": "Il sacrificio di Geppetto · Seconda parte",
+              "chapterId": "capitolo-8",
+              "part": 1,
+              "parts": 2,
+              "minutes": 5,
+              "recap": "La storia prosegue nel capitolo 8, senza salti nel testo originale."
+            },
+            {
+              "id": "s1e17",
+              "title": "La tentazione del teatrino · Prima parte",
+              "chapterId": "capitolo-9",
+              "part": 0,
+              "parts": 2,
+              "minutes": 5,
+              "recap": "Dal capitolo 9: La tentazione del teatrino."
+            },
+            {
+              "id": "s1e18",
+              "title": "La tentazione del teatrino · Seconda parte",
+              "chapterId": "capitolo-9",
+              "part": 1,
+              "parts": 2,
+              "minutes": 5,
+              "recap": "La storia prosegue nel capitolo 9, senza salti nel testo originale."
+            },
+            {
+              "id": "s1e19",
+              "title": "Il fratello dei burattini · Prima parte",
+              "chapterId": "capitolo-10",
+              "part": 0,
+              "parts": 2,
+              "minutes": 5,
+              "recap": "Dal capitolo 10: Il fratello dei burattini."
+            },
+            {
+              "id": "s1e20",
+              "title": "Il fratello dei burattini · Seconda parte",
+              "chapterId": "capitolo-10",
+              "part": 1,
+              "parts": 2,
+              "minutes": 5,
+              "recap": "La storia prosegue nel capitolo 10, senza salti nel testo originale."
+            },
+            {
+              "id": "s1e21",
+              "title": "Davanti a Mangiafoco · Prima parte",
+              "chapterId": "capitolo-11",
+              "part": 0,
+              "parts": 2,
+              "minutes": 5,
+              "recap": "Dal capitolo 11: Davanti a Mangiafoco."
+            },
+            {
+              "id": "s1e22",
+              "title": "Davanti a Mangiafoco · Seconda parte",
+              "chapterId": "capitolo-11",
+              "part": 1,
+              "parts": 2,
+              "minutes": 5,
+              "recap": "La storia prosegue nel capitolo 11, senza salti nel testo originale."
+            },
+            {
+              "id": "s1e23",
+              "title": "Cinque monete d'oro · Prima parte",
               "chapterId": "capitolo-12",
-              "minutes": 8
+              "part": 0,
+              "parts": 2,
+              "minutes": 5,
+              "recap": "Dal capitolo 12: Cinque monete d'oro."
+            },
+            {
+              "id": "s1e24",
+              "title": "Cinque monete d'oro · Seconda parte",
+              "chapterId": "capitolo-12",
+              "part": 1,
+              "parts": 2,
+              "minutes": 5,
+              "recap": "La storia prosegue nel capitolo 12, senza salti nel testo originale."
             }
           ]
         },
         {
           "number": 2,
+          "title": "La strada degli inganni",
           "episodes": [
             {
               "id": "s2e1",
-              "title": "Capitolo 13",
+              "title": "All'osteria del Gambero Rosso · Prima parte",
               "chapterId": "capitolo-13",
-              "minutes": 8
+              "part": 0,
+              "parts": 2,
+              "minutes": 5,
+              "recap": "Dal capitolo 13: All'osteria del Gambero Rosso."
             },
             {
               "id": "s2e2",
-              "title": "Capitolo 14",
-              "chapterId": "capitolo-14",
-              "minutes": 8
+              "title": "All'osteria del Gambero Rosso · Seconda parte",
+              "chapterId": "capitolo-13",
+              "part": 1,
+              "parts": 2,
+              "minutes": 5,
+              "recap": "La storia prosegue nel capitolo 13, senza salti nel testo originale."
             },
             {
               "id": "s2e3",
-              "title": "Capitolo 15",
-              "chapterId": "capitolo-15",
-              "minutes": 8
+              "title": "Gli assassini · Prima parte",
+              "chapterId": "capitolo-14",
+              "part": 0,
+              "parts": 2,
+              "minutes": 5,
+              "recap": "Dal capitolo 14: Gli assassini."
             },
             {
               "id": "s2e4",
-              "title": "Capitolo 16",
-              "chapterId": "capitolo-16",
-              "minutes": 8
+              "title": "Gli assassini · Seconda parte",
+              "chapterId": "capitolo-14",
+              "part": 1,
+              "parts": 2,
+              "minutes": 5,
+              "recap": "La storia prosegue nel capitolo 14, senza salti nel testo originale."
             },
             {
               "id": "s2e5",
-              "title": "Capitolo 17",
-              "chapterId": "capitolo-17",
-              "minutes": 8
+              "title": "La Quercia grande · Prima parte",
+              "chapterId": "capitolo-15",
+              "part": 0,
+              "parts": 2,
+              "minutes": 5,
+              "recap": "Dal capitolo 15: La Quercia grande."
             },
             {
               "id": "s2e6",
-              "title": "Capitolo 18",
-              "chapterId": "capitolo-18",
-              "minutes": 8
+              "title": "La Quercia grande · Seconda parte",
+              "chapterId": "capitolo-15",
+              "part": 1,
+              "parts": 2,
+              "minutes": 5,
+              "recap": "La storia prosegue nel capitolo 15, senza salti nel testo originale."
             },
             {
               "id": "s2e7",
-              "title": "Capitolo 19",
-              "chapterId": "capitolo-19",
-              "minutes": 8
+              "title": "La Bambina dai capelli turchini · Prima parte",
+              "chapterId": "capitolo-16",
+              "part": 0,
+              "parts": 2,
+              "minutes": 5,
+              "recap": "Dal capitolo 16: La Bambina dai capelli turchini."
             },
             {
               "id": "s2e8",
-              "title": "Capitolo 20",
-              "chapterId": "capitolo-20",
-              "minutes": 8
+              "title": "La Bambina dai capelli turchini · Seconda parte",
+              "chapterId": "capitolo-16",
+              "part": 1,
+              "parts": 2,
+              "minutes": 5,
+              "recap": "La storia prosegue nel capitolo 16, senza salti nel testo originale."
             },
             {
               "id": "s2e9",
-              "title": "Capitolo 21",
-              "chapterId": "capitolo-21",
-              "minutes": 8
+              "title": "Le bugie hanno il naso lungo · Prima parte",
+              "chapterId": "capitolo-17",
+              "part": 0,
+              "parts": 2,
+              "minutes": 5,
+              "recap": "Dal capitolo 17: Le bugie hanno il naso lungo."
             },
             {
               "id": "s2e10",
-              "title": "Capitolo 22",
-              "chapterId": "capitolo-22",
-              "minutes": 8
+              "title": "Le bugie hanno il naso lungo · Seconda parte",
+              "chapterId": "capitolo-17",
+              "part": 1,
+              "parts": 2,
+              "minutes": 5,
+              "recap": "La storia prosegue nel capitolo 17, senza salti nel testo originale."
             },
             {
               "id": "s2e11",
-              "title": "Capitolo 23",
-              "chapterId": "capitolo-23",
-              "minutes": 8
+              "title": "Il Campo dei Miracoli · Prima parte",
+              "chapterId": "capitolo-18",
+              "part": 0,
+              "parts": 2,
+              "minutes": 5,
+              "recap": "Dal capitolo 18: Il Campo dei Miracoli."
             },
             {
               "id": "s2e12",
-              "title": "Capitolo 24",
+              "title": "Il Campo dei Miracoli · Seconda parte",
+              "chapterId": "capitolo-18",
+              "part": 1,
+              "parts": 2,
+              "minutes": 5,
+              "recap": "La storia prosegue nel capitolo 18, senza salti nel testo originale."
+            },
+            {
+              "id": "s2e13",
+              "title": "Derubato e punito · Prima parte",
+              "chapterId": "capitolo-19",
+              "part": 0,
+              "parts": 2,
+              "minutes": 5,
+              "recap": "Dal capitolo 19: Derubato e punito."
+            },
+            {
+              "id": "s2e14",
+              "title": "Derubato e punito · Seconda parte",
+              "chapterId": "capitolo-19",
+              "part": 1,
+              "parts": 2,
+              "minutes": 5,
+              "recap": "La storia prosegue nel capitolo 19, senza salti nel testo originale."
+            },
+            {
+              "id": "s2e15",
+              "title": "Il serpente · Prima parte",
+              "chapterId": "capitolo-20",
+              "part": 0,
+              "parts": 2,
+              "minutes": 5,
+              "recap": "Dal capitolo 20: Il serpente."
+            },
+            {
+              "id": "s2e16",
+              "title": "Il serpente · Seconda parte",
+              "chapterId": "capitolo-20",
+              "part": 1,
+              "parts": 2,
+              "minutes": 5,
+              "recap": "La storia prosegue nel capitolo 20, senza salti nel testo originale."
+            },
+            {
+              "id": "s2e17",
+              "title": "Un cane da guardia · Prima parte",
+              "chapterId": "capitolo-21",
+              "part": 0,
+              "parts": 2,
+              "minutes": 5,
+              "recap": "Dal capitolo 21: Un cane da guardia."
+            },
+            {
+              "id": "s2e18",
+              "title": "Un cane da guardia · Seconda parte",
+              "chapterId": "capitolo-21",
+              "part": 1,
+              "parts": 2,
+              "minutes": 5,
+              "recap": "La storia prosegue nel capitolo 21, senza salti nel testo originale."
+            },
+            {
+              "id": "s2e19",
+              "title": "La libertà riconquistata · Prima parte",
+              "chapterId": "capitolo-22",
+              "part": 0,
+              "parts": 2,
+              "minutes": 5,
+              "recap": "Dal capitolo 22: La libertà riconquistata."
+            },
+            {
+              "id": "s2e20",
+              "title": "La libertà riconquistata · Seconda parte",
+              "chapterId": "capitolo-22",
+              "part": 1,
+              "parts": 2,
+              "minutes": 5,
+              "recap": "La storia prosegue nel capitolo 22, senza salti nel testo originale."
+            },
+            {
+              "id": "s2e21",
+              "title": "Il mare e Geppetto · Prima parte",
+              "chapterId": "capitolo-23",
+              "part": 0,
+              "parts": 2,
+              "minutes": 5,
+              "recap": "Dal capitolo 23: Il mare e Geppetto."
+            },
+            {
+              "id": "s2e22",
+              "title": "Il mare e Geppetto · Seconda parte",
+              "chapterId": "capitolo-23",
+              "part": 1,
+              "parts": 2,
+              "minutes": 5,
+              "recap": "La storia prosegue nel capitolo 23, senza salti nel testo originale."
+            },
+            {
+              "id": "s2e23",
+              "title": "L'isola delle Api industriose · Prima parte",
               "chapterId": "capitolo-24",
-              "minutes": 8
+              "part": 0,
+              "parts": 2,
+              "minutes": 5,
+              "recap": "Dal capitolo 24: L'isola delle Api industriose."
+            },
+            {
+              "id": "s2e24",
+              "title": "L'isola delle Api industriose · Seconda parte",
+              "chapterId": "capitolo-24",
+              "part": 1,
+              "parts": 2,
+              "minutes": 5,
+              "recap": "La storia prosegue nel capitolo 24, senza salti nel testo originale."
             }
           ]
         },
         {
           "number": 3,
+          "title": "La scelta di diventare grandi",
           "episodes": [
             {
               "id": "s3e1",
-              "title": "Capitolo 25",
+              "title": "Una promessa alla Fata · Prima parte",
               "chapterId": "capitolo-25",
-              "minutes": 8
+              "part": 0,
+              "parts": 2,
+              "minutes": 5,
+              "recap": "Dal capitolo 25: Una promessa alla Fata."
             },
             {
               "id": "s3e2",
-              "title": "Capitolo 26",
-              "chapterId": "capitolo-26",
-              "minutes": 8
+              "title": "Una promessa alla Fata · Seconda parte",
+              "chapterId": "capitolo-25",
+              "part": 1,
+              "parts": 2,
+              "minutes": 5,
+              "recap": "La storia prosegue nel capitolo 25, senza salti nel testo originale."
             },
             {
               "id": "s3e3",
-              "title": "Capitolo 27",
-              "chapterId": "capitolo-27",
-              "minutes": 8
+              "title": "Il Pescecane · Prima parte",
+              "chapterId": "capitolo-26",
+              "part": 0,
+              "parts": 2,
+              "minutes": 5,
+              "recap": "Dal capitolo 26: Il Pescecane."
             },
             {
               "id": "s3e4",
-              "title": "Capitolo 28",
-              "chapterId": "capitolo-28",
-              "minutes": 8
+              "title": "Il Pescecane · Seconda parte",
+              "chapterId": "capitolo-26",
+              "part": 1,
+              "parts": 2,
+              "minutes": 5,
+              "recap": "La storia prosegue nel capitolo 26, senza salti nel testo originale."
             },
             {
               "id": "s3e5",
-              "title": "Capitolo 29",
-              "chapterId": "capitolo-29",
-              "minutes": 8
+              "title": "Una lite terribile · Prima parte",
+              "chapterId": "capitolo-27",
+              "part": 0,
+              "parts": 2,
+              "minutes": 5,
+              "recap": "Dal capitolo 27: Una lite terribile."
             },
             {
               "id": "s3e6",
-              "title": "Capitolo 30",
-              "chapterId": "capitolo-30",
-              "minutes": 8
+              "title": "Una lite terribile · Seconda parte",
+              "chapterId": "capitolo-27",
+              "part": 1,
+              "parts": 2,
+              "minutes": 5,
+              "recap": "La storia prosegue nel capitolo 27, senza salti nel testo originale."
             },
             {
               "id": "s3e7",
-              "title": "Capitolo 31",
-              "chapterId": "capitolo-31",
-              "minutes": 8
+              "title": "In padella · Prima parte",
+              "chapterId": "capitolo-28",
+              "part": 0,
+              "parts": 2,
+              "minutes": 5,
+              "recap": "Dal capitolo 28: In padella."
             },
             {
               "id": "s3e8",
-              "title": "Capitolo 32",
-              "chapterId": "capitolo-32",
-              "minutes": 8
+              "title": "In padella · Seconda parte",
+              "chapterId": "capitolo-28",
+              "part": 1,
+              "parts": 2,
+              "minutes": 5,
+              "recap": "La storia prosegue nel capitolo 28, senza salti nel testo originale."
             },
             {
               "id": "s3e9",
-              "title": "Capitolo 33",
-              "chapterId": "capitolo-33",
-              "minutes": 8
+              "title": "Domani sarai un ragazzo · Prima parte",
+              "chapterId": "capitolo-29",
+              "part": 0,
+              "parts": 2,
+              "minutes": 5,
+              "recap": "Dal capitolo 29: Domani sarai un ragazzo."
             },
             {
               "id": "s3e10",
-              "title": "Capitolo 34",
-              "chapterId": "capitolo-34",
-              "minutes": 8
+              "title": "Domani sarai un ragazzo · Seconda parte",
+              "chapterId": "capitolo-29",
+              "part": 1,
+              "parts": 2,
+              "minutes": 5,
+              "recap": "La storia prosegue nel capitolo 29, senza salti nel testo originale."
             },
             {
               "id": "s3e11",
-              "title": "Capitolo 35",
-              "chapterId": "capitolo-35",
-              "minutes": 8
+              "title": "L'invito di Lucignolo · Prima parte",
+              "chapterId": "capitolo-30",
+              "part": 0,
+              "parts": 2,
+              "minutes": 5,
+              "recap": "Dal capitolo 30: L'invito di Lucignolo."
             },
             {
               "id": "s3e12",
-              "title": "Capitolo 36",
+              "title": "L'invito di Lucignolo · Seconda parte",
+              "chapterId": "capitolo-30",
+              "part": 1,
+              "parts": 2,
+              "minutes": 5,
+              "recap": "La storia prosegue nel capitolo 30, senza salti nel testo originale."
+            },
+            {
+              "id": "s3e13",
+              "title": "Il Paese dei Balocchi · Prima parte",
+              "chapterId": "capitolo-31",
+              "part": 0,
+              "parts": 2,
+              "minutes": 5,
+              "recap": "Dal capitolo 31: Il Paese dei Balocchi."
+            },
+            {
+              "id": "s3e14",
+              "title": "Il Paese dei Balocchi · Seconda parte",
+              "chapterId": "capitolo-31",
+              "part": 1,
+              "parts": 2,
+              "minutes": 5,
+              "recap": "La storia prosegue nel capitolo 31, senza salti nel testo originale."
+            },
+            {
+              "id": "s3e15",
+              "title": "Le orecchie d'asino · Prima parte",
+              "chapterId": "capitolo-32",
+              "part": 0,
+              "parts": 2,
+              "minutes": 5,
+              "recap": "Dal capitolo 32: Le orecchie d'asino."
+            },
+            {
+              "id": "s3e16",
+              "title": "Le orecchie d'asino · Seconda parte",
+              "chapterId": "capitolo-32",
+              "part": 1,
+              "parts": 2,
+              "minutes": 5,
+              "recap": "La storia prosegue nel capitolo 32, senza salti nel testo originale."
+            },
+            {
+              "id": "s3e17",
+              "title": "Il circo · Prima parte",
+              "chapterId": "capitolo-33",
+              "part": 0,
+              "parts": 2,
+              "minutes": 5,
+              "recap": "Dal capitolo 33: Il circo."
+            },
+            {
+              "id": "s3e18",
+              "title": "Il circo · Seconda parte",
+              "chapterId": "capitolo-33",
+              "part": 1,
+              "parts": 2,
+              "minutes": 5,
+              "recap": "La storia prosegue nel capitolo 33, senza salti nel testo originale."
+            },
+            {
+              "id": "s3e19",
+              "title": "Di nuovo burattino · Prima parte",
+              "chapterId": "capitolo-34",
+              "part": 0,
+              "parts": 2,
+              "minutes": 5,
+              "recap": "Dal capitolo 34: Di nuovo burattino."
+            },
+            {
+              "id": "s3e20",
+              "title": "Di nuovo burattino · Seconda parte",
+              "chapterId": "capitolo-34",
+              "part": 1,
+              "parts": 2,
+              "minutes": 5,
+              "recap": "La storia prosegue nel capitolo 34, senza salti nel testo originale."
+            },
+            {
+              "id": "s3e21",
+              "title": "Nel ventre del Pescecane · Prima parte",
+              "chapterId": "capitolo-35",
+              "part": 0,
+              "parts": 2,
+              "minutes": 5,
+              "recap": "Dal capitolo 35: Nel ventre del Pescecane."
+            },
+            {
+              "id": "s3e22",
+              "title": "Nel ventre del Pescecane · Seconda parte",
+              "chapterId": "capitolo-35",
+              "part": 1,
+              "parts": 2,
+              "minutes": 5,
+              "recap": "La storia prosegue nel capitolo 35, senza salti nel testo originale."
+            },
+            {
+              "id": "s3e23",
+              "title": "Un ragazzo vero · Prima parte",
               "chapterId": "capitolo-36",
-              "minutes": 8
+              "part": 0,
+              "parts": 2,
+              "minutes": 5,
+              "recap": "Dal capitolo 36: Un ragazzo vero."
+            },
+            {
+              "id": "s3e24",
+              "title": "Un ragazzo vero · Seconda parte",
+              "chapterId": "capitolo-36",
+              "part": 1,
+              "parts": 2,
+              "minutes": 5,
+              "recap": "La storia prosegue nel capitolo 36, senza salti nel testo originale."
             }
           ]
         }
