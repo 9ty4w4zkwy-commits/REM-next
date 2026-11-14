@@ -20,3 +20,8 @@ export function toggleSavedBook(id){const db=readCollections();const index=db.sa
 export function setShelfVisibility(id,makePublic){const db=readCollections();const shelf=db.shelves.find(s=>s.id===id);if(!shelf)return false;shelf.private=!makePublic;writeCollections(db);return true}
 
 export function removeShelf(id){const db=readCollections();if(!db.shelves.some(s=>s.id===id))return false;db.shelves=db.shelves.filter(s=>s.id!==id);db.items=db.items.filter(i=>i.shelfId!==id);writeCollections(db);return true}
+
+/** Save a book once, and set its membership in selected collections atomically. */
+export function saveBookToCollections(id,shelfIds=[]){const db=readCollections();if(!db.savedBooks.includes(id))db.savedBooks.unshift(id);const wanted=new Set(shelfIds.filter(sid=>db.shelves.some(s=>s.id===sid)));db.items=db.items.filter(i=>!(i.type==='book'&&i.refId===id&&!wanted.has(i.shelfId)));for(const shelfId of wanted){if(!db.items.some(i=>i.shelfId===shelfId&&i.type==='book'&&i.refId===id))db.items.push({shelfId,type:'book',refId:id,order:Date.now()})}writeCollections(db)}
+/** Removing a saved book also clears its memberships, never other saved books. */
+export function removeSavedBook(id){const db=readCollections();db.savedBooks=db.savedBooks.filter(x=>x!==id);db.items=db.items.filter(i=>!(i.type==='book'&&i.refId===id));writeCollections(db)}
