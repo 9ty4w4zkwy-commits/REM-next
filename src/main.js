@@ -231,7 +231,7 @@ function episodes(id,selectedSeason){
   ]);
  });
  render(backArrow(()=>detail(id)),heading(book.title,'LA TUA STORIA · EPISODI'),
- seasonTabs,el('h2',{className:'season-heading',text:'Stagione '+selected.number}),el('div',{className:'episodes-list'},cards),
+ seasonTabs,el('h2',{className:'season-heading',text:'Stagione '+selected.number+(selected.title?' · '+selected.title:'')}),el('div',{className:'episodes-list'},cards),
  pathLink('Passa al libro completo',()=>{saveSetting('reading-path:'+id,'normal');reader(id)}));
 }
 function openSummary(id,chapterId,mode,inEpisode,episodeId){
