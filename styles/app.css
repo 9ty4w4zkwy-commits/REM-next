@@ -622,3 +622,14 @@ main .rem-home-section.rem-cinema-section .rem-book-card{display:block!important
 main .rem-home-section.rem-cinema-section .rem-home-cover-wrap{margin:0!important;display:block!important;}
 main .rem-home-section.rem-cinema-section .rem-book-grid{align-items:flex-start!important;gap:2px!important;}
 main .rem-home-section.rem-cinema-section{margin-bottom:22px!important;}
+
+/* Match the approved purple-circled reference: fuller covers, modest consistent spacing. */
+@media(max-width:650px){
+ main .rem-home-section.rem-cinema-section .rem-book-grid{
+  gap:6px!important;column-gap:6px!important;padding-left:2px!important;
+ }
+ main .rem-home-section.rem-cinema-section .rem-book-card{
+  flex:0 0 calc((100vw - 46px)/3)!important;
+  width:calc((100vw - 46px)/3)!important;
+ }
+}
