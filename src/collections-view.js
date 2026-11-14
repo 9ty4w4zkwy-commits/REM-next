@@ -6,7 +6,7 @@ const visibilityIcon=(isPrivate)=>{const icon=el('span',{className:'rem-visibili
 export function createCollectionsView({books,openBook,continueBook,isSavedBook=()=>false,coverBook,back,initialSection='overview',initialBookId=null}){
  const root=el('section',{className:'rem-violet'});
  root.replaceChildren();
- const head=el('div',{className:'rem-violet-hero'},[node('p','rem-violet-eyebrow','LA MIA BIBLIOTECA'),node('h1','','La tua storia, finora'),subtitle('Libri, raccolte e pensieri che parlano di te.')]);root.append(head);
+ const head=el('div',{className:'rem-violet-hero'},[node('p','rem-violet-eyebrow','LA MIA BIBLIOTECA'),el('h1',{className:'rem-library-title'},[document.createTextNode('La tua storia, '),el('span',{className:'mint-word',text:'finora'})]),subtitle('Libri, raccolte e pensieri che parlano di te.')]);root.append(head);
  const tabs=el('div',{className:'rem-violet-tabs'});root.append(tabs);
  const body=el('div');root.append(body);
  let pendingBookId=initialBookId;
