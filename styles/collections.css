@@ -215,3 +215,32 @@
 .rem-save-remove{display:block;margin:12px auto 0;background:transparent!important;border:0!important;color:#c6d5d6!important;text-decoration:underline;text-underline-offset:4px;font-size:.85rem}
 .rem-violet .rem-collection-search{display:block;width:100%;box-sizing:border-box;margin:15px 0;padding:14px 15px;border-radius:14px;border:1px solid #49716d;background:#152c38;color:#f6fffc;font-size:1rem}
 .rem-violet .rem-collection-search:focus{outline:2px solid #67dfae;outline-offset:2px}
+
+/* Biblioteca editorial refresh — scoped to REM, mobile-first. */
+.rem-violet-hero{background:transparent;border:0;padding:12px 0 10px;margin:0 0 8px}
+.rem-violet-hero h1{font:normal clamp(2.25rem,7.6vw,4.2rem)/1.07 Georgia,serif;letter-spacing:-.035em;color:#fff9ef;max-width:none;margin:10px 0 12px}
+.rem-violet-hero .rem-violet-muted{font-size:.94rem;color:#a9c6c4;margin:0}
+.rem-violet-tabs{margin:0;padding:0}
+.rem-violet .rem-library-back{border:1px solid #365e60;background:#142a39;color:#a8f1d2;border-radius:14px;margin:10px 0;padding:10px 15px}
+.rem-violet .rem-stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:18px 0 22px}
+.rem-violet .rem-stats .rem-stat{position:relative;overflow:hidden;isolation:isolate;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-end;min-width:0;min-height:215px;padding:18px 16px 19px;text-align:left;border-radius:22px;border:1px solid #387f6e;background:radial-gradient(circle at 88% 18%,#347b5c 0%,transparent 46%),linear-gradient(140deg,#123e39,#092d31);box-shadow:inset 0 -45px 80px #061a2070;color:#fff}
+.rem-violet .rem-stats .rem-stat-shelves{background:radial-gradient(circle at 85% 15%,#387d79,transparent 50%),linear-gradient(145deg,#10484b,#092b37)}
+.rem-violet .rem-stats .rem-stat-reflections{border-color:#3e7291;background:radial-gradient(circle at 85% 20%,#395e80,transparent 48%),linear-gradient(145deg,#173951,#0b253c)}
+.rem-violet .rem-stats .rem-stat-words{background:radial-gradient(circle at 85% 20%,#4c7668,transparent 48%),linear-gradient(145deg,#1a4547,#122b3b)}
+.rem-violet .rem-stats .rem-stat::before{content:"";position:absolute;right:-23px;top:29px;width:125px;height:150px;border:1px solid #a5e5cc32;border-radius:58% 42% 55% 45%;transform:rotate(-27deg);box-shadow:0 0 0 17px #a5e5cc0b,0 0 0 36px #a5e5cc08;z-index:-1}
+.rem-violet .rem-stats .rem-stat-number{font:normal clamp(3.7rem,14vw,6rem)/.95 Georgia,serif;color:#a7f4d3;margin-bottom:auto;letter-spacing:-.06em}
+.rem-violet .rem-stats .rem-stat-title{font:800 clamp(1rem,3.7vw,1.45rem)/1.15 system-ui,sans-serif;color:#fff;letter-spacing:-.035em;overflow-wrap:normal}
+.rem-violet .rem-stats .rem-stat-description{font:400 clamp(.72rem,2.7vw,.9rem)/1.42 system-ui,sans-serif;color:#d4e1df;margin-top:9px}
+.rem-violet .rem-dashboard-actions{margin:12px 0 20px}
+.rem-violet .rem-dashboard-actions .rem-write-thought{display:flex;align-items:center;justify-content:center;flex:1 1 100%;min-height:52px;border-radius:15px;background:#163a69;color:#fff;border:2px solid #70e6c0;font-weight:750;font-size:1rem;text-align:center}
+.rem-collection-context{border:1px solid #4b9c81;background:#123a39;border-radius:17px;padding:15px;margin:12px 0 18px}
+.rem-collection-context strong{color:#b0f5d6}.rem-collection-context p{margin:6px 0 0}
+.rem-save-sheet .rem-save-collections{display:block;width:100%;min-height:49px;margin-top:12px;background:#173c66;color:#fff;border:2px solid #72e4c1;border-radius:13px;font-weight:750}
+.rem-saved-book-card{display:grid!important;grid-template-columns:minmax(90px,32%) minmax(0,1fr);gap:14px;align-items:start;padding:14px;min-width:0}
+.rem-saved-cover{width:100%!important;min-width:0!important;flex:none!important}
+.rem-saved-cover .cover{min-height:0!important;max-width:100%;width:100%;height:auto;aspect-ratio:2/3}
+.rem-saved-book-info{min-width:0!important;width:100%;overflow-wrap:normal;word-break:normal;gap:9px}
+.rem-saved-book-info strong{display:block;font:700 clamp(.98rem,3.8vw,1.22rem)/1.3 system-ui,sans-serif;overflow-wrap:break-word;word-break:normal;hyphens:auto}
+.rem-saved-book-card>button{grid-column:1/-1;justify-self:stretch;width:100%;min-height:44px;white-space:normal}
+.rem-saved-book-info button{max-width:100%;white-space:normal}
+@media(max-width:360px){.rem-violet .rem-stats .rem-stat{min-height:205px;padding:14px 12px}.rem-violet .rem-stats .rem-stat-title{font-size:.95rem}.rem-violet .rem-stats .rem-stat-description{font-size:.7rem}.rem-saved-book-card{grid-template-columns:minmax(82px,34%) minmax(0,1fr);gap:11px}}
