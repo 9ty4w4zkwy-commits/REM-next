@@ -203,12 +203,12 @@ function home(){
   const list=booksForHomeSection(section.id,books,getProgress,id=>getSetting('reading-path:'+id,''),id=>getSetting('episode-current:'+id,''));
   const cards=list.map(book=>{
    const image=el('div',{className:'rem-home-cover-wrap'},[cover(book)]);
-   if(book.coverImage){
-    const title=el('div',{className:'rem-cover-title-overlay'},[
-     el('span',{className:'rem-cover-title-text rem-cover-title-'+book.id,text:book.title})
-    ]);
-    image.append(title);
-    if(book.author){const parts=book.author.trim().split(/\s+/);const first=parts.shift()||'';image.append(el('span',{className:'rem-cover-author-overlay'},[el('span',{text:first}),el('span',{text:parts.join(' ')})]));}
+   // Preserve the distinct lettering, color and composition printed on each original cover.
+   // No duplicated title or opaque title band is layered over the artwork.
+   if(book.coverImage&&book.author){
+    const parts=book.author.trim().split(/\s+/);
+    const first=parts.shift()||'';
+    image.append(el('span',{className:'rem-cover-author-overlay'},[el('span',{text:first}),el('span',{text:parts.join(' ')})]));
    }
    const save=button(isBookSaved(book.id)?'✓':'+',()=>openHomeSaveSheet(book));
    save.className='rem-cover-save'+(isBookSaved(book.id)?' is-saved':'');
