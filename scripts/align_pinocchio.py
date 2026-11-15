@@ -12,7 +12,11 @@ def normalize(s):
 def tokens(s):
     return [(normalize(m.group()),m.start(),m.end()) for m in re.finditer(r"[^\W_]+(?:['’][^\W_]+)*",s,re.UNICODE)]
 
-parser=argparse.ArgumentParser()\nparser.add_argument("--chapter",type=int,default=1)\nargs=parser.parse_args()\nif not 1<=args.chapter<=36: parser.error("chapter must be 1..36")\napi=f"https://it.wikisource.org/w/api.php?action=parse&format=json&formatversion=2&prop=text&page=Le_avventure_di_Pinocchio/Capitolo_{args.chapter}"
+parser=argparse.ArgumentParser()
+parser.add_argument("--chapter",type=int,default=1)
+args=parser.parse_args()
+if not 1<=args.chapter<=36: parser.error("chapter must be 1..36")
+api=f"https://it.wikisource.org/w/api.php?action=parse&format=json&formatversion=2&prop=text&page=Le_avventure_di_Pinocchio/Capitolo_{args.chapter}"
 request=urllib.request.Request(api,headers={"User-Agent":"REMNextAudioAlignment/1.0 (GitHub Actions)"})
 with urllib.request.urlopen(request,timeout=60) as response:
     payload=json.load(response)
@@ -23,7 +27,8 @@ for node in root.select("style,script,table,.mw-editsection,.ws-noexport,.noprin
 paragraphs=[re.sub(r'\s+',' ',p.get_text()).strip() for p in root.select('p')]
 content='\n\n'.join(p for p in paragraphs if len(p)>25)
 source=tokens(content)
-audio=f"audio/pinocchio/capitolo-{args.chapter:02d}.m4a"\nif not Path(audio).is_file(): raise FileNotFoundError(audio)
+audio=f"audio/pinocchio/capitolo-{args.chapter:02d}.m4a"
+if not Path(audio).is_file(): raise FileNotFoundError(audio)
 model=whisper.load_model("small")
 result=model.transcribe(audio,language="it",word_timestamps=True,fp16=False,verbose=False)
 spoken=[(normalize(w["word"]),float(w["start"]),float(w["end"])) for seg in result["segments"] for w in seg.get("words",[]) if normalize(w["word"])]
