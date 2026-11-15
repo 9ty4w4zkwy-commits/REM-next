@@ -53,22 +53,28 @@ function localChapterAudioView({bookId,chapter,onPosition}){
  };
  // Publicly licensed audio is preferred when available; local files remain a fallback.
  const publicSrc=number===1?'https://github.com/9ty4w4zkwy-commits/REM-next/releases/download/audio-pinocchio-v1/capitolo-01.m4a':'./audio/pinocchio/'+expected;
- fetch(publicSrc,{method:'HEAD'}).then(response=>{
-  if(disposed)return;
-  if(response.ok){
-   audio.src=publicSrc;
-   audio.addEventListener('loadedmetadata',()=>{
-    try{const saved=JSON.parse(getSetting(key,'null'));if(saved?.chapter===chapter.id&&Number.isFinite(saved.seconds))audio.currentTime=Math.min(saved.seconds,Math.max(0,audio.duration-.5))}catch{}
-    note.textContent='Audiolibro pronto: premi Play.';
-   },{once:true});
-   picker.hidden=true;
-   note.textContent='Caricamento dell’audiolibro…';
-  }
- }).catch(()=>{});
- storedAudio(bookId+':'+chapter.id).then(file=>{
-  if(file&&!audio.src)attach(file);
-  else if(!disposed&&!audio.src)note.textContent='Importa una sola volta i file M4A dei capitoli (puoi selezionarne più di uno).';
- }).catch(()=>{if(!disposed)note.textContent='Archivio locale non disponibile: puoi comunque scegliere un file per questa sessione.'});
+ if(number===1){
+  // GitHub release assets are cross-origin: Safari may reject HEAD checks due to CORS.
+  // Let the native audio element request the file directly instead.
+  audio.src=publicSrc;
+  picker.hidden=true;
+  note.textContent='Caricamento del capitolo 1…';
+  audio.addEventListener('loadedmetadata',()=>{
+   if(disposed)return;
+   try{const saved=JSON.parse(getSetting(key,'null'));if(saved?.chapter===chapter.id&&Number.isFinite(saved.seconds))audio.currentTime=Math.min(saved.seconds,Math.max(0,audio.duration-.5))}catch{}
+   note.textContent='Capitolo 1 pronto: premi Play.';
+  },{once:true});
+  audio.addEventListener('error',()=>{
+   if(disposed)return;
+   picker.hidden=false;
+   note.textContent='Il collegamento pubblico non è riproducibile in questo browser. Puoi importare il file M4A.';
+  },{once:true});
+ }else{
+  storedAudio(bookId+':'+chapter.id).then(file=>{
+   if(file)attach(file);
+   else if(!disposed)note.textContent='Importa una sola volta i file M4A dei capitoli (puoi selezionarne più di uno).';
+  }).catch(()=>{if(!disposed)note.textContent='Archivio locale non disponibile: puoi comunque scegliere un file per questa sessione.'});
+ }
  picker.addEventListener('change',async()=>{
   const files=[...(picker.files||[])];if(!files.length)return;
   let count=0,selected=null,errors=0;
