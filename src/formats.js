@@ -93,15 +93,17 @@ function localChapterAudioView({bookId,chapter,onPosition,content}){
   if(errors&&!disposed)note.textContent+=' Alcuni file non sono stati memorizzati: verifica lo spazio libero.';
   picker.value='';
  });
- let lastSaved=-1;
+ let lastSaved=-1,hasPlayed=false;
+ audio.addEventListener('play',()=>{hasPlayed=true});
  const persist=()=>{
+  if(!hasPlayed)return;
   if(!Number.isFinite(audio.currentTime)||Math.abs(audio.currentTime-lastSaved)<2)return;
   lastSaved=audio.currentTime;
   saveSetting(key,JSON.stringify({chapter:chapter.id,seconds:audio.currentTime,duration:audio.duration||null}));
   if(textLength>0&&Number.isFinite(audio.duration)&&audio.duration>0){const offset=Math.min(textLength-1,Math.round(audio.currentTime/audio.duration*textLength));saveSetting(syncKey,JSON.stringify({chapter:chapter.id,source:'audio',offset,seconds:audio.currentTime}));onPosition?.(offset)}else onPosition?.(-1);
  };
  audio.addEventListener('timeupdate',persist);audio.addEventListener('pause',persist);
- audio.addEventListener('ended',()=>{saveSetting(key,JSON.stringify({chapter:chapter.id,seconds:0,duration:audio.duration||null}));note.textContent='Capitolo completato.'});
+ audio.addEventListener('ended',()=>{if(!hasPlayed)return;saveSetting(key,JSON.stringify({chapter:chapter.id,seconds:0,duration:audio.duration||null}));note.textContent='Capitolo completato.'});
  if(number===1){wrap.append(note,audio);wrap.append(picker)}else{wrap.append(el('p',{className:'eyebrow',text:'REM · AUDIO · PROVA PRIVATA'}),note,el('label',{text:'Importa i capitoli M4A una sola volta'}),picker,audio,el('p',{className:'format-mode-note',text:'I file audio sono salvati solo nel browser di questo dispositivo, non pubblicati sul sito. Safari può cancellarli se liberi spazio o elimini i dati del sito: conserva una copia originale. Il segnalibro audio è basato sul tempo reale.'}));}
  wrap.stopAudio=()=>{disposed=true;persist();audio.pause();audio.removeAttribute('src');audio.load();if(url)URL.revokeObjectURL(url)};
  return wrap;
