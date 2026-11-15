@@ -78,7 +78,7 @@
       "id": "montecristo",
       "title": "Il conte di Montecristo",
       "author": "Alexandre Dumas",
-      "description": "Un grande romanzo di avventura, ingiustizia e riscatto.",
+      "description": "Un giovane tradito, una libertà perduta e un segreto nascosto tra le mura di una prigione. Quando il destino gli offre una seconda possibilità, la sete di vendetta rischia di cambiare ogni cosa.",
       "status": "published",
       "access": "free",
       "homeSections": [
@@ -93,7 +93,7 @@
       "id": "alice",
       "title": "Alice nel Paese delle Meraviglie",
       "author": "Lewis Carroll",
-      "description": "Un viaggio fantastico oltre i confini dell'immaginazione.",
+      "description": "Basta seguire un coniglio bianco per ritrovarsi in un mondo dove niente è come sembra. Tra personaggi bizzarri e regole impossibili, Alice scoprirà quanto lontano può portarla la curiosità.",
       "status": "published",
       "access": "free",
       "homeSections": [
@@ -108,7 +108,7 @@
       "id": "dracula",
       "title": "Dracula",
       "author": "Bram Stoker",
-      "description": "Il classico gotico che ha dato forma al mito del vampiro.",
+      "description": "Un castello isolato, un conte misterioso e un'ombra che attraversa la notte. Quando il terrore si insinua nelle vite di chi lo incontra, distinguere il reale dall'incubo diventa impossibile.",
       "status": "published",
       "access": "free",
       "homeSections": [
@@ -123,7 +123,7 @@
       "id": "pinocchio",
       "title": "Le avventure di Pinocchio",
       "author": "Carlo Collodi",
-      "description": "Il testo integrale originale di Carlo Collodi: 36 capitoli da leggere, ascoltare e ritrovare passando da un formato all’altro. Fonte: Wikisource, edizione Bemporad 1902.",
+      "description": "Un burattino di legno, un sogno impossibile e un mondo pieno di incontri straordinari. Tra bugie, tentazioni e avventure imprevedibili, Pinocchio scoprirà che diventare grandi significa molto più che diventare umani.",
       "status": "published",
       "access": "free",
       "homeSections": [
@@ -950,7 +950,7 @@
       "id": "zeno",
       "title": "La coscienza di Zeno",
       "author": "Italo Svevo",
-      "description": "Tra ricordi, ironia e autoanalisi, il racconto di una coscienza inquieta nella Trieste del Novecento.",
+      "description": "Un uomo prova a raccontare se stesso, tra promesse mai mantenute, amori complicati e piccoli grandi autoinganni. Ma quanto possiamo fidarci dei ricordi di chi racconta la propria vita?",
       "status": "published",
       "access": "premium",
       "homeSections": [
