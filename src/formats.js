@@ -52,7 +52,7 @@ function localChapterAudioView({bookId,chapter,onPosition}){
   },{once:true});
  };
  // Publicly licensed audio is preferred when available; local files remain a fallback.
- const publicSrc='./audio/pinocchio/'+expected;
+ const publicSrc=number===1?'https://github.com/9ty4w4zkwy-commits/REM-next/releases/download/audio-pinocchio-v1/capitolo-01.m4a':'./audio/pinocchio/'+expected;
  fetch(publicSrc,{method:'HEAD'}).then(response=>{
   if(disposed)return;
   if(response.ok){
