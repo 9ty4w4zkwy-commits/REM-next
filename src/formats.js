@@ -62,7 +62,7 @@ function localChapterAudioView({bookId,chapter,onPosition}){
   audio.addEventListener('loadedmetadata',()=>{
    if(disposed)return;
    try{const saved=JSON.parse(getSetting(key,'null'));if(saved?.chapter===chapter.id&&Number.isFinite(saved.seconds))audio.currentTime=Math.min(saved.seconds,Math.max(0,audio.duration-.5))}catch{}
-   note.textContent='Capitolo 1 pronto: premi Play.';
+   note.textContent='';
   },{once:true});
   audio.addEventListener('error',()=>{
    if(disposed)return;
@@ -100,7 +100,7 @@ function localChapterAudioView({bookId,chapter,onPosition}){
  };
  audio.addEventListener('timeupdate',persist);audio.addEventListener('pause',persist);
  audio.addEventListener('ended',()=>{saveSetting(key,JSON.stringify({chapter:chapter.id,seconds:0,duration:audio.duration||null}));note.textContent='Capitolo completato.'});
- wrap.append(el('p',{className:'eyebrow',text:'REM · AUDIO · PROVA PRIVATA'}),note,el('label',{text:'Importa i capitoli M4A una sola volta'}),picker,audio,el('p',{className:'format-mode-note',text:'I file audio sono salvati solo nel browser di questo dispositivo, non pubblicati sul sito. Safari può cancellarli se liberi spazio o elimini i dati del sito: conserva una copia originale. Il segnalibro audio è basato sul tempo reale.'}));
+ if(number===1){wrap.append(note,audio);wrap.append(picker)}else{wrap.append(el('p',{className:'eyebrow',text:'REM · AUDIO · PROVA PRIVATA'}),note,el('label',{text:'Importa i capitoli M4A una sola volta'}),picker,audio,el('p',{className:'format-mode-note',text:'I file audio sono salvati solo nel browser di questo dispositivo, non pubblicati sul sito. Safari può cancellarli se liberi spazio o elimini i dati del sito: conserva una copia originale. Il segnalibro audio è basato sul tempo reale.'}));}
  wrap.stopAudio=()=>{disposed=true;persist();audio.pause();audio.removeAttribute('src');audio.load();if(url)URL.revokeObjectURL(url)};
  return wrap;
 }
