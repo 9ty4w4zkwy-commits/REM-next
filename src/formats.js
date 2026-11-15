@@ -51,9 +51,23 @@ function localChapterAudioView({bookId,chapter,onPosition}){
    note.textContent='Capitolo pronto: premi Play. Il file rimane privato su questo dispositivo.';
   },{once:true});
  };
+ // Publicly licensed audio is preferred when available; local files remain a fallback.
+ const publicSrc='./audio/pinocchio/'+expected;
+ fetch(publicSrc,{method:'HEAD'}).then(response=>{
+  if(disposed)return;
+  if(response.ok){
+   audio.src=publicSrc;
+   audio.addEventListener('loadedmetadata',()=>{
+    try{const saved=JSON.parse(getSetting(key,'null'));if(saved?.chapter===chapter.id&&Number.isFinite(saved.seconds))audio.currentTime=Math.min(saved.seconds,Math.max(0,audio.duration-.5))}catch{}
+    note.textContent='Audiolibro pronto: premi Play.';
+   },{once:true});
+   picker.hidden=true;
+   note.textContent='Caricamento dell’audiolibro…';
+  }
+ }).catch(()=>{});
  storedAudio(bookId+':'+chapter.id).then(file=>{
-  if(file)attach(file);
-  else if(!disposed)note.textContent='Importa una sola volta i file M4A dei capitoli (puoi selezionarne più di uno).';
+  if(file&&!audio.src)attach(file);
+  else if(!disposed&&!audio.src)note.textContent='Importa una sola volta i file M4A dei capitoli (puoi selezionarne più di uno).';
  }).catch(()=>{if(!disposed)note.textContent='Archivio locale non disponibile: puoi comunque scegliere un file per questa sessione.'});
  picker.addEventListener('change',async()=>{
   const files=[...(picker.files||[])];if(!files.length)return;
