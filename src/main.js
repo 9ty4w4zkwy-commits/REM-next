@@ -12,7 +12,7 @@ import {createEbookJourney} from './ebook-journey.js?v=rem-ebook-91';
 import {phraseSearch,getPhrase,savePhrase} from './synchronization.js?v=rem-switch-68';
 import {HOME_SECTIONS,booksForHomeSection} from './home-config.js?v=rem-ui-159';
 import {summaryView} from './summary-view.js?v=rem-summary-50';
-const app=document.getElementById('app');let books=[];let currentView='home';let activeReaderTools=null;let activeHighlights=null;let activeAudioPlayer=null;
+const app=document.getElementById('app');let books=[];let currentView='home';let resumeFromHomeId=null;let activeReaderTools=null;let activeHighlights=null;let activeAudioPlayer=null;
 const render=(...nodes)=>{if(activeAudioPlayer){activeAudioPlayer.stopAudio?.();activeAudioPlayer=null}if(activeHighlights){activeHighlights.destroy();activeHighlights=null}if(activeReaderTools){activeReaderTools.destroy();activeReaderTools=null}app.replaceChildren(...nodes);for(const [id,active] of [['navHome',currentView==='home'],['navLibrary',currentView==='library']]){const nav=document.getElementById(id);nav?.classList.toggle('is-active',active);if(active)nav?.setAttribute('aria-current','page');else nav?.removeAttribute('aria-current')}window.scrollTo({top:0,left:0,behavior:'instant'});document.documentElement.scrollTop=0;document.body.scrollTop=0};
 const para=(text,cls='')=>el('p',{text,className:cls});
 const backArrow=(onClick,label='Torna indietro')=>{const b=button('←',onClick);b.classList.add('reader-back','quiet-back');b.setAttribute('aria-label',label);return b};
@@ -197,6 +197,7 @@ function openHomeSaveSheet(book){const alreadySaved=isBookSaved(book.id);
  if(alreadySaved){const remove=button('Rimuovi dalla Biblioteca',()=>{removeSavedBook(book.id);refreshHomeSaveButtons();close()});remove.className='rem-save-remove';sheet.append(remove)}
  overlay.append(sheet);document.body.append(overlay);top.querySelector('button')?.focus()}
 function home(){
+ resumeFromHomeId=null;
  currentView='home';
  const intro=el('h1',{className:'rem-cinema-intro'},[el('span',{className:'rem-intro-first-line',text:'La tua prossima storia'}),el('span',{className:'mint-word rem-intro-second-line',text:'ti aspetta.'})]);
  const shelf=section=>{
@@ -210,7 +211,7 @@ function home(){
    save.dataset.bookId=String(book.id);save.dataset.bookTitle=book.title;
    save.setAttribute('aria-label','Salva o organizza nella Biblioteca: '+book.title);
    image.append(save);
-   const open=button('Apri '+book.title,()=>section.id==='continue'&&getProgress(book.id)?readingEntry(book.id):detail(book.id));
+   const open=button('Apri '+book.title,()=>section.id==='continue'&&getProgress(book.id)?readingEntry(book.id,true):detail(book.id));
    open.className='rem-cinema-cover-open';open.setAttribute('aria-label',section.id==='continue'?'Riprendi '+book.title+' dal segnalibro':'Scopri '+book.title);
    image.append(open);
    return el('article',{className:'rem-book-card rem-cinema-card',attrs:{'aria-label':book.title+' — '+(book.author||'')}},[image]);
@@ -224,6 +225,7 @@ function home(){
 }
 function library(section='overview',bookId=null){currentView='library';render(createCollectionsView({books,openBook:detail,continueBook:readingEntry,isSavedBook:isBookSaved,coverBook:cover,back:home,initialSection:section,initialBookId:bookId}))}
 function detail(id){
+ resumeFromHomeId=null;
  const book=findBook(id);if(!book)return library();
  currentView='detail';
  const save=button(isBookSaved(id)?'✓':'+',()=>openHomeSaveSheet(book));
@@ -262,7 +264,8 @@ function detail(id){
  }
  render(...nodes);
 }
-function readingEntry(id){
+function readingEntry(id,fromHome=false){
+ resumeFromHomeId=fromHome?id:null;
  const book=findBook(id);if(!book)return library();
  if(book.availability==='preview')return detail(id);
  const preference=getSetting('reading-path:'+id,'');
@@ -321,7 +324,7 @@ function openSummary(id,chapterId,mode,inEpisode,episodeId){
  const continueAt=nextId=>{saveProgress(id,nextId);reader(id,nextId,mode,null,inEpisode,episodeId)};
  render(button('← Torna alla storia',goBack),heading(book.title,'RIASSUNTI · LIBRO COMPLETO'),summaryView(book,goBack,continueAt));
 }
-async function reader(id,chapterId,modeOverride,seekOffset=null,episodic=false,episodeId=null){const book=findBook(id);if(!book)return library();currentView='reader';const mode=modeOverride||getMode(id);const saved=getProgress(id);const requestedEpisode=episodeId?allEpisodes(book).find(ep=>ep.id===episodeId):null;const chapter=book.chapters.find(c=>c.id===(requestedEpisode?.chapterId||chapterId))||book.chapters.find(c=>c.id===saved?.chapter)||book.chapters[0];const inEpisode=episodic||getSetting('reading-path:'+id,'normal')==='episodes';const nav=button('←',()=>inEpisode?episodes(id):detail(id));nav.classList.add('reader-back');nav.setAttribute('aria-label',inEpisode?'Torna agli episodi':'Torna alla scheda libro');const pathChange=pathLink(inEpisode?'Passa a lettura continua':'Passa a episodi',()=>{saveSetting('reading-path:'+id,inEpisode?'normal':'episodes');inEpisode?reader(id,chapter?.id,mode):episodes(id)});const episode= inEpisode?(allEpisodes(book).find(ep=>ep.id===episodeId)||currentEpisode(book)||episodeForChapter(book,chapter?.id)):null;if(episode)rememberEpisode(id,episode);const episodeHeading=episode?el('div',{className:'episode-reader-context'},[el('span',{text:episodeLabel(episode)}),el('strong',{text:episode.title||'Episodio'}),...(episodeRecap(book,episode)?[recapPrompt(book,episode,mode)]:[])]):null;const summaryButton=button('✦ Riassumi',()=>openSummary(id,chapter?.id,mode,inEpisode,episode?.id));summaryButton.classList.add('summary-launch','summary-warm');const readingExtras=el('div',{className:'summary-footer'},[el('span',{className:'summary-footer-hint',text:'Vuoi un riepilogo?'}),summaryButton]);const switcher=formatSwitch(id,mode,next=>reader(id,chapter?.id,next,null,inEpisode,episode?.id));const quickSwitch=formatSwitch(id,mode,next=>reader(id,chapter?.id,next,null,inEpisode,episode?.id));quickSwitch.classList.add('format-switch-bottom');if(!chapter)return render(nav,heading(book.title,'UN LIBRO, TANTI MODI DI VIVERLO'),switcher,para('Questo libro non contiene capitoli.'),pathChange);
+async function reader(id,chapterId,modeOverride,seekOffset=null,episodic=false,episodeId=null){const book=findBook(id);if(!book)return library();currentView='reader';const mode=modeOverride||getMode(id);const saved=getProgress(id);const requestedEpisode=episodeId?allEpisodes(book).find(ep=>ep.id===episodeId):null;const chapter=book.chapters.find(c=>c.id===(requestedEpisode?.chapterId||chapterId))||book.chapters.find(c=>c.id===saved?.chapter)||book.chapters[0];const inEpisode=episodic||getSetting('reading-path:'+id,'normal')==='episodes';const returnHome=resumeFromHomeId===id;const nav=button('←',()=>returnHome?home():inEpisode?episodes(id):detail(id));nav.classList.add('reader-back');nav.setAttribute('aria-label',returnHome?'Torna alla Home':inEpisode?'Torna agli episodi':'Torna alla scheda libro');const pathChange=pathLink(inEpisode?'Passa a lettura continua':'Passa a episodi',()=>{saveSetting('reading-path:'+id,inEpisode?'normal':'episodes');inEpisode?reader(id,chapter?.id,mode):episodes(id)});const episode= inEpisode?(allEpisodes(book).find(ep=>ep.id===episodeId)||currentEpisode(book)||episodeForChapter(book,chapter?.id)):null;if(episode)rememberEpisode(id,episode);const episodeHeading=episode?el('div',{className:'episode-reader-context'},[el('span',{text:episodeLabel(episode)}),el('strong',{text:episode.title||'Episodio'}),...(episodeRecap(book,episode)?[recapPrompt(book,episode,mode)]:[])]):null;const summaryButton=button('✦ Riassumi',()=>openSummary(id,chapter?.id,mode,inEpisode,episode?.id));summaryButton.classList.add('summary-launch','summary-warm');const readingExtras=el('div',{className:'summary-footer'},[el('span',{className:'summary-footer-hint',text:'Vuoi un riepilogo?'}),summaryButton]);const switcher=formatSwitch(id,mode,next=>reader(id,chapter?.id,next,null,inEpisode,episode?.id));const quickSwitch=formatSwitch(id,mode,next=>reader(id,chapter?.id,next,null,inEpisode,episode?.id));quickSwitch.classList.add('format-switch-bottom');if(!chapter)return render(nav,heading(book.title,'UN LIBRO, TANTI MODI DI VIVERLO'),switcher,para('Questo libro non contiene capitoli.'),pathChange);
 if(mode==='audio'){
  const shell=el('section',{className:'reading-shell audio-sync-shell'});
  render(nav,heading(book.title,'UN LIBRO, TANTI MODI DI VIVERLO'),...(episodeHeading?[episodeHeading]:[]),shell,readingExtras,finishControl(id),pathChange,quickSwitch);
