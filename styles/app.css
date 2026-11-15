@@ -861,3 +861,13 @@ main .rem-home-section.rem-cinema-section .rem-cover-author-overlay{display:none
  .rem-cinema-intro .rem-intro-first-line{font-size:.94em!important}
  .rem-cinema-intro .rem-intro-second-line{font-size:1em!important}
 }
+
+/* v167: make all Home shelf headings a little smaller, leaving the hero headline untouched. */
+@media(max-width:650px){
+ main .rem-home-section .rem-section-title,
+ main .rem-home-section[data-section="free"] .rem-section-title,
+ main .rem-home-section[data-section="premium"] .rem-section-title{
+  font-size:clamp(1.4rem,6.2vw,1.75rem)!important;
+  line-height:1.16!important;
+ }
+}
