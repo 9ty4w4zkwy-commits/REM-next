@@ -15,7 +15,7 @@ export function paperView(book,chapter,onChapter){const intro=el('p',{text:'Stai
 function localChapterAudioView({bookId,chapter,onPosition}){
  const wrap=el('section',{className:'format-mode-panel rem-audio-player'});
  const key='audio-real-position:'+bookId;
- const number=Number(chapter.id.match(/^capitolo-(\\d+)$/)?.[1]);
+ const number=Number(chapter.id.match(/^capitolo-(\d+)$/)?.[1]);
  const expected='capitolo-'+String(number).padStart(2,'0')+'.m4a';
  const heading=el('p',{className:'eyebrow',text:'REM · AUDIO'});
  const note=el('p',{className:'rem-audio-status',text:'Seleziona il file '+expected+' dal tuo dispositivo per ascoltarlo.'});
@@ -49,7 +49,7 @@ function localChapterAudioView({bookId,chapter,onPosition}){
  return wrap;
 }
 export function audioView({bookId,chapter,content,onPosition}={}){
- if(bookId==='pinocchio'&&/^capitolo-\\d+$/.test(chapter?.id||''))return localChapterAudioView({bookId,chapter,onPosition});
+ if(bookId==='pinocchio'&&/^capitolo-\d+$/.test(chapter?.id||''))return localChapterAudioView({bookId,chapter,onPosition});
  const wrap=el('section',{className:'format-mode-panel rem-audio-player'});
  if(!content||!('speechSynthesis' in window)){
   wrap.append(el('p',{text:'La riproduzione vocale non è disponibile su questo dispositivo.'}));return wrap;
