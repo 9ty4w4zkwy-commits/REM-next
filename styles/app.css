@@ -854,3 +854,10 @@ main .rem-home-section.rem-cinema-section .rem-cover-author-overlay{display:none
 .rem-cinema-intro .rem-intro-first-line,.rem-cinema-intro .rem-intro-second-line{display:block!important;white-space:nowrap!important}
 .rem-cinema-intro .rem-intro-second-line{color:#64dfa9!important}
 @media(max-width:650px){.rem-cinema-intro{font-size:clamp(1.8rem,6.35vw,2.9rem)!important}}
+
+/* v165: visibly larger hero than the shelf headings, keeping the first line intact on iPhone. */
+@media(max-width:650px){
+ .rem-cinema-intro{font-size:clamp(2.05rem,7.6vw,3.15rem)!important;letter-spacing:-.055em!important;line-height:1.04!important;margin-bottom:26px!important}
+ .rem-cinema-intro .rem-intro-first-line{font-size:.94em!important}
+ .rem-cinema-intro .rem-intro-second-line{font-size:1em!important}
+}
