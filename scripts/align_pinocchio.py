@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-"""Generate a word-level audio timeline for Pinocchio chapter 1 using Whisper."""
-import json, re, unicodedata, urllib.request, html
+"""Generate a word-level audio timeline for any Pinocchio chapter using Whisper."""
+import argparse, json, re, unicodedata, urllib.request, html
 from difflib import SequenceMatcher
 from pathlib import Path
 from bs4 import BeautifulSoup
@@ -12,7 +12,7 @@ def normalize(s):
 def tokens(s):
     return [(normalize(m.group()),m.start(),m.end()) for m in re.finditer(r"[^\W_]+(?:['’][^\W_]+)*",s,re.UNICODE)]
 
-api="https://it.wikisource.org/w/api.php?action=parse&format=json&formatversion=2&prop=text&page=Le_avventure_di_Pinocchio/Capitolo_1"
+parser=argparse.ArgumentParser()\nparser.add_argument("--chapter",type=int,default=1)\nargs=parser.parse_args()\nif not 1<=args.chapter<=36: parser.error("chapter must be 1..36")\napi=f"https://it.wikisource.org/w/api.php?action=parse&format=json&formatversion=2&prop=text&page=Le_avventure_di_Pinocchio/Capitolo_{args.chapter}"
 request=urllib.request.Request(api,headers={"User-Agent":"REMNextAudioAlignment/1.0 (GitHub Actions)"})
 with urllib.request.urlopen(request,timeout=60) as response:
     payload=json.load(response)
@@ -23,7 +23,7 @@ for node in root.select("style,script,table,.mw-editsection,.ws-noexport,.noprin
 paragraphs=[re.sub(r'\s+',' ',p.get_text()).strip() for p in root.select('p')]
 content='\n\n'.join(p for p in paragraphs if len(p)>25)
 source=tokens(content)
-audio="audio/pinocchio/capitolo-01.m4a"
+audio=f"audio/pinocchio/capitolo-{args.chapter:02d}.m4a"\nif not Path(audio).is_file(): raise FileNotFoundError(audio)
 model=whisper.load_model("small")
 result=model.transcribe(audio,language="it",word_timestamps=True,fp16=False,verbose=False)
 spoken=[(normalize(w["word"]),float(w["start"]),float(w["end"])) for seg in result["segments"] for w in seg.get("words",[]) if normalize(w["word"])]
@@ -34,8 +34,8 @@ for tag,a,b,c,d in matcher.get_opcodes():
         for i,j in zip(range(a,b),range(c,d)):
             mapped.append({"offset":source[i][1],"start":round(spoken[j][1],3),"end":round(spoken[j][2],3)})
 coverage=len(mapped)/max(1,len(source))
-output={"chapter":"capitolo-1","method":"whisper-small-word-timestamps","coverage":round(coverage,3),"duration":round(max((w[2] for w in spoken),default=0),3),"words":mapped}
-Path("audio/pinocchio/capitolo-01.words.json").write_text(json.dumps(output,ensure_ascii=False,separators=(',',':')),encoding="utf-8")
+output={"chapter":f"capitolo-{args.chapter}","method":"whisper-small-word-timestamps","coverage":round(coverage,3),"duration":round(max((w[2] for w in spoken),default=0),3),"words":mapped}
+Path(f"audio/pinocchio/capitolo-{args.chapter:02d}.words.json").write_text(json.dumps(output,ensure_ascii=False,separators=(',',':')),encoding="utf-8")
 print(f"Matched {len(mapped)}/{len(source)} words, coverage {coverage:.1%}")
 if coverage<0.55:
     raise RuntimeError("Alignment coverage too low: check that audio and ebook contain the same text")
