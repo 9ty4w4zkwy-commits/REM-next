@@ -1,0 +1,34 @@
+name: Align all uploaded Pinocchio chapters
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  align:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: sudo apt-get update && sudo apt-get install -y ffmpeg
+      - run: pip install openai-whisper beautifulsoup4
+      - name: Align chapters 2 through 36
+        shell: bash
+        run: |
+          set -euo pipefail
+          for chapter in $(seq 2 36); do
+            printf -v filename 'audio/pinocchio/capitolo-%02d.m4a' "$chapter"
+            if [ ! -f "$filename" ]; then
+              echo "::error::Missing $filename"
+              exit 1
+            fi
+            python scripts/align_pinocchio.py --chapter "$chapter"
+          done
+      - name: Commit all timelines
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add audio/pinocchio/*.words.json
+          git diff --cached --quiet || (git commit -m "Generate word timelines for Pinocchio chapters 2-36" && git push)
