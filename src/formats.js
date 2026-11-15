@@ -45,19 +45,19 @@ function localChapterAudioView({bookId,chapter,onPosition,content,segmentStart=0
  picker.style.maxWidth='100%';
  const audio=document.createElement('audio');audio.controls=true;audio.preload='metadata';audio.style.width='100%';
  let url=null,disposed=false,timeline=null,hasPlayed=false,lastSaved=-1;
- if(number===1)loadWordTimeline(chapter.id).then(data=>{timeline=data;if(!disposed)restorePosition()}).catch(()=>{if(!disposed)note.textContent='Mappa parole non disponibile: puoi ascoltare, ma la sincronizzazione precisa è sospesa.'});
+ loadWordTimeline(chapter.id).then(data=>{timeline=data;if(!disposed)restorePosition()}).catch(()=>{if(!disposed)note.textContent='Mappa parole non disponibile: puoi ascoltare, ma la sincronizzazione precisa è sospesa.'});
  const restorePosition=()=>{if(disposed||!audio.duration||!timeline)return;try{const sync=JSON.parse(getSetting(syncKey,'null'));const saved=JSON.parse(getSetting(key,'null'));const seconds=sync?.chapter===chapter.id&&sync.source==='ebook'?secondsForOffset(timeline,sync.offset):saved?.chapter===chapter.id?saved.seconds:null;if(Number.isFinite(seconds))audio.currentTime=Math.min(seconds,Math.max(0,audio.duration-.5))}catch{}};
  const attach=file=>{
   if(disposed)return;
   if(url)URL.revokeObjectURL(url);
   url=URL.createObjectURL(file);audio.src=url;
   audio.addEventListener('loadedmetadata',()=>{
-   try{const saved=JSON.parse(getSetting(key,'null'));if(saved?.chapter===chapter.id&&Number.isFinite(saved.seconds))audio.currentTime=Math.min(saved.seconds,Math.max(0,audio.duration-0.5))}catch{}
-   note.textContent='Capitolo pronto: premi Play. Il file rimane privato su questo dispositivo.';
+   try{const saved=JSON.parse(getSetting(key,'null'));restorePosition()}catch{}
+   note.textContent='Capitolo pronto: premi Play. Il file rimane privato su questo dispositivo.';restorePosition();
   },{once:true});
  };
  // Publicly licensed audio is preferred when available; local files remain a fallback.
- const publicSrc=number===1?'./audio/pinocchio/capitolo-01.m4a':'./audio/pinocchio/'+expected;
+ const publicSrc='./audio/pinocchio/'+expected;
  if(number===1){
   // GitHub release assets are cross-origin: Safari may reject HEAD checks due to CORS.
   // Let the native audio element request the file directly instead.
@@ -112,6 +112,7 @@ function localChapterAudioView({bookId,chapter,onPosition,content,segmentStart=0
  audio.addEventListener('timeupdate',persist);audio.addEventListener('pause',persist);
  audio.addEventListener('ended',()=>{if(!hasPlayed)return;saveSetting(key,JSON.stringify({chapter:chapter.id,seconds:0,duration:audio.duration||null}));note.textContent='Capitolo completato.'});
  if(number===1){wrap.append(note,audio);wrap.append(picker)}else{wrap.append(el('p',{className:'eyebrow',text:'REM · AUDIO · PROVA PRIVATA'}),note,el('label',{text:'Importa i capitoli M4A una sola volta'}),picker,audio,el('p',{className:'format-mode-note',text:'I file audio sono salvati solo nel browser di questo dispositivo, non pubblicati sul sito. Safari può cancellarli se liberi spazio o elimini i dati del sito: conserva una copia originale. Il segnalibro audio è basato sul tempo reale.'}));}
+ wrap.append(el('p',{className:'format-mode-note',text:'Narrazione audio generata con intelligenza artificiale.'}));
  wrap.stopAudio=()=>{disposed=true;persist();audio.pause();audio.removeAttribute('src');audio.load();if(url)URL.revokeObjectURL(url)};
  return wrap;
 }
