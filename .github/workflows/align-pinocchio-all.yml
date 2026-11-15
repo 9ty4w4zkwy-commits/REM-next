@@ -14,6 +14,18 @@ jobs:
           python-version: '3.11'
       - run: sudo apt-get update && sudo apt-get install -y ffmpeg
       - run: pip install openai-whisper beautifulsoup4
+      - name: Move uploaded chapters into audio folder
+        shell: bash
+        run: |
+          mkdir -p audio/pinocchio
+          for file in capitolo-*.m4a; do
+            [ -f "$file" ] || continue
+            if [ -e "audio/pinocchio/$file" ]; then
+              echo "::error::Duplicate $file in repository root and audio/pinocchio"
+              exit 1
+            fi
+            mv "$file" audio/pinocchio/
+          done
       - name: Align chapters 2 through 36
         shell: bash
         run: |
@@ -30,5 +42,5 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add audio/pinocchio/*.words.json
+          git add -A -- 'capitolo-*.m4a' audio/pinocchio/
           git diff --cached --quiet || (git commit -m "Generate word timelines for Pinocchio chapters 2-36" && git push)
