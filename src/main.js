@@ -210,8 +210,8 @@ function home(){
    save.dataset.bookId=String(book.id);save.dataset.bookTitle=book.title;
    save.setAttribute('aria-label','Salva o organizza nella Biblioteca: '+book.title);
    image.append(save);
-   const open=button('Apri '+book.title,()=>detail(book.id));
-   open.className='rem-cinema-cover-open';open.setAttribute('aria-label','Scopri '+book.title);
+   const open=button('Apri '+book.title,()=>section.id==='continue'&&getProgress(book.id)?readingEntry(book.id):detail(book.id));
+   open.className='rem-cinema-cover-open';open.setAttribute('aria-label',section.id==='continue'?'Riprendi '+book.title+' dal segnalibro':'Scopri '+book.title);
    image.append(open);
    return el('article',{className:'rem-book-card rem-cinema-card',attrs:{'aria-label':book.title+' — '+(book.author||'')}},[image]);
   });
@@ -267,7 +267,7 @@ function readingEntry(id){
  if(book.availability==='preview')return detail(id);
  const preference=getSetting('reading-path:'+id,'');
  if(!preference&&!getProgress(id))return chooseReadingPath(id);
- if(preference==='episodes'){const ep=getSetting('episode-current:'+id,'');const found=allEpisodes(book).find(e=>e.id===ep);return found?reader(id,found.chapterId,getMode(id),null,true,found.id):episodes(id)}
+ if(preference==='episodes'){const ep=getSetting('episode-current:'+id,'');const found=allEpisodes(book).find(e=>e.id===ep);return found?reader(id,found.chapterId,getMode(id),null,true,found.id):reader(id,getProgress(id)?.chapter,getMode(id),null,true)}
  return reader(id);
 }
 function chooseReadingPath(id){
