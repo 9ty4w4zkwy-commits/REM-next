@@ -1,3 +1,4 @@
+import {loadWordTimeline,secondsForOffset,offsetForSeconds} from './audio-word-timeline.js';
 import {getSetting,saveSetting} from './progress.js';
 import {el,button,panel} from './ui.js';
 const ICON_PATHS={
@@ -32,7 +33,7 @@ async function storedAudio(id,blob){
   tx.oncomplete=()=>db.close();
  });
 }
-function localChapterAudioView({bookId,chapter,onPosition,content}){
+function localChapterAudioView({bookId,chapter,onPosition,content,segmentStart=0}){
  const wrap=el('section',{className:'format-mode-panel rem-audio-player'});
  const key='audio-real-position:'+bookId;
  const syncKey='audio-text-sync:'+bookId;
@@ -43,7 +44,9 @@ function localChapterAudioView({bookId,chapter,onPosition,content}){
  const picker=el('input',{attrs:{type:'file',multiple:'',accept:'.m4a,.mp4,audio/mp4','aria-label':'Importa i capitoli audio M4A'}});
  picker.style.maxWidth='100%';
  const audio=document.createElement('audio');audio.controls=true;audio.preload='metadata';audio.style.width='100%';
- let url=null,disposed=false;
+ let url=null,disposed=false,timeline=null,hasPlayed=false,lastSaved=-1;
+ if(number===1)loadWordTimeline(chapter.id).then(data=>{timeline=data;if(!disposed)restorePosition()}).catch(()=>{if(!disposed)note.textContent='Mappa parole non disponibile: puoi ascoltare, ma la sincronizzazione precisa è sospesa.'});
+ const restorePosition=()=>{if(disposed||!audio.duration||!timeline)return;try{const sync=JSON.parse(getSetting(syncKey,'null'));const saved=JSON.parse(getSetting(key,'null'));const seconds=sync?.chapter===chapter.id&&sync.source==='ebook'?secondsForOffset(timeline,sync.offset):saved?.chapter===chapter.id?saved.seconds:null;if(Number.isFinite(seconds))audio.currentTime=Math.min(seconds,Math.max(0,audio.duration-.5))}catch{}};
  const attach=file=>{
   if(disposed)return;
   if(url)URL.revokeObjectURL(url);
@@ -63,7 +66,7 @@ function localChapterAudioView({bookId,chapter,onPosition,content}){
   note.textContent='Caricamento del capitolo 1…';
   audio.addEventListener('loadedmetadata',()=>{
    if(disposed)return;
-   try{const sync=JSON.parse(getSetting(syncKey,'null'));const saved=JSON.parse(getSetting(key,'null'));const seconds=sync?.chapter===chapter.id&&sync.source==='ebook'&&textLength>0?Math.max(0,Math.min(1,sync.offset/textLength))*audio.duration:saved?.chapter===chapter.id?saved.seconds:0;if(Number.isFinite(seconds))audio.currentTime=Math.min(seconds,Math.max(0,audio.duration-.5))}catch{}
+   restorePosition()
    note.textContent='';
   },{once:true});
   audio.addEventListener('error',()=>{
@@ -93,14 +96,18 @@ function localChapterAudioView({bookId,chapter,onPosition,content}){
   if(errors&&!disposed)note.textContent+=' Alcuni file non sono stati memorizzati: verifica lo spazio libero.';
   picker.value='';
  });
- let lastSaved=-1,hasPlayed=false;
  audio.addEventListener('play',()=>{hasPlayed=true});
  const persist=()=>{
   if(!hasPlayed)return;
   if(!Number.isFinite(audio.currentTime)||Math.abs(audio.currentTime-lastSaved)<2)return;
   lastSaved=audio.currentTime;
   saveSetting(key,JSON.stringify({chapter:chapter.id,seconds:audio.currentTime,duration:audio.duration||null}));
-  if(textLength>0&&Number.isFinite(audio.duration)&&audio.duration>0){const offset=Math.min(textLength-1,Math.round(audio.currentTime/audio.duration*textLength));saveSetting(syncKey,JSON.stringify({chapter:chapter.id,source:'audio',offset,seconds:audio.currentTime}));onPosition?.(offset)}else onPosition?.(-1);
+  const offset=offsetForSeconds(timeline,audio.currentTime);
+  if(Number.isInteger(offset)){
+   saveSetting(syncKey,JSON.stringify({chapter:chapter.id,source:'audio',offset,seconds:audio.currentTime}));
+   const relative=offset-segmentStart;
+   if(relative>=0&&relative<textLength)onPosition?.(relative);
+  }
  };
  audio.addEventListener('timeupdate',persist);audio.addEventListener('pause',persist);
  audio.addEventListener('ended',()=>{if(!hasPlayed)return;saveSetting(key,JSON.stringify({chapter:chapter.id,seconds:0,duration:audio.duration||null}));note.textContent='Capitolo completato.'});
@@ -108,8 +115,8 @@ function localChapterAudioView({bookId,chapter,onPosition,content}){
  wrap.stopAudio=()=>{disposed=true;persist();audio.pause();audio.removeAttribute('src');audio.load();if(url)URL.revokeObjectURL(url)};
  return wrap;
 }
-export function audioView({bookId,chapter,content,onPosition}={}){
- if(bookId==='pinocchio'&&/^capitolo-\d+$/.test(chapter?.id||''))return localChapterAudioView({bookId,chapter,onPosition,content});
+export function audioView({bookId,chapter,content,onPosition,segmentStart=0}={}){
+ if(bookId==='pinocchio'&&/^capitolo-\d+$/.test(chapter?.id||''))return localChapterAudioView({bookId,chapter,onPosition,content,segmentStart});
  const wrap=el('section',{className:'format-mode-panel rem-audio-player'});
  if(!content||!('speechSynthesis' in window)){
   wrap.append(el('p',{text:'La riproduzione vocale non è disponibile su questo dispositivo.'}));return wrap;
