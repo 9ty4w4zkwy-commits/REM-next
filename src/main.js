@@ -232,7 +232,7 @@ function detail(id){
  const coverArt=el('div',{className:'rem-cinema-detail-cover'},[
   cover(book),
   (()=>{const b=button('▶',()=>trailerView(id));b.className='rem-detail-trailer-play';b.setAttribute('aria-label','Guarda il trailer di '+book.title);return b})(),
-  (()=>{const b=button('▶  Guarda il trailer',()=>trailerView(id));b.className='rem-detail-trailer-cta';return b})()
+  (()=>{const b=button('Guarda il trailer',()=>trailerView(id));b.className='rem-detail-trailer-cta';return b})()
  ]);
  const summary=book.description||'';
  const concise=summary.length>185?summary.slice(0,185).replace(/\s+\S*$/,'')+'…':summary;
