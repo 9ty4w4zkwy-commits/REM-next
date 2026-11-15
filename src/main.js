@@ -235,7 +235,7 @@ function detail(id){
   (()=>{const b=button('Guarda il trailer',()=>trailerView(id));b.className='rem-detail-trailer-cta';return b})()
  ]);
  const summary=book.description||'';
- const concise=summary.length>185?summary.slice(0,185).replace(/\s+\S*$/,'')+'…':summary;
+ const concise=summary;
  const info=el('section',{className:'rem-cinema-detail-info'},[
   coverArt,
   el('div',{className:'rem-cinema-detail-copy'},[
