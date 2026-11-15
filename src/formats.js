@@ -10,7 +10,46 @@ const MODES=[['ebook','Ebook'],['paper','Cartaceo'],['audio','Audio']];
 export function getMode(bookId){const mode=getSetting('format:'+bookId,'ebook');return MODES.some(([id])=>id===mode)?mode:'ebook'}
 export function formatSwitch(bookId,selected,onSelect){return el('div',{className:'format-switch',attrs:{role:'group','aria-label':'Formato di lettura'}},MODES.map(([id,label])=>{const b=button(label,()=>{saveSetting('format:'+bookId,id);onSelect(id)},id===selected);b.setAttribute('aria-pressed',String(id===selected));b.dataset.format=id;b.prepend(formatIcon(id));return b}))}
 export function paperView(book,chapter,onChapter){const intro=el('p',{text:'Stai leggendo la copia cartacea? Seleziona il capitolo raggiunto. Il progresso viene salvato solo su questo dispositivo.'});const select=el('select',{attrs:{'aria-label':'Capitolo raggiunto sul cartaceo'}});for(const c of book.chapters)select.append(el('option',{text:c.title,attrs:{value:c.id}}));select.value=chapter?.id||book.chapters[0]?.id||'';select.addEventListener('change',()=>onChapter(select.value));return el('section',{className:'format-mode-panel'},[el('p',{className:'eyebrow',text:'REM · CARTACEO'}),el('h2',{text:'Continua sul tuo libro cartaceo'}),intro,el('label',{text:'Capitolo raggiunto'}),select,el('p',{className:'format-mode-note',text:'Per passare subito a Ebook o Audio, usa i tre pulsanti in basso. La ricerca precisa da foto, pagina o frase arriverà nel prossimo step.'})])}
+// Local chapter-audio preview: no third-party recording is published by REM Next.
+// Selecting a chapter file plays it on-device and saves its actual playback time.
+function localChapterAudioView({bookId,chapter,onPosition}){
+ const wrap=el('section',{className:'format-mode-panel rem-audio-player'});
+ const key='audio-real-position:'+bookId;
+ const number=Number(chapter.id.match(/^capitolo-(\\d+)$/)?.[1]);
+ const expected='capitolo-'+String(number).padStart(2,'0')+'.m4a';
+ const heading=el('p',{className:'eyebrow',text:'REM · AUDIO'});
+ const note=el('p',{className:'rem-audio-status',text:'Seleziona il file '+expected+' dal tuo dispositivo per ascoltarlo.'});
+ const picker=el('input',{attrs:{type:'file',accept:'.m4a,.mp4,audio/mp4','aria-label':'Seleziona '+expected}});
+ picker.style.maxWidth='100%';
+ const audio=document.createElement('audio');audio.controls=true;audio.preload='metadata';audio.style.width='100%';
+ let url=null;
+ try{const saved=JSON.parse(getSetting(key,'null'));if(saved?.chapter===chapter.id)note.textContent='Punto di ascolto salvato: '+Math.floor(saved.seconds/60)+' min '+Math.floor(saved.seconds%60)+' s. Seleziona '+expected+' per riprendere.'}catch{}
+ picker.addEventListener('change',()=>{
+  const file=picker.files?.[0];if(!file)return;
+  if(file.name.toLowerCase()!==expected){note.textContent='Questo capitolo richiede '+expected+'. Seleziona il file corretto.';picker.value='';return}
+  if(url)URL.revokeObjectURL(url);
+  url=URL.createObjectURL(file);audio.src=url;
+  audio.addEventListener('loadedmetadata',()=>{
+   try{const saved=JSON.parse(getSetting(key,'null'));if(saved?.chapter===chapter.id&&Number.isFinite(saved.seconds))audio.currentTime=Math.min(saved.seconds,Math.max(0,audio.duration-0.5))}catch{}
+   note.textContent='Audio del capitolo pronto. Premi Play per ascoltare.';
+  },{once:true});
+ });
+ let lastSaved=-1;
+ const persist=()=>{
+  if(!Number.isFinite(audio.currentTime)||Math.abs(audio.currentTime-lastSaved)<2)return;
+  lastSaved=audio.currentTime;
+  saveSetting(key,JSON.stringify({chapter:chapter.id,seconds:audio.currentTime,duration:audio.duration||null}));
+  // A time offset is not a reliable text offset: do not overwrite ebook bookmarks.
+  onPosition?.(-1);
+ };
+ audio.addEventListener('timeupdate',persist);audio.addEventListener('pause',persist);
+ audio.addEventListener('ended',()=>{saveSetting(key,JSON.stringify({chapter:chapter.id,seconds:0,duration:audio.duration||null}));note.textContent='Capitolo completato.'});
+ wrap.append(heading,note,picker,audio,el('p',{className:'format-mode-note',text:'Anteprima locale: il file resta sul tuo dispositivo. Il segnalibro audio usa il tempo reale; la sincronizzazione precisa con il testo arriverà dopo la verifica dei diritti e dell’allineamento.'}));
+ wrap.stopAudio=()=>{persist();audio.pause();audio.removeAttribute('src');audio.load();if(url)URL.revokeObjectURL(url)};
+ return wrap;
+}
 export function audioView({bookId,chapter,content,onPosition}={}){
+ if(bookId==='pinocchio'&&/^capitolo-\\d+$/.test(chapter?.id||''))return localChapterAudioView({bookId,chapter,onPosition});
  const wrap=el('section',{className:'format-mode-panel rem-audio-player'});
  if(!content||!('speechSynthesis' in window)){
   wrap.append(el('p',{text:'La riproduzione vocale non è disponibile su questo dispositivo.'}));return wrap;
