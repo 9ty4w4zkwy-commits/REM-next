@@ -226,19 +226,28 @@ function library(section='overview',bookId=null){currentView='library';render(cr
 function detail(id){
  const book=findBook(id);if(!book)return library();
  currentView='detail';
- const trailer=el('section',{className:'rem-cinema-trailer'},[
-  el('div',{className:'rem-cinema-trailer-image'},book.coverImage?[el('img',{attrs:{src:book.coverImage,alt:'Anteprima grafica di '+book.title}})]:[cover(book)]),
-  el('span',{className:'rem-cinema-trailer-label',text:'TRAILER DELLA STORIA'}),
-  (()=>{const b=button('▶',()=>trailerView(id));b.className='rem-cinema-trailer-play';b.setAttribute('aria-label','Guarda il trailer di '+book.title);return b})()
+ const save=button(isBookSaved(id)?'✓':'+',()=>openHomeSaveSheet(book));
+ save.className='rem-detail-save'+(isBookSaved(id)?' is-saved':'');
+ save.setAttribute('aria-label',isBookSaved(id)?'Gestisci libro salvato':'Salva nella Biblioteca');
+ const coverArt=el('div',{className:'rem-cinema-detail-cover'},[
+  cover(book),
+  (()=>{const b=button('▶',()=>trailerView(id));b.className='rem-detail-trailer-play';b.setAttribute('aria-label','Guarda il trailer di '+book.title);return b})(),
+  (()=>{const b=button('▶  Guarda il trailer',()=>trailerView(id));b.className='rem-detail-trailer-cta';return b})()
  ]);
- const save=button(isBookSaved(id)?'✓':'+',()=>openHomeSaveSheet(book));save.className='rem-detail-save';save.setAttribute('aria-label','Salva nella Biblioteca');
- const info=el('div',{className:'rem-cinema-detail-info'},[
-  cover(book),el('div',{className:'rem-cinema-detail-copy'},[
+ const summary=book.description||'';
+ const concise=summary.length>185?summary.slice(0,185).replace(/\\s+\\S*$/,'')+'…':summary;
+ const info=el('section',{className:'rem-cinema-detail-info'},[
+  coverArt,
+  el('div',{className:'rem-cinema-detail-copy'},[
    el('div',{className:'rem-cinema-detail-title'},[el('h1',{text:book.title}),save]),
-   para(book.author||'','rem-cinema-detail-author'),para(book.description||'')
+   para(book.author||'','rem-cinema-detail-author'),
+   para(concise,'rem-cinema-detail-description')
   ])
  ]);
- const nodes=[backArrow(home,'Torna alla Home'),el('div',{className:'rem-cinema-detail'},[trailer,info])];
+ const nodes=[backArrow(home,'Torna alla Home'),el('div',{className:'rem-cinema-detail'},[
+  info,
+  el('p',{className:'rem-cinema-modes-intro',text:'Un’unica storia, due modi di viverla: a episodi oppure in lettura integrale e continua.'})
+ ])];
  if(book.availability==='preview'){
   nodes.push(para('Questo libro è attualmente disponibile come anteprima. La lettura arriverà prossimamente.','preview-notice'));
  }else{
