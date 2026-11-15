@@ -848,3 +848,9 @@ main .rem-home-section.rem-cinema-section .rem-cover-author-overlay{display:none
 .rem-cinema-detail-copy .rem-cinema-detail-author{margin-top:4px!important;margin-bottom:6px!important}
 .rem-cinema-detail-copy .rem-cinema-detail-description{margin-top:0!important;margin-bottom:0!important;line-height:1.43!important}
 @media(max-width:390px){.rem-cinema-detail-copy .rem-cinema-detail-author{margin-top:3px!important;margin-bottom:5px!important}.rem-cinema-detail-copy .rem-cinema-detail-description{line-height:1.4!important}}
+
+/* v164: hero headline is deliberately two lines and visually leads shelf headings. */
+.rem-cinema-intro{font-size:clamp(2rem,6.35vw,3.25rem)!important;line-height:1.07!important;letter-spacing:-.045em!important;max-width:none!important;margin:5px 0 24px!important}
+.rem-cinema-intro .rem-intro-first-line,.rem-cinema-intro .rem-intro-second-line{display:block!important;white-space:nowrap!important}
+.rem-cinema-intro .rem-intro-second-line{color:#64dfa9!important}
+@media(max-width:650px){.rem-cinema-intro{font-size:clamp(1.8rem,6.35vw,2.9rem)!important}}
