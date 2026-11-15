@@ -843,3 +843,8 @@ main .rem-home-section.rem-cinema-section .rem-cover-author-overlay{display:none
   min-width:28px!important;min-height:28px!important;
  }
 }
+
+/* v163: keep the full editorial synopsis aligned within the cover height on mobile, for every book. */
+.rem-cinema-detail-copy .rem-cinema-detail-author{margin-top:4px!important;margin-bottom:6px!important}
+.rem-cinema-detail-copy .rem-cinema-detail-description{margin-top:0!important;margin-bottom:0!important;line-height:1.43!important}
+@media(max-width:390px){.rem-cinema-detail-copy .rem-cinema-detail-author{margin-top:3px!important;margin-bottom:5px!important}.rem-cinema-detail-copy .rem-cinema-detail-description{line-height:1.4!important}}
