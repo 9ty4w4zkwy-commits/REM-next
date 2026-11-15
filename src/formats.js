@@ -12,40 +12,76 @@ export function formatSwitch(bookId,selected,onSelect){return el('div',{classNam
 export function paperView(book,chapter,onChapter){const intro=el('p',{text:'Stai leggendo la copia cartacea? Seleziona il capitolo raggiunto. Il progresso viene salvato solo su questo dispositivo.'});const select=el('select',{attrs:{'aria-label':'Capitolo raggiunto sul cartaceo'}});for(const c of book.chapters)select.append(el('option',{text:c.title,attrs:{value:c.id}}));select.value=chapter?.id||book.chapters[0]?.id||'';select.addEventListener('change',()=>onChapter(select.value));return el('section',{className:'format-mode-panel'},[el('p',{className:'eyebrow',text:'REM · CARTACEO'}),el('h2',{text:'Continua sul tuo libro cartaceo'}),intro,el('label',{text:'Capitolo raggiunto'}),select,el('p',{className:'format-mode-note',text:'Per passare subito a Ebook o Audio, usa i tre pulsanti in basso. La ricerca precisa da foto, pagina o frase arriverà nel prossimo step.'})])}
 // Local chapter-audio preview: no third-party recording is published by REM Next.
 // Selecting a chapter file plays it on-device and saves its actual playback time.
+// Store private test audio only inside this browser; never upload recordings to GitHub Pages.
+function audioDatabase(){
+ return new Promise((resolve,reject)=>{
+  if(!('indexedDB' in window))return reject(Error('Archivio locale non supportato'));
+  const request=indexedDB.open('rem-private-audio',1);
+  request.onupgradeneeded=()=>{if(!request.result.objectStoreNames.contains('chapters'))request.result.createObjectStore('chapters')};
+  request.onsuccess=()=>resolve(request.result);
+  request.onerror=()=>reject(request.error);
+ });
+}
+async function storedAudio(id,blob){
+ const db=await audioDatabase();
+ return new Promise((resolve,reject)=>{
+  const tx=db.transaction('chapters',blob?'readwrite':'readonly');
+  const req=blob?tx.objectStore('chapters').put(blob,id):tx.objectStore('chapters').get(id);
+  req.onsuccess=()=>resolve(req.result);
+  req.onerror=()=>reject(req.error);
+  tx.oncomplete=()=>db.close();
+ });
+}
 function localChapterAudioView({bookId,chapter,onPosition}){
  const wrap=el('section',{className:'format-mode-panel rem-audio-player'});
  const key='audio-real-position:'+bookId;
  const number=Number(chapter.id.match(/^capitolo-(\d+)$/)?.[1]);
  const expected='capitolo-'+String(number).padStart(2,'0')+'.m4a';
- const heading=el('p',{className:'eyebrow',text:'REM · AUDIO'});
- const note=el('p',{className:'rem-audio-status',text:'Seleziona il file '+expected+' dal tuo dispositivo per ascoltarlo.'});
- const picker=el('input',{attrs:{type:'file',accept:'.m4a,.mp4,audio/mp4','aria-label':'Seleziona '+expected}});
+ const note=el('p',{className:'rem-audio-status',text:'Ricerca dell’audio salvato sul dispositivo…'});
+ const picker=el('input',{attrs:{type:'file',multiple:'',accept:'.m4a,.mp4,audio/mp4','aria-label':'Importa i capitoli audio M4A'}});
  picker.style.maxWidth='100%';
  const audio=document.createElement('audio');audio.controls=true;audio.preload='metadata';audio.style.width='100%';
- let url=null;
- try{const saved=JSON.parse(getSetting(key,'null'));if(saved?.chapter===chapter.id)note.textContent='Punto di ascolto salvato: '+Math.floor(saved.seconds/60)+' min '+Math.floor(saved.seconds%60)+' s. Seleziona '+expected+' per riprendere.'}catch{}
- picker.addEventListener('change',()=>{
-  const file=picker.files?.[0];if(!file)return;
-  if(file.name.toLowerCase()!==expected){note.textContent='Questo capitolo richiede '+expected+'. Seleziona il file corretto.';picker.value='';return}
+ let url=null,disposed=false;
+ const attach=file=>{
+  if(disposed)return;
   if(url)URL.revokeObjectURL(url);
   url=URL.createObjectURL(file);audio.src=url;
   audio.addEventListener('loadedmetadata',()=>{
    try{const saved=JSON.parse(getSetting(key,'null'));if(saved?.chapter===chapter.id&&Number.isFinite(saved.seconds))audio.currentTime=Math.min(saved.seconds,Math.max(0,audio.duration-0.5))}catch{}
-   note.textContent='Audio del capitolo pronto. Premi Play per ascoltare.';
+   note.textContent='Capitolo pronto: premi Play. Il file rimane privato su questo dispositivo.';
   },{once:true});
+ };
+ storedAudio(bookId+':'+chapter.id).then(file=>{
+  if(file)attach(file);
+  else if(!disposed)note.textContent='Importa una sola volta i file M4A dei capitoli (puoi selezionarne più di uno).';
+ }).catch(()=>{if(!disposed)note.textContent='Archivio locale non disponibile: puoi comunque scegliere un file per questa sessione.'});
+ picker.addEventListener('change',async()=>{
+  const files=[...(picker.files||[])];if(!files.length)return;
+  let count=0,selected=null,errors=0;
+  note.textContent='Salvataggio dei capitoli sul dispositivo…';
+  for(const file of files){
+   const match=file.name.match(/(?:capitolo|chapter)[-_ ]*0?(\d{1,2})\\.m4a$/i);
+   const index=Number(match?.[1]);
+   if(!Number.isInteger(index)||index<1||index>36)continue;
+   try{await storedAudio(bookId+':capitolo-'+index,file);count++;if(index===number)selected=file}
+   catch{errors++;if(index===number)selected=file}
+  }
+  if(selected)attach(selected);
+  else if(!disposed)note.textContent=count+' capitoli salvati. Per ascoltare questo capitolo seleziona '+expected+'.';
+  if(errors&&!disposed)note.textContent+=' Alcuni file non sono stati memorizzati: verifica lo spazio libero.';
+  picker.value='';
  });
  let lastSaved=-1;
  const persist=()=>{
   if(!Number.isFinite(audio.currentTime)||Math.abs(audio.currentTime-lastSaved)<2)return;
   lastSaved=audio.currentTime;
   saveSetting(key,JSON.stringify({chapter:chapter.id,seconds:audio.currentTime,duration:audio.duration||null}));
-  // A time offset is not a reliable text offset: do not overwrite ebook bookmarks.
   onPosition?.(-1);
  };
  audio.addEventListener('timeupdate',persist);audio.addEventListener('pause',persist);
  audio.addEventListener('ended',()=>{saveSetting(key,JSON.stringify({chapter:chapter.id,seconds:0,duration:audio.duration||null}));note.textContent='Capitolo completato.'});
- wrap.append(heading,note,picker,audio,el('p',{className:'format-mode-note',text:'Anteprima locale: il file resta sul tuo dispositivo. Il segnalibro audio usa il tempo reale; la sincronizzazione precisa con il testo arriverà dopo la verifica dei diritti e dell’allineamento.'}));
- wrap.stopAudio=()=>{persist();audio.pause();audio.removeAttribute('src');audio.load();if(url)URL.revokeObjectURL(url)};
+ wrap.append(el('p',{className:'eyebrow',text:'REM · AUDIO · PROVA PRIVATA'}),note,el('label',{text:'Importa i capitoli M4A una sola volta'}),picker,audio,el('p',{className:'format-mode-note',text:'I file audio sono salvati solo nel browser di questo dispositivo, non pubblicati sul sito. Safari può cancellarli se liberi spazio o elimini i dati del sito: conserva una copia originale. Il segnalibro audio è basato sul tempo reale.'}));
+ wrap.stopAudio=()=>{disposed=true;persist();audio.pause();audio.removeAttribute('src');audio.load();if(url)URL.revokeObjectURL(url)};
  return wrap;
 }
 export function audioView({bookId,chapter,content,onPosition}={}){
