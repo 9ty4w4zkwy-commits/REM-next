@@ -2,11 +2,13 @@
 // Offsets refer to the complete Wikisource chapter, never to an episode slice.
 const cache=new Map();
 export async function loadWordTimeline(chapterId){
- if(chapterId!=='capitolo-1')return null;
- if(!cache.has(chapterId))cache.set(chapterId,fetch('./audio/pinocchio/capitolo-01.words.json',{cache:'no-store'})
+ const match=/^capitolo-(\d{1,2})$/.exec(chapterId||'');
+ const number=Number(match?.[1]);
+ if(!Number.isInteger(number)||number<1||number>36)return null;
+ if(!cache.has(chapterId))cache.set(chapterId,fetch('./audio/pinocchio/capitolo-'+String(number).padStart(2,'0')+'.words.json',{cache:'no-store'})
   .then(r=>{if(!r.ok)throw Error('Timeline non disponibile');return r.json()})
   .then(data=>{
-   if(!Array.isArray(data.words)||!data.words.length)throw Error('Timeline vuota');
+   if(data.chapter!==chapterId||!Array.isArray(data.words)||!data.words.length)throw Error('Timeline non valida per il capitolo');
    let lastOffset=-1,lastTime=-1;
    for(const w of data.words){
     if(!Number.isInteger(w.offset)||w.offset<=lastOffset||!Number.isFinite(w.start)||w.start<lastTime||!Number.isFinite(w.end)||w.end<w.start)throw Error('Timeline non ordinata');
