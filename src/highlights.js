@@ -1,13 +1,20 @@
 import {el,button} from './ui.js';
-// Tap-to-bookmark: the tapped word and up to eight following words.
+// Tap-to-bookmark: exactly eight consecutive words when available, including across paragraphs.
 const KEY='rem-next-v1:highlight:';
 const WORD=/[\p{L}\p{N}]+(?:['’][\p{L}\p{N}]+)*/gu;
 export function createHighlights(bookId,chapterId,textNode,onSwitch,onBookmark=()=>{}){
  const key=KEY+bookId+':'+chapterId;
  let marks=[];try{marks=JSON.parse(localStorage.getItem(key)||'[]');if(!Array.isArray(marks))marks=[]}catch{marks=[]}
  const source={value:''};
- function cleanRange(start,end){const raw=source.value;const words=[...raw.matchAll(WORD)].map(m=>({start:m.index,end:m.index+m[0].length}));const first=words.findIndex(w=>w.end>start&&w.start<end);if(first<0)return null;let last=first;for(let i=first+1;i<words.length&&words[i].start<end;i++){if(/\n\s*\n/.test(raw.slice(words[i-1].end,words[i].start)))break;last=i}return {start:words[first].start,end:words[last].end,quote:raw.slice(words[first].start,words[last].end)}}
- const hint=el('p',{className:'selection-hint',text:'Tocca una parola: REM evidenzia automaticamente la parola toccata e le 8 parole successive.'});
+ function cleanRange(start,end){
+  const raw=source.value;
+  const words=[...raw.matchAll(WORD)].map(m=>({start:m.index,end:m.index+m[0].length}));
+  const first=words.findIndex(w=>w.end>start&&w.start<end);
+  if(first<0)return null;
+  const last=Math.min(words.length-1,first+7);
+  return {start:words[first].start,end:words[last].end,quote:raw.slice(words[first].start,words[last].end)};
+ }
+ const hint=el('p',{className:'selection-hint',text:'Tocca una parola: REM evidenzia automaticamente 8 parole consecutive, anche tra paragrafi.'});
  const clear=button('Rimuovi evidenziazioni',()=>{marks=[];persist();draw()});
  clear.classList.add('selection-clear');
  const wrap=el('div',{className:'highlight-tools'});
@@ -41,7 +48,7 @@ export function createHighlights(bookId,chapterId,textNode,onSwitch,onBookmark=(
   let index=words.findIndex(w=>offset>=w.start&&offset<=w.end);
   if(index<0)index=words.findIndex(w=>w.start>offset);
   if(index<0)return false;
-  const start=words[index].start,end=words[Math.min(words.length-1,index+8)].end,clean=cleanRange(start,end);if(!clean)return false;
+  const start=words[index].start,end=words[Math.min(words.length-1,index+7)].end,clean=cleanRange(start,end);if(!clean)return false;
   marks=[clean];persist();draw();onBookmark(clean.quote,clean.start);
   window.getSelection()?.removeAllRanges();return true;
  }
