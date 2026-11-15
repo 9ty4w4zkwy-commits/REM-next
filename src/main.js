@@ -5,7 +5,7 @@ import {readCollections,isBookSaved,saveBookToCollections,removeSavedBook,attach
 import {showOnboarding,onboardingCompleted} from './onboarding.js?v=rem-ui-56';
 import {getProgress,saveProgress,getSetting,saveSetting} from './progress.js';
 import {el,button,panel,heading} from './ui.js';
-import {getMode,formatSwitch,paperView,audioView} from './formats.js?v=rem-audio-173';
+import {getMode,formatSwitch,paperView,audioView} from './formats.js?v=rem-audio-174';
 import {createReaderTools} from './reader-tools.js?v=rem-ebook-42';
 import {createHighlights} from './highlights.js?v=rem-ebook-91';
 import {createEbookJourney} from './ebook-journey.js?v=rem-ebook-91';
