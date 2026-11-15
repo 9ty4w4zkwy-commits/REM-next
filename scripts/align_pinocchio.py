@@ -20,7 +20,7 @@ soup=BeautifulSoup(payload["parse"]["text"],"html.parser")
 root=soup.select_one(".mw-parser-output") or soup
 for node in root.select("style,script,table,.mw-editsection,.ws-noexport,.noprint,.mw-cite-backlink,.reference,.mw-references-wrap,.printfooter,.catlinks,.mw-parser-output > nav,.header-container,.ws-summary,.ws-title"):
     node.decompose()
-paragraphs=[' '.join(p.stripped_strings) for p in root.select('p')]
+paragraphs=[re.sub(r'\s+',' ',p.get_text()).strip() for p in root.select('p')]
 content='\n\n'.join(p for p in paragraphs if len(p)>25)
 source=tokens(content)
 audio="audio/pinocchio/capitolo-01.m4a"
