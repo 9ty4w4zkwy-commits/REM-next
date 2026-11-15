@@ -198,7 +198,7 @@ function openHomeSaveSheet(book){const alreadySaved=isBookSaved(book.id);
  overlay.append(sheet);document.body.append(overlay);top.querySelector('button')?.focus()}
 function home(){
  currentView='home';
- const intro=el('h1',{className:'rem-cinema-intro'},[document.createTextNode('La tua prossima storia '),el('span',{className:'mint-word',text:'ti aspetta.'})]);
+ const intro=el('h1',{className:'rem-cinema-intro'},[el('span',{className:'rem-intro-first-line',text:'La tua prossima storia'}),el('span',{className:'mint-word rem-intro-second-line',text:'Ti aspetta.'})]);
  const shelf=section=>{
   const list=booksForHomeSection(section.id,books,getProgress,id=>getSetting('reading-path:'+id,''),id=>getSetting('episode-current:'+id,''));
   const cards=list.map(book=>{
