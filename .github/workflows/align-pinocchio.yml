@@ -1,0 +1,23 @@
+name: Align Pinocchio chapter 1 words
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  align:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: sudo apt-get update && sudo apt-get install -y ffmpeg
+      - run: pip install openai-whisper beautifulsoup4
+      - run: python scripts/align_pinocchio.py
+      - name: Commit timeline
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add audio/pinocchio/capitolo-01.words.json
+          git diff --cached --quiet || (git commit -m "Generate Pinocchio chapter 1 word timeline" && git push)
