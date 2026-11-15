@@ -6,6 +6,7 @@ export function createHighlights(bookId,chapterId,textNode,onSwitch,onBookmark=(
  const key=KEY+bookId+':'+chapterId;
  let marks=[];try{marks=JSON.parse(localStorage.getItem(key)||'[]');if(!Array.isArray(marks))marks=[]}catch{marks=[]}
  const source={value:''};
+ function cleanRange(start,end){const raw=source.value;const words=[...raw.matchAll(WORD)].map(m=>({start:m.index,end:m.index+m[0].length}));const first=words.findIndex(w=>w.end>start&&w.start<end);if(first<0)return null;let last=first;for(let i=first+1;i<words.length&&words[i].start<end;i++){if(/\n\s*\n/.test(raw.slice(words[i-1].end,words[i].start)))break;last=i}return {start:words[first].start,end:words[last].end,quote:raw.slice(words[first].start,words[last].end)}}
  const hint=el('p',{className:'selection-hint',text:'Tocca una parola: REM evidenzia automaticamente la parola toccata e le 8 parole successive.'});
  const clear=button('Rimuovi evidenziazioni',()=>{marks=[];persist();draw()});
  clear.classList.add('selection-clear');
@@ -13,7 +14,7 @@ export function createHighlights(bookId,chapterId,textNode,onSwitch,onBookmark=(
  function persist(){try{localStorage.setItem(key,JSON.stringify(marks))}catch{}}
  function draw(){
   const raw=source.value;textNode.replaceChildren();
-  const ordered=marks.filter(m=>Number.isInteger(m.start)&&Number.isInteger(m.end)&&m.start>=0&&m.end<=raw.length&&m.end>m.start&&raw.slice(m.start,m.end)===m.quote).sort((a,b)=>a.start-b.start);
+  const ordered=marks.filter(m=>Number.isInteger(m.start)&&Number.isInteger(m.end)&&m.start>=0&&m.end<=raw.length&&m.end>m.start&&raw.slice(m.start,m.end)===m.quote).map(m=>cleanRange(m.start,m.end)).filter(Boolean).sort((a,b)=>a.start-b.start);
   let at=0;for(const m of ordered){if(m.start<at)continue;textNode.append(document.createTextNode(raw.slice(at,m.start)));textNode.append(el('mark',{className:'rem-highlight',text:raw.slice(m.start,m.end)}));at=m.end}
   textNode.append(document.createTextNode(raw.slice(at)));
  }
@@ -23,7 +24,7 @@ export function createHighlights(bookId,chapterId,textNode,onSwitch,onBookmark=(
   if(!Number.isInteger(offset)||offset<0||offset>=raw.length||!phrase)return null;
   const end=offset+phrase.length;
   if(raw.slice(offset,end)!==phrase)return null;
-  marks=[{start:offset,end,quote:phrase}];persist();draw();
+  const clean=cleanRange(offset,end);if(!clean)return null;marks=[clean];persist();draw();
   return textNode.querySelector('mark.rem-highlight');
  }
  function offsetFromPoint(x,y){
@@ -40,8 +41,8 @@ export function createHighlights(bookId,chapterId,textNode,onSwitch,onBookmark=(
   let index=words.findIndex(w=>offset>=w.start&&offset<=w.end);
   if(index<0)index=words.findIndex(w=>w.start>offset);
   if(index<0)return false;
-  const start=words[index].start,end=words[Math.min(words.length-1,index+8)].end,phrase=source.value.slice(start,end);
-  marks=[{start,end,quote:phrase}];persist();draw();onBookmark(phrase,start);
+  const start=words[index].start,end=words[Math.min(words.length-1,index+8)].end,clean=cleanRange(start,end);if(!clean)return false;
+  marks=[clean];persist();draw();onBookmark(clean.quote,clean.start);
   window.getSelection()?.removeAllRanges();return true;
  }
  let touch=null,lastTouch=0;
