@@ -32,9 +32,11 @@ async function storedAudio(id,blob){
   tx.oncomplete=()=>db.close();
  });
 }
-function localChapterAudioView({bookId,chapter,onPosition}){
+function localChapterAudioView({bookId,chapter,onPosition,content}){
  const wrap=el('section',{className:'format-mode-panel rem-audio-player'});
  const key='audio-real-position:'+bookId;
+ const syncKey='audio-text-sync:'+bookId;
+ const textLength=typeof content==='string'?content.length:0;
  const number=Number(chapter.id.match(/^capitolo-(\d+)$/)?.[1]);
  const expected='capitolo-'+String(number).padStart(2,'0')+'.m4a';
  const note=el('p',{className:'rem-audio-status',text:'Ricerca dell’audio salvato sul dispositivo…'});
@@ -61,7 +63,7 @@ function localChapterAudioView({bookId,chapter,onPosition}){
   note.textContent='Caricamento del capitolo 1…';
   audio.addEventListener('loadedmetadata',()=>{
    if(disposed)return;
-   try{const saved=JSON.parse(getSetting(key,'null'));if(saved?.chapter===chapter.id&&Number.isFinite(saved.seconds))audio.currentTime=Math.min(saved.seconds,Math.max(0,audio.duration-.5))}catch{}
+   try{const sync=JSON.parse(getSetting(syncKey,'null'));const saved=JSON.parse(getSetting(key,'null'));const seconds=sync?.chapter===chapter.id&&sync.source==='ebook'&&textLength>0?Math.max(0,Math.min(1,sync.offset/textLength))*audio.duration:saved?.chapter===chapter.id?saved.seconds:0;if(Number.isFinite(seconds))audio.currentTime=Math.min(seconds,Math.max(0,audio.duration-.5))}catch{}
    note.textContent='';
   },{once:true});
   audio.addEventListener('error',()=>{
@@ -96,7 +98,7 @@ function localChapterAudioView({bookId,chapter,onPosition}){
   if(!Number.isFinite(audio.currentTime)||Math.abs(audio.currentTime-lastSaved)<2)return;
   lastSaved=audio.currentTime;
   saveSetting(key,JSON.stringify({chapter:chapter.id,seconds:audio.currentTime,duration:audio.duration||null}));
-  onPosition?.(-1);
+  if(textLength>0&&Number.isFinite(audio.duration)&&audio.duration>0){const offset=Math.min(textLength-1,Math.round(audio.currentTime/audio.duration*textLength));saveSetting(syncKey,JSON.stringify({chapter:chapter.id,source:'audio',offset,seconds:audio.currentTime}));onPosition?.(offset)}else onPosition?.(-1);
  };
  audio.addEventListener('timeupdate',persist);audio.addEventListener('pause',persist);
  audio.addEventListener('ended',()=>{saveSetting(key,JSON.stringify({chapter:chapter.id,seconds:0,duration:audio.duration||null}));note.textContent='Capitolo completato.'});
@@ -105,7 +107,7 @@ function localChapterAudioView({bookId,chapter,onPosition}){
  return wrap;
 }
 export function audioView({bookId,chapter,content,onPosition}={}){
- if(bookId==='pinocchio'&&/^capitolo-\d+$/.test(chapter?.id||''))return localChapterAudioView({bookId,chapter,onPosition});
+ if(bookId==='pinocchio'&&/^capitolo-\d+$/.test(chapter?.id||''))return localChapterAudioView({bookId,chapter,onPosition,content});
  const wrap=el('section',{className:'format-mode-panel rem-audio-player'});
  if(!content||!('speechSynthesis' in window)){
   wrap.append(el('p',{text:'La riproduzione vocale non è disponibile su questo dispositivo.'}));return wrap;
