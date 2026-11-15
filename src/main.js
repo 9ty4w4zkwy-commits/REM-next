@@ -199,7 +199,7 @@ function openHomeSaveSheet(book){const alreadySaved=isBookSaved(book.id);
 function home(){
  resumeFromHomeId=null;
  currentView='home';
- const intro=el('h1',{className:'rem-cinema-intro'},[el('span',{className:'rem-intro-first-line',text:'La tua prossima storia'}),el('span',{className:'mint-word rem-intro-second-line',text:'ti aspetta.'})]);
+ const intro=el('h1',{className:'rem-cinema-intro'},[el('span',{className:'rem-intro-first-line',text:'La tua prossima storia'}),el('span',{className:'mint-word rem-intro-second-line',text:'ti aspetta'})]);
  const shelf=section=>{
   const list=booksForHomeSection(section.id,books,getProgress,id=>getSetting('reading-path:'+id,''),id=>getSetting('episode-current:'+id,''));
   const cards=list.map(book=>{
