@@ -385,3 +385,37 @@
   left:12px!important;right:12px!important;top:58px!important;
  }
 }
+
+/* v195: approved editorial Biblioteca stats, no photography or icons. */
+.rem-violet .rem-stats .rem-stat,
+.rem-violet .rem-stats .rem-stat-books,
+.rem-violet .rem-stats .rem-stat-shelves,
+.rem-violet .rem-stats .rem-stat-reflections,
+.rem-violet .rem-stats .rem-stat-words{
+ background:#0d1a2d!important;background-image:none!important;
+ border:1px solid rgba(137,232,193,.43)!important;
+ box-shadow:none!important;
+ min-height:205px!important;
+ padding:19px 16px 17px!important;
+ display:flex!important;flex-direction:column!important;
+ align-items:flex-start!important;justify-content:flex-start!important;
+ gap:0!important;border-radius:21px!important;
+}
+.rem-violet .rem-stats .rem-stat::before,
+.rem-violet .rem-stats .rem-stat::after{content:none!important;display:none!important}
+.rem-violet .rem-stats .rem-stat-title{
+ order:0!important;font:700 clamp(1rem,3.7vw,1.3rem)/1.2 Georgia,serif!important;
+ letter-spacing:-.025em!important;color:#f8f8f7!important;
+ text-shadow:none!important;margin:0 0 14px!important;
+}
+.rem-violet .rem-stats .rem-stat-number{
+ order:1!important;font:normal clamp(2.9rem,10vw,4.2rem)/1 Georgia,serif!important;
+ color:rgba(156,239,202,.78)!important;letter-spacing:-.045em!important;
+ text-shadow:none!important;margin:0 0 12px!important;
+}
+.rem-violet .rem-stats .rem-stat-description{
+ order:2!important;font:400 clamp(.72rem,2.65vw,.88rem)/1.4 system-ui,sans-serif!important;
+ color:#c0cbd0!important;text-shadow:none!important;
+ margin:auto 0 0!important;
+}
+@media(max-width:390px){.rem-violet .rem-stats .rem-stat{padding:16px 12px!important;min-height:196px!important}}
