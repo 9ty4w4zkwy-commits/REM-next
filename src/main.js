@@ -234,7 +234,7 @@ function profile(){
  questionnaire.classList.add('rem-profile-action');
  const status=el('span',{className:'rem-profile-status',text:completed?'Completato':'Da completare'});
  const intro=el('section',{className:'rem-profile-intro'},[
-  el('div',{className:'rem-profile-avatar',attrs:{'aria-hidden':'true'}},[el('span',{text:'♙'})]),
+  el('div',{className:'rem-profile-avatar',attrs:{'aria-hidden':'true'}},[el('span',{className:'rem-profile-avatar-head'}),el('span',{className:'rem-profile-avatar-body'})]),
   el('div',{},[el('h1',{text:'Il mio profilo'}),para('Il tuo spazio personale su REM','rem-profile-subtitle')])
  ]);
  const interests=card('✦','I miei interessi','Le tue risposte ci aiutano a conoscere i tuoi gusti e a suggerirti nuove storie.',el('div',{className:'rem-profile-questionnaire'},[
