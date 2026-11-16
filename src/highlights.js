@@ -2,7 +2,7 @@ import {el,button} from './ui.js';
 // Tap-to-bookmark: exactly eight consecutive words when available, including across paragraphs.
 const KEY='rem-next-v1:highlight:';
 const WORD=/[\p{L}\p{N}]+(?:['’][\p{L}\p{N}]+)*/gu;
-export function createHighlights(bookId,chapterId,textNode,onSwitch,onBookmark=()=>{}){
+export function createHighlights(bookId,chapterId,textNode,onSwitch,onBookmark=()=>{},onSaveThought=()=>{}){
  const key=KEY+bookId+':'+chapterId;
  let marks=[];try{marks=JSON.parse(localStorage.getItem(key)||'[]');if(!Array.isArray(marks))marks=[]}catch{marks=[]}
  const source={value:''};
@@ -15,9 +15,13 @@ export function createHighlights(bookId,chapterId,textNode,onSwitch,onBookmark=(
   return {start:words[first].start,end:words[last].end,quote:raw.slice(words[first].start,words[last].end)};
  }
  const hint=el('p',{className:'selection-hint',text:'Tocca una parola: REM evidenzia automaticamente 8 parole consecutive, anche tra paragrafi.'});
- const clear=button('Rimuovi evidenziazioni',()=>{marks=[];persist();draw()});
+ const clear=button('Rimuovi evidenziazioni',()=>{marks=[];selectedQuote='';saveThought.hidden=true;persist();draw()});
  clear.classList.add('selection-clear');
  const wrap=el('div',{className:'highlight-tools'});
+ let selectedQuote='';
+ const saveThought=button('Salva nei miei pensieri',()=>{if(!selectedQuote)return;onSaveThought(selectedQuote);saveThought.textContent='✓ Salvato nei miei pensieri';saveThought.disabled=true;});
+ saveThought.className='rem-save-highlight-thought';saveThought.hidden=true;wrap.append(saveThought);
+
  function persist(){try{localStorage.setItem(key,JSON.stringify(marks))}catch{}}
  function draw(){
   const raw=source.value;textNode.replaceChildren();
@@ -49,7 +53,7 @@ export function createHighlights(bookId,chapterId,textNode,onSwitch,onBookmark=(
   if(index<0)index=words.findIndex(w=>w.start>offset);
   if(index<0)return false;
   const start=words[index].start,end=words[Math.min(words.length-1,index+7)].end,clean=cleanRange(start,end);if(!clean)return false;
-  marks=[clean];persist();draw();onBookmark(clean.quote,clean.start);
+  marks=[clean];persist();draw();selectedQuote=clean.quote;saveThought.hidden=false;saveThought.disabled=false;saveThought.textContent='Salva nei miei pensieri';onBookmark(clean.quote,clean.start);
   window.getSelection()?.removeAllRanges();return true;
  }
  let touch=null,lastTouch=0;
