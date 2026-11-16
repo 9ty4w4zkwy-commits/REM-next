@@ -925,3 +925,20 @@ main .rem-home-section.rem-cinema-section .rem-cover-save.is-saved{
 /* v199: independent warm highlight overlay, visible even when iOS forces blue native selection. */
 .rem-free-selection-paint{position:fixed;inset:0;z-index:9998;pointer-events:none;overflow:hidden;contain:layout style}
 .rem-free-selection-swatch{position:absolute;display:block;pointer-events:none;border-radius:3px;background:rgba(255,174,76,.65);box-shadow:inset 0 0 0 1px rgba(232,129,29,.25);mix-blend-mode:multiply}
+
+/* v200: keep the native drag handles, but hide its blue selection fill. */
+.ebook-reading-shell .ebook-page-frame ::selection,
+.ebook-reading-shell .ebook-page-frame::selection,
+.ebook-reading-shell .ebook-page-frame .ebook-text::selection,
+.ebook-reading-shell .ebook-page-frame .ebook-text *::selection,
+.ebook-reading-shell .ebook-page-frame .ebook-text mark::selection{
+ background:transparent!important;
+ background-color:transparent!important;
+ color:inherit!important;
+ -webkit-text-fill-color:inherit!important;
+}
+.rem-free-selection-swatch{
+ background:rgba(255,174,76,.32)!important;
+ box-shadow:none!important;
+ mix-blend-mode:normal!important;
+}
