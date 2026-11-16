@@ -9,14 +9,14 @@ const QUESTIONS=[
 ];
 const loadAnswers=()=>{try{const a=JSON.parse(getSetting('onboarding-answers','[]'));return Array.isArray(a)?QUESTIONS.map((_,i)=>Array.isArray(a[i])?a[i]:[]):QUESTIONS.map(()=>[])}catch{return QUESTIONS.map(()=>[])}};
 export const onboardingCompleted=()=>getSetting(KEY,'')==='done';
-export function showOnboarding(render,home){
- let step=-1;const answers=loadAnswers();
+export function showOnboarding(render,home,{editing=false}={}){
+ let step=editing?0:-1;const answers=loadAnswers();
  const persist=()=>saveSetting('onboarding-answers',JSON.stringify(answers));
  const finish=()=>{persist();saveSetting(KEY,'done');home()};
  const draw=()=>{
   const header=el('div',{className:'onboard-top'},[
    el('strong',{className:'onboard-brand',text:'REM',attrs:{'aria-label':'REM'}}),
-   button('Lo faccio più tardi',()=>{persist();saveSetting(KEY,'later');home()})
+   button(editing?'Annulla':'Lo faccio più tardi',()=>{if(!editing){persist();saveSetting(KEY,'later')}home()})
   ]);
   const bars=el('div',{className:'onboard-progress',attrs:{'aria-label':step<0?'Introduzione':'Domanda '+(step+1)+' di 4'}},QUESTIONS.map((_,i)=>el('span',{className:i<=step?'is-active':''})));
   const nodes=[header,bars];
@@ -34,22 +34,22 @@ export function showOnboarding(render,home){
      if(index>=0)chosen.splice(index,1);
      else if(q.max===1)answers[step]=[option];
      else if(chosen.length<q.max)chosen.push(option);
-     persist();draw();
+     if(!editing)persist();draw();
     });
     b.classList.add('onboard-option');
     if(chosen.includes(option))b.classList.add('selected');
     b.setAttribute('aria-pressed',String(chosen.includes(option)));
     return b;
    }));
-   const next=button(step===3?'Entra in REM':'Avanti →',()=>{if(step===3)finish();else{step++;draw()}},true);
+   const next=button(step===3?(editing?'Salva le risposte':'Entra in REM'):'Avanti →',()=>{if(step===3)finish();else{step++;draw()}},true);
    next.disabled=!answers[step].length;
    nodes.push(el('section',{className:'onboard-question'},[
     el('p',{className:'onboard-kicker',text:'DOMANDA '+(step+1)+' DI 4'}),
     el('h1',{text:q.title}),el('p',{className:'onboard-hint',text:q.hint}),choices,
     el('div',{className:'onboard-actions'},[
-     button('← Indietro',()=>{step--;draw()}),next
+     button('← Indietro',()=>{if(editing&&step===0)home();else{step--;draw()}}),next
     ]),
-    el('p',{className:'onboard-privacy',text:'Le risposte restano su questo dispositivo. Puoi modificarle o saltare il percorso quando vuoi.'})
+    el('p',{className:'onboard-privacy',text:editing?'Le modifiche saranno salvate solo quando tocchi «Salva le risposte».':'Le risposte restano su questo dispositivo. Puoi modificarle o saltare il percorso quando vuoi.'})
    ]));
   }
   render(el('div',{className:'onboard-screen'},nodes));
