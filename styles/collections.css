@@ -326,3 +326,11 @@
   font-size:clamp(2.65rem,10vw,4.2rem)!important;
  }
 }
+
+/* v190: visually reduce Biblioteca heading to align with the Home title. */
+@media (max-width:650px){
+ .rem-violet .rem-violet-hero h1.rem-library-title{
+  font-size:clamp(2rem,8vw,2.55rem)!important;
+  line-height:1.1!important;
+ }
+}
