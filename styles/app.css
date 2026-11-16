@@ -942,3 +942,8 @@ main .rem-home-section.rem-cinema-section .rem-cover-save.is-saved{
  box-shadow:none!important;
  mix-blend-mode:normal!important;
 }
+
+/* v202: custom phrase selection avoids iOS blue selection on double tap. */
+.ebook-reading-shell .ebook-text.rem-custom-selecting,.ebook-reading-shell .ebook-text.rem-custom-selecting *{-webkit-user-select:none!important;user-select:none!important;-webkit-touch-callout:none!important}
+.ebook-reading-shell .ebook-text.rem-custom-selecting{touch-action:pan-y}
+.ebook-reading-shell .ebook-text.rem-custom-selecting::selection,.ebook-reading-shell .ebook-text.rem-custom-selecting *::selection{background:transparent!important}
