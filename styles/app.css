@@ -952,3 +952,6 @@ main .rem-home-section.rem-cinema-section .rem-cover-save.is-saved{
 
 /* v203: drag-to-select uses custom overlay, not Safari's blue text selection. */
 .ebook-reading-shell .ebook-text,.ebook-reading-shell .ebook-text *{-webkit-user-select:none!important;user-select:none!important;-webkit-touch-callout:none!important}
+
+/* v205: rose selection matches the rounded mint 8-word highlight treatment. */
+.rem-free-selection-swatch{background:rgba(250,165,196,.48)!important;border:2px solid #d56d99!important;border-radius:11px!important;box-sizing:border-box!important;box-shadow:none!important;mix-blend-mode:normal!important}
