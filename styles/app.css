@@ -947,3 +947,5 @@ main .rem-home-section.rem-cinema-section .rem-cover-save.is-saved{
 .ebook-reading-shell .ebook-text.rem-custom-selecting,.ebook-reading-shell .ebook-text.rem-custom-selecting *{-webkit-user-select:none!important;user-select:none!important;-webkit-touch-callout:none!important}
 .ebook-reading-shell .ebook-text.rem-custom-selecting{touch-action:pan-y}
 .ebook-reading-shell .ebook-text.rem-custom-selecting::selection,.ebook-reading-shell .ebook-text.rem-custom-selecting *::selection{background:transparent!important}
+
+.ebook-reading-shell .rem-custom-selecting,.ebook-reading-shell .rem-custom-selecting *{-webkit-user-select:none!important;user-select:none!important;-webkit-touch-callout:none!important}
