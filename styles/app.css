@@ -910,3 +910,14 @@ main .rem-home-section.rem-cinema-section .rem-cover-save.is-saved{
 /* v197: permit iOS native long-press text selection and selection handles. */
 .ebook-reading-shell .ebook-page-frame,.ebook-reading-shell .ebook-page-frame *{-webkit-user-select:text;user-select:text;-webkit-touch-callout:default}
 .ebook-reading-shell .ebook-page-frame::selection,.ebook-reading-shell .ebook-page-frame *::selection{background:rgba(118,225,179,.42);color:inherit}
+
+/* v198: warm apricot for free-form native selection; mint stays reserved for 8-word sync. */
+.ebook-reading-shell .ebook-page-frame ::selection,
+.ebook-reading-shell .ebook-page-frame::selection,
+.ebook-reading-shell .ebook-page-frame .ebook-text::selection,
+.ebook-reading-shell .ebook-page-frame .ebook-text *::selection{
+ background:rgba(255,167,75,.65)!important;
+ background-color:rgba(255,167,75,.65)!important;
+ color:inherit!important;
+ text-shadow:none!important;
+}
