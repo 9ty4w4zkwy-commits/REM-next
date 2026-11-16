@@ -958,3 +958,28 @@ main .rem-home-section.rem-cinema-section .rem-cover-save.is-saved{
 
 /* v206: taller, lighter rose highlight with a softened outline. */
 .rem-free-selection-swatch{background:rgba(250,165,196,.24)!important;border:2px solid rgba(197,86,133,.7)!important;border-radius:13px!important;transform:scaleY(1.17)!important;transform-origin:center!important}
+
+/* v211 — REM profile */
+.top nav .rem-profile-nav{display:inline-flex;align-items:center;justify-content:center;width:43px;min-width:43px;height:43px;padding:0;border:1px solid rgba(151,216,192,.42);border-radius:50%;background:rgba(93,167,148,.09);color:#a0e7c6}
+.top nav .rem-profile-nav.is-active{background:rgba(102,223,172,.22);border-color:#77dbb3;color:#dcfff0}
+.rem-profile-page{max-width:690px;margin:0 auto;padding-bottom:35px}
+.rem-profile-intro{display:flex;align-items:center;gap:16px;margin:22px 0 27px}
+.rem-profile-intro h1{font-family:Georgia,serif;font-size:clamp(27px,6vw,37px);margin:0 0 5px;color:#f4f7f8}
+.rem-profile-subtitle{font-size:13px;margin:0;color:#a8b9c8}
+.rem-profile-avatar{width:60px;height:60px;flex:none;border-radius:50%;background:#213d43;border:1px solid rgba(146,227,186,.32);position:relative;overflow:hidden}
+.rem-profile-avatar-head{position:absolute;left:22px;top:12px;width:16px;height:16px;border:2px solid #a2e6c4;border-radius:50%}
+.rem-profile-avatar-body{position:absolute;left:12px;top:34px;width:36px;height:26px;border:2px solid #a2e6c4;border-radius:18px 18px 0 0}
+.rem-profile-card{background:#18273a;border:1px solid rgba(130,165,180,.2);border-radius:19px;padding:20px;margin:15px 0}
+.rem-profile-card-title{display:flex;align-items:center;gap:11px}
+.rem-profile-card-title h2{font-family:system-ui,-apple-system,sans-serif;font-size:17px;font-weight:650;margin:0;color:#f0f6f8}
+.rem-profile-card-icon{display:flex;align-items:center;justify-content:center;width:27px;height:27px;color:#9be4c0;font-size:21px}
+.rem-profile-description{color:#b4c6d2;font-size:13px;line-height:1.65;margin:12px 0 17px}
+.rem-profile-questionnaire{background:#233a43;border-radius:13px;padding:14px}
+.rem-profile-questionnaire-head{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:13px;font-size:13px;color:#edf7f4}
+.rem-profile-status{font-size:11px;color:#a2e8c4;background:#315349;padding:5px 9px;border-radius:99px;white-space:nowrap}
+.rem-profile-action{width:100%;background:#80e2b2;color:#112c30;border:0;font-weight:700;font-size:13px}
+.rem-profile-preferences>div{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0;color:#dce7ec;font-size:13px}
+.rem-profile-preferences>div+div{border-top:1px solid rgba(165,190,200,.16)}
+.rem-profile-preferences strong{font-size:12px;color:#a9c6ba}
+.rem-profile-preferences button{min-height:35px;padding:5px 11px;color:#a2e6c4;font-size:12px}
+@media(max-width:390px){.top{gap:5px;padding:15px 12px}.top nav{gap:4px}.top nav button:not(.rem-profile-nav){padding:9px 7px;font-size:13px}.top nav .rem-profile-nav{width:39px;min-width:39px;height:39px}.rem-profile-card{padding:16px}}
