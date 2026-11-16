@@ -54,7 +54,11 @@ export function createCollectionsView({books,openBook,continueBook,isSavedBook=(
  const locked=t.private!==false;
  const lock=button(locked?'🔒':'🔓',()=>{const makePublic=locked;if(makePublic){const ok=confirm('Vuoi segnare questo pensiero come pubblico?\\n\\nLa scelta verrà salvata sul dispositivo, ma il pensiero NON sarà visibile ad altri finché REM non avrà una Community online.');if(!ok)return}else{if(!confirm('Vuoi riportare questo pensiero a privato?'))return}setThoughtVisibility(t.id,makePublic);show(section)});
  lock.replaceChildren(visibilityIcon(locked));lock.className='rem-thought-lock rem-visibility-control';lock.setAttribute('aria-label',locked?'Privato: scegli se renderlo pubblico':'Pubblico (solo impostazione locale): rendi privato');lock.title=locked?'Privato: tocca per cambiare':'Pubblico: impostazione locale';header.append(lock);
- card.append(header,node('p','rem-thought-text',t.text));
+ const legacy=t.source?null:t.text.match(/^([“"][\\s\\S]*?[”"])\\s*[—-]\\s*(.+),\\s*(Capitolo\\s+\\d+|[^,]+)$/i);
+ const source=t.source|| (legacy?{bookTitle:legacy[2],chapter:legacy[3]}:null);
+ const quote=legacy?legacy[1]:t.text;
+ card.append(header,node('p','rem-thought-text',quote));
+ if(source?.bookTitle){const attribution=el('div',{className:'rem-thought-source'},[el('span',{className:'rem-thought-source-title',text:'📖 '+source.bookTitle}),...(source.chapter?[el('span',{className:'rem-thought-source-chapter',text:source.chapter})]:[])]);card.append(attribution)}
  const actions=el('div',{className:'rem-thought-actions'});actions.append(button('Modifica',()=>{const value=prompt('Modifica il pensiero',t.text);if(value!==null&&value.trim()){updateThought(t.id,value);show(section)}}),button('Aggiungi a collezione',()=>chooseShelf('thought',t.id,section)),button('Elimina',()=>{if(confirm('Eliminare questo pensiero?')){removeThought(t.id);show(section)}}));card.append(actions);return card};
  const createThought=()=>{const b=button('✦ Scrivi un pensiero',()=>{const value=prompt('Scrivi un pensiero libero');if(value?.trim()){addThought(value);show('thoughts')}});b.className='rem-violet-primary';body.append(b)};
  const createShelf=()=>{const b=button('+ Nuova collezione',()=>{const title=prompt('Come si chiama la tua collezione?');if(!title?.trim())return;const description=prompt('Una breve descrizione (facoltativa)')||'';const created=addShelf(title,description);if(created&&pendingBookId)attachItem(created.id,'book',pendingBookId);show('shelves')});b.className='rem-violet-primary';body.append(b)};
