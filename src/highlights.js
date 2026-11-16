@@ -14,11 +14,11 @@ export function createHighlights(bookId,chapterId,textNode,onSwitch,onBookmark=(
   const last=Math.min(words.length-1,first+7);
   return {start:words[first].start,end:words[last].end,quote:raw.slice(words[first].start,words[last].end)};
  }
- const hint=el('p',{className:'selection-hint',text:'Un tocco: 8 parole per la sincronizzazione. Doppio tocco: seleziona una parola, poi trascina per estendere la frase e salvarla nei pensieri.'});
+ const hint=el('p',{className:'selection-hint',text:'Un tocco: 8 parole per la sincronizzazione. Trascina lateralmente sul testo per selezionare una frase e salvarla nei pensieri.'});
  const clear=button('Rimuovi evidenziazioni',()=>{marks=[];selectedQuote='';saveThought.hidden=true;persist();draw()});
  clear.classList.add('selection-clear');
  const wrap=el('div',{className:'highlight-tools'});
- let selectedQuote='';let selectionMode=false;let longPressTimer=null;let selectionTimer=null;let customMode=false;let customAnchor=0;let customEnd=0;let previousTap=null;
+ let selectedQuote='';let selectionMode=false;let longPressTimer=null;let selectionTimer=null;let customMode=false;let customAnchor=0;let customEnd=0;
  const selectionPaint=el('div',{className:'rem-free-selection-paint',attrs:{'aria-hidden':'true'}});
  document.body.append(selectionPaint);
  function clearSelectionPaint(){selectionPaint.replaceChildren()}
@@ -41,7 +41,7 @@ export function createHighlights(bookId,chapterId,textNode,onSwitch,onBookmark=(
   const words=[...source.value.matchAll(WORD)].map(m=>({start:m.index,end:m.index+m[0].length}));
   let idx=words.findIndex(w=>offset>=w.start&&offset<=w.end);if(idx<0)idx=words.findIndex(w=>w.start>offset);if(idx<0)return;
   if(initial)customAnchor=words[idx].start;
-  customEnd=words[idx].end;
+  customEnd=offset<customAnchor?words[idx].start:words[idx].end;
   const start=Math.min(customAnchor,customEnd),end=Math.max(customAnchor,customEnd);
   setSaveQuote(source.value.slice(start,end));customRangePaint();
  }
@@ -116,34 +116,37 @@ export function createHighlights(bookId,chapterId,textNode,onSwitch,onBookmark=(
  }
  function touchStart(e){
   if(e.touches.length!==1)return;
-  const now=Date.now(),point=e.touches[0];
-  const isDouble=!customMode&&previousTap&&now-previousTap.time<360&&Math.hypot(point.clientX-previousTap.x,point.clientY-previousTap.y)<32;
-  if(isDouble){e.preventDefault();previousTap=null;customMode=true;selectionMode=false;textNode.classList.add('rem-custom-selecting');window.getSelection()?.removeAllRanges();customSelect(point.clientX,point.clientY,true);touch={x:point.clientX,y:point.clientY,moved:false,started:now,long:false,custom:true};suppressClickUntil=now+900;return}
-  if(customMode){e.preventDefault();touch={x:point.clientX,y:point.clientY,moved:false,started:now,long:false,custom:true};return}
   clearTimeout(longPressTimer);
-  const t=e.touches[0];touch={x:t.clientX,y:t.clientY,moved:false,started:Date.now(),long:false};
-  longPressTimer=setTimeout(()=>{if(touch&&!touch.moved){touch.long=true;selectionMode=true;suppressClickUntil=Date.now()+1100}},420);
+  const t=e.touches[0];
+  touch={x:t.clientX,y:t.clientY,moved:false,started:Date.now(),custom:false,scrolling:false};
+  // Disable native text selection while preserving ordinary vertical page scrolling.
+  window.getSelection()?.removeAllRanges();
  }
  function touchMove(e){
-  if(!touch)return;
-  const t=e.touches[0];
-  if(touch.custom){e.preventDefault();customSelect(t.clientX,t.clientY);return}
-  if(Math.hypot(t.clientX-touch.x,t.clientY-touch.y)>12){touch.moved=true;clearTimeout(longPressTimer)}
+  if(!touch||e.touches.length!==1)return;
+  const t=e.touches[0],dx=t.clientX-touch.x,dy=t.clientY-touch.y;
+  if(touch.scrolling)return;
+  if(!touch.custom){
+   if(Math.hypot(dx,dy)<11)return;
+   touch.moved=true;
+   if(Math.abs(dy)>Math.abs(dx)*1.2){touch.scrolling=true;return}
+   if(Math.abs(dx)<12)return;
+   touch.custom=true;customMode=true;selectionMode=false;
+   textNode.classList.add('rem-custom-selecting');
+   window.getSelection()?.removeAllRanges();
+   customSelect(touch.x,touch.y,true);
+  }
+  if(touch.custom){e.preventDefault();customSelect(t.clientX,t.clientY)}
  }
  function touchEnd(e){
   clearTimeout(longPressTimer);
   if(!touch)return;
   const t=e.changedTouches[0],start=touch;touch=null;
-  if(start.custom){e.preventDefault();customSelect(t.clientX,t.clientY);suppressClickUntil=Date.now()+700;return}
-  if(start.long||selectionMode&&Date.now()-start.started>=420){
-   suppressClickUntil=Date.now()+1100;
-   setTimeout(()=>readNativeSelection(),120);
-   return;
-  }
-  if(start.moved||Math.hypot(t.clientX-start.x,t.clientY-start.y)>12)return;
-  if(window.getSelection()?.toString().trim()){selectionMode=true;readNativeSelection();return}
-  selectionMode=false;
-  if(selectAt(t.clientX,t.clientY)){lastTouch=Date.now();previousTap={x:t.clientX,y:t.clientY,time:lastTouch};e.preventDefault()}
+  if(start.custom){e.preventDefault();customSelect(t.clientX,t.clientY);suppressClickUntil=Date.now()+800;return}
+  if(start.scrolling||start.moved||Math.hypot(t.clientX-start.x,t.clientY-start.y)>11)return;
+  if(Date.now()-start.started>380)return;
+  customMode=false;textNode.classList.remove('rem-custom-selecting');clearSelectionPaint();
+  if(selectAt(t.clientX,t.clientY)){lastTouch=Date.now();e.preventDefault()}
  }
  function click(e){
   if(customMode)return;
@@ -151,7 +154,7 @@ export function createHighlights(bookId,chapterId,textNode,onSwitch,onBookmark=(
   if(window.getSelection()?.toString().trim()){selectionMode=true;readNativeSelection();return}
   selectionMode=false;selectAt(e.clientX,e.clientY)
  }
- function contextMenu(){selectionMode=true;suppressClickUntil=Date.now()+1100;setTimeout(()=>readNativeSelection(),100)}
+ function contextMenu(e){e.preventDefault();suppressClickUntil=Date.now()+800}
  function refreshSelectionPaint(){if(customMode)customRangePaint();else if(selectionMode)paintNativeSelection()}
  textNode.addEventListener('touchstart',touchStart,{passive:false});
  textNode.addEventListener('touchmove',touchMove,{passive:false});
