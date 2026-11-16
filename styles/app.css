@@ -897,3 +897,8 @@ main .rem-home-section.rem-cinema-section .rem-cover-save.is-saved{
  border-color:rgba(102,228,177,.45)!important;
  color:rgba(102,228,177,.75)!important;
 }
+
+/* v196: save an ebook underline to Biblioteca thoughts. */
+.highlight-tools .rem-save-highlight-thought{display:inline-flex;align-items:center;justify-content:center;margin:12px 0;padding:10px 15px;border:1px solid rgba(111,226,176,.7);border-radius:999px;background:rgba(26,75,65,.16);color:#74e4b8;font:600 13px/1.3 system-ui,sans-serif;cursor:pointer}
+.highlight-tools .rem-save-highlight-thought[hidden]{display:none!important}
+.highlight-tools .rem-save-highlight-thought:disabled{opacity:.65;cursor:default}
