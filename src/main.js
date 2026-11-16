@@ -1,6 +1,6 @@
 import {loadCatalog,loadChapter} from './catalog.js?v=rem-editorial-161';
 import {loadEpisodeSegment} from './episode-segments.js?v=pinocchio-122';
-import {createCollectionsView} from './collections-view.js?v=rem-ui-191';
+import {createCollectionsView} from './collections-view.js?v=rem-ui-192';
 import {readCollections,isBookSaved,saveBookToCollections,removeSavedBook,attachItem,detachItem} from './collections-store.js?v=rem-mint-103';
 import {showOnboarding,onboardingCompleted} from './onboarding.js?v=rem-ui-56';
 import {getProgress,saveProgress,getSetting,saveSetting} from './progress.js';
