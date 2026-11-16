@@ -96,7 +96,7 @@ export function createHighlights(bookId,chapterId,textNode,onSwitch,onBookmark=(
   if(index<0)index=words.findIndex(w=>w.start>offset);
   if(index<0)return false;
   const start=words[index].start,end=words[Math.min(words.length-1,index+7)].end,clean=cleanRange(start,end);if(!clean)return false;
-  marks=[clean];persist();draw();selectedQuote=clean.quote;saveThought.hidden=false;saveThought.disabled=false;saveThought.textContent='Salva nei miei pensieri';onBookmark(clean.quote,clean.start);
+  marks=[clean];persist();draw();clearTimeout(savedNoticeTimer);selectedQuote='';saveThought.hidden=true;saveThought.disabled=false;saveThought.textContent='Salva nei miei pensieri';clearSelectionPaint();onBookmark(clean.quote,clean.start);
   window.getSelection()?.removeAllRanges();return true;
  }
  let touch=null,lastTouch=0,suppressClickUntil=0;
