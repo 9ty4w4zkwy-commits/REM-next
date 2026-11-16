@@ -871,3 +871,13 @@ main .rem-home-section.rem-cinema-section .rem-cover-author-overlay{display:none
   line-height:1.16!important;
  }
 }
+
+/* v187: discreet save control on Home covers only. */
+main .rem-home-section.rem-cinema-section .rem-cover-save{
+ width:15px!important;min-width:15px!important;max-width:15px!important;
+ height:15px!important;min-height:15px!important;max-height:15px!important;
+ top:auto!important;right:5px!important;bottom:5px!important;
+ border-radius:50%!important;border-width:1px!important;
+ font-size:10px!important;font-weight:400!important;line-height:1!important;
+ padding:0!important;box-shadow:none!important;
+}
