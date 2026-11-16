@@ -61,7 +61,8 @@ export function createHighlights(bookId,chapterId,textNode,onSwitch,onBookmark=(
   }
  }
 
- const saveThought=button('Salva nei miei pensieri',()=>{if(!selectedQuote)return;onSaveThought(selectedQuote);window.getSelection()?.removeAllRanges();selectionMode=false;customMode=false;textNode.classList.remove('rem-custom-selecting');clearSelectionPaint();saveThought.textContent='✓ Salvato nei miei pensieri';saveThought.disabled=true;});
+ let savedNoticeTimer=null;
+ const saveThought=button('Salva nei miei pensieri',()=>{if(!selectedQuote)return;onSaveThought(selectedQuote);window.getSelection()?.removeAllRanges();selectionMode=false;customMode=false;textNode.classList.remove('rem-custom-selecting');clearSelectionPaint();saveThought.textContent='✓ Salvato nei miei pensieri';saveThought.disabled=true;clearTimeout(savedNoticeTimer);savedNoticeTimer=setTimeout(()=>{saveThought.hidden=true;selectedQuote='';saveThought.disabled=false;saveThought.textContent='Salva nei miei pensieri';},2000);});
  saveThought.className='rem-save-highlight-thought';saveThought.hidden=true;wrap.append(saveThought);
 
  function persist(){try{localStorage.setItem(key,JSON.stringify(marks))}catch{}}
@@ -99,7 +100,7 @@ export function createHighlights(bookId,chapterId,textNode,onSwitch,onBookmark=(
   window.getSelection()?.removeAllRanges();return true;
  }
  let touch=null,lastTouch=0,suppressClickUntil=0;
- function setSaveQuote(quote){selectedQuote=quote;saveThought.hidden=false;saveThought.disabled=false;saveThought.textContent='Salva nei miei pensieri'}
+ function setSaveQuote(quote){clearTimeout(savedNoticeTimer);selectedQuote=quote;saveThought.hidden=false;saveThought.disabled=false;saveThought.textContent='Salva nei miei pensieri'}
  function readNativeSelection(){
   const selection=window.getSelection();
   if(!selection||selection.isCollapsed||!selection.rangeCount)return false;
@@ -165,7 +166,7 @@ export function createHighlights(bookId,chapterId,textNode,onSwitch,onBookmark=(
  document.addEventListener('scroll',refreshSelectionPaint,true);
  window.addEventListener('resize',refreshSelectionPaint);
  function destroy(){
-  clearTimeout(longPressTimer);clearTimeout(selectionTimer);
+  clearTimeout(longPressTimer);clearTimeout(selectionTimer);clearTimeout(savedNoticeTimer);
   textNode.removeEventListener('touchstart',touchStart);
   textNode.removeEventListener('touchmove',touchMove);
   textNode.removeEventListener('touchend',touchEnd);
