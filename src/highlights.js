@@ -19,7 +19,26 @@ export function createHighlights(bookId,chapterId,textNode,onSwitch,onBookmark=(
  clear.classList.add('selection-clear');
  const wrap=el('div',{className:'highlight-tools'});
  let selectedQuote='';let selectionMode=false;let longPressTimer=null;let selectionTimer=null;
- const saveThought=button('Salva nei miei pensieri',()=>{if(!selectedQuote)return;onSaveThought(selectedQuote);window.getSelection()?.removeAllRanges();selectionMode=false;saveThought.textContent='✓ Salvato nei miei pensieri';saveThought.disabled=true;});
+ const selectionPaint=el('div',{className:'rem-free-selection-paint',attrs:{'aria-hidden':'true'}});
+ document.body.append(selectionPaint);
+ function clearSelectionPaint(){selectionPaint.replaceChildren()}
+ function paintNativeSelection(){
+  clearSelectionPaint();
+  const selection=window.getSelection();
+  if(!selection||selection.isCollapsed||!selection.rangeCount)return;
+  const range=selection.getRangeAt(0);
+  if(!textNode.contains(range.startContainer)||!textNode.contains(range.endContainer))return;
+  const bounds=textNode.getBoundingClientRect();
+  for(const rect of range.getClientRects()){
+   if(rect.width<2||rect.height<2||rect.bottom<bounds.top||rect.top>bounds.bottom)continue;
+   const swatch=el('span',{className:'rem-free-selection-swatch'});
+   swatch.style.left=rect.left+'px';swatch.style.top=rect.top+'px';
+   swatch.style.width=rect.width+'px';swatch.style.height=rect.height+'px';
+   selectionPaint.append(swatch);
+  }
+ }
+
+ const saveThought=button('Salva nei miei pensieri',()=>{if(!selectedQuote)return;onSaveThought(selectedQuote);window.getSelection()?.removeAllRanges();selectionMode=false;clearSelectionPaint();saveThought.textContent='✓ Salvato nei miei pensieri';saveThought.disabled=true;});
  saveThought.className='rem-save-highlight-thought';saveThought.hidden=true;wrap.append(saveThought);
 
  function persist(){try{localStorage.setItem(key,JSON.stringify(marks))}catch{}}
@@ -29,7 +48,7 @@ export function createHighlights(bookId,chapterId,textNode,onSwitch,onBookmark=(
   let at=0;for(const m of ordered){if(m.start<at)continue;textNode.append(document.createTextNode(raw.slice(at,m.start)));textNode.append(el('mark',{className:'rem-highlight',text:raw.slice(m.start,m.end)}));at=m.end}
   textNode.append(document.createTextNode(raw.slice(at)));
  }
- function setText(value){source.value=value;selectionMode=false;draw()}
+ function setText(value){source.value=value;selectionMode=false;clearSelectionPaint();draw()}
  function highlightPhrase(offset,phrase){
   const raw=source.value;
   if(!Number.isInteger(offset)||offset<0||offset>=raw.length||!phrase)return null;
@@ -65,12 +84,12 @@ export function createHighlights(bookId,chapterId,textNode,onSwitch,onBookmark=(
   if(!textNode.contains(range.startContainer)||!textNode.contains(range.endContainer))return false;
   const quote=selection.toString().trim();
   if(!quote)return false;
-  selectionMode=true;setSaveQuote(quote);return true;
+  selectionMode=true;setSaveQuote(quote);paintNativeSelection();return true;
  }
  function selectionChanged(){
   if(!selectionMode)return;
   clearTimeout(selectionTimer);
-  selectionTimer=setTimeout(()=>readNativeSelection(),90);
+  selectionTimer=setTimeout(()=>{if(!readNativeSelection())clearSelectionPaint()},45);
  }
  function touchStart(e){
   if(e.touches.length!==1)return;
@@ -103,12 +122,15 @@ export function createHighlights(bookId,chapterId,textNode,onSwitch,onBookmark=(
   selectionMode=false;selectAt(e.clientX,e.clientY)
  }
  function contextMenu(){selectionMode=true;suppressClickUntil=Date.now()+1100;setTimeout(()=>readNativeSelection(),100)}
+ function refreshSelectionPaint(){if(selectionMode)paintNativeSelection()}
  textNode.addEventListener('touchstart',touchStart,{passive:true});
  textNode.addEventListener('touchmove',touchMove,{passive:true});
  textNode.addEventListener('touchend',touchEnd,{passive:false});
  textNode.addEventListener('click',click);
  textNode.addEventListener('contextmenu',contextMenu);
  document.addEventListener('selectionchange',selectionChanged);
+ document.addEventListener('scroll',refreshSelectionPaint,true);
+ window.addEventListener('resize',refreshSelectionPaint);
  function destroy(){
   clearTimeout(longPressTimer);clearTimeout(selectionTimer);
   textNode.removeEventListener('touchstart',touchStart);
@@ -117,6 +139,9 @@ export function createHighlights(bookId,chapterId,textNode,onSwitch,onBookmark=(
   textNode.removeEventListener('click',click);
   textNode.removeEventListener('contextmenu',contextMenu);
   document.removeEventListener('selectionchange',selectionChanged);
+  document.removeEventListener('scroll',refreshSelectionPaint,true);
+  window.removeEventListener('resize',refreshSelectionPaint);
+  selectionPaint.remove();
  }
  return {wrap,setText,highlightPhrase,destroy};
 }
