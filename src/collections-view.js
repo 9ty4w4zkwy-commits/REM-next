@@ -14,22 +14,32 @@ export function createCollectionsView({books,openBook,continueBook,isSavedBook=(
  body.replaceChildren();
  const sectionTitle=(label)=>body.append(node('h2','rem-violet-heading',label));
  const shelfThemes=[
- {title:'Libri che mi hanno emozionato',description:'Storie che mi sono rimaste nel cuore.',tone:'rose'},
- {title:'Libri che mi hanno fatto ridere',description:'Le letture che mi hanno regalato un sorriso.',tone:'amber'},
- {title:'Libri da leggere quest’inverno',description:'Storie da leggere al caldo, senza fretta.',tone:'blue'},
- {title:'Libri che fanno viaggiare',description:'Luoghi e mondi da esplorare, pagina dopo pagina.',tone:'sage'}
+ {title:'Libri che mi hanno emozionato',description:'Storie che mi sono rimaste nel cuore.',tone:'rose',color:'#ED087B'},
+ {title:'Libri che mi hanno fatto ridere',description:'Le letture che mi hanno regalato un sorriso.',tone:'amber',color:'#F5A900'},
+ {title:'Libri da leggere quest’inverno',description:'Storie da leggere al caldo, senza fretta.',tone:'blue',color:'#2052EC'},
+ {title:'Libri che fanno viaggiare',description:'Luoghi e mondi da esplorare, pagina dopo pagina.',tone:'sage',color:'#08AB91'},
+ {title:'Libri che mi hanno fatto sognare',description:'Storie che aprono le porte dell’immaginazione.',tone:'violet',color:'#9053D9'},
+ {title:'Libri da leggere tutti d’un fiato',description:'Storie impossibili da interrompere.',tone:'coral',color:'#F06439'},
+ {title:'Libri che mi hanno cambiato',description:'Letture che lasciano il segno.',tone:'ocean',color:'#188EBC'},
+ {title:'Libri da leggere sotto le stelle',description:'Storie per le notti più belle.',tone:'indigo',color:'#394AA3'},
+ {title:'Libri che mi hanno fatto riflettere',description:'Idee e storie su cui tornare.',tone:'pink',color:'#E66D8B'},
+ {title:'Libri che mi hanno sorpreso',description:'Letture piene di scoperte inaspettate.',tone:'lime',color:'#B0B831'},
+ {title:'Libri che non volevo finissero',description:'Storie da cui è difficile separarsi.',tone:'orchid',color:'#B86DAD'},
+ {title:'Libri che mi hanno tenuto col fiato sospeso',description:'Storie ricche di suspense.',tone:'teal',color:'#167E72'},
+ {title:'Libri che vorrei rileggere',description:'Storie da riscoprire ancora.',tone:'ochre',color:'#D08330'},
+ {title:'Libri da consigliare a tutti',description:'Le letture che vorrei condividere.',tone:'raspberry',color:'#D94F64'}
  ];
  const coverStack=(tone)=>{const stack=el('div',{className:'rem-collection-cover-stack',attrs:{'aria-hidden':'true'}});for(const index of [0,1]){const mini=el('div',{className:'rem-collection-mini-cover mini-'+index+' art-'+tone});mini.append(el('div',{className:'rem-mini-cover-shape'}),el('div',{className:'rem-mini-cover-lines'},[el('i'),el('i'),el('i')]));stack.append(mini)}return stack};
  const collectionLock=(s,returnTo)=>{const locked=s.private!==false;const lock=button('',()=>{const makePublic=locked;if(makePublic){if(!confirm('Vuoi segnare questa collezione come pubblica?\\n\\nLa preferenza resta sul dispositivo: la collezione NON sarà visibile ad altri finché REM non avrà una Community online.'))return}else if(!confirm('Vuoi riportare questa collezione a privata?'))return;setShelfVisibility(s.id,makePublic);show(returnTo)});
  lock.replaceChildren(visibilityIcon(locked));lock.className='rem-collection-lock rem-visibility-control';lock.title=locked?'Collezione privata: cambia visibilità':'Visibilità pubblica (solo locale): rendi privata';lock.setAttribute('aria-label',lock.title);return lock};
  const countBooks=(id)=>new Set(readCollections().items.filter(i=>i.shelfId===id&&i.type==='book').map(i=>i.refId)).size;
- const makeShelf=(s)=>{const theme=shelfThemes.find(t=>t.title===s.title);const tone=theme?theme.tone:'custom';const card=el('article',{className:'rem-collection-card tone-'+tone});
+ const makeShelf=(s)=>{const theme=shelfThemes.find(t=>t.title===s.title);const tone=theme?theme.tone:'custom';const card=el('article',{className:'rem-collection-card tone-'+tone});if(theme)card.style.background=theme.color;
  const head=el('div',{className:'rem-collection-top'},[node('span','rem-collection-kicker','LA TUA COLLEZIONE'),collectionLock(s,'shelves')]);card.append(head,node('h3','',s.title));
  const foot=el('div',{className:'rem-collection-foot'});foot.append(node('small','',countBooks(s.id)+' libri'));
  const add=button('+',()=>{if(pendingBookId){attachItem(s.id,'book',pendingBookId);show('shelves')}else chooseBooks(s,'shelves')});add.className='rem-collection-add';add.setAttribute('aria-label','Aggiungi libri a '+s.title);
  foot.append(add);card.append(foot);
  const bottom=el('div',{className:'rem-collection-secondary'});const open=button('Apri collezione',()=>{pendingBookId=null;showShelf(s)});const del=button('Elimina',()=>{if(confirm('Eliminare la collezione "'+s.title+'"?\\n\\nI libri salvati e i pensieri rimarranno nella tua Biblioteca.')){removeShelf(s.id);show('shelves')}});del.className='rem-collection-delete';bottom.append(open,del);card.append(bottom);return card};
- const makeSuggestion=(theme)=>{const card=el('article',{className:'rem-collection-card rem-collection-suggestion tone-'+theme.tone});
+ const makeSuggestion=(theme)=>{const card=el('article',{className:'rem-collection-card rem-collection-suggestion tone-'+theme.tone});card.style.background=theme.color;
  card.append(node('span','rem-collection-kicker','UN’IDEA PER TE'),node('h3','',theme.title));
  const foot=el('div',{className:'rem-collection-foot'});foot.append(node('small','','0 libri'));const add=button('+',()=>{const existing=readCollections().shelves.find(s=>s.title===theme.title);if(existing){if(pendingBookId){attachItem(existing.id,'book',pendingBookId);show('shelves')}else chooseBooks(existing,'shelves');return}const created=addShelf(theme.title,theme.description);if(created){if(pendingBookId){attachItem(created.id,'book',pendingBookId);show('shelves')}else chooseBooks(created,'shelves')}});add.className='rem-collection-add';add.setAttribute('aria-label','Crea '+theme.title+' e aggiungi libri');foot.append(add);card.append(foot);return card};
  const chooseBooks=(s,returnTo)=>{body.replaceChildren();body.append(button('← Torna alle collezioni',()=>show(returnTo)),node('h2','rem-violet-heading','Aggiungi libri'),subtitle(s.title),subtitle('Cerca per titolo o autore tra i libri disponibili in REM.'));
