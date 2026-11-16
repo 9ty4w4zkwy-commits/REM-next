@@ -601,3 +601,6 @@ body:not(.ebook-immersive-active) .ebook-reading-shell .ebook-page-frame .readin
 
 /* v89 — podcast-like time labels. Tilde marks estimated speech-synthesis timing. */
 .audio-sync-shell .rem-audio-clock{display:flex;justify-content:space-between;align-items:center;color:#c8d7e4;font-size:.91rem;font-variant-numeric:tabular-nums;margin:12px 0 -10px;letter-spacing:.02em}
+
+/* v201 — subtle AI narration disclosure below Pinocchio audio player */
+.audio-sync-shell .rem-audio-player > .format-mode-note:last-of-type{font-size:11px!important;font-weight:400!important;line-height:1.45!important;letter-spacing:0!important;color:#a3afbc!important;text-align:center!important;margin:9px 0 2px!important;opacity:.88!important}
