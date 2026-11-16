@@ -346,3 +346,20 @@
  color:rgba(101,221,175,.88)!important;font-size:1.5rem!important;line-height:1!important;
  box-shadow:none!important;
 }
+
+/* v193: consistent top alignment of every suggested collection title. */
+.rem-violet .rem-collection-card.rem-collection-suggestion{
+ gap:0!important;
+}
+.rem-violet .rem-collection-card.rem-collection-suggestion > .rem-collection-kicker{
+ display:block!important;flex:0 0 16px!important;height:16px!important;
+ line-height:16px!important;margin:0!important;
+}
+.rem-violet .rem-collection-card.rem-collection-suggestion > h3{
+ margin:20px 0 14px!important;padding:0!important;
+ align-self:stretch!important;flex:0 0 auto!important;
+ line-height:1.18!important;
+}
+.rem-violet .rem-collection-card.rem-collection-suggestion > .rem-collection-foot{
+ margin-top:auto!important;
+}
