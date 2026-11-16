@@ -424,3 +424,9 @@
 .rem-thought-source{display:flex;flex-direction:column;gap:4px;margin:2px 0 18px;padding-top:12px;border-top:1px solid rgba(137,165,179,.26);font-family:system-ui,-apple-system,sans-serif}
 .rem-thought-source-title{color:#dbe9ee;font-size:.9rem;font-weight:600;line-height:1.4}
 .rem-thought-source-chapter{color:#a8b9c8;font-size:.8rem;line-height:1.4}
+
+/* v208: restrained editorial attribution, without pictograms. */
+.rem-thought-source{gap:5px!important;margin-top:4px!important;padding-top:14px!important}
+.rem-thought-source-label{font:600 10px/1.4 system-ui,-apple-system,sans-serif;letter-spacing:.16em;color:#93a6b8}
+.rem-thought-source-title{font-size:14px!important;font-weight:500!important;color:#e5edf3!important;line-height:1.45!important}
+.rem-thought-source-chapter{font-size:12px!important;color:#9bafc0!important}
