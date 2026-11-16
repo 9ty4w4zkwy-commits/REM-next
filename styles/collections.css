@@ -363,3 +363,25 @@
 .rem-violet .rem-collection-card.rem-collection-suggestion > .rem-collection-foot{
  margin-top:auto!important;
 }
+
+/* v194: anchor suggestion titles to an exact position, independent of flex layout. */
+.rem-violet .rem-collection-grid .rem-collection-card.rem-collection-suggestion{
+ position:relative!important;
+}
+.rem-violet .rem-collection-grid .rem-collection-card.rem-collection-suggestion > h3{
+ position:absolute!important;
+ top:61px!important;
+ left:15px!important;
+ right:15px!important;
+ margin:0!important;
+ padding:0!important;
+ width:auto!important;
+ max-width:none!important;
+ transform:none!important;
+ text-align:left!important;
+}
+@media(max-width:390px){
+ .rem-violet .rem-collection-grid .rem-collection-card.rem-collection-suggestion > h3{
+  left:12px!important;right:12px!important;top:58px!important;
+ }
+}
