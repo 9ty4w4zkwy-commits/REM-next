@@ -2,7 +2,7 @@ import {loadCatalog,loadChapter} from './catalog.js?v=rem-editorial-210';
 import {loadEpisodeSegment} from './episode-segments.js?v=pinocchio-122';
 import {createCollectionsView} from './collections-view.js?v=rem-ui-209';
 import {readCollections,isBookSaved,saveBookToCollections,removeSavedBook,attachItem,detachItem,addThought} from './collections-store.js?v=rem-mint-207';
-import {showOnboarding,onboardingCompleted} from './onboarding.js?v=rem-ui-56';
+import {showOnboarding,onboardingCompleted} from './onboarding.js?v=rem-ui-211';
 import {getProgress,saveProgress,getSetting,saveSetting} from './progress.js';
 import {el,button,panel,heading} from './ui.js';
 import {getMode,formatSwitch,paperView,audioView} from './formats.js?v=rem-audio-182';
@@ -13,7 +13,7 @@ import {phraseSearch,getPhrase,savePhrase} from './synchronization.js?v=rem-swit
 import {HOME_SECTIONS,booksForHomeSection} from './home-config.js?v=rem-ui-159';
 import {summaryView} from './summary-view.js?v=rem-summary-50';
 const app=document.getElementById('app');let books=[];let currentView='home';let resumeFromHomeId=null;let activeReaderTools=null;let activeHighlights=null;let activeAudioPlayer=null;
-const render=(...nodes)=>{if(activeAudioPlayer){activeAudioPlayer.stopAudio?.();activeAudioPlayer=null}if(activeHighlights){activeHighlights.destroy();activeHighlights=null}if(activeReaderTools){activeReaderTools.destroy();activeReaderTools=null}app.replaceChildren(...nodes);for(const [id,active] of [['navHome',currentView==='home'],['navLibrary',currentView==='library']]){const nav=document.getElementById(id);nav?.classList.toggle('is-active',active);if(active)nav?.setAttribute('aria-current','page');else nav?.removeAttribute('aria-current')}window.scrollTo({top:0,left:0,behavior:'instant'});document.documentElement.scrollTop=0;document.body.scrollTop=0};
+const render=(...nodes)=>{if(activeAudioPlayer){activeAudioPlayer.stopAudio?.();activeAudioPlayer=null}if(activeHighlights){activeHighlights.destroy();activeHighlights=null}if(activeReaderTools){activeReaderTools.destroy();activeReaderTools=null}app.replaceChildren(...nodes);for(const [id,active] of [['navHome',currentView==='home'],['navLibrary',currentView==='library'],['navProfile',currentView==='profile']]){const nav=document.getElementById(id);nav?.classList.toggle('is-active',active);if(active)nav?.setAttribute('aria-current','page');else nav?.removeAttribute('aria-current')}window.scrollTo({top:0,left:0,behavior:'instant'});document.documentElement.scrollTop=0;document.body.scrollTop=0};
 const para=(text,cls='')=>el('p',{text,className:cls});
 const backArrow=(onClick,label='Torna indietro')=>{const b=button('←',onClick);b.classList.add('reader-back','quiet-back');b.setAttribute('aria-label',label);return b};
 const pathLink=(label,onClick)=>{const b=button(label,onClick);b.classList.add('story-path-link');return b};
@@ -223,6 +223,30 @@ function home(){
  };
  render(intro,...HOME_SECTIONS.map(shelf));
 }
+function profile(){
+ currentView='profile';
+ const completed=onboardingCompleted();
+ const card=(icon,title,body,action)=>el('section',{className:'rem-profile-card'},[
+  el('div',{className:'rem-profile-card-title'},[el('span',{className:'rem-profile-card-icon',text:icon,attrs:{'aria-hidden':'true'}}),el('h2',{text:title})]),
+  para(body,'rem-profile-description'),...(action?[action]:[])
+ ]);
+ const questionnaire=button(completed?'Rivedi le mie risposte →':'Completa il questionario →',()=>showOnboarding(render,profile,{editing:true}),true);
+ questionnaire.classList.add('rem-profile-action');
+ const status=el('span',{className:'rem-profile-status',text:completed?'Completato':'Da completare'});
+ const intro=el('section',{className:'rem-profile-intro'},[
+  el('div',{className:'rem-profile-avatar',attrs:{'aria-hidden':'true'}},[el('span',{text:'♙'})]),
+  el('div',{},[el('h1',{text:'Il mio profilo'}),para('Il tuo spazio personale su REM','rem-profile-subtitle')])
+ ]);
+ const interests=card('✦','I miei interessi','Le tue risposte ci aiutano a conoscere i tuoi gusti e a suggerirti nuove storie.',el('div',{className:'rem-profile-questionnaire'},[
+  el('div',{className:'rem-profile-questionnaire-head'},[el('strong',{text:'Questionario iniziale'}),status]),questionnaire
+ ]));
+ const reading=card('◫','La mia esperienza di lettura','Le preferenze di lettura vengono conservate sul tuo dispositivo.',el('div',{className:'rem-profile-preferences'},[
+  el('div',{},[el('span',{text:'Dimensione del testo'}),el('strong',{text:({'small':'Piccola','normal':'Normale','large':'Grande','xlarge':'Molto grande'})[getSetting('fontSize','normal')]||'Normale'})]),
+  el('div',{},[el('span',{text:'La tua Biblioteca'}),button('Apri →',()=>library())])
+ ]));
+ const privacy=card('◇','Privacy e preferenze','Questionario, libri salvati e progressi restano memorizzati su questo dispositivo. Non è ancora disponibile un account sincronizzato.');
+ render(el('div',{className:'rem-profile-page'},[backArrow(home,'Torna alla Home'),intro,interests,reading,privacy]));
+}
 function library(section='overview',bookId=null){currentView='library';render(createCollectionsView({books,openBook:detail,continueBook:readingEntry,isSavedBook:isBookSaved,coverBook:cover,back:home,initialSection:section,initialBookId:bookId}))}
 function detail(id){
  resumeFromHomeId=null;
@@ -376,5 +400,5 @@ const sizeSelect=el('select',{attrs:{'aria-label':'Dimensione testo'}});for(cons
  }
 }
 }catch(error){if(text.isConnected)text.textContent='Impossibile caricare il capitolo: '+error.message}finally{requestAnimationFrame(()=>{requestAnimationFrame(()=>{readerRestoring=false})})}}
-document.getElementById('brand').onclick=home;document.getElementById('navHome').onclick=home;document.getElementById('navLibrary').onclick=()=>library();
+document.getElementById('brand').onclick=home;document.getElementById('navHome').onclick=home;document.getElementById('navLibrary').onclick=()=>library();document.getElementById('navProfile').onclick=profile;
 try{books=await loadCatalog();if(onboardingCompleted()||getSetting('onboarding-v1','')==='later')home();else showOnboarding(render,home)}catch(error){render(heading('REM Next','ERRORE'),para('Impossibile caricare il catalogo: '+error.message),para('Avvia l’app tramite un server web, non aprendo index.html come file locale.'))}
