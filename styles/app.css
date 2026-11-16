@@ -955,3 +955,6 @@ main .rem-home-section.rem-cinema-section .rem-cover-save.is-saved{
 
 /* v205: rose selection matches the rounded mint 8-word highlight treatment. */
 .rem-free-selection-swatch{background:rgba(250,165,196,.48)!important;border:2px solid #d56d99!important;border-radius:11px!important;box-sizing:border-box!important;box-shadow:none!important;mix-blend-mode:normal!important}
+
+/* v206: taller, lighter rose highlight with a softened outline. */
+.rem-free-selection-swatch{background:rgba(250,165,196,.24)!important;border:2px solid rgba(197,86,133,.7)!important;border-radius:13px!important;transform:scaleY(1.17)!important;transform-origin:center!important}
