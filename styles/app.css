@@ -906,3 +906,7 @@ main .rem-home-section.rem-cinema-section .rem-cover-save.is-saved{
 /* Keep the save action reachable immediately after tapping text on iPhone. */
 .highlight-tools:has(.rem-save-highlight-thought:not([hidden])){position:fixed;left:50%;bottom:max(24px,env(safe-area-inset-bottom));transform:translateX(-50%);z-index:9999;width:max-content;max-width:94vw;pointer-events:none}
 .highlight-tools .rem-save-highlight-thought:not([hidden]){pointer-events:auto;background:#102c2b;color:#a1f3ce;box-shadow:0 6px 24px rgba(0,0,0,.38)}
+
+/* v197: permit iOS native long-press text selection and selection handles. */
+.ebook-reading-shell .ebook-page-frame,.ebook-reading-shell .ebook-page-frame *{-webkit-user-select:text;user-select:text;-webkit-touch-callout:default}
+.ebook-reading-shell .ebook-page-frame::selection,.ebook-reading-shell .ebook-page-frame *::selection{background:rgba(118,225,179,.42);color:inherit}
