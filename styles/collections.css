@@ -319,3 +319,10 @@
  background-size:cover!important;
  background-repeat:no-repeat!important;
 }
+
+/* v189: match Biblioteca hero heading to Home hero heading size on iPhone. */
+@media (max-width:650px){
+ .rem-violet .rem-violet-hero h1.rem-library-title{
+  font-size:clamp(2.65rem,10vw,4.2rem)!important;
+ }
+}
