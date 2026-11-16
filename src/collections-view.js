@@ -54,7 +54,7 @@ export function createCollectionsView({books,openBook,continueBook,isSavedBook=(
  const locked=t.private!==false;
  const lock=button(locked?'🔒':'🔓',()=>{const makePublic=locked;if(makePublic){const ok=confirm('Vuoi segnare questo pensiero come pubblico?\\n\\nLa scelta verrà salvata sul dispositivo, ma il pensiero NON sarà visibile ad altri finché REM non avrà una Community online.');if(!ok)return}else{if(!confirm('Vuoi riportare questo pensiero a privato?'))return}setThoughtVisibility(t.id,makePublic);show(section)});
  lock.replaceChildren(visibilityIcon(locked));lock.className='rem-thought-lock rem-visibility-control';lock.setAttribute('aria-label',locked?'Privato: scegli se renderlo pubblico':'Pubblico (solo impostazione locale): rendi privato');lock.title=locked?'Privato: tocca per cambiare':'Pubblico: impostazione locale';header.append(lock);
- const legacy=t.source?null:t.text.match(/^([“"][\\s\\S]*?[”"])\\s*[—-]\\s*(.+),\\s*(Capitolo\\s+\\d+|[^,]+)$/i);
+ const legacy=t.source?null:t.text.match(/^([“"][\s\S]*?[”"])\s*[—-]\s*(.+),\s*(Capitolo\s+\d+|[^,]+)$/i);
  const source=t.source|| (legacy?{bookTitle:legacy[2],chapter:legacy[3]}:null);
  const quote=legacy?legacy[1]:t.text;
  card.append(header,node('p','rem-thought-text',quote));
