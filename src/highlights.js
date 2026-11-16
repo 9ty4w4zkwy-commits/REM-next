@@ -14,12 +14,12 @@ export function createHighlights(bookId,chapterId,textNode,onSwitch,onBookmark=(
   const last=Math.min(words.length-1,first+7);
   return {start:words[first].start,end:words[last].end,quote:raw.slice(words[first].start,words[last].end)};
  }
- const hint=el('p',{className:'selection-hint',text:'Tocca una parola: REM evidenzia automaticamente 8 parole consecutive, anche tra paragrafi.'});
+ const hint=el('p',{className:'selection-hint',text:'Tocco veloce: 8 parole per la sincronizzazione. Tieni premuto e trascina i cursori per selezionare liberamente una frase da salvare nei pensieri.'});
  const clear=button('Rimuovi evidenziazioni',()=>{marks=[];selectedQuote='';saveThought.hidden=true;persist();draw()});
  clear.classList.add('selection-clear');
  const wrap=el('div',{className:'highlight-tools'});
- let selectedQuote='';
- const saveThought=button('Salva nei miei pensieri',()=>{if(!selectedQuote)return;onSaveThought(selectedQuote);saveThought.textContent='✓ Salvato nei miei pensieri';saveThought.disabled=true;});
+ let selectedQuote='';let selectionMode=false;let longPressTimer=null;let selectionTimer=null;
+ const saveThought=button('Salva nei miei pensieri',()=>{if(!selectedQuote)return;onSaveThought(selectedQuote);window.getSelection()?.removeAllRanges();selectionMode=false;saveThought.textContent='✓ Salvato nei miei pensieri';saveThought.disabled=true;});
  saveThought.className='rem-save-highlight-thought';saveThought.hidden=true;wrap.append(saveThought);
 
  function persist(){try{localStorage.setItem(key,JSON.stringify(marks))}catch{}}
@@ -29,7 +29,7 @@ export function createHighlights(bookId,chapterId,textNode,onSwitch,onBookmark=(
   let at=0;for(const m of ordered){if(m.start<at)continue;textNode.append(document.createTextNode(raw.slice(at,m.start)));textNode.append(el('mark',{className:'rem-highlight',text:raw.slice(m.start,m.end)}));at=m.end}
   textNode.append(document.createTextNode(raw.slice(at)));
  }
- function setText(value){source.value=value;draw()}
+ function setText(value){source.value=value;selectionMode=false;draw()}
  function highlightPhrase(offset,phrase){
   const raw=source.value;
   if(!Number.isInteger(offset)||offset<0||offset>=raw.length||!phrase)return null;
@@ -56,15 +56,67 @@ export function createHighlights(bookId,chapterId,textNode,onSwitch,onBookmark=(
   marks=[clean];persist();draw();selectedQuote=clean.quote;saveThought.hidden=false;saveThought.disabled=false;saveThought.textContent='Salva nei miei pensieri';onBookmark(clean.quote,clean.start);
   window.getSelection()?.removeAllRanges();return true;
  }
- let touch=null,lastTouch=0;
- function touchStart(e){if(e.touches.length!==1)return;const t=e.touches[0];touch={x:t.clientX,y:t.clientY,moved:false}}
- function touchMove(e){if(!touch)return;const t=e.touches[0];if(Math.hypot(t.clientX-touch.x,t.clientY-touch.y)>12)touch.moved=true}
- function touchEnd(e){if(!touch)return;const t=e.changedTouches[0],start=touch;touch=null;if(start.moved||Math.hypot(t.clientX-start.x,t.clientY-start.y)>12)return;if(selectAt(t.clientX,t.clientY)){lastTouch=Date.now();e.preventDefault()}}
- function click(e){if(Date.now()-lastTouch<650)return;selectAt(e.clientX,e.clientY)}
+ let touch=null,lastTouch=0,suppressClickUntil=0;
+ function setSaveQuote(quote){selectedQuote=quote;saveThought.hidden=false;saveThought.disabled=false;saveThought.textContent='Salva nei miei pensieri'}
+ function readNativeSelection(){
+  const selection=window.getSelection();
+  if(!selection||selection.isCollapsed||!selection.rangeCount)return false;
+  const range=selection.getRangeAt(0);
+  if(!textNode.contains(range.startContainer)||!textNode.contains(range.endContainer))return false;
+  const quote=selection.toString().trim();
+  if(!quote)return false;
+  selectionMode=true;setSaveQuote(quote);return true;
+ }
+ function selectionChanged(){
+  if(!selectionMode)return;
+  clearTimeout(selectionTimer);
+  selectionTimer=setTimeout(()=>readNativeSelection(),90);
+ }
+ function touchStart(e){
+  if(e.touches.length!==1)return;
+  clearTimeout(longPressTimer);
+  const t=e.touches[0];touch={x:t.clientX,y:t.clientY,moved:false,started:Date.now(),long:false};
+  longPressTimer=setTimeout(()=>{if(touch&&!touch.moved){touch.long=true;selectionMode=true;suppressClickUntil=Date.now()+1100}},420);
+ }
+ function touchMove(e){
+  if(!touch)return;
+  const t=e.touches[0];
+  if(Math.hypot(t.clientX-touch.x,t.clientY-touch.y)>12){touch.moved=true;clearTimeout(longPressTimer)}
+ }
+ function touchEnd(e){
+  clearTimeout(longPressTimer);
+  if(!touch)return;
+  const t=e.changedTouches[0],start=touch;touch=null;
+  if(start.long||selectionMode&&Date.now()-start.started>=420){
+   suppressClickUntil=Date.now()+1100;
+   setTimeout(()=>readNativeSelection(),120);
+   return;
+  }
+  if(start.moved||Math.hypot(t.clientX-start.x,t.clientY-start.y)>12)return;
+  if(window.getSelection()?.toString().trim()){selectionMode=true;readNativeSelection();return}
+  selectionMode=false;
+  if(selectAt(t.clientX,t.clientY)){lastTouch=Date.now();e.preventDefault()}
+ }
+ function click(e){
+  if(Date.now()<suppressClickUntil||Date.now()-lastTouch<650)return;
+  if(window.getSelection()?.toString().trim()){selectionMode=true;readNativeSelection();return}
+  selectionMode=false;selectAt(e.clientX,e.clientY)
+ }
+ function contextMenu(){selectionMode=true;suppressClickUntil=Date.now()+1100;setTimeout(()=>readNativeSelection(),100)}
  textNode.addEventListener('touchstart',touchStart,{passive:true});
  textNode.addEventListener('touchmove',touchMove,{passive:true});
  textNode.addEventListener('touchend',touchEnd,{passive:false});
  textNode.addEventListener('click',click);
- function destroy(){textNode.removeEventListener('touchstart',touchStart);textNode.removeEventListener('touchmove',touchMove);textNode.removeEventListener('touchend',touchEnd);textNode.removeEventListener('click',click)}
+ textNode.addEventListener('contextmenu',contextMenu);
+ document.addEventListener('selectionchange',selectionChanged);
+ function destroy(){
+  clearTimeout(longPressTimer);clearTimeout(selectionTimer);
+  textNode.removeEventListener('touchstart',touchStart);
+  textNode.removeEventListener('touchmove',touchMove);
+  textNode.removeEventListener('touchend',touchEnd);
+  textNode.removeEventListener('click',click);
+  textNode.removeEventListener('contextmenu',contextMenu);
+  document.removeEventListener('selectionchange',selectionChanged);
+ }
  return {wrap,setText,highlightPhrase,destroy};
 }
