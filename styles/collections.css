@@ -419,3 +419,8 @@
  margin:auto 0 0!important;
 }
 @media(max-width:390px){.rem-violet .rem-stats .rem-stat{padding:16px 12px!important;min-height:196px!important}}
+
+/* v207 — separate citation source beneath each saved thought. */
+.rem-thought-source{display:flex;flex-direction:column;gap:4px;margin:2px 0 18px;padding-top:12px;border-top:1px solid rgba(137,165,179,.26);font-family:system-ui,-apple-system,sans-serif}
+.rem-thought-source-title{color:#dbe9ee;font-size:.9rem;font-weight:600;line-height:1.4}
+.rem-thought-source-chapter{color:#a8b9c8;font-size:.8rem;line-height:1.4}
