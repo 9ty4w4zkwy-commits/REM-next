@@ -366,13 +366,13 @@ if(mode==='audio'){
    saveSetting('audio-text-sync:'+id,JSON.stringify({chapter:nextChapter,source:'audio',offset:0,selected:false}));
    reader(id,nextChapter,'audio',0,inEpisode,inEpisode?target.id:null);
   };
-  const previousAudio=button('← Precedente',()=>moveAudio(-1));
-  const nextAudio=button('Successivo →',()=>moveAudio(1));
+  const previousAudio=button('←',()=>moveAudio(-1));
+  const nextAudio=button('→',()=>moveAudio(1));
   previousAudio.disabled=unitIndex<=0;
   nextAudio.disabled=unitIndex<0||unitIndex>=units.length-1;
   previousAudio.setAttribute('aria-label',inEpisode?'Episodio precedente':'Capitolo precedente');
   nextAudio.setAttribute('aria-label',inEpisode?'Episodio successivo':'Capitolo successivo');
-  const audioNavigation=el('nav',{className:'rem-audio-chapter-nav',attrs:{'aria-label':inEpisode?'Navigazione episodi audio':'Navigazione capitoli audio'}},[previousAudio,nextAudio]);
+  const audioNavigation=el('nav',{className:'chapter-actions ebook-chapter-nav rem-audio-chapter-nav',attrs:{'aria-label':inEpisode?'Navigazione episodi audio':'Navigazione capitoli audio'}},[previousAudio,nextAudio]);
   shell.append(player,audioNavigation,el('div',{className:'audio-inline-switches'},[button('Passa a Ebook',()=>reader(id,chapter.id,'ebook',null,inEpisode,episode?.id)),button('Passa a Cartaceo',()=>reader(id,chapter.id,'paper',null,inEpisode,episode?.id))]));activeAudioPlayer=player;
  }catch(error){if(shell.isConnected)shell.append(el('p',{text:'Impossibile caricare l’audio: '+error.message}))}
  return;
