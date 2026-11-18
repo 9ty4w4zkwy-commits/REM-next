@@ -1009,3 +1009,6 @@ main .rem-home-section.rem-cinema-section .rem-cover-save.is-saved{
 .rem-recommend-sparkles{display:inline-flex;align-items:flex-start;gap:2px;vertical-align:.12em;margin-left:.08em;white-space:nowrap}
 .rem-recommend-sparkles .rem-recommend-sparkle{margin:0;vertical-align:baseline;font-size:.64em;color:#86dfb2}
 .rem-recommend-sparkle-pink{display:inline-block;color:#f3a5ca;font-family:Georgia,serif;font-size:.39em;line-height:1;margin-top:-.15em}
+
+/* v219: subtler, extra-small pink recommendation sparkle */
+.rem-recommend-sparkle-pink{font-size:.25em!important}
