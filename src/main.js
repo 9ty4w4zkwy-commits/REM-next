@@ -218,7 +218,7 @@ function home(){
    return el('article',{className:'rem-book-card rem-cinema-card',attrs:{'aria-label':book.title+' — '+(book.author||'')}},[image]);
   });
   return el('section',{className:'rem-home-section rem-cinema-section',attrs:{'data-section':section.id}},[
-   el('div',{className:'rem-section-heading'},[el('h2',{className:'rem-section-title'},section.id==='recommended'?[document.createTextNode('Scelti per te '),el('span',{className:'rem-recommend-sparkle',text:'✦',attrs:{'aria-hidden':'true'}})]:[document.createTextNode(section.title)])]),
+   el('div',{className:'rem-section-heading'},[el('h2',{className:'rem-section-title'},section.id==='recommended'?[document.createTextNode('Scelti per te '),el('span',{className:'rem-recommend-sparkles',attrs:{'aria-hidden':'true'}},[el('span',{className:'rem-recommend-sparkle',text:'✦'}),el('span',{className:'rem-recommend-sparkle-pink',text:'✦'})])]:[document.createTextNode(section.title)])]),
    ...(cards.length?[el('div',{className:'rem-book-grid'},cards)]:[para(section.empty,'rem-empty-section')])
   ]);
  };
