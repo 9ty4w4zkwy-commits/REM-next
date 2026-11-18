@@ -989,6 +989,20 @@
       "chapters": []
     },
     {
+      "id": "dorian-gray",
+      "title": "Il ritratto di Dorian Gray",
+      "author": "Oscar Wilde",
+      "description": "Un giovane affascinante, un ritratto misterioso e il prezzo nascosto dell'eterna giovinezza. Un romanzo di bellezza, desiderio e coscienza.",
+      "status": "published",
+      "access": "premium",
+      "homeSections": [
+        "new"
+      ],
+      "availability": "preview",
+      "coverImage": "./assets/covers/PHOTO-2026-11-16-16-30-45.jpg",
+      "chapters": []
+    },
+    {
       "id": "giro-del-mondo",
       "title": "Il giro del mondo in 80 giorni",
       "author": "Jules Verne",
@@ -1028,20 +1042,6 @@
       ],
       "availability": "preview",
       "coverImage": "./assets/covers/PHOTO-2026-11-16-16-30-45%203.jpg",
-      "chapters": []
-    },
-    {
-      "id": "dorian-gray",
-      "title": "Il ritratto di Dorian Gray",
-      "author": "Oscar Wilde",
-      "description": "Un giovane affascinante, un ritratto misterioso e il prezzo nascosto dell'eterna giovinezza. Un romanzo di bellezza, desiderio e coscienza.",
-      "status": "published",
-      "access": "premium",
-      "homeSections": [
-        "new"
-      ],
-      "availability": "preview",
-      "coverImage": "./assets/covers/PHOTO-2026-11-16-16-30-45.jpg",
       "chapters": []
     },
     {
