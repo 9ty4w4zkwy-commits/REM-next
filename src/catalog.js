@@ -23,7 +23,9 @@ async function loadPinocchioChapter(chapter){
  const root=doc.querySelector('.mw-parser-output')||doc.body;
  root.querySelectorAll('style,script,table,.mw-editsection,.ws-noexport,.noprint,.mw-cite-backlink,.reference,.mw-references-wrap,.printfooter,.catlinks,.mw-parser-output > nav, .header-container, .ws-summary, .ws-title').forEach(node=>node.remove());
  const paragraphs=[...root.querySelectorAll('p')].map(p=>p.textContent.replace(/\s+/g,' ').trim()).filter(p=>p.length>25);
- const content=paragraphs.join('\n\n');
+ let content=paragraphs.join('\n\n');
+ // Remove only repeated title labels at the start of the chapter.
+ content=content.replace(/^\s*Le avventure di Pinocchio\s*/i,'').replace(new RegExp('^\\s*Capitolo\\s*'+number+'\\s*','i'),'');
  if(content.length<450)throw Error('Il testo del capitolo non è stato estratto correttamente');
  pinocchioCache.set(number,content);
  return content;
