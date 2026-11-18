@@ -112,3 +112,30 @@ input::placeholder,textarea::placeholder{color:#A9B6CC!important;opacity:1}
 .audio-sync-shell input.rem-audio-seek[type="range"]{
  --track-fill:linear-gradient(to right,#F3EFE6 0%,#F3EFE6 var(--audio-progress,0%),#46607B var(--audio-progress,0%),#46607B 100%)!important
 }
+
+
+/* Palette completa REM: verde e rosa cipria */
+:root{
+ --rem-mint:#64DCA8; --rem-mint-light:#8FF0C4; --rem-green-deep:#245F53;
+ --rem-powder-pink:#E8B8C3; --rem-pink-light:#F4DDE2; --rem-antique-rose:#C98F9F;
+ --rem-white:#F3F7F8; --rem-muted:#B9C5D2;
+ --accent:#64DCA8; --text:#F3F7F8; --muted:#B9C5D2;
+}
+body{--accent:#64DCA8;--text:#F3F7F8;--muted:#B9C5D2}
+button.primary,.primary,.rem-book-card .primary,.onboard-intro .primary,.onboard-actions .primary{
+ background:#64DCA8!important;color:#0B1424!important;border-color:#64DCA8!important
+}
+button.primary:hover,.primary:hover{background:#8FF0C4!important;border-color:#8FF0C4!important}
+.onboard-screen{background:#0B1424!important;color:#F3F7F8!important}
+.onboard-brand{color:#F3F7F8!important}
+.onboard-intro h1 span{color:#E8B8C3!important}
+.onboard-intro p,.onboard-hint,.onboard-privacy{color:#B9C5D2!important}
+.onboard-progress span{background:#46607B!important}
+.onboard-progress span.is-active{background:#E8B8C3!important}
+.onboard-kicker{color:#C98F9F!important}
+.onboard-option{background:#13263D!important;color:#F3F7F8!important;border:1px solid #46607B!important}
+.onboard-option.selected{background:#F4DDE2!important;color:#0B1424!important;border-color:#E8B8C3!important}
+.onboard-top button,.onboard-actions>button:not(.primary){background:#173653!important;color:#F3F7F8!important;border-color:#46607B!important}
+.rem-collection-card.tone-rose{background:#F4DDE2!important;border-color:#E8B8C3!important}
+.rem-collection-card.tone-rose h3,.rem-collection-card.tone-rose .rem-collection-kicker,
+.rem-collection-card.tone-rose .rem-collection-foot small,.rem-collection-card.tone-rose .rem-violet-muted{color:#0B1424!important}
