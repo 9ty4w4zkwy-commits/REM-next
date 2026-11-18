@@ -356,7 +356,24 @@ if(mode==='audio'){
  try{
   const segment=inEpisode&&episode&&book.id==='pinocchio'?await loadEpisodeSegment(book,episode):null;const content=segment?.content??await loadChapter(book,chapter);if(!shell.isConnected)return;
   const point=getPhrase(id);if(id!=='pinocchio'&&point?.chapter===chapter.id&&Number.isFinite(Number(point.offset)))saveSetting('audio-position:'+id,JSON.stringify({chapter:chapter.id,offset:Math.max(0,(Number(point.offset)||0)-(segment?.start||0))}));const player=audioView({bookId:id,chapter,content,segmentStart:segment?.start||0,onPosition:offset=>{if(offset>=0&&offset<content.length){const excerpt=content.slice(offset,Math.min(content.length,offset+90)).trim();savePhrase(id,chapter.id,excerpt,offset+(segment?.start||0))}saveProgress(id,chapter.id)}});
-  shell.append(player,el('div',{className:'audio-inline-switches'},[button('Passa a Ebook',()=>reader(id,chapter.id,'ebook',null,inEpisode,episode?.id)),button('Passa a Cartaceo',()=>reader(id,chapter.id,'paper',null,inEpisode,episode?.id))]));activeAudioPlayer=player;
+  const units=inEpisode?allEpisodes(book):book.chapters;
+  const unitIndex=inEpisode?units.findIndex(item=>item.id===episode?.id):units.findIndex(item=>item.id===chapter.id);
+  const moveAudio=direction=>{
+   const target=units[unitIndex+direction];if(!target)return;
+   const nextChapter=inEpisode?target.chapterId:target.id;
+   saveProgress(id,nextChapter);
+   saveSetting('audio-position:'+id,JSON.stringify({chapter:nextChapter,offset:0}));
+   saveSetting('audio-text-sync:'+id,JSON.stringify({chapter:nextChapter,source:'audio',offset:0,selected:false}));
+   reader(id,nextChapter,'audio',0,inEpisode,inEpisode?target.id:null);
+  };
+  const previousAudio=button('← Precedente',()=>moveAudio(-1));
+  const nextAudio=button('Successivo →',()=>moveAudio(1));
+  previousAudio.disabled=unitIndex<=0;
+  nextAudio.disabled=unitIndex<0||unitIndex>=units.length-1;
+  previousAudio.setAttribute('aria-label',inEpisode?'Episodio precedente':'Capitolo precedente');
+  nextAudio.setAttribute('aria-label',inEpisode?'Episodio successivo':'Capitolo successivo');
+  const audioNavigation=el('nav',{className:'rem-audio-chapter-nav',attrs:{'aria-label':inEpisode?'Navigazione episodi audio':'Navigazione capitoli audio'}},[previousAudio,nextAudio]);
+  shell.append(player,audioNavigation,el('div',{className:'audio-inline-switches'},[button('Passa a Ebook',()=>reader(id,chapter.id,'ebook',null,inEpisode,episode?.id)),button('Passa a Cartaceo',()=>reader(id,chapter.id,'paper',null,inEpisode,episode?.id))]));activeAudioPlayer=player;
  }catch(error){if(shell.isConnected)shell.append(el('p',{text:'Impossibile caricare l’audio: '+error.message}))}
  return;
 }
