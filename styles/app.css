@@ -989,3 +989,9 @@ main .rem-home-section.rem-cinema-section .rem-cover-save.is-saved{
 .rem-audio-chapter-nav button{min-height:55px;display:flex;justify-content:center;align-items:center;gap:8px;background:#29415b;border:1px solid #67869a;border-radius:15px;color:#f3f7fb;font-weight:650;font-size:15px;padding:10px}
 .rem-audio-chapter-nav button:disabled{opacity:.32}
 @media(max-width:390px){.rem-audio-chapter-nav{gap:8px}.rem-audio-chapter-nav button{font-size:13px;padding:8px}}
+
+/* v213: audio arrows match ebook navigation, including muted disabled state */
+.rem-audio-chapter-nav{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:18px 0 8px}
+.rem-audio-chapter-nav button{width:64px;height:58px;min-height:58px;flex:none;display:flex;align-items:center;justify-content:center;padding:0;border:1px solid #6d879d;border-radius:16px;background:#2b435d;color:#f1f7fb;font-size:35px;font-weight:400;line-height:1}
+.rem-audio-chapter-nav button:disabled{opacity:.38;background:#20334b;color:#91a0b1;border-color:#51677d;cursor:not-allowed}
+@media(max-width:390px){.rem-audio-chapter-nav{gap:12px}.rem-audio-chapter-nav button{width:64px;height:58px;font-size:35px;padding:0}}
