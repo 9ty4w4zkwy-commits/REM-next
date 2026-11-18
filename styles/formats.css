@@ -613,3 +613,10 @@ body:not(.ebook-immersive-active) .ebook-reading-shell .ebook-page-frame .readin
 .format-switch-bottom button:nth-child(2) svg{color:#f3a5ca!important;stroke:#f3a5ca!important}
 .format-switch-bottom button:nth-child(2) svg [stroke]:not([stroke="none"]){stroke:#f3a5ca!important}
 .format-switch-bottom button:nth-child(2)[aria-pressed="true"]::before{color:#f3a5ca!important}
+
+/* v216: correct colors by format ID, not by button position */
+.format-switch-bottom button[data-format="paper"] svg{color:#91e2b8!important;stroke:#91e2b8!important}
+.format-switch-bottom button[data-format="paper"] svg [stroke]:not([stroke="none"]){stroke:#91e2b8!important}
+.format-switch-bottom button[data-format="ebook"] svg{color:#f3a5ca!important;stroke:#f3a5ca!important}
+.format-switch-bottom button[data-format="ebook"] svg [stroke]:not([stroke="none"]){stroke:#f3a5ca!important}
+.format-switch-bottom button[data-format="audio"] svg{color:#91e2b8!important;stroke:#91e2b8!important}
