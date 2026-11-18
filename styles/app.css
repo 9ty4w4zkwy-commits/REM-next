@@ -1004,3 +1004,8 @@ main .rem-home-section.rem-cinema-section .rem-cover-save.is-saved{
 /* v217: soft pink Riassumi button, consistent with Ebook accent */
 .summary-footer .summary-warm{background:#422b42!important;border-color:#ed9fc5!important;color:#ffc5e0!important}
 .summary-footer .summary-warm:hover,.summary-footer .summary-warm:focus-visible{background:#583451!important;border-color:#ffc5e0!important;color:#ffe0ed!important}
+
+/* v218: mint + smaller pink sparkle beside "Scelti per te" */
+.rem-recommend-sparkles{display:inline-flex;align-items:flex-start;gap:2px;vertical-align:.12em;margin-left:.08em;white-space:nowrap}
+.rem-recommend-sparkles .rem-recommend-sparkle{margin:0;vertical-align:baseline;font-size:.64em;color:#86dfb2}
+.rem-recommend-sparkle-pink{display:inline-block;color:#f3a5ca;font-family:Georgia,serif;font-size:.39em;line-height:1;margin-top:-.15em}
