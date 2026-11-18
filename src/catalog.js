@@ -33,7 +33,7 @@ async function loadPinocchioChapter(chapter){
 // Pirandello: load each complete original chapter from Italian Wikisource.
 const mattiaCache=new Map();
 async function loadMattiaChapter(chapter){
- const number=Number(chapter.id.match(/^capitolo-(\\d+)$/)?.[1]);
+ const number=Number(chapter.id.match(/^capitolo-(\d+)$/)?.[1]);
  if(!Number.isInteger(number)||number<1||number>18)throw Error('Capitolo di Mattia Pascal non valido');
  if(mattiaCache.has(number))return mattiaCache.get(number);
  const page='Il_fu_Mattia_Pascal/'+number;
@@ -45,8 +45,8 @@ async function loadMattiaChapter(chapter){
  const doc=new DOMParser().parseFromString(payload.parse.text,'text/html');
  const root=doc.querySelector('.mw-parser-output')||doc.body;
  root.querySelectorAll('style,script,table,.mw-editsection,.ws-noexport,.noprint,.reference,.mw-references-wrap,.printfooter,.catlinks,.header-container,.ws-summary,.ws-title,.ws-header,.ws-footer').forEach(node=>node.remove());
- const paragraphs=[...root.querySelectorAll('p')].map(p=>p.textContent.replace(/\\s+/g,' ').trim()).filter(p=>p.length>25);
- let content=paragraphs.join('\\n\\n');
+ const paragraphs=[...root.querySelectorAll('p')].map(p=>p.textContent.replace(/\s+/g,' ').trim()).filter(p=>p.length>25);
+ let content=paragraphs.join('\n\n');
  if(content.length<350)throw Error('Il capitolo non è stato estratto correttamente');
  mattiaCache.set(number,content);
  return content;
