@@ -30,8 +30,30 @@ async function loadPinocchioChapter(chapter){
  pinocchioCache.set(number,content);
  return content;
 }
+// Pirandello: load each complete original chapter from Italian Wikisource.
+const mattiaCache=new Map();
+async function loadMattiaChapter(chapter){
+ const number=Number(chapter.id.match(/^capitolo-(\\d+)$/)?.[1]);
+ if(!Number.isInteger(number)||number<1||number>18)throw Error('Capitolo di Mattia Pascal non valido');
+ if(mattiaCache.has(number))return mattiaCache.get(number);
+ const page='Il_fu_Mattia_Pascal/'+number;
+ const url='https://it.wikisource.org/w/api.php?action=parse&format=json&formatversion=2&prop=text&origin=*&page='+encodeURIComponent(page);
+ const response=await fetch(url);
+ if(!response.ok)throw Error('Impossibile caricare il capitolo da Wikisource');
+ const payload=await response.json();
+ if(payload.error||!payload.parse?.text)throw Error('Testo del capitolo non disponibile su Wikisource');
+ const doc=new DOMParser().parseFromString(payload.parse.text,'text/html');
+ const root=doc.querySelector('.mw-parser-output')||doc.body;
+ root.querySelectorAll('style,script,table,.mw-editsection,.ws-noexport,.noprint,.reference,.mw-references-wrap,.printfooter,.catlinks,.header-container,.ws-summary,.ws-title,.ws-header,.ws-footer').forEach(node=>node.remove());
+ const paragraphs=[...root.querySelectorAll('p')].map(p=>p.textContent.replace(/\\s+/g,' ').trim()).filter(p=>p.length>25);
+ let content=paragraphs.join('\\n\\n');
+ if(content.length<350)throw Error('Il capitolo non è stato estratto correttamente');
+ mattiaCache.set(number,content);
+ return content;
+}
 export async function loadChapter(book,chapter){
  if(book.id==='pinocchio')return loadPinocchioChapter(chapter);
+ if(book.id==='mattia-pascal')return loadMattiaChapter(chapter);
  const r=await fetch(BASE+encodeURIComponent(book.id)+'/'+chapter.file+'?v=long-reading-38',{cache:'no-store'});
  if(!r.ok)throw Error('Capitolo non disponibile');
  return r.text();
