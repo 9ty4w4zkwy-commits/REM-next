@@ -1,0 +1,114 @@
+/* REM Next — palette istituzionale blu notte / crema
+   Foglio caricato per ultimo: prevale sulle regole legacy delle singole sezioni. */
+:root{
+  --bg:#0B1424!important;
+  --surface:#13263D!important;
+  --surface2:#173653!important;
+  --text:#F3EFE6!important;
+  --muted:#A9B6CC!important;
+  --accent:#F3EFE6!important;
+  --rem-blue-night:#0B1424;
+  --rem-blue-deep:#13263D;
+  --rem-blue-mid:#173653;
+  --rem-blue-slate:#46607B;
+  --rem-cream:#F3EFE6;
+  --rem-muted:#A9B6CC;
+  color-scheme:dark;
+}
+html,body{background:#0B1424!important;color:#F3EFE6!important}
+body{--bg:#0B1424;--surface:#13263D;--surface2:#173653;--text:#F3EFE6;--muted:#A9B6CC;--accent:#F3EFE6}
+.top,header.top{background:#0B1424!important;border-color:#46607B!important}
+.wordmark,.wordmark span{color:#F3EFE6!important}
+.top nav button,button.secondary,.secondary{
+ background:#173653!important;color:#F3EFE6!important;border:1px solid #46607B!important
+}
+.top nav button.is-active,.top nav button[aria-current="page"]{
+ background:#F3EFE6!important;color:#0B1424!important;border-color:#F3EFE6!important
+}
+button.primary,.primary,.rem-book-card .primary{
+ background:#F3EFE6!important;color:#0B1424!important;border:1px solid #F3EFE6!important
+}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{
+ outline:2px solid #F3EFE6!important;outline-offset:2px
+}
+h1,h2,h3,h4,h5,.rem-section-title,.rem-home-intro h1,.rem-library-title{
+ color:#F3EFE6!important
+}
+p,.muted,.rem-card-subtitle,.rem-home-subtitle,.rem-violet-muted,
+.rem-profile-subtitle,.rem-stat span,.rem-stat-description{
+ color:#A9B6CC!important
+}
+.panel,.card,.rem-book-card,.rem-profile-card,.rem-violet-book,.rem-violet-thought,
+.rem-picker-book,.rem-save-sheet,.rem-stat,.rem-violet-shelf{
+ background:#13263D!important;border-color:#46607B!important;color:#F3EFE6!important
+}
+input,textarea,select{
+ background:#13263D!important;color:#F3EFE6!important;border-color:#46607B!important
+}
+input::placeholder,textarea::placeholder{color:#A9B6CC!important;opacity:1}
+.rem-cinema-hero{
+ background:#F3EFE6!important;border:1px solid #F3EFE6!important
+}
+.rem-cinema-hero-art:after{display:none!important}
+.rem-cinema-hero-copy h1,.rem-cinema-hero-copy .eyebrow,
+.rem-cinema-hero-author,.rem-cinema-hero-copy p{
+ color:#0B1424!important
+}
+.rem-cinema-hero-copy button{
+ background:#173653!important;color:#F3EFE6!important;border-color:#173653!important
+}
+.rem-violet-hero{background:#13263D!important;border:1px solid #46607B!important}
+.rem-violet-hero h1,.rem-violet-hero h1.rem-library-title{color:#F3EFE6!important}
+.rem-violet-hero .rem-violet-muted{color:#A9B6CC!important}
+.rem-violet-tabs button,.rem-violet .rem-library-back{
+ background:#173653!important;color:#F3EFE6!important;border-color:#46607B!important
+}
+.rem-violet-tabs button.selected,.rem-violet .rem-violet-primary,
+.rem-violet .rem-dashboard-actions button:first-child,.rem-save-confirm{
+ background:#F3EFE6!important;color:#0B1424!important;border-color:#F3EFE6!important
+}
+.rem-collection-card.tone-rose,.rem-collection-card.tone-amber,
+.rem-collection-card.tone-blue,.rem-collection-card.tone-sage{
+ background:#13263D!important;border:1px solid #46607B!important
+}
+.rem-collection-card h3,.rem-collection-card .rem-collection-kicker,
+.rem-collection-foot small,.rem-collection-card .rem-violet-muted{
+ color:#F3EFE6!important
+}
+.format-switch button[aria-pressed="true"],.format-switch-bottom button[aria-pressed="true"]{
+ background:#F3EFE6!important;color:#0B1424!important;border-color:#F3EFE6!important
+}
+.format-switch button[aria-pressed="false"],.format-switch-bottom button[aria-pressed="false"]{
+ background:#173653!important;color:#F3EFE6!important;border-color:#46607B!important
+}
+.format-switch-bottom{background:#13263D!important;border-color:#46607B!important}
+.format-switch-bottom button,.format-switch-bottom .format-icon{color:#F3EFE6!important}
+.ebook-reading-shell:not([data-theme="sun"]),.audio-sync-shell,.paper-sync-shell{
+ background:#0B1424!important;color:#F3EFE6!important
+}
+.ebook-reading-shell:not([data-theme="sun"]) .ebook-journey,
+.ebook-reading-shell:not([data-theme="sun"]) .selection-clear,
+.ebook-inline-switches button,.ebook-reading-shell .ebook-chapter-nav button,
+.audio-sync-shell .audio-inline-switches button,.audio-sync-shell .rem-audio-restart{
+ background:#13263D!important;color:#F3EFE6!important;border-color:#46607B!important
+}
+.ebook-reading-shell:not([data-theme="sun"]) .ebook-journey h2,
+.ebook-reading-shell:not([data-theme="sun"]) .ebook-journey>p,
+.ebook-reading-shell:not([data-theme="sun"]) .selection-hint,
+.audio-sync-shell .rem-audio-title{color:#F3EFE6!important}
+.ebook-reading-shell:not([data-theme="sun"]) .ebook-journey>p,
+.ebook-reading-shell:not([data-theme="sun"]) .selection-hint,
+.audio-sync-shell .rem-audio-status,.audio-sync-shell .format-mode-note,
+.audio-sync-shell .rem-audio-clock,.paper-sync-shell>p,.audio-sync-shell>p{
+ color:#A9B6CC!important
+}
+.ebook-reading-shell:not([data-theme="sun"]) .ebook-journey-actions button:first-child,
+.audio-sync-shell .rem-audio-play,.audio-sync-shell .rem-audio-play-icon{
+ background:#F3EFE6!important;color:#0B1424!important;border-color:#F3EFE6!important
+}
+.audio-sync-shell .rem-audio-seek{
+ background:linear-gradient(to right,#F3EFE6 0%,#F3EFE6 var(--audio-progress,0%),#46607B var(--audio-progress,0%),#46607B 100%)!important
+}
+.audio-sync-shell input.rem-audio-seek[type="range"]{
+ --track-fill:linear-gradient(to right,#F3EFE6 0%,#F3EFE6 var(--audio-progress,0%),#46607B var(--audio-progress,0%),#46607B 100%)!important
+}
