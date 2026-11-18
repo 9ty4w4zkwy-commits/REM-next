@@ -1035,3 +1035,14 @@ button,select,input{
 .rem-profile-card-title h2,.rem-profile-preferences>div{color:var(--rem-cream)!important}
 .rem-profile-description,.rem-profile-subtitle{color:var(--rem-muted)!important}
 .rem-profile-action{background:var(--rem-cream)!important;color:var(--rem-blue-night)!important}
+
+
+/* Banner editoriale su fondo crema */
+.rem-cinema-hero{background:var(--rem-cream)!important;border:1px solid var(--rem-cream)!important}
+.rem-cinema-hero-art:after{display:none!important}
+.rem-cinema-hero-copy h1,.rem-cinema-hero-copy .eyebrow,
+.rem-cinema-hero-author,.rem-cinema-hero-copy p{color:var(--rem-blue-night)!important}
+.rem-cinema-hero-copy button{
+ background:var(--rem-blue-mid)!important;color:var(--rem-cream)!important;
+ border:1px solid var(--rem-blue-mid)!important
+}
