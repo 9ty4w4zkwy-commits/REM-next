@@ -983,3 +983,55 @@ main .rem-home-section.rem-cinema-section .rem-cover-save.is-saved{
 .rem-profile-preferences strong{font-size:12px;color:#a9c6ba}
 .rem-profile-preferences button{min-height:35px;padding:5px 11px;color:#a2e6c4;font-size:12px}
 @media(max-width:390px){.top{gap:5px;padding:15px 12px}.top nav{gap:4px}.top nav button:not(.rem-profile-nav){padding:9px 7px;font-size:13px}.top nav .rem-profile-nav{width:39px;min-width:39px;height:39px}.rem-profile-card{padding:16px}}
+
+
+/* REM Next — palette istituzionale blu notte / crema */
+:root{
+  --bg:#0B1424;
+  --surface:#13263D;
+  --surface2:#173653;
+  --text:#F3EFE6;
+  --muted:#A9B6CC;
+  --accent:#F3EFE6;
+  --rem-blue-night:#0B1424;
+  --rem-blue-deep:#13263D;
+  --rem-blue-mid:#173653;
+  --rem-blue-slate:#46607B;
+  --rem-cream:#F3EFE6;
+  --rem-muted:#A9B6CC;
+  color-scheme:dark;
+}
+body{background:var(--rem-blue-night)!important;color:var(--rem-cream)!important}
+h1,h2,h3,.wordmark,.cover-copy strong{color:var(--rem-cream)}
+p,.rem-home-subtitle,.rem-violet-muted,.rem-profile-subtitle{color:var(--rem-muted)}
+.top{border-bottom:1px solid var(--rem-blue-slate)}
+.wordmark{color:var(--rem-cream)}
+.wordmark span{color:var(--rem-cream)}
+.top nav button{
+  background:var(--rem-blue-mid)!important;
+  border:1px solid var(--rem-blue-slate)!important;
+  color:var(--rem-cream)!important;
+}
+.top nav button:hover,.top nav button:focus-visible{
+  background:var(--rem-cream)!important;color:var(--rem-blue-night)!important;
+}
+button,select,input{
+  background:var(--rem-blue-deep);color:var(--rem-cream);border-color:var(--rem-blue-slate)
+}
+.primary,.rem-book-card .primary,.rem-cinema-hero-copy button{
+  background:var(--rem-cream)!important;color:var(--rem-blue-night)!important;
+  border:1px solid var(--rem-cream)!important;box-shadow:none!important
+}
+.primary:hover,.rem-book-card .primary:hover{background:#fffaf0!important}
+.panel,.home-book,.rem-book-card,.rem-profile-card,.preview-notice{
+  background:var(--rem-blue-deep)!important;border-color:var(--rem-blue-slate)!important
+}
+.rem-book-card h3,.rem-section-title,.rem-home-intro h1,.rem-profile-intro h1{color:var(--rem-cream)!important}
+.rem-card-subtitle,.rem-home-subtitle,.rem-profile-subtitle{color:var(--rem-muted)!important}
+.rem-home-intro .eyebrow,.rem-home-intro .mint-word,.home-overline,.feature-label{color:var(--rem-cream)!important}
+.rem-cinema-hero{background:var(--rem-blue-deep)!important}
+.rem-cinema-hero-copy h1,.rem-cinema-hero-author{color:var(--rem-cream)!important}
+.rem-cinema-hero-art:after{background:linear-gradient(90deg,rgba(11,20,36,.96),rgba(11,20,36,.58) 55%,transparent),linear-gradient(0deg,rgba(11,20,36,.5),transparent 70%)}
+.rem-profile-card-title h2,.rem-profile-preferences>div{color:var(--rem-cream)!important}
+.rem-profile-description,.rem-profile-subtitle{color:var(--rem-muted)!important}
+.rem-profile-action{background:var(--rem-cream)!important;color:var(--rem-blue-night)!important}
