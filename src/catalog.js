@@ -5,7 +5,7 @@ export function validateCatalog(data){
  for(const b of data.books){if(!b||typeof b.id!=='string'||!/^[a-z0-9-]+$/.test(b.id)||!b.title||typeof b.title!=='string'||!['published','draft'].includes(b.status)||!Array.isArray(b.chapters))throw Error('Libro non valido');if(ids.has(b.id))throw Error('ID libro duplicato: '+b.id);ids.add(b.id);const chapterIds=new Set();for(const c of b.chapters){if(!c.id||!c.title||!c.file||!/^([a-z0-9-]+)\.txt$/.test(c.file)||chapterIds.has(c.id))throw Error('Capitolo non valido in '+b.id);chapterIds.add(c.id)}}
  return data.books.filter(b=>b.status==='published');
 }
-export async function loadCatalog(){const r=await fetch(BASE+'catalog.json?v=rem-editorial-220',{cache:'no-store'});if(!r.ok)throw Error('Catalogo non disponibile ('+r.status+')');return validateCatalog(await r.json())}
+export async function loadCatalog(){const r=await fetch(BASE+'catalog.json?v=rem-editorial-221',{cache:'no-store'});if(!r.ok)throw Error('Catalogo non disponibile ('+r.status+')');return validateCatalog(await r.json())}
 // Pinocchio: read the original Italian public-domain text from Wikisource.
 // This avoids distributing an altered transcription and keeps all 36 chapters available.
 const pinocchioCache=new Map();
@@ -45,9 +45,9 @@ async function loadMattiaChapter(chapter){
  const doc=new DOMParser().parseFromString(payload.parse.text,'text/html');
  const root=doc.querySelector('.mw-parser-output')||doc.body;
  root.querySelectorAll('style,script,table,.mw-editsection,.ws-noexport,.noprint,.reference,.mw-references-wrap,.printfooter,.catlinks,.header-container,.ws-summary,.ws-title,.ws-header,.ws-footer').forEach(node=>node.remove());
- const paragraphs=[...root.querySelectorAll('p')].map(p=>p.textContent.replace(/\s+/g,' ').trim()).filter(p=>p.length>25);
+ const paragraphs=[...root.querySelectorAll('p')].map(p=>p.textContent.replace(/\s+/g,' ').trim()).filter(p=>p.length>8);
  let content=paragraphs.join('\n\n');
- if(content.length<350)throw Error('Il capitolo non è stato estratto correttamente');
+ if(content.length<120)throw Error('Il capitolo non è stato estratto correttamente');
  mattiaCache.set(number,content);
  return content;
 }
