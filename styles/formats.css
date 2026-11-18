@@ -604,3 +604,71 @@ body:not(.ebook-immersive-active) .ebook-reading-shell .ebook-page-frame .readin
 
 /* v201 — subtle AI narration disclosure below Pinocchio audio player */
 .audio-sync-shell .rem-audio-player > .format-mode-note:last-of-type{font-size:11px!important;font-weight:400!important;line-height:1.45!important;letter-spacing:0!important;color:#a3afbc!important;text-align:center!important;margin:9px 0 2px!important;opacity:.88!important}
+
+
+/* REM Next — palette istituzionale per Ebook, Print e Audio */
+:root{
+  --bg:#0B1424;--surface:#13263D;--surface2:#173653;
+  --text:#F3EFE6;--muted:#A9B6CC;--accent:#F3EFE6;
+  --rem-blue-night:#0B1424;--rem-blue-deep:#13263D;--rem-blue-mid:#173653;
+  --rem-blue-slate:#46607B;--rem-cream:#F3EFE6;--rem-muted:#A9B6CC;
+}
+.format-switch button[aria-pressed="true"],
+.format-switch-bottom button[aria-pressed="true"]{
+ background:var(--rem-cream)!important;color:var(--rem-blue-night)!important;
+ border:1px solid var(--rem-cream)!important;box-shadow:none!important
+}
+.format-switch button[aria-pressed="false"],
+.format-switch-bottom button[aria-pressed="false"]{
+ background:var(--rem-blue-mid)!important;color:var(--rem-cream)!important;
+ border:1px solid var(--rem-blue-slate)!important
+}
+.format-switch-bottom{
+ background:var(--rem-blue-deep)!important;border:1px solid var(--rem-blue-slate)!important
+}
+.format-switch-bottom button,.format-switch-bottom button[aria-pressed="true"]{
+ color:var(--rem-cream)!important
+}
+.format-switch-bottom .format-icon,.format-switch-bottom button::before,
+.format-switch-bottom button[aria-pressed="true"] .format-icon,
+.format-switch-bottom button[aria-pressed="true"]::before{color:var(--rem-cream)!important}
+.ebook-reading-shell:not([data-theme="sun"]),
+.audio-sync-shell,.paper-sync-shell{
+ background:var(--rem-blue-night)!important;color:var(--rem-cream)!important
+}
+.ebook-reading-shell:not([data-theme="sun"]) .ebook-journey,
+.ebook-reading-shell:not([data-theme="sun"]) .selection-clear,
+.ebook-inline-switches button,.ebook-reading-shell .ebook-chapter-nav button,
+.audio-sync-shell .audio-inline-switches button,
+.audio-sync-shell .rem-audio-restart{
+ background:var(--rem-blue-deep)!important;color:var(--rem-cream)!important;
+ border-color:var(--rem-blue-slate)!important
+}
+.ebook-reading-shell:not([data-theme="sun"]) .ebook-journey h2,
+.ebook-reading-shell:not([data-theme="sun"]) .ebook-journey>p,
+.ebook-reading-shell:not([data-theme="sun"]) .selection-hint,
+.audio-sync-shell .rem-audio-title{color:var(--rem-cream)!important}
+.ebook-reading-shell:not([data-theme="sun"]) .ebook-journey>p,
+.ebook-reading-shell:not([data-theme="sun"]) .selection-hint,
+.audio-sync-shell .rem-audio-status,.audio-sync-shell .format-mode-note,
+.audio-sync-shell .rem-audio-clock,.paper-sync-shell>p,.audio-sync-shell>p{
+ color:var(--rem-muted)!important
+}
+.ebook-reading-shell:not([data-theme="sun"]) .ebook-journey-actions button:first-child,
+.audio-sync-shell .rem-audio-play,.audio-sync-shell .rem-audio-play-icon{
+ background:var(--rem-cream)!important;color:var(--rem-blue-night)!important;
+ border-color:var(--rem-cream)!important
+}
+.audio-sync-shell .rem-audio-seek{
+ background:linear-gradient(to right,var(--rem-cream) 0%,var(--rem-cream) var(--audio-progress,0%),var(--rem-blue-slate) var(--audio-progress,0%),var(--rem-blue-slate) 100%)!important
+}
+.audio-sync-shell input.rem-audio-seek[type="range"]{
+ --track-fill:linear-gradient(to right,var(--rem-cream) 0%,var(--rem-cream) var(--audio-progress,0%),var(--rem-blue-slate) var(--audio-progress,0%),var(--rem-blue-slate) 100%)!important
+}
+.audio-sync-shell .rem-audio-seek::-webkit-slider-thumb,
+.audio-sync-shell .rem-audio-seek::-moz-range-thumb{
+ background:var(--rem-cream)!important;border-color:var(--rem-blue-slate)!important
+}
+.ebook-reading-shell:not([data-theme="sun"]) .reading-text{
+ background:var(--rem-cream)!important;color:var(--rem-blue-night)!important
+}
