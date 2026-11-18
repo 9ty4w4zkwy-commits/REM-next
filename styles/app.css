@@ -1000,3 +1000,7 @@ main .rem-home-section.rem-cinema-section .rem-cover-save.is-saved{
 .rem-audio-chapter-heading{font-family:Georgia,serif;font-weight:500;font-size:clamp(20px,4.8vw,27px);line-height:1.35;color:#f4f7f8;margin:20px 0 12px}
 .ebook-page-heading{gap:6px}
 .ebook-page-heading strong{overflow-wrap:anywhere}
+
+/* v217: soft pink Riassumi button, consistent with Ebook accent */
+.summary-footer .summary-warm{background:#422b42!important;border-color:#ed9fc5!important;color:#ffc5e0!important}
+.summary-footer .summary-warm:hover,.summary-footer .summary-warm:focus-visible{background:#583451!important;border-color:#ffc5e0!important;color:#ffe0ed!important}
