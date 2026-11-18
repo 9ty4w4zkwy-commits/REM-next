@@ -430,3 +430,53 @@
 .rem-thought-source-label{font:600 10px/1.4 system-ui,-apple-system,sans-serif;letter-spacing:.16em;color:#93a6b8}
 .rem-thought-source-title{font-size:14px!important;font-weight:500!important;color:#e5edf3!important;line-height:1.45!important}
 .rem-thought-source-chapter{font-size:12px!important;color:#9bafc0!important}
+
+
+/* REM Next — palette istituzionale per Biblioteca e collezioni */
+:root{
+ --bg:#0B1424;--surface:#13263D;--surface2:#173653;
+ --text:#F3EFE6;--muted:#A9B6CC;--accent:#F3EFE6;
+ --rem-blue-night:#0B1424;--rem-blue-deep:#13263D;--rem-blue-mid:#173653;
+ --rem-blue-slate:#46607B;--rem-cream:#F3EFE6;--rem-muted:#A9B6CC;
+}
+.rem-violet{--violet:var(--rem-cream);--violet-soft:var(--rem-muted);--violet-border:var(--rem-blue-slate);color:var(--rem-cream)!important}
+.rem-violet-hero{background:var(--rem-blue-deep)!important;border:1px solid var(--rem-blue-slate)!important}
+.rem-violet-hero h1,.rem-violet-hero h1.rem-library-title{color:var(--rem-cream)!important}
+.rem-violet-hero .rem-violet-muted,.rem-violet-muted{color:var(--rem-muted)!important}
+.rem-violet-tabs button,.rem-violet-book,.rem-violet-thought,
+.rem-picker-book,.rem-collection-context{
+ background:var(--rem-blue-deep)!important;color:var(--rem-cream)!important;
+ border-color:var(--rem-blue-slate)!important
+}
+.rem-violet-tabs button.selected,.rem-violet .rem-violet-primary,
+.rem-violet .rem-dashboard-actions button:first-child,
+.rem-violet .rem-save-confirm{
+ background:var(--rem-cream)!important;color:var(--rem-blue-night)!important;
+ border-color:var(--rem-cream)!important
+}
+.rem-violet-shelf,.rem-violet .rem-stats .rem-stat{
+ background:var(--rem-blue-deep)!important;border:1px solid var(--rem-blue-slate)!important;
+ box-shadow:none!important
+}
+.rem-stat strong,.rem-violet .rem-stats .rem-stat-number{color:var(--rem-cream)!important}
+.rem-stat span,.rem-violet .rem-stats .rem-stat-description{color:var(--rem-muted)!important}
+.rem-collection-card.tone-rose,.rem-collection-card.tone-amber,
+.rem-collection-card.tone-blue,.rem-collection-card.tone-sage{
+ background:var(--rem-blue-deep)!important;border:1px solid var(--rem-blue-slate)!important
+}
+.rem-collection-card h3,.rem-collection-card .rem-collection-kicker,
+.rem-collection-foot small,.rem-collection-card .rem-violet-muted{color:var(--rem-cream)!important}
+.rem-violet .rem-collection-card button,.rem-violet .rem-collection-card .rem-collection-add,
+.rem-violet .rem-library-back,.rem-violet .rem-thought-lock,
+.rem-violet .rem-visibility-control,.rem-violet .rem-saved-book-actions .rem-saved-remove{
+ background:var(--rem-blue-mid)!important;color:var(--rem-cream)!important;
+ border:1px solid var(--rem-blue-slate)!important
+}
+.rem-save-overlay{background:rgba(11,20,36,.82)!important}
+.rem-save-sheet{background:var(--rem-blue-deep)!important;color:var(--rem-cream)!important;border-color:var(--rem-blue-slate)!important}
+.rem-save-sheet p,.rem-save-hint,.rem-save-book-info p{color:var(--rem-muted)!important}
+.rem-save-choice{background:var(--rem-blue-mid)!important;color:var(--rem-cream)!important;border-color:var(--rem-blue-slate)!important}
+.rem-save-sheet .rem-save-collections{background:var(--rem-blue-mid)!important;color:var(--rem-cream)!important;border-color:var(--rem-blue-slate)!important}
+.rem-thought-source-title{color:var(--rem-cream)!important}
+.rem-thought-source-chapter,.rem-thought-source-label{color:var(--rem-muted)!important}
+.rem-profile-card{background:var(--rem-blue-deep)!important;border-color:var(--rem-blue-slate)!important}
