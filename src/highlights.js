@@ -23,17 +23,26 @@ export function createHighlights(bookId,chapterId,textNode,onSwitch,onBookmark=(
  document.body.append(selectionPaint);
  function clearSelectionPaint(){selectionPaint.replaceChildren()}
  function customRangePaint(){
-  clearSelectionPaint();const raw=source.value;
+  clearSelectionPaint();
   const start=Math.min(customAnchor,customEnd),end=Math.max(customAnchor,customEnd);
   if(end<=start)return;
-  const range=document.createRange();let pos=0;let a=null,b=null;
+  const range=document.createRange();
   const walker=document.createTreeWalker(textNode,NodeFilter.SHOW_TEXT);
-  while(walker.nextNode()){const node=walker.currentNode,next=pos+node.length;if(a===null&&start<=next)a=[node,Math.max(0,start-pos)];if(b===null&&end<=next)b=[node,Math.max(0,end-pos)];pos=next}
-  if(!a||!b)return;range.setStart(...a);range.setEnd(...b);
-  const bounds=textNode.getBoundingClientRect();for(const rect of range.getClientRects()){
-   if(rect.width<2||rect.height<2||rect.bottom<bounds.top||rect.top>bounds.bottom)continue;
+  let pos=0,first=null,last=null,node;
+  while((node=walker.nextNode())){
+   const next=pos+node.textContent.length;
+   if(first===null&&start<next)first=[node,Math.max(0,start-pos)];
+   if(last===null&&end<=next)last=[node,Math.max(0,end-pos)];
+   pos=next;
+  }
+  if(!first||!last)return;
+  range.setStart(...first);range.setEnd(...last);
+  for(const rect of range.getClientRects()){
+   if(rect.width<2||rect.height<2)continue;
    const swatch=el('span',{className:'rem-free-selection-swatch'});
-   swatch.style.left=rect.left+'px';swatch.style.top=rect.top+'px';swatch.style.width=rect.width+'px';swatch.style.height=rect.height+'px';selectionPaint.append(swatch);
+   swatch.style.left=rect.left+'px';swatch.style.top=rect.top+'px';
+   swatch.style.width=rect.width+'px';swatch.style.height=rect.height+'px';
+   selectionPaint.append(swatch);
   }
  }
  function customSelect(x,y,initial=false){
@@ -178,7 +187,7 @@ export function createHighlights(bookId,chapterId,textNode,onSwitch,onBookmark=(
  }
  function click(e){
   if(Date.now()<suppressClickUntil||Date.now()-lastTouch<650)return;
-  if(enabled)thoughtAt(e.clientX,e.clientY);
+  if(enabled){thoughtAt(e.clientX,e.clientY);}
   else selectAt(e.clientX,e.clientY);
  }
  function contextMenu(e){e.preventDefault()}
