@@ -440,23 +440,32 @@ const sizeSelect=el('select',{attrs:{'aria-label':'Dimensione testo'}});for(cons
  const highlightToggle=button('',()=>{const active=highlightToggle.getAttribute('aria-pressed')!=='true';highlightToggle.setAttribute('aria-pressed',String(active));highlightToggle.title=active?'Pennino attivo: trascina lateralmente per selezionare un pensiero':'Attiva sottolineatura';readingShell.classList.toggle('rem-highlighter-on',active);activeHighlights?.setEnabled(active)});
  highlightToggle.className='rem-floating-highlighter';highlightToggle.setAttribute('aria-label','Attiva o disattiva la sottolineatura');highlightToggle.setAttribute('aria-pressed','false');highlightToggle.title='Attiva sottolineatura';
  const highlighterSvg=document.createElementNS('http://www.w3.org/2000/svg','svg');highlighterSvg.setAttribute('viewBox','0 0 24 24');highlighterSvg.setAttribute('width','19');highlighterSvg.setAttribute('height','19');highlighterSvg.setAttribute('fill','none');highlighterSvg.setAttribute('stroke','currentColor');highlighterSvg.setAttribute('stroke-width','1.9');highlighterSvg.setAttribute('stroke-linecap','round');highlighterSvg.setAttribute('stroke-linejoin','round');highlighterSvg.setAttribute('aria-hidden','true');const highlighterPath=document.createElementNS('http://www.w3.org/2000/svg','path');highlighterPath.setAttribute('d','m14 5 5 5 M3 21l5.5-1.3L20 8.2a2.1 2.1 0 0 0 0-3L18.8 4a2.1 2.1 0 0 0-3 0L4.3 15.5 3 21Z');highlighterSvg.append(highlighterPath);highlightToggle.append(highlighterSvg);readingShell.append(highlightToggle);
- // Anchor the pen just above the actual bottom format bar, never inside it.
+ // Keep the pen above the appropriate command bar in both reading layouts.
  const positionPenAboveFormats=()=>{
-  if(!highlightToggle.isConnected||!quickSwitch.isConnected)return;
-  const bar=quickSwitch.getBoundingClientRect();
-  const penHeight=highlightToggle.getBoundingClientRect().height||34;
-  if(bar.height>0){
-   highlightToggle.style.setProperty('top',Math.max(12,bar.top-penHeight-12)+'px','important');
+  if(!highlightToggle.isConnected)return;
+  const full=document.body.classList.contains('ebook-fullscreen-active');
+  const bar=full?readingShell.querySelector('.rem-immersive-toolbar'):quickSwitch;
+  if(!bar||!bar.isConnected)return;
+  const rect=bar.getBoundingClientRect();
+  const height=highlightToggle.getBoundingClientRect().height||34;
+  if(rect.height>0){
+   highlightToggle.style.setProperty('top',Math.max(12,rect.top-height-8)+'px','important');
    highlightToggle.style.setProperty('bottom','auto','important');
   }
  };
- requestAnimationFrame(positionPenAboveFormats);
- window.addEventListener('resize',positionPenAboveFormats,{passive:true});
- const penBarObserver=new ResizeObserver(positionPenAboveFormats);
+ const schedulePenPosition=()=>requestAnimationFrame(positionPenAboveFormats);
+ window.addEventListener('resize',schedulePenPosition,{passive:true});
+ const penBarObserver=new ResizeObserver(schedulePenPosition);
  penBarObserver.observe(quickSwitch);
+ const immersivePenBar=readingShell.querySelector('.rem-immersive-toolbar');
+ if(immersivePenBar)penBarObserver.observe(immersivePenBar);
+ const penModeObserver=new MutationObserver(schedulePenPosition);
+ penModeObserver.observe(document.body,{attributes:true,attributeFilter:['class']});
+ requestAnimationFrame(()=>requestAnimationFrame(positionPenAboveFormats));
  const penPositionCleanup=setInterval(()=>{
   if(!highlightToggle.isConnected){
-   penBarObserver.disconnect();window.removeEventListener('resize',positionPenAboveFormats);
+   penBarObserver.disconnect();penModeObserver.disconnect();
+   window.removeEventListener('resize',schedulePenPosition);
    clearInterval(penPositionCleanup);
   }
  },1500);
