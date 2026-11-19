@@ -701,3 +701,20 @@ html body .ebook-reading-shell.reading-shell[data-theme="sun"] .reading-text{
  background:#fff!important;
  background-color:#fff!important;
 }
+
+/* v272: override the original navy fullscreen-toggle button in both light themes. */
+html body:not(.ebook-fullscreen-active) .ebook-reading-shell[data-theme="sun"] .ebook-page-frame > button.rem-ebook-fullscreen-toggle.rem-immersive-entry,
+html body:not(.ebook-fullscreen-active) .ebook-reading-shell.rem-immersive-light .ebook-page-frame > button.rem-ebook-fullscreen-toggle.rem-immersive-entry,
+html body.ebook-fullscreen-active .ebook-reading-shell.rem-immersive-light .rem-immersive-header button.rem-ebook-fullscreen-toggle.rem-immersive-close,
+html body.ebook-fullscreen-active .ebook-reading-shell[data-theme="sun"] .rem-immersive-header button.rem-ebook-fullscreen-toggle.rem-immersive-close{
+ background:none!important;
+ background-color:transparent!important;
+ border:0!important;
+ color:#65cfa8!important;
+ box-shadow:none!important;
+}
+html body .ebook-reading-shell[data-theme="sun"] button.rem-ebook-fullscreen-toggle svg,
+html body .ebook-reading-shell.rem-immersive-light button.rem-ebook-fullscreen-toggle svg{
+ stroke:#65cfa8!important;
+ color:#65cfa8!important;
+}
