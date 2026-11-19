@@ -225,3 +225,112 @@ input::placeholder,textarea::placeholder{color:var(--rem-muted)!important;opacit
 .rem-logo-book-rose,.logo-e-book-rose{fill:var(--rem-powder)!important}
 .rem-logo-book-cream,.logo-e-book-cream{fill:var(--rem-cream)!important}
 .rem-logo-book-emerald,.logo-e-book-emerald{fill:var(--rem-emerald)!important}
+
+
+/* REM Next V3 — estensione trasversale a tutte le schermate applicative.
+   Regole condivise per detail, episodi, profilo, trailer, feedback e Biblioteca.
+   Le copertine editoriali e la superficie carta del lettore restano intenzionalmente autonome. */
+:root{
+  --bg:var(--rem-blue-night)!important;
+  --surface:var(--rem-blue-deep)!important;
+  --surface2:var(--rem-blue-mid)!important;
+  --text:var(--rem-cream)!important;
+  --muted:var(--rem-muted)!important;
+  --accent:var(--rem-emerald)!important;
+}
+body,#app{background:var(--rem-blue-night)!important;color:var(--rem-cream)!important}
+footer{color:var(--rem-muted)!important;border-color:var(--rem-blue-slate)!important}
+#app :is(.panel,.preview-notice,.rem-profile-card,.feedback-card,.rem-cinema-detail-info,
+.rem-cinema-detail-copy,.rem-cinema-modes-intro,.episode-card,.episode-recap-panel,
+.episode-reader-context,.summary-footer,.paper-resume-card,.format-mode-panel,
+.rem-trailer-page,.rem-trailer-stage,.rem-violet-shelf,.rem-violet-book,.rem-violet-thought,
+.rem-picker-book,.rem-collection-context,.rem-saved-book-card,.rem-collection-card){
+  background-color:var(--rem-blue-deep)!important;
+  color:var(--rem-cream)!important;
+  border-color:var(--rem-blue-slate)!important;
+}
+#app :is(.rem-section-title,.rem-cinema-detail-title,.rem-profile-intro h1,
+.rem-profile-card-title h2,.feedback-card h1,.rem-trailer-page h1,
+.rem-trailer-line,.episode-info h3,.episode-card h3,.rem-collection-card h3){
+  color:var(--rem-cream)!important;
+}
+#app :is(p,.rem-card-subtitle,.rem-home-subtitle,.rem-profile-description,
+.rem-profile-subtitle,.episode-meta,.episode-reader-context p,.summary-footer-hint,
+.format-mode-note,.rem-trailer-note,.rem-violet-muted,.rem-collection-foot small){
+  color:var(--rem-muted)!important;
+}
+#app :is(.eyebrow,.rem-violet-eyebrow,.episode-recap-eyebrow,.rem-trailer-kicker,
+.onboard-kicker){color:var(--rem-powder)!important}
+#app :is(button.primary,.primary,.rem-profile-action,.rem-violet .rem-violet-primary,
+.rem-violet .rem-save-confirm,.rem-save-confirm,.feedback-card button:not(.feedback-skip)){
+  background:var(--rem-emerald)!important;color:var(--rem-blue-night)!important;
+  border:1px solid var(--rem-emerald)!important;font-weight:700!important;
+}
+#app :is(button.secondary,.secondary,.reader-back,.quiet-back,.story-path-link,
+.demo-reset-link,.episode-actions button,.season-tab,.rem-violet-tabs button,
+.rem-violet .rem-library-back,.rem-violet .rem-collection-card button,
+.rem-violet .rem-saved-book-actions button,.rem-trailer-actions button,
+.feedback-skip,.rem-save-sheet button:not(.rem-save-confirm)){
+  background:var(--rem-blue-mid)!important;color:var(--rem-cream)!important;
+  border:1px solid var(--rem-blue-slate)!important;
+}
+#app :is(.season-tab[aria-pressed="true"],.season-tab.selected,.episode-current,
+.episode-done,.rem-violet-tabs button.selected,.rem-collection-card.selected){
+  background:var(--rem-powder)!important;color:var(--rem-blue-night)!important;
+  border-color:var(--rem-powder)!important;
+}
+#app :is(input,select,textarea,.rem-violet input){
+  background:var(--rem-blue-deep)!important;color:var(--rem-cream)!important;
+  border-color:var(--rem-blue-slate)!important;
+}
+#app :is(.rem-save-sheet,.rem-save-overlay .rem-save-sheet){
+  background:var(--rem-blue-deep)!important;color:var(--rem-cream)!important;
+  border-color:var(--rem-blue-slate)!important;
+}
+#app :is(.rem-save-sheet-top,.rem-profile-questionnaire-head,.rem-thought-header){
+  border-color:var(--rem-blue-slate)!important;
+}
+#app :is(.feedback-star.selected,.feedback-sparkle-main,.rem-recommend-sparkle){
+  color:var(--rem-powder)!important;
+}
+#app :is(.rem-audio-play-icon,.rem-audio-seek::-webkit-slider-thumb){
+  background:var(--rem-emerald)!important;
+}
+#app .rem-audio-play-icon{color:var(--rem-blue-night)!important}
+#app .rem-audio-title{color:var(--rem-cream)!important}
+#app .rem-audio-status{color:var(--rem-muted)!important}
+#app .rem-violet .rem-stats .rem-stat{
+  background:var(--rem-blue-deep)!important;border-color:var(--rem-blue-slate)!important;
+}
+#app .rem-violet .rem-stats .rem-stat-number{color:var(--rem-emerald)!important}
+#app .rem-violet .rem-collection-card .rem-collection-add{
+  border-color:var(--rem-emerald)!important;color:var(--rem-emerald)!important;
+}
+#app .rem-violet-hero{
+  background:var(--rem-blue-deep)!important;border-color:var(--rem-blue-slate)!important;
+}
+#app .rem-violet-hero .mint-word,
+#app .rem-cinema-intro .mint-word{color:var(--rem-emerald)!important}
+#app .rem-cinema-detail-copy .eyebrow{color:var(--rem-powder)!important}
+#app .episode-code{color:var(--rem-emerald)!important}
+#app .episode-recap-invite{color:var(--rem-muted)!important}
+#app .rem-trailer-progress span{background:var(--rem-emerald)!important}
+#app .rem-profile-status{color:var(--rem-emerald)!important}
+#app .rem-save-sheet .rem-save-remove{color:var(--rem-powder)!important;border-color:var(--rem-powder)!important}
+#app .reading-shell:not([data-theme="sun"]),
+#app .ebook-reading-shell:not([data-theme="sun"]),
+#app .audio-sync-shell,#app .paper-sync-shell{
+  background:var(--rem-blue-night)!important;color:var(--rem-cream)!important;
+  border-color:var(--rem-blue-slate)!important;
+}
+#app .reading-shell[data-theme="sun"],
+#app .ebook-reading-shell[data-theme="sun"] .reading-text,
+#app .paper-sync-shell[data-theme="sun"] .reading-text{
+  background:var(--rem-paper)!important;color:var(--rem-blue-night)!important;
+  border-color:var(--rem-border)!important;
+}
+#app .reading-shell[data-theme="sun"] :is(p,.reading-text),
+#app .ebook-reading-shell[data-theme="sun"] .reading-text{color:var(--rem-blue-night)!important}
+#app .format-switch-bottom{background:var(--rem-blue-deep)!important;border-color:var(--rem-blue-slate)!important}
+#app .format-switch-bottom button[aria-pressed="true"]{background:var(--rem-emerald)!important;color:var(--rem-blue-night)!important;border-color:var(--rem-emerald)!important}
+#app .format-switch-bottom button[aria-pressed="false"]{background:var(--rem-blue-mid)!important;color:var(--rem-cream)!important;border-color:var(--rem-blue-slate)!important}
