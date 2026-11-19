@@ -620,3 +620,15 @@ body:not(.ebook-immersive-active) .ebook-reading-shell .ebook-page-frame .readin
 .format-switch-bottom button[data-format="ebook"] svg{color:#f3a5ca!important;stroke:#f3a5ca!important}
 .format-switch-bottom button[data-format="ebook"] svg [stroke]:not([stroke="none"]){stroke:#f3a5ca!important}
 .format-switch-bottom button[data-format="audio"] svg{color:#91e2b8!important;stroke:#91e2b8!important}
+
+
+/* v239 — full-screen reader: a single scroll surface, no duplicate scroll rails. */
+body.ebook-fullscreen-active .ebook-reading-shell>.ebook-page-frame{height:auto!important;min-height:0!important;max-height:none!important;flex:1 1 0!important;overflow:hidden!important;position:relative!important;display:block!important}
+body.ebook-fullscreen-active .ebook-reading-shell>.ebook-page-frame>.reading-text,
+body.ebook-fullscreen-active .ebook-reading-shell>.ebook-page-frame>.reading-text.normal,
+body.ebook-fullscreen-active .ebook-reading-shell>.ebook-page-frame>.reading-text.large,
+body.ebook-fullscreen-active .ebook-reading-shell>.ebook-page-frame>.reading-text.xlarge{display:block!important;box-sizing:border-box!important;height:100%!important;min-height:0!important;max-height:none!important;width:100%!important;overflow-y:auto!important;overflow-x:hidden!important;overscroll-behavior-y:contain!important;-webkit-overflow-scrolling:touch!important;padding:16px 20px 18px!important;margin:0!important;border:0!important;border-radius:0!important;background:transparent!important;color:inherit!important;box-shadow:none!important}
+body.ebook-fullscreen-active .ebook-reading-shell .ebook-scroll-rail{display:none!important}
+body.ebook-fullscreen-active .ebook-reading-shell>.ebook-page-frame>.reading-text::-webkit-scrollbar{display:none!important;width:0!important}
+body.ebook-fullscreen-active .ebook-reading-shell>.ebook-page-frame>.reading-text{scrollbar-width:none!important}
+body.ebook-fullscreen-active .ebook-reading-shell .ebook-inline-switches{display:none!important}
