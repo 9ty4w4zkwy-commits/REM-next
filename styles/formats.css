@@ -718,3 +718,17 @@ html body .ebook-reading-shell.rem-immersive-light button.rem-ebook-fullscreen-t
  stroke:#65cfa8!important;
  color:#65cfa8!important;
 }
+
+/* v273: fullscreen dark theme overrides the normal reader's sun background. */
+html body.ebook-fullscreen-active .ebook-reading-shell.reading-shell[data-theme="sun"]:not(.rem-immersive-light),
+html body.ebook-fullscreen-active .ebook-reading-shell.reading-shell[data-theme="sun"]:not(.rem-immersive-light) .ebook-page-frame,
+html body.ebook-fullscreen-active .ebook-reading-shell.reading-shell[data-theme="sun"]:not(.rem-immersive-light) .reading-text{
+ background:#0b1526!important;
+ background-color:#0b1526!important;
+ color:#f2eee8!important;
+ color-scheme:dark!important;
+}
+html body.ebook-fullscreen-active .ebook-reading-shell.reading-shell[data-theme="sun"]:not(.rem-immersive-light)>.rem-immersive-toolbar{
+ background:#0b1526!important;
+ background-color:#0b1526!important;
+}
