@@ -1020,3 +1020,7 @@ main .rem-home-section.rem-cinema-section .rem-cover-save.is-saved{
 
 /* v229: align the Home back-to-top button with the left editorial margin. */
 .rem-home-back-to-top-wrap{justify-content:flex-start;padding-left:28px;padding-right:16px}
+
+/* v230: compact back-to-top, closer to the left edge */
+.rem-home-back-to-top-wrap{padding-left:0!important;padding-right:16px!important;margin-top:24px!important}
+.rem-home-back-to-top{min-height:38px!important;padding:7px 14px!important;font-size:.79rem!important;border-radius:999px!important}
