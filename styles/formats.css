@@ -652,3 +652,39 @@ html body:not(.ebook-fullscreen-active) .ebook-reading-shell .ebook-page-frame .
 html body:not(.ebook-fullscreen-active) .ebook-reading-shell .ebook-page-frame .reading-text.large,
 html body:not(.ebook-fullscreen-active) .ebook-reading-shell .ebook-page-frame .reading-text.xlarge{height:auto!important;min-height:0!important;max-height:none!important;overflow:visible!important;scrollbar-width:none!important}
 html body:not(.ebook-fullscreen-active) .ebook-reading-shell .ebook-page-frame{height:auto!important;max-height:none!important;overflow:visible!important}
+
+
+/* v242: two intentional independent scroll regions in standard Ebook.
+   The document scroll reaches page actions; the white chapter box scrolls its text.
+   Fullscreen keeps only the chapter scroll, with fixed header and footer. */
+html body:not(.ebook-fullscreen-active) .ebook-reading-shell .ebook-page-frame{
+ position:relative!important;height:auto!important;max-height:none!important;overflow:visible!important;
+}
+html body:not(.ebook-fullscreen-active) .ebook-reading-shell .ebook-page-frame .reading-text,
+html body:not(.ebook-fullscreen-active) .ebook-reading-shell .ebook-page-frame .reading-text.normal,
+html body:not(.ebook-fullscreen-active) .ebook-reading-shell .ebook-page-frame .reading-text.large,
+html body:not(.ebook-fullscreen-active) .ebook-reading-shell .ebook-page-frame .reading-text.xlarge{
+ display:block!important;height:58dvh!important;min-height:320px!important;max-height:650px!important;
+ overflow-y:auto!important;overflow-x:hidden!important;
+ -webkit-overflow-scrolling:touch!important;overscroll-behavior-y:contain!important;
+ touch-action:pan-y!important;scrollbar-width:thin!important;
+ scrollbar-color:#6bdcaf #e0e7ed!important;
+}
+html body:not(.ebook-fullscreen-active) .ebook-reading-shell .ebook-page-frame .reading-text::-webkit-scrollbar{
+ width:7px!important;display:block!important;
+}
+html body:not(.ebook-fullscreen-active) .ebook-reading-shell .ebook-page-frame .reading-text::-webkit-scrollbar-thumb{
+ background:#67d9aa!important;border-radius:8px!important;
+}
+html body:not(.ebook-fullscreen-active) .ebook-reading-shell .ebook-page-frame .reading-text::-webkit-scrollbar-track{
+ background:#cbd6dd!important;border-radius:8px!important;
+}
+html body.ebook-fullscreen-active .ebook-reading-shell>.ebook-page-frame{flex:1 1 0!important;overflow:hidden!important}
+html body.ebook-fullscreen-active .ebook-reading-shell>.ebook-page-frame>.reading-text{
+ height:100%!important;min-height:0!important;max-height:none!important;
+ overflow-y:auto!important;overflow-x:hidden!important;
+ scrollbar-width:none!important;
+}
+html body.ebook-fullscreen-active .ebook-reading-shell>.ebook-page-frame>.reading-text::-webkit-scrollbar{
+ display:none!important;width:0!important;
+}
