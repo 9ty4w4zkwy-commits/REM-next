@@ -162,7 +162,9 @@ export function createHighlights(bookId,chapterId,textNode,onSwitch,onBookmark=(
  function thoughtAt(x,y){
   const offset=offsetFromPoint(x,y);if(offset===null||!source.value)return false;
   const words=[...source.value.matchAll(WORD)];
-  const index=words.findIndex(w=>offset>=w.index&&offset<=w.index+w[0].length);
+  let index=words.findIndex(w=>offset>=w.index&&offset<=w.index+w[0].length);
+  if(index<0)index=words.findIndex(w=>w.index>offset);
+  if(index<0&&words.length)index=words.length-1;
   if(index<0)return false;
   customAnchor=words[index].index;
   customEnd=customAnchor+words[index][0].length;
