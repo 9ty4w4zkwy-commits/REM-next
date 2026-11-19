@@ -1417,3 +1417,21 @@ html body.ebook-fullscreen-active .ebook-reading-shell>.rem-floating-highlighter
  color:#ffe0ee!important;
  stroke:#ffe0ee!important;
 }
+
+/* v268: inactive transparent; pressed solid pastel pink with dark pink pen. */
+html body .ebook-reading-shell .rem-floating-highlighter[aria-pressed="true"],
+html body.ebook-fullscreen-active .ebook-reading-shell>.rem-floating-highlighter[aria-pressed="true"],
+html body .ebook-reading-shell.rem-highlighter-on .rem-floating-highlighter[aria-pressed="true"]{
+ background:#e9a8c3!important;
+ background-color:#e9a8c3!important;
+ border:0.75px solid #e9a8c3!important;
+ color:#8d315e!important;
+ box-shadow:none!important;
+ backdrop-filter:none!important;
+ -webkit-backdrop-filter:none!important;
+}
+html body .ebook-reading-shell .rem-floating-highlighter[aria-pressed="true"] svg,
+html body.ebook-fullscreen-active .ebook-reading-shell>.rem-floating-highlighter[aria-pressed="true"] svg{
+ color:#8d315e!important;
+ stroke:#8d315e!important;
+}
