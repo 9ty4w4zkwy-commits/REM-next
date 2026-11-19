@@ -484,3 +484,6 @@
  font-weight:800!important;
  letter-spacing:-.035em!important;
 }
+
+/* v280: italicize only the mint word in the Biblioteca headline. */
+.rem-violet .rem-violet-hero h1.rem-library-title .mint-word{font-style:italic!important}
