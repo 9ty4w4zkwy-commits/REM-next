@@ -1120,3 +1120,7 @@ body.ebook-fullscreen-active .rem-immersive-tool[aria-pressed="true"]{background
 body.ebook-fullscreen-active .ebook-reading-shell.rem-immersive-light .rem-immersive-tool{color:#28435a!important}
 body.ebook-fullscreen-active .ebook-reading-shell.rem-immersive-light .rem-immersive-tool.rem-immersive-arrow{background:#23415e!important;color:#f4f8fc!important}
 body.ebook-fullscreen-active .ebook-reading-shell.rem-immersive-light .rem-immersive-tool[aria-pressed="true"]{background:#d2e9de!important}
+
+/* v244: same pink outlined sun in Focus mode and fullscreen. */
+.reader-tools .reader-sun-vector{display:inline-flex;align-items:center;justify-content:center;color:#f4b7cb!important}
+.reader-tools .reader-sun-vector svg{display:block;width:25px;height:25px;stroke:currentColor!important}
