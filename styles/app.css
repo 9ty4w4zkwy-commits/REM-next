@@ -1506,3 +1506,6 @@ main .rem-home-section[data-section="premium"] .rem-section-title{
  font-style:normal!important;
  letter-spacing:-.035em!important;
 }
+
+/* v280: italicize only the mint phrase in the Home headline. */
+main h1.rem-cinema-intro .rem-intro-second-line{font-style:italic!important}
