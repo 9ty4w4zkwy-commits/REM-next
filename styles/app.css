@@ -1038,3 +1038,26 @@ body.ebook-fullscreen-active .ebook-reading-shell>.ebook-journey,body.ebook-full
 body.ebook-fullscreen-active .ebook-reading-shell>.ebook-page-frame{flex:1 0 auto!important;width:100%!important;box-sizing:border-box!important;margin:0!important}
 body.ebook-fullscreen-active .ebook-reading-shell .reading-text{box-sizing:border-box!important;max-width:none!important;min-height:calc(100dvh - 110px)!important;padding:24px 20px!important}
 body.ebook-fullscreen-active .rem-ebook-fullscreen-toggle{position:sticky!important;top:0!important;align-self:flex-end!important;margin:0 4px 12px!important;background:#15374a!important}
+
+
+/* v234 — streamlined full-screen Ebook, scoped exclusively to immersive mode. */
+.rem-immersive-header,.rem-immersive-toolbar{display:none}
+body.ebook-fullscreen-active .ebook-reading-shell{inset:0!important;width:100%!important;height:100dvh!important;max-height:100dvh!important;overflow:hidden!important;padding:0!important;gap:0!important;background:#0b1526!important;color:#f2eee8!important;display:flex!important;flex-direction:column!important}
+body.ebook-fullscreen-active .ebook-reading-shell.rem-immersive-light{background:#f5f0e6!important;color:#202b32!important}
+body.ebook-fullscreen-active .ebook-reading-shell>.rem-immersive-header{display:flex!important;align-items:center;justify-content:space-between;flex:0 0 auto;gap:12px;padding:calc(env(safe-area-inset-top,0px) + 12px) 18px 10px;min-height:52px;box-sizing:border-box;border-bottom:1px solid rgba(140,160,175,.22)}
+body.ebook-fullscreen-active .rem-immersive-chapter{font-size:.92rem;font-weight:600;line-height:1.35;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+body.ebook-fullscreen-active .rem-ebook-fullscreen-toggle{position:static!important;flex:0 0 auto;display:flex!important;align-items:center;justify-content:center;width:36px;height:36px;min-height:36px;padding:0!important;margin:0!important;border:1px solid rgba(130,180,180,.4)!important;border-radius:50%!important;background:rgba(40,68,91,.7)!important;color:#e8f5f0!important;font-size:1.25rem!important}
+body.ebook-fullscreen-active .ebook-reading-shell>.ebook-page-frame{flex:1 1 auto!important;min-height:0!important;overflow-y:auto!important;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;margin:0!important;padding:0!important;border:0!important;border-radius:0!important;box-shadow:none!important;background:transparent!important}
+body.ebook-fullscreen-active .ebook-reading-shell .ebook-page-heading{display:none!important}
+body.ebook-fullscreen-active .ebook-reading-shell .reading-text{font-size:var(--rem-immersive-font-size,1.18rem)!important;line-height:1.8!important;background:transparent!important;color:inherit!important;min-height:100%!important;border-radius:0!important;padding:24px 22px 45px!important;box-shadow:none!important;border:0!important;margin:0!important;max-width:none!important}
+body.ebook-fullscreen-active .ebook-reading-shell>.rem-immersive-toolbar{display:flex!important;flex:0 0 auto;align-items:center;justify-content:space-between;gap:3px;padding:9px 8px calc(env(safe-area-inset-bottom,0px) + 10px);border-top:1px solid rgba(140,160,175,.22);background:#0b1526!important;box-sizing:border-box;width:100%}
+body.ebook-fullscreen-active .ebook-reading-shell.rem-immersive-light>.rem-immersive-toolbar{background:#f5f0e6!important}
+body.ebook-fullscreen-active .rem-immersive-tool{display:flex;align-items:center;justify-content:center;flex:1 1 0;min-width:0;max-width:46px;height:39px;min-height:39px;padding:0!important;border:0;border-radius:9px;background:#203b53;color:#edf5f3;font-size:15px;font-weight:650;white-space:nowrap}
+body.ebook-fullscreen-active .rem-immersive-tool.rem-immersive-arrow{flex:0 0 36px;max-width:36px;border-radius:50%;background:#152b42;color:#a8e8d3;border:1px solid #54748b;font-size:27px;font-weight:400}
+body.ebook-fullscreen-active .rem-immersive-tool.rem-immersive-theme-light{color:#f5b4ca;background:#28445b;font-size:20px}
+body.ebook-fullscreen-active .rem-immersive-tool.rem-immersive-theme-dark{color:#10243a;background:#f1ede5;font-size:22px}
+body.ebook-fullscreen-active .rem-immersive-tool.rem-immersive-format{color:#a8e8d3;font-size:19px}
+body.ebook-fullscreen-active .rem-immersive-tool[aria-pressed="true"]{outline:2px solid #79d9c2;outline-offset:-2px}
+body.ebook-fullscreen-active .rem-immersive-tool:disabled{opacity:.28}
+body.ebook-fullscreen-active .ebook-reading-shell.rem-immersive-light .rem-immersive-tool.rem-immersive-font,body.ebook-fullscreen-active .ebook-reading-shell.rem-immersive-light .rem-immersive-tool.rem-immersive-format{background:#dce7e5;color:#19374a}
+@media(max-width:360px){body.ebook-fullscreen-active .ebook-reading-shell>.rem-immersive-toolbar{gap:2px;padding-left:5px;padding-right:5px}body.ebook-fullscreen-active .rem-immersive-tool{height:36px;min-height:36px;font-size:13px}}
