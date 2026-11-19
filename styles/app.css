@@ -1061,3 +1061,7 @@ body.ebook-fullscreen-active .rem-immersive-tool[aria-pressed="true"]{outline:2p
 body.ebook-fullscreen-active .rem-immersive-tool:disabled{opacity:.28}
 body.ebook-fullscreen-active .ebook-reading-shell.rem-immersive-light .rem-immersive-tool.rem-immersive-font,body.ebook-fullscreen-active .ebook-reading-shell.rem-immersive-light .rem-immersive-tool.rem-immersive-format{background:#dce7e5;color:#19374a}
 @media(max-width:360px){body.ebook-fullscreen-active .ebook-reading-shell>.rem-immersive-toolbar{gap:2px;padding-left:5px;padding-right:5px}body.ebook-fullscreen-active .rem-immersive-tool{height:36px;min-height:36px;font-size:13px}}
+
+/* v235: show entry in standard reader, close only in fullscreen. */
+.rem-immersive-entry{display:block}
+body.ebook-fullscreen-active .ebook-reading-shell>.rem-immersive-entry{display:none!important}
