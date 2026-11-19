@@ -222,7 +222,10 @@ function home(){
    ...(cards.length?[el('div',{className:'rem-book-grid'},cards)]:[para(section.empty,'rem-empty-section')])
   ]);
  };
- render(intro,...HOME_SECTIONS.map(shelf));
+ const backToTop=button('↑  Torna su',()=>window.scrollTo({top:0,left:0,behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'}));
+ backToTop.className='rem-home-back-to-top';
+ backToTop.setAttribute('aria-label','Torna all’inizio della Home');
+ render(intro,...HOME_SECTIONS.map(shelf),el('div',{className:'rem-home-back-to-top-wrap'},[backToTop]));
 }
 function profile(){
  currentView='profile';
