@@ -1104,3 +1104,19 @@ body.ebook-fullscreen-active .ebook-reading-shell>.ebook-page-frame{display:bloc
 body.ebook-fullscreen-active .ebook-reading-shell>.ebook-page-frame>.reading-text{display:block!important;width:100%!important;height:auto!important;min-height:100%!important;max-height:none!important;overflow:visible!important;padding:16px 20px 20px!important;margin:0!important}
 body.ebook-fullscreen-active .ebook-reading-shell .highlight-tools{height:0!important;min-height:0!important;margin:0!important;padding:0!important}
 body.ebook-fullscreen-active .ebook-reading-shell .highlight-tools:has(.rem-save-highlight-thought:not([hidden])){height:auto!important;bottom:calc(env(safe-area-inset-bottom,0px) + 80px)!important}
+
+
+/* v243: consistent REM iconography and standard chapter-arrow styling. */
+body.ebook-fullscreen-active .rem-immersive-toolbar{gap:5px!important}
+body.ebook-fullscreen-active .rem-immersive-tool{background:transparent!important;color:#d8e7ef!important;border:1px solid transparent!important;border-radius:11px!important;box-shadow:none!important}
+body.ebook-fullscreen-active .rem-immersive-tool svg{width:22px;height:22px;flex-shrink:0}
+body.ebook-fullscreen-active .rem-immersive-tool.rem-immersive-arrow{flex:0 0 43px!important;max-width:43px!important;height:43px!important;min-height:43px!important;border-radius:12px!important;background:#23415e!important;color:#f4f8fc!important;border:1px solid #65829a!important}
+body.ebook-fullscreen-active .rem-immersive-tool.rem-immersive-arrow svg{width:24px;height:24px}
+body.ebook-fullscreen-active .rem-immersive-tool.rem-immersive-theme-light{color:#f4b7cb!important;background:transparent!important}
+body.ebook-fullscreen-active .rem-immersive-tool.rem-immersive-theme-dark{color:#d6e3f1!important;background:transparent!important}
+body.ebook-fullscreen-active .rem-immersive-tool.rem-immersive-format{color:#a8e8d3!important;background:transparent!important}
+body.ebook-fullscreen-active .rem-immersive-tool.rem-immersive-font{background:transparent!important;color:#e5eef5!important;font-size:15px!important}
+body.ebook-fullscreen-active .rem-immersive-tool[aria-pressed="true"]{background:#25485a!important;outline:1px solid #85d6b7!important;outline-offset:-1px}
+body.ebook-fullscreen-active .ebook-reading-shell.rem-immersive-light .rem-immersive-tool{color:#28435a!important}
+body.ebook-fullscreen-active .ebook-reading-shell.rem-immersive-light .rem-immersive-tool.rem-immersive-arrow{background:#23415e!important;color:#f4f8fc!important}
+body.ebook-fullscreen-active .ebook-reading-shell.rem-immersive-light .rem-immersive-tool[aria-pressed="true"]{background:#d2e9de!important}
