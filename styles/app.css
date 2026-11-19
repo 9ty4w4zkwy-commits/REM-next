@@ -1352,3 +1352,22 @@ html body.ebook-fullscreen-active .ebook-reading-shell>.rem-floating-highlighter
  color:#ffe0ee!important;
  stroke:#ffe0ee!important;
 }
+
+/* v265: translucent floating pen, retaining readable icon and slim outline. */
+html body .ebook-reading-shell .rem-floating-highlighter,
+html body.ebook-fullscreen-active .ebook-reading-shell>.rem-floating-highlighter{
+ background:rgba(17,29,49,.38)!important;
+ border:0.75px solid rgba(217,155,181,.82)!important;
+ color:#e6a5c0!important;
+ box-shadow:none!important;
+ backdrop-filter:blur(5px);
+ -webkit-backdrop-filter:blur(5px);
+}
+html body .ebook-reading-shell .rem-floating-highlighter[aria-pressed="true"],
+html body.ebook-fullscreen-active .ebook-reading-shell>.rem-floating-highlighter[aria-pressed="true"],
+html body .ebook-reading-shell.rem-highlighter-on .rem-floating-highlighter{
+ background:rgba(173,71,119,.58)!important;
+ border:0.75px solid rgba(239,172,201,.9)!important;
+ color:#ffe0ee!important;
+ box-shadow:none!important;
+}
