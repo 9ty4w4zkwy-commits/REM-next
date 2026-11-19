@@ -190,13 +190,26 @@ export function createHighlights(bookId,chapterId,textNode,onSwitch,onBookmark=(
   if(enabled){thoughtAt(e.clientX,e.clientY);}
   else selectAt(e.clientX,e.clientY);
  }
- function contextMenu(e){e.preventDefault()}
- function refreshSelectionPaint(){if(enabled&&selectedQuote)customRangePaint()}
+ function nativeThoughtSelection(){
+  if(!enabled)return;
+  const selection=window.getSelection();
+  if(!selection||selection.isCollapsed||!selection.rangeCount)return;
+  const range=selection.getRangeAt(0);
+  if(!textNode.contains(range.startContainer)||!textNode.contains(range.endContainer))return;
+  const quote=selection.toString().trim();
+  if(!quote)return;
+  customAnchor=0;customEnd=0;customMode=false;
+  setSaveQuote(quote);
+  paintNativeSelection();
+ }
+ function contextMenu(e){if(!enabled)e.preventDefault()}
+ function refreshSelectionPaint(){if(enabled&&selectedQuote){if(window.getSelection()?.toString().trim())paintNativeSelection();else customRangePaint()}}
  textNode.addEventListener('touchstart',touchStart,{passive:true});
  textNode.addEventListener('touchmove',touchMove,{passive:false});
  textNode.addEventListener('touchend',touchEnd,{passive:false});
  textNode.addEventListener('click',click);
  textNode.addEventListener('contextmenu',contextMenu);
+ document.addEventListener('selectionchange',nativeThoughtSelection);
  document.addEventListener('scroll',refreshSelectionPaint,true);
  window.addEventListener('resize',refreshSelectionPaint);
  function destroy(){
@@ -207,6 +220,7 @@ export function createHighlights(bookId,chapterId,textNode,onSwitch,onBookmark=(
   textNode.removeEventListener('click',click);
   textNode.removeEventListener('contextmenu',contextMenu);
   
+  document.removeEventListener('selectionchange',nativeThoughtSelection);
   document.removeEventListener('scroll',refreshSelectionPaint,true);
   window.removeEventListener('resize',refreshSelectionPaint);
   textNode.classList.remove('rem-custom-selecting','rem-thought-pen-active');selectionPaint.remove();
