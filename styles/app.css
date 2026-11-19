@@ -1133,3 +1133,21 @@ body:not(.ebook-fullscreen-active) .ebook-reading-shell .ebook-page-frame>.ebook
 body.ebook-fullscreen-active .ebook-reading-shell .ebook-page-frame>.rem-immersive-entry{display:none!important}
 body.ebook-fullscreen-active .rem-ebook-fullscreen-toggle.rem-immersive-close{display:flex!important;align-items:center!important;justify-content:center!important}
 .rem-ebook-fullscreen-toggle svg{display:block;flex-shrink:0}
+
+
+/* v247: fullscreen reading sits at z-index 9999; the free-selection
+   painting layer must be above it to show highlighted drag selections. */
+body.ebook-fullscreen-active .rem-free-selection-paint{
+ z-index:10001!important;
+ pointer-events:none!important;
+}
+body.ebook-fullscreen-active .ebook-reading-shell .highlight-tools:has(.rem-save-highlight-thought:not([hidden])){
+ z-index:10002!important;
+ bottom:calc(env(safe-area-inset-bottom,0px) + 78px)!important;
+ pointer-events:none!important;
+}
+body.ebook-fullscreen-active .ebook-reading-shell .rem-save-highlight-thought:not([hidden]){
+ pointer-events:auto!important;
+ position:relative!important;
+ z-index:10003!important;
+}
