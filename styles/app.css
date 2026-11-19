@@ -1171,3 +1171,18 @@ body.ebook-fullscreen-active .ebook-reading-shell>.rem-floating-highlighter{
  bottom:calc(env(safe-area-inset-bottom,0px) + 82px)!important;
  right:15px!important;
 }
+
+
+/* v249 — muted antique-pink outline and pen, dark navy interior. */
+.ebook-reading-shell>.rem-floating-highlighter{
+ background:#111d31!important;
+ border-color:#df93b2!important;
+ color:#df93b2!important;
+ box-shadow:0 2px 8px rgba(5,12,25,.18)!important;
+}
+.ebook-reading-shell>.rem-floating-highlighter[aria-pressed="true"]{
+ background:#18283c!important;
+ border-color:#e5a1bd!important;
+ color:#e5a1bd!important;
+ box-shadow:0 0 0 2px rgba(223,147,178,.16)!important;
+}
