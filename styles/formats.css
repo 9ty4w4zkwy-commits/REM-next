@@ -644,3 +644,11 @@ body:not(.ebook-fullscreen-active) .ebook-reading-shell .ebook-page-frame .readi
 body.ebook-fullscreen-active .ebook-reading-shell>.ebook-page-frame{overflow:hidden!important}
 body.ebook-fullscreen-active .ebook-reading-shell>.ebook-page-frame>.reading-text{overflow-y:auto!important;overflow-x:hidden!important;height:100%!important;min-height:0!important;max-height:none!important;scrollbar-width:none!important}
 body.ebook-fullscreen-active .ebook-reading-shell>.ebook-page-frame>.reading-text::-webkit-scrollbar{display:none!important;width:0!important}
+
+
+/* v241: standard Ebook scrolls with the page, not within an inner text box. */
+html body:not(.ebook-fullscreen-active) .ebook-reading-shell .ebook-page-frame .reading-text,
+html body:not(.ebook-fullscreen-active) .ebook-reading-shell .ebook-page-frame .reading-text.normal,
+html body:not(.ebook-fullscreen-active) .ebook-reading-shell .ebook-page-frame .reading-text.large,
+html body:not(.ebook-fullscreen-active) .ebook-reading-shell .ebook-page-frame .reading-text.xlarge{height:auto!important;min-height:0!important;max-height:none!important;overflow:visible!important;scrollbar-width:none!important}
+html body:not(.ebook-fullscreen-active) .ebook-reading-shell .ebook-page-frame{height:auto!important;max-height:none!important;overflow:visible!important}
