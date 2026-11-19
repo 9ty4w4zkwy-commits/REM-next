@@ -1479,3 +1479,12 @@ main .rem-home-section[data-section="premium"] .rem-section-title{
   font-size:21px!important;
  }
 }
+
+/* v275: Newsreader on Home main editorial heading only. */
+main h1.rem-cinema-intro{
+ font-family:'Newsreader',Georgia,'Times New Roman',serif!important;
+ font-style:normal!important;
+ font-weight:600!important;
+ letter-spacing:-.025em!important;
+}
+@media(max-width:650px){main h1.rem-cinema-intro{font-size:clamp(30px,7.7vw,32px)!important;line-height:1.08!important}}
