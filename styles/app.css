@@ -1336,3 +1336,19 @@ html body .rem-floating-highlighter[aria-pressed="true"]{
  color:#ffe0ed!important;
  box-shadow:none!important;
 }
+
+/* v264: pressed pen must be visibly dark pink, including fullscreen and focus. */
+html body .ebook-reading-shell .rem-floating-highlighter[aria-pressed="true"],
+html body.ebook-fullscreen-active .ebook-reading-shell>.rem-floating-highlighter[aria-pressed="true"],
+html body .ebook-reading-shell.rem-highlighter-on .rem-floating-highlighter{
+ background-color:#ad4777!important;
+ background:#ad4777!important;
+ border:0.75px solid #d58aaa!important;
+ color:#ffe0ee!important;
+ box-shadow:none!important;
+}
+html body .ebook-reading-shell .rem-floating-highlighter[aria-pressed="true"] svg,
+html body.ebook-fullscreen-active .ebook-reading-shell>.rem-floating-highlighter[aria-pressed="true"] svg{
+ color:#ffe0ee!important;
+ stroke:#ffe0ee!important;
+}
