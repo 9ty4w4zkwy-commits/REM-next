@@ -1203,3 +1203,14 @@ body.ebook-fullscreen-active .ebook-reading-shell>.rem-floating-highlighter{
  color:#18263b!important;
  box-shadow:0 0 0 2px rgba(233,168,195,.12)!important;
 }
+
+
+/* v251: bring the tiny pink sparkle snugly beside the mint sparkle. */
+.rem-recommend-sparkles{gap:0!important;align-items:flex-start!important}
+.rem-recommend-sparkles .rem-recommend-sparkle-pink{
+ font-size:.22em!important;
+ margin-left:-.18em!important;
+ margin-top:.03em!important;
+ position:relative!important;
+ top:-.08em!important;
+}
