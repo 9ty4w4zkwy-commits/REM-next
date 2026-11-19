@@ -399,8 +399,8 @@ const sizeSelect=el('select',{attrs:{'aria-label':'Dimensione testo'}});for(cons
  const darkTool=tool('Tema scuro','☾','theme-dark',()=>setImmersiveTheme('dark'));
  const shrinkTool=tool('Riduci testo','A−','font',()=>adjustImmersiveFont(-1));
  const growTool=tool('Ingrandisci testo','A+','font',()=>adjustImmersiveFont(1));
- tool('Passa al cartaceo','▤','format',()=>switchFormat('paper'));
- tool('Passa all’audiolibro','♫','format',()=>switchFormat('audio'));
+ tool('Passa al cartaceo','📖','format',()=>switchFormat('paper'));
+ tool('Passa all’audiolibro','🎧','format',()=>switchFormat('audio'));
  const immersiveNext=tool('Capitolo successivo','›','arrow',()=>{if(!next.disabled)next.click()});
  immersivePrev.disabled=prev.disabled;immersiveNext.disabled=next.disabled;
  let immersiveFont=Number(getSetting('immersiveFontSize','0'))||0;
