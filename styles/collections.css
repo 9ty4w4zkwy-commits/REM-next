@@ -487,3 +487,11 @@
 
 /* v280: italicize only the mint word in the Biblioteca headline. */
 .rem-violet .rem-violet-hero h1.rem-library-title .mint-word{font-style:italic!important}
+
+/* v281: visibly slant only the mint word in Biblioteca headline. */
+.rem-violet .rem-violet-hero h1.rem-library-title .mint-word{
+ display:inline-block!important;
+ font-style:italic!important;
+ transform:skewX(-10deg)!important;
+ transform-origin:left center!important;
+}
