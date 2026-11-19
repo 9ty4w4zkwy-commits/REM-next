@@ -334,3 +334,35 @@ footer{color:var(--rem-muted)!important;border-color:var(--rem-blue-slate)!impor
 #app .format-switch-bottom{background:var(--rem-blue-deep)!important;border-color:var(--rem-blue-slate)!important}
 #app .format-switch-bottom button[aria-pressed="true"]{background:var(--rem-emerald)!important;color:var(--rem-blue-night)!important;border-color:var(--rem-emerald)!important}
 #app .format-switch-bottom button[aria-pressed="false"]{background:var(--rem-blue-mid)!important;color:var(--rem-cream)!important;border-color:var(--rem-blue-slate)!important}
+
+/* === V3.1 — copertura completa delle viste REM Next ===
+   Regole ancorate ai componenti presenti nei fogli di stile.
+   Copertine editoriali e superficie carta del lettore restano autonome. */
+#app{background:var(--rem-blue-night)!important;color:var(--rem-cream)!important}
+#app :is(.rem-violet,.rem-profile-page,.rem-trailer-page,.rem-cinema-detail,.episodes-intro,.episodes-list,.summary-shell,.finish-book-box,.feedback-card,.reader-shell,.ebook-reading-shell,.audio-sync-shell,.paper-sync-shell){color:var(--rem-cream)!important}
+#app :is(.rem-profile-card,.rem-profile-questionnaire,.rem-trailer-stage,.rem-cinema-detail-info,.episode-card,.episode-recap-panel,.episode-reader-context,.summary-content,.summary-footer,.summary-warm,.finish-book-box,.feedback-card,.reader-tools,.focus-panel,.reader-focus-dialog,.ebook-journey,.format-mode-panel,.paper-resume-card,.rem-violet-hero,.rem-violet-shelf,.rem-violet-book,.rem-violet-thought,.rem-saved-book-card,.rem-collection-context,.rem-collection-card,.rem-picker-book,.rem-save-sheet,.rem-stat,.panel,.library-card){background-color:var(--rem-blue-deep)!important;color:var(--rem-cream)!important;border-color:var(--rem-blue-slate)!important;box-shadow:none}
+#app :is(.rem-profile-intro h1,.rem-profile-card-title h2,.rem-cinema-detail-title h1,.rem-cinema-detail-title,.episode-info h3,.episode-card h3,.episodes-intro h1,.summary-shell h1,.summary-shell h2,.summary-content h2,.feedback-card h1,.feedback-question,.rem-trailer-page h1,.rem-violet-heading,.rem-violet-hero h1,.rem-library-title,.rem-collection-card h3,.rem-collection-detail-top h2,.rem-thought-text,.rem-saved-book-info strong,.paper-resume-card h2){color:var(--rem-cream)!important}
+#app :is(.rem-profile-subtitle,.rem-profile-description,.rem-profile-preferences,.rem-profile-preferences>div,.rem-cinema-detail-author,.rem-cinema-detail-description,.rem-cinema-modes-intro,.rem-cinema-path-note,.episode-meta,.episode-reader-context p,.episode-recap-invite,.summary-footer-hint,.summary-status,.feedback-explanation,.rem-trailer-note,.rem-violet-muted,.rem-collection-foot small,.rem-save-hint,.rem-save-book-info p,.format-mode-note,.rem-audio-status,.rem-audio-clock,.paper-resume-note,.rem-thought-source-chapter,.rem-thought-source-label){color:var(--rem-muted)!important}
+#app :is(.rem-profile-card-icon,.rem-profile-status,.rem-cinema-card-foot span,.rem-recommend-sparkle,.episode-code,.rem-episode-code,.rem-stat-number){color:var(--rem-emerald)!important}
+#app :is(.rem-profile-action,.rem-cinema-hero-copy button,.rem-detail-trailer-cta,.rem-violet-primary,.rem-save-confirm,.rem-collection-add,.rem-write-thought,.rem-trailer-enter,.rem-trailer-play,.feedback-card button:not(.feedback-skip),.summary-actions .primary,.ebook-journey-actions button:first-child,.rem-audio-play-icon){background:var(--rem-emerald)!important;color:var(--rem-blue-night)!important;border:1px solid var(--rem-emerald)!important}
+#app :is(.reader-back,.episode-actions button,.season-tab,.rem-trailer-actions button,.rem-collection-secondary,.rem-collection-delete,.rem-saved-book-actions button,.rem-save-choice,.rem-save-collections,.rem-library-back,.rem-visibility-control,.feedback-skip,.rem-audio-restart,.ebook-inline-switches button,.ebook-chapter-nav button,.audio-inline-switches button,.reader-theme-button,.reader-font-button,.reader-focus-button,.format-switch button,.format-switch-bottom button){background:var(--rem-blue-mid)!important;color:var(--rem-cream)!important;border:1px solid var(--rem-blue-slate)!important}
+#app :is(.season-tab[aria-pressed="true"],.season-tab.selected,.episode-current,.episode-done,.rem-violet-tabs button.selected,.format-switch button[aria-pressed="true"],.format-switch-bottom button[aria-pressed="true"],.reader-theme-button[aria-pressed="true"],.reader-focus-button[aria-pressed="true"]){background:var(--rem-emerald)!important;color:var(--rem-blue-night)!important;border-color:var(--rem-emerald)!important}
+#app :is(input,select,textarea,.rem-collection-search){background:var(--rem-blue-deep)!important;color:var(--rem-cream)!important;border-color:var(--rem-blue-slate)!important}
+#app :is(input,textarea)::placeholder{color:var(--rem-muted)!important;opacity:1}
+#app :is(.rem-profile-questionnaire-head,.rem-save-sheet-top,.rem-thought-header,.rem-profile-preferences>div+div){border-color:var(--rem-blue-slate)!important}
+#app .rem-cinema-hero{background:var(--rem-blue-deep)!important;border-color:var(--rem-blue-slate)!important}
+#app .rem-cinema-hero-copy h1{color:var(--rem-cream)!important}
+#app .rem-cinema-hero-copy p{color:var(--rem-muted)!important}
+#app .rem-cinema-intro .rem-intro-second-line{color:var(--rem-emerald)!important}
+#app .rem-cinema-intro .rem-intro-slogan{color:var(--rem-powder)!important}
+#app .rem-violet .rem-stats .rem-stat{background:var(--rem-blue-deep)!important;border-color:var(--rem-blue-slate)!important}
+#app .rem-violet .rem-stats .rem-stat-number{color:var(--rem-emerald)!important}
+#app .rem-collection-card.tone-rose{background:var(--rem-powder)!important;border-color:var(--rem-powder)!important}
+#app .rem-collection-card.tone-rose :is(h3,p,small,.rem-collection-kicker){color:var(--rem-blue-night)!important}
+#app .rem-save-overlay{background:rgba(11,20,36,.84)!important}
+#app .rem-audio-seek{background:linear-gradient(to right,var(--rem-emerald) 0%,var(--rem-emerald) var(--audio-progress,0%),var(--rem-blue-slate) var(--audio-progress,0%),var(--rem-blue-slate) 100%)!important}
+#app .rem-audio-play-icon{background:var(--rem-emerald)!important;color:var(--rem-blue-night)!important}
+/* Modalità carta: resta chiara e indipendente dalla UI scura */
+#app :is(.ebook-reading-shell[data-theme="sun"],.ebook-reading-shell[data-theme="light"],.ebook-reading-shell.light-mode,.paper-sync-shell[data-theme="sun"],.paper-sync-shell.light-mode){background:var(--rem-paper)!important;color:var(--rem-blue-night)!important;color-scheme:light!important}
+#app :is(.ebook-reading-shell[data-theme="sun"],.ebook-reading-shell[data-theme="light"],.ebook-reading-shell.light-mode) .reading-text{background:var(--rem-paper)!important;color:var(--rem-blue-night)!important}
+#app :is(.ebook-reading-shell[data-theme="sun"],.ebook-reading-shell[data-theme="light"],.ebook-reading-shell.light-mode) .ebook-journey,#app :is(.paper-sync-shell[data-theme="sun"],.paper-sync-shell.light-mode) .paper-resume-card{background:var(--rem-mist)!important;color:var(--rem-blue-night)!important;border-color:var(--rem-border-strong)!important}
