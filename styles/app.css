@@ -1065,3 +1065,25 @@ body.ebook-fullscreen-active .ebook-reading-shell.rem-immersive-light .rem-immer
 /* v235: show entry in standard reader, close only in fullscreen. */
 .rem-immersive-entry{display:block}
 body.ebook-fullscreen-active .ebook-reading-shell>.rem-immersive-entry{display:none!important}
+
+
+/* v236: immersive mode excludes every normal reader toolbar and uses a seamless page. */
+body.ebook-fullscreen-active .ebook-reading-shell>.reader-tools,
+body.ebook-fullscreen-active .ebook-reading-shell>.reader-focus-active,
+body.ebook-fullscreen-active .ebook-reading-shell>.reader-tools-focus-only,
+body.ebook-fullscreen-active .ebook-reading-shell>.ebook-journey,
+body.ebook-fullscreen-active .ebook-reading-shell>.reader-controls,
+body.ebook-fullscreen-active .ebook-reading-shell>.ebook-chapter-heading,
+body.ebook-fullscreen-active .ebook-reading-shell>.ebook-chapter-nav,
+body.ebook-fullscreen-active .ebook-reading-shell>.ebook-scroll-rail{display:none!important}
+body.ebook-fullscreen-active .ebook-reading-shell>.rem-immersive-header{order:0!important}
+body.ebook-fullscreen-active .ebook-reading-shell>.ebook-page-frame{order:1!important;background:transparent!important;color:inherit!important}
+body.ebook-fullscreen-active .ebook-reading-shell>.rem-immersive-toolbar{order:2!important}
+body.ebook-fullscreen-active .ebook-reading-shell .ebook-page-frame,
+body.ebook-fullscreen-active .ebook-reading-shell .ebook-page-frame .reading-text,
+body.ebook-fullscreen-active .ebook-reading-shell .ebook-page-frame .ebook-text,
+body.ebook-fullscreen-active .ebook-reading-shell .ebook-page-frame article,
+body.ebook-fullscreen-active .ebook-reading-shell .ebook-page-frame p{background-color:transparent!important;box-shadow:none!important;border-color:transparent!important;color:inherit!important}
+body.ebook-fullscreen-active .ebook-reading-shell:not(.rem-immersive-light){background:#0b1526!important;color:#f2eee8!important}
+body.ebook-fullscreen-active .ebook-reading-shell.rem-immersive-light{background:#f5f0e6!important;color:#202b32!important}
+body.ebook-fullscreen-active .ebook-reading-shell .reading-text{background:transparent!important;color:inherit!important}
