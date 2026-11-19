@@ -1095,3 +1095,5 @@ body.ebook-fullscreen-active .ebook-reading-shell .ebook-page-frame .format-swit
 body.ebook-fullscreen-active .ebook-reading-shell .ebook-page-frame .format-switcher{ }
 body.ebook-fullscreen-active .ebook-reading-shell>.ebook-page-frame>.format-switch,
 body.ebook-fullscreen-active .ebook-reading-shell>.ebook-page-frame>.format-switcher{display:none!important}
+
+body.ebook-fullscreen-active .ebook-reading-shell .ebook-inline-switches{display:none!important}
