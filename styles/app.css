@@ -1318,3 +1318,21 @@ html body .rem-free-selection-swatch{
  box-shadow:inset 0 0 0 1px rgba(240,112,166,.38)!important;
  mix-blend-mode:normal!important;
 }
+
+/* v262: lower pink pen to the position marked in the iPhone screenshot. */
+html body .rem-floating-highlighter{
+ bottom:calc(env(safe-area-inset-bottom,0px) + 34px)!important;
+ border-width:.75px!important;
+ border-color:#d99bb5!important;
+ background:#111d31!important;
+ color:#d99bb5!important;
+ box-shadow:none!important;
+}
+html body .rem-floating-highlighter[aria-pressed="true"]{
+ bottom:calc(env(safe-area-inset-bottom,0px) + 34px)!important;
+ border-width:.75px!important;
+ background:#b54d7d!important;
+ border-color:#d98eae!important;
+ color:#ffe0ed!important;
+ box-shadow:none!important;
+}
