@@ -1266,3 +1266,18 @@ body.ebook-fullscreen-active .ebook-reading-shell>.rem-floating-highlighter{
  background:transparent!important;
  box-shadow:none!important;
 }
+
+
+/* v255: disable iOS native text selection/drag handles in the Ebook reader.
+   Programmatic eight-word selection via the pink pen remains available. */
+html body .ebook-reading-shell .ebook-page-frame .reading-text,
+html body .ebook-reading-shell .ebook-page-frame .reading-text *,
+html body .ebook-reading-shell .ebook-page-frame .reading-text::before,
+html body .ebook-reading-shell .ebook-page-frame .reading-text::after{
+ -webkit-user-select:none!important;
+ user-select:none!important;
+ -webkit-touch-callout:none!important;
+}
+html body .ebook-reading-shell .ebook-page-frame .reading-text{
+ touch-action:pan-y!important;
+}
