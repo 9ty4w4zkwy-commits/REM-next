@@ -1186,3 +1186,20 @@ body.ebook-fullscreen-active .ebook-reading-shell>.rem-floating-highlighter{
  color:#e5a1bd!important;
  box-shadow:0 0 0 2px rgba(223,147,178,.16)!important;
 }
+
+
+/* v250: fine antique-pink outline when idle; full pink when highlighting is on. */
+.ebook-reading-shell>.rem-floating-highlighter{
+ border-width:1px!important;
+ background:#111d31!important;
+ border-color:#d99bb5!important;
+ color:#d99bb5!important;
+ box-shadow:none!important;
+}
+.ebook-reading-shell>.rem-floating-highlighter[aria-pressed="true"]{
+ border-width:1px!important;
+ background:#e9a8c3!important;
+ border-color:#e9a8c3!important;
+ color:#18263b!important;
+ box-shadow:0 0 0 2px rgba(233,168,195,.12)!important;
+}
