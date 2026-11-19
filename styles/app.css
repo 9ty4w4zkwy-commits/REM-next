@@ -1300,3 +1300,21 @@ html body .ebook-reading-shell.rem-highlighter-on .ebook-page-frame .reading-tex
 html body .ebook-reading-shell.rem-highlighter-on .ebook-page-frame .reading-text{
  touch-action:auto!important;
 }
+
+/* v261: restored v253 horizontal drag, while vertical gestures remain scrolling. */
+html body .ebook-reading-shell.rem-highlighter-on .ebook-page-frame .reading-text.rem-thought-pen-active{
+ touch-action:pan-y!important;
+ -webkit-user-select:none!important;
+ user-select:none!important;
+ -webkit-touch-callout:none!important;
+}
+html body .ebook-reading-shell.rem-highlighter-on .ebook-page-frame .reading-text.rem-thought-pen-active *{
+ -webkit-user-select:none!important;
+ user-select:none!important;
+ -webkit-touch-callout:none!important;
+}
+html body .rem-free-selection-swatch{
+ background:rgba(246,137,183,.48)!important;
+ box-shadow:inset 0 0 0 1px rgba(240,112,166,.38)!important;
+ mix-blend-mode:normal!important;
+}
