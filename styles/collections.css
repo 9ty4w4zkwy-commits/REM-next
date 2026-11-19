@@ -474,3 +474,13 @@
 
 /* Reserve enough room for the largest two-line title at mobile sizes. */
 .rem-violet .rem-stats .rem-stat{grid-template-rows:3.4rem auto minmax(0,1fr)!important}
+
+/* v278: match Biblioteca headings to the existing colorful collection cards. */
+.rem-violet .rem-violet-hero h1.rem-library-title,
+.rem-violet .rem-violet-heading,
+.rem-violet .rem-stats .rem-stat-title{
+ font-family:system-ui,-apple-system,BlinkMacSystemFont,sans-serif!important;
+ font-style:normal!important;
+ font-weight:800!important;
+ letter-spacing:-.035em!important;
+}
