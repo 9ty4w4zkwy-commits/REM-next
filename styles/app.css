@@ -1287,3 +1287,16 @@ html body .ebook-reading-shell .ebook-page-frame .reading-text{
 html body .ebook-reading-shell .ebook-page-frame .reading-text.rem-thought-pen-active{
  touch-action:none!important;
 }
+
+/* v259: permit Safari's native text selection only while the pink pen is on. */
+html body .ebook-reading-shell.rem-highlighter-on .ebook-page-frame .reading-text,
+html body .ebook-reading-shell.rem-highlighter-on .ebook-page-frame .reading-text *,
+html body .ebook-reading-shell.rem-highlighter-on .ebook-page-frame .reading-text::before,
+html body .ebook-reading-shell.rem-highlighter-on .ebook-page-frame .reading-text::after{
+ -webkit-user-select:text!important;
+ user-select:text!important;
+ -webkit-touch-callout:default!important;
+}
+html body .ebook-reading-shell.rem-highlighter-on .ebook-page-frame .reading-text{
+ touch-action:auto!important;
+}
