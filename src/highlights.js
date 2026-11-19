@@ -91,32 +91,53 @@ export function createHighlights(bookId,chapterId,textNode,onSwitch,onBookmark=(
   return textNode.querySelector('mark.rem-highlight');
  }
  function offsetFromPoint(x,y){
-  // iOS may return no caret when -webkit-user-select:none is active.
-  // Resolve taps from DOM word rectangles instead of relying on native selection.
-  const nodes=[];const walker=document.createTreeWalker(textNode,NodeFilter.SHOW_TEXT);
-  let node,total=0;
-  while((node=walker.nextNode())){nodes.push({node,start:total,end:total+node.textContent.length});total+=node.textContent.length}
-  const locate=offset=>{
-   for(const item of nodes){if(offset>=item.start&&offset<=item.end)return [item.node,offset-item.start]}
-   return null;
-  };
-  const words=[...source.value.matchAll(WORD)];
-  let best=null,bestDistance=Infinity;
-  const range=document.createRange();
-  for(const match of words){
-   const first=locate(match.index),last=locate(match.index+match[0].length);
-   if(!first||!last)continue;
-   try{range.setStart(...first);range.setEnd(...last)}catch{continue}
-   for(const rect of range.getClientRects()){
-    if(!rect.width||!rect.height)continue;
-    const dx=Math.max(rect.left-x,0,x-rect.right);
-    const dy=Math.max(rect.top-y,0,y-rect.bottom);
-    const distance=dx*dx+dy*dy;
-    if(distance<bestDistance){bestDistance=distance;best=match.index}
-    if(distance===0)return match.index;
-   }
+  // Prefer the browser's caret hit-test: unlike walking every word and
+  // creating thousands of ranges, this is fast enough on iPhone.
+  let range=null;
+  if(document.caretRangeFromPoint)range=document.caretRangeFromPoint(x,y);
+  else if(document.caretPositionFromPoint){
+   const p=document.caretPositionFromPoint(x,y);
+   if(p){range=document.createRange();range.setStart(p.offsetNode,p.offset);range.collapse(true)}
   }
-  return bestDistance<2500?best:null;
+  if(range&&textNode.contains(range.startContainer)){
+   const before=document.createRange();before.selectNodeContents(textNode);
+   before.setEnd(range.startContainer,range.startOffset);
+   return before.toString().length;
+  }
+  // Fallback: inspect only text nodes on the tapped line, not every word.
+  const walker=document.createTreeWalker(textNode,NodeFilter.SHOW_TEXT);
+  let node,base=0,best=null,bestDist=Infinity;
+  const test=document.createRange();
+  while((node=walker.nextNode())){
+   const len=node.textContent.length;
+   if(!len){continue}
+   test.selectNodeContents(node);
+   const rects=test.getClientRects();
+   let nearby=false;
+   for(const rect of rects){
+    if(y>=rect.top-12&&y<=rect.bottom+12&&x>=rect.left-18&&x<=rect.right+18){nearby=true;break}
+   }
+   if(nearby){
+    let lo=0,hi=len;
+    while(lo<hi){
+     const mid=Math.floor((lo+hi)/2);
+     test.setStart(node,0);test.setEnd(node,mid);
+     const pieces=test.getClientRects();
+     const last=pieces[pieces.length-1];
+     if(!last){lo=mid+1;continue}
+     if(last.bottom<y-2||(last.top<=y+2&&last.right<x))lo=mid+1;
+     else hi=mid;
+    }
+    const candidate=Math.min(lo,len);
+    test.setStart(node,Math.max(0,candidate-1));test.setEnd(node,Math.min(len,candidate+1));
+    const rect=test.getBoundingClientRect();
+    const dx=Math.max(rect.left-x,0,x-rect.right),dy=Math.max(rect.top-y,0,y-rect.bottom);
+    const dist=dx*dx+dy*dy;
+    if(dist<bestDist){bestDist=dist;best=base+candidate}
+   }
+   base+=len;
+  }
+  return bestDist<1600?best:null;
  }
  function selectAt(x,y){
   const offset=offsetFromPoint(x,y);if(offset===null||!source.value)return false;
