@@ -14,7 +14,7 @@ export function createHighlights(bookId,chapterId,textNode,onSwitch,onBookmark=(
   const last=Math.min(words.length-1,first+7);
   return {start:words[first].start,end:words[last].end,quote:raw.slice(words[first].start,words[last].end)};
  }
- const hint=el('p',{className:'selection-hint',text:'Tocca una parola per sincronizzare 8 parole. Attiva il pennino rosa per selezionare liberamente e salvare nei pensieri.'});
+ const hint=el('p',{className:'selection-hint',text:'Pennino spento: tocca per sincronizzare 8 parole. Pennino acceso: trascina lateralmente per evidenziare e salvare nei pensieri.'});
  const clear=button('Rimuovi evidenziazioni',()=>{marks=[];selectedQuote='';saveThought.hidden=true;persist();draw()});
  clear.classList.add('selection-clear');
  const wrap=el('div',{className:'highlight-tools'});
@@ -23,26 +23,17 @@ export function createHighlights(bookId,chapterId,textNode,onSwitch,onBookmark=(
  document.body.append(selectionPaint);
  function clearSelectionPaint(){selectionPaint.replaceChildren()}
  function customRangePaint(){
-  clearSelectionPaint();
+  clearSelectionPaint();const raw=source.value;
   const start=Math.min(customAnchor,customEnd),end=Math.max(customAnchor,customEnd);
   if(end<=start)return;
-  const range=document.createRange();
+  const range=document.createRange();let pos=0;let a=null,b=null;
   const walker=document.createTreeWalker(textNode,NodeFilter.SHOW_TEXT);
-  let pos=0,first=null,last=null,node;
-  while((node=walker.nextNode())){
-   const next=pos+node.textContent.length;
-   if(first===null&&start<next)first=[node,Math.max(0,start-pos)];
-   if(last===null&&end<=next)last=[node,Math.max(0,end-pos)];
-   pos=next;
-  }
-  if(!first||!last)return;
-  range.setStart(...first);range.setEnd(...last);
-  for(const rect of range.getClientRects()){
-   if(rect.width<2||rect.height<2)continue;
+  while(walker.nextNode()){const node=walker.currentNode,next=pos+node.length;if(a===null&&start<=next)a=[node,Math.max(0,start-pos)];if(b===null&&end<=next)b=[node,Math.max(0,end-pos)];pos=next}
+  if(!a||!b)return;range.setStart(...a);range.setEnd(...b);
+  const bounds=textNode.getBoundingClientRect();for(const rect of range.getClientRects()){
+   if(rect.width<2||rect.height<2||rect.bottom<bounds.top||rect.top>bounds.bottom)continue;
    const swatch=el('span',{className:'rem-free-selection-swatch'});
-   swatch.style.left=rect.left+'px';swatch.style.top=rect.top+'px';
-   swatch.style.width=rect.width+'px';swatch.style.height=rect.height+'px';
-   selectionPaint.append(swatch);
+   swatch.style.left=rect.left+'px';swatch.style.top=rect.top+'px';swatch.style.width=rect.width+'px';swatch.style.height=rect.height+'px';selectionPaint.append(swatch);
   }
  }
  function customSelect(x,y,initial=false){
@@ -81,7 +72,7 @@ export function createHighlights(bookId,chapterId,textNode,onSwitch,onBookmark=(
   let at=0;for(const m of ordered){if(m.start<at)continue;textNode.append(document.createTextNode(raw.slice(at,m.start)));textNode.append(el('mark',{className:'rem-highlight',text:raw.slice(m.start,m.end)}));at=m.end}
   textNode.append(document.createTextNode(raw.slice(at)));
  }
- function setText(value){source.value=value;selectedQuote='';saveThought.hidden=true;selectionMode=false;customMode=false;textNode.classList.remove('rem-custom-selecting');clearSelectionPaint();draw()}
+ function setText(value){source.value=value;selectionMode=false;customMode=false;textNode.classList.remove('rem-custom-selecting');clearSelectionPaint();draw()}
  function highlightPhrase(offset,phrase){
   const raw=source.value;
   if(!Number.isInteger(offset)||offset<0||offset>=raw.length||!phrase)return null;
@@ -91,53 +82,12 @@ export function createHighlights(bookId,chapterId,textNode,onSwitch,onBookmark=(
   return textNode.querySelector('mark.rem-highlight');
  }
  function offsetFromPoint(x,y){
-  // Prefer the browser's caret hit-test: unlike walking every word and
-  // creating thousands of ranges, this is fast enough on iPhone.
   let range=null;
   if(document.caretRangeFromPoint)range=document.caretRangeFromPoint(x,y);
-  else if(document.caretPositionFromPoint){
-   const p=document.caretPositionFromPoint(x,y);
-   if(p){range=document.createRange();range.setStart(p.offsetNode,p.offset);range.collapse(true)}
-  }
-  if(range&&textNode.contains(range.startContainer)){
-   const before=document.createRange();before.selectNodeContents(textNode);
-   before.setEnd(range.startContainer,range.startOffset);
-   return before.toString().length;
-  }
-  // Fallback: inspect only text nodes on the tapped line, not every word.
-  const walker=document.createTreeWalker(textNode,NodeFilter.SHOW_TEXT);
-  let node,base=0,best=null,bestDist=Infinity;
-  const test=document.createRange();
-  while((node=walker.nextNode())){
-   const len=node.textContent.length;
-   if(!len){continue}
-   test.selectNodeContents(node);
-   const rects=test.getClientRects();
-   let nearby=false;
-   for(const rect of rects){
-    if(y>=rect.top-12&&y<=rect.bottom+12&&x>=rect.left-18&&x<=rect.right+18){nearby=true;break}
-   }
-   if(nearby){
-    let lo=0,hi=len;
-    while(lo<hi){
-     const mid=Math.floor((lo+hi)/2);
-     test.setStart(node,0);test.setEnd(node,mid);
-     const pieces=test.getClientRects();
-     const last=pieces[pieces.length-1];
-     if(!last){lo=mid+1;continue}
-     if(last.bottom<y-2||(last.top<=y+2&&last.right<x))lo=mid+1;
-     else hi=mid;
-    }
-    const candidate=Math.min(lo,len);
-    test.setStart(node,Math.max(0,candidate-1));test.setEnd(node,Math.min(len,candidate+1));
-    const rect=test.getBoundingClientRect();
-    const dx=Math.max(rect.left-x,0,x-rect.right),dy=Math.max(rect.top-y,0,y-rect.bottom);
-    const dist=dx*dx+dy*dy;
-    if(dist<bestDist){bestDist=dist;best=base+candidate}
-   }
-   base+=len;
-  }
-  return bestDist<1600?best:null;
+  else if(document.caretPositionFromPoint){const p=document.caretPositionFromPoint(x,y);if(p){range=document.createRange();range.setStart(p.offsetNode,p.offset);range.collapse(true)}}
+  if(!range||!textNode.contains(range.startContainer))return null;
+  const before=range.cloneRange();before.selectNodeContents(textNode);before.setEnd(range.startContainer,range.startOffset);
+  return before.toString().length;
  }
  function selectAt(x,y){
   const offset=offsetFromPoint(x,y);if(offset===null||!source.value)return false;
@@ -150,89 +100,80 @@ export function createHighlights(bookId,chapterId,textNode,onSwitch,onBookmark=(
   window.getSelection()?.removeAllRanges();return true;
  }
  let touch=null,lastTouch=0,suppressClickUntil=0;
- function setEnabled(value){
-  enabled=Boolean(value);
-  touch=null;customMode=false;selectionMode=false;
-  window.getSelection()?.removeAllRanges();
-  textNode.classList.remove('rem-custom-selecting');
-  textNode.classList.toggle('rem-thought-pen-active',enabled);
-  clearSelectionPaint();selectedQuote='';saveThought.hidden=true;saveThought.disabled=false;
-  saveThought.textContent='Salva nei miei pensieri';
+ function setSaveQuote(quote){clearTimeout(savedNoticeTimer);selectedQuote=quote;saveThought.hidden=false;saveThought.disabled=false;saveThought.textContent='Salva nei miei pensieri'}
+ function readNativeSelection(){
+  const selection=window.getSelection();
+  if(!selection||selection.isCollapsed||!selection.rangeCount)return false;
+  const range=selection.getRangeAt(0);
+  if(!textNode.contains(range.startContainer)||!textNode.contains(range.endContainer))return false;
+  const quote=selection.toString().trim();
+  if(!quote)return false;
+  selectionMode=true;setSaveQuote(quote);paintNativeSelection();return true;
  }
- function thoughtAt(x,y){
-  const offset=offsetFromPoint(x,y);if(offset===null||!source.value)return false;
-  const words=[...source.value.matchAll(WORD)];
-  let index=words.findIndex(w=>offset>=w.index&&offset<=w.index+w[0].length);
-  if(index<0)index=words.findIndex(w=>w.index>offset);
-  if(index<0&&words.length)index=words.length-1;
-  if(index<0)return false;
-  customAnchor=words[index].index;
-  customEnd=customAnchor+words[index][0].length;
-  setSaveQuote(source.value.slice(customAnchor,customEnd));
-  customRangePaint();
-  return true;
+ function selectionChanged(){
+  if(!enabled||!selectionMode)return;
+  clearTimeout(selectionTimer);
+  selectionTimer=setTimeout(()=>{if(!readNativeSelection())clearSelectionPaint()},45);
  }
  function touchStart(e){
   if(e.touches.length!==1)return;
+  clearTimeout(longPressTimer);
   const t=e.touches[0];
-  touch={x:t.clientX,y:t.clientY,started:Date.now(),moved:false,dragging:false};
-  if(enabled){
-   // Start a thought selection immediately; do not depend on a later click,
-   // which iOS can suppress when native selection is disabled.
-   thoughtAt(t.clientX,t.clientY);
-  }
+  touch={x:t.clientX,y:t.clientY,moved:false,started:Date.now(),custom:false,scrolling:false};
+  // Disable native text selection while preserving ordinary vertical page scrolling.
+  window.getSelection()?.removeAllRanges();
  }
  function touchMove(e){
   if(!touch||e.touches.length!==1)return;
-  const t=e.touches[0];
-  if(Math.hypot(t.clientX-touch.x,t.clientY-touch.y)>11)touch.moved=true;
   if(!enabled)return;
-  if(touch.moved){
-   touch.dragging=true;customMode=true;
+  const t=e.touches[0],dx=t.clientX-touch.x,dy=t.clientY-touch.y;
+  if(touch.scrolling)return;
+  if(!touch.custom){
+   if(Math.hypot(dx,dy)<11)return;
+   touch.moved=true;
+   if(Math.abs(dy)>Math.abs(dx)*1.2){touch.scrolling=true;return}
+   if(Math.abs(dx)<12)return;
+   touch.custom=true;customMode=true;selectionMode=false;
    textNode.classList.add('rem-custom-selecting');
-   e.preventDefault();
-   customSelect(t.clientX,t.clientY);
+   window.getSelection()?.removeAllRanges();
+   customSelect(touch.x,touch.y,true);
   }
+  if(touch.custom){e.preventDefault();customSelect(t.clientX,t.clientY)}
  }
  function touchEnd(e){
+  clearTimeout(longPressTimer);
   if(!touch)return;
-  const start=touch;touch=null;
-  const t=e.changedTouches[0];if(!t)return;
-  if(enabled){
-   if(start.dragging)customSelect(t.clientX,t.clientY);
-   textNode.classList.remove('rem-custom-selecting');customMode=false;
-   suppressClickUntil=Date.now()+700;
-   e.preventDefault();
-   return;
-  }
-  if(start.moved||Math.hypot(t.clientX-start.x,t.clientY-start.y)>11||Date.now()-start.started>380)return;
+  const t=e.changedTouches[0],start=touch;touch=null;
+  if(start.custom){e.preventDefault();customSelect(t.clientX,t.clientY);suppressClickUntil=Date.now()+800;return}
+  if(enabled){suppressClickUntil=Date.now()+650;return}
+  if(start.scrolling||start.moved||Math.hypot(t.clientX-start.x,t.clientY-start.y)>11)return;
+  if(Date.now()-start.started>380)return;
+  customMode=false;textNode.classList.remove('rem-custom-selecting');clearSelectionPaint();
   if(selectAt(t.clientX,t.clientY)){lastTouch=Date.now();e.preventDefault()}
  }
  function click(e){
+  if(customMode)return;
+  if(enabled){if(window.getSelection()?.toString().trim()){selectionMode=true;readNativeSelection()}return}
   if(Date.now()<suppressClickUntil||Date.now()-lastTouch<650)return;
-  if(enabled){thoughtAt(e.clientX,e.clientY);}
-  else selectAt(e.clientX,e.clientY);
+  if(window.getSelection()?.toString().trim()){selectionMode=true;readNativeSelection();return}
+  selectionMode=false;selectAt(e.clientX,e.clientY)
  }
- function nativeThoughtSelection(){
-  if(!enabled)return;
-  const selection=window.getSelection();
-  if(!selection||selection.isCollapsed||!selection.rangeCount)return;
-  const range=selection.getRangeAt(0);
-  if(!textNode.contains(range.startContainer)||!textNode.contains(range.endContainer))return;
-  const quote=selection.toString().trim();
-  if(!quote)return;
-  customAnchor=0;customEnd=0;customMode=false;
-  setSaveQuote(quote);
-  paintNativeSelection();
+ function contextMenu(e){if(!enabled){e.preventDefault();suppressClickUntil=Date.now()+800}}
+ function setEnabled(value){
+  enabled=Boolean(value);touch=null;customMode=false;selectionMode=false;
+  textNode.classList.remove('rem-custom-selecting');
+  textNode.classList.toggle('rem-thought-pen-active',enabled);
+  window.getSelection()?.removeAllRanges();
+  clearSelectionPaint();selectedQuote='';saveThought.hidden=true;
+  saveThought.disabled=false;saveThought.textContent='Salva nei miei pensieri';
  }
- function contextMenu(e){if(!enabled)e.preventDefault()}
- function refreshSelectionPaint(){if(enabled&&selectedQuote){if(window.getSelection()?.toString().trim())paintNativeSelection();else customRangePaint()}}
- textNode.addEventListener('touchstart',touchStart,{passive:true});
+ function refreshSelectionPaint(){if(customMode)customRangePaint();else if(selectionMode)paintNativeSelection()}
+ textNode.addEventListener('touchstart',touchStart,{passive:false});
  textNode.addEventListener('touchmove',touchMove,{passive:false});
  textNode.addEventListener('touchend',touchEnd,{passive:false});
  textNode.addEventListener('click',click);
  textNode.addEventListener('contextmenu',contextMenu);
- document.addEventListener('selectionchange',nativeThoughtSelection);
+ document.addEventListener('selectionchange',selectionChanged);
  document.addEventListener('scroll',refreshSelectionPaint,true);
  window.addEventListener('resize',refreshSelectionPaint);
  function destroy(){
@@ -242,8 +183,7 @@ export function createHighlights(bookId,chapterId,textNode,onSwitch,onBookmark=(
   textNode.removeEventListener('touchend',touchEnd);
   textNode.removeEventListener('click',click);
   textNode.removeEventListener('contextmenu',contextMenu);
-  
-  document.removeEventListener('selectionchange',nativeThoughtSelection);
+  document.removeEventListener('selectionchange',selectionChanged);
   document.removeEventListener('scroll',refreshSelectionPaint,true);
   window.removeEventListener('resize',refreshSelectionPaint);
   textNode.classList.remove('rem-custom-selecting','rem-thought-pen-active');selectionPaint.remove();
