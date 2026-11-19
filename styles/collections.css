@@ -439,3 +439,9 @@
  letter-spacing:-.025em!important;
 }
 @media(max-width:650px){.rem-violet .rem-violet-hero h1.rem-library-title{font-size:clamp(30px,7.7vw,32px)!important;line-height:1.08!important}}
+
+/* v276: reserve two equal title lines in Biblioteca summary cards so counts align. */
+.rem-violet .rem-stats .rem-stat-title{
+ min-height:2.4em!important;
+ box-sizing:content-box!important;
+}
