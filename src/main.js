@@ -7,7 +7,7 @@ import {getProgress,saveProgress,getSetting,saveSetting} from './progress.js';
 import {el,button,panel,heading} from './ui.js';
 import {getMode,formatSwitch,paperView,audioView} from './formats.js?v=rem-audio-182';
 import {createReaderTools} from './reader-tools.js?v=rem-ui-245';
-import {createHighlights} from './highlights.js?v=rem-ebook-258';
+import {createHighlights} from './highlights.js?v=rem-ebook-259';
 import {createEbookJourney} from './ebook-journey.js?v=rem-ebook-91';
 import {phraseSearch,getPhrase,savePhrase} from './synchronization.js?v=rem-switch-68';
 import {HOME_SECTIONS,booksForHomeSection} from './home-config.js?v=rem-ui-159';
