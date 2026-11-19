@@ -205,6 +205,8 @@ function home(){
   const list=booksForHomeSection(section.id,books,getProgress,id=>getSetting('reading-path:'+id,''),id=>getSetting('episode-current:'+id,''));
   const cards=list.map(book=>{
    const image=el('div',{className:'rem-home-cover-wrap'},[cover(book)]);
+   // Fill the entire cover frame even if nested cover sizing leaves a small gap on mobile.
+   if(book.coverImage){image.style.backgroundImage=`url("${String(book.coverImage).replace(/"/g,'%22')}")`;image.style.backgroundSize='cover';image.style.backgroundPosition='center';}
    // Preserve the distinct lettering, color and composition printed on each original cover.
    // No duplicated title or opaque title band is layered over the artwork.
    const save=button(isBookSaved(book.id)?'✓':'+',()=>openHomeSaveSheet(book));
