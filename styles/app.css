@@ -1446,3 +1446,18 @@ html body.ebook-fullscreen-active .ebook-reading-shell.rem-immersive-light .eboo
 
 /* v270: remove duplicate faded chapter heading above the ebook page. */
 html body .ebook-reading-shell>.ebook-chapter-heading{display:none!important}
+
+/* v271: sun mode fullscreen controls: mint arrows, no filled button. */
+html body .ebook-reading-shell[data-theme="sun"] .ebook-page-frame>.rem-immersive-entry,
+html body.ebook-fullscreen-active .ebook-reading-shell.rem-immersive-light .rem-ebook-fullscreen-toggle.rem-immersive-close{
+ background:transparent!important;
+ background-color:transparent!important;
+ border-color:transparent!important;
+ color:#65cfa8!important;
+ box-shadow:none!important;
+}
+html body .ebook-reading-shell[data-theme="sun"] .ebook-page-frame>.rem-immersive-entry svg,
+html body.ebook-fullscreen-active .ebook-reading-shell.rem-immersive-light .rem-ebook-fullscreen-toggle.rem-immersive-close svg{
+ color:#65cfa8!important;
+ stroke:#65cfa8!important;
+}
