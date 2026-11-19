@@ -1497,3 +1497,12 @@ main .rem-home-section .rem-section-title{
  font-weight:800!important;
  letter-spacing:-.035em!important;
 }
+
+/* v279: match the stronger free/premium selectors previously retaining Newsreader. */
+main .rem-home-section[data-section="free"] .rem-section-title,
+main .rem-home-section[data-section="premium"] .rem-section-title{
+ font-family:system-ui,-apple-system,BlinkMacSystemFont,sans-serif!important;
+ font-weight:800!important;
+ font-style:normal!important;
+ letter-spacing:-.035em!important;
+}
