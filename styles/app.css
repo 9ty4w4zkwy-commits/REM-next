@@ -1097,3 +1097,10 @@ body.ebook-fullscreen-active .ebook-reading-shell>.ebook-page-frame>.format-swit
 body.ebook-fullscreen-active .ebook-reading-shell>.ebook-page-frame>.format-switcher{display:none!important}
 
 body.ebook-fullscreen-active .ebook-reading-shell .ebook-inline-switches{display:none!important}
+
+
+/* v238: give the chapter text the entire available reading viewport. */
+body.ebook-fullscreen-active .ebook-reading-shell>.ebook-page-frame{display:block!important;position:relative!important;height:auto!important;min-height:0!important;max-height:none!important;overflow-y:auto!important;overflow-x:hidden!important;padding:0!important}
+body.ebook-fullscreen-active .ebook-reading-shell>.ebook-page-frame>.reading-text{display:block!important;width:100%!important;height:auto!important;min-height:100%!important;max-height:none!important;overflow:visible!important;padding:16px 20px 20px!important;margin:0!important}
+body.ebook-fullscreen-active .ebook-reading-shell .highlight-tools{height:0!important;min-height:0!important;margin:0!important;padding:0!important}
+body.ebook-fullscreen-active .ebook-reading-shell .highlight-tools:has(.rem-save-highlight-thought:not([hidden])){height:auto!important;bottom:calc(env(safe-area-inset-bottom,0px) + 80px)!important}
