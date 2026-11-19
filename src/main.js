@@ -395,15 +395,16 @@ const sizeSelect=el('select',{attrs:{'aria-label':'Dimensione testo'}});for(cons
  const fullscreenClose=button('✕',()=>{document.body.classList.remove('ebook-fullscreen-active');fullscreenButton.setAttribute('aria-pressed','false')});
  fullscreenClose.className='rem-ebook-fullscreen-toggle rem-immersive-close';fullscreenClose.setAttribute('aria-label','Esci da schermo intero');immersiveHeader.append(fullscreenClose);
  const immersiveToolbar=el('div',{className:'rem-immersive-toolbar',attrs:{'aria-label':'Comandi lettura'}});
- const tool=(label,caption,kind,fn)=>{const b=button(caption,fn);b.className='rem-immersive-tool rem-immersive-'+kind;b.setAttribute('aria-label',label);b.title=label;immersiveToolbar.append(b);return b};
- const immersivePrev=tool('Capitolo precedente','‹','arrow',()=>{if(!prev.disabled)prev.click()});
- const lightTool=tool('Tema chiaro','☀','theme-light',()=>setImmersiveTheme('light'));
- const darkTool=tool('Tema scuro','☾','theme-dark',()=>setImmersiveTheme('dark'));
+ const immersiveIcon=(name)=>{const paths={sun:['circle|12|12|4','path|M12 2v2 M12 20v2 M4.93 4.93l1.42 1.42 M17.65 17.65l1.42 1.42 M2 12h2 M20 12h2 M4.93 19.07l1.42-1.42 M17.65 6.35l1.42-1.42'],moon:['path|M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5 8.5 8.5 0 1 0 20.5 14.2Z'],book:['path|M12 6c-3.5-2.5-7-2.5-10-1v14c3-1.5 6.5-1.5 10 1 3.5-2.5 7-2.5 10-1V5c-3-1.5-6.5-1.5-10 1Z','path|M12 6v14'],audio:['path|M3 14v-3a9 9 0 0 1 18 0v3','rect|3|13|4|8|2','rect|17|13|4|8|2'],back:['path|M19 12H5 M12 19l-7-7 7-7'],forward:['path|M5 12h14 M12 5l7 7-7 7']};const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');svg.setAttribute('viewBox','0 0 24 24');svg.setAttribute('width','23');svg.setAttribute('height','23');svg.setAttribute('fill','none');svg.setAttribute('stroke','currentColor');svg.setAttribute('stroke-width','1.8');svg.setAttribute('stroke-linecap','round');svg.setAttribute('stroke-linejoin','round');svg.setAttribute('aria-hidden','true');for(const spec of paths[name]||[]){const [tag,...parts]=spec.split('|');const node=document.createElementNS('http://www.w3.org/2000/svg',tag);if(tag==='path')node.setAttribute('d',parts[0]);if(tag==='circle'){node.setAttribute('cx',parts[0]);node.setAttribute('cy',parts[1]);node.setAttribute('r',parts[2])}if(tag==='rect'){['x','y','width','height','rx'].forEach((key,i)=>node.setAttribute(key,parts[i]))}svg.append(node)}return svg};
+ const tool=(label,caption,kind,fn)=>{const b=button('',fn);b.className='rem-immersive-tool rem-immersive-'+kind;b.setAttribute('aria-label',label);b.title=label;if(caption.startsWith('icon:'))b.append(immersiveIcon(caption.slice(5)));else b.textContent=caption;immersiveToolbar.append(b);return b};
+ const immersivePrev=tool('Capitolo precedente','icon:back','arrow',()=>{if(!prev.disabled)prev.click()});
+ const lightTool=tool('Tema chiaro','icon:sun','theme-light',()=>setImmersiveTheme('light'));
+ const darkTool=tool('Tema scuro','icon:moon','theme-dark',()=>setImmersiveTheme('dark'));
  const shrinkTool=tool('Riduci testo','A−','font',()=>adjustImmersiveFont(-1));
  const growTool=tool('Ingrandisci testo','A+','font',()=>adjustImmersiveFont(1));
- tool('Passa al cartaceo','📖','format',()=>switchFormat('paper'));
- tool('Passa all’audiolibro','🎧','format',()=>switchFormat('audio'));
- const immersiveNext=tool('Capitolo successivo','›','arrow',()=>{if(!next.disabled)next.click()});
+ tool('Passa al cartaceo','icon:book','format',()=>switchFormat('paper'));
+ tool('Passa all’audiolibro','icon:audio','format',()=>switchFormat('audio'));
+ const immersiveNext=tool('Capitolo successivo','icon:forward','arrow',()=>{if(!next.disabled)next.click()});
  immersivePrev.disabled=prev.disabled;immersiveNext.disabled=next.disabled;
  let immersiveFont=Number(getSetting('immersiveFontSize','0'))||0;
  function adjustImmersiveFont(delta){immersiveFont=Math.max(-2,Math.min(5,immersiveFont+delta));saveSetting('immersiveFontSize',String(immersiveFont));text.style.setProperty('--rem-immersive-font-size',(1.18+immersiveFont*.12)+'rem');shrinkTool.disabled=immersiveFont<=-2;growTool.disabled=immersiveFont>=5}
