@@ -471,3 +471,6 @@
  align-self:end!important;
  margin:0!important;
 }
+
+/* Reserve enough room for the largest two-line title at mobile sizes. */
+.rem-violet .rem-stats .rem-stat{grid-template-rows:3.4rem auto minmax(0,1fr)!important}
