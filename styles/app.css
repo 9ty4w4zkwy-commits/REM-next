@@ -1124,3 +1124,12 @@ body.ebook-fullscreen-active .ebook-reading-shell.rem-immersive-light .rem-immer
 /* v244: same pink outlined sun in Focus mode and fullscreen. */
 .reader-tools .reader-sun-vector{display:inline-flex;align-items:center;justify-content:center;color:#f4b7cb!important}
 .reader-tools .reader-sun-vector svg{display:block;width:25px;height:25px;stroke:currentColor!important}
+
+
+/* v246: discreet corner-only fullscreen entry inside the Ebook text card. */
+body:not(.ebook-fullscreen-active) .ebook-reading-shell .ebook-page-frame{position:relative!important}
+body:not(.ebook-fullscreen-active) .ebook-reading-shell .ebook-page-frame>.rem-immersive-entry{display:flex!important;position:absolute!important;top:16px!important;right:15px!important;z-index:8!important;width:36px!important;height:36px!important;min-height:36px!important;margin:0!important;padding:0!important;align-items:center!important;justify-content:center!important;border:1px solid rgba(125,185,175,.48)!important;border-radius:10px!important;background:#19344b!important;color:#a8e8d3!important;box-shadow:none!important}
+body:not(.ebook-fullscreen-active) .ebook-reading-shell .ebook-page-frame>.ebook-page-heading{padding-right:52px!important}
+body.ebook-fullscreen-active .ebook-reading-shell .ebook-page-frame>.rem-immersive-entry{display:none!important}
+body.ebook-fullscreen-active .rem-ebook-fullscreen-toggle.rem-immersive-close{display:flex!important;align-items:center!important;justify-content:center!important}
+.rem-ebook-fullscreen-toggle svg{display:block;flex-shrink:0}
