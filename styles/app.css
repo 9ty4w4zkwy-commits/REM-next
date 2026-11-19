@@ -1214,3 +1214,32 @@ body.ebook-fullscreen-active .ebook-reading-shell>.rem-floating-highlighter{
  position:relative!important;
  top:-.08em!important;
 }
+
+
+/* v252: understated blue-on-blue search control in the Home navigation. */
+.top nav .rem-search-nav{
+ width:40px!important;height:40px!important;min-width:40px!important;padding:0!important;
+ display:inline-flex!important;align-items:center!important;justify-content:center!important;
+ border:1px solid #496b86!important;border-radius:50%!important;
+ background:#193149!important;color:#9dc9df!important;
+}
+.top nav .rem-search-nav svg{display:block;flex:none}
+@media(max-width:480px){
+ .top nav{gap:6px!important}
+ .top nav .rem-search-nav{width:36px!important;height:36px!important;min-width:36px!important}
+ .top nav .rem-search-nav svg{width:20px;height:20px}
+}
+.rem-search-view{max-width:740px;margin:20px auto 50px;padding:0 16px}
+.rem-search-view h1{font-family:Georgia,serif;font-size:clamp(30px,7vw,43px);margin:20px 0;color:#f3f4f7}
+.rem-search-back{border:1px solid #3a5671;background:#14283e;color:#d7e8f2;border-radius:12px;padding:10px 14px}
+.rem-search-field{margin:18px 0 22px}
+.rem-book-search-input{box-sizing:border-box;width:100%;min-height:52px;border:1px solid #6386a0;border-radius:15px;background:#14283e;color:#f5f7fa;padding:12px 16px;font:inherit;font-size:16px;outline-offset:3px}
+.rem-book-search-input::placeholder{color:#a8bbcd}
+.rem-search-results{display:grid;grid-template-columns:repeat(auto-fill,minmax(145px,1fr));gap:15px}
+.rem-search-result{display:flex!important;flex-direction:column!important;align-items:stretch!important;text-align:left!important;min-width:0!important;padding:0!important;border:1px solid #34506a!important;border-radius:14px!important;background:#15263b!important;color:#eef4f7!important;overflow:hidden!important}
+.rem-search-result-cover{aspect-ratio:2/3;width:100%;overflow:hidden;background:#102035}
+.rem-search-result-cover .cover,.rem-search-result-cover img{width:100%!important;height:100%!important;object-fit:cover!important}
+.rem-search-result-info{display:flex;flex-direction:column;gap:5px;padding:11px;font-size:13px;line-height:1.35}
+.rem-search-result-info strong{font-size:14px}
+.rem-search-result-info span{color:#a9c1d1}
+.rem-search-empty{color:#b7c8d6}
