@@ -1087,3 +1087,11 @@ body.ebook-fullscreen-active .ebook-reading-shell .ebook-page-frame p{background
 body.ebook-fullscreen-active .ebook-reading-shell:not(.rem-immersive-light){background:#0b1526!important;color:#f2eee8!important}
 body.ebook-fullscreen-active .ebook-reading-shell.rem-immersive-light{background:#f5f0e6!important;color:#202b32!important}
 body.ebook-fullscreen-active .ebook-reading-shell .reading-text{background:transparent!important;color:inherit!important}
+
+
+/* v237: hide redundant format-switch panels inside immersive reading page. */
+body.ebook-fullscreen-active .ebook-reading-shell .ebook-page-frame button,
+body.ebook-fullscreen-active .ebook-reading-shell .ebook-page-frame .format-switch,
+body.ebook-fullscreen-active .ebook-reading-shell .ebook-page-frame .format-switcher{ }
+body.ebook-fullscreen-active .ebook-reading-shell>.ebook-page-frame>.format-switch,
+body.ebook-fullscreen-active .ebook-reading-shell>.ebook-page-frame>.format-switcher{display:none!important}
