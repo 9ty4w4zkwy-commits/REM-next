@@ -1024,3 +1024,8 @@ main .rem-home-section.rem-cinema-section .rem-cover-save.is-saved{
 /* v230: compact back-to-top, closer to the left edge */
 .rem-home-back-to-top-wrap{padding-left:0!important;padding-right:16px!important;margin-top:24px!important}
 .rem-home-back-to-top{min-height:38px!important;padding:7px 14px!important;font-size:.79rem!important;border-radius:999px!important}
+
+/* v232: keep artwork flush to every edge of the cinematic cover frame. */
+main .rem-home-section.rem-cinema-section .rem-book-card .rem-home-cover-wrap{background-color:#102238;background-size:cover;background-position:center;background-repeat:no-repeat}
+main .rem-home-section.rem-cinema-section .rem-book-card .rem-home-cover-wrap .cover{box-sizing:border-box!important;inset:0!important;min-height:100%!important;height:100%!important;width:100%!important}
+main .rem-home-section.rem-cinema-section .rem-book-card .rem-home-cover-wrap .cover .cover-photo{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;object-fit:cover!important;object-position:center!important;background:transparent!important}
