@@ -1281,3 +1281,9 @@ html body .ebook-reading-shell .ebook-page-frame .reading-text::after{
 html body .ebook-reading-shell .ebook-page-frame .reading-text{
  touch-action:pan-y!important;
 }
+
+/* v258: when the pink pen is on, reserve finger movement for free-form
+   thought selection; when off, retain ordinary vertical reading scroll. */
+html body .ebook-reading-shell .ebook-page-frame .reading-text.rem-thought-pen-active{
+ touch-action:none!important;
+}
