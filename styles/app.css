@@ -1488,3 +1488,12 @@ main h1.rem-cinema-intro{
  letter-spacing:-.025em!important;
 }
 @media(max-width:650px){main h1.rem-cinema-intro{font-size:clamp(30px,7.7vw,32px)!important;line-height:1.08!important}}
+
+/* v278: use the collection cards' native system-ui typography on Home titles. */
+main h1.rem-cinema-intro,
+main .rem-home-section .rem-section-title{
+ font-family:system-ui,-apple-system,BlinkMacSystemFont,sans-serif!important;
+ font-style:normal!important;
+ font-weight:800!important;
+ letter-spacing:-.035em!important;
+}
