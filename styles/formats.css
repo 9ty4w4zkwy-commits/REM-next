@@ -632,3 +632,15 @@ body.ebook-fullscreen-active .ebook-reading-shell .ebook-scroll-rail{display:non
 body.ebook-fullscreen-active .ebook-reading-shell>.ebook-page-frame>.reading-text::-webkit-scrollbar{display:none!important;width:0!important}
 body.ebook-fullscreen-active .ebook-reading-shell>.ebook-page-frame>.reading-text{scrollbar-width:none!important}
 body.ebook-fullscreen-active .ebook-reading-shell .ebook-inline-switches{display:none!important}
+
+
+/* v240: one scrollbar only. Normal Ebook uses document scrolling; fullscreen uses text scrolling. */
+body:not(.ebook-fullscreen-active) .ebook-reading-shell .ebook-page-frame{overflow:visible!important;height:auto!important;max-height:none!important}
+body:not(.ebook-fullscreen-active) .ebook-reading-shell .ebook-page-frame .reading-text,
+body:not(.ebook-fullscreen-active) .ebook-reading-shell .ebook-page-frame .reading-text.normal,
+body:not(.ebook-fullscreen-active) .ebook-reading-shell .ebook-page-frame .reading-text.large,
+body:not(.ebook-fullscreen-active) .ebook-reading-shell .ebook-page-frame .reading-text.xlarge{height:auto!important;min-height:240px!important;max-height:none!important;overflow:visible!important;scrollbar-width:none!important}
+.ebook-reading-shell .ebook-scroll-rail{display:none!important}
+body.ebook-fullscreen-active .ebook-reading-shell>.ebook-page-frame{overflow:hidden!important}
+body.ebook-fullscreen-active .ebook-reading-shell>.ebook-page-frame>.reading-text{overflow-y:auto!important;overflow-x:hidden!important;height:100%!important;min-height:0!important;max-height:none!important;scrollbar-width:none!important}
+body.ebook-fullscreen-active .ebook-reading-shell>.ebook-page-frame>.reading-text::-webkit-scrollbar{display:none!important;width:0!important}
