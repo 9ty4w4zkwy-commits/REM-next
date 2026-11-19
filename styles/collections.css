@@ -430,3 +430,12 @@
 .rem-thought-source-label{font:600 10px/1.4 system-ui,-apple-system,sans-serif;letter-spacing:.16em;color:#93a6b8}
 .rem-thought-source-title{font-size:14px!important;font-weight:500!important;color:#e5edf3!important;line-height:1.45!important}
 .rem-thought-source-chapter{font-size:12px!important;color:#9bafc0!important}
+
+/* v275: Biblioteca main title aligned with Home editorial typography. */
+.rem-violet .rem-violet-hero h1.rem-library-title{
+ font-family:'Newsreader',Georgia,'Times New Roman',serif!important;
+ font-style:normal!important;
+ font-weight:600!important;
+ letter-spacing:-.025em!important;
+}
+@media(max-width:650px){.rem-violet .rem-violet-hero h1.rem-library-title{font-size:clamp(30px,7.7vw,32px)!important;line-height:1.08!important}}
