@@ -1435,3 +1435,11 @@ html body.ebook-fullscreen-active .ebook-reading-shell>.rem-floating-highlighter
  color:#8d315e!important;
  stroke:#8d315e!important;
 }
+
+/* v269: fullscreen sun mode uses pure white across page and bottom toolbar. */
+html body.ebook-fullscreen-active .ebook-reading-shell.rem-immersive-light,
+html body.ebook-fullscreen-active .ebook-reading-shell.rem-immersive-light>.rem-immersive-toolbar,
+html body.ebook-fullscreen-active .ebook-reading-shell.rem-immersive-light .ebook-page-frame{
+ background:#fff!important;
+ background-color:#fff!important;
+}
