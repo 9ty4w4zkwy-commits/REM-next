@@ -688,3 +688,16 @@ html body.ebook-fullscreen-active .ebook-reading-shell>.ebook-page-frame>.readin
 html body.ebook-fullscreen-active .ebook-reading-shell>.ebook-page-frame>.reading-text::-webkit-scrollbar{
  display:none!important;width:0!important;
 }
+
+/* v269: true white background when the sun reading theme is selected. */
+html body .ebook-reading-shell.reading-shell[data-theme="sun"]{
+ background:#fff!important;
+ background-color:#fff!important;
+ color:#202b32!important;
+ color-scheme:light;
+}
+html body .ebook-reading-shell.reading-shell[data-theme="sun"] .ebook-page-frame,
+html body .ebook-reading-shell.reading-shell[data-theme="sun"] .reading-text{
+ background:#fff!important;
+ background-color:#fff!important;
+}
