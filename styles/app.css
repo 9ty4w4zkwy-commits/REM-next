@@ -1443,3 +1443,6 @@ html body.ebook-fullscreen-active .ebook-reading-shell.rem-immersive-light .eboo
  background:#fff!important;
  background-color:#fff!important;
 }
+
+/* v270: remove duplicate faded chapter heading above the ebook page. */
+html body .ebook-reading-shell>.ebook-chapter-heading{display:none!important}
