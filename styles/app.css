@@ -1243,3 +1243,26 @@ body.ebook-fullscreen-active .ebook-reading-shell>.rem-floating-highlighter{
 .rem-search-result-info strong{font-size:14px}
 .rem-search-result-info span{color:#a9c1d1}
 .rem-search-empty{color:#b7c8d6}
+
+
+/* v253: correct inherited min-height that stretched search circle into an oval. */
+.top nav button.rem-search-nav{
+ box-sizing:border-box!important;
+ width:39px!important;min-width:39px!important;max-width:39px!important;
+ height:39px!important;min-height:39px!important;max-height:39px!important;
+ flex:0 0 39px!important;aspect-ratio:1/1!important;
+ border-radius:50%!important;padding:0!important;
+}
+@media(max-width:480px){
+ .top nav button.rem-search-nav{
+  width:39px!important;min-width:39px!important;max-width:39px!important;
+  height:39px!important;min-height:39px!important;max-height:39px!important;
+  flex-basis:39px!important;
+ }
+}
+/* Keep the profile pictogram visually lighter next to the search circle. */
+.top nav button.rem-profile-nav{
+ border-color:transparent!important;
+ background:transparent!important;
+ box-shadow:none!important;
+}
