@@ -1017,3 +1017,6 @@ main .rem-home-section.rem-cinema-section .rem-cover-save.is-saved{
 .rem-home-back-to-top-wrap{display:flex;justify-content:center;align-items:center;margin:30px 0 44px;padding:8px 16px}
 .rem-home-back-to-top{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:11px 24px;border:1px solid #72d6bf;border-radius:999px;background:#102238;color:#b5f0df;font-size:.92rem;font-weight:600;letter-spacing:.02em;cursor:pointer}
 .rem-home-back-to-top:focus-visible{outline:2px solid #b5f0df;outline-offset:4px}
+
+/* v229: align the Home back-to-top button with the left editorial margin. */
+.rem-home-back-to-top-wrap{justify-content:flex-start;padding-left:28px;padding-right:16px}
