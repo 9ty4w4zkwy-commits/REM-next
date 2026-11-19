@@ -229,6 +229,30 @@ function home(){
  backToTop.setAttribute('aria-label','Torna all’inizio della Home');
  render(intro,...HOME_SECTIONS.map(shelf),el('div',{className:'rem-home-back-to-top-wrap'},[backToTop]));
 }
+function searchBooks(){
+ currentView='search';
+ const input=el('input',{className:'rem-book-search-input',attrs:{type:'search',placeholder:'Cerca un libro o un autore…','aria-label':'Cerca per titolo o autore',autocomplete:'off'}});
+ const results=el('div',{className:'rem-search-results'});
+ const normalize=value=>String(value||'').normalize('NFD').replace(/[\\u0300-\\u036f]/g,'').toLocaleLowerCase('it').trim();
+ const update=()=>{
+  const query=normalize(input.value);results.replaceChildren();
+  const matches=books.filter(book=>normalize(book.title+' '+(book.author||'')).includes(query));
+  if(!matches.length){results.append(para('Nessun libro trovato. Prova un altro titolo o autore.','rem-search-empty'));return}
+  for(const book of matches){
+   const card=button('',()=>detail(book.id));
+   card.className='rem-search-result';
+   card.setAttribute('aria-label','Apri '+book.title+' di '+(book.author||''));
+   const art=el('div',{className:'rem-search-result-cover'},[cover(book)]);
+   if(book.coverImage){art.style.backgroundImage='url("'+String(book.coverImage).replace(/"/g,'%22')+'")';art.style.backgroundSize='cover';art.style.backgroundPosition='center'}
+   card.append(art,el('span',{className:'rem-search-result-info'},[el('strong',{text:book.title}),el('span',{text:book.author||''})]));
+   results.append(card);
+  }
+ };
+ input.addEventListener('input',update);
+ const back=button('← Torna alla Home',home);back.className='rem-search-back';
+ render(el('section',{className:'rem-search-view'},[back,el('h1',{text:'Cerca su REM'}),el('div',{className:'rem-search-field'},[input]),results]));
+ update();requestAnimationFrame(()=>input.focus({preventScroll:true}));
+}
 function profile(){
  currentView='profile';
  const completed=onboardingCompleted();
@@ -452,5 +476,5 @@ const sizeSelect=el('select',{attrs:{'aria-label':'Dimensione testo'}});for(cons
  }
 }
 }catch(error){if(text.isConnected)text.textContent='Impossibile caricare il capitolo: '+error.message}finally{requestAnimationFrame(()=>{requestAnimationFrame(()=>{readerRestoring=false})})}}
-document.getElementById('brand').onclick=home;document.getElementById('navHome').onclick=home;document.getElementById('navLibrary').onclick=()=>library();document.getElementById('navProfile').onclick=profile;
+document.getElementById('brand').onclick=home;document.getElementById('navHome').onclick=home;document.getElementById('navLibrary').onclick=()=>library();document.getElementById('navProfile').onclick=profile;document.getElementById('navSearch').onclick=searchBooks;
 try{books=await loadCatalog();if(onboardingCompleted()||getSetting('onboarding-v1','')==='later')home();else showOnboarding(render,home)}catch(error){render(heading('REM Next','ERRORE'),para('Impossibile caricare il catalogo: '+error.message),para('Avvia l’app tramite un server web, non aprendo index.html come file locale.'))}
