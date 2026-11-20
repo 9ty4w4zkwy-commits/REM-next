@@ -1638,3 +1638,6 @@ header.top{background:#0b1424!important}
 
 /* v296: center the search icon evenly between Biblioteca and profile. */
 header.top nav .rem-search-nav{margin-left:8px!important;margin-right:8px!important}
+
+/* v297: nudge the pink search glyph right while keeping the profile position fixed. */
+header.top nav .rem-search-nav{margin-left:20px!important;margin-right:-4px!important}
