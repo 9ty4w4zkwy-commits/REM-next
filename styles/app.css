@@ -1587,3 +1587,10 @@ header.top nav .rem-profile-nav{margin-left:0!important}
 /* v290: bring search and profile icons closer without shrinking their tap targets. */
 header.top nav .rem-search-nav{margin-right:-12px!important}
 header.top nav .rem-profile-nav{margin-left:-4px!important}
+
+/* v291: shift Home/Biblioteca right by tightening the gap before search; pink search icon. */
+header.top nav{gap:0!important}
+header.top nav .rem-search-nav{margin-left:-8px!important}
+header.top nav .rem-search-nav,
+header.top nav .rem-search-nav svg{color:#f4a0c9!important;stroke:#f4a0c9!important}
+@media(max-width:650px){header.top nav{gap:0!important}}
