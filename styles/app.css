@@ -1708,3 +1708,46 @@ header.top nav #navSearch.rem-search-nav svg path{
  stroke:#50d3a7!important;
 }
 header.top nav #navSearch.rem-search-nav::before{border-color:#50d3a7!important}
+
+/* v307: compact translucent sticky navigation with profile beside REM. */
+header.top{
+ position:sticky!important;top:0!important;z-index:200!important;
+ background:rgba(11,20,36,.66)!important;
+ -webkit-backdrop-filter:blur(12px)!important;backdrop-filter:blur(12px)!important;
+ display:flex!important;align-items:center!important;justify-content:space-between!important;
+ padding:6px 12px!important;gap:6px!important;
+}
+header.top .rem-brand-group{display:flex!important;align-items:center!important;gap:9px!important;flex:0 0 auto!important}
+header.top .rem-brand-group .wordmark{flex:0 0 auto!important}
+header.top .rem-brand-group .rem-profile-nav{
+ display:inline-flex!important;align-items:center!important;justify-content:center!important;
+ width:36px!important;min-width:36px!important;height:36px!important;
+ padding:5px!important;margin:0!important;
+ border:0!important;background:transparent!important;color:#9ce6c7!important;
+}
+header.top .rem-brand-group .rem-profile-nav svg{width:23px!important;height:23px!important}
+header.top nav{margin-left:auto!important;margin-right:0!important;display:flex!important;align-items:center!important;justify-content:flex-end!important;gap:8px!important;background:transparent!important;padding:0!important}
+header.top nav #navHome,header.top nav #navLibrary,header.top nav #navSearch{
+ margin:0!important;transform:none!important;flex-shrink:0!important;
+}
+header.top nav #navSearch.rem-search-nav{
+ width:36px!important;min-width:36px!important;height:36px!important;
+ padding:6px!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;
+ color:#fff!important;stroke:#fff!important;border:0!important;background:transparent!important;
+}
+header.top nav #navSearch.rem-search-nav::before{content:none!important;display:none!important}
+header.top nav #navSearch.rem-search-nav svg,
+header.top nav #navSearch.rem-search-nav svg circle,
+header.top nav #navSearch.rem-search-nav svg path{
+ color:#fff!important;stroke:#fff!important;
+}
+header.top nav #navSearch.rem-search-nav svg{width:22px!important;height:22px!important;transform:none!important;stroke-width:1.5!important}
+@media(max-width:650px){
+ header.top{padding:5px 8px!important;gap:3px!important}
+ header.top .rem-brand-group{gap:5px!important}
+ header.top .rem-brand-group .rem-profile-nav{width:32px!important;min-width:32px!important;height:36px!important;padding:4px!important}
+ header.top nav{gap:6px!important}
+ header.top nav button:not(.rem-search-nav){padding:6px 7px!important;font-size:11px!important}
+ header.top nav #navSearch.rem-search-nav{width:34px!important;min-width:34px!important;height:36px!important}
+}
+body.ebook-fullscreen-active header.top{display:none!important}
