@@ -1644,3 +1644,8 @@ header.top nav .rem-search-nav{margin-left:20px!important;margin-right:-4px!impo
 
 /* v298: visually center search between Biblioteca and profile without moving either neighbor. */
 header.top nav .rem-search-nav{transform:translateX(18px)!important}
+
+/* v299: correct optical centering; previous right shift put search too close to profile. */
+header.top nav .rem-search-nav{
+ transform:translateX(-12px)!important;
+}
