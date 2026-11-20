@@ -1564,3 +1564,15 @@ header.top nav button.is-active{background:#58d6a6!important;border-color:#58d6a
 header.top nav .rem-search-nav{width:36px!important;min-width:36px!important;height:36px!important;padding:5px!important}
 header.top nav .rem-search-nav svg{width:23px!important;height:23px!important}
 @media(max-width:650px){header.top nav{gap:4px!important}}
+
+/* v288: smaller search glyph; remove icon-button circles. */
+header.top nav .rem-search-nav,
+header.top nav .rem-profile-nav{
+ background:transparent!important;
+ border:0!important;
+ box-shadow:none!important;
+ border-radius:0!important;
+}
+header.top nav .rem-search-nav svg{width:19px!important;height:19px!important}
+header.top nav .rem-search-nav:hover,
+header.top nav .rem-profile-nav:hover{background:transparent!important}
