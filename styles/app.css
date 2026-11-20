@@ -1649,3 +1649,6 @@ header.top nav .rem-search-nav{transform:translateX(18px)!important}
 header.top nav .rem-search-nav{
  transform:translateX(-12px)!important;
 }
+
+/* v300: reduce the visible gap after Biblioteca by moving only the pink search icon left. */
+header.top nav .rem-search-nav{transform:translateX(-24px)!important}
