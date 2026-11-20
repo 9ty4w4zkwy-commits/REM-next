@@ -1629,3 +1629,6 @@ header.top nav #navLibrary{margin-left:5px!important}
  header.top nav .rem-search-nav,
  header.top nav .rem-profile-nav{width:42px!important;min-width:42px!important;height:42px!important}
 }
+
+/* v294: return header to normal document flow; no sticky blue bar on scroll. */
+header.top{position:relative!important;top:auto!important}
