@@ -1594,3 +1594,8 @@ header.top nav .rem-search-nav{margin-left:-8px!important}
 header.top nav .rem-search-nav,
 header.top nav .rem-search-nav svg{color:#f4a0c9!important;stroke:#f4a0c9!important}
 @media(max-width:650px){header.top nav{gap:0!important}}
+
+/* v292: slimmer translucent sticky header and a subtle Home/Biblioteca gap. */
+header.top{padding-top:4px!important;padding-bottom:4px!important}
+header.top nav #navLibrary{margin-left:5px!important}
+@media(max-width:650px){header.top{padding-top:4px!important;padding-bottom:4px!important}header.top nav #navLibrary{margin-left:5px!important}}
