@@ -1698,3 +1698,13 @@ header.top nav #navSearch.rem-search-nav svg{
  transform:translate(-.5px,-.5px)!important;
  stroke-width:1.7!important;
 }
+
+/* v305: override legacy pink SVG stroke explicitly (not just parent color). */
+header.top nav #navSearch.rem-search-nav,
+header.top nav #navSearch.rem-search-nav svg,
+header.top nav #navSearch.rem-search-nav svg circle,
+header.top nav #navSearch.rem-search-nav svg path{
+ color:#50d3a7!important;
+ stroke:#50d3a7!important;
+}
+header.top nav #navSearch.rem-search-nav::before{border-color:#50d3a7!important}
