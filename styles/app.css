@@ -1641,3 +1641,6 @@ header.top nav .rem-search-nav{margin-left:8px!important;margin-right:8px!import
 
 /* v297: nudge the pink search glyph right while keeping the profile position fixed. */
 header.top nav .rem-search-nav{margin-left:20px!important;margin-right:-4px!important}
+
+/* v298: visually center search between Biblioteca and profile without moving either neighbor. */
+header.top nav .rem-search-nav{transform:translateX(18px)!important}
