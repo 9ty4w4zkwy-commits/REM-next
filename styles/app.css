@@ -1675,3 +1675,26 @@ header.top nav #navLibrary,
 header.top nav .rem-search-nav,
 header.top nav .rem-profile-nav{margin-left:0!important;margin-right:0!important;transform:none!important}
 @media(max-width:650px){header.top nav{gap:8px!important}}
+
+/* v304: mint outlined search button with geometrically centered magnifier. */
+header.top nav #navSearch.rem-search-nav{
+ position:relative!important;
+ color:#50d3a7!important;
+ border:0!important;
+ background:transparent!important;
+ width:42px!important;min-width:42px!important;height:42px!important;
+ padding:0!important;
+ display:inline-flex!important;align-items:center!important;justify-content:center!important;
+ transform:none!important;
+}
+header.top nav #navSearch.rem-search-nav::before{
+ content:"";position:absolute;inset:5px;
+ border:1.4px solid currentColor;border-radius:50%;
+ pointer-events:none;
+}
+header.top nav #navSearch.rem-search-nav svg{
+ width:19px!important;height:19px!important;
+ display:block!important;
+ transform:translate(-.5px,-.5px)!important;
+ stroke-width:1.7!important;
+}
