@@ -1632,3 +1632,6 @@ header.top nav #navLibrary{margin-left:5px!important}
 
 /* v294: return header to normal document flow; no sticky blue bar on scroll. */
 header.top{position:relative!important;top:auto!important}
+
+/* v295: match header blue to the Home page background. */
+header.top{background:#0b1424!important}
