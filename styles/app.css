@@ -1635,3 +1635,6 @@ header.top{position:relative!important;top:auto!important}
 
 /* v295: match header blue to the Home page background. */
 header.top{background:#0b1424!important}
+
+/* v296: center the search icon evenly between Biblioteca and profile. */
+header.top nav .rem-search-nav{margin-left:8px!important;margin-right:8px!important}
