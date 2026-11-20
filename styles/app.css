@@ -1583,3 +1583,7 @@ header.top nav{margin-left:auto!important;margin-right:0!important;gap:2px!impor
 header.top nav .rem-search-nav{margin-right:-4px!important}
 header.top nav .rem-profile-nav{margin-left:0!important}
 @media(max-width:650px){header.top{padding-right:3px!important}header.top nav{gap:2px!important}}
+
+/* v290: bring search and profile icons closer without shrinking their tap targets. */
+header.top nav .rem-search-nav{margin-right:-12px!important}
+header.top nav .rem-profile-nav{margin-left:-4px!important}
