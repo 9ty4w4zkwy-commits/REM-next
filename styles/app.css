@@ -1557,3 +1557,10 @@ header.top nav button.is-active{background:rgba(88,214,166,.64)!important;border
 header.top nav .rem-search-nav,header.top nav .rem-profile-nav{width:34px!important;min-width:34px!important;height:34px!important;padding:5px!important;border-radius:50%!important;background:rgba(23,54,83,.14)!important}
 header.top nav .rem-search-nav svg,header.top nav .rem-profile-nav svg{width:19px!important;height:19px!important}
 @media(max-width:650px){header.top{padding:7px 8px 7px 12px!important}header.top nav{gap:2px!important}header.top nav button:not(.rem-search-nav):not(.rem-profile-nav){padding:6px 7px!important;font-size:11px!important}}
+
+/* v287: no outer nav capsule; restore vivid mint and balanced search icon. */
+header.top nav{background:transparent!important;border:0!important;box-shadow:none!important;padding:0!important;border-radius:0!important;gap:4px!important}
+header.top nav button.is-active{background:#58d6a6!important;border-color:#58d6a6!important;color:#102438!important}
+header.top nav .rem-search-nav{width:36px!important;min-width:36px!important;height:36px!important;padding:5px!important}
+header.top nav .rem-search-nav svg{width:23px!important;height:23px!important}
+@media(max-width:650px){header.top nav{gap:4px!important}}
