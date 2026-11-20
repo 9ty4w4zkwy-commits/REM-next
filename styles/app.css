@@ -1548,3 +1548,12 @@ header.top .wordmark{flex:0 0 auto!important}
  header.top nav button.rem-profile-nav{padding-left:5px!important;padding-right:1px!important}
 }
 body.ebook-fullscreen-active header.top{display:none!important}
+
+/* v286: compact translucent sticky navigation; retain existing layout and behavior. */
+header.top{padding-top:9px!important;padding-bottom:9px!important;background:rgba(8,20,37,.38)!important}
+header.top nav{gap:3px!important;padding:2px 3px!important;background:rgba(17,37,57,.24)!important;border:1px solid rgba(156,208,212,.14);border-radius:16px}
+header.top nav button{min-height:34px!important;padding:6px 9px!important;border-radius:11px!important;font-size:12px!important;line-height:1.15!important;background:rgba(23,54,83,.20)!important;border-color:rgba(151,192,204,.24)!important}
+header.top nav button.is-active{background:rgba(88,214,166,.64)!important;border-color:rgba(88,214,166,.55)!important;color:#0b2830!important}
+header.top nav .rem-search-nav,header.top nav .rem-profile-nav{width:34px!important;min-width:34px!important;height:34px!important;padding:5px!important;border-radius:50%!important;background:rgba(23,54,83,.14)!important}
+header.top nav .rem-search-nav svg,header.top nav .rem-profile-nav svg{width:19px!important;height:19px!important}
+@media(max-width:650px){header.top{padding:7px 8px 7px 12px!important}header.top nav{gap:2px!important}header.top nav button:not(.rem-search-nav):not(.rem-profile-nav){padding:6px 7px!important;font-size:11px!important}}
