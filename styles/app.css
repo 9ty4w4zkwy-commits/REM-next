@@ -1576,3 +1576,10 @@ header.top nav .rem-profile-nav{
 header.top nav .rem-search-nav svg{width:19px!important;height:19px!important}
 header.top nav .rem-search-nav:hover,
 header.top nav .rem-profile-nav:hover{background:transparent!important}
+
+/* v289: right-align compact controls and lighten the sticky glass header. */
+header.top{background:rgba(8,20,37,.16)!important;-webkit-backdrop-filter:blur(10px)!important;backdrop-filter:blur(10px)!important}
+header.top nav{margin-left:auto!important;margin-right:0!important;gap:2px!important}
+header.top nav .rem-search-nav{margin-right:-4px!important}
+header.top nav .rem-profile-nav{margin-left:0!important}
+@media(max-width:650px){header.top{padding-right:3px!important}header.top nav{gap:2px!important}}
