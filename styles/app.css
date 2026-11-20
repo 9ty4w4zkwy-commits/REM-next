@@ -1751,3 +1751,8 @@ header.top nav #navSearch.rem-search-nav svg{width:22px!important;height:22px!im
  header.top nav #navSearch.rem-search-nav{width:34px!important;min-width:34px!important;height:36px!important}
 }
 body.ebook-fullscreen-active header.top{display:none!important}
+
+/* v308: profile first, REM second; gently shift right-hand navigation right. */
+header.top .rem-brand-group{flex-direction:row!important}
+header.top nav{position:relative!important;left:3px!important}
+@media(max-width:650px){header.top nav{left:4px!important}header.top{padding-right:5px!important}}
