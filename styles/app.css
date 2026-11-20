@@ -1756,3 +1756,6 @@ body.ebook-fullscreen-active header.top{display:none!important}
 header.top .rem-brand-group{flex-direction:row!important}
 header.top nav{position:relative!important;left:3px!important}
 @media(max-width:650px){header.top nav{left:4px!important}header.top{padding-right:5px!important}}
+
+/* v309: subtle left nudge of only the white search glyph; keep tap target unchanged. */
+header.top nav #navSearch.rem-search-nav svg{transform:translateX(-4px)!important}
