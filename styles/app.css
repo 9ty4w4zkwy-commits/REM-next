@@ -1759,3 +1759,7 @@ header.top nav{position:relative!important;left:3px!important}
 
 /* v309: subtle left nudge of only the white search glyph; keep tap target unchanged. */
 header.top nav #navSearch.rem-search-nav svg{transform:translateX(-4px)!important}
+
+/* v312: move floating pink underline button 2 mm inward from its v309 position. */
+html body .ebook-reading-shell>.rem-floating-highlighter{right:25px!important}
+html body.ebook-fullscreen-active .ebook-reading-shell>.rem-floating-highlighter{right:23px!important}
