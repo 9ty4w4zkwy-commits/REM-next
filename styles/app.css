@@ -1,6 +1,6 @@
-:root{--bg:#101a2a;--surface:#172b40;--surface2:#213c52;--text:#f7f8fa;--muted:#b6c8d3;--accent:#1FD69A;--radius:20px;color-scheme:dark;font-family:system-ui,-apple-system,sans-serif}*{box-sizing:border-box}body{margin:0;min-height:100vh;background:var(--bg);color:var(--text)}.top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:20px;max-width:900px;margin:auto;border-bottom:1px solid #ffffff22}.top nav{display:flex;gap:8px}.wordmark{font-size:1.4rem;font-weight:800;letter-spacing:.04em;border:0;background:none;padding:0}.wordmark span{font-size:.7rem;color:var(--accent)}main{max-width:820px;padding:24px 20px 60px;margin:auto}footer{max-width:820px;margin:auto;padding:20px;color:var(--muted);font-size:.8rem}h1,h2{font-family:Georgia,serif;font-weight:500}h1{font-size:clamp(2rem,6vw,3.3rem);line-height:1.12}h2{font-size:1.4rem}.eyebrow{color:var(--accent);font-size:.72rem;font-weight:750;letter-spacing:.2em}.intro{font-size:1.13rem}p{line-height:1.65;color:var(--muted)}button,select,input{font:inherit;min-height:44px;border-radius:12px;border:1px solid #6c8a9d;background:var(--surface2);color:var(--text);padding:10px 14px}button{cursor:pointer}button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--accent)}button:disabled{opacity:.45;cursor:not-allowed}.primary{background:var(--accent);color:#102236;border-color:var(--accent);font-weight:750}.panel{background:var(--surface);padding:20px;border-radius:var(--radius);margin:20px 0}.cover{min-height:190px;padding:24px;border-radius:16px;display:flex;flex-direction:column;justify-content:space-between;gap:14px;background:linear-gradient(145deg,#294d50,#122d3a);max-width:320px}.cover.classic{background:linear-gradient(145deg,#514333,#172a3b)}.cover span{font-size:.68rem;letter-spacing:.2em;color:#d8eee6}.cover strong{font:1.7rem/1.2 Georgia,serif}.cover small{color:#e0e7e9}.library-card{display:flex;gap:24px;align-items:center}.library-card .cover{width:175px;min-height:190px;flex-shrink:0}.library-card .cover strong{font-size:1.2rem}.reader-controls,.chapter-actions{display:flex;gap:10px;flex-wrap:wrap;margin:20px 0}.reading-text{font:1.18rem/1.95 Georgia,serif;white-space:pre-wrap;background:#f5f0e6;color:#202b32;border-radius:16px;padding:clamp(20px,5vw,45px);min-height:240px;overflow-wrap:anywhere}.reading-text.large{font-size:1.4rem}.reading-text.xlarge{font-size:1.7rem}input[type=search]{width:100%;margin:12px 0}@media(max-width:540px){.top,main{padding:16px}.top nav button{padding:8px}.library-card{align-items:flex-start;gap:14px}.library-card .cover{width:115px;min-height:150px;padding:12px}.library-card .cover strong{font-size:1rem}.panel{padding:15px}.reader-controls select{width:100%}}
+:root{--bg:#101a2a;--surface:#172b40;--surface2:#213c52;--text:#f7f8fa;--muted:#b6c8d3;--accent:#64dfa9;--radius:20px;color-scheme:dark;font-family:system-ui,-apple-system,sans-serif}*{box-sizing:border-box}body{margin:0;min-height:100vh;background:var(--bg);color:var(--text)}.top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:20px;max-width:900px;margin:auto;border-bottom:1px solid #ffffff22}.top nav{display:flex;gap:8px}.wordmark{font-size:1.4rem;font-weight:800;letter-spacing:.04em;border:0;background:none;padding:0}.wordmark span{font-size:.7rem;color:var(--accent)}main{max-width:820px;padding:24px 20px 60px;margin:auto}footer{max-width:820px;margin:auto;padding:20px;color:var(--muted);font-size:.8rem}h1,h2{font-family:Georgia,serif;font-weight:500}h1{font-size:clamp(2rem,6vw,3.3rem);line-height:1.12}h2{font-size:1.4rem}.eyebrow{color:var(--accent);font-size:.72rem;font-weight:750;letter-spacing:.2em}.intro{font-size:1.13rem}p{line-height:1.65;color:var(--muted)}button,select,input{font:inherit;min-height:44px;border-radius:12px;border:1px solid #6c8a9d;background:var(--surface2);color:var(--text);padding:10px 14px}button{cursor:pointer}button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--accent)}button:disabled{opacity:.45;cursor:not-allowed}.primary{background:var(--accent);color:#102236;border-color:var(--accent);font-weight:750}.panel{background:var(--surface);padding:20px;border-radius:var(--radius);margin:20px 0}.cover{min-height:190px;padding:24px;border-radius:16px;display:flex;flex-direction:column;justify-content:space-between;gap:14px;background:linear-gradient(145deg,#294d50,#122d3a);max-width:320px}.cover.classic{background:linear-gradient(145deg,#514333,#172a3b)}.cover span{font-size:.68rem;letter-spacing:.2em;color:#d8eee6}.cover strong{font:1.7rem/1.2 Georgia,serif}.cover small{color:#e0e7e9}.library-card{display:flex;gap:24px;align-items:center}.library-card .cover{width:175px;min-height:190px;flex-shrink:0}.library-card .cover strong{font-size:1.2rem}.reader-controls,.chapter-actions{display:flex;gap:10px;flex-wrap:wrap;margin:20px 0}.reading-text{font:1.18rem/1.95 Georgia,serif;white-space:pre-wrap;background:#f5f0e6;color:#202b32;border-radius:16px;padding:clamp(20px,5vw,45px);min-height:240px;overflow-wrap:anywhere}.reading-text.large{font-size:1.4rem}.reading-text.xlarge{font-size:1.7rem}input[type=search]{width:100%;margin:12px 0}@media(max-width:540px){.top,main{padding:16px}.top nav button{padding:8px}.library-card{align-items:flex-start;gap:14px}.library-card .cover{width:115px;min-height:150px;padding:12px}.library-card .cover strong{font-size:1rem}.panel{padding:15px}.reader-controls select{width:100%}}
 /* REM 5.6-inspired home, isolated from reader styling */
-.home-hero{padding:36px 26px 40px;border-radius:24px;background:radial-gradient(circle at 85% 10%,#245a60 0%,transparent 44%),linear-gradient(145deg,#173b54,#102b44 68%,#0c2035);border:1px solid #ffffff16;margin:10px 0 38px}.home-hero h1{font-family:Georgia,serif;max-width:620px;font-size:clamp(2.3rem,7vw,4.1rem);margin:12px 0 18px;line-height:1.1}.home-lead{max-width:520px;font-size:1.1rem}.home-hero .primary{margin-top:12px}.home-section{margin:36px 0}.home-section-title{font-size:1.9rem;margin:8px 0 18px}.home-shelf{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:18px}.home-book{display:flex;flex-direction:column;align-items:stretch;background:#162c42;border:1px solid #ffffff17;border-radius:20px;padding:18px;min-width:0}.home-book .cover{width:100%;max-width:none;height:245px;min-height:245px;align-self:center;overflow:hidden}.home-book h3{font:1.3rem/1.25 Georgia,serif;margin:18px 0 4px}.home-book .home-author{margin:0 0 12px;font-size:.9rem}.home-book .home-progress{font-size:.85rem;color:#1FD69A;margin:4px 0 12px}.home-book button{margin-top:auto}.home-book .cover strong{overflow-wrap:anywhere}@media(max-width:540px){.home-hero{padding:28px 20px 32px;margin-top:4px}.home-shelf{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.home-book{padding:10px;border-radius:16px}.home-book .cover{height:200px;min-height:200px;padding:12px}.home-book .cover strong{font-size:1.15rem}.home-book h3{font-size:1.05rem}.home-book button{font-size:.86rem;padding:9px 7px}.home-section-title{font-size:1.6rem}}@media(max-width:340px){.home-shelf{grid-template-columns:1fr}}
+.home-hero{padding:36px 26px 40px;border-radius:24px;background:radial-gradient(circle at 85% 10%,#245a60 0%,transparent 44%),linear-gradient(145deg,#173b54,#102b44 68%,#0c2035);border:1px solid #ffffff16;margin:10px 0 38px}.home-hero h1{font-family:Georgia,serif;max-width:620px;font-size:clamp(2.3rem,7vw,4.1rem);margin:12px 0 18px;line-height:1.1}.home-lead{max-width:520px;font-size:1.1rem}.home-hero .primary{margin-top:12px}.home-section{margin:36px 0}.home-section-title{font-size:1.9rem;margin:8px 0 18px}.home-shelf{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:18px}.home-book{display:flex;flex-direction:column;align-items:stretch;background:#162c42;border:1px solid #ffffff17;border-radius:20px;padding:18px;min-width:0}.home-book .cover{width:100%;max-width:none;height:245px;min-height:245px;align-self:center;overflow:hidden}.home-book h3{font:1.3rem/1.25 Georgia,serif;margin:18px 0 4px}.home-book .home-author{margin:0 0 12px;font-size:.9rem}.home-book .home-progress{font-size:.85rem;color:#64dfa9;margin:4px 0 12px}.home-book button{margin-top:auto}.home-book .cover strong{overflow-wrap:anywhere}@media(max-width:540px){.home-hero{padding:28px 20px 32px;margin-top:4px}.home-shelf{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.home-book{padding:10px;border-radius:16px}.home-book .cover{height:200px;min-height:200px;padding:12px}.home-book .cover strong{font-size:1.15rem}.home-book h3{font-size:1.05rem}.home-book button{font-size:.86rem;padding:9px 7px}.home-section-title{font-size:1.6rem}}@media(max-width:340px){.home-shelf{grid-template-columns:1fr}}
 
 
 /* REM Next — Editorial / cinematic design system, v0.2 */
@@ -99,7 +99,7 @@ body{background:#0b1424}
 .wordmark{font-family:-apple-system,BlinkMacSystemFont,system-ui,sans-serif;font-size:1.6rem;letter-spacing:.15em}
 .top nav{gap:8px}
 .top nav button{background:#173653;border:1px solid #476783;border-radius:18px;padding:11px 15px;font-size:.92rem;font-weight:700;color:#f3f7f8;min-height:46px}
-.top nav button:hover,.top nav button:focus-visible{background:#1FD69A;color:#102438}
+.top nav button:hover,.top nav button:focus-visible{background:#58d6a6;color:#102438}
 main{max-width:1180px;padding:0 24px 70px}
 .rem-home-intro{padding:22px 0 14px}
 .rem-home-intro .eyebrow{font-family:-apple-system,BlinkMacSystemFont,system-ui,sans-serif;font-size:.75rem;letter-spacing:.21em;color:#75deb2;font-weight:800}
@@ -169,17 +169,17 @@ main{max-width:1180px;padding:0 24px 70px}
 .reading-path-note{color:#86e3bb;line-height:1.5;margin:.5rem 0 1.2rem}.reading-path-switch{display:inline-flex;margin:.4rem 0 1rem;background:#1b3850;color:#8aeac4;border:1px solid #65cfa7;border-radius:13px;font-weight:700}.episode-card .episode-actions button{background:#214460;color:#f4f8fa;border:1px solid #537991}.episode-card .episode-actions button:active{background:#69dfae;color:#092039}
 
 /* Episode dashboard and format-specific episode views */
-.episode-overview{background:#1b3850;border:1px solid #527792;border-radius:20px;padding:1.1rem 1.25rem;margin:1.1rem 0;color:#d6e7f0}.episode-overview strong{font-family:Georgia,serif;font-size:1.35rem;color:#fff}.episode-overview p{margin:.5rem 0 0;color:#b8cbd7;line-height:1.5}.episode-reader-context{display:flex;flex-direction:column;gap:.35rem;padding:1rem 1.2rem;margin:.8rem 0;background:#15334b;border:1px solid #527792;border-radius:18px}.episode-reader-context span{color:#1FD69A;font-weight:800;letter-spacing:.1em}.episode-reader-context strong{font-family:Georgia,serif;font-size:1.45rem}.episode-reader-context p{color:#c3d3df;margin:.15rem 0 0}.episode-actions button:last-child{background:#3d3040;color:#ffc997;border:1px solid #e9a66c;font-size:.78rem;font-weight:700}.episode-meta .episode-done{border-color:#e9a66c;background:#3a3038;color:#ffc997}.reading-path-switch{display:block;width:fit-content;margin:1.2rem 0 1.8rem;padding:.85rem 1.15rem}.episode-card .episode-actions{align-items:center}
+.episode-overview{background:#1b3850;border:1px solid #527792;border-radius:20px;padding:1.1rem 1.25rem;margin:1.1rem 0;color:#d6e7f0}.episode-overview strong{font-family:Georgia,serif;font-size:1.35rem;color:#fff}.episode-overview p{margin:.5rem 0 0;color:#b8cbd7;line-height:1.5}.episode-reader-context{display:flex;flex-direction:column;gap:.35rem;padding:1rem 1.2rem;margin:.8rem 0;background:#15334b;border:1px solid #527792;border-radius:18px}.episode-reader-context span{color:#77e5b5;font-weight:800;letter-spacing:.1em}.episode-reader-context strong{font-family:Georgia,serif;font-size:1.45rem}.episode-reader-context p{color:#c3d3df;margin:.15rem 0 0}.episode-actions button:last-child{background:#3d3040;color:#ffc997;border:1px solid #e9a66c;font-size:.78rem;font-weight:700}.episode-meta .episode-done{border-color:#e9a66c;background:#3a3038;color:#ffc997}.reading-path-switch{display:block;width:fit-content;margin:1.2rem 0 1.8rem;padding:.85rem 1.15rem}.episode-card .episode-actions{align-items:center}
 
 /* Seasons: Netflix-like selection, keeping the REM night-blue identity */
-.episode-overview{padding:.65rem 0;margin:1rem 0 1.2rem;background:transparent;border:0}.episode-stats{display:flex;gap:.6rem;flex-wrap:wrap}.episode-stats span{border:1px solid #4b6a82;background:#1b354b;border-radius:999px;color:#c9dce9;font-size:.88rem;font-weight:650;padding:.5rem .85rem}.season-tabs{display:flex;gap:.65rem;overflow-x:auto;padding:.35rem 0 .85rem;scrollbar-width:thin}.season-tabs .season-tab{flex:0 0 auto;white-space:nowrap;border-radius:13px;background:#223e56;color:#e8f1f7;border:1px solid #5b7b93;padding:.8rem 1.1rem;font-weight:750}.season-tabs .season-tab[aria-pressed=true]{background:#1FD69A;color:#0b2532;border-color:#1FD69A}.season-heading{font-family:Georgia,serif;font-weight:700;margin:.5rem 0 1.1rem}.episode-code{color:#1FD69A;font-size:.85rem;font-weight:800;letter-spacing:.08em;margin:0 0 .25rem}.home-reading-label{display:block;color:#79dfb1;font-size:.72rem;letter-spacing:.08em;font-weight:800;margin:.3rem 0}.episode-card .episode-info h3{margin:.2rem 0 .5rem}
+.episode-overview{padding:.65rem 0;margin:1rem 0 1.2rem;background:transparent;border:0}.episode-stats{display:flex;gap:.6rem;flex-wrap:wrap}.episode-stats span{border:1px solid #4b6a82;background:#1b354b;border-radius:999px;color:#c9dce9;font-size:.88rem;font-weight:650;padding:.5rem .85rem}.season-tabs{display:flex;gap:.65rem;overflow-x:auto;padding:.35rem 0 .85rem;scrollbar-width:thin}.season-tabs .season-tab{flex:0 0 auto;white-space:nowrap;border-radius:13px;background:#223e56;color:#e8f1f7;border:1px solid #5b7b93;padding:.8rem 1.1rem;font-weight:750}.season-tabs .season-tab[aria-pressed=true]{background:#6bdfad;color:#0b2532;border-color:#6bdfad}.season-heading{font-family:Georgia,serif;font-weight:700;margin:.5rem 0 1.1rem}.episode-code{color:#77e5b5;font-size:.85rem;font-weight:800;letter-spacing:.08em;margin:0 0 .25rem}.home-reading-label{display:block;color:#79dfb1;font-size:.72rem;letter-spacing:.08em;font-weight:800;margin:.3rem 0}.episode-card .episode-info h3{margin:.2rem 0 .5rem}
 
 /* Compact season selector and cross-format chapter summaries */
 .season-tabs{gap:.55rem;margin:.2rem 0 .9rem}
 .season-tabs .season-tab{min-width:4.25rem;text-align:center;font-size:1rem;padding:.7rem 1.05rem}
-.season-tabs .season-tab[aria-pressed="true"]{background:#1FD69A;color:#102b38;border-color:#1FD69A}
+.season-tabs .season-tab[aria-pressed="true"]{background:#69dbaa;color:#102b38;border-color:#69dbaa}
 .summary-launch{display:inline-flex;align-items:center;gap:.5rem;margin:.5rem 0 1.4rem;background:#142c43;color:#85e7ba;border:1.5px solid #6cdeb0;border-radius:15px;padding:.85rem 1.2rem;font-weight:800}
-.summary-launch:active{background:#1FD69A;color:#102b38}
+.summary-launch:active{background:#69dbaa;color:#102b38}
 .summary-shell{background:#152a40;border:1px solid #456981;border-radius:22px;padding:clamp(1rem,4vw,1.6rem);margin:1.1rem 0 2rem}
 .summary-shell h2{font-family:Georgia,serif;font-size:clamp(1.8rem,5vw,2.5rem);margin:0 0 .6rem}
 .summary-shell>p{color:#c1d1de;line-height:1.55}
@@ -187,7 +187,7 @@ main{max-width:1180px;padding:0 24px 70px}
 .summary-shell select{width:100%;max-width:100%;padding:.8rem;border-radius:13px}
 .summary-formats{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;margin:.7rem 0 1.2rem}
 .summary-formats button{background:#24455f;border:1px solid #557a92;color:#f5f8fb;border-radius:15px;padding:1rem;font-weight:750}
-.summary-formats button.is-selected{background:#1FD69A;color:#0e2b35;border-color:#1FD69A}
+.summary-formats button.is-selected{background:#70dcae;color:#0e2b35;border-color:#70dcae}
 .summary-content{background:#fdfdfb;color:#1a2025;border-radius:18px;padding:1.25rem 1.4rem;line-height:1.8;font-family:Georgia,serif}
 .summary-content h3{font-family:Georgia,serif;color:#17232b;margin:.1rem 0 1rem}
 .summary-content p{white-space:pre-wrap}
@@ -217,7 +217,7 @@ main{max-width:1180px;padding:0 24px 70px}
 /* Proposal C: story-mode navigation above content, warm summary at the end */
 .quiet-back{background:transparent!important;border:0!important;box-shadow:none!important;color:#c7d7e3!important;width:2.5rem!important;min-width:2.5rem!important;height:2.5rem!important;margin:.3rem 0 .65rem!important;font-size:1.6rem!important}
 .quiet-back:hover,.quiet-back:focus-visible{background:#1a3045!important;color:#89e4ba!important}
-.story-path-link{display:inline-flex;align-items:center;gap:.45rem;width:fit-content;max-width:100%;margin:.15rem 0 1.4rem;padding:.45rem .1rem;background:transparent!important;border:0!important;box-shadow:none!important;border-radius:4px!important;color:#1FD69A!important;font-size:.94rem;font-weight:700;min-height:44px}
+.story-path-link{display:inline-flex;align-items:center;gap:.45rem;width:fit-content;max-width:100%;margin:.15rem 0 1.4rem;padding:.45rem .1rem;background:transparent!important;border:0!important;box-shadow:none!important;border-radius:4px!important;color:#86e4ba!important;font-size:.94rem;font-weight:700;min-height:44px}
 .story-path-link::before{content:'↗';font-size:1.15rem;line-height:1}
 .story-path-link::after{content:'›';font-size:1.3rem;margin-left:.15rem}
 .story-path-link:hover,.story-path-link:focus-visible{color:#b7ffdb!important;text-decoration:underline;text-underline-offset:5px}
@@ -231,19 +231,19 @@ main{max-width:1180px;padding:0 24px 70px}
 /* Completed book and optional reader feedback */
 .finish-book-box{margin:1.2rem 0;padding:1.1rem 1.2rem;border:1px solid #36566c;border-radius:17px;background:#14283e;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
 .finish-book-question{margin:0;color:#d5e3ed;font-weight:700}
-.finish-book-box button{background:#1FD69A;color:#102a32;border:0;border-radius:13px;font-weight:800;min-height:45px}
+.finish-book-box button{background:#69dbaa;color:#102a32;border:0;border-radius:13px;font-weight:800;min-height:45px}
 .feedback-card{background:#142238;border:1px solid #36516a;border-radius:24px;padding:clamp(1.25rem,5vw,2rem);margin:1rem auto 2rem;max-width:550px;text-align:center}
-.feedback-sparkle{color:#1FD69A;font-size:4rem;line-height:1.1;margin:.3rem 0 .7rem}
+.feedback-sparkle{color:#86e4ba;font-size:4rem;line-height:1.1;margin:.3rem 0 .7rem}
 .feedback-card h1{font-family:Georgia,serif;font-size:clamp(1.7rem,5vw,2.4rem);margin:.3rem 0 .6rem}
 .feedback-book-title{color:#83dcb4;margin:0 0 1.3rem}
 .feedback-question{color:#c7d5e1;font-size:1.05rem}
 .feedback-stars{display:flex;justify-content:center;gap:clamp(.2rem,2vw,.7rem);margin:1.2rem 0 .5rem}
 .feedback-star{background:transparent!important;border:0!important;box-shadow:none!important;padding:.15rem!important;font-size:clamp(2.25rem,9vw,3rem);line-height:1;color:#8194a7!important;min-width:0}
-.feedback-star.selected{color:#1FD69A!important}
-.feedback-star:focus-visible{outline:2px solid #1FD69A;outline-offset:2px}
+.feedback-star.selected{color:#86e4ba!important}
+.feedback-star:focus-visible{outline:2px solid #86e4ba;outline-offset:2px}
 .feedback-stars-caption{color:#a9bdcb;font-size:.85rem;margin:.2rem 0 1.3rem}
 .feedback-explanation{background:#1d3046;color:#cbd8e3;padding:1rem;border-radius:14px;font-size:.94rem;line-height:1.6;margin:0 0 1.2rem}
-.feedback-card>.primary{width:100%;background:#1FD69A;color:#102a32;border-radius:13px;font-weight:800;min-height:48px}
+.feedback-card>.primary{width:100%;background:#69dbaa;color:#102a32;border-radius:13px;font-weight:800;min-height:48px}
 .feedback-card>.primary:disabled{opacity:.45;cursor:not-allowed}
 .feedback-skip{display:block;width:100%;margin-top:.6rem;background:transparent!important;border:0!important;box-shadow:none!important;color:#c5d5df!important;min-height:44px}
 
@@ -254,24 +254,24 @@ main{max-width:1180px;padding:0 24px 70px}
 .onboard-screen{background:#0b1322;color:#f5f4ef;min-height:calc(100dvh - 160px);padding:clamp(1rem,4vw,2rem) 0 4rem;max-width:680px;margin:0 auto}
 .onboard-top{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:2.2rem}
 .onboard-brand{font-size:1.7rem;letter-spacing:.15em;font-weight:900;color:#f5f4ef}
-.onboard-brand::after{content:'·';color:#1FD69A}
+.onboard-brand::after{content:'·';color:#86dfb2}
 .onboard-top button{background:transparent!important;color:#c4d1dc!important;border:1px solid #5c7289!important;border-radius:13px!important;padding:.65rem .85rem!important;font-size:.87rem!important}
 .onboard-progress{display:grid;grid-template-columns:repeat(4,1fr);gap:.5rem;margin-bottom:2.2rem}
 .onboard-progress span{height:6px;background:#34465a;border-radius:99px}
-.onboard-progress span.is-active{background:#1FD69A}
+.onboard-progress span.is-active{background:#86dfb2}
 .onboard-intro h1,.onboard-question h1{font-family:Georgia,serif;font-size:clamp(2rem,6vw,3rem);line-height:1.12;letter-spacing:-.025em;margin:0 0 1.3rem;color:#f5f4ef}
-.onboard-intro h1 span{color:#1FD69A}
+.onboard-intro h1 span{color:#86dfb2}
 .onboard-intro p,.onboard-hint{color:#bac8d6;font-size:clamp(1rem,3vw,1.12rem);line-height:1.6;margin:0 0 1.6rem}
-.onboard-intro>.primary{display:block;width:100%;background:#1FD69A!important;color:#102333!important;border:0!important;border-radius:16px!important;padding:1rem!important;font-weight:800!important;margin-top:2.4rem}
-.onboard-kicker{color:#1FD69A;font-size:.78rem;font-weight:800;letter-spacing:.2em;margin:0 0 1.1rem}
+.onboard-intro>.primary{display:block;width:100%;background:#86dfb2!important;color:#102333!important;border:0!important;border-radius:16px!important;padding:1rem!important;font-weight:800!important;margin-top:2.4rem}
+.onboard-kicker{color:#86dfb2;font-size:.78rem;font-weight:800;letter-spacing:.2em;margin:0 0 1.1rem}
 .onboard-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.75rem;margin:1.6rem 0 2rem}
 .onboard-option{display:flex;align-items:center;justify-content:center;min-height:96px;padding:1rem .75rem!important;text-align:center!important;background:#1b2b41!important;border:1.5px solid #536a80!important;color:#f1f5f8!important;border-radius:17px!important;font-weight:650!important;font-size:clamp(.88rem,2.7vw,1rem)!important;line-height:1.35!important;white-space:normal!important}
-.onboard-option.selected{background:#1FD69A!important;border-color:#b6f1d1!important;color:#102333!important}
+.onboard-option.selected{background:#86dfb2!important;border-color:#b6f1d1!important;color:#102333!important}
 .onboard-option:focus-visible{outline:2px solid #b6f1d1;outline-offset:3px}
 .onboard-actions{display:flex;justify-content:space-between;gap:1rem}
 .onboard-actions button{min-height:48px;border-radius:13px!important;padding:.7rem 1rem!important;font-weight:750!important}
 .onboard-actions button:first-child{background:#23364c!important;color:#f3f6f9!important;border:1px solid #60768d!important}
-.onboard-actions .primary{background:#1FD69A!important;color:#102333!important;border:0!important}
+.onboard-actions .primary{background:#86dfb2!important;color:#102333!important;border:0!important}
 .onboard-actions .primary:disabled{opacity:.45}
 .onboard-privacy{font-size:.78rem;color:#91a5b6;margin:1.6rem 0 0;line-height:1.55}
 @media(max-width:360px){.onboard-option{min-height:90px;padding:.7rem .45rem!important;font-size:.82rem!important}.onboard-actions button{padding:.65rem .75rem!important}}
@@ -280,10 +280,10 @@ main{max-width:1180px;padding:0 24px 70px}
 /* Polished feedback icon and outlined mint stars */
 .feedback-star{display:inline-flex!important;align-items:center;justify-content:center;min-width:44px!important;min-height:48px!important}
 .feedback-star svg{display:block;width:clamp(35px,9vw,45px);height:clamp(35px,9vw,45px);overflow:visible}
-.feedback-star svg path{fill:transparent;stroke:#1FD69A;stroke-width:1.5;stroke-linejoin:round;transition:fill .16s ease,stroke .16s ease}
-.feedback-star.selected svg path{fill:#1FD69A;stroke:#1FD69A}
+.feedback-star svg path{fill:transparent;stroke:#86e4ba;stroke-width:1.5;stroke-linejoin:round;transition:fill .16s ease,stroke .16s ease}
+.feedback-star.selected svg path{fill:#86e4ba;stroke:#86e4ba}
 .feedback-sparkle{position:relative;display:block;width:78px;height:78px;margin:.2rem auto .9rem;line-height:1}
-.feedback-sparkle-main{position:absolute;left:13px;top:8px;font-size:64px;line-height:1;color:#1FD69A;text-shadow:0 0 23px #86e4ba35}
+.feedback-sparkle-main{position:absolute;left:13px;top:8px;font-size:64px;line-height:1;color:#86e4ba;text-shadow:0 0 23px #86e4ba35}
 .feedback-sparkle-small{position:absolute;color:#b9f5d7;line-height:1}
 .feedback-sparkle-one{right:0;top:5px;font-size:24px}
 .feedback-sparkle-two{left:1px;bottom:4px;font-size:15px}
@@ -295,28 +295,28 @@ main{max-width:1180px;padding:0 24px 70px}
 .finish-book-box button:focus-visible{outline:2px solid #f3b36f;outline-offset:3px}
 
 /* Approved completion button: subtle mint outline on navy */
-.finish-book-box button,.finish-book-box button.primary{background:#0b1322!important;color:#1FD69A!important;border:1.5px solid #1FD69A!important;border-radius:14px!important;box-shadow:none!important}
-.finish-book-box button:focus-visible{outline:2px solid #1FD69A;outline-offset:3px}
+.finish-book-box button,.finish-book-box button.primary{background:#0b1322!important;color:#86dfb2!important;border:1.5px solid #86dfb2!important;border-radius:14px!important;box-shadow:none!important}
+.finish-book-box button:focus-visible{outline:2px solid #86dfb2;outline-offset:3px}
 
 
 /* Trailer entry, kept secondary to the book's main action */
 .rem-book-card .rem-trailer-trigger{display:flex;align-items:center;justify-content:center;width:100%;background:transparent!important;border:0!important;border-top:1px solid #56718955!important;border-radius:0 0 12px 12px!important;color:#dce8ef!important;box-shadow:none!important;font-size:.86rem!important;font-weight:700!important;line-height:1.3!important;padding:.8rem .45rem!important;margin-top:.5rem}
-.rem-book-card .rem-trailer-trigger:focus-visible,.rem-trailer-trigger:focus-visible{outline:2px solid #1FD69A;outline-offset:2px}
+.rem-book-card .rem-trailer-trigger:focus-visible,.rem-trailer-trigger:focus-visible{outline:2px solid #86dfb2;outline-offset:2px}
 .rem-trailer-trigger{background:#1c3045!important;color:#cfe9df!important;border:1px solid #49657b!important;border-radius:12px!important;font-weight:700!important}
 .rem-trailer-page{max-width:650px;margin:0 auto 2rem}
 .rem-trailer-page h1{margin:.35rem 0 1.3rem}
 .rem-trailer-stage{position:relative;isolation:isolate;overflow:hidden;aspect-ratio:9/13;max-height:590px;border:1px solid #45657c;border-radius:22px;background:radial-gradient(ellipse at 65% 28%,#2c6c76 0%,#172e4c 38%,#0a1425 78%);display:flex;align-items:center;justify-content:center;text-align:center;padding:2rem}
 .rem-trailer-glow{position:absolute;z-index:-1;inset:10%;border:1px solid #86dfb255;border-radius:50%;transform:rotate(-26deg) scale(1.3);box-shadow:0 0 85px #86dfb222}
 .rem-trailer-scene{max-width:95%}
-.rem-trailer-kicker{color:#1FD69A!important;letter-spacing:.23em;font-size:.8rem;font-weight:800;line-height:1.7}
+.rem-trailer-kicker{color:#86dfb2!important;letter-spacing:.23em;font-size:.8rem;font-weight:800;line-height:1.7}
 .rem-trailer-line{font:500 clamp(1.9rem,7vw,3.5rem)/1.16 Georgia,serif;color:#f4f5f0;margin:.8rem 0}
 .rem-trailer-progress{position:absolute;bottom:0;left:0;width:100%;height:5px;background:#31465a}
-.rem-trailer-progress span{display:block;height:100%;width:0;background:#1FD69A;transition:width .4s ease}
+.rem-trailer-progress span{display:block;height:100%;width:0;background:#86dfb2;transition:width .4s ease}
 .rem-trailer-enter .rem-trailer-scene{animation:remTrailerReveal .7s ease both}
 @keyframes remTrailerReveal{from{opacity:0;transform:translateY(12px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
 .rem-trailer-actions{display:flex;gap:.75rem;margin:1rem 0}
 .rem-trailer-actions button{flex:1}
-.rem-trailer-actions button:first-child{background:#1FD69A!important;color:#102333!important;border:0!important;font-weight:800!important}
+.rem-trailer-actions button:first-child{background:#86dfb2!important;color:#102333!important;border:0!important;font-weight:800!important}
 .rem-trailer-note{font-size:.85rem;color:#a7b9c7}
 @media(prefers-reduced-motion:reduce){.rem-trailer-enter .rem-trailer-scene{animation:none}}
 
@@ -324,13 +324,13 @@ main{max-width:1180px;padding:0 24px 70px}
 /* Approved trailer row: mint circular play and one-line label */
 .rem-book-card .rem-trailer-trigger{display:flex!important;align-items:center!important;justify-content:flex-start!important;gap:.65rem!important;text-align:left!important;padding:.8rem .7rem!important;white-space:nowrap!important}
 .rem-trailer-trigger{display:inline-flex!important;align-items:center!important;gap:.65rem!important;text-align:left!important}
-.rem-trailer-play{display:inline-flex;align-items:center;justify-content:center;flex:0 0 36px;width:36px;height:36px;border-radius:50%;background:#1FD69A;color:#102333;font-size:.93rem;line-height:1;padding-left:2px;box-shadow:0 0 12px #64dfa922}
+.rem-trailer-play{display:inline-flex;align-items:center;justify-content:center;flex:0 0 36px;width:36px;height:36px;border-radius:50%;background:#64dfa9;color:#102333;font-size:.93rem;line-height:1;padding-left:2px;box-shadow:0 0 12px #64dfa922}
 .rem-trailer-label{font-size:clamp(.73rem,2.7vw,.92rem);font-weight:750;white-space:nowrap;letter-spacing:-.015em}
 
 
 /* Compact single-line Home shelf headings and smaller mint personalization sparkle */
 .rem-home-section .rem-section-title{font-size:clamp(1.05rem,3.1vw,2rem)!important;line-height:1.2;letter-spacing:-.035em;white-space:nowrap;margin:0 0 18px;min-width:0}
-.rem-recommend-sparkle{display:inline-block;color:#1FD69A;font-family:Georgia,serif;font-size:.64em;vertical-align:.13em;margin-left:.08em;line-height:1}
+.rem-recommend-sparkle{display:inline-block;color:#86dfb2;font-family:Georgia,serif;font-size:.64em;vertical-align:.13em;margin-left:.08em;line-height:1}
 @media(max-width:650px){.rem-home-section .rem-section-title{font-size:clamp(.98rem,4.35vw,1.35rem)!important;letter-spacing:-.045em}.rem-section-heading{gap:.35rem}.onboard-retry{font-size:.66rem!important;padding:.32rem .48rem!important}}
 
 /* Restore the approved large shelf headings; fit only the longest label. */
@@ -383,7 +383,7 @@ main{max-width:1180px;padding:0 24px 70px}
 
 /* Dedicated controls: never overlay trailer imagery */
 .rem-trailer-stage > button{display:none!important}
-.rem-trailer-page .rem-trailer-actions .rem-trailer-below-toggle{position:relative!important;inset:auto!important;transform:none!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;flex:0 0 54px!important;width:54px!important;height:54px!important;min-width:54px!important;min-height:54px!important;padding:0!important;margin:0!important;border:0!important;border-radius:50%!important;background:#1FD69A!important;color:#102333!important;opacity:1!important;box-shadow:none!important}
+.rem-trailer-page .rem-trailer-actions .rem-trailer-below-toggle{position:relative!important;inset:auto!important;transform:none!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;flex:0 0 54px!important;width:54px!important;height:54px!important;min-width:54px!important;min-height:54px!important;padding:0!important;margin:0!important;border:0!important;border-radius:50%!important;background:#86dfb2!important;color:#102333!important;opacity:1!important;box-shadow:none!important}
 .rem-trailer-page .rem-trailer-actions .rem-trailer-below-toggle .rem-trailer-overlay-play{border-top-width:10px;border-bottom-width:10px;border-left-width:16px}
 .rem-trailer-page .rem-trailer-actions .rem-trailer-below-toggle .rem-trailer-overlay-pause{height:20px;width:17px;border-left-width:5px;border-right-width:5px}
 
@@ -391,7 +391,7 @@ main{max-width:1180px;padding:0 24px 70px}
 /* Optional episodic recap: discreet entry, no automatic spoilers */
 .episode-recap-panel{margin-top:1rem;padding:1rem 1.1rem;border:1px solid #405e71;border-radius:16px;background:#12253a}
 .episode-recap-panel [hidden]{display:none!important}
-.episode-recap-eyebrow{display:block;color:#1FD69A;font-size:.72rem;letter-spacing:.15em;font-weight:800;margin-bottom:.55rem}
+.episode-recap-eyebrow{display:block;color:#86dfb2;font-size:.72rem;letter-spacing:.15em;font-weight:800;margin-bottom:.55rem}
 .episode-recap-panel button{width:auto!important;min-height:40px;padding:.55rem .85rem;border-radius:10px}
 .episode-recap-panel > button{background:#203b50;color:#d8f9e7;border:1px solid #57816f;font-weight:700}
 .episode-recap-invite{display:flex;align-items:center;justify-content:space-between;gap:.75rem;margin-top:.55rem}
@@ -399,11 +399,11 @@ main{max-width:1180px;padding:0 24px 70px}
 .episode-recap-invite button{flex:0 0 auto;background:transparent;border:1px solid #4a6579;color:#c9d5dd}
 .episode-recap-content{margin-top:1rem;border-top:1px solid #38536b;padding-top:.85rem}
 .episode-recap-part + .episode-recap-part{margin-top:1rem}
-.episode-recap-part strong{display:block;color:#1FD69A;font-size:.92rem;margin-bottom:.3rem}
+.episode-recap-part strong{display:block;color:#86dfb2;font-size:.92rem;margin-bottom:.3rem}
 .episode-recap-part p{margin:0;color:#e0e7ed;line-height:1.65;font-size:.95rem}
 
 /* Evidenzia la sezione di navigazione corrente anche all'apertura della Home. */
-.top nav button.is-active{background:#1FD69A;color:#102438;border-color:#1FD69A}
+.top nav button.is-active{background:#58d6a6;color:#102438;border-color:#58d6a6}
 
 
 /* REM mobile Home: compact Netflix-style rails with complete, contained controls. */
@@ -493,7 +493,7 @@ main .rem-home-section .rem-book-card .primary{margin-top:0!important;}
 .rem-cinema-hero-copy h1{font-size:clamp(1.9rem,6vw,3rem);margin:8px 0;line-height:1.07}
 .rem-cinema-hero-copy .eyebrow{font-size:10px;letter-spacing:.14em}
 .rem-cinema-hero-author{margin:0 0 18px;color:#f1f6f6}
-.rem-cinema-hero-copy button{background:#1FD69A;color:#09241f;font-weight:750}
+.rem-cinema-hero-copy button{background:#64dfa9;color:#09241f;font-weight:750}
 main .rem-cinema-section{margin-bottom:28px}
 main .rem-cinema-section .rem-section-title{font-family:Georgia,serif;font-size:clamp(1.45rem,5vw,1.9rem)}
 main .rem-cinema-section .rem-book-grid{display:flex!important;flex-wrap:nowrap!important;gap:12px!important;overflow-x:auto!important;overflow-y:hidden!important;scroll-snap-type:x proximity!important;grid-template-columns:none!important;padding:4px 18px 10px 2px!important;margin-right:-18px!important}
@@ -523,7 +523,7 @@ main .rem-cinema-section .rem-cover-save{position:absolute!important;top:8px!imp
 .rem-cinema-detail-copy>p:last-child{font-size:14px;line-height:1.55}
 .rem-cinema-path-actions{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:24px 0 12px}
 .rem-cinema-path-actions button{min-height:60px;padding:10px;font-weight:750;font-size:clamp(12px,3.3vw,16px)}
-.rem-cinema-path-actions button:first-child{background:#1FD69A;color:#09241f}
+.rem-cinema-path-actions button:first-child{background:#64dfa9;color:#09241f}
 .rem-cinema-path-actions button:last-child{background:transparent;color:#fff;border:1px solid #a8e7d6}
 .rem-cinema-path-note{color:#c4d9da;font-size:13px;line-height:1.5;margin:8px 0 24px}
 @media(max-width:650px){
@@ -542,7 +542,7 @@ main .rem-cinema-section .rem-cover-save{position:absolute!important;top:8px!imp
 .rem-cinema-hero-art:after{background:linear-gradient(90deg,#061c29 0%,#061c29 37%,#061c29a6 58%,transparent 84%)!important}
 .rem-cinema-hero-copy{width:65%;padding:22px}
 main .rem-cinema-section .rem-book-grid{gap:5px!important}
-main .rem-cinema-section .rem-section-title .rem-recommend-sparkle{color:#1FD69A!important;font-size:.58em!important;vertical-align:middle!important}
+main .rem-cinema-section .rem-section-title .rem-recommend-sparkle{color:#64dfa9!important;font-size:.58em!important;vertical-align:middle!important}
 @media(max-width:650px){
  .rem-cinema-hero{min-height:265px}
  .rem-cinema-hero-art img{max-width:62%!important}
@@ -801,7 +801,7 @@ main .rem-home-section.rem-cinema-section .rem-cover-author-overlay{display:none
 .rem-cinema-detail-title{display:flex;align-items:flex-start;gap:8px}
 .rem-cinema-detail-title h1{font-size:clamp(19px,4.8vw,30px)!important;line-height:1.16!important;overflow-wrap:break-word}
 .rem-detail-save{width:32px!important;height:32px!important;min-width:32px!important;min-height:32px!important;border-radius:50%!important;font-size:21px!important;display:flex;align-items:center;justify-content:center;box-sizing:border-box!important}
-.rem-detail-save.is-saved{color:#1FD69A!important;border-color:#1FD69A!important}
+.rem-detail-save.is-saved{color:#64dfa9!important;border-color:#64dfa9!important}
 .rem-cinema-detail-author{margin:8px 0 12px!important;font-size:14px}
 .rem-cinema-detail-description{font-size:13px!important;line-height:1.5!important;color:#b8c8d4}
 .rem-cinema-modes-intro{margin:23px 0 12px!important;color:#d9e8e8;font-size:14px;line-height:1.5}
@@ -852,7 +852,7 @@ main .rem-home-section.rem-cinema-section .rem-cover-author-overlay{display:none
 /* v164: hero headline is deliberately two lines and visually leads shelf headings. */
 .rem-cinema-intro{font-size:clamp(2rem,6.35vw,3.25rem)!important;line-height:1.07!important;letter-spacing:-.045em!important;max-width:none!important;margin:5px 0 24px!important}
 .rem-cinema-intro .rem-intro-first-line,.rem-cinema-intro .rem-intro-second-line{display:block!important;white-space:nowrap!important}
-.rem-cinema-intro .rem-intro-second-line{color:#1FD69A!important}
+.rem-cinema-intro .rem-intro-second-line{color:#64dfa9!important}
 @media(max-width:650px){.rem-cinema-intro{font-size:clamp(1.8rem,6.35vw,2.9rem)!important}}
 
 /* v165: visibly larger hero than the shelf headings, keeping the first line intact on iPhone. */
@@ -967,8 +967,8 @@ main .rem-home-section.rem-cinema-section .rem-cover-save.is-saved{
 .rem-profile-intro h1{font-family:Georgia,serif;font-size:clamp(27px,6vw,37px);margin:0 0 5px;color:#f4f7f8}
 .rem-profile-subtitle{font-size:13px;margin:0;color:#a8b9c8}
 .rem-profile-avatar{width:60px;height:60px;flex:none;border-radius:50%;background:#213d43;border:1px solid rgba(146,227,186,.32);position:relative;overflow:hidden}
-.rem-profile-avatar-head{position:absolute;left:22px;top:12px;width:16px;height:16px;border:2px solid #1FD69A;border-radius:50%}
-.rem-profile-avatar-body{position:absolute;left:12px;top:34px;width:36px;height:26px;border:2px solid #1FD69A;border-radius:18px 18px 0 0}
+.rem-profile-avatar-head{position:absolute;left:22px;top:12px;width:16px;height:16px;border:2px solid #a2e6c4;border-radius:50%}
+.rem-profile-avatar-body{position:absolute;left:12px;top:34px;width:36px;height:26px;border:2px solid #a2e6c4;border-radius:18px 18px 0 0}
 .rem-profile-card{background:#18273a;border:1px solid rgba(130,165,180,.2);border-radius:19px;padding:20px;margin:15px 0}
 .rem-profile-card-title{display:flex;align-items:center;gap:11px}
 .rem-profile-card-title h2{font-family:system-ui,-apple-system,sans-serif;font-size:17px;font-weight:650;margin:0;color:#f0f6f8}
@@ -981,7 +981,7 @@ main .rem-home-section.rem-cinema-section .rem-cover-save.is-saved{
 .rem-profile-preferences>div{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0;color:#dce7ec;font-size:13px}
 .rem-profile-preferences>div+div{border-top:1px solid rgba(165,190,200,.16)}
 .rem-profile-preferences strong{font-size:12px;color:#a9c6ba}
-.rem-profile-preferences button{min-height:35px;padding:5px 11px;color:#1FD69A;font-size:12px}
+.rem-profile-preferences button{min-height:35px;padding:5px 11px;color:#a2e6c4;font-size:12px}
 @media(max-width:390px){.top{gap:5px;padding:15px 12px}.top nav{gap:4px}.top nav button:not(.rem-profile-nav){padding:9px 7px;font-size:13px}.top nav .rem-profile-nav{width:39px;min-width:39px;height:39px}.rem-profile-card{padding:16px}}
 
 /* v212: navigation between audio chapters and episodes */
@@ -1007,8 +1007,8 @@ main .rem-home-section.rem-cinema-section .rem-cover-save.is-saved{
 
 /* v218: mint + smaller pink sparkle beside "Scelti per te" */
 .rem-recommend-sparkles{display:inline-flex;align-items:flex-start;gap:2px;vertical-align:.12em;margin-left:.08em;white-space:nowrap}
-.rem-recommend-sparkles .rem-recommend-sparkle{margin:0;vertical-align:baseline;font-size:.64em;color:#1FD69A}
-.rem-recommend-sparkle-pink{display:inline-block;color:#F2B8C6;font-family:Georgia,serif;font-size:.39em;line-height:1;margin-top:-.15em}
+.rem-recommend-sparkles .rem-recommend-sparkle{margin:0;vertical-align:baseline;font-size:.64em;color:#86dfb2}
+.rem-recommend-sparkle-pink{display:inline-block;color:#f3a5ca;font-family:Georgia,serif;font-size:.39em;line-height:1;margin-top:-.15em}
 
 /* v219: subtler, extra-small pink recommendation sparkle */
 .rem-recommend-sparkle-pink{font-size:.25em!important}
@@ -1053,10 +1053,10 @@ body.ebook-fullscreen-active .ebook-reading-shell .reading-text{font-size:var(--
 body.ebook-fullscreen-active .ebook-reading-shell>.rem-immersive-toolbar{display:flex!important;flex:0 0 auto;align-items:center;justify-content:space-between;gap:3px;padding:9px 8px calc(env(safe-area-inset-bottom,0px) + 10px);border-top:1px solid rgba(140,160,175,.22);background:#0b1526!important;box-sizing:border-box;width:100%}
 body.ebook-fullscreen-active .ebook-reading-shell.rem-immersive-light>.rem-immersive-toolbar{background:#f5f0e6!important}
 body.ebook-fullscreen-active .rem-immersive-tool{display:flex;align-items:center;justify-content:center;flex:1 1 0;min-width:0;max-width:46px;height:39px;min-height:39px;padding:0!important;border:0;border-radius:9px;background:#203b53;color:#edf5f3;font-size:15px;font-weight:650;white-space:nowrap}
-body.ebook-fullscreen-active .rem-immersive-tool.rem-immersive-arrow{flex:0 0 36px;max-width:36px;border-radius:50%;background:#152b42;color:#1FD69A;border:1px solid #54748b;font-size:27px;font-weight:400}
+body.ebook-fullscreen-active .rem-immersive-tool.rem-immersive-arrow{flex:0 0 36px;max-width:36px;border-radius:50%;background:#152b42;color:#a8e8d3;border:1px solid #54748b;font-size:27px;font-weight:400}
 body.ebook-fullscreen-active .rem-immersive-tool.rem-immersive-theme-light{color:#f5b4ca;background:#28445b;font-size:20px}
 body.ebook-fullscreen-active .rem-immersive-tool.rem-immersive-theme-dark{color:#10243a;background:#f1ede5;font-size:22px}
-body.ebook-fullscreen-active .rem-immersive-tool.rem-immersive-format{color:#1FD69A;font-size:19px}
+body.ebook-fullscreen-active .rem-immersive-tool.rem-immersive-format{color:#a8e8d3;font-size:19px}
 body.ebook-fullscreen-active .rem-immersive-tool[aria-pressed="true"]{outline:2px solid #79d9c2;outline-offset:-2px}
 body.ebook-fullscreen-active .rem-immersive-tool:disabled{opacity:.28}
 body.ebook-fullscreen-active .ebook-reading-shell.rem-immersive-light .rem-immersive-tool.rem-immersive-font,body.ebook-fullscreen-active .ebook-reading-shell.rem-immersive-light .rem-immersive-tool.rem-immersive-format{background:#dce7e5;color:#19374a}
@@ -1114,7 +1114,7 @@ body.ebook-fullscreen-active .rem-immersive-tool.rem-immersive-arrow{flex:0 0 43
 body.ebook-fullscreen-active .rem-immersive-tool.rem-immersive-arrow svg{width:24px;height:24px}
 body.ebook-fullscreen-active .rem-immersive-tool.rem-immersive-theme-light{color:#f4b7cb!important;background:transparent!important}
 body.ebook-fullscreen-active .rem-immersive-tool.rem-immersive-theme-dark{color:#d6e3f1!important;background:transparent!important}
-body.ebook-fullscreen-active .rem-immersive-tool.rem-immersive-format{color:#1FD69A!important;background:transparent!important}
+body.ebook-fullscreen-active .rem-immersive-tool.rem-immersive-format{color:#a8e8d3!important;background:transparent!important}
 body.ebook-fullscreen-active .rem-immersive-tool.rem-immersive-font{background:transparent!important;color:#e5eef5!important;font-size:15px!important}
 body.ebook-fullscreen-active .rem-immersive-tool[aria-pressed="true"]{background:#25485a!important;outline:1px solid #85d6b7!important;outline-offset:-1px}
 body.ebook-fullscreen-active .ebook-reading-shell.rem-immersive-light .rem-immersive-tool{color:#28435a!important}
@@ -1128,7 +1128,7 @@ body.ebook-fullscreen-active .ebook-reading-shell.rem-immersive-light .rem-immer
 
 /* v246: discreet corner-only fullscreen entry inside the Ebook text card. */
 body:not(.ebook-fullscreen-active) .ebook-reading-shell .ebook-page-frame{position:relative!important}
-body:not(.ebook-fullscreen-active) .ebook-reading-shell .ebook-page-frame>.rem-immersive-entry{display:flex!important;position:absolute!important;top:16px!important;right:15px!important;z-index:8!important;width:36px!important;height:36px!important;min-height:36px!important;margin:0!important;padding:0!important;align-items:center!important;justify-content:center!important;border:1px solid rgba(125,185,175,.48)!important;border-radius:10px!important;background:#19344b!important;color:#1FD69A!important;box-shadow:none!important}
+body:not(.ebook-fullscreen-active) .ebook-reading-shell .ebook-page-frame>.rem-immersive-entry{display:flex!important;position:absolute!important;top:16px!important;right:15px!important;z-index:8!important;width:36px!important;height:36px!important;min-height:36px!important;margin:0!important;padding:0!important;align-items:center!important;justify-content:center!important;border:1px solid rgba(125,185,175,.48)!important;border-radius:10px!important;background:#19344b!important;color:#a8e8d3!important;box-shadow:none!important}
 body:not(.ebook-fullscreen-active) .ebook-reading-shell .ebook-page-frame>.ebook-page-heading{padding-right:52px!important}
 body.ebook-fullscreen-active .ebook-reading-shell .ebook-page-frame>.rem-immersive-entry{display:none!important}
 body.ebook-fullscreen-active .rem-ebook-fullscreen-toggle.rem-immersive-close{display:flex!important;align-items:center!important;justify-content:center!important}
@@ -1192,14 +1192,14 @@ body.ebook-fullscreen-active .ebook-reading-shell>.rem-floating-highlighter{
 .ebook-reading-shell>.rem-floating-highlighter{
  border-width:1px!important;
  background:#111d31!important;
- border-color:#F2B8C6!important;
- color:#F2B8C6!important;
+ border-color:#d99bb5!important;
+ color:#d99bb5!important;
  box-shadow:none!important;
 }
 .ebook-reading-shell>.rem-floating-highlighter[aria-pressed="true"]{
  border-width:1px!important;
- background:#F2B8C6!important;
- border-color:#F2B8C6!important;
+ background:#e9a8c3!important;
+ border-color:#e9a8c3!important;
  color:#18263b!important;
  box-shadow:0 0 0 2px rgba(233,168,195,.12)!important;
 }
@@ -1323,9 +1323,9 @@ html body .rem-free-selection-swatch{
 html body .rem-floating-highlighter{
  bottom:calc(env(safe-area-inset-bottom,0px) + 34px)!important;
  border-width:.75px!important;
- border-color:#F2B8C6!important;
+ border-color:#d99bb5!important;
  background:#111d31!important;
- color:#F2B8C6!important;
+ color:#d99bb5!important;
  box-shadow:none!important;
 }
 html body .rem-floating-highlighter[aria-pressed="true"]{
@@ -1344,13 +1344,13 @@ html body .ebook-reading-shell.rem-highlighter-on .rem-floating-highlighter{
  background-color:#ad4777!important;
  background:#ad4777!important;
  border:0.75px solid #d58aaa!important;
- color:#F2B8C6!important;
+ color:#ffe0ee!important;
  box-shadow:none!important;
 }
 html body .ebook-reading-shell .rem-floating-highlighter[aria-pressed="true"] svg,
 html body.ebook-fullscreen-active .ebook-reading-shell>.rem-floating-highlighter[aria-pressed="true"] svg{
- color:#F2B8C6!important;
- stroke:#F2B8C6!important;
+ color:#ffe0ee!important;
+ stroke:#ffe0ee!important;
 }
 
 /* v265: translucent floating pen, retaining readable icon and slim outline. */
@@ -1368,7 +1368,7 @@ html body.ebook-fullscreen-active .ebook-reading-shell>.rem-floating-highlighter
 html body .ebook-reading-shell.rem-highlighter-on .rem-floating-highlighter{
  background:rgba(173,71,119,.58)!important;
  border:0.75px solid rgba(239,172,201,.9)!important;
- color:#F2B8C6!important;
+ color:#ffe0ee!important;
  box-shadow:none!important;
 }
 
@@ -1379,15 +1379,15 @@ html body .ebook-reading-shell.rem-highlighter-on .rem-floating-highlighter{
  background:transparent!important;
  background-color:transparent!important;
  border:0.75px solid #d98eae!important;
- color:#F2B8C6!important;
+ color:#e7a0bf!important;
  box-shadow:none!important;
  backdrop-filter:none!important;
  -webkit-backdrop-filter:none!important;
 }
 html body .ebook-reading-shell .rem-floating-highlighter[aria-pressed="true"] svg,
 html body.ebook-fullscreen-active .ebook-reading-shell>.rem-floating-highlighter[aria-pressed="true"] svg{
- color:#F2B8C6!important;
- stroke:#F2B8C6!important;
+ color:#e7a0bf!important;
+ stroke:#e7a0bf!important;
 }
 
 /* v267: inactive = outline and pen only; active = translucent dark pink. */
@@ -1395,8 +1395,8 @@ html body .ebook-reading-shell .rem-floating-highlighter[aria-pressed="false"],
 html body.ebook-fullscreen-active .ebook-reading-shell>.rem-floating-highlighter[aria-pressed="false"]{
  background:transparent!important;
  background-color:transparent!important;
- border:0.75px solid #F2B8C6!important;
- color:#F2B8C6!important;
+ border:0.75px solid #d99bb5!important;
+ color:#d99bb5!important;
  box-shadow:none!important;
  backdrop-filter:none!important;
  -webkit-backdrop-filter:none!important;
@@ -1406,25 +1406,25 @@ html body.ebook-fullscreen-active .ebook-reading-shell>.rem-floating-highlighter
 html body .ebook-reading-shell.rem-highlighter-on .rem-floating-highlighter[aria-pressed="true"]{
  background:rgba(173,71,119,.58)!important;
  background-color:rgba(173,71,119,.58)!important;
- border:0.75px solid #F2B8C6!important;
- color:#F2B8C6!important;
+ border:0.75px solid #e7a0bf!important;
+ color:#ffe0ee!important;
  box-shadow:none!important;
  backdrop-filter:blur(5px)!important;
  -webkit-backdrop-filter:blur(5px)!important;
 }
 html body .ebook-reading-shell .rem-floating-highlighter[aria-pressed="true"] svg,
 html body.ebook-fullscreen-active .ebook-reading-shell>.rem-floating-highlighter[aria-pressed="true"] svg{
- color:#F2B8C6!important;
- stroke:#F2B8C6!important;
+ color:#ffe0ee!important;
+ stroke:#ffe0ee!important;
 }
 
 /* v268: inactive transparent; pressed solid pastel pink with dark pink pen. */
 html body .ebook-reading-shell .rem-floating-highlighter[aria-pressed="true"],
 html body.ebook-fullscreen-active .ebook-reading-shell>.rem-floating-highlighter[aria-pressed="true"],
 html body .ebook-reading-shell.rem-highlighter-on .rem-floating-highlighter[aria-pressed="true"]{
- background:#F2B8C6!important;
- background-color:#F2B8C6!important;
- border:0.75px solid #F2B8C6!important;
+ background:#e9a8c3!important;
+ background-color:#e9a8c3!important;
+ border:0.75px solid #e9a8c3!important;
  color:#8d315e!important;
  box-shadow:none!important;
  backdrop-filter:none!important;
@@ -1453,13 +1453,13 @@ html body.ebook-fullscreen-active .ebook-reading-shell.rem-immersive-light .rem-
  background:transparent!important;
  background-color:transparent!important;
  border-color:transparent!important;
- color:#1FD69A!important;
+ color:#65cfa8!important;
  box-shadow:none!important;
 }
 html body .ebook-reading-shell[data-theme="sun"] .ebook-page-frame>.rem-immersive-entry svg,
 html body.ebook-fullscreen-active .ebook-reading-shell.rem-immersive-light .rem-ebook-fullscreen-toggle.rem-immersive-close svg{
- color:#1FD69A!important;
- stroke:#1FD69A!important;
+ color:#65cfa8!important;
+ stroke:#65cfa8!important;
 }
 
 /* v281: one shared font for all Home shelf titles, including free and premium. */
@@ -1560,7 +1560,7 @@ header.top nav .rem-search-nav svg,header.top nav .rem-profile-nav svg{width:19p
 
 /* v287: no outer nav capsule; restore vivid mint and balanced search icon. */
 header.top nav{background:transparent!important;border:0!important;box-shadow:none!important;padding:0!important;border-radius:0!important;gap:4px!important}
-header.top nav button.is-active{background:#1FD69A!important;border-color:#1FD69A!important;color:#102438!important}
+header.top nav button.is-active{background:#58d6a6!important;border-color:#58d6a6!important;color:#102438!important}
 header.top nav .rem-search-nav{width:36px!important;min-width:36px!important;height:36px!important;padding:5px!important}
 header.top nav .rem-search-nav svg{width:23px!important;height:23px!important}
 @media(max-width:650px){header.top nav{gap:4px!important}}
@@ -1679,7 +1679,7 @@ header.top nav .rem-profile-nav{margin-left:0!important;margin-right:0!important
 /* v304: mint outlined search button with geometrically centered magnifier. */
 header.top nav #navSearch.rem-search-nav{
  position:relative!important;
- color:#1FD69A!important;
+ color:#50d3a7!important;
  border:0!important;
  background:transparent!important;
  width:42px!important;min-width:42px!important;height:42px!important;
@@ -1704,10 +1704,10 @@ header.top nav #navSearch.rem-search-nav,
 header.top nav #navSearch.rem-search-nav svg,
 header.top nav #navSearch.rem-search-nav svg circle,
 header.top nav #navSearch.rem-search-nav svg path{
- color:#1FD69A!important;
- stroke:#1FD69A!important;
+ color:#50d3a7!important;
+ stroke:#50d3a7!important;
 }
-header.top nav #navSearch.rem-search-nav::before{border-color:#1FD69A!important}
+header.top nav #navSearch.rem-search-nav::before{border-color:#50d3a7!important}
 
 /* v307: compact translucent sticky navigation with profile beside REM. */
 header.top{
@@ -1759,6 +1759,3 @@ header.top nav{position:relative!important;left:3px!important}
 
 /* v309: subtle left nudge of only the white search glyph; keep tap target unchanged. */
 header.top nav #navSearch.rem-search-nav svg{transform:translateX(-4px)!important}
-
-/* v310 — REM brand palette */
-:root{--accent:#1FD69A;--rem-mint:#1FD69A;--rem-pink:#F2B8C6}
