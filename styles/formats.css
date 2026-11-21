@@ -6,7 +6,7 @@
 .reader-tools-row{display:flex;gap:7px;flex-wrap:wrap}
 .reader-tools button,.focus-panel button{border-radius:12px;padding:10px 12px;min-height:42px}
 .reader-tools-row button{flex:1;min-width:65px}
-.reader-tools button[aria-pressed="true"]{outline:2px solid #1FD69A;outline-offset:1px}
+.reader-tools button[aria-pressed="true"]{outline:2px solid #64dfa9;outline-offset:1px}
 .focus-panel{margin-top:12px;padding:12px;border:1px solid #506273;border-radius:12px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
 .focus-panel[hidden]{display:none}
 .focus-panel label{font-size:.88rem;width:100%}
@@ -24,7 +24,7 @@
 
 /* Reader refinements v13 — paper-like contrast, stable controls */
 .format-switch button,.format-switch button[aria-pressed="true"],.format-switch button[aria-pressed="false"]{border-radius:12px!important;transform:none!important;min-height:46px;transition:background-color .15s,color .15s,border-color .15s}
-.format-switch button[aria-pressed="true"]{background:#1FD69A!important;color:#102236!important;border:1px solid #1FD69A!important;box-shadow:none!important}
+.format-switch button[aria-pressed="true"]{background:#64dfa9!important;color:#102236!important;border:1px solid #64dfa9!important;box-shadow:none!important}
 .format-switch button[aria-pressed="false"]{background:#213c52!important;color:#f7f8fa!important;border:1px solid #6c8a9d!important;box-shadow:none!important}
 .reading-shell[data-theme="sun"]{background:#f5efdf!important;color:#231d16!important;border-color:#c7bba4!important;color-scheme:light}
 .reading-shell[data-theme="moon"]{background:#101317!important;color:#f3eee4!important;border-color:#38424a!important;color-scheme:dark}
@@ -37,14 +37,14 @@
 .reader-theme-pair button+button,.reader-size-pair button+button{border-left:1px solid #8b968f!important}
 .reader-size-pair button:first-child{font-size:.88rem}
 .reader-size-pair button:last-child{font-size:1.22rem}
-.reader-theme-pair button[aria-pressed="true"]{background:#1FD69A!important;color:#102236!important;outline:0!important}
+.reader-theme-pair button[aria-pressed="true"]{background:#64dfa9!important;color:#102236!important;outline:0!important}
 .reader-theme-pair button[aria-pressed="false"]{background:#293a45!important;color:#fff!important}
 .reader-tools-row>button{flex:1;min-width:105px}
 .focus-panel{display:flex;flex-direction:column;align-items:stretch;background:rgba(127,110,80,.08);border-color:#8b968f}
 .focus-panel[hidden]{display:none}
 .focus-duration-options,.focus-timer-actions{display:flex;gap:7px;flex-wrap:wrap;align-items:center}
 .focus-duration-options button{flex:1;min-width:76px;border-radius:10px!important}
-.focus-duration-options button[aria-pressed="true"]{background:#1FD69A!important;color:#102236!important}
+.focus-duration-options button[aria-pressed="true"]{background:#64dfa9!important;color:#102236!important}
 .focus-notice{margin:4px 0;color:inherit!important;font-size:.85rem;line-height:1.5}
 .focus-timer-actions .focus-clock{margin-right:auto}
 .focus-timer-actions button{min-width:65px}
@@ -58,11 +58,11 @@
 .reader-tools-row button{border-radius:11px!important;min-height:68px;padding:7px 5px;font-weight:700;transform:none!important}
 .reader-tools-row .reader-theme-button{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;flex:1.15;min-width:0;background:#283e56;color:#f3f5fa;border:1px solid #577188}
 .reader-theme-icon{display:block;font-size:1.25rem;line-height:1.1}
-.reader-theme-button[aria-pressed="true"]{background:#1FD69A!important;color:#0d2638!important;border-color:#1FD69A!important;outline:none!important}
+.reader-theme-button[aria-pressed="true"]{background:#80d9aa!important;color:#0d2638!important;border-color:#80d9aa!important;outline:none!important}
 .reader-theme-button[aria-pressed="false"]{background:#283e56!important;color:#f3f5fa!important}
 .reader-tools-divider{width:1px;background:#708397;align-self:center;height:38px;margin:0 2px;flex-shrink:0}
 .reader-tools-row .reader-font-button{flex:.65;min-width:0;background:#283e56;color:#f3f5fa;border:1px solid #577188}
-.reader-tools-row .reader-focus-button{flex:1.12;min-width:0;background:#1b3545;color:#1FD69A;border:1px solid #1FD69A;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px}
+.reader-tools-row .reader-focus-button{flex:1.12;min-width:0;background:#1b3545;color:#80d9aa;border:1px solid #80d9aa;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px}
 .reader-focus-overlay{position:fixed;inset:0;z-index:1000;background:rgba(3,10,19,.76);display:flex;align-items:center;justify-content:center;padding:16px;overflow-y:auto}
 .reader-focus-overlay[hidden],.reader-focus-custom[hidden],.reader-focus-active[hidden]{display:none!important}
 .reader-focus-dialog{width:min(100%,440px);max-height:calc(100dvh - 32px);overflow:auto;background:#1b2e43;color:#f4f7fa;border:1px solid #7896a8;border-radius:24px;padding:27px 20px;text-align:center;box-shadow:0 24px 70px #0009}
@@ -70,7 +70,7 @@
 .reader-focus-dialog p{color:#bfcddd;font-size:1rem;line-height:1.55}
 .reader-focus-presets,.reader-focus-actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
 .reader-focus-dialog button{border-radius:12px;min-height:46px;font-weight:700;background:#273e55;color:#fff;border:1px solid #7591a4;padding:10px 16px}
-.reader-focus-dialog button[aria-pressed="true"],.reader-focus-dialog button.primary{background:#1FD69A;color:#0d2638;border-color:#1FD69A}
+.reader-focus-dialog button[aria-pressed="true"],.reader-focus-dialog button.primary{background:#80d9aa;color:#0d2638;border-color:#80d9aa}
 .reader-focus-dialog>button{margin:10px auto 0}
 .reader-focus-dialog .reader-focus-notice{margin:20px 0 22px}
 .reader-focus-custom{margin:12px auto;display:flex;gap:8px;align-items:center;justify-content:center;flex-wrap:wrap}
@@ -78,7 +78,7 @@
 .reader-focus-custom input{width:85px;background:#273e55;color:#fff}
 .reader-focus-active{display:flex;align-items:center;justify-content:center;gap:9px;flex-wrap:wrap;background:#1b2e43;color:#f3f6fa;border-radius:12px;padding:10px;margin:0 0 14px}
 .reader-focus-active button{padding:7px 10px;min-height:36px}
-.reader-focus-clock{font-variant-numeric:tabular-nums;font-weight:750;color:#1FD69A}
+.reader-focus-clock{font-variant-numeric:tabular-nums;font-weight:750;color:#80d9aa}
 .reading-shell.focus-active .reader-controls,.reading-shell.focus-active .chapter-actions{display:none}
 @media(max-width:390px){.reader-tools{padding:11px 8px}.reader-tools-row{gap:5px}.reader-tools-row button{font-size:.82rem;padding:6px 3px;min-height:65px}.reader-tools-row .reader-focus-button{font-size:.82rem}.reader-tools-divider{margin:0 1px}}
 
@@ -109,9 +109,9 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 .reader-tools-row .reader-focus-button:active,
 .reader-tools-row .reader-font-button:focus-visible,
 .reader-tools-row .reader-focus-button:focus-visible{
- background:#1FD69A!important;
+ background:#80d9aa!important;
  color:#0d2638!important;
- border-color:#1FD69A!important;
+ border-color:#80d9aa!important;
 }
 .reader-tools-row .reader-font-button:disabled{opacity:.48}
 
@@ -122,7 +122,7 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 /* v18: mobile format dock and mint quote highlights */
 .format-switch-bottom{position:sticky;bottom:env(safe-area-inset-bottom,0px);z-index:20;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px;padding:8px;background:rgba(12,27,48,.96);border:1px solid #304b63;border-radius:18px;margin:20px 0 12px;box-shadow:0 8px 24px #0006}
 .format-switch-bottom button{display:flex;align-items:center;justify-content:center;flex-direction:column;min-width:0;min-height:66px;border:0!important;border-radius:12px!important;background:transparent!important;color:#d5e0ec!important;font-size:.92rem}
-.format-switch-bottom button::before{content:'▣';display:block;font-size:1.3rem;line-height:1.4;color:#1FD69A}
+.format-switch-bottom button::before{content:'▣';display:block;font-size:1.3rem;line-height:1.4;color:#80d9aa}
 .format-switch-bottom button:nth-child(1)::before{content:'▤'}
 .format-switch-bottom button:nth-child(2)::before{content:'▣'}
 .format-switch-bottom button:nth-child(3)::before{content:'♫'}
@@ -137,7 +137,7 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 .selection-buttons{display:flex;gap:7px;flex-wrap:wrap}
 .selection-buttons button{flex:1;min-width:100px;font-size:.85rem;padding:9px}
 .selection-actions>button{margin-top:8px;font-size:.8rem}
-.switch-context{padding:12px;border-left:3px solid #1FD69A;background:#182e43;overflow-wrap:anywhere}
+.switch-context{padding:12px;border-left:3px solid #80d9aa;background:#182e43;overflow-wrap:anywhere}
 
 /* v19 — REM 5.6-inspired bottom dock and consistent reader borders */
 .reader-tools-row .reader-theme-button[aria-pressed="false"],
@@ -149,14 +149,14 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 }
 .reader-tools-row .reader-focus-button,
 .reader-tools-row .reader-focus-button:focus{
- border:1.5px solid #1FD69A!important;
- color:#1FD69A!important;
+ border:1.5px solid #80d9aa!important;
+ color:#80d9aa!important;
  background:#1b3545!important;
  box-shadow:none!important;
 }
 .reader-tools-row .reader-focus-button:active,
 .reader-tools-row .reader-focus-button:focus-visible{
- background:#1FD69A!important;color:#102638!important;
+ background:#80d9aa!important;color:#102638!important;
 }
 .format-switch-bottom{
  position:fixed!important;
@@ -185,7 +185,7 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
  background:#21466d!important;color:#fff!important;
  border:0!important;
 }
-.format-switch-bottom button::before{font-size:1.55rem!important;color:#1FD69A!important}
+.format-switch-bottom button::before{font-size:1.55rem!important;color:#80d9aa!important}
 .format-switch-bottom button[aria-pressed="true"]::before{color:#8fc8ff!important}
 #app:has(.format-switch-bottom){padding-bottom:calc(112px + env(safe-area-inset-bottom))}
 @media(min-width:760px){.format-switch-bottom{left:50%;right:auto;transform:translateX(-50%);max-width:650px;border-radius:18px 18px 0 0!important;border:1px solid #37536c!important}}
@@ -196,7 +196,7 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 .format-switch-bottom button[data-format="paper"]{order:1}.format-switch-bottom button[data-format="ebook"]{order:2}.format-switch-bottom button[data-format="audio"]{order:3}
 .format-switch-bottom button[aria-pressed="true"]{background:#21466d!important;color:#fff!important;border:0!important;box-shadow:none!important}
 .format-switch-bottom button::before{display:none!important;content:none!important}
-.format-switch-bottom .format-icon{display:block;width:27px;height:27px;color:#1FD69A;flex:none}
+.format-switch-bottom .format-icon{display:block;width:27px;height:27px;color:#80d9aa;flex:none}
 .format-switch-bottom button[aria-pressed="true"] .format-icon{color:#8fc8ff}
 .format-switch:not(.format-switch-bottom) .format-icon{display:none}
 
@@ -213,7 +213,7 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 .format-switch-bottom button[aria-pressed="true"],
 .format-switch-bottom button[aria-pressed="true"]:focus{
  background:#21466d!important;
- border:1.5px solid #1FD69A!important;
+ border:1.5px solid #80d9aa!important;
  border-radius:17px!important;
  box-shadow:none!important;
  outline:none!important;
@@ -237,7 +237,7 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
  background:#21466d!important;background-color:#21466d!important;
  border:1px solid transparent!important;box-shadow:none!important;
 }
-.format-switch-bottom button[data-format]:focus-visible{outline:2px solid #1FD69A!important;outline-offset:-2px!important}
+.format-switch-bottom button[data-format]:focus-visible{outline:2px solid #80d9aa!important;outline-offset:-2px!important}
 .format-switch-bottom .format-emoji{display:block;font-size:1.65rem;line-height:1.1;min-height:29px}
 
 /* v23: original REM 5.6 icons — mint paper/audio, sky-blue ebook */
@@ -257,7 +257,7 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 .sync-match{border-top:1px solid #456077;padding:12px 0}
 .sync-match p{font-family:Georgia,serif;color:#dce7e4}
 .sync-status{color:#85dcb0}
-.sync-anchor{background:#1FD69A;color:#163d35;font-weight:900;border-radius:4px}
+.sync-anchor{background:#80d9aa;color:#163d35;font-weight:900;border-radius:4px}
 
 /* v25: paper/audio focus controls and clean paper synchronization */
 .paper-sync-shell>h2{font-family:Georgia,serif;font-size:clamp(1.6rem,6vw,2.2rem);margin:10px 0}
@@ -272,8 +272,8 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 
 /* v26: standalone mint Focus control for paper and audio */
 .reader-tools.reader-tools-focus-only{background:transparent!important;border:0!important;border-radius:0!important;padding:0!important;margin:0 0 18px!important;display:flex;justify-content:flex-start}
-.reader-tools-focus-only .reader-focus-button{display:inline-flex!important;align-items:center!important;justify-content:center!important;flex-direction:row!important;gap:7px!important;width:auto!important;min-width:0!important;min-height:44px!important;padding:9px 16px!important;border:1.5px solid #1FD69A!important;border-radius:13px!important;background:#122b40!important;color:#1FD69A!important;font-size:1rem!important;font-weight:700!important;box-shadow:none!important}
-.reader-tools-focus-only .reader-focus-button:active,.reader-tools-focus-only .reader-focus-button:focus-visible{background:#1FD69A!important;color:#102638!important}
+.reader-tools-focus-only .reader-focus-button{display:inline-flex!important;align-items:center!important;justify-content:center!important;flex-direction:row!important;gap:7px!important;width:auto!important;min-width:0!important;min-height:44px!important;padding:9px 16px!important;border:1.5px solid #64dfa9!important;border-radius:13px!important;background:#122b40!important;color:#64dfa9!important;font-size:1rem!important;font-weight:700!important;box-shadow:none!important}
+.reader-tools-focus-only .reader-focus-button:active,.reader-tools-focus-only .reader-focus-button:focus-visible{background:#64dfa9!important;color:#102638!important}
 .reader-tools-focus-only .reader-theme-icon{font-size:1.1rem!important}
 
 /* v27 — navy is the only background for paper/audio, regardless of ebook theme */
@@ -307,7 +307,7 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 .sync-search .sync-switch-actions .sync-switch-audio{width:100%!important;min-width:0!important;min-height:54px!important;padding:10px 6px!important;margin:0!important;white-space:normal!important;line-height:1.2!important;font-size:clamp(.78rem,3.6vw,1rem)!important;border-radius:13px!important;background:#203e5c!important;color:#f4f8fb!important;border:1px solid #63819c!important;box-shadow:none!important;transition:background .12s,color .12s,border-color .12s!important}
 .sync-search .sync-switch-actions button:active,
 .sync-search .sync-switch-actions button:focus-visible,
-.sync-search .sync-switch-actions button.is-selected{background:#1FD69A!important;color:#102538!important;border-color:#1FD69A!important}
+.sync-search .sync-switch-actions button.is-selected{background:#7eddb1!important;color:#102538!important;border-color:#7eddb1!important}
 
 /* v32 — ebook journey: blue navigation, mint primary switch, live bookmark */
 .ebook-reading-shell .ebook-journey{background:#17283e!important;color:#f3f6fa!important;border:1px solid #42617b;border-radius:17px;padding:16px;margin:0 0 18px}
@@ -315,7 +315,7 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 .ebook-journey>p:not(.ebook-journey-bookmark){color:#bfcddd!important;line-height:1.5;margin:0 0 12px}
 .ebook-journey-actions{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0 15px}
 .ebook-journey-actions button{min-height:47px!important;border-radius:12px!important;padding:10px 16px!important;font-weight:800!important;font-size:clamp(.85rem,3.8vw,1rem)!important;line-height:1.2!important}
-.ebook-journey-actions button:first-child{background:#1FD69A!important;color:#10263b!important;border:1px solid #1FD69A!important}
+.ebook-journey-actions button:first-child{background:#68dbaa!important;color:#10263b!important;border:1px solid #68dbaa!important}
 .ebook-journey-actions button:last-child{background:#20364f!important;color:#f5f7fa!important;border:1px solid #617e98!important}
 .ebook-journey-actions button:active{filter:brightness(1.15)}
 .ebook-journey-bookmark{background:#233e5c!important;color:#75e4b3!important;border-radius:12px;padding:12px 14px;margin:0!important;line-height:1.5;overflow-wrap:anywhere}
@@ -336,7 +336,7 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 .ebook-journey-actions button,
 .ebook-journey-actions button:first-child,
 .ebook-journey-actions button:last-child{background:#203e5c!important;color:#f5f7fa!important;border:1px solid #63819c!important;min-width:0!important;padding:10px 6px!important;white-space:normal!important}
-.ebook-journey-actions button.is-selected,.ebook-journey-actions button:active,.ebook-journey-actions button:focus-visible{background:#1FD69A!important;color:#102538!important;border-color:#1FD69A!important}
+.ebook-journey-actions button.is-selected,.ebook-journey-actions button:active,.ebook-journey-actions button:focus-visible{background:#7eddb1!important;color:#102538!important;border-color:#7eddb1!important}
 .ebook-journey .ebook-expand{display:inline-flex!important;align-items:center;justify-content:center;margin:0 0 15px;padding:9px 13px!important;background:#173e5d!important;color:#b8e8ff!important;border:1px solid #6594b6!important;border-radius:12px!important;font-weight:800!important;font-size:.86rem!important}
 body.ebook-immersive-active{overflow:auto}
 body.ebook-immersive-active .top,body.ebook-immersive-active footer{display:none!important}
@@ -398,7 +398,7 @@ body.ebook-immersive-active .ebook-reading-shell .reading-text{
 /* v35 — switching after the text remains accessible in immersive reading */
 .ebook-inline-switches{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:18px 0 22px}
 .ebook-inline-switches button{min-width:0!important;white-space:normal!important;background:#23415e!important;color:#f5f8fc!important;border:1px solid #65829a!important;border-radius:13px!important;padding:13px 7px!important;font-weight:700!important}
-.ebook-inline-switches button:active,.ebook-inline-switches button:focus-visible{background:#1FD69A!important;color:#10283b!important}
+.ebook-inline-switches button:active,.ebook-inline-switches button:focus-visible{background:#80d9aa!important;color:#10283b!important}
 body.ebook-immersive-active .ebook-inline-switches{margin-bottom:30px}
 
 /* v36: fullscreen is a dedicated scroll container on iOS Safari */
@@ -532,7 +532,7 @@ body:not(.ebook-immersive-active) .ebook-reading-shell .ebook-page-frame .readin
 .ebook-reading-shell .ebook-chapter-nav{display:flex!important;justify-content:space-between!important;align-items:center!important;margin:14px 0 8px!important;gap:12px!important}
 .ebook-reading-shell .ebook-chapter-nav button{display:flex!important;align-items:center!important;justify-content:center!important;width:62px!important;height:50px!important;min-height:50px!important;padding:0!important;border-radius:14px!important;background:#23415e!important;color:#f4f8fc!important;border:1px solid #65829a!important;box-shadow:none!important;font-size:1.65rem!important;font-weight:650!important;line-height:1!important}
 .ebook-reading-shell .ebook-chapter-nav button:disabled{opacity:.3!important}
-.ebook-reading-shell .ebook-chapter-nav button:active{background:#1FD69A!important;color:#10283b!important}
+.ebook-reading-shell .ebook-chapter-nav button:active{background:#80d9aa!important;color:#10283b!important}
 .ebook-reading-shell .highlight-tools .ebook-inline-switches{margin:10px 0 18px!important}
 
 /* v44 — no redundant ebook instruction panels; arrows before inline format actions */
@@ -545,12 +545,12 @@ body:not(.ebook-immersive-active) .ebook-reading-shell .ebook-page-frame .readin
 .audio-sync-shell .rem-audio-player{background:transparent!important;border:0!important;box-shadow:none!important;padding:0!important;margin:0!important;color:#edf4f5!important}
 .audio-sync-shell .rem-audio-title{font-family:Georgia,'Times New Roman',serif!important;font-size:clamp(1.5rem,5vw,2rem)!important;line-height:1.2!important;color:#f7f8f5!important;margin:12px 0 18px!important}
 .audio-sync-shell .rem-audio-status{color:#b8c9d5!important;font-size:.95rem!important;margin:8px 0 18px!important}
-.audio-sync-shell .rem-audio-seek{display:block;width:100%;height:8px;margin:24px 0 30px;appearance:none;-webkit-appearance:none;border-radius:100px;border:0;background:linear-gradient(to right,#1FD69A 0%,#1FD69A var(--audio-progress,0%),#40546b var(--audio-progress,0%),#40546b 100%);outline:none}
+.audio-sync-shell .rem-audio-seek{display:block;width:100%;height:8px;margin:24px 0 30px;appearance:none;-webkit-appearance:none;border-radius:100px;border:0;background:linear-gradient(to right,#83dcb1 0%,#83dcb1 var(--audio-progress,0%),#40546b var(--audio-progress,0%),#40546b 100%);outline:none}
 .audio-sync-shell .rem-audio-seek::-webkit-slider-thumb{-webkit-appearance:none;width:23px;height:23px;border-radius:50%;background:#e9fff3;border:4px solid #67d8a3;box-shadow:0 2px 9px #07142088}
 .audio-sync-shell .rem-audio-seek::-moz-range-thumb{width:17px;height:17px;border-radius:50%;background:#e9fff3;border:4px solid #67d8a3}
 .audio-sync-shell .rem-audio-actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:0 0 18px}
 .audio-sync-shell .rem-audio-actions button{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text',system-ui,sans-serif!important;font-size:1rem!important;font-weight:700!important;min-height:54px;border-radius:16px;padding:12px 17px}
-.audio-sync-shell .rem-audio-play{background:#1FD69A!important;color:#0c2330!important;border:1px solid #1FD69A!important;min-width:145px}
+.audio-sync-shell .rem-audio-play{background:#83dcb1!important;color:#0c2330!important;border:1px solid #83dcb1!important;min-width:145px}
 .audio-sync-shell .rem-audio-restart{background:#22354d!important;color:#f1f5f8!important;border:1px solid #5a7690!important}
 .audio-sync-shell .format-mode-note{color:#a8b9c8!important;font-size:.85rem!important;line-height:1.5!important}
 .audio-sync-shell .audio-inline-switches{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px}
@@ -559,12 +559,12 @@ body:not(.ebook-immersive-active) .ebook-reading-shell .ebook-page-frame .readin
 /* v84 — compact audio controls approved for REM */
 .audio-sync-shell .rem-audio-title{display:none!important}
 .audio-sync-shell .rem-audio-seek{height:5px!important;margin:20px 0 25px!important;cursor:pointer}
-.audio-sync-shell .rem-audio-seek::-webkit-slider-thumb{-webkit-appearance:none!important;width:14px!important;height:14px!important;border-radius:50%!important;background:#b8f2d3!important;border:2px solid #14283e!important;box-shadow:0 0 0 1px #1FD69A!important}
+.audio-sync-shell .rem-audio-seek::-webkit-slider-thumb{-webkit-appearance:none!important;width:14px!important;height:14px!important;border-radius:50%!important;background:#b8f2d3!important;border:2px solid #14283e!important;box-shadow:0 0 0 1px #83dcb1!important}
 .audio-sync-shell .rem-audio-seek::-moz-range-thumb{width:12px!important;height:12px!important;border-radius:50%!important;background:#b8f2d3!important;border:2px solid #14283e!important}
 .audio-sync-shell .rem-audio-actions{justify-content:space-between!important;flex-wrap:nowrap!important;gap:8px!important;margin-bottom:20px!important}
 .audio-sync-shell .rem-audio-actions button{min-height:52px!important;padding:6px 4px!important;border:0!important;box-shadow:none!important;min-width:0!important}
 .audio-sync-shell .rem-audio-play{display:inline-flex!important;align-items:center!important;gap:12px!important;background:transparent!important;color:#f2f6fa!important}
-.audio-sync-shell .rem-audio-play-icon{display:inline-flex;align-items:center;justify-content:center;flex:0 0 48px;width:48px;height:48px;border-radius:50%;background:#1FD69A;color:#102437}
+.audio-sync-shell .rem-audio-play-icon{display:inline-flex;align-items:center;justify-content:center;flex:0 0 48px;width:48px;height:48px;border-radius:50%;background:#83dcb1;color:#102437}
 .audio-sync-shell .rem-play-glyph{width:0;height:0;border-top:8px solid transparent;border-bottom:8px solid transparent;border-left:13px solid #102437;margin-left:4px}
 .audio-sync-shell .rem-pause-glyph{width:14px;height:17px;border-left:5px solid #102437;border-right:5px solid #102437}
 .audio-sync-shell .rem-audio-restart{display:inline-flex!important;align-items:center!important;justify-content:flex-end!important;background:transparent!important;color:#dce6ee!important;font-weight:500!important}
@@ -578,7 +578,7 @@ body:not(.ebook-immersive-active) .ebook-reading-shell .ebook-page-frame .readin
  width:100%!important;height:5px!important;min-height:0!important;
  padding:0!important;border:0!important;border-radius:99px!important;
  margin:24px 0 30px!important;
- background:linear-gradient(to right,#1FD69A 0%,#1FD69A var(--audio-progress,0%),#40546b var(--audio-progress,0%),#40546b 100%)!important;
+ background:linear-gradient(to right,#83dcb1 0%,#83dcb1 var(--audio-progress,0%),#40546b var(--audio-progress,0%),#40546b 100%)!important;
 }
 .audio-sync-shell input.rem-audio-seek[type="range"]::-webkit-slider-runnable-track{
  -webkit-appearance:none!important;height:5px!important;border-radius:99px!important;background:transparent!important;border:0!important;
@@ -594,7 +594,7 @@ body:not(.ebook-immersive-active) .ebook-reading-shell .ebook-page-frame .readin
 }
 
 /* v87 — larger invisible touch target while keeping the visible audio track slim */
-.audio-sync-shell input.rem-audio-seek[type="range"]{height:30px!important;min-height:30px!important;background:transparent!important;touch-action:pan-x!important;cursor:pointer!important;--track-fill:linear-gradient(to right,#1FD69A 0%,#1FD69A var(--audio-progress,0%),#40546b var(--audio-progress,0%),#40546b 100%)}
+.audio-sync-shell input.rem-audio-seek[type="range"]{height:30px!important;min-height:30px!important;background:transparent!important;touch-action:pan-x!important;cursor:pointer!important;--track-fill:linear-gradient(to right,#83dcb1 0%,#83dcb1 var(--audio-progress,0%),#40546b var(--audio-progress,0%),#40546b 100%)}
 .audio-sync-shell input.rem-audio-seek[type="range"]::-webkit-slider-runnable-track{height:5px!important;background:var(--track-fill)!important;border-radius:99px!important}
 .audio-sync-shell input.rem-audio-seek[type="range"]::-moz-range-track{height:5px!important;background:var(--track-fill)!important;border-radius:99px!important}
 .audio-sync-shell input.rem-audio-seek[type="range"]::-webkit-slider-thumb{margin-top:-4.5px!important}
@@ -608,18 +608,18 @@ body:not(.ebook-immersive-active) .ebook-reading-shell .ebook-page-frame .readin
 /* v215: Ebook icon in the bottom format dock is pink, including active mode */
 .format-switch-bottom button:nth-child(2),
 .format-switch-bottom button:nth-child(2) svg,
-.format-switch-bottom button:nth-child(2) svg *{--ebook-pink:#F2B8C6}
-.format-switch-bottom button:nth-child(2)::before{color:#F2B8C6!important}
-.format-switch-bottom button:nth-child(2) svg{color:#F2B8C6!important;stroke:#F2B8C6!important}
-.format-switch-bottom button:nth-child(2) svg [stroke]:not([stroke="none"]){stroke:#F2B8C6!important}
-.format-switch-bottom button:nth-child(2)[aria-pressed="true"]::before{color:#F2B8C6!important}
+.format-switch-bottom button:nth-child(2) svg *{--ebook-pink:#f3a5ca}
+.format-switch-bottom button:nth-child(2)::before{color:#f3a5ca!important}
+.format-switch-bottom button:nth-child(2) svg{color:#f3a5ca!important;stroke:#f3a5ca!important}
+.format-switch-bottom button:nth-child(2) svg [stroke]:not([stroke="none"]){stroke:#f3a5ca!important}
+.format-switch-bottom button:nth-child(2)[aria-pressed="true"]::before{color:#f3a5ca!important}
 
 /* v216: correct colors by format ID, not by button position */
-.format-switch-bottom button[data-format="paper"] svg{color:#1FD69A!important;stroke:#1FD69A!important}
-.format-switch-bottom button[data-format="paper"] svg [stroke]:not([stroke="none"]){stroke:#1FD69A!important}
-.format-switch-bottom button[data-format="ebook"] svg{color:#F2B8C6!important;stroke:#F2B8C6!important}
-.format-switch-bottom button[data-format="ebook"] svg [stroke]:not([stroke="none"]){stroke:#F2B8C6!important}
-.format-switch-bottom button[data-format="audio"] svg{color:#1FD69A!important;stroke:#1FD69A!important}
+.format-switch-bottom button[data-format="paper"] svg{color:#91e2b8!important;stroke:#91e2b8!important}
+.format-switch-bottom button[data-format="paper"] svg [stroke]:not([stroke="none"]){stroke:#91e2b8!important}
+.format-switch-bottom button[data-format="ebook"] svg{color:#f3a5ca!important;stroke:#f3a5ca!important}
+.format-switch-bottom button[data-format="ebook"] svg [stroke]:not([stroke="none"]){stroke:#f3a5ca!important}
+.format-switch-bottom button[data-format="audio"] svg{color:#91e2b8!important;stroke:#91e2b8!important}
 
 
 /* v239 — full-screen reader: a single scroll surface, no duplicate scroll rails. */
@@ -710,13 +710,13 @@ html body.ebook-fullscreen-active .ebook-reading-shell[data-theme="sun"] .rem-im
  background:none!important;
  background-color:transparent!important;
  border:0!important;
- color:#1FD69A!important;
+ color:#65cfa8!important;
  box-shadow:none!important;
 }
 html body .ebook-reading-shell[data-theme="sun"] button.rem-ebook-fullscreen-toggle svg,
 html body .ebook-reading-shell.rem-immersive-light button.rem-ebook-fullscreen-toggle svg{
- stroke:#1FD69A!important;
- color:#1FD69A!important;
+ stroke:#65cfa8!important;
+ color:#65cfa8!important;
 }
 
 /* v273: fullscreen dark theme overrides the normal reader's sun background. */
