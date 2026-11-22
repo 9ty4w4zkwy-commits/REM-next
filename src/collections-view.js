@@ -68,10 +68,10 @@ export function createCollectionsView({books,openBook,continueBook,isSavedBook=(
  if(section==='overview'){
  const savedIds=new Set(db.savedBooks.filter(id=>books.some(b=>b.id===id)));
  const stats=el('div',{className:'rem-stats'},[
- [String(savedIds.size),'Libri salvati','Le storie che hai scelto di tenere con te.','books','books'],
- [String(db.shelves.length),'Collezioni','I tuoi mondi di lettura, organizzati da te.','shelves','shelves'],
- [String(db.thoughts.length),'Le mie riflessioni','Quello che le storie mi fanno pensare.','thoughts','reflections'],
- ['0','Parole che restano','Frasi che voglio portare con me.','saved-thoughts','words']
+ [String(savedIds.size),'Libri salvati','Le storie che hai scelto di tenere con te','books','books'],
+ [String(db.shelves.length),'Collezioni','I tuoi mondi di lettura, organizzati da te','shelves','shelves'],
+ [String(db.thoughts.length),'Le mie riflessioni','Quello che le storie mi fanno pensare','thoughts','reflections'],
+ ['0','Parole che restano','Frasi che voglio portare con me','saved-thoughts','words']
  ].map(([number,label,description,target,tone])=>{const card=button('',()=>show(target));card.className='rem-stat rem-stat-'+tone;card.append(node('strong','rem-stat-number',number),node('span','rem-stat-title',label),node('span','rem-stat-description',description));card.setAttribute('aria-label',label+': '+number+'. Apri dettaglio');return card}));
  body.append(stats);
 
