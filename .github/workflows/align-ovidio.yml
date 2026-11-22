@@ -1,0 +1,40 @@
+name: Align Ovidio words
+on:
+  workflow_dispatch:
+    inputs:
+      book:
+        description: 'Book number (1–4)'
+        required: true
+        type: choice
+        options:
+          - '1'
+          - '2'
+          - '3'
+          - '4'
+permissions:
+  contents: write
+concurrency:
+  group: ovidio-alignment-${{ inputs.book }}
+  cancel-in-progress: false
+jobs:
+  align:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg
+          pip install openai-whisper
+      - name: Align audio and text
+        run: python scripts/align_ovidio.py --book ${{ inputs.book }} --model small
+      - name: Save timelines and coverage report
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add content/books/metamorfosi-ovidio/*.words.json content/books/metamorfosi-ovidio/*-alignment-report.json
+          git diff --cached --quiet || (git commit -m "Generate Ovidio book ${{ inputs.book }} word alignment" && git pull --rebase && git push)
