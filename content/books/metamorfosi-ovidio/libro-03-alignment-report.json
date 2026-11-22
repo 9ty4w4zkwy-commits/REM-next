@@ -1,0 +1,56 @@
+[
+  {
+    "chapter": "libro-03-capitolo-01",
+    "coverage": 0.947,
+    "matched": 358,
+    "total": 378
+  },
+  {
+    "chapter": "libro-03-capitolo-02",
+    "coverage": 0.961,
+    "matched": 799,
+    "total": 831
+  },
+  {
+    "chapter": "libro-03-capitolo-03",
+    "coverage": 0.943,
+    "matched": 1015,
+    "total": 1076
+  },
+  {
+    "chapter": "libro-03-capitolo-04",
+    "coverage": 0.967,
+    "matched": 828,
+    "total": 856
+  },
+  {
+    "chapter": "libro-03-capitolo-05",
+    "coverage": 0.963,
+    "matched": 364,
+    "total": 378
+  },
+  {
+    "chapter": "libro-03-capitolo-06",
+    "coverage": 0.925,
+    "matched": 1100,
+    "total": 1189
+  },
+  {
+    "chapter": "libro-03-capitolo-07",
+    "coverage": 0.977,
+    "matched": 780,
+    "total": 798
+  },
+  {
+    "chapter": "libro-03-capitolo-08",
+    "coverage": 0.968,
+    "matched": 1063,
+    "total": 1098
+  },
+  {
+    "chapter": "libro-03-capitolo-09",
+    "coverage": 0.936,
+    "matched": 632,
+    "total": 675
+  }
+]
