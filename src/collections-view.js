@@ -10,7 +10,7 @@ export function createCollectionsView({books,openBook,continueBook,isSavedBook=(
  const tabs=el('div',{className:'rem-violet-tabs'});const headingRow=el('div',{className:'rem-library-heading-row'});const heading=head.querySelector('h1.rem-library-title');headingRow.append(tabs,heading);head.insertBefore(headingRow,head.querySelector('.rem-violet-muted'));
  const body=el('div');root.append(body);
  let pendingBookId=initialBookId;
- const show=(section)=>{const db=readCollections();tabs.replaceChildren();root.classList.toggle('rem-library-detail',section!=='overview');const intro=head.querySelector('.rem-violet-muted');intro.textContent=section==='saved-thoughts'?'Parole che restano':'Pensieri e storie che parlano di te';if(section!=='overview'){const goBack=button('←',()=>{pendingBookId=null;show('overview')});goBack.className='rem-library-back rem-library-back-arrow';goBack.setAttribute('aria-label','Torna alla panoramica della Biblioteca');tabs.append(goBack)}
+ const show=(section)=>{const db=readCollections();tabs.replaceChildren();root.classList.toggle('rem-library-detail',section!=='overview');const intro=head.querySelector('.rem-violet-muted');intro.textContent=section==='saved-thoughts'?'Parole che restano':'Pensieri e storie che parlano di te';root.classList.toggle('rem-library-quotes',section==='saved-thoughts');if(section!=='overview'){const goBack=button('←',()=>{pendingBookId=null;show('overview')});goBack.className='reader-back rem-library-back rem-library-back-arrow';goBack.setAttribute('aria-label','Torna alla panoramica della Biblioteca');tabs.append(goBack)}
  body.replaceChildren();
  const sectionTitle=(label)=>body.append(node('h2','rem-violet-heading',label));
  const shelfThemes=[
