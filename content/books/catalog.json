@@ -1151,6 +1151,20 @@
         }
       ],
       "coverImage": "./assets/covers/mattia-pascal-copertina.jpg?v=231"
+    },
+    {
+      "id": "metamorfosi-ovidio",
+      "title": "Le Metamorfosi",
+      "author": "Ovidio",
+      "description": "Miti di dèi, eroi e creature che cambiano forma: un viaggio poetico attraverso le trasformazioni del mondo antico.",
+      "status": "published",
+      "access": "free",
+      "homeSections": [
+        "new"
+      ],
+      "availability": "preview",
+      "coverImage": "./assets/covers/le_metamorfosi_ovidio_REM.jpg",
+      "chapters": []
     }
   ]
 }
