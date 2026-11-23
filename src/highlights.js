@@ -14,7 +14,7 @@ export function createHighlights(bookId,chapterId,textNode,onSwitch,onBookmark=(
   const last=Math.min(words.length-1,first+7);
   return {start:words[first].start,end:words[last].end,quote:raw.slice(words[first].start,words[last].end)};
  }
- const hint=el('p',{className:'selection-hint',text:'Pennino spento: tocca per sincronizzare 8 parole. Pennino acceso: tocca la prima e l’ultima parola per evidenziare. Doppio tocco sulla frase per annullare.'});
+ const hint=el('p',{className:'selection-hint',text:'Pennino spento: tocca per sincronizzare 8 parole. Pennino acceso: tocca la prima e l’ultima parola per evidenziare. Un tocco sulla frase evidenziata per annullare.'});
  const clear=button('Rimuovi evidenziazioni',()=>{marks=[];selectedQuote='';saveThought.hidden=true;persist();draw()});
  clear.classList.add('selection-clear');
  const wrap=el('div',{className:'highlight-tools'});
@@ -139,14 +139,9 @@ export function createHighlights(bookId,chapterId,textNode,onSwitch,onBookmark=(
  }
  function tapToUnderline(x,y){
   const word=wordAt(x,y);if(!word)return;
-  const now=Date.now();
   if(completedRange&&word.start>=completedRange.start&&word.start<completedRange.end){
-   if(lastTap.offset===word.start&&now-lastTap.time<550){
-    resetTapSelection();window.getSelection()?.removeAllRanges();return;
-   }
-   lastTap={time:now,offset:word.start};return;
+   resetTapSelection();window.getSelection()?.removeAllRanges();return;
   }
-  lastTap={time:now,offset:word.start};
   if(!firstWord){
    resetTapSelection();firstWord=word;
    customAnchor=word.start;customEnd=word.end;customMode=true;
