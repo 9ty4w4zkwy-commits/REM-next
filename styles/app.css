@@ -1797,3 +1797,13 @@ html body .ebook-reading-shell .rem-floating-highlighter[aria-pressed="true"] sv
 html body.ebook-fullscreen-active .ebook-reading-shell>.rem-floating-highlighter[aria-pressed="true"] svg{
  color:#172235!important;stroke:#172235!important;
 }
+
+/* v315: clearly distinguish the pen's enabled state without moving it. */
+html body .ebook-reading-shell .rem-floating-highlighter[aria-pressed="false"]{
+ outline:none!important;filter:none!important;
+}
+html body .ebook-reading-shell .rem-floating-highlighter[aria-pressed="true"],
+html body.ebook-fullscreen-active .ebook-reading-shell>.rem-floating-highlighter[aria-pressed="true"]{
+ outline:3px solid #172235!important;outline-offset:-5px!important;
+ filter:none!important;
+}
