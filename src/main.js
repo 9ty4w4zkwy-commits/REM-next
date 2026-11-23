@@ -1,5 +1,5 @@
 import {createOvidioAudio} from './ovidio-audio.js?v=3';
-import {loadCatalog,loadChapter} from './catalog.js?v=ovidio-chapters-2';
+import {loadCatalog,loadChapter} from './catalog.js?v=montecristo-cover-20261123';
 import {loadEpisodeSegment} from './episode-segments.js?v=pinocchio-122';
 import {createCollectionsView} from './collections-view.js?v=rem-ui-209';
 import {readCollections,isBookSaved,saveBookToCollections,removeSavedBook,attachItem,detachItem,addThought} from './collections-store.js?v=rem-mint-207';
