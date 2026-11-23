@@ -495,3 +495,6 @@
  transform:skewX(-10deg)!important;
  transform-origin:left center!important;
 }
+
+/* Biblioteca: numeri più grandi per valorizzare lo spazio nelle quattro schede. */
+.rem-violet .rem-stats .rem-stat-number{font-size:clamp(5.5rem,19vw,8rem)!important;line-height:.95!important}
