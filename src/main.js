@@ -1,5 +1,5 @@
 import {createOvidioAudio} from './ovidio-audio.js?v=3';
-import {loadCatalog,loadChapter} from './catalog.js?v=montecristo-cover-20261123';
+import {loadCatalog,loadChapter} from './catalog.js?v=ovidio-mini-20261123';
 import {loadEpisodeSegment} from './episode-segments.js?v=pinocchio-122';
 import {loadOvidioEpisode} from './ovidio-episodes.js?v=2';
 import {createCollectionsView} from './collections-view.js?v=rem-ui-209';
@@ -401,7 +401,7 @@ if(mode==='audio'){
  activeReaderTools=createReaderTools({focusOnly:true});activeReaderTools.mount(shell);
  try{
   const segment=inEpisode&&episode?(book.id==='pinocchio'?await loadEpisodeSegment(book,episode):book.id==='metamorfosi-ovidio'?await loadOvidioEpisode(book,episode):null):null;const content=segment?.content??await loadChapter(book,chapter);if(!shell.isConnected)return;
-  const point=getPhrase(id);if(id!=='pinocchio'&&point?.chapter===chapter.id&&Number.isFinite(Number(point.offset)))saveSetting('audio-position:'+id,JSON.stringify({chapter:chapter.id,offset:Math.max(0,(Number(point.offset)||0)-(segment?.start||0))}));const player=id==='metamorfosi-ovidio'?await createOvidioAudio({chapter,content,onPosition:offset=>{saveProgress(id,chapter.id);if(offset>=0&&offset<content.length)savePhrase(id,chapter.id,content.slice(offset,offset+90).trim(),offset)},onNext:()=>{const index=book.chapters.findIndex(c=>c.id===chapter.id);const next=book.chapters[index+1];if(next){saveProgress(id,next.id);reader(id,next.id,'audio')}else saveProgress(id,chapter.id)}}):audioView({bookId:id,chapter,content,segmentStart:segment?.start||0,onPosition:offset=>{if(offset>=0&&offset<content.length){const excerpt=content.slice(offset,Math.min(content.length,offset+90)).trim();savePhrase(id,chapter.id,excerpt,offset+(segment?.start||0))}saveProgress(id,chapter.id)}});
+  const point=getPhrase(id);if(id!=='pinocchio'&&point?.chapter===chapter.id&&Number.isFinite(Number(point.offset)))saveSetting('audio-position:'+id,JSON.stringify({chapter:chapter.id,offset:Math.max(0,(Number(point.offset)||0)-(segment?.start||0))}));const player=id==='metamorfosi-ovidio'?await createOvidioAudio({chapter,content,onPosition:offset=>{saveProgress(id,chapter.id);if(offset>=0&&offset<content.length)savePhrase(id,chapter.id,content.slice(offset,offset+90).trim(),offset)},onNext:()=>{const units=inEpisode?allEpisodes(book):book.chapters;const index=units.findIndex(c=>c.id===(inEpisode?episode?.id:chapter.id));const next=units[index+1];if(next){const nextChapter=inEpisode?next.chapterId:next.id;saveProgress(id,nextChapter);reader(id,nextChapter,'audio',0,inEpisode,inEpisode?next.id:null)}else saveProgress(id,chapter.id)}}):audioView({bookId:id,chapter,content,segmentStart:segment?.start||0,onPosition:offset=>{if(offset>=0&&offset<content.length){const excerpt=content.slice(offset,Math.min(content.length,offset+90)).trim();savePhrase(id,chapter.id,excerpt,offset+(segment?.start||0))}saveProgress(id,chapter.id)}});
   const units=inEpisode?allEpisodes(book):book.chapters;
   const unitIndex=inEpisode?units.findIndex(item=>item.id===episode?.id):units.findIndex(item=>item.id===chapter.id);
   const moveAudio=direction=>{
