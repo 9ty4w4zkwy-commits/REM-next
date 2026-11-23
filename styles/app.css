@@ -1763,3 +1763,13 @@ header.top nav #navSearch.rem-search-nav svg{transform:translateX(-4px)!importan
 /* v312: move floating pink underline button 2 mm inward from its v309 position. */
 html body .ebook-reading-shell>.rem-floating-highlighter{right:25px!important}
 html body.ebook-fullscreen-active .ebook-reading-shell>.rem-floating-highlighter{right:23px!important}
+
+/* REM blush-pink summary action, matching the logo accent. */
+html body .reading-extras .summary-launch,
+html body .reading-extras .summary-launch:hover,
+html body .reading-extras .summary-launch:focus-visible{
+ background:#F2B8C6!important;
+ color:#172235!important;
+ border:1.5px solid #F2B8C6!important;
+}
+html body .reading-extras .summary-launch:active{background:#eaa9bb!important}
