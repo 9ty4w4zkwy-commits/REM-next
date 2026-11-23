@@ -4,6 +4,11 @@ const BASE='https://rem-next-analytics.9ty4w4zkwy.workers.dev';
 const CONSENT='analytics-consent-v1',ID='analytics-tester-id-v1';
 let pending=null;
 export const analyticsEnabled=()=>getSetting(CONSENT,'')==='yes';
+export function getTesterCode(){
+ if(!analyticsEnabled())return null;
+ const id=Number(getSetting(ID,''));
+ return Number.isSafeInteger(id)&&id>0?'REM-'+String(id).padStart(3,'0'):null;
+}
 async function post(path,body){
  const r=await fetch(BASE+path,{method:'POST',mode:'cors',cache:'no-store',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
  if(!r.ok)throw Error('Analytics unavailable');
