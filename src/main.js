@@ -357,10 +357,11 @@ function episodes(id,selectedSeason){
  seasonPicker.value=String(selected.number);
  seasonPicker.addEventListener('change',()=>episodes(id,Number(seasonPicker.value)));
  const episodePicker=document.createElement('select');episodePicker.className='season-picker';episodePicker.setAttribute('aria-label','Vai direttamente a un episodio');
+ const placeholder=document.createElement('option');placeholder.value='';placeholder.textContent='Vai a un episodio ('+selected.episodes.length+')';placeholder.disabled=true;episodePicker.append(placeholder);
  selected.episodes.forEach((ep,i)=>{const opt=document.createElement('option');opt.value=String(i);opt.textContent='Episodio '+(i+1)+' · '+ep.title;episodePicker.append(opt)});
- episodePicker.selectedIndex=-1;
+ episodePicker.value='';
  episodePicker.addEventListener('change',()=>{const ep=selected.episodes[Number(episodePicker.value)];if(ep){rememberEpisode(id,ep);reader(id,ep.chapterId,'ebook',null,true,ep.id)}});
- const seasonTabs=el('div',{className:'season-tabs'},[seasonPicker,episodePicker]);
+ const seasonTabs=el('div',{className:'episode-navigation-selects'},[el('label',{text:'Scegli la stagione'}),seasonPicker,el('label',{text:'Vai direttamente a un episodio'}),episodePicker]);
  const cards=selected.episodes.map((ep,i)=>{
   const chapter=book.chapters.find(c=>c.id===(ep.chapterId||ep.id));
   const item={...ep,season:selected.number,number:i+1};
@@ -388,8 +389,7 @@ function episodes(id,selectedSeason){
  render(backArrow(()=>detail(id)),el('div',{className:'rem-episodes-heading'},[heading(book.title,'LA TUA STORIA · EPISODI')]),
  seasonTabs,el('h2',{className:'season-heading',text:'Stagione '+selected.number+(selected.title?' · '+selected.title:'')+' · '+selected.episodes.length+' episodi'}),
  pathLink('Passa alla lettura continua',()=>{saveSetting('reading-path:'+id,'normal');reader(id)}),
- (()=>{const list=el('details',{className:'episodes-dropdown'});const summary=el('summary',{text:'Sfoglia i '+selected.episodes.length+' episodi della stagione'});const close=button('↑ Chiudi elenco',()=>{list.open=false;list.scrollIntoView({block:'start',behavior:'smooth'})});const switchToBook=button('Libro completo',()=>{saveSetting('reading-path:'+id,'normal');reader(id)});const toolbar=el('div',{className:'episodes-sticky-tools'},[close,switchToBook]);list.append(summary,toolbar,el('div',{className:'episodes-list'},cards));return list})(),
- pathLink('Passa al libro completo',()=>{saveSetting('reading-path:'+id,'normal');reader(id)}));
+ (()=>{const list=el('details',{className:'episodes-dropdown'});const summary=el('summary',{text:'Sfoglia i '+selected.episodes.length+' episodi della stagione'});const close=button('↑ Chiudi elenco',()=>{list.open=false;list.scrollIntoView({block:'start',behavior:'smooth'})});const switchToBook=button('Libro completo',()=>{saveSetting('reading-path:'+id,'normal');reader(id)});const toolbar=el('div',{className:'episodes-sticky-tools'},[close,switchToBook]);list.append(summary,toolbar,el('div',{className:'episodes-list'},cards));return list})());
 }
 function openSummary(id,chapterId,mode,inEpisode,episodeId){
  const book=findBook(id);if(!book)return;
