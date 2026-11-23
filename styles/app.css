@@ -1871,3 +1871,8 @@ html body.ebook-fullscreen-active .rem-immersive-tool.rem-immersive-font{
 .episodes-sticky-tools{display:none}
 .episodes-sticky-tools button{flex:1;min-width:0;padding:10px 8px;border-radius:11px;font-size:14px;white-space:normal;background:#294159;color:#f7fbfc;border:1px solid #638c82}
 .episodes-dropdown{scroll-margin-top:95px}
+
+/* Mobile: two clear, stacked dropdowns instead of cramped side-by-side controls */
+.episode-navigation-selects{display:flex;flex-direction:column;gap:8px;width:100%;margin:14px 0 22px}
+.episode-navigation-selects label{font-size:14px;font-weight:650;color:#a4ddc3;margin-top:5px}
+.episode-navigation-selects .season-picker{box-sizing:border-box;display:block;width:100%;max-width:100%;margin:0 0 8px;min-width:0;text-overflow:ellipsis}
