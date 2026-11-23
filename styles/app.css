@@ -1876,3 +1876,9 @@ html body.ebook-fullscreen-active .rem-immersive-tool.rem-immersive-font{
 .episode-navigation-selects{display:flex;flex-direction:column;gap:8px;width:100%;margin:14px 0 22px}
 .episode-navigation-selects label{font-size:14px;font-weight:650;color:#a4ddc3;margin-top:5px}
 .episode-navigation-selects .season-picker{box-sizing:border-box;display:block;width:100%;max-width:100%;margin:0 0 8px;min-width:0;text-overflow:ellipsis}
+
+/* Episodi: lista scorrevole indipendente dalla pagina, con accesso diretto al libro completo */
+.episodes-scroll-panel{margin:4px 0 18px!important;min-width:0}
+.episodes-scroll-panel>summary{cursor:pointer;touch-action:manipulation}
+.episodes-scroll-panel[open] .episodes-inner-scroll{box-sizing:border-box;display:block;height:min(58dvh,520px);min-height:240px;overflow-y:auto;overflow-x:hidden;overscroll-behavior-y:contain;-webkit-overflow-scrolling:touch;touch-action:pan-y;padding:8px 4px 18px;margin-top:10px;border:1px solid #527a74;border-radius:15px;background:#101a2a;scrollbar-width:thin;scrollbar-color:#80d4ae #18283d}
+.episodes-scroll-panel .episode-card{max-width:100%;box-sizing:border-box}
