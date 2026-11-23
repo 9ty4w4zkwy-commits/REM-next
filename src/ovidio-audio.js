@@ -16,11 +16,13 @@ export async function loadOvidioTimeline(chapter){
   return cache.get(chapter.file);
 }
 function clock(t){const n=Math.max(0,Math.floor(t||0));return String(Math.floor(n/60)).padStart(2,'0')+':'+String(n%60).padStart(2,'0')}
-export async function createOvidioAudio({chapter,content,onPosition,onNext}){
+export async function createOvidioAudio({chapter,content,segmentStart=0,segmentEnd=null,onPosition,onNext}){
   const book=Number(chapter.id.match(/^libro-(\d+)/)?.[1]);
   if(!TRACKS[book])throw Error('Libro audio non riconosciuto');
   const timeline=await loadOvidioTimeline(chapter);
-  const words=timeline.words;
+  const isSegment=segmentEnd!==null;
+  const words=isSegment?timeline.words.filter(w=>w.offset>=segmentStart&&w.offset<segmentEnd):timeline.words;
+  if(!words.length)throw Error('Audio sincronizzato non disponibile per questo segmento');
   const boundaries=timeline.partDurations||[];
   const tracks=TRACKS[book];
   const section=document.createElement('section');
@@ -32,16 +34,17 @@ export async function createOvidioAudio({chapter,content,onPosition,onNext}){
   const spans=[];
   let cursor=0;
   for(const item of words){
-    if(item.offset<cursor||item.offset>=content.length)continue;
-    text.append(document.createTextNode(content.slice(cursor,item.offset)));
-    const match=/^[^\W_]+(?:['’][^\W_]+)*/u.exec(content.slice(item.offset));
+    const localOffset=item.offset-segmentStart;
+    if(localOffset<cursor||localOffset>=content.length)continue;
+    text.append(document.createTextNode(content.slice(cursor,localOffset)));
+    const match=/^[^\W_]+(?:['’][^\W_]+)*/u.exec(content.slice(localOffset));
     if(!match)continue;
     const span=document.createElement('span');span.textContent=match[0];span.dataset.start=String(item.start);
     span.style.cssText='cursor:pointer;border-radius:3px;transition:background-color .12s';
     span.title='Ascolta da questa parola';
     span.addEventListener('click',()=>{seekAbsolute(item.start);player.play().catch(()=>{})});
     text.append(span);spans.push({time:item.start,node:span,offset:item.offset});
-    cursor=item.offset+match[0].length;
+    cursor=localOffset+match[0].length;
   }
   text.append(document.createTextNode(content.slice(cursor)));
   const start=words[0].start;
@@ -54,7 +57,7 @@ export async function createOvidioAudio({chapter,content,onPosition,onNext}){
   const sync=(()=>{try{return JSON.parse(getSetting('audio-text-sync:metamorfosi-ovidio','null'))}catch{return null}})();
   const fromEbook=sync?.chapter===chapter.id&&sync.source==='ebook'&&Number.isFinite(sync.offset);
   const selectedWord=fromEbook?words.find(w=>w.offset>=sync.offset)||words[words.length-1]:null;
-  const initial=selectedWord?selectedWord.start:saved?.chapter===chapter.id&&Number.isFinite(saved.seconds)?saved.seconds:start;
+  const initial=selectedWord?selectedWord.start:!isSegment&&saved?.chapter===chapter.id&&Number.isFinite(saved.seconds)?saved.seconds:start;
   if(fromEbook)saveSetting('audio-text-sync:metamorfosi-ovidio','null');
   const continuePlaying=getSetting('ovidio-auto-continue','false')==='true';
   saveSetting('ovidio-auto-continue','false');
@@ -79,7 +82,7 @@ export async function createOvidioAudio({chapter,content,onPosition,onNext}){
     const next=Math.max(0,lo-1);
     if(next!==active){if(active>=0)spans[active].node.style.backgroundColor='';active=next;spans[active]?.node&&(spans[active].node.style.backgroundColor='#f2b8c6');if(player.paused===false&&spans[active]?.node)spans[active].node.scrollIntoView({block:'nearest',behavior:'smooth'})}
     if(Date.now()-lastSave>1500){lastSave=Date.now();saveSetting(key,JSON.stringify({chapter:chapter.id,seconds:time}));if(spans[active]){saveSetting('audio-text-sync:metamorfosi-ovidio',JSON.stringify({chapter:chapter.id,source:'audio',offset:spans[active].offset}));onPosition?.(spans[active].offset)}}
-    if(time>=last+.1&&hasStarted){player.pause();hasStarted=false;saveSetting('ovidio-auto-continue','true');onNext?.()}
+    if(time>=last&&hasStarted){player.pause();hasStarted=false;saveSetting('ovidio-auto-continue','true');onNext?.()}
   }
   player.addEventListener('timeupdate',highlight);
   player.addEventListener('play',()=>{hasStarted=true});
