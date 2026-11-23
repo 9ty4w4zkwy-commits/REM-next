@@ -1900,3 +1900,11 @@ html body.ebook-fullscreen-active .rem-immersive-tool.rem-immersive-font{
 .rem-mood-chip-5{background:#493b63!important;border-color:#cbb3f5!important;color:#f1e8ff!important;transform:rotate(2deg);margin-left:35px}
 @media(max-width:380px){.rem-mood-chips{gap:10px 7px}.rem-mood-chips .rem-mood-chip{padding:10px 12px!important}.rem-mood-chip-3,.rem-mood-chip-5{margin-left:12px}}
 @media(prefers-reduced-motion:reduce){.rem-mood-chips .rem-mood-chip{transition:none}}
+
+/* Ricerca: emozione attiva al primo tocco e copertine intere */
+.rem-mood-chips .rem-mood-chip.is-selected{filter:brightness(1.22) saturate(1.25);border-width:2px!important;box-shadow:0 0 0 2px #a5f3cb,0 0 20px #80e2bc70,0 5px 15px #0004!important;font-weight:750!important}
+.rem-mood-chips .rem-mood-chip:focus-visible{outline:3px solid #a5f3cb;outline-offset:4px}
+.rem-search-result-cover{aspect-ratio:2/3!important;width:100%;height:auto!important;min-height:0!important;overflow:hidden!important;background:#101c2c!important;display:flex!important;align-items:center!important;justify-content:center!important}
+.rem-search-result-cover .rem-search-cover-full{display:block!important;width:100%!important;height:100%!important;object-fit:contain!important;object-position:center center!important;max-width:100%!important;max-height:100%!important;border-radius:0!important}
+.rem-search-result{height:auto!important;min-height:0!important;justify-content:flex-start!important}
+.rem-search-result-info{flex:0 0 auto!important}
