@@ -130,7 +130,7 @@
         "recommended",
         "new"
       ],
-      "coverImage": "./assets/covers/pinocchio.jpg",
+      "coverImage": "./assets/covers/pinocchio.jpg?v=pinocchio-approved-20261123",
       "chapters": [
         {
           "id": "capitolo-1",
