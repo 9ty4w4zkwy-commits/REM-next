@@ -3,7 +3,7 @@ import {loadCatalog,loadChapter} from './catalog.js?v=ovidio-chapters-2';
 import {loadEpisodeSegment} from './episode-segments.js?v=pinocchio-122';
 import {createCollectionsView} from './collections-view.js?v=rem-ui-209';
 import {readCollections,isBookSaved,saveBookToCollections,removeSavedBook,attachItem,detachItem,addThought} from './collections-store.js?v=rem-mint-207';
-import {showOnboarding,onboardingCompleted} from './onboarding.js?v=reading-moments-375';
+import {showOnboarding,onboardingCompleted} from './onboarding.js?v=emojis-376';
 import {getProgress,saveProgress,getSetting,saveSetting} from './progress.js';
 import {el,button,panel,heading} from './ui.js';
 import {getMode,formatSwitch,paperView,audioView} from './formats.js?v=rem-audio-182';
