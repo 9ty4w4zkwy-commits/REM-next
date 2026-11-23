@@ -1929,3 +1929,11 @@ html body.ebook-fullscreen-active .rem-immersive-tool.rem-immersive-font{
 /* Tutte le copertine hanno la stessa altezza nel risultato: nessuna fascia vuota. */
 .rem-search-result-cover{aspect-ratio:2/3!important;overflow:hidden!important;background:#14263a!important}
 .rem-search-result-cover>img.rem-search-cover-full{object-fit:cover!important;object-position:center center!important}
+
+/* Ricerca: tag compatti distribuiti su più colonne, luoghi con stato attivo */
+.rem-mood-chips{display:flex!important;flex-wrap:wrap!important;align-items:center!important;gap:12px 10px!important;padding:7px 3px 12px!important;max-width:100%!important}
+.rem-mood-chips .rem-mood-chip{width:auto!important;max-width:100%!important;min-height:41px!important;padding:9px 14px!important;margin:0!important;white-space:nowrap!important;font-size:clamp(14px,3.6vw,16px)!important;flex:0 0 auto!important}
+.rem-mood-chip-1{transform:rotate(-2deg)}.rem-mood-chip-2{transform:rotate(2deg)}.rem-mood-chip-3{transform:rotate(-1deg)}.rem-mood-chip-4{transform:rotate(2deg)}.rem-mood-chip-5{transform:rotate(-2deg)}
+.rem-place-chips .rem-place-chip.is-selected{background:#355b53!important;border:2px solid #b6f5d7!important;color:#ffffff!important;box-shadow:0 0 0 2px #88e9bf,0 0 17px #75e3b088!important;font-weight:750!important}
+.rem-search-submit{flex:0 0 auto!important;min-width:76px!important;padding:0 14px!important;border-radius:14px!important;background:#233d49!important;border:1px solid #8ad4b4!important;color:#b7f3d4!important;font-size:15px!important;font-weight:750!important;box-shadow:none!important}
+.rem-search-submit:active{background:#355c5c!important}
