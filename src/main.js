@@ -279,7 +279,7 @@ function profile(){
  const analyticsToggle=button(analyticsEnabled()?'Disattiva invio dati di test':'Attiva invio dati di test',()=>{setAnalyticsConsent(!analyticsEnabled());profile()});
  analyticsToggle.classList.add('rem-profile-action');
  const testerCode=getTesterCode();
- const testerSection=analyticsEnabled()?card('№','Il mio codice tester',testerCode?'Il tuo codice è '+testerCode+'. Comunicalo al team REM per collegare le tue risposte al test.':'Il codice sarà disponibile dopo la prima registrazione. Riapri il Profilo tra qualche secondo.',testerCode?button('Copia '+testerCode,()=>{if(navigator.clipboard?.writeText)void navigator.clipboard.writeText(testerCode).catch(()=>{});else window.prompt('Copia il tuo codice tester',testerCode)}):null):null;
+ const testerSection=analyticsEnabled()?card('№','Il mio codice tester',testerCode?'Il tuo codice è '+testerCode+'.':'Il codice sarà disponibile dopo la prima registrazione. Riapri il Profilo tra qualche secondo.',testerCode?button('Copia '+testerCode,()=>{if(navigator.clipboard?.writeText)void navigator.clipboard.writeText(testerCode).catch(()=>{});else window.prompt('Copia il tuo codice tester',testerCode)}):null):null;
  const privacy=card('◇','Privacy e preferenze','Questionario, libri salvati e progressi restano su questo dispositivo. Solo se scegli di partecipare, REM invia a Cloudflare un ID numerico, le risposte al questionario e le attività di utilizzo (libro, formato e data). Nessun nome o email. Puoi interrompere i futuri invii; disattivare non cancella i dati già raccolti.',analyticsToggle);
  render(el('div',{className:'rem-profile-page'},[backArrow(home,'Torna alla Home'),intro,interests,reading,...(testerSection?[testerSection]:[]),privacy]));
 }
