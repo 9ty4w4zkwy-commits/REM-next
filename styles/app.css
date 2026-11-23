@@ -1937,3 +1937,18 @@ html body.ebook-fullscreen-active .rem-immersive-tool.rem-immersive-font{
 .rem-place-chips .rem-place-chip.is-selected{background:#355b53!important;border:2px solid #b6f5d7!important;color:#ffffff!important;box-shadow:0 0 0 2px #88e9bf,0 0 17px #75e3b088!important;font-weight:750!important}
 .rem-search-submit{flex:0 0 auto!important;min-width:76px!important;padding:0 14px!important;border-radius:14px!important;background:#233d49!important;border:1px solid #8ad4b4!important;color:#b7f3d4!important;font-size:15px!important;font-weight:750!important;box-shadow:none!important}
 .rem-search-submit:active{background:#355c5c!important}
+
+/* Luoghi: palette e inclinazioni leggere, distribuzione organica */
+.rem-place-chips{display:flex!important;flex-wrap:wrap!important;align-items:center!important;gap:14px 12px!important;padding:8px 5px 16px!important}
+.rem-place-chips .rem-place-chip{margin:0!important;padding:10px 15px!important;border-width:1.5px!important;transition:filter .18s ease,box-shadow .18s ease!important;box-shadow:0 4px 12px #0002}
+.rem-place-chip-1{background:#4b3d57!important;border-color:#cdb2e9!important;color:#f7eaff!important;transform:rotate(-3deg)}
+.rem-place-chip-2{background:#58402e!important;border-color:#e8bd8e!important;color:#fff0d8!important;transform:rotate(3deg);margin-top:8px!important}
+.rem-place-chip-3{background:#263f62!important;border-color:#9bbfeb!important;color:#e8f2ff!important;transform:rotate(-2deg)}
+.rem-place-chip-4{background:#2d4c3a!important;border-color:#a8d9ac!important;color:#eaffea!important;transform:rotate(3deg);margin-left:20px!important}
+.rem-place-chips .rem-place-chip.is-selected{filter:brightness(1.2) saturate(1.2)!important;box-shadow:0 0 0 2px #9af1c7,0 0 18px #86e7bd8c!important}
+/* Griglia: stessa altezza per le schede nella riga, copertine identiche per dimensione */
+.rem-search-results{align-items:stretch!important;grid-auto-rows:auto!important}
+.rem-search-results .rem-search-result{height:100%!important;align-self:stretch!important;box-sizing:border-box!important;min-height:0!important}
+.rem-search-results .rem-search-result-cover{width:100%!important;aspect-ratio:2/3!important;flex:0 0 auto!important}
+.rem-search-results .rem-search-result-info{flex:1 1 auto!important;box-sizing:border-box!important;justify-content:flex-start!important}
+@media(max-width:390px){.rem-place-chips{gap:12px 9px!important}.rem-place-chip-4{margin-left:8px!important}}
