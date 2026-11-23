@@ -1965,3 +1965,32 @@ html body.ebook-fullscreen-active .rem-immersive-tool.rem-immersive-font{
 .rem-search-view .rem-mood-suggestions:has(.is-selected),.rem-search-view .rem-place-suggestions:has(.is-selected){margin-bottom:0!important}
 .rem-search-view .rem-place-chips:has(.is-selected){padding-bottom:0!important}
 .rem-search-view .rem-search-reset{margin:5px 0 12px!important;min-width:42px!important;min-height:42px!important;padding:6px 12px!important;font-size:24px!important;line-height:1!important}
+
+/* REM summary reader: same reading controls, paper layout and independent scrolling as Ebook. */
+.summary-shell .summary-reading-shell{position:relative;margin:16px 0;padding:16px;border:1px solid #48657a;border-radius:20px;background:#101e30;color:#edf2f2;max-height:76dvh;overflow-y:auto;overscroll-behavior:contain}
+.summary-shell .summary-reading-shell .reader-tools{position:relative;z-index:1}
+.summary-shell .summary-page-frame{position:relative;max-height:58dvh;min-height:220px;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;border-radius:16px;background:#fffdf8;color:#1c252c}
+.summary-shell .summary-content{background:transparent!important;color:inherit!important;box-shadow:none!important;border:0!important;padding:26px 22px!important;font-family:Georgia,serif;line-height:1.8;min-height:100%;box-sizing:border-box}
+.summary-shell .summary-content h3{color:inherit!important;font-family:Georgia,serif;line-height:1.3;padding-right:35px}
+.summary-shell .summary-content p{color:inherit!important}
+.summary-shell .summary-reading-shell[data-theme="moon"] .summary-page-frame{background:#142234;color:#f0ece5}
+.summary-shell .summary-reading-shell[data-theme="sun"] .summary-page-frame{background:#fffdf8;color:#202831}
+.summary-shell .summary-reading-shell[data-font-size] .summary-content{font-size:inherit}
+.summary-shell .summary-reading-shell[data-font-size="small"] .summary-content{font-size:.92rem!important}
+.summary-shell .summary-reading-shell[data-font-size="normal"] .summary-content{font-size:1.08rem!important}
+.summary-shell .summary-reading-shell[data-font-size="large"] .summary-content{font-size:1.32rem!important}
+.summary-shell .summary-reading-shell[data-font-size="xlarge"] .summary-content{font-size:1.62rem!important}
+.summary-shell .summary-reading-shell[data-font-size="xxlarge"] .summary-content{font-size:1.86rem!important}
+.summary-shell .summary-reading-shell[data-font-size="xxxlarge"] .summary-content{font-size:2.1rem!important}
+.summary-shell .summary-reading-shell[data-font-size="max"] .summary-content{font-size:2.35rem!important}
+.summary-shell .summary-fullscreen-toggle{position:absolute;right:9px;top:9px;z-index:2;border:1px solid #73cda8;border-radius:10px;background:#183a43;color:#b1f1d5;min-width:38px;min-height:38px;font-size:23px}
+.summary-shell .summary-fullscreen-header{display:none}
+body.summary-fullscreen-active{overflow:hidden!important}
+body.summary-fullscreen-active .summary-shell .summary-reading-shell{position:fixed!important;inset:0!important;z-index:9999!important;margin:0!important;border:0!important;border-radius:0!important;max-height:100dvh!important;height:100dvh!important;width:100vw!important;box-sizing:border-box!important;padding:0!important;display:flex!important;flex-direction:column!important;overflow:hidden!important;background:#101e30!important}
+body.summary-fullscreen-active .summary-shell .summary-fullscreen-header{display:flex!important;flex:0 0 auto;align-items:center;justify-content:space-between;padding:calc(env(safe-area-inset-top,0px) + 10px) 16px 10px;background:#101e30;color:#e8f6ee;gap:10px}
+body.summary-fullscreen-active .summary-shell .summary-fullscreen-exit{min-height:42px;min-width:42px;border:1px solid #7ecfae;border-radius:10px;background:transparent;color:#b4f0d2;font-size:21px}
+body.summary-fullscreen-active .summary-shell .summary-reading-shell>.reader-tools{order:2;flex:0 0 auto;padding:10px 12px calc(env(safe-area-inset-bottom,0px) + 10px);margin:0!important;background:#101e30}
+body.summary-fullscreen-active .summary-shell .summary-page-frame{order:1;flex:1 1 auto;min-height:0!important;max-height:none!important;border-radius:0!important}
+body.summary-fullscreen-active .summary-shell .summary-fullscreen-toggle{display:none!important}
+body.summary-fullscreen-active .reader-focus-overlay{z-index:10020!important}
+@media(max-width:400px){.summary-shell .summary-reading-shell{padding:10px}.summary-shell .summary-content{padding:24px 16px!important}}
