@@ -1773,3 +1773,27 @@ html body .reading-extras .summary-launch:focus-visible{
  border:1.5px solid #F2B8C6!important;
 }
 html body .reading-extras .summary-launch:active{background:#eaa9bb!important}
+
+/* v314: REM logo blush highlighter; preserve all existing sizing and placement. */
+html body .ebook-reading-shell .rem-floating-highlighter,
+html body.ebook-fullscreen-active .ebook-reading-shell>.rem-floating-highlighter,
+html body .ebook-reading-shell .rem-floating-highlighter[aria-pressed="false"]{
+ background:#F2B8C6!important;background-color:#F2B8C6!important;
+ border:1px solid #F2B8C6!important;color:#172235!important;
+ box-shadow:none!important;
+}
+html body .ebook-reading-shell .rem-floating-highlighter svg,
+html body.ebook-fullscreen-active .ebook-reading-shell>.rem-floating-highlighter svg{
+ color:#172235!important;stroke:#172235!important;
+}
+html body .ebook-reading-shell .rem-floating-highlighter[aria-pressed="true"],
+html body.ebook-fullscreen-active .ebook-reading-shell>.rem-floating-highlighter[aria-pressed="true"],
+html body .ebook-reading-shell.rem-highlighter-on .rem-floating-highlighter[aria-pressed="true"]{
+ background:#F2B8C6!important;background-color:#F2B8C6!important;
+ border:1px solid #F2B8C6!important;color:#172235!important;
+ box-shadow:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;
+}
+html body .ebook-reading-shell .rem-floating-highlighter[aria-pressed="true"] svg,
+html body.ebook-fullscreen-active .ebook-reading-shell>.rem-floating-highlighter[aria-pressed="true"] svg{
+ color:#172235!important;stroke:#172235!important;
+}
