@@ -1,7 +1,7 @@
 import {createOvidioAudio} from './ovidio-audio.js?v=3';
 import {loadCatalog,loadChapter} from './catalog.js?v=montecristo-cover-20261123';
 import {loadEpisodeSegment} from './episode-segments.js?v=pinocchio-122';
-import {loadOvidioEpisode} from './ovidio-episodes.js?v=1';
+import {loadOvidioEpisode} from './ovidio-episodes.js?v=2';
 import {createCollectionsView} from './collections-view.js?v=rem-ui-209';
 import {readCollections,isBookSaved,saveBookToCollections,removeSavedBook,attachItem,detachItem,addThought} from './collections-store.js?v=rem-mint-207';
 import {showOnboarding,onboardingCompleted} from './onboarding.js?v=short-consent-20261123';
@@ -352,7 +352,10 @@ function episodes(id,selectedSeason){
  const seasons=storySeasons(book),selected=seasons.find(season=>season.number===selectedSeason)||seasons.find(season=>season.number===Number(getSetting('episode-season:'+id,'1')))||seasons[0];
  saveSetting('episode-season:'+id,selected.number);
  const done=episodeDone(id),saved=getProgress(id),current=currentEpisode(book);
- const seasonTabs=el('div',{className:'season-tabs',attrs:{role:'group','aria-label':'Seleziona stagione'}},seasons.map(season=>{const b=button('S'+season.number,()=>episodes(id,season.number),season.number===selected.number);b.classList.add('season-tab');b.setAttribute('aria-pressed',String(season.number===selected.number));return b}));
+ const seasonPicker=el('select',{className:'season-picker',attrs:{'aria-label':'Seleziona stagione'}});
+ seasons.forEach(season=>{const opt=el('option',{text:'Stagione '+season.number+' · '+(season.title||'')+' ('+season.episodes.length+' episodi)',attrs:{value:String(season.number)}});if(season.number===selected.number)opt.selected=true;seasonPicker.append(opt)});
+ seasonPicker.addEventListener('change',()=>episodes(id,Number(seasonPicker.value)));
+ const seasonTabs=el('div',{className:'season-tabs'},[seasonPicker]);
  const cards=selected.episodes.map((ep,i)=>{
   const chapter=book.chapters.find(c=>c.id===(ep.chapterId||ep.id));
   const item={...ep,season:selected.number,number:i+1};
@@ -378,7 +381,7 @@ function episodes(id,selectedSeason){
   ]);
  });
  render(backArrow(()=>detail(id)),el('div',{className:'rem-episodes-heading'},[heading(book.title,'LA TUA STORIA · EPISODI')]),
- seasonTabs,el('h2',{className:'season-heading',text:'Stagione '+selected.number+(selected.title?' · '+selected.title:'')}),el('div',{className:'episodes-list'},cards),
+ seasonTabs,el('h2',{className:'season-heading',text:'Stagione '+selected.number+(selected.title?' · '+selected.title:'')+' · '+selected.episodes.length+' episodi'}),el('details',{className:'episodes-dropdown'},[el('summary',{text:'Mostra / nascondi i '+selected.episodes.length+' episodi'}),el('div',{className:'episodes-list'},cards)]),
  pathLink('Passa al libro completo',()=>{saveSetting('reading-path:'+id,'normal');reader(id)}));
 }
 function openSummary(id,chapterId,mode,inEpisode,episodeId){
