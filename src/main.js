@@ -250,11 +250,12 @@ function searchBooks(){
   paura:['paura','spaventare','spaventarmi','horror','terrore','inquietante'],
   innamorare:['innamorare','amore','romantico','romantica','romanticismo','innamorarmi']
  };
- const phrases=[{text:'libri che fanno emozionare',emoji:'🥹'},{text:'voglio ridere',emoji:'😄'},{text:'ho voglia di sognare',emoji:'✨'},{text:'libri che fanno riflettere',emoji:'💭'},{text:'cerco un’avventura',emoji:'🧭'}];
+ const phrases=[{text:'libri che fanno emozionare',emoji:'💗',mood:'emozionare'},{text:'voglio ridere',emoji:'🤣',mood:'sorridere'},{text:'ho voglia di sognare',emoji:'🦋',mood:'sognare'},{text:'libri che fanno riflettere',emoji:'🌙',mood:'riflettere'},{text:'cerco un’avventura',emoji:'🚀',mood:'avventura'}];
  const suggestions=el('div',{className:'rem-mood-suggestions'});
  suggestions.append(el('p',{className:'rem-mood-label',text:'Oppure prova a cercare…'}));
  const chipRow=el('div',{className:'rem-mood-chips'});
- phrases.forEach((phrase,i)=>{const chip=button(phrase.emoji+' '+phrase.text,()=>{input.value=phrase.text;update();input.focus({preventScroll:true})});chip.classList.add('rem-mood-chip','rem-mood-chip-'+(i+1));chipRow.append(chip)});
+ let selectedMood=null;const moodChips=[];
+ phrases.forEach((phrase,i)=>{const chip=button(phrase.emoji+' '+phrase.text,()=>{selectedMood=selectedMood===phrase.mood?null:phrase.mood;input.value='';update()});chip.classList.add('rem-mood-chip','rem-mood-chip-'+(i+1));chip.setAttribute('aria-pressed','false');moodChips.push({chip,mood:phrase.mood});chipRow.append(chip)});
  suggestions.append(chipRow);
  function findMoods(query){
   if(!query)return [];
@@ -263,15 +264,15 @@ function searchBooks(){
  }
  const update=()=>{
   const query=normalize(input.value);results.replaceChildren();
-  const matchedMoods=findMoods(query);
-  const matches=books.filter(book=>!query||normalize(book.title+' '+(book.author||'')).includes(query)||matchedMoods.some(mood=>(book.moods||[]).includes(mood)));
+  moodChips.forEach(({chip,mood})=>{const active=mood===selectedMood;chip.classList.toggle('is-selected',active);chip.setAttribute('aria-pressed',String(active))});
+  const matchedMoods=selectedMood?[selectedMood]:findMoods(query);
+  const matches=books.filter(book=>selectedMood?(book.moods||[]).includes(selectedMood):!query||normalize(book.title+' '+(book.author||'')).includes(query)||matchedMoods.some(mood=>(book.moods||[]).includes(mood)));
   if(!matches.length){results.append(para('Nessun libro trovato. Prova un titolo, un autore o un’altra emozione.','rem-search-empty'));return}
   for(const book of matches){
    const card=button('',()=>detail(book.id));
    card.className='rem-search-result';
    card.setAttribute('aria-label','Apri '+book.title+' di '+(book.author||''));
-   const art=el('div',{className:'rem-search-result-cover'},[cover(book)]);
-   if(book.coverImage){art.style.backgroundImage='url("'+String(book.coverImage).replace(/"/g,'%22')+'")';art.style.backgroundSize='cover';art.style.backgroundPosition='center'}
+   const art=el('div',{className:'rem-search-result-cover'},[book.coverImage?el('img',{className:'rem-search-cover-full',attrs:{src:book.coverImage,alt:'Copertina di '+book.title,loading:'lazy'}}):cover(book)]);
    const info=[el('strong',{text:book.title}),el('span',{text:book.author||''})];
    const relevant=(book.moods||[]).filter(mood=>matchedMoods.includes(mood));
    if(relevant.length)info.push(el('span',{className:'rem-search-mood-match',text:'Potrebbe farti '+relevant.join(', ')}));
@@ -279,7 +280,7 @@ function searchBooks(){
    results.append(card);
   }
  };
- input.addEventListener('input',update);
+ input.addEventListener('input',()=>{selectedMood=null;update()});
  const back=button('← Torna alla Home',home);back.className='rem-search-back';
  render(el('section',{className:'rem-search-view'},[back,el('h1',{text:'Cerca su REM'}),el('div',{className:'rem-search-field'},[input]),suggestions,results]));
  update();requestAnimationFrame(()=>input.focus({preventScroll:true}));
