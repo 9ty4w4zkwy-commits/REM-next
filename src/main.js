@@ -5,6 +5,7 @@ import {createCollectionsView} from './collections-view.js?v=rem-ui-209';
 import {readCollections,isBookSaved,saveBookToCollections,removeSavedBook,attachItem,detachItem,addThought} from './collections-store.js?v=rem-mint-207';
 import {showOnboarding,onboardingCompleted} from './onboarding.js?v=emojis-376';
 import {getProgress,saveProgress,getSetting,saveSetting} from './progress.js';
+import {analyticsEnabled,setAnalyticsConsent,startAnalytics,trackEvent} from './analytics.js?v=analytics-1';
 import {el,button,panel,heading} from './ui.js';
 import {getMode,formatSwitch,paperView,audioView} from './formats.js?v=rem-audio-182';
 import {createReaderTools} from './reader-tools.js?v=rem-ui-245';
@@ -23,7 +24,7 @@ const findBook=id=>books.find(b=>b.id===id);
 const finishedKey=id=>'finished:'+id;
 const ratingKey=id=>'rating:'+id;
 const isFinished=id=>getSetting(finishedKey(id),'')==='yes';
-function finishBook(id){const book=findBook(id);if(!book||book.availability==='preview')return;saveSetting(finishedKey(id),'yes');feedbackBook(id)}
+function finishBook(id){const book=findBook(id);if(!book||book.availability==='preview')return;saveSetting(finishedKey(id),'yes');trackEvent('book_finished',{book_id:id});feedbackBook(id)}
 function feedbackBook(id){
  const book=findBook(id);if(!book)return library();currentView='feedback';
  let rating=Number(getSetting(ratingKey(id),'0'))||0;
@@ -275,14 +276,16 @@ function profile(){
   el('div',{},[el('span',{text:'Dimensione del testo'}),el('strong',{text:({'small':'Piccola','normal':'Normale','large':'Grande','xlarge':'Molto grande'})[getSetting('fontSize','normal')]||'Normale'})]),
   el('div',{},[el('span',{text:'La tua Biblioteca'}),button('Apri →',()=>library())])
  ]));
- const privacy=card('◇','Privacy e preferenze','Questionario, libri salvati e progressi restano memorizzati su questo dispositivo. Non è ancora disponibile un account sincronizzato.');
+ const analyticsToggle=button(analyticsEnabled()?'Disattiva invio dati di test':'Attiva invio dati di test',()=>{setAnalyticsConsent(!analyticsEnabled());profile()});
+ analyticsToggle.classList.add('rem-profile-action');
+ const privacy=card('◇','Privacy e preferenze','Questionario, libri salvati e progressi restano su questo dispositivo. Solo se scegli di partecipare, REM invia a Cloudflare un ID numerico, le risposte al questionario e le attività di utilizzo (libro, formato e data). Nessun nome o email. Puoi interrompere i futuri invii; disattivare non cancella i dati già raccolti.',analyticsToggle);
  render(el('div',{className:'rem-profile-page'},[backArrow(home,'Torna alla Home'),intro,interests,reading,privacy]));
 }
 function library(section='overview',bookId=null){currentView='library';render(createCollectionsView({books,openBook:detail,continueBook:readingEntry,isSavedBook:isBookSaved,coverBook:cover,back:home,initialSection:section,initialBookId:bookId}))}
 function detail(id){
  resumeFromHomeId=null;
  const book=findBook(id);if(!book)return library();
- currentView='detail';
+ currentView='detail';trackEvent('book_open',{book_id:id});
  const save=button(isBookSaved(id)?'✓':'+',()=>openHomeSaveSheet(book));
  save.className='rem-detail-save'+(isBookSaved(id)?' is-saved':'');
  save.setAttribute('aria-label',isBookSaved(id)?'Gestisci libro salvato':'Salva nella Biblioteca');
@@ -380,7 +383,7 @@ function openSummary(id,chapterId,mode,inEpisode,episodeId){
  const continueAt=nextId=>{saveProgress(id,nextId);reader(id,nextId,mode,null,inEpisode,episodeId)};
  render(button('← Torna alla storia',goBack),heading(book.title,'RIASSUNTI · LIBRO COMPLETO'),summaryView(book,goBack,continueAt));
 }
-async function reader(id,chapterId,modeOverride,seekOffset=null,episodic=false,episodeId=null){const book=findBook(id);if(!book)return library();currentView='reader';const mode=modeOverride||getMode(id);const saved=getProgress(id);const requestedEpisode=episodeId?allEpisodes(book).find(ep=>ep.id===episodeId):null;const chapter=book.chapters.find(c=>c.id===(requestedEpisode?.chapterId||chapterId))||book.chapters.find(c=>c.id===saved?.chapter)||book.chapters[0];const inEpisode=id!=='metamorfosi-ovidio'&&(episodic||getSetting('reading-path:'+id,'normal')==='episodes');const returnHome=resumeFromHomeId===id;const nav=button('←',()=>returnHome?home():inEpisode?episodes(id):detail(id));nav.classList.add('reader-back');nav.setAttribute('aria-label',returnHome?'Torna alla Home':inEpisode?'Torna agli episodi':'Torna alla scheda libro');const pathChange=pathLink(id==='metamorfosi-ovidio'?'Lettura a episodi · Prossimamente':inEpisode?'Passa a lettura continua':'Passa a episodi',()=>{if(id==='metamorfosi-ovidio')return;saveSetting('reading-path:'+id,inEpisode?'normal':'episodes');inEpisode?reader(id,chapter?.id,mode):episodes(id)});const episode= inEpisode?(allEpisodes(book).find(ep=>ep.id===episodeId)||currentEpisode(book)||episodeForChapter(book,chapter?.id)):null;if(episode)rememberEpisode(id,episode);const episodeHeading=episode?el('div',{className:'episode-reader-context'},[el('span',{text:episodeLabel(episode)}),el('strong',{text:episode.title||'Episodio'}),...(episodeRecap(book,episode)?[recapPrompt(book,episode,mode)]:[])]):null;const summaryButton=button('✦ Riassumi',()=>openSummary(id,chapter?.id,mode,inEpisode,episode?.id));summaryButton.classList.add('summary-launch','summary-warm');const readingExtras=el('div',{className:'summary-footer'},[el('span',{className:'summary-footer-hint',text:'Vuoi un riepilogo?'}),summaryButton]);let prepareAudioSwitch=null;const switchFormat=next=>{if(next==='audio'&&mode==='ebook')prepareAudioSwitch?.();saveSetting('format:'+id,next);reader(id,chapter?.id,next,null,inEpisode,episode?.id)};const switcher=formatSwitch(id,mode,switchFormat);const quickSwitch=formatSwitch(id,mode,switchFormat);quickSwitch.classList.add('format-switch-bottom');if(!chapter)return render(nav,el('div',{className:'rem-reader-heading'},[heading(book.title,'UN LIBRO, TANTI MODI DI VIVERLO')]),switcher,para('Questo libro non contiene capitoli.'),pathChange);
+async function reader(id,chapterId,modeOverride,seekOffset=null,episodic=false,episodeId=null){const book=findBook(id);if(!book)return library();currentView='reader';const mode=modeOverride||getMode(id);const saved=getProgress(id);const requestedEpisode=episodeId?allEpisodes(book).find(ep=>ep.id===episodeId):null;const chapter=book.chapters.find(c=>c.id===(requestedEpisode?.chapterId||chapterId))||book.chapters.find(c=>c.id===saved?.chapter)||book.chapters[0];if(chapter)trackEvent(mode==='audio'?'audio_open':mode==='paper'?'paper_open':'ebook_open',{book_id:id,chapter_id:chapter.id});const inEpisode=id!=='metamorfosi-ovidio'&&(episodic||getSetting('reading-path:'+id,'normal')==='episodes');const returnHome=resumeFromHomeId===id;const nav=button('←',()=>returnHome?home():inEpisode?episodes(id):detail(id));nav.classList.add('reader-back');nav.setAttribute('aria-label',returnHome?'Torna alla Home':inEpisode?'Torna agli episodi':'Torna alla scheda libro');const pathChange=pathLink(id==='metamorfosi-ovidio'?'Lettura a episodi · Prossimamente':inEpisode?'Passa a lettura continua':'Passa a episodi',()=>{if(id==='metamorfosi-ovidio')return;saveSetting('reading-path:'+id,inEpisode?'normal':'episodes');inEpisode?reader(id,chapter?.id,mode):episodes(id)});const episode= inEpisode?(allEpisodes(book).find(ep=>ep.id===episodeId)||currentEpisode(book)||episodeForChapter(book,chapter?.id)):null;if(episode)rememberEpisode(id,episode);const episodeHeading=episode?el('div',{className:'episode-reader-context'},[el('span',{text:episodeLabel(episode)}),el('strong',{text:episode.title||'Episodio'}),...(episodeRecap(book,episode)?[recapPrompt(book,episode,mode)]:[])]):null;const summaryButton=button('✦ Riassumi',()=>openSummary(id,chapter?.id,mode,inEpisode,episode?.id));summaryButton.classList.add('summary-launch','summary-warm');const readingExtras=el('div',{className:'summary-footer'},[el('span',{className:'summary-footer-hint',text:'Vuoi un riepilogo?'}),summaryButton]);let prepareAudioSwitch=null;const switchFormat=next=>{if(next==='audio'&&mode==='ebook')prepareAudioSwitch?.();saveSetting('format:'+id,next);reader(id,chapter?.id,next,null,inEpisode,episode?.id)};const switcher=formatSwitch(id,mode,switchFormat);const quickSwitch=formatSwitch(id,mode,switchFormat);quickSwitch.classList.add('format-switch-bottom');if(!chapter)return render(nav,el('div',{className:'rem-reader-heading'},[heading(book.title,'UN LIBRO, TANTI MODI DI VIVERLO')]),switcher,para('Questo libro non contiene capitoli.'),pathChange);
 if(mode==='audio'){
  const audioChapterTitle=inEpisode&&episode?episodeLabel(episode)+' · '+episode.title:chapterDisplayTitle(book,chapter);
  const audioChapterHeading=el('h2',{className:'rem-audio-chapter-heading',text:audioChapterTitle});
@@ -509,4 +512,4 @@ const sizeSelect=el('select',{attrs:{'aria-label':'Dimensione testo'}});for(cons
 }
 }catch(error){if(text.isConnected)text.textContent='Impossibile caricare il capitolo: '+error.message}finally{requestAnimationFrame(()=>{requestAnimationFrame(()=>{readerRestoring=false})})}}
 document.getElementById('brand').onclick=home;document.getElementById('navHome').onclick=home;document.getElementById('navLibrary').onclick=()=>library();document.getElementById('navProfile').onclick=profile;document.getElementById('navSearch').onclick=searchBooks;
-try{books=await loadCatalog();if(onboardingCompleted()||getSetting('onboarding-v1','')==='later')home();else showOnboarding(render,home)}catch(error){render(heading('REM Next','ERRORE'),para('Impossibile caricare il catalogo: '+error.message),para('Avvia l’app tramite un server web, non aprendo index.html come file locale.'))}
+try{books=await loadCatalog();startAnalytics();if(onboardingCompleted()||getSetting('onboarding-v1','')==='later')home();else showOnboarding(render,home)}catch(error){render(heading('REM Next','ERRORE'),para('Impossibile caricare il catalogo: '+error.message),para('Avvia l’app tramite un server web, non aprendo index.html come file locale.'))}
