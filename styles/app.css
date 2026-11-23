@@ -1882,3 +1882,6 @@ html body.ebook-fullscreen-active .rem-immersive-tool.rem-immersive-font{
 .episodes-scroll-panel>summary{cursor:pointer;touch-action:manipulation}
 .episodes-scroll-panel[open] .episodes-inner-scroll{box-sizing:border-box;display:block;height:min(58dvh,520px);min-height:240px;overflow-y:auto;overflow-x:hidden;overscroll-behavior-y:contain;-webkit-overflow-scrolling:touch;touch-action:pan-y;padding:8px 4px 18px;margin-top:10px;border:1px solid #527a74;border-radius:15px;background:#101a2a;scrollbar-width:thin;scrollbar-color:#80d4ae #18283d}
 .episodes-scroll-panel .episode-card{max-width:100%;box-sizing:border-box}
+
+/* Etichetta stagione più leggibile su smartphone */
+.episode-navigation-selects label{font-size:clamp(20px,5.4vw,25px)!important;font-weight:750!important;line-height:1.3!important}
