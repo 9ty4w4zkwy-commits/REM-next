@@ -272,8 +272,10 @@ function searchBooks(){
  const update=()=>{
   const query=normalize(input.value);results.replaceChildren();
   const searching=Boolean(query||selectedMood||selectedPlace);
-  suggestions.hidden=searching;placeSuggestions.hidden=searching;resetSearch.hidden=!searching;
-  moodChips.forEach(({chip,mood})=>{const active=mood===selectedMood;chip.classList.toggle('is-selected',active);chip.setAttribute('aria-pressed',String(active))});
+  suggestions.hidden=searching&&!selectedMood;placeSuggestions.hidden=searching&&!selectedPlace;resetSearch.hidden=!searching;
+  suggestions.querySelector('.rem-mood-label').hidden=searching;
+  placeSuggestions.querySelector('.rem-mood-label').hidden=searching;
+  moodChips.forEach(({chip,mood})=>{const active=mood===selectedMood;chip.classList.toggle('is-selected',active);chip.hidden=searching&&!active;chip.setAttribute('aria-pressed',String(active))});
   placeButtons.forEach(({chip,place})=>{const active=place===selectedPlace;chip.classList.toggle('is-selected',active);chip.setAttribute('aria-pressed',String(active))});
   const matchedMoods=selectedMood?[selectedMood]:findMoods(query);
   const placeQuery=(selectedPlace?normalize(selectedPlace):query).replace(/^(libri |storie |romanzi |ambientati |ambientato |ambientate |su |a |in |di |che parlano di )+/,'').trim();
@@ -291,7 +293,7 @@ function searchBooks(){
  input.addEventListener('input',()=>{selectedMood=null;selectedPlace=null;update()});
  input.addEventListener('keydown',event=>{if(event.key==='Enter'){event.preventDefault();selectedMood=null;update();input.blur()}});
  const back=button('← Torna alla Home',home);back.className='rem-search-back';
- render(el('section',{className:'rem-search-view'},[back,el('h1',{text:'Cerca su REM'}),el('div',{className:'rem-search-field'},[input,searchButton]),resetSearch,suggestions,placeSuggestions,results]));
+ render(el('section',{className:'rem-search-view'},[back,el('h1',{text:'Cerca su REM'}),el('div',{className:'rem-search-field'},[input,searchButton ]),suggestions,placeSuggestions,resetSearch,results]));
  update();requestAnimationFrame(()=>input.focus({preventScroll:true}));
 }
 function profile(){
