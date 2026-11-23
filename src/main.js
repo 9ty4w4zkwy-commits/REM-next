@@ -14,7 +14,7 @@ import {createHighlights} from './highlights.js?v=single-remove-1';
 import {createEbookJourney} from './ebook-journey.js?v=rem-ebook-91';
 import {phraseSearch,getPhrase,savePhrase} from './synchronization.js?v=rem-switch-68';
 import {HOME_SECTIONS,booksForHomeSection} from './home-config.js?v=rem-ui-159';
-import {summaryView} from './summary-view.js?v=summary-reader-clean-20261123';
+import {summaryView} from './summary-view.js?v=summary-reader-white-20261123b';
 const app=document.getElementById('app');let books=[];let currentView='home';let resumeFromHomeId=null;let activeReaderTools=null;let activeHighlights=null;let activeAudioPlayer=null;
 const render=(...nodes)=>{document.body.classList.remove('ebook-fullscreen-active');if(activeAudioPlayer){activeAudioPlayer.stopAudio?.();activeAudioPlayer=null}if(activeHighlights){activeHighlights.destroy();activeHighlights=null}if(activeReaderTools){activeReaderTools.destroy();activeReaderTools=null}app.replaceChildren(...nodes);for(const [id,active] of [['navHome',currentView==='home'],['navLibrary',currentView==='library'],['navProfile',currentView==='profile']]){const nav=document.getElementById(id);nav?.classList.toggle('is-active',active);if(active)nav?.setAttribute('aria-current','page');else nav?.removeAttribute('aria-current')}window.scrollTo({top:0,left:0,behavior:'instant'});document.documentElement.scrollTop=0;document.body.scrollTop=0};
 const para=(text,cls='')=>el('p',{text,className:cls});
@@ -279,8 +279,8 @@ function searchBooks(){
   placeButtons.forEach(({chip,place})=>{const active=place===selectedPlace;chip.classList.toggle('is-selected',active);chip.hidden=searching&&!active;chip.setAttribute('aria-pressed',String(active))});
   const matchedMoods=selectedMood?[selectedMood]:findMoods(query);
   const placeQuery=(selectedPlace?normalize(selectedPlace):query).replace(/^(libri |storie |romanzi |ambientati |ambientato |ambientate |su |a |in |di |che parlano di )+/,'').trim();
-  const matches=books.filter(book=>selectedMood?(book.moods||[]).includes(selectedMood):selectedPlace?(book.primaryLocations||[]).some(loc=>normalize(loc)===placeQuery||normalize(loc).includes(placeQuery)):!query||normalize(book.title+' '+(book.author||'')).includes(query)||matchedMoods.some(mood=>(book.moods||[]).includes(mood))||(placeQuery.length>2&&(book.primaryLocations||[]).some(loc=>normalize(loc)===placeQuery||normalize(loc).includes(placeQuery))));
-  if(!matches.length){results.append(para('Nessun libro del catalogo ha questa ambientazione principale. Prova un altro luogo, titolo, autore o emozione.','rem-search-empty'));return}
+  const matches=books.filter(book=>selectedMood?(book.moods||[]).includes(selectedMood):selectedPlace?(book.locations||[]).some(loc=>normalize(loc)===placeQuery||normalize(loc).includes(placeQuery)):!query||normalize(book.title+' '+(book.author||'')).includes(query)||matchedMoods.some(mood=>(book.moods||[]).includes(mood))||(placeQuery.length>2&&(book.locations||[]).some(loc=>normalize(loc)===placeQuery||normalize(loc).includes(placeQuery))));
+  if(!matches.length){results.append(para('Nessun libro del catalogo è associato a questo luogo. Prova un altro luogo, titolo, autore o emozione.','rem-search-empty'));return}
   for(const book of matches){
    const card=button('',()=>detail(book.id));
    card.className='rem-search-result';
