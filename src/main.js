@@ -250,7 +250,7 @@ function searchBooks(){
   paura:['paura','spaventare','spaventarmi','horror','terrore','inquietante'],
   innamorare:['innamorare','amore','romantico','romantica','romanticismo','innamorarmi']
  };
- const phrases=[{text:'libri che fanno emozionare',emoji:'💗',mood:'emozionare'},{text:'voglio ridere',emoji:'🤣',mood:'sorridere'},{text:'ho voglia di sognare',emoji:'🦋',mood:'sognare'},{text:'libri che fanno riflettere',emoji:'🌙',mood:'riflettere'},{text:'cerco un’avventura',emoji:'🚀',mood:'avventura'}];
+ const phrases=[{text:'libri che fanno emozionare',emoji:'💗',mood:'emozionare'},{text:'voglio ridere',emoji:'🤣',mood:'sorridere'},{text:'ho voglia di sognare',emoji:'🌙',mood:'sognare'},{text:'libri che fanno riflettere',emoji:'🧠',mood:'riflettere'},{text:'cerco un’avventura',emoji:'🚀',mood:'avventura'}];
  const suggestions=el('div',{className:'rem-mood-suggestions'});
  suggestions.append(el('p',{className:'rem-mood-label',text:'Oppure prova a cercare…'}));
  const chipRow=el('div',{className:'rem-mood-chips'});
