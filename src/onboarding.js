@@ -24,7 +24,8 @@ export function showOnboarding(render,home,{editing=false}={}){
  let step=editing?0:-1;const answers=loadAnswers();
  const persist=()=>saveSetting('onboarding-answers',JSON.stringify(answers));
  const finish=()=>{persist();saveSetting(KEY,'done');sendOnboardingAnswers(answers);home()};
- const draw=()=>{
+ const draw=(preserveScroll=false)=>{
+  const previousScroll=preserveScroll?window.scrollY:0;
   const header=el('div',{className:'onboard-top'},[
    el('strong',{className:'onboard-brand',text:'REM',attrs:{'aria-label':'REM'}}),
    button(editing?'Annulla':'Lo faccio più tardi',()=>{if(!editing){persist();saveSetting(KEY,'later')}home()})
@@ -48,7 +49,7 @@ export function showOnboarding(render,home,{editing=false}={}){
      if(index>=0)chosen.splice(index,1);
      else if(q.max===1)answers[step]=[option];
      else if(chosen.length<q.max)chosen.push(option);
-     if(!editing)persist();draw();
+     if(!editing)persist();draw(true);
     });
     b.textContent='';
     b.append(el('span',{className:'onboard-option-emoji',text:OPTION_EMOJIS[step][optionIndex],attrs:{'aria-hidden':'true'}}),el('span',{className:'onboard-option-title',text:parts[0]}));
@@ -72,6 +73,7 @@ export function showOnboarding(render,home,{editing=false}={}){
    ]));
   }
   render(el('div',{className:'onboard-screen'},nodes));
+  if(preserveScroll)window.scrollTo({top:previousScroll,left:0,behavior:'instant'});
  };
  draw();
 }
