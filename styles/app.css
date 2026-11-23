@@ -1846,3 +1846,12 @@ body #app>.reading-path-switch{
 
 /* v318: increase path-switch links in both reading modes. */
 html body #app .story-path-link{font-size:clamp(1.13rem,3.6vw,1.3rem)!important;line-height:1.45!important;font-weight:750!important}
+
+/* v320: fullscreen chapter title follows reader zoom; disable iOS double-tap page zoom on controls. */
+html body.ebook-fullscreen-active .rem-immersive-chapter{font-size:var(--rem-immersive-heading-font-size,.92rem)!important;line-height:1.35!important}
+html body.ebook-fullscreen-active .rem-immersive-toolbar,
+html body.ebook-fullscreen-active .rem-immersive-toolbar button,
+html body.ebook-fullscreen-active .rem-immersive-tool.rem-immersive-font{
+ touch-action:manipulation!important;-webkit-user-select:none!important;user-select:none!important;
+ -webkit-tap-highlight-color:transparent;
+}
