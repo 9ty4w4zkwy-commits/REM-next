@@ -35,10 +35,15 @@ export function showOnboarding(render,home,{editing=false}={}){
   if(step<0){
    nodes.push(el('section',{className:'onboard-intro'},[
     el('h1',{},[document.createTextNode('Ogni storia inizia '),el('span',{text:'da chi la legge.'})]),
-    el('p',{text:'Raccontaci qualcosa di te. Ti aiuteremo a scoprire storie che forse non avresti mai cercato.'}),
-    el('p',{text:'Partecipazione facoltativa al test: scegliendo «Partecipo al test» autorizzi l’invio a Cloudflare di un codice numerico, delle risposte alle sei domande e delle attività nell’app (libri aperti, modalità ebook/audio e date). Non chiediamo nome o email. Puoi interrompere gli invii dal Profilo; i dati già inviati non vengono cancellati automaticamente. Puoi anche continuare senza inviare dati.'}),
-    button('Partecipo al test',()=>{setAnalyticsConsent(true);step=0;draw()},true),
-    button('Continua senza partecipare',()=>{setAnalyticsConsent(false);step=0;draw()})
+    el('p',{text:'Raccontaci qualcosa di te per aiutarti a scoprire nuove storie.'}),
+    el('p',{text:'Acconsento alla raccolta dei dati relativi alle mie risposte e all’utilizzo dell’app per partecipare al test di REM.'}),
+    button('Acconsento e inizio',()=>{setAnalyticsConsent(true);step=0;draw()},true),
+    button('Continua senza partecipare',()=>{setAnalyticsConsent(false);step=0;draw()}),
+    el('p',{className:'onboard-privacy',text:'Puoi interrompere la raccolta dal Profilo.'}),
+    el('details',{className:'onboard-privacy'},[
+     el('summary',{text:'Informativa privacy'}),
+     el('p',{text:'Se partecipi al test, REM invia a Cloudflare un codice numerico, le risposte alle sei domande e le attività nell’app (libri aperti, modalità ebook/audio e date). Non chiediamo nome o email. La raccolta è facoltativa: puoi usare REM senza partecipare e interrompere i futuri invii dal Profilo. Disattivare non cancella automaticamente i dati già inviati.'})
+    ])
    ]));
   }else{
    const q=QUESTIONS[step],chosen=answers[step];
