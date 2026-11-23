@@ -3,7 +3,7 @@ import {loadCatalog,loadChapter} from './catalog.js?v=montecristo-cover-20261123
 import {loadEpisodeSegment} from './episode-segments.js?v=pinocchio-122';
 import {createCollectionsView} from './collections-view.js?v=rem-ui-209';
 import {readCollections,isBookSaved,saveBookToCollections,removeSavedBook,attachItem,detachItem,addThought} from './collections-store.js?v=rem-mint-207';
-import {showOnboarding,onboardingCompleted} from './onboarding.js?v=stable-selection-scroll-20261123';
+import {showOnboarding,onboardingCompleted} from './onboarding.js?v=short-consent-20261123';
 import {getProgress,saveProgress,getSetting,saveSetting} from './progress.js';
 import {analyticsEnabled,getTesterCode,setAnalyticsConsent,startAnalytics,trackEvent} from './analytics.js?v=analytics-2';
 import {el,button,panel,heading} from './ui.js';
