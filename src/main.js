@@ -236,6 +236,7 @@ function searchBooks(){
  currentView='search';
  const input=el('input',{className:'rem-book-search-input',attrs:{type:'search',placeholder:'Titolo, autore, emozione o luogo…','aria-label':'Cerca per titolo, autore, emozione o luogo',autocomplete:'off'}});
  const results=el('div',{className:'rem-search-results'});
+ const resetSearch=button('← Nuova ricerca',()=>{selectedMood=null;selectedPlace=null;input.value='';update();window.scrollTo({top:0,behavior:'smooth'})});resetSearch.classList.add('rem-search-reset');resetSearch.hidden=true;
  const searchButton=button('Cerca',()=>{selectedMood=null;selectedPlace=null;update();input.blur()});searchButton.classList.add('rem-search-submit');searchButton.setAttribute('aria-label','Cerca libri');
  const normalize=value=>String(value||'').normalize('NFD').replace(/[\\u0300-\\u036f]/g,'').toLocaleLowerCase('it').replace(/[^a-z0-9 ]/g,' ').replace(/\\s+/g,' ').trim();
  const synonyms={
@@ -270,6 +271,8 @@ function searchBooks(){
  }
  const update=()=>{
   const query=normalize(input.value);results.replaceChildren();
+  const searching=Boolean(query||selectedMood||selectedPlace);
+  suggestions.hidden=searching;placeSuggestions.hidden=searching;resetSearch.hidden=!searching;
   moodChips.forEach(({chip,mood})=>{const active=mood===selectedMood;chip.classList.toggle('is-selected',active);chip.setAttribute('aria-pressed',String(active))});
   placeButtons.forEach(({chip,place})=>{const active=place===selectedPlace;chip.classList.toggle('is-selected',active);chip.setAttribute('aria-pressed',String(active))});
   const matchedMoods=selectedMood?[selectedMood]:findMoods(query);
@@ -281,19 +284,14 @@ function searchBooks(){
    card.className='rem-search-result';
    card.setAttribute('aria-label','Apri '+book.title+' di '+(book.author||''));
    const art=el('div',{className:'rem-search-result-cover'},[book.coverImage?el('img',{className:'rem-search-cover-full',attrs:{src:book.coverImage,alt:'Copertina di '+book.title,loading:'lazy'}}):cover(book)]);
-   const info=[el('strong',{text:book.title}),el('span',{text:book.author||''})];
-   const relevant=(book.moods||[]).filter(mood=>matchedMoods.includes(mood));
-   if(relevant.length)info.push(el('span',{className:'rem-search-mood-match',text:'Potrebbe farti '+relevant.join(', ')}));
-   const relevantPlaces=(book.primaryLocations||[]).filter(loc=>placeQuery.length>2&&normalize(loc).includes(placeQuery));
-   if(relevantPlaces.length&&!selectedMood)info.push(el('span',{className:'rem-search-mood-match',text:'Ambientazione significativa: '+relevantPlaces.slice(0,2).join(', ')}));
-   card.append(art,el('span',{className:'rem-search-result-info'},info));
+   card.append(art);
    results.append(card);
   }
  };
  input.addEventListener('input',()=>{selectedMood=null;selectedPlace=null;update()});
  input.addEventListener('keydown',event=>{if(event.key==='Enter'){event.preventDefault();selectedMood=null;update();input.blur()}});
  const back=button('← Torna alla Home',home);back.className='rem-search-back';
- render(el('section',{className:'rem-search-view'},[back,el('h1',{text:'Cerca su REM'}),el('div',{className:'rem-search-field'},[input,searchButton]),suggestions,placeSuggestions,results]));
+ render(el('section',{className:'rem-search-view'},[back,el('h1',{text:'Cerca su REM'}),el('div',{className:'rem-search-field'},[input,searchButton]),resetSearch,suggestions,placeSuggestions,results]));
  update();requestAnimationFrame(()=>input.focus({preventScroll:true}));
 }
 function profile(){
