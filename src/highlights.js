@@ -119,6 +119,17 @@ export function createHighlights(bookId,chapterId,textNode,onSwitch,onBookmark=(
   return true;
  }
  function markedAt(target){return target?.closest?.('mark.rem-highlight')||null}
+ function clearPendingUnderline(x,y){
+  if(!enabled||!customMode||!Number.isFinite(x)||!Number.isFinite(y))return false;
+  const hit=[...selectionPaint.children].some(node=>{const r=node.getBoundingClientRect();return x>=r.left-6&&x<=r.right+6&&y>=r.top-6&&y<=r.bottom+6});
+  if(!hit)return false;
+  customMode=false;selectionMode=false;selectedQuote='';
+  textNode.classList.remove('rem-custom-selecting');
+  clearSelectionPaint();saveThought.hidden=true;
+  window.getSelection()?.removeAllRanges();
+  return true;
+ }
+
  let touch=null,lastTouch=0,suppressClickUntil=0;
  function setSaveQuote(quote){clearTimeout(savedNoticeTimer);selectedQuote=quote;saveThought.hidden=false;saveThought.disabled=false;saveThought.textContent='Salva nei miei pensieri'}
  function readNativeSelection(){
@@ -165,14 +176,14 @@ export function createHighlights(bookId,chapterId,textNode,onSwitch,onBookmark=(
   if(!touch)return;
   const t=e.changedTouches[0],start=touch;touch=null;
   if(start.custom){e.preventDefault();/* Preserve the last deliberate drag position: touchend may jump to the next word on Safari. */suppressClickUntil=Date.now()+800;return}
-  if(enabled){if(start.mark&&!start.scrolling&&!start.moved&&Math.hypot(t.clientX-start.x,t.clientY-start.y)<11&&Date.now()-start.started<450){if(removeMarkedPhrase(start.mark))e.preventDefault()}suppressClickUntil=Date.now()+650;return}
+  if(enabled){if(!start.scrolling&&!start.moved&&Math.hypot(t.clientX-start.x,t.clientY-start.y)<11&&Date.now()-start.started<550){if((start.mark&&removeMarkedPhrase(start.mark))||clearPendingUnderline(t.clientX,t.clientY))e.preventDefault()}suppressClickUntil=Date.now()+650;return}
   if(start.scrolling||start.moved||Math.hypot(t.clientX-start.x,t.clientY-start.y)>11)return;
   if(Date.now()-start.started>380)return;
   customMode=false;textNode.classList.remove('rem-custom-selecting');clearSelectionPaint();
   if(selectAt(t.clientX,t.clientY)){lastTouch=Date.now();e.preventDefault()}
  }
  function click(e){
-  if(enabled&&markedAt(e.target)&&Date.now()>=suppressClickUntil){e.preventDefault();removeMarkedPhrase(markedAt(e.target));return}
+  if(enabled&&Date.now()>=suppressClickUntil&&((markedAt(e.target)&&removeMarkedPhrase(markedAt(e.target)))||clearPendingUnderline(e.clientX,e.clientY))){e.preventDefault();return}
   if(customMode)return;
   if(enabled){if(window.getSelection()?.toString().trim()){selectionMode=true;readNativeSelection()}return}
   if(Date.now()<suppressClickUntil||Date.now()-lastTouch<650)return;
