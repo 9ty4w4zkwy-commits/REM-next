@@ -14,7 +14,7 @@ import {createHighlights} from './highlights.js?v=single-remove-1';
 import {createEbookJourney} from './ebook-journey.js?v=rem-ebook-91';
 import {phraseSearch,getPhrase,savePhrase} from './synchronization.js?v=rem-switch-68';
 import {HOME_SECTIONS,booksForHomeSection} from './home-config.js?v=rem-ui-159';
-import {summaryView} from './summary-view.js?v=summary-reader-wide-20261123';
+import {summaryView} from './summary-view.js?v=summary-reader-clean-20261123';
 const app=document.getElementById('app');let books=[];let currentView='home';let resumeFromHomeId=null;let activeReaderTools=null;let activeHighlights=null;let activeAudioPlayer=null;
 const render=(...nodes)=>{document.body.classList.remove('ebook-fullscreen-active');if(activeAudioPlayer){activeAudioPlayer.stopAudio?.();activeAudioPlayer=null}if(activeHighlights){activeHighlights.destroy();activeHighlights=null}if(activeReaderTools){activeReaderTools.destroy();activeReaderTools=null}app.replaceChildren(...nodes);for(const [id,active] of [['navHome',currentView==='home'],['navLibrary',currentView==='library'],['navProfile',currentView==='profile']]){const nav=document.getElementById(id);nav?.classList.toggle('is-active',active);if(active)nav?.setAttribute('aria-current','page');else nav?.removeAttribute('aria-current')}window.scrollTo({top:0,left:0,behavior:'instant'});document.documentElement.scrollTop=0;document.body.scrollTop=0};
 const para=(text,cls='')=>el('p',{text,className:cls});
