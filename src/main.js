@@ -234,26 +234,54 @@ function home(){
 }
 function searchBooks(){
  currentView='search';
- const input=el('input',{className:'rem-book-search-input',attrs:{type:'search',placeholder:'Cerca un libro o un autore…','aria-label':'Cerca per titolo o autore',autocomplete:'off'}});
+ const input=el('input',{className:'rem-book-search-input',attrs:{type:'search',placeholder:'Titolo, autore o emozione…','aria-label':'Cerca per titolo, autore o emozione',autocomplete:'off'}});
  const results=el('div',{className:'rem-search-results'});
- const normalize=value=>String(value||'').normalize('NFD').replace(/[\\u0300-\\u036f]/g,'').toLocaleLowerCase('it').trim();
+ const normalize=value=>String(value||'').normalize('NFD').replace(/[\\u0300-\\u036f]/g,'').toLocaleLowerCase('it').replace(/[^a-z0-9 ]/g,' ').replace(/\\s+/g,' ').trim();
+ const synonyms={
+  sorridere:['ridere','ridi','divertire','divertirmi','divertente','umorismo','allegria','sorriso','sorridere','felice','felicita','leggerezza'],
+  emozionare:['emozione','emozioni','emozionare','emozionarmi','commuovere','commuovermi','commovente','toccare il cuore','sentimenti'],
+  sognare:['sognare','sogno','sogni','fantasia','fantastico','immaginazione','magia','magico','evasione'],
+  riflettere:['riflettere','pensare','pensiero','profondo','filosofico','introspezione','domande'],
+  sorprendere:['sorprendere','sorpresa','sorprese','inaspettato','imprevedibile','colpi di scena','stupire'],
+  appassionare:['appassionare','coinvolgente','coinvolgere','avvincente','intenso','passione'],
+  avventura:['avventura','avventure','viaggio','viaggiare','esplorare','esplorazione','scoprire'],
+  meravigliare:['meraviglia','meravigliare','stupore','affascinare','incantare'],
+  suspense:['suspense','tensione','mistero','misterioso','brivido','thriller'],
+  paura:['paura','spaventare','spaventarmi','horror','terrore','inquietante'],
+  innamorare:['innamorare','amore','romantico','romantica','romanticismo','innamorarmi']
+ };
+ const phrases=['libri che fanno emozionare','voglio ridere','ho voglia di sognare','libri che fanno riflettere','cerco un’avventura'];
+ const suggestions=el('div',{className:'rem-mood-suggestions'});
+ suggestions.append(el('p',{className:'rem-mood-label',text:'Oppure prova a cercare…'}));
+ const chipRow=el('div',{className:'rem-mood-chips'});
+ phrases.forEach(phrase=>{const chip=button(phrase,()=>{input.value=phrase;update();input.focus({preventScroll:true})});chip.classList.add('rem-mood-chip');chipRow.append(chip)});
+ suggestions.append(chipRow);
+ function findMoods(query){
+  if(!query)return [];
+  const tokens=query.split(' ').filter(w=>w.length>2);
+  return Object.entries(synonyms).filter(([mood,words])=>words.some(word=>{const term=normalize(word);return query.includes(term)||term.split(' ').some(w=>w.length>4&&tokens.includes(w))})).map(([mood])=>mood);
+ }
  const update=()=>{
   const query=normalize(input.value);results.replaceChildren();
-  const matches=books.filter(book=>normalize(book.title+' '+(book.author||'')).includes(query));
-  if(!matches.length){results.append(para('Nessun libro trovato. Prova un altro titolo o autore.','rem-search-empty'));return}
+  const matchedMoods=findMoods(query);
+  const matches=books.filter(book=>!query||normalize(book.title+' '+(book.author||'')).includes(query)||matchedMoods.some(mood=>(book.moods||[]).includes(mood)));
+  if(!matches.length){results.append(para('Nessun libro trovato. Prova un titolo, un autore o un’altra emozione.','rem-search-empty'));return}
   for(const book of matches){
    const card=button('',()=>detail(book.id));
    card.className='rem-search-result';
    card.setAttribute('aria-label','Apri '+book.title+' di '+(book.author||''));
    const art=el('div',{className:'rem-search-result-cover'},[cover(book)]);
    if(book.coverImage){art.style.backgroundImage='url("'+String(book.coverImage).replace(/"/g,'%22')+'")';art.style.backgroundSize='cover';art.style.backgroundPosition='center'}
-   card.append(art,el('span',{className:'rem-search-result-info'},[el('strong',{text:book.title}),el('span',{text:book.author||''})]));
+   const info=[el('strong',{text:book.title}),el('span',{text:book.author||''})];
+   const relevant=(book.moods||[]).filter(mood=>matchedMoods.includes(mood));
+   if(relevant.length)info.push(el('span',{className:'rem-search-mood-match',text:'Potrebbe farti '+relevant.join(', ')}));
+   card.append(art,el('span',{className:'rem-search-result-info'},info));
    results.append(card);
   }
  };
  input.addEventListener('input',update);
  const back=button('← Torna alla Home',home);back.className='rem-search-back';
- render(el('section',{className:'rem-search-view'},[back,el('h1',{text:'Cerca su REM'}),el('div',{className:'rem-search-field'},[input]),results]));
+ render(el('section',{className:'rem-search-view'},[back,el('h1',{text:'Cerca su REM'}),el('div',{className:'rem-search-field'},[input]),suggestions,results]));
  update();requestAnimationFrame(()=>input.focus({preventScroll:true}));
 }
 function profile(){
