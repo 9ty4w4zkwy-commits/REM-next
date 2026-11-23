@@ -27,6 +27,11 @@
         "roma",
         "francia",
         "italia"
+      ],
+      "primaryLocations": [
+        "marsiglia",
+        "parigi",
+        "francia"
       ]
     },
     {
@@ -51,7 +56,8 @@
       "locations": [
         "inghilterra",
         "regno unito"
-      ]
+      ],
+      "primaryLocations": []
     },
     {
       "id": "dracula",
@@ -78,6 +84,11 @@
         "londra",
         "inghilterra",
         "regno unito"
+      ],
+      "primaryLocations": [
+        "transilvania",
+        "romania",
+        "londra"
       ]
     },
     {
@@ -914,6 +925,10 @@
       "locations": [
         "toscana",
         "italia"
+      ],
+      "primaryLocations": [
+        "toscana",
+        "italia"
       ]
     },
     {
@@ -937,6 +952,9 @@
       "locations": [
         "kansas",
         "stati uniti"
+      ],
+      "primaryLocations": [
+        "kansas"
       ]
     },
     {
@@ -973,7 +991,8 @@
         "india",
         "giappone",
         "stati uniti"
-      ]
+      ],
+      "primaryLocations": []
     },
     {
       "id": "ventimila-leghe",
@@ -999,6 +1018,10 @@
         "oceano indiano",
         "mare",
         "oceano"
+      ],
+      "primaryLocations": [
+        "oceano",
+        "mare"
       ]
     },
     {
@@ -1024,6 +1047,11 @@
         "hertfordshire",
         "derbyshire",
         "regno unito"
+      ],
+      "primaryLocations": [
+        "hertfordshire",
+        "derbyshire",
+        "inghilterra"
       ]
     },
     {
@@ -1153,6 +1181,11 @@
         "sorridere"
       ],
       "locations": [
+        "liguria",
+        "roma",
+        "italia"
+      ],
+      "primaryLocations": [
         "liguria",
         "roma",
         "italia"
@@ -2685,7 +2718,8 @@
         "italia",
         "roma",
         "mediterraneo"
-      ]
+      ],
+      "primaryLocations": []
     }
   ]
 }
