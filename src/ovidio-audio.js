@@ -85,7 +85,7 @@ export async function createOvidioAudio({chapter,content,onPosition,onNext}){
   player.addEventListener('play',()=>{hasStarted=true});
   player.addEventListener('ended',()=>{if(disposed)return;if(currentPart<tracks.length-1&&absolute()<last-1){seekAbsolute(partStarts[currentPart+1],true)}else {saveSetting('ovidio-auto-continue','true');onNext?.()}});
   const note=document.createElement('p');note.className='format-mode-note';note.textContent='Tocca una parola per ascoltare da quel punto. Le parole abbinate si illuminano durante la riproduzione.';
-  section.append(status,player,note,text);
+  section.append(status,player);
   section.stopAudio=()=>{if(!disposed&&currentPart>=0){const time=absolute();saveSetting(key,JSON.stringify({chapter:chapter.id,seconds:time}));const item=words.reduce((last,w)=>w.start<=time?w:last,words[0]);saveSetting('audio-text-sync:metamorfosi-ovidio',JSON.stringify({chapter:chapter.id,source:'audio',offset:item.offset}));onPosition?.(item.offset)}disposed=true;player.pause();player.removeAttribute('src');player.load()};
   seekAbsolute(Math.max(start,Math.min(initial,last)),continuePlaying);
   return section;
