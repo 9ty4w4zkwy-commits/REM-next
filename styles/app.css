@@ -1807,3 +1807,25 @@ html body.ebook-fullscreen-active .ebook-reading-shell>.rem-floating-highlighter
  outline:3px solid #172235!important;outline-offset:-5px!important;
  filter:none!important;
 }
+
+/* v316: off = blush outline and blush pen on navy; on = blush fill and navy pen. Position unchanged. */
+html body .ebook-reading-shell .rem-floating-highlighter[aria-pressed="false"],
+html body.ebook-fullscreen-active .ebook-reading-shell>.rem-floating-highlighter[aria-pressed="false"]{
+ background:transparent!important;background-color:transparent!important;
+ border:1.5px solid #F2B8C6!important;color:#F2B8C6!important;
+ outline:none!important;box-shadow:none!important;
+}
+html body .ebook-reading-shell .rem-floating-highlighter[aria-pressed="false"] svg,
+html body.ebook-fullscreen-active .ebook-reading-shell>.rem-floating-highlighter[aria-pressed="false"] svg{
+ color:#F2B8C6!important;stroke:#F2B8C6!important;
+}
+html body .ebook-reading-shell .rem-floating-highlighter[aria-pressed="true"],
+html body.ebook-fullscreen-active .ebook-reading-shell>.rem-floating-highlighter[aria-pressed="true"]{
+ background:#F2B8C6!important;background-color:#F2B8C6!important;
+ border:1.5px solid #F2B8C6!important;color:#172235!important;
+ outline:none!important;box-shadow:none!important;
+}
+html body .ebook-reading-shell .rem-floating-highlighter[aria-pressed="true"] svg,
+html body.ebook-fullscreen-active .ebook-reading-shell>.rem-floating-highlighter[aria-pressed="true"] svg{
+ color:#172235!important;stroke:#172235!important;
+}
