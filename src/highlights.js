@@ -39,8 +39,14 @@ export function createHighlights(bookId,chapterId,textNode,onSwitch,onBookmark=(
  function customSelect(x,y,initial=false){
   const offset=offsetFromPoint(x,y);if(offset===null)return;
   const words=[...source.value.matchAll(WORD)].map(m=>({start:m.index,end:m.index+m[0].length}));
-  let idx=words.findIndex(w=>offset>=w.start&&offset<=w.end);if(idx<0)idx=words.findIndex(w=>w.start>offset);if(idx<0)return;
+  // Safari caret positions often land exactly at the start of the NEXT word
+  // even while the finger is visually still over the previous one.
+  // At that boundary, keep the previous word when selecting forwards.
+  let idx=words.findIndex(w=>offset>=w.start&&offset<w.end);
+  if(idx<0)idx=words.findIndex(w=>w.start>offset);
+  if(idx<0)idx=words.length-1;
   if(initial)customAnchor=words[idx].start;
+  if(!initial&&offset===words[idx].start&&idx>0&&offset>customAnchor)idx--;
   customEnd=offset<customAnchor?words[idx].start:words[idx].end;
   const start=Math.min(customAnchor,customEnd),end=Math.max(customAnchor,customEnd);
   setSaveQuote(source.value.slice(start,end));customRangePaint();
@@ -144,7 +150,7 @@ export function createHighlights(bookId,chapterId,textNode,onSwitch,onBookmark=(
   clearTimeout(longPressTimer);
   if(!touch)return;
   const t=e.changedTouches[0],start=touch;touch=null;
-  if(start.custom){e.preventDefault();customSelect(t.clientX,t.clientY);suppressClickUntil=Date.now()+800;return}
+  if(start.custom){e.preventDefault();/* Preserve the last deliberate drag position: touchend may jump to the next word on Safari. */suppressClickUntil=Date.now()+800;return}
   if(enabled){suppressClickUntil=Date.now()+650;return}
   if(start.scrolling||start.moved||Math.hypot(t.clientX-start.x,t.clientY-start.y)>11)return;
   if(Date.now()-start.started>380)return;
