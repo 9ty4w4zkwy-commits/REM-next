@@ -101,7 +101,7 @@
         "new"
       ],
       "availability": "preview",
-      "coverImage": "./assets/covers/alice.jpg",
+      "coverImage": "./assets/covers/alice.jpg?v=alice-new-20261123",
       "chapters": []
     },
     {
