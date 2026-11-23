@@ -1,4 +1,4 @@
-import {createOvidioAudio} from './ovidio-audio.js?v=3';
+import {createOvidioAudio} from './ovidio-audio.js?v=4';
 import {loadCatalog,loadChapter} from './catalog.js?v=ovidio-mini-20261123';
 import {loadEpisodeSegment} from './episode-segments.js?v=pinocchio-122';
 import {loadOvidioEpisode} from './ovidio-episodes.js?v=2';
@@ -352,10 +352,15 @@ function episodes(id,selectedSeason){
  const seasons=storySeasons(book),selected=seasons.find(season=>season.number===selectedSeason)||seasons.find(season=>season.number===Number(getSetting('episode-season:'+id,'1')))||seasons[0];
  saveSetting('episode-season:'+id,selected.number);
  const done=episodeDone(id),saved=getProgress(id),current=currentEpisode(book);
- const seasonPicker=el('select',{className:'season-picker',attrs:{'aria-label':'Seleziona stagione'}});
- seasons.forEach(season=>{const opt=el('option',{text:'Stagione '+season.number+' · '+(season.title||'')+' ('+season.episodes.length+' episodi)',attrs:{value:String(season.number)}});if(season.number===selected.number)opt.selected=true;seasonPicker.append(opt)});
+ const seasonPicker=document.createElement('select');seasonPicker.className='season-picker';seasonPicker.setAttribute('aria-label','Seleziona stagione');
+ seasons.forEach(season=>{const opt=document.createElement('option');opt.value=String(season.number);opt.textContent='Stagione '+season.number+' · '+(season.title||'')+' ('+season.episodes.length+' episodi)';seasonPicker.append(opt)});
+ seasonPicker.value=String(selected.number);
  seasonPicker.addEventListener('change',()=>episodes(id,Number(seasonPicker.value)));
- const seasonTabs=el('div',{className:'season-tabs'},[seasonPicker]);
+ const episodePicker=document.createElement('select');episodePicker.className='season-picker';episodePicker.setAttribute('aria-label','Vai direttamente a un episodio');
+ selected.episodes.forEach((ep,i)=>{const opt=document.createElement('option');opt.value=String(i);opt.textContent='Episodio '+(i+1)+' · '+ep.title;episodePicker.append(opt)});
+ episodePicker.selectedIndex=-1;
+ episodePicker.addEventListener('change',()=>{const ep=selected.episodes[Number(episodePicker.value)];if(ep){rememberEpisode(id,ep);reader(id,ep.chapterId,'ebook',null,true,ep.id)}});
+ const seasonTabs=el('div',{className:'season-tabs'},[seasonPicker,episodePicker]);
  const cards=selected.episodes.map((ep,i)=>{
   const chapter=book.chapters.find(c=>c.id===(ep.chapterId||ep.id));
   const item={...ep,season:selected.number,number:i+1};
@@ -381,7 +386,7 @@ function episodes(id,selectedSeason){
   ]);
  });
  render(backArrow(()=>detail(id)),el('div',{className:'rem-episodes-heading'},[heading(book.title,'LA TUA STORIA · EPISODI')]),
- seasonTabs,el('h2',{className:'season-heading',text:'Stagione '+selected.number+(selected.title?' · '+selected.title:'')+' · '+selected.episodes.length+' episodi'}),el('details',{className:'episodes-dropdown'},[el('summary',{text:'Mostra / nascondi i '+selected.episodes.length+' episodi'}),el('div',{className:'episodes-list'},cards)]),
+ seasonTabs,el('h2',{className:'season-heading',text:'Stagione '+selected.number+(selected.title?' · '+selected.title:'')+' · '+selected.episodes.length+' episodi'}),el('details',{className:'episodes-dropdown'},[el('summary',{text:'Sfoglia i '+selected.episodes.length+' episodi della stagione'}),el('div',{className:'episodes-list'},cards)]),
  pathLink('Passa al libro completo',()=>{saveSetting('reading-path:'+id,'normal');reader(id)}));
 }
 function openSummary(id,chapterId,mode,inEpisode,episodeId){
@@ -401,7 +406,7 @@ if(mode==='audio'){
  activeReaderTools=createReaderTools({focusOnly:true});activeReaderTools.mount(shell);
  try{
   const segment=inEpisode&&episode?(book.id==='pinocchio'?await loadEpisodeSegment(book,episode):book.id==='metamorfosi-ovidio'?await loadOvidioEpisode(book,episode):null):null;const content=segment?.content??await loadChapter(book,chapter);if(!shell.isConnected)return;
-  const point=getPhrase(id);if(id!=='pinocchio'&&point?.chapter===chapter.id&&Number.isFinite(Number(point.offset)))saveSetting('audio-position:'+id,JSON.stringify({chapter:chapter.id,offset:Math.max(0,(Number(point.offset)||0)-(segment?.start||0))}));const player=id==='metamorfosi-ovidio'?await createOvidioAudio({chapter,content,onPosition:offset=>{saveProgress(id,chapter.id);if(offset>=0&&offset<content.length)savePhrase(id,chapter.id,content.slice(offset,offset+90).trim(),offset)},onNext:()=>{const units=inEpisode?allEpisodes(book):book.chapters;const index=units.findIndex(c=>c.id===(inEpisode?episode?.id:chapter.id));const next=units[index+1];if(next){const nextChapter=inEpisode?next.chapterId:next.id;saveProgress(id,nextChapter);reader(id,nextChapter,'audio',0,inEpisode,inEpisode?next.id:null)}else saveProgress(id,chapter.id)}}):audioView({bookId:id,chapter,content,segmentStart:segment?.start||0,onPosition:offset=>{if(offset>=0&&offset<content.length){const excerpt=content.slice(offset,Math.min(content.length,offset+90)).trim();savePhrase(id,chapter.id,excerpt,offset+(segment?.start||0))}saveProgress(id,chapter.id)}});
+  const point=getPhrase(id);if(id!=='pinocchio'&&point?.chapter===chapter.id&&Number.isFinite(Number(point.offset)))saveSetting('audio-position:'+id,JSON.stringify({chapter:chapter.id,offset:Math.max(0,(Number(point.offset)||0)-(segment?.start||0))}));const player=id==='metamorfosi-ovidio'?await createOvidioAudio({chapter,content,segmentStart:segment?.start||0,segmentEnd:segment?.end||null,onPosition:offset=>{saveProgress(id,chapter.id);if(offset>=0&&offset<content.length)savePhrase(id,chapter.id,content.slice(Math.max(0,offset-(segment?.start||0)),Math.max(0,offset-(segment?.start||0))+90).trim(),offset)},onNext:()=>{const units=inEpisode?allEpisodes(book):book.chapters;const index=units.findIndex(c=>c.id===(inEpisode?episode?.id:chapter.id));const next=units[index+1];if(next){const nextChapter=inEpisode?next.chapterId:next.id;saveProgress(id,nextChapter);reader(id,nextChapter,'audio',0,inEpisode,inEpisode?next.id:null)}else saveProgress(id,chapter.id)}}):audioView({bookId:id,chapter,content,segmentStart:segment?.start||0,onPosition:offset=>{if(offset>=0&&offset<content.length){const excerpt=content.slice(offset,Math.min(content.length,offset+90)).trim();savePhrase(id,chapter.id,excerpt,offset+(segment?.start||0))}saveProgress(id,chapter.id)}});
   const units=inEpisode?allEpisodes(book):book.chapters;
   const unitIndex=inEpisode?units.findIndex(item=>item.id===episode?.id):units.findIndex(item=>item.id===chapter.id);
   const moveAudio=direction=>{
