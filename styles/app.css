@@ -2020,3 +2020,12 @@ body.summary-fullscreen-active .summary-shell .summary-fullscreen-exit{backgroun
 @media(max-width:400px){.summary-shell .reader-tools-row{gap:4px!important}.summary-shell .reader-tools-row .reader-theme-button,.summary-shell .reader-tools-row .reader-focus-button{flex-basis:66px!important;min-height:66px!important}.summary-shell .reader-tools-row .reader-font-button{flex-basis:42px!important;min-height:42px!important}.summary-shell .summary-reading-shell{padding:8px!important}}
 body.summary-fullscreen-active .summary-shell .summary-reading-shell{padding:0!important;border:0!important;border-radius:0!important;background:#101e30!important}
 body.summary-fullscreen-active .summary-shell .reader-tools-row button{aspect-ratio:auto!important}
+
+/* Summary: restore rounded original paper frame, now white rather than cream. */
+.summary-shell .summary-reading-shell:not(.summary-is-fullscreen){padding:14px!important;background:#fff!important;border:1px solid #fff!important;border-radius:24px!important;box-shadow:none!important;overflow:visible!important}
+.summary-shell .summary-page-frame{border-radius:18px!important;background:#fff!important}
+.summary-shell .summary-reading-shell[data-theme="sun"] .summary-page-frame{background:#fff!important}
+.summary-shell .summary-reading-shell>.reader-tools{border-radius:18px!important;overflow:hidden!important}
+.summary-shell .summary-status:empty{display:none!important}
+@media(max-width:400px){.summary-shell .summary-reading-shell:not(.summary-is-fullscreen){padding:10px!important}}
+body.summary-fullscreen-active .summary-shell .summary-reading-shell{padding:0!important;background:#101e30!important;border:0!important;border-radius:0!important}
