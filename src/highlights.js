@@ -14,7 +14,7 @@ export function createHighlights(bookId,chapterId,textNode,onSwitch,onBookmark=(
   const last=Math.min(words.length-1,first+7);
   return {start:words[first].start,end:words[last].end,quote:raw.slice(words[first].start,words[last].end)};
  }
- const hint=el('p',{className:'selection-hint',text:'Pennino spento: tocca per sincronizzare 8 parole. Pennino acceso: trascina lateralmente per evidenziare e salvare nei pensieri.'});
+ const hint=el('p',{className:'selection-hint',text:'Pennino spento: tocca per sincronizzare 8 parole. Pennino acceso: tocca la prima e l’ultima parola per evidenziare. Doppio tocco sulla frase per annullare.'});
  const clear=button('Rimuovi evidenziazioni',()=>{marks=[];selectedQuote='';saveThought.hidden=true;persist();draw()});
  clear.classList.add('selection-clear');
  const wrap=el('div',{className:'highlight-tools'});
@@ -68,7 +68,7 @@ export function createHighlights(bookId,chapterId,textNode,onSwitch,onBookmark=(
  }
 
  let savedNoticeTimer=null;
- const saveThought=button('Salva nei miei pensieri',()=>{if(!selectedQuote)return;onSaveThought(selectedQuote);window.getSelection()?.removeAllRanges();selectionMode=false;customMode=false;textNode.classList.remove('rem-custom-selecting');clearSelectionPaint();saveThought.textContent='✓ Salvato nei miei pensieri';saveThought.disabled=true;clearTimeout(savedNoticeTimer);savedNoticeTimer=setTimeout(()=>{saveThought.hidden=true;selectedQuote='';saveThought.disabled=false;saveThought.textContent='Salva nei miei pensieri';},2000);});
+ const saveThought=button('Salva nei miei pensieri',()=>{if(!selectedQuote)return;onSaveThought(selectedQuote);window.getSelection()?.removeAllRanges();selectionMode=false;customMode=false;textNode.classList.remove('rem-custom-selecting');clearSelectionPaint();firstWord=null;completedRange=null;saveThought.textContent='✓ Salvato nei miei pensieri';saveThought.disabled=true;clearTimeout(savedNoticeTimer);savedNoticeTimer=setTimeout(()=>{saveThought.hidden=true;selectedQuote='';saveThought.disabled=false;saveThought.textContent='Salva nei miei pensieri';},2000);});
  saveThought.className='rem-save-highlight-thought';saveThought.hidden=true;wrap.append(saveThought);
 
  function persist(){try{localStorage.setItem(key,JSON.stringify(marks))}catch{}}
@@ -78,7 +78,7 @@ export function createHighlights(bookId,chapterId,textNode,onSwitch,onBookmark=(
   let at=0;for(const m of ordered){if(m.start<at)continue;textNode.append(document.createTextNode(raw.slice(at,m.start)));textNode.append(el('mark',{className:'rem-highlight',text:raw.slice(m.start,m.end)}));at=m.end}
   textNode.append(document.createTextNode(raw.slice(at)));
  }
- function setText(value){source.value=value;selectionMode=false;customMode=false;textNode.classList.remove('rem-custom-selecting');clearSelectionPaint();draw()}
+ function setText(value){source.value=value;resetTapSelection();draw()}
  function highlightPhrase(offset,phrase){
   const raw=source.value;
   if(!Number.isInteger(offset)||offset<0||offset>=raw.length||!phrase)return null;
@@ -119,17 +119,44 @@ export function createHighlights(bookId,chapterId,textNode,onSwitch,onBookmark=(
   return true;
  }
  function markedAt(target){return target?.closest?.('mark.rem-highlight')||null}
- function clearPendingUnderline(x,y){
-  if(!enabled||!customMode||!Number.isFinite(x)||!Number.isFinite(y))return false;
-  const hit=[...selectionPaint.children].some(node=>{const r=node.getBoundingClientRect();return x>=r.left-6&&x<=r.right+6&&y>=r.top-6&&y<=r.bottom+6});
-  if(!hit)return false;
+ let firstWord=null,completedRange=null,lastTap={time:0,offset:-1};
+ function resetTapSelection(){
+  firstWord=null;completedRange=null;lastTap={time:0,offset:-1};
   customMode=false;selectionMode=false;selectedQuote='';
-  textNode.classList.remove('rem-custom-selecting');
-  clearSelectionPaint();saveThought.hidden=true;
-  window.getSelection()?.removeAllRanges();
-  return true;
+  textNode.classList.remove('rem-custom-selecting');clearSelectionPaint();
+  saveThought.hidden=true;saveThought.disabled=false;
+  saveThought.textContent='Salva nei miei pensieri';
  }
-
+ function wordAt(x,y){
+  const offset=offsetFromPoint(x,y);
+  if(offset===null)return null;
+  const words=[...source.value.matchAll(WORD)].map(m=>({start:m.index,end:m.index+m[0].length}));
+  if(!words.length)return null;
+  let index=words.findIndex(w=>offset>=w.start&&offset<w.end);
+  if(index<0)index=words.findIndex(w=>w.end===offset);
+  if(index<0)index=words.findIndex(w=>w.start>offset);
+  return index<0?null:words[index];
+ }
+ function tapToUnderline(x,y){
+  const word=wordAt(x,y);if(!word)return;
+  const now=Date.now();
+  if(completedRange&&word.start>=completedRange.start&&word.start<completedRange.end){
+   if(lastTap.offset===word.start&&now-lastTap.time<550){
+    resetTapSelection();window.getSelection()?.removeAllRanges();return;
+   }
+   lastTap={time:now,offset:word.start};return;
+  }
+  lastTap={time:now,offset:word.start};
+  if(!firstWord){
+   resetTapSelection();firstWord=word;
+   customAnchor=word.start;customEnd=word.end;customMode=true;
+   customRangePaint();return;
+  }
+  const start=Math.min(firstWord.start,word.start),end=Math.max(firstWord.end,word.end);
+  firstWord=null;completedRange={start,end};
+  customAnchor=start;customEnd=end;customMode=true;
+  setSaveQuote(source.value.slice(start,end));customRangePaint();
+ }
  let touch=null,lastTouch=0,suppressClickUntil=0;
  function setSaveQuote(quote){clearTimeout(savedNoticeTimer);selectedQuote=quote;saveThought.hidden=false;saveThought.disabled=false;saveThought.textContent='Salva nei miei pensieri'}
  function readNativeSelection(){
@@ -148,51 +175,39 @@ export function createHighlights(bookId,chapterId,textNode,onSwitch,onBookmark=(
  }
  function touchStart(e){
   if(e.touches.length!==1)return;
-  clearTimeout(longPressTimer);
   const t=e.touches[0];
-  touch={x:t.clientX,y:t.clientY,moved:false,started:Date.now(),custom:false,scrolling:false,mark:enabled?markedAt(e.target):null};
-  // Disable native text selection while preserving ordinary vertical page scrolling.
+  touch={x:t.clientX,y:t.clientY,started:Date.now(),moved:false};
   window.getSelection()?.removeAllRanges();
  }
  function touchMove(e){
   if(!touch||e.touches.length!==1)return;
-  if(!enabled)return;
-  const t=e.touches[0],dx=t.clientX-touch.x,dy=t.clientY-touch.y;
-  if(touch.scrolling)return;
-  if(!touch.custom){
-   if(Math.hypot(dx,dy)<11)return;
-   touch.moved=true;
-   if(Math.abs(dy)>Math.abs(dx)*1.2){touch.scrolling=true;return}
-   if(Math.abs(dx)<12)return;
-   touch.custom=true;customMode=true;selectionMode=false;
-   textNode.classList.add('rem-custom-selecting');
-   window.getSelection()?.removeAllRanges();
-   customSelect(touch.x,touch.y,true);
-  }
-  if(touch.custom){e.preventDefault();customSelect(t.clientX,t.clientY)}
+  const t=e.touches[0];
+  if(Math.hypot(t.clientX-touch.x,t.clientY-touch.y)>12)touch.moved=true;
  }
  function touchEnd(e){
-  clearTimeout(longPressTimer);
   if(!touch)return;
-  const t=e.changedTouches[0],start=touch;touch=null;
-  if(start.custom){e.preventDefault();/* Preserve the last deliberate drag position: touchend may jump to the next word on Safari. */suppressClickUntil=Date.now()+800;return}
-  if(enabled){if(!start.scrolling&&!start.moved&&Math.hypot(t.clientX-start.x,t.clientY-start.y)<11&&Date.now()-start.started<550){if((start.mark&&removeMarkedPhrase(start.mark))||clearPendingUnderline(t.clientX,t.clientY))e.preventDefault()}suppressClickUntil=Date.now()+650;return}
-  if(start.scrolling||start.moved||Math.hypot(t.clientX-start.x,t.clientY-start.y)>11)return;
+  const start=touch;touch=null;
+  const t=e.changedTouches[0];
+  if(enabled){
+   if(!start.moved&&Math.hypot(t.clientX-start.x,t.clientY-start.y)<12&&Date.now()-start.started<650){
+    e.preventDefault();tapToUnderline(start.x,start.y);
+   }
+   suppressClickUntil=Date.now()+700;return;
+  }
+  if(start.moved||Math.hypot(t.clientX-start.x,t.clientY-start.y)>11)return;
   if(Date.now()-start.started>380)return;
-  customMode=false;textNode.classList.remove('rem-custom-selecting');clearSelectionPaint();
+  resetTapSelection();
   if(selectAt(t.clientX,t.clientY)){lastTouch=Date.now();e.preventDefault()}
  }
  function click(e){
-  if(enabled&&Date.now()>=suppressClickUntil&&((markedAt(e.target)&&removeMarkedPhrase(markedAt(e.target)))||clearPendingUnderline(e.clientX,e.clientY))){e.preventDefault();return}
-  if(customMode)return;
-  if(enabled){if(window.getSelection()?.toString().trim()){selectionMode=true;readNativeSelection()}return}
   if(Date.now()<suppressClickUntil||Date.now()-lastTouch<650)return;
+  if(enabled){tapToUnderline(e.clientX,e.clientY);return}
   if(window.getSelection()?.toString().trim()){selectionMode=true;readNativeSelection();return}
-  selectionMode=false;selectAt(e.clientX,e.clientY)
+  selectionMode=false;selectAt(e.clientX,e.clientY);
  }
  function contextMenu(e){if(!enabled){e.preventDefault();suppressClickUntil=Date.now()+800}}
  function setEnabled(value){
-  enabled=Boolean(value);touch=null;customMode=false;selectionMode=false;
+  enabled=Boolean(value);touch=null;resetTapSelection();
   textNode.classList.remove('rem-custom-selecting');
   textNode.classList.toggle('rem-thought-pen-active',enabled);
   window.getSelection()?.removeAllRanges();
