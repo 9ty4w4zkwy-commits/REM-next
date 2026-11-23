@@ -6,8 +6,8 @@ const QUESTIONS=[
  {title:'Quale di queste frasi ti rappresenta di più?',hint:'Scegli quella che senti più tua.',max:1,options:['Amo scoprire cose nuove','Mi piace capire tutto a fondo','Sono una persona sognatrice','Amo le sfide','Sono una persona sensibile','Mi piace trovare soluzioni']},
  {title:'Quando hai del tempo libero, cosa scegli più volentieri?',hint:'Scegli la risposta più spontanea.',max:1,options:['Esplorare posti nuovi','Stare con le persone che amo','Creare qualcosa','Imparare qualcosa di nuovo','Stare nella natura','Rilassarmi e ricaricarmi']},
  {title:'Cosa cerchi in un libro, adesso?',hint:'Potrai cambiare questa risposta quando vuoi.',max:1,options:['Evadere','Sorridere','Emozionarmi','Scoprire','Riflettere','Sognare']},
- {title:'In che modo ti piace vivere le storie?',hint:'Scegli la modalità che ti piace di più.',max:1,options:['A episodi','Ebook','Audiolibri','Libri cartacei','Un po' di tutto','Dipende dalla storia']},
- {title:'In quali momenti ti piacerebbe leggere o ascoltare una storia?',hint:'Puoi scegliere più risposte.',max:6,options:['Al mattino, per iniziare la giornata','Durante gli spostamenti','Durante una pausa','La sera, per rilassarmi','Prima di addormentarmi','Nel weekend o quando ho tempo libero']}
+ {title:'In che modo ti piace vivere le storie?',hint:'Scegli la modalità che ti piace di più.',max:1,options:['A episodi','Ebook','Audiolibri','Libri cartacei',"Un po' di tutto",'Dipende dalla storia']},
+ {title:'In quali momenti vorresti che una storia ti accompagnasse?',hint:'Puoi scegliere più risposte.',max:6,options:['Nei piccoli ritagli di tempo|5–10 minuti tra un impegno e l’altro','Durante gli spostamenti|A piedi, sui mezzi o in viaggio','Durante una pausa|10–20 minuti per me','Mentre faccio altro|Cucinando, camminando o svolgendo attività quotidiane','Prima di dormire|10–30 minuti a fine giornata','Quando ho più tempo libero|30 minuti o più, senza fretta']}
 ];
 const loadAnswers=()=>{try{const a=JSON.parse(getSetting('onboarding-answers','[]'));return Array.isArray(a)?QUESTIONS.map((_,i)=>Array.isArray(a[i])?a[i]:[]):QUESTIONS.map(()=>[])}catch{return QUESTIONS.map(()=>[])}};
 export const onboardingCompleted=()=>getSetting(KEY,'')==='done';
@@ -31,14 +31,17 @@ export function showOnboarding(render,home,{editing=false}={}){
   }else{
    const q=QUESTIONS[step],chosen=answers[step];
    const choices=el('div',{className:'onboard-options'},q.options.map(option=>{
-    const b=button(option,()=>{
+    const parts=option.split('|');
+    const b=button(parts[0],()=>{
      const index=chosen.indexOf(option);
      if(index>=0)chosen.splice(index,1);
      else if(q.max===1)answers[step]=[option];
      else if(chosen.length<q.max)chosen.push(option);
      if(!editing)persist();draw();
     });
+    if(parts.length>1){b.textContent='';b.append(el('span',{className:'onboard-option-title',text:parts[0]}),el('span',{className:'onboard-option-detail',text:parts[1]}));b.setAttribute('aria-label',parts.join('. '));}
     b.classList.add('onboard-option');
+    if(parts.length>1)b.classList.add('onboard-option-detailed');
     if(chosen.includes(option))b.classList.add('selected');
     b.setAttribute('aria-pressed',String(chosen.includes(option)));
     return b;
