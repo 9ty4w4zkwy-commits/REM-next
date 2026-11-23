@@ -20,6 +20,13 @@
         "sorprendere",
         "emozionare",
         "riflettere"
+      ],
+      "locations": [
+        "marsiglia",
+        "parigi",
+        "roma",
+        "francia",
+        "italia"
       ]
     },
     {
@@ -40,6 +47,10 @@
         "sognare",
         "sorridere",
         "sorprendere"
+      ],
+      "locations": [
+        "inghilterra",
+        "regno unito"
       ]
     },
     {
@@ -60,6 +71,13 @@
         "paura",
         "suspense",
         "appassionare"
+      ],
+      "locations": [
+        "transilvania",
+        "romania",
+        "londra",
+        "inghilterra",
+        "regno unito"
       ]
     },
     {
@@ -892,6 +910,10 @@
         "sorridere",
         "emozionare",
         "riflettere"
+      ],
+      "locations": [
+        "toscana",
+        "italia"
       ]
     },
     {
@@ -911,6 +933,10 @@
         "sognare",
         "emozionare",
         "avventura"
+      ],
+      "locations": [
+        "kansas",
+        "stati uniti"
       ]
     },
     {
@@ -930,6 +956,23 @@
         "avventura",
         "sorridere",
         "sorprendere"
+      ],
+      "locations": [
+        "londra",
+        "parigi",
+        "suez",
+        "mumbai",
+        "calcutta",
+        "hong kong",
+        "yokohama",
+        "san francisco",
+        "new york",
+        "inghilterra",
+        "francia",
+        "egitto",
+        "india",
+        "giappone",
+        "stati uniti"
       ]
     },
     {
@@ -949,6 +992,13 @@
         "meravigliare",
         "avventura",
         "suspense"
+      ],
+      "locations": [
+        "oceano pacifico",
+        "oceano atlantico",
+        "oceano indiano",
+        "mare",
+        "oceano"
       ]
     },
     {
@@ -968,6 +1018,12 @@
         "innamorare",
         "sorridere",
         "emozionare"
+      ],
+      "locations": [
+        "inghilterra",
+        "hertfordshire",
+        "derbyshire",
+        "regno unito"
       ]
     },
     {
@@ -1095,6 +1151,11 @@
         "riflettere",
         "sorprendere",
         "sorridere"
+      ],
+      "locations": [
+        "liguria",
+        "roma",
+        "italia"
       ]
     },
     {
@@ -2618,6 +2679,12 @@
         "emozionare",
         "sorprendere",
         "riflettere"
+      ],
+      "locations": [
+        "grecia",
+        "italia",
+        "roma",
+        "mediterraneo"
       ]
     }
   ]
