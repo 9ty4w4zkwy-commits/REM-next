@@ -5,7 +5,9 @@ const QUESTIONS=[
  {title:'Quali cose ti fanno perdere la cognizione del tempo?',hint:'Puoi scegliere fino a due risposte.',max:2,options:['Viaggiare e scoprire luoghi','Capire come funziona la mente','Arte, musica e creatività','Storie e relazioni umane','Misteri ed enigmi','Natura e avventura']},
  {title:'Quale di queste frasi ti rappresenta di più?',hint:'Scegli quella che senti più tua.',max:1,options:['Amo scoprire cose nuove','Mi piace capire tutto a fondo','Sono una persona sognatrice','Amo le sfide','Sono una persona sensibile','Mi piace trovare soluzioni']},
  {title:'Quando hai del tempo libero, cosa scegli più volentieri?',hint:'Scegli la risposta più spontanea.',max:1,options:['Esplorare posti nuovi','Stare con le persone che amo','Creare qualcosa','Imparare qualcosa di nuovo','Stare nella natura','Rilassarmi e ricaricarmi']},
- {title:'Cosa cerchi in un libro, adesso?',hint:'Potrai cambiare questa risposta quando vuoi.',max:1,options:['Evadere','Sorridere','Emozionarmi','Scoprire','Riflettere','Sognare']}
+ {title:'Cosa cerchi in un libro, adesso?',hint:'Potrai cambiare questa risposta quando vuoi.',max:1,options:['Evadere','Sorridere','Emozionarmi','Scoprire','Riflettere','Sognare']},
+ {title:'Come preferisci vivere una storia?',hint:'Scegli la modalità che ti piace di più.',max:1,options:['A episodi','Ebook','Audiolibri','Libri cartacei',"Un po' di tutto",'Dipende dalla storia']},
+ {title:'In quali momenti ti piacerebbe leggere o ascoltare una storia?',hint:'Puoi scegliere più risposte.',max:6,options:['Al mattino, per iniziare la giornata','Durante gli spostamenti','Durante una pausa','La sera, per rilassarmi','Prima di addormentarmi','Nel weekend o quando ho tempo libero']}
 ];
 const loadAnswers=()=>{try{const a=JSON.parse(getSetting('onboarding-answers','[]'));return Array.isArray(a)?QUESTIONS.map((_,i)=>Array.isArray(a[i])?a[i]:[]):QUESTIONS.map(()=>[])}catch{return QUESTIONS.map(()=>[])}};
 export const onboardingCompleted=()=>getSetting(KEY,'')==='done';
@@ -18,7 +20,7 @@ export function showOnboarding(render,home,{editing=false}={}){
    el('strong',{className:'onboard-brand',text:'REM',attrs:{'aria-label':'REM'}}),
    button(editing?'Annulla':'Lo faccio più tardi',()=>{if(!editing){persist();saveSetting(KEY,'later')}home()})
   ]);
-  const bars=el('div',{className:'onboard-progress',attrs:{'aria-label':step<0?'Introduzione':'Domanda '+(step+1)+' di 4'}},QUESTIONS.map((_,i)=>el('span',{className:i<=step?'is-active':''})));
+  const bars=el('div',{className:'onboard-progress',attrs:{'aria-label':step<0?'Introduzione':'Domanda '+(step+1)+' di '+QUESTIONS.length}},QUESTIONS.map((_,i)=>el('span',{className:i<=step?'is-active':''})));
   const nodes=[header,bars];
   if(step<0){
    nodes.push(el('section',{className:'onboard-intro'},[
@@ -41,10 +43,10 @@ export function showOnboarding(render,home,{editing=false}={}){
     b.setAttribute('aria-pressed',String(chosen.includes(option)));
     return b;
    }));
-   const next=button(step===3?(editing?'Salva le risposte':'Entra in REM'):'Avanti →',()=>{if(step===3)finish();else{step++;draw()}},true);
+   const next=button(step===QUESTIONS.length-1?(editing?'Salva le risposte':'Entra in REM'):'Avanti →',()=>{if(step===QUESTIONS.length-1)finish();else{step++;draw()}},true);
    next.disabled=!answers[step].length;
    nodes.push(el('section',{className:'onboard-question'},[
-    el('p',{className:'onboard-kicker',text:'DOMANDA '+(step+1)+' DI 4'}),
+    el('p',{className:'onboard-kicker',text:'DOMANDA '+(step+1)+' DI '+QUESTIONS.length}),
     el('h1',{text:q.title}),el('p',{className:'onboard-hint',text:q.hint}),choices,
     el('div',{className:'onboard-actions'},[
      button('← Indietro',()=>{if(editing&&step===0)home();else{step--;draw()}}),next
