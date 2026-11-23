@@ -1888,3 +1888,15 @@ html body.ebook-fullscreen-active .rem-immersive-tool.rem-immersive-font{
 
 /* Ricerca emozionale REM */
 .rem-mood-suggestions{margin:14px 0 20px}.rem-mood-label{color:#a4ddc3;font-size:15px;font-weight:650;margin:0 0 10px}.rem-mood-chips{display:flex;flex-wrap:wrap;gap:9px}.rem-mood-chip{border:1px solid #628a81!important;border-radius:999px!important;background:#203248!important;color:#e7f5ee!important;padding:9px 13px!important;font-size:14px!important;line-height:1.25!important;width:auto!important;min-height:38px!important}.rem-search-mood-match{display:block;color:#a4ddc3;font-size:13px;margin-top:5px}
+
+/* Suggerimenti emozionali: palette vivace, disposizione organica e non in griglia */
+.rem-mood-chips{display:flex;flex-wrap:wrap;align-items:center;justify-content:flex-start;gap:12px 10px;padding:6px 4px 14px;max-width:620px}
+.rem-mood-chips .rem-mood-chip{width:max-content!important;max-width:95%;min-height:43px!important;padding:11px 16px!important;font-size:clamp(14px,3.7vw,16px)!important;line-height:1.25!important;border-radius:22px!important;box-shadow:0 4px 12px #00000018;transition:transform .18s ease,filter .18s ease;white-space:normal;text-align:left}
+.rem-mood-chips .rem-mood-chip:active{transform:scale(.97)!important}
+.rem-mood-chip-1{background:#4c304c!important;border-color:#d9a2c8!important;color:#ffe4f3!important;transform:rotate(-2deg);margin-left:3px}
+.rem-mood-chip-2{background:#534126!important;border-color:#e6c06e!important;color:#fff0c8!important;transform:rotate(3deg);margin-top:8px}
+.rem-mood-chip-3{background:#263f61!important;border-color:#a3c3f7!important;color:#e4efff!important;transform:rotate(2deg);margin-left:24px}
+.rem-mood-chip-4{background:#2c4b42!important;border-color:#a6e0bd!important;color:#e2ffef!important;transform:rotate(-3deg);margin-top:5px}
+.rem-mood-chip-5{background:#493b63!important;border-color:#cbb3f5!important;color:#f1e8ff!important;transform:rotate(2deg);margin-left:35px}
+@media(max-width:380px){.rem-mood-chips{gap:10px 7px}.rem-mood-chips .rem-mood-chip{padding:10px 12px!important}.rem-mood-chip-3,.rem-mood-chip-5{margin-left:12px}}
+@media(prefers-reduced-motion:reduce){.rem-mood-chips .rem-mood-chip{transition:none}}
