@@ -1885,3 +1885,6 @@ html body.ebook-fullscreen-active .rem-immersive-tool.rem-immersive-font{
 
 /* Etichetta stagione più leggibile su smartphone */
 .episode-navigation-selects label{font-size:clamp(20px,5.4vw,25px)!important;font-weight:750!important;line-height:1.3!important}
+
+/* Ricerca emozionale REM */
+.rem-mood-suggestions{margin:14px 0 20px}.rem-mood-label{color:#a4ddc3;font-size:15px;font-weight:650;margin:0 0 10px}.rem-mood-chips{display:flex;flex-wrap:wrap;gap:9px}.rem-mood-chip{border:1px solid #628a81!important;border-radius:999px!important;background:#203248!important;color:#e7f5ee!important;padding:9px 13px!important;font-size:14px!important;line-height:1.25!important;width:auto!important;min-height:38px!important}.rem-search-mood-match{display:block;color:#a4ddc3;font-size:13px;margin-top:5px}
