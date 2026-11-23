@@ -1908,3 +1908,11 @@ html body.ebook-fullscreen-active .rem-immersive-tool.rem-immersive-font{
 .rem-search-result-cover .rem-search-cover-full{display:block!important;width:100%!important;height:100%!important;object-fit:contain!important;object-position:center center!important;max-width:100%!important;max-height:100%!important;border-radius:0!important}
 .rem-search-result{height:auto!important;min-height:0!important;justify-content:flex-start!important}
 .rem-search-result-info{flex:0 0 auto!important}
+
+/* Ricerca: le copertine non devono allungare la card né lasciare fasce vuote.
+   La griglia non forza le schede alla stessa altezza e l'immagine resta nel suo formato. */
+.rem-search-results{align-items:start!important;grid-auto-rows:max-content!important}
+.rem-search-result{align-self:start!important;height:auto!important;min-height:0!important;display:flex!important;flex-direction:column!important}
+.rem-search-result-cover{position:relative!important;display:block!important;flex:0 0 auto!important;aspect-ratio:2/3!important;width:100%!important;height:auto!important;min-height:0!important;max-height:none!important;overflow:hidden!important}
+.rem-search-result-cover>img.rem-search-cover-full{position:absolute!important;inset:0!important;display:block!important;width:100%!important;height:100%!important;object-fit:contain!important;object-position:center!important}
+.rem-search-result-info{flex:0 0 auto!important;min-height:0!important;margin:0!important}
