@@ -265,7 +265,11 @@ main{max-width:1180px;padding:0 24px 70px}
 .onboard-intro>.primary{display:block;width:100%;background:#86dfb2!important;color:#102333!important;border:0!important;border-radius:16px!important;padding:1rem!important;font-weight:800!important;margin-top:2.4rem}
 .onboard-kicker{color:#86dfb2;font-size:.78rem;font-weight:800;letter-spacing:.2em;margin:0 0 1.1rem}
 .onboard-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.75rem;margin:1.6rem 0 2rem}
-.onboard-option{display:flex;align-items:center;justify-content:center;min-height:96px;padding:1rem .75rem!important;text-align:center!important;background:#1b2b41!important;border:1.5px solid #536a80!important;color:#f1f5f8!important;border-radius:17px!important;font-weight:650!important;font-size:clamp(1rem,3.2vw,1.12rem)!important;line-height:1.35!important;white-space:normal!important}
+.onboard-option{display:flex;align-items:center;justify-content:center;min-height:96px;padding:1rem .75rem!important;text-align:center!important;background:#1b2b41!important;border:1.5px solid #536a80!important;color:#f1f5f8!important;border-radius:17px!important;font-weight:650!important;font-size:clamp(1.12rem,3.8vw,1.3rem)!important;line-height:1.35!important;white-space:normal!important}
+.onboard-option-detailed{flex-direction:column;gap:.55rem;min-height:132px;padding:1rem .55rem!important}
+.onboard-option-title{font-size:inherit;font-weight:700;line-height:1.25}
+.onboard-option-detail{font-size:clamp(.96rem,3.2vw,1.06rem);font-weight:400;line-height:1.4;color:#bac8d6}
+.onboard-option-detailed.selected .onboard-option-detail{color:#24483c}
 .onboard-option.selected{background:#86dfb2!important;border-color:#b6f1d1!important;color:#102333!important}
 .onboard-option:focus-visible{outline:2px solid #b6f1d1;outline-offset:3px}
 .onboard-actions{display:flex;justify-content:space-between;gap:1rem}
@@ -274,7 +278,7 @@ main{max-width:1180px;padding:0 24px 70px}
 .onboard-actions .primary{background:#86dfb2!important;color:#102333!important;border:0!important}
 .onboard-actions .primary:disabled{opacity:.45}
 .onboard-privacy{font-size:.78rem;color:#91a5b6;margin:1.6rem 0 0;line-height:1.55}
-@media(max-width:360px){.onboard-option{min-height:96px;padding:.8rem .5rem!important;font-size:1rem!important}.onboard-actions button{padding:.65rem .75rem!important}}
+@media(max-width:360px){.onboard-option{min-height:96px;padding:.8rem .5rem!important;font-size:1.1rem!important}.onboard-actions button{padding:.65rem .75rem!important}}
 
 
 /* Polished feedback icon and outlined mint stars */
