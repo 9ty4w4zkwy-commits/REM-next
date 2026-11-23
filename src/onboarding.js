@@ -1,6 +1,6 @@
 import {el,button} from './ui.js';
 import {getSetting,saveSetting} from './progress.js';
-import {analyticsEnabled,setAnalyticsConsent,sendOnboardingAnswers} from './analytics.js?v=analytics-1';
+import {setAnalyticsConsent,sendOnboardingAnswers} from './analytics.js?v=analytics-2';
 const KEY='onboarding-v1';
 const QUESTIONS=[
  {title:'Quali cose ti fanno perdere la cognizione del tempo?',hint:'Puoi scegliere fino a due risposte.',max:2,options:['Viaggiare e scoprire luoghi','Capire come funziona la mente','Arte, musica e creatività','Storie e relazioni umane','Misteri ed enigmi','Natura e avventura']},
@@ -32,14 +32,12 @@ export function showOnboarding(render,home,{editing=false}={}){
   const bars=el('div',{className:'onboard-progress',attrs:{'aria-label':step<0?'Introduzione':'Domanda '+(step+1)+' di '+QUESTIONS.length}},QUESTIONS.map((_,i)=>el('span',{className:i<=step?'is-active':''})));
   const nodes=[header,bars];
   if(step<0){
-   const consentButton=button(analyticsEnabled()?'✓ Partecipo alla raccolta dati di test':'Partecipo alla raccolta dati di test: no',()=>{setAnalyticsConsent(!analyticsEnabled());draw()});
-   consentButton.setAttribute('aria-pressed',String(analyticsEnabled()));
    nodes.push(el('section',{className:'onboard-intro'},[
     el('h1',{},[document.createTextNode('Ogni storia inizia '),el('span',{text:'da chi la legge.'})]),
     el('p',{text:'Raccontaci qualcosa di te. Ti aiuteremo a scoprire storie che forse non avresti mai cercato.'}),
-    el('p',{text:'Facoltativo: partecipando al test, REM invia a Cloudflare un ID numerico, le risposte al questionario e le attività di lettura/ascolto (libro, formato e data), senza nome o email. Puoi disattivare i futuri invii dal Profilo; i dati già inviati non saranno cancellati automaticamente.'}),
-    consentButton,
-    button('Iniziamo',()=>{step=0;draw()},true)
+    el('p',{text:'Partecipazione facoltativa al test: scegliendo «Partecipo al test» autorizzi l’invio a Cloudflare di un codice numerico, delle risposte alle sei domande e delle attività nell’app (libri aperti, modalità ebook/audio e date). Non chiediamo nome o email. Puoi interrompere gli invii dal Profilo; i dati già inviati non vengono cancellati automaticamente. Puoi anche continuare senza inviare dati.'}),
+    button('Partecipo al test',()=>{setAnalyticsConsent(true);step=0;draw()},true),
+    button('Continua senza partecipare',()=>{setAnalyticsConsent(false);step=0;draw()})
    ]));
   }else{
    const q=QUESTIONS[step],chosen=answers[step];
