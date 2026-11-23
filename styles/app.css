@@ -266,7 +266,9 @@ main{max-width:1180px;padding:0 24px 70px}
 .onboard-kicker{color:#86dfb2;font-size:.78rem;font-weight:800;letter-spacing:.2em;margin:0 0 1.1rem}
 .onboard-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.75rem;margin:1.6rem 0 2rem}
 .onboard-option{display:flex;align-items:center;justify-content:center;min-height:96px;padding:1rem .75rem!important;text-align:center!important;background:#1b2b41!important;border:1.5px solid #536a80!important;color:#f1f5f8!important;border-radius:17px!important;font-weight:650!important;font-size:clamp(1.12rem,3.8vw,1.3rem)!important;line-height:1.35!important;white-space:normal!important}
-.onboard-option-detailed{flex-direction:column;gap:.55rem;min-height:132px;padding:1rem .55rem!important}
+.onboard-option{flex-direction:column;gap:.45rem}
+.onboard-option-emoji{display:block;font-size:1.8rem;line-height:1.1;font-weight:400}
+.onboard-option-detailed{flex-direction:column;gap:.45rem;min-height:150px;padding:1rem .55rem!important}
 .onboard-option-title{font-size:inherit;font-weight:700;line-height:1.25}
 .onboard-option-detail{font-size:clamp(.96rem,3.2vw,1.06rem);font-weight:400;line-height:1.4;color:#bac8d6}
 .onboard-option-detailed.selected .onboard-option-detail{color:#24483c}
