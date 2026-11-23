@@ -52,6 +52,8 @@ export async function createOvidioAudio({chapter,content,onPosition,onNext}){
   const key='ovidio-audio-position';
   const saved=(()=>{try{return JSON.parse(getSetting(key,'null'))}catch{return null}})();
   const initial=saved?.chapter===chapter.id&&Number.isFinite(saved.seconds)?saved.seconds:start;
+  const continuePlaying=getSetting('ovidio-auto-continue','false')==='true';
+  saveSetting('ovidio-auto-continue','false');
   function absolute(){return (partStarts[currentPart]||0)+(player.currentTime||0)}
   function partFor(t){let index=0;for(let i=1;i<partStarts.length;i++)if(t>=partStarts[i])index=i;return index}
   function seekAbsolute(t,autoplay=false){
@@ -73,14 +75,14 @@ export async function createOvidioAudio({chapter,content,onPosition,onNext}){
     const next=Math.max(0,lo-1);
     if(next!==active){if(active>=0)spans[active].node.style.backgroundColor='';active=next;spans[active]?.node&&(spans[active].node.style.backgroundColor='#f2b8c6');if(player.paused===false&&spans[active]?.node)spans[active].node.scrollIntoView({block:'nearest',behavior:'smooth'})}
     if(Date.now()-lastSave>1500){lastSave=Date.now();saveSetting(key,JSON.stringify({chapter:chapter.id,seconds:time}));if(spans[active])onPosition?.(spans[active].offset)}
-    if(time>=last+.1&&hasStarted){player.pause();onNext?.()}
+    if(time>=last+.1&&hasStarted){player.pause();hasStarted=false;saveSetting('ovidio-auto-continue','true');onNext?.()}
   }
   player.addEventListener('timeupdate',highlight);
   player.addEventListener('play',()=>{hasStarted=true});
-  player.addEventListener('ended',()=>{if(disposed)return;if(currentPart<tracks.length-1&&absolute()<last-1){seekAbsolute(partStarts[currentPart+1],true)}else onNext?.()});
+  player.addEventListener('ended',()=>{if(disposed)return;if(currentPart<tracks.length-1&&absolute()<last-1){seekAbsolute(partStarts[currentPart+1],true)}else {saveSetting('ovidio-auto-continue','true');onNext?.()}});
   const note=document.createElement('p');note.className='format-mode-note';note.textContent='Tocca una parola per ascoltare da quel punto. Le parole abbinate si illuminano durante la riproduzione.';
   section.append(status,player,note,text);
   section.stopAudio=()=>{disposed=true;player.pause();player.removeAttribute('src');player.load()};
-  seekAbsolute(Math.max(start,Math.min(initial,last)));
+  seekAbsolute(Math.max(start,Math.min(initial,last)),continuePlaying);
   return section;
 }
