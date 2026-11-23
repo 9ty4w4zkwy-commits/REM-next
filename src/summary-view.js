@@ -36,8 +36,7 @@ export function summaryView(book,onClose,onContinue){
  select.value=getSetting('summary-chapter:'+book.id,book.chapters[0]?.id||'');
  const formats=el('div',{className:'summary-formats'});
  const ebook=button('Ebook',()=>setFormat('ebook'));
- const audio=button('Audio',()=>setFormat('audio'));
- formats.append(ebook,audio);
+ formats.append(ebook);
  const output=el('article',{className:'summary-content reading-text',attrs:{'aria-live':'polite'}});
  const page=el('div',{className:'ebook-page-frame summary-page-frame'},[output]);
  const readingShell=el('section',{className:'reading-shell summary-reading-shell'});
@@ -54,38 +53,28 @@ export function summaryView(book,onClose,onContinue){
  const observer=new MutationObserver(()=>{if(!root.isConnected){document.body.classList.remove('summary-fullscreen-active');readerTools.destroy();observer.disconnect()}});
  queueMicrotask(()=>observer.observe(document.body,{childList:true,subtree:true}));
  const status=el('p',{className:'summary-status',attrs:{role:'status'}});
- const play=button('▶ Ascolta il riassunto',()=>toggleSpeech());
  const finish=button('Continua dal capitolo successivo →',()=>{stopSpeech();const idx=book.chapters.findIndex(c=>c.id===select.value);onContinue(book.chapters[idx+1]?.id||select.value)},true);
  const back=button('← Torna al libro',()=>{stopSpeech();onClose()});
- let mode='ebook',speaking=false,currentText='',generation=0;
- function stopSpeech(){if('speechSynthesis' in window)window.speechSynthesis.cancel();speaking=false;play.textContent='▶ Ascolta il riassunto'}
+ let currentText='',generation=0;
+ function stopSpeech(){if('speechSynthesis' in window)window.speechSynthesis.cancel()}
  function current(){return book.chapters.find(c=>c.id===select.value)}
  async function renderSummary(){
   const token=++generation;stopSpeech();saveSetting('summary-chapter:'+book.id,select.value);
   const chapter=current();currentText='';output.replaceChildren(el('h3',{text:chapter?.title||''}),el('p',{text:'Preparazione della sintesi…'}));
-  status.textContent='';finish.disabled=true;play.disabled=true;play.hidden=mode!=='audio';
-  ebook.classList.toggle('is-selected',mode==='ebook');audio.classList.toggle('is-selected',mode==='audio');
-  ebook.setAttribute('aria-pressed',String(mode==='ebook'));audio.setAttribute('aria-pressed',String(mode==='audio'));
+  status.textContent='';finish.disabled=true;
+  ebook.classList.add('is-selected');
+  ebook.setAttribute('aria-pressed','true');
   if(!chapter){status.textContent='Nessun capitolo disponibile.';return}
   try{
    const key=book.id+':'+chapter.id;
    if(!cache.has(key))cache.set(key,loadChapter(book,chapter).then(text=>chapter.summary?.trim()||extractSummary(text)).catch(err=>{cache.delete(key);throw err}));
    const result=await cache.get(key);if(token!==generation||!root.isConnected)return;
    currentText=result;output.replaceChildren(el('h3',{text:chapter.title}),el('p',{text:result}));
-   status.textContent=chapter.summary?.trim()?'Riassunto editoriale del capitolo.':'Sintesi estrattiva dal testo originale: una selezione di passaggi, non un riassunto editoriale.';
-   finish.disabled=false;play.disabled=!(result&&'speechSynthesis' in window);
+   status.textContent='';
+   finish.disabled=false;
   }catch(error){if(token!==generation||!root.isConnected)return;output.replaceChildren(el('h3',{text:chapter.title}),el('p',{text:'Non è stato possibile caricare il testo del capitolo.'}));status.textContent=error.message||'Errore di caricamento'}
  }
- function setFormat(next){mode=next;renderSummary()}
- function toggleSpeech(){
-  if(speaking){stopSpeech();return}
-  if(!currentText||!('speechSynthesis' in window))return;
-  stopSpeech();const utterance=new SpeechSynthesisUtterance(currentText);utterance.lang='it-IT';utterance.rate=.92;
-  utterance.onend=()=>{speaking=false;play.textContent='▶ Ascolta il riassunto'};
-  utterance.onerror=()=>{speaking=false;play.textContent='▶ Ascolta il riassunto';status.textContent='La lettura vocale non è disponibile su questo dispositivo.'};
-  window.speechSynthesis.speak(utterance);speaking=true;play.textContent='■ Ferma audio';
- }
  select.addEventListener('change',renderSummary);
- root.append(title,intro,label,select,el('p',{text:'Scegli il formato del riassunto'}),formats,readingShell,play,status,el('div',{className:'summary-actions'},[back,finish]));
+ root.append(title,intro,label,select,el('p',{text:'Scegli il formato del riassunto'}),formats,readingShell,status,el('div',{className:'summary-actions'},[back,finish]));
  renderSummary();return root;
 }
