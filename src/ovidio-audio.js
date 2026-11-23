@@ -51,7 +51,11 @@ export async function createOvidioAudio({chapter,content,onPosition,onNext}){
   let currentPart=-1,active=-1,disposed=false,hasStarted=false,lastSave=0,requested=0;
   const key='ovidio-audio-position';
   const saved=(()=>{try{return JSON.parse(getSetting(key,'null'))}catch{return null}})();
-  const initial=saved?.chapter===chapter.id&&Number.isFinite(saved.seconds)?saved.seconds:start;
+  const sync=(()=>{try{return JSON.parse(getSetting('audio-text-sync:metamorfosi-ovidio','null'))}catch{return null}})();
+  const fromEbook=sync?.chapter===chapter.id&&sync.source==='ebook'&&Number.isFinite(sync.offset);
+  const selectedWord=fromEbook?words.find(w=>w.offset>=sync.offset)||words[words.length-1]:null;
+  const initial=selectedWord?selectedWord.start:saved?.chapter===chapter.id&&Number.isFinite(saved.seconds)?saved.seconds:start;
+  if(fromEbook)saveSetting('audio-text-sync:metamorfosi-ovidio','null');
   const continuePlaying=getSetting('ovidio-auto-continue','false')==='true';
   saveSetting('ovidio-auto-continue','false');
   function absolute(){return (partStarts[currentPart]||0)+(player.currentTime||0)}
@@ -74,7 +78,7 @@ export async function createOvidioAudio({chapter,content,onPosition,onNext}){
     while(lo<hi){const mid=(lo+hi)>>1;if(spans[mid].time<=time)lo=mid+1;else hi=mid}
     const next=Math.max(0,lo-1);
     if(next!==active){if(active>=0)spans[active].node.style.backgroundColor='';active=next;spans[active]?.node&&(spans[active].node.style.backgroundColor='#f2b8c6');if(player.paused===false&&spans[active]?.node)spans[active].node.scrollIntoView({block:'nearest',behavior:'smooth'})}
-    if(Date.now()-lastSave>1500){lastSave=Date.now();saveSetting(key,JSON.stringify({chapter:chapter.id,seconds:time}));if(spans[active])onPosition?.(spans[active].offset)}
+    if(Date.now()-lastSave>1500){lastSave=Date.now();saveSetting(key,JSON.stringify({chapter:chapter.id,seconds:time}));if(spans[active]){saveSetting('audio-text-sync:metamorfosi-ovidio',JSON.stringify({chapter:chapter.id,source:'audio',offset:spans[active].offset}));onPosition?.(spans[active].offset)}}
     if(time>=last+.1&&hasStarted){player.pause();hasStarted=false;saveSetting('ovidio-auto-continue','true');onNext?.()}
   }
   player.addEventListener('timeupdate',highlight);
@@ -82,7 +86,7 @@ export async function createOvidioAudio({chapter,content,onPosition,onNext}){
   player.addEventListener('ended',()=>{if(disposed)return;if(currentPart<tracks.length-1&&absolute()<last-1){seekAbsolute(partStarts[currentPart+1],true)}else {saveSetting('ovidio-auto-continue','true');onNext?.()}});
   const note=document.createElement('p');note.className='format-mode-note';note.textContent='Tocca una parola per ascoltare da quel punto. Le parole abbinate si illuminano durante la riproduzione.';
   section.append(status,player,note,text);
-  section.stopAudio=()=>{disposed=true;player.pause();player.removeAttribute('src');player.load()};
+  section.stopAudio=()=>{if(!disposed&&currentPart>=0){const time=absolute();saveSetting(key,JSON.stringify({chapter:chapter.id,seconds:time}));const item=words.reduce((last,w)=>w.start<=time?w:last,words[0]);saveSetting('audio-text-sync:metamorfosi-ovidio',JSON.stringify({chapter:chapter.id,source:'audio',offset:item.offset}));onPosition?.(item.offset)}disposed=true;player.pause();player.removeAttribute('src');player.load()};
   seekAbsolute(Math.max(start,Math.min(initial,last)),continuePlaying);
   return section;
 }
