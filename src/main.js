@@ -250,11 +250,11 @@ function searchBooks(){
   paura:['paura','spaventare','spaventarmi','horror','terrore','inquietante'],
   innamorare:['innamorare','amore','romantico','romantica','romanticismo','innamorarmi']
  };
- const phrases=['libri che fanno emozionare','voglio ridere','ho voglia di sognare','libri che fanno riflettere','cerco un’avventura'];
+ const phrases=[{text:'libri che fanno emozionare',emoji:'🥹'},{text:'voglio ridere',emoji:'😄'},{text:'ho voglia di sognare',emoji:'✨'},{text:'libri che fanno riflettere',emoji:'💭'},{text:'cerco un’avventura',emoji:'🧭'}];
  const suggestions=el('div',{className:'rem-mood-suggestions'});
  suggestions.append(el('p',{className:'rem-mood-label',text:'Oppure prova a cercare…'}));
  const chipRow=el('div',{className:'rem-mood-chips'});
- phrases.forEach(phrase=>{const chip=button(phrase,()=>{input.value=phrase;update();input.focus({preventScroll:true})});chip.classList.add('rem-mood-chip');chipRow.append(chip)});
+ phrases.forEach((phrase,i)=>{const chip=button(phrase.emoji+' '+phrase.text,()=>{input.value=phrase.text;update();input.focus({preventScroll:true})});chip.classList.add('rem-mood-chip','rem-mood-chip-'+(i+1));chipRow.append(chip)});
  suggestions.append(chipRow);
  function findMoods(query){
   if(!query)return [];
