@@ -236,7 +236,7 @@ function searchBooks(){
  currentView='search';
  const input=el('input',{className:'rem-book-search-input',attrs:{type:'search',placeholder:'Titolo, autore, emozione o luogo…','aria-label':'Cerca per titolo, autore, emozione o luogo',autocomplete:'off'}});
  const results=el('div',{className:'rem-search-results'});
- const resetSearch=button('← Nuova ricerca',()=>{selectedMood=null;selectedPlace=null;input.value='';update();window.scrollTo({top:0,behavior:'smooth'})});resetSearch.classList.add('rem-search-reset');resetSearch.hidden=true;
+ const resetSearch=button('←',()=>{selectedMood=null;selectedPlace=null;input.value='';update();window.scrollTo({top:0,behavior:'smooth'})});resetSearch.classList.add('rem-search-reset');resetSearch.setAttribute('aria-label','Nuova ricerca');resetSearch.setAttribute('title','Nuova ricerca');resetSearch.hidden=true;
  const searchButton=button('Cerca',()=>{selectedMood=null;selectedPlace=null;update();input.blur()});searchButton.classList.add('rem-search-submit');searchButton.setAttribute('aria-label','Cerca libri');
  const normalize=value=>String(value||'').normalize('NFD').replace(/[\\u0300-\\u036f]/g,'').toLocaleLowerCase('it').replace(/[^a-z0-9 ]/g,' ').replace(/\\s+/g,' ').trim();
  const synonyms={
@@ -276,7 +276,7 @@ function searchBooks(){
   suggestions.querySelector('.rem-mood-label').hidden=searching;
   placeSuggestions.querySelector('.rem-mood-label').hidden=searching;
   moodChips.forEach(({chip,mood})=>{const active=mood===selectedMood;chip.classList.toggle('is-selected',active);chip.hidden=searching&&!active;chip.setAttribute('aria-pressed',String(active))});
-  placeButtons.forEach(({chip,place})=>{const active=place===selectedPlace;chip.classList.toggle('is-selected',active);chip.setAttribute('aria-pressed',String(active))});
+  placeButtons.forEach(({chip,place})=>{const active=place===selectedPlace;chip.classList.toggle('is-selected',active);chip.hidden=searching&&!active;chip.setAttribute('aria-pressed',String(active))});
   const matchedMoods=selectedMood?[selectedMood]:findMoods(query);
   const placeQuery=(selectedPlace?normalize(selectedPlace):query).replace(/^(libri |storie |romanzi |ambientati |ambientato |ambientate |su |a |in |di |che parlano di )+/,'').trim();
   const matches=books.filter(book=>selectedMood?(book.moods||[]).includes(selectedMood):selectedPlace?(book.primaryLocations||[]).some(loc=>normalize(loc)===placeQuery||normalize(loc).includes(placeQuery)):!query||normalize(book.title+' '+(book.author||'')).includes(query)||matchedMoods.some(mood=>(book.moods||[]).includes(mood))||(placeQuery.length>2&&(book.primaryLocations||[]).some(loc=>normalize(loc)===placeQuery||normalize(loc).includes(placeQuery))));
