@@ -261,7 +261,7 @@ function searchBooks(){
  const placeSuggestions=el('div',{className:'rem-place-suggestions'});
  placeSuggestions.append(el('p',{className:'rem-mood-label',text:'Oppure cerca per luogo…'}));
  const placeChips=el('div',{className:'rem-place-chips'});
- ['🏛️ Roma','🥐 Parigi','💂 Londra','🍃 Toscana'].forEach(label=>{const place=label.slice(label.indexOf(' ')+1);const chip=button(label,()=>{selectedPlace=selectedPlace===place?null:place;selectedMood=null;input.value='';update()});chip.classList.add('rem-place-chip');chip.setAttribute('aria-pressed','false');placeButtons.push({chip,place});placeChips.append(chip)});
+ ['🏛️ Roma','🥐 Parigi','💂 Londra','🍃 Toscana'].forEach((label,i)=>{const place=label.slice(label.indexOf(' ')+1);const chip=button(label,()=>{selectedPlace=selectedPlace===place?null:place;selectedMood=null;input.value='';update()});chip.classList.add('rem-place-chip','rem-place-chip-'+(i+1));chip.setAttribute('aria-pressed','false');placeButtons.push({chip,place});placeChips.append(chip)});
  placeSuggestions.append(placeChips);
  function findMoods(query){
   if(!query)return [];
