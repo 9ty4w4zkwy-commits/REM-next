@@ -274,8 +274,8 @@ function searchBooks(){
   placeButtons.forEach(({chip,place})=>{const active=place===selectedPlace;chip.classList.toggle('is-selected',active);chip.setAttribute('aria-pressed',String(active))});
   const matchedMoods=selectedMood?[selectedMood]:findMoods(query);
   const placeQuery=(selectedPlace?normalize(selectedPlace):query).replace(/^(libri |storie |romanzi |ambientati |ambientato |ambientate |su |a |in |di |che parlano di )+/,'').trim();
-  const matches=books.filter(book=>selectedMood?(book.moods||[]).includes(selectedMood):selectedPlace?(book.locations||[]).some(loc=>normalize(loc)===placeQuery||normalize(loc).includes(placeQuery)):!query||normalize(book.title+' '+(book.author||'')).includes(query)||matchedMoods.some(mood=>(book.moods||[]).includes(mood))||(placeQuery.length>2&&(book.locations||[]).some(loc=>normalize(loc)===placeQuery||normalize(loc).includes(placeQuery))));
-  if(!matches.length){results.append(para('Nessun libro trovato. Prova un titolo, un autore, un’emozione o un luogo.','rem-search-empty'));return}
+  const matches=books.filter(book=>selectedMood?(book.moods||[]).includes(selectedMood):selectedPlace?(book.primaryLocations||[]).some(loc=>normalize(loc)===placeQuery||normalize(loc).includes(placeQuery)):!query||normalize(book.title+' '+(book.author||'')).includes(query)||matchedMoods.some(mood=>(book.moods||[]).includes(mood))||(placeQuery.length>2&&(book.primaryLocations||[]).some(loc=>normalize(loc)===placeQuery||normalize(loc).includes(placeQuery))));
+  if(!matches.length){results.append(para('Nessun libro del catalogo ha questa ambientazione principale. Prova un altro luogo, titolo, autore o emozione.','rem-search-empty'));return}
   for(const book of matches){
    const card=button('',()=>detail(book.id));
    card.className='rem-search-result';
@@ -284,8 +284,8 @@ function searchBooks(){
    const info=[el('strong',{text:book.title}),el('span',{text:book.author||''})];
    const relevant=(book.moods||[]).filter(mood=>matchedMoods.includes(mood));
    if(relevant.length)info.push(el('span',{className:'rem-search-mood-match',text:'Potrebbe farti '+relevant.join(', ')}));
-   const relevantPlaces=(book.locations||[]).filter(loc=>placeQuery.length>2&&normalize(loc).includes(placeQuery));
-   if(relevantPlaces.length&&!selectedMood)info.push(el('span',{className:'rem-search-mood-match',text:'Luogo della storia: '+relevantPlaces.slice(0,2).join(', ')}));
+   const relevantPlaces=(book.primaryLocations||[]).filter(loc=>placeQuery.length>2&&normalize(loc).includes(placeQuery));
+   if(relevantPlaces.length&&!selectedMood)info.push(el('span',{className:'rem-search-mood-match',text:'Ambientazione significativa: '+relevantPlaces.slice(0,2).join(', ')}));
    card.append(art,el('span',{className:'rem-search-result-info'},info));
    results.append(card);
   }
