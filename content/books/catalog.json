@@ -1341,100 +1341,319 @@
           "title": "Le origini",
           "episodes": [
             {
-              "id": "ovidio-s1-e01",
+              "id": "ovidio-libro-01-capitolo-01-p1",
               "chapterId": "libro-01-capitolo-01",
-              "title": "Prima che esistesse il mondo",
-              "recap": "Prima che esistesse il mondo. Poi la storia continua con le quattro età dell’umanità.",
-              "minutes": 4,
-              "targetWords": 460
+              "part": 0,
+              "parts": 3,
+              "title": "Prima che esistesse il mondo · Prima della svolta",
+              "recap": "Inizia: prima che esistesse il mondo.",
+              "minutes": 3
             },
             {
-              "id": "ovidio-s1-e02",
+              "id": "ovidio-libro-01-capitolo-01-p2",
+              "chapterId": "libro-01-capitolo-01",
+              "part": 1,
+              "parts": 3,
+              "title": "Prima che esistesse il mondo · La tensione cresce",
+              "recap": "La vicenda di prima che esistesse il mondo prosegue e si complica.",
+              "minutes": 3
+            },
+            {
+              "id": "ovidio-libro-01-capitolo-01-p3",
+              "chapterId": "libro-01-capitolo-01",
+              "part": 2,
+              "parts": 3,
+              "title": "Prima che esistesse il mondo · La svolta",
+              "recap": "Il momento decisivo di prima che esistesse il mondo.",
+              "minutes": 3
+            },
+            {
+              "id": "ovidio-libro-01-capitolo-02-p1",
               "chapterId": "libro-01-capitolo-02",
-              "title": "Le quattro età dell’umanità",
-              "recap": "Le quattro età dell’umanità. Poi la storia continua con i giganti e la violenza degli uomini.",
-              "minutes": 4,
-              "targetWords": 460
+              "part": 0,
+              "parts": 3,
+              "title": "Le quattro età dell’umanità · Prima della svolta",
+              "recap": "Inizia: le quattro età dell’umanità.",
+              "minutes": 3
             },
             {
-              "id": "ovidio-s1-e03",
+              "id": "ovidio-libro-01-capitolo-02-p2",
+              "chapterId": "libro-01-capitolo-02",
+              "part": 1,
+              "parts": 3,
+              "title": "Le quattro età dell’umanità · La tensione cresce",
+              "recap": "La vicenda di le quattro età dell’umanità prosegue e si complica.",
+              "minutes": 3
+            },
+            {
+              "id": "ovidio-libro-01-capitolo-02-p3",
+              "chapterId": "libro-01-capitolo-02",
+              "part": 2,
+              "parts": 3,
+              "title": "Le quattro età dell’umanità · La svolta",
+              "recap": "Il momento decisivo di le quattro età dell’umanità.",
+              "minutes": 3
+            },
+            {
+              "id": "ovidio-libro-01-capitolo-03-p1",
               "chapterId": "libro-01-capitolo-03",
-              "title": "I giganti e la violenza degli uomini",
-              "recap": "I giganti e la violenza degli uomini. Poi la storia continua con licaone: l’empietà e l’ira di giove.",
-              "minutes": 4,
-              "targetWords": 460
+              "part": 0,
+              "parts": 2,
+              "title": "I giganti e la violenza degli uomini · La sfida",
+              "recap": "Inizia: i giganti e la violenza degli uomini.",
+              "minutes": 3
             },
             {
-              "id": "ovidio-s1-e04",
+              "id": "ovidio-libro-01-capitolo-03-p2",
+              "chapterId": "libro-01-capitolo-03",
+              "part": 1,
+              "parts": 2,
+              "title": "I giganti e la violenza degli uomini · Le conseguenze",
+              "recap": "La vicenda di i giganti e la violenza degli uomini prosegue e si complica.",
+              "minutes": 3
+            },
+            {
+              "id": "ovidio-libro-01-capitolo-04-p1",
               "chapterId": "libro-01-capitolo-04",
-              "title": "Licaone: l’empietà e l’ira di Giove",
-              "recap": "Licaone: l’empietà e l’ira di Giove. Poi la storia continua con il diluvio.",
-              "minutes": 4,
-              "targetWords": 460
+              "part": 0,
+              "parts": 3,
+              "title": "Licaone: l’empietà e l’ira di Giove · Prima della svolta",
+              "recap": "Inizia: licaone: l’empietà e l’ira di giove.",
+              "minutes": 3
             },
             {
-              "id": "ovidio-s1-e05",
+              "id": "ovidio-libro-01-capitolo-04-p2",
+              "chapterId": "libro-01-capitolo-04",
+              "part": 1,
+              "parts": 3,
+              "title": "Licaone: l’empietà e l’ira di Giove · La tensione cresce",
+              "recap": "La vicenda di licaone: l’empietà e l’ira di giove prosegue e si complica.",
+              "minutes": 3
+            },
+            {
+              "id": "ovidio-libro-01-capitolo-04-p3",
+              "chapterId": "libro-01-capitolo-04",
+              "part": 2,
+              "parts": 3,
+              "title": "Licaone: l’empietà e l’ira di Giove · La svolta",
+              "recap": "Il momento decisivo di licaone: l’empietà e l’ira di giove.",
+              "minutes": 3
+            },
+            {
+              "id": "ovidio-libro-01-capitolo-05-p1",
               "chapterId": "libro-01-capitolo-05",
-              "title": "Il diluvio",
-              "recap": "Il diluvio. Poi la storia continua con deucalione e pirra: una nuova umanità.",
-              "minutes": 4,
-              "targetWords": 460
+              "part": 0,
+              "parts": 3,
+              "title": "Il diluvio · Prima della svolta",
+              "recap": "Inizia: il diluvio.",
+              "minutes": 3
             },
             {
-              "id": "ovidio-s1-e06",
+              "id": "ovidio-libro-01-capitolo-05-p2",
+              "chapterId": "libro-01-capitolo-05",
+              "part": 1,
+              "parts": 3,
+              "title": "Il diluvio · La tensione cresce",
+              "recap": "La vicenda di il diluvio prosegue e si complica.",
+              "minutes": 3
+            },
+            {
+              "id": "ovidio-libro-01-capitolo-05-p3",
+              "chapterId": "libro-01-capitolo-05",
+              "part": 2,
+              "parts": 3,
+              "title": "Il diluvio · La svolta",
+              "recap": "Il momento decisivo di il diluvio.",
+              "minutes": 3
+            },
+            {
+              "id": "ovidio-libro-01-capitolo-06-p1",
               "chapterId": "libro-01-capitolo-06",
-              "title": "Deucalione e Pirra: una nuova umanità",
-              "recap": "Deucalione e Pirra: una nuova umanità. Poi la storia continua con pitone e la vittoria di apollo.",
-              "minutes": 4,
-              "targetWords": 460
+              "part": 0,
+              "parts": 3,
+              "title": "Deucalione e Pirra: una nuova umanità · Prima della svolta",
+              "recap": "Inizia: deucalione e pirra: una nuova umanità.",
+              "minutes": 3
             },
             {
-              "id": "ovidio-s1-e07",
+              "id": "ovidio-libro-01-capitolo-06-p2",
+              "chapterId": "libro-01-capitolo-06",
+              "part": 1,
+              "parts": 3,
+              "title": "Deucalione e Pirra: una nuova umanità · La tensione cresce",
+              "recap": "La vicenda di deucalione e pirra: una nuova umanità prosegue e si complica.",
+              "minutes": 3
+            },
+            {
+              "id": "ovidio-libro-01-capitolo-06-p3",
+              "chapterId": "libro-01-capitolo-06",
+              "part": 2,
+              "parts": 3,
+              "title": "Deucalione e Pirra: una nuova umanità · La svolta",
+              "recap": "Il momento decisivo di deucalione e pirra: una nuova umanità.",
+              "minutes": 3
+            },
+            {
+              "id": "ovidio-libro-01-capitolo-07-p1",
               "chapterId": "libro-01-capitolo-07",
-              "title": "Pitone e la vittoria di Apollo",
-              "recap": "Pitone e la vittoria di Apollo. Poi la storia continua con apollo e dafne.",
-              "minutes": 4,
-              "targetWords": 460
+              "part": 0,
+              "parts": 3,
+              "title": "Pitone e la vittoria di Apollo · Prima della svolta",
+              "recap": "Inizia: pitone e la vittoria di apollo.",
+              "minutes": 3
             },
             {
-              "id": "ovidio-s1-e08",
+              "id": "ovidio-libro-01-capitolo-07-p2",
+              "chapterId": "libro-01-capitolo-07",
+              "part": 1,
+              "parts": 3,
+              "title": "Pitone e la vittoria di Apollo · La tensione cresce",
+              "recap": "La vicenda di pitone e la vittoria di apollo prosegue e si complica.",
+              "minutes": 3
+            },
+            {
+              "id": "ovidio-libro-01-capitolo-07-p3",
+              "chapterId": "libro-01-capitolo-07",
+              "part": 2,
+              "parts": 3,
+              "title": "Pitone e la vittoria di Apollo · La svolta",
+              "recap": "Il momento decisivo di pitone e la vittoria di apollo.",
+              "minutes": 3
+            },
+            {
+              "id": "ovidio-libro-01-capitolo-08-p1",
               "chapterId": "libro-01-capitolo-08",
-              "title": "Apollo e Dafne",
-              "recap": "Apollo e Dafne. Poi la storia continua con giove e io.",
-              "minutes": 4,
-              "targetWords": 460
+              "part": 0,
+              "parts": 3,
+              "title": "Apollo e Dafne · Prima della svolta",
+              "recap": "Inizia: apollo e dafne.",
+              "minutes": 3
             },
             {
-              "id": "ovidio-s1-e09",
+              "id": "ovidio-libro-01-capitolo-08-p2",
+              "chapterId": "libro-01-capitolo-08",
+              "part": 1,
+              "parts": 3,
+              "title": "Apollo e Dafne · La tensione cresce",
+              "recap": "La vicenda di apollo e dafne prosegue e si complica.",
+              "minutes": 3
+            },
+            {
+              "id": "ovidio-libro-01-capitolo-08-p3",
+              "chapterId": "libro-01-capitolo-08",
+              "part": 2,
+              "parts": 3,
+              "title": "Apollo e Dafne · La svolta",
+              "recap": "Il momento decisivo di apollo e dafne.",
+              "minutes": 3
+            },
+            {
+              "id": "ovidio-libro-01-capitolo-09-p1",
               "chapterId": "libro-01-capitolo-09",
-              "title": "Giove e Io",
-              "recap": "Giove e Io. Poi la storia continua con argo, mercurio e la storia di siringa.",
-              "minutes": 4,
-              "targetWords": 460
+              "part": 0,
+              "parts": 3,
+              "title": "Giove e Io · Prima della svolta",
+              "recap": "Inizia: giove e io.",
+              "minutes": 3
             },
             {
-              "id": "ovidio-s1-e10",
+              "id": "ovidio-libro-01-capitolo-09-p2",
+              "chapterId": "libro-01-capitolo-09",
+              "part": 1,
+              "parts": 3,
+              "title": "Giove e Io · La tensione cresce",
+              "recap": "La vicenda di giove e io prosegue e si complica.",
+              "minutes": 3
+            },
+            {
+              "id": "ovidio-libro-01-capitolo-09-p3",
+              "chapterId": "libro-01-capitolo-09",
+              "part": 2,
+              "parts": 3,
+              "title": "Giove e Io · La svolta",
+              "recap": "Il momento decisivo di giove e io.",
+              "minutes": 3
+            },
+            {
+              "id": "ovidio-libro-01-capitolo-10-p1",
               "chapterId": "libro-01-capitolo-10",
-              "title": "Argo, Mercurio e la storia di Siringa",
-              "recap": "Argo, Mercurio e la storia di Siringa. Poi la storia continua con la liberazione di io.",
-              "minutes": 4,
-              "targetWords": 460
+              "part": 0,
+              "parts": 3,
+              "title": "Argo, Mercurio e la storia di Siringa · Prima della svolta",
+              "recap": "Inizia: argo, mercurio e la storia di siringa.",
+              "minutes": 3
             },
             {
-              "id": "ovidio-s1-e11",
+              "id": "ovidio-libro-01-capitolo-10-p2",
+              "chapterId": "libro-01-capitolo-10",
+              "part": 1,
+              "parts": 3,
+              "title": "Argo, Mercurio e la storia di Siringa · La tensione cresce",
+              "recap": "La vicenda di argo, mercurio e la storia di siringa prosegue e si complica.",
+              "minutes": 3
+            },
+            {
+              "id": "ovidio-libro-01-capitolo-10-p3",
+              "chapterId": "libro-01-capitolo-10",
+              "part": 2,
+              "parts": 3,
+              "title": "Argo, Mercurio e la storia di Siringa · La svolta",
+              "recap": "Il momento decisivo di argo, mercurio e la storia di siringa.",
+              "minutes": 3
+            },
+            {
+              "id": "ovidio-libro-01-capitolo-11-p1",
               "chapterId": "libro-01-capitolo-11",
-              "title": "La liberazione di Io",
-              "recap": "La liberazione di Io. Poi la storia continua con epafo e fetonte.",
-              "minutes": 4,
-              "targetWords": 460
+              "part": 0,
+              "parts": 3,
+              "title": "La liberazione di Io · Prima della svolta",
+              "recap": "Inizia: la liberazione di io.",
+              "minutes": 3
             },
             {
-              "id": "ovidio-s1-e12",
+              "id": "ovidio-libro-01-capitolo-11-p2",
+              "chapterId": "libro-01-capitolo-11",
+              "part": 1,
+              "parts": 3,
+              "title": "La liberazione di Io · La tensione cresce",
+              "recap": "La vicenda di la liberazione di io prosegue e si complica.",
+              "minutes": 3
+            },
+            {
+              "id": "ovidio-libro-01-capitolo-11-p3",
+              "chapterId": "libro-01-capitolo-11",
+              "part": 2,
+              "parts": 3,
+              "title": "La liberazione di Io · La svolta",
+              "recap": "Il momento decisivo di la liberazione di io.",
+              "minutes": 3
+            },
+            {
+              "id": "ovidio-libro-01-capitolo-12-p1",
               "chapterId": "libro-01-capitolo-12",
-              "title": "Epafo e Fetonte",
-              "recap": "Epafo e Fetonte. La storia prosegue nel libro successivo.",
-              "minutes": 4,
-              "targetWords": 460
+              "part": 0,
+              "parts": 3,
+              "title": "Epafo e Fetonte · Prima della svolta",
+              "recap": "Inizia: epafo e fetonte.",
+              "minutes": 3
+            },
+            {
+              "id": "ovidio-libro-01-capitolo-12-p2",
+              "chapterId": "libro-01-capitolo-12",
+              "part": 1,
+              "parts": 3,
+              "title": "Epafo e Fetonte · La tensione cresce",
+              "recap": "La vicenda di epafo e fetonte prosegue e si complica.",
+              "minutes": 3
+            },
+            {
+              "id": "ovidio-libro-01-capitolo-12-p3",
+              "chapterId": "libro-01-capitolo-12",
+              "part": 2,
+              "parts": 3,
+              "title": "Epafo e Fetonte · La svolta",
+              "recap": "Il momento decisivo di epafo e fetonte.",
+              "minutes": 3
             }
           ]
         },
@@ -1443,124 +1662,409 @@
           "title": "Il prezzo del potere",
           "episodes": [
             {
-              "id": "ovidio-s2-e01",
+              "id": "ovidio-libro-02-capitolo-01-p1",
               "chapterId": "libro-02-capitolo-01",
-              "title": "Il palazzo del Sole",
-              "recap": "Il palazzo del Sole. Poi la storia continua con il giuramento e l’avvertimento.",
-              "minutes": 4,
-              "targetWords": 460
+              "part": 0,
+              "parts": 3,
+              "title": "Il palazzo del Sole · Prima della svolta",
+              "recap": "Inizia: il palazzo del sole.",
+              "minutes": 3
             },
             {
-              "id": "ovidio-s2-e02",
+              "id": "ovidio-libro-02-capitolo-01-p2",
+              "chapterId": "libro-02-capitolo-01",
+              "part": 1,
+              "parts": 3,
+              "title": "Il palazzo del Sole · La tensione cresce",
+              "recap": "La vicenda di il palazzo del sole prosegue e si complica.",
+              "minutes": 3
+            },
+            {
+              "id": "ovidio-libro-02-capitolo-01-p3",
+              "chapterId": "libro-02-capitolo-01",
+              "part": 2,
+              "parts": 3,
+              "title": "Il palazzo del Sole · La svolta",
+              "recap": "Il momento decisivo di il palazzo del sole.",
+              "minutes": 3
+            },
+            {
+              "id": "ovidio-libro-02-capitolo-02-p1",
               "chapterId": "libro-02-capitolo-02",
-              "title": "Il giuramento e l’avvertimento",
-              "recap": "Il giuramento e l’avvertimento. Poi la storia continua con il carro del sole.",
-              "minutes": 4,
-              "targetWords": 460
+              "part": 0,
+              "parts": 3,
+              "title": "Il giuramento e l’avvertimento · Prima della svolta",
+              "recap": "Inizia: il giuramento e l’avvertimento.",
+              "minutes": 3
             },
             {
-              "id": "ovidio-s2-e03",
+              "id": "ovidio-libro-02-capitolo-02-p2",
+              "chapterId": "libro-02-capitolo-02",
+              "part": 1,
+              "parts": 3,
+              "title": "Il giuramento e l’avvertimento · La tensione cresce",
+              "recap": "La vicenda di il giuramento e l’avvertimento prosegue e si complica.",
+              "minutes": 3
+            },
+            {
+              "id": "ovidio-libro-02-capitolo-02-p3",
+              "chapterId": "libro-02-capitolo-02",
+              "part": 2,
+              "parts": 3,
+              "title": "Il giuramento e l’avvertimento · La svolta",
+              "recap": "Il momento decisivo di il giuramento e l’avvertimento.",
+              "minutes": 3
+            },
+            {
+              "id": "ovidio-libro-02-capitolo-03-p1",
               "chapterId": "libro-02-capitolo-03",
-              "title": "Il carro del Sole",
-              "recap": "Il carro del Sole. Poi la storia continua con la terra in fiamme.",
-              "minutes": 4,
-              "targetWords": 460
+              "part": 0,
+              "parts": 3,
+              "title": "Il carro del Sole · Prima della svolta",
+              "recap": "Inizia: il carro del sole.",
+              "minutes": 3
             },
             {
-              "id": "ovidio-s2-e04",
+              "id": "ovidio-libro-02-capitolo-03-p2",
+              "chapterId": "libro-02-capitolo-03",
+              "part": 1,
+              "parts": 3,
+              "title": "Il carro del Sole · La tensione cresce",
+              "recap": "La vicenda di il carro del sole prosegue e si complica.",
+              "minutes": 3
+            },
+            {
+              "id": "ovidio-libro-02-capitolo-03-p3",
+              "chapterId": "libro-02-capitolo-03",
+              "part": 2,
+              "parts": 3,
+              "title": "Il carro del Sole · La svolta",
+              "recap": "Il momento decisivo di il carro del sole.",
+              "minutes": 3
+            },
+            {
+              "id": "ovidio-libro-02-capitolo-04-p1",
               "chapterId": "libro-02-capitolo-04",
-              "title": "La terra in fiamme",
-              "recap": "La terra in fiamme. Poi la storia continua con la caduta di fetonte.",
-              "minutes": 4,
-              "targetWords": 460
+              "part": 0,
+              "parts": 3,
+              "title": "La terra in fiamme · Prima della svolta",
+              "recap": "Inizia: la terra in fiamme.",
+              "minutes": 3
             },
             {
-              "id": "ovidio-s2-e05",
+              "id": "ovidio-libro-02-capitolo-04-p2",
+              "chapterId": "libro-02-capitolo-04",
+              "part": 1,
+              "parts": 3,
+              "title": "La terra in fiamme · La tensione cresce",
+              "recap": "La vicenda di la terra in fiamme prosegue e si complica.",
+              "minutes": 3
+            },
+            {
+              "id": "ovidio-libro-02-capitolo-04-p3",
+              "chapterId": "libro-02-capitolo-04",
+              "part": 2,
+              "parts": 3,
+              "title": "La terra in fiamme · La svolta",
+              "recap": "Il momento decisivo di la terra in fiamme.",
+              "minutes": 3
+            },
+            {
+              "id": "ovidio-libro-02-capitolo-05-p1",
               "chapterId": "libro-02-capitolo-05",
-              "title": "La caduta di Fetonte",
-              "recap": "La caduta di Fetonte. Poi la storia continua con il pianto delle eliadi.",
-              "minutes": 4,
-              "targetWords": 460
+              "part": 0,
+              "parts": 3,
+              "title": "La caduta di Fetonte · Prima della svolta",
+              "recap": "Inizia: la caduta di fetonte.",
+              "minutes": 3
             },
             {
-              "id": "ovidio-s2-e06",
+              "id": "ovidio-libro-02-capitolo-05-p2",
+              "chapterId": "libro-02-capitolo-05",
+              "part": 1,
+              "parts": 3,
+              "title": "La caduta di Fetonte · La tensione cresce",
+              "recap": "La vicenda di la caduta di fetonte prosegue e si complica.",
+              "minutes": 3
+            },
+            {
+              "id": "ovidio-libro-02-capitolo-05-p3",
+              "chapterId": "libro-02-capitolo-05",
+              "part": 2,
+              "parts": 3,
+              "title": "La caduta di Fetonte · La svolta",
+              "recap": "Il momento decisivo di la caduta di fetonte.",
+              "minutes": 3
+            },
+            {
+              "id": "ovidio-libro-02-capitolo-06-p1",
               "chapterId": "libro-02-capitolo-06",
-              "title": "Il pianto delle Eliadi",
-              "recap": "Il pianto delle Eliadi. Poi la storia continua con cigno e la trasformazione.",
-              "minutes": 4,
-              "targetWords": 460
+              "part": 0,
+              "parts": 3,
+              "title": "Il pianto delle Eliadi · Prima della svolta",
+              "recap": "Inizia: il pianto delle eliadi.",
+              "minutes": 3
             },
             {
-              "id": "ovidio-s2-e07",
+              "id": "ovidio-libro-02-capitolo-06-p2",
+              "chapterId": "libro-02-capitolo-06",
+              "part": 1,
+              "parts": 3,
+              "title": "Il pianto delle Eliadi · La tensione cresce",
+              "recap": "La vicenda di il pianto delle eliadi prosegue e si complica.",
+              "minutes": 3
+            },
+            {
+              "id": "ovidio-libro-02-capitolo-06-p3",
+              "chapterId": "libro-02-capitolo-06",
+              "part": 2,
+              "parts": 3,
+              "title": "Il pianto delle Eliadi · La svolta",
+              "recap": "Il momento decisivo di il pianto delle eliadi.",
+              "minutes": 3
+            },
+            {
+              "id": "ovidio-libro-02-capitolo-07-p1",
               "chapterId": "libro-02-capitolo-07",
-              "title": "Cigno e la trasformazione",
-              "recap": "Cigno e la trasformazione. Poi la storia continua con il lutto del sole.",
-              "minutes": 4,
-              "targetWords": 460
+              "part": 0,
+              "parts": 3,
+              "title": "Cigno e la trasformazione · Prima della svolta",
+              "recap": "Inizia: cigno e la trasformazione.",
+              "minutes": 3
             },
             {
-              "id": "ovidio-s2-e08",
+              "id": "ovidio-libro-02-capitolo-07-p2",
+              "chapterId": "libro-02-capitolo-07",
+              "part": 1,
+              "parts": 3,
+              "title": "Cigno e la trasformazione · La tensione cresce",
+              "recap": "La vicenda di cigno e la trasformazione prosegue e si complica.",
+              "minutes": 3
+            },
+            {
+              "id": "ovidio-libro-02-capitolo-07-p3",
+              "chapterId": "libro-02-capitolo-07",
+              "part": 2,
+              "parts": 3,
+              "title": "Cigno e la trasformazione · La svolta",
+              "recap": "Il momento decisivo di cigno e la trasformazione.",
+              "minutes": 3
+            },
+            {
+              "id": "ovidio-libro-02-capitolo-08-p1",
               "chapterId": "libro-02-capitolo-08",
-              "title": "Il lutto del Sole",
-              "recap": "Il lutto del Sole. Poi la storia continua con giove e callisto.",
-              "minutes": 4,
-              "targetWords": 460
+              "part": 0,
+              "parts": 3,
+              "title": "Il lutto del Sole · Prima della svolta",
+              "recap": "Inizia: il lutto del sole.",
+              "minutes": 3
             },
             {
-              "id": "ovidio-s2-e09",
+              "id": "ovidio-libro-02-capitolo-08-p2",
+              "chapterId": "libro-02-capitolo-08",
+              "part": 1,
+              "parts": 3,
+              "title": "Il lutto del Sole · La tensione cresce",
+              "recap": "La vicenda di il lutto del sole prosegue e si complica.",
+              "minutes": 3
+            },
+            {
+              "id": "ovidio-libro-02-capitolo-08-p3",
+              "chapterId": "libro-02-capitolo-08",
+              "part": 2,
+              "parts": 3,
+              "title": "Il lutto del Sole · La svolta",
+              "recap": "Il momento decisivo di il lutto del sole.",
+              "minutes": 3
+            },
+            {
+              "id": "ovidio-libro-02-capitolo-09-p1",
               "chapterId": "libro-02-capitolo-09",
-              "title": "Giove e Callisto",
-              "recap": "Giove e Callisto. Poi la storia continua con il corvo, la cornacchia e coronide.",
-              "minutes": 4,
-              "targetWords": 460
+              "part": 0,
+              "parts": 3,
+              "title": "Giove e Callisto · Prima della svolta",
+              "recap": "Inizia: giove e callisto.",
+              "minutes": 3
             },
             {
-              "id": "ovidio-s2-e10",
+              "id": "ovidio-libro-02-capitolo-09-p2",
+              "chapterId": "libro-02-capitolo-09",
+              "part": 1,
+              "parts": 3,
+              "title": "Giove e Callisto · La tensione cresce",
+              "recap": "La vicenda di giove e callisto prosegue e si complica.",
+              "minutes": 3
+            },
+            {
+              "id": "ovidio-libro-02-capitolo-09-p3",
+              "chapterId": "libro-02-capitolo-09",
+              "part": 2,
+              "parts": 3,
+              "title": "Giove e Callisto · La svolta",
+              "recap": "Il momento decisivo di giove e callisto.",
+              "minutes": 3
+            },
+            {
+              "id": "ovidio-libro-02-capitolo-10-p1",
               "chapterId": "libro-02-capitolo-10",
-              "title": "Il corvo, la cornacchia e Coronide",
-              "recap": "Il corvo, la cornacchia e Coronide. Poi la storia continua con chirone e la profezia di ociroe.",
-              "minutes": 4,
-              "targetWords": 460
+              "part": 0,
+              "parts": 3,
+              "title": "Il corvo, la cornacchia e Coronide · Prima della svolta",
+              "recap": "Inizia: il corvo, la cornacchia e coronide.",
+              "minutes": 3
             },
             {
-              "id": "ovidio-s2-e11",
+              "id": "ovidio-libro-02-capitolo-10-p2",
+              "chapterId": "libro-02-capitolo-10",
+              "part": 1,
+              "parts": 3,
+              "title": "Il corvo, la cornacchia e Coronide · La tensione cresce",
+              "recap": "La vicenda di il corvo, la cornacchia e coronide prosegue e si complica.",
+              "minutes": 3
+            },
+            {
+              "id": "ovidio-libro-02-capitolo-10-p3",
+              "chapterId": "libro-02-capitolo-10",
+              "part": 2,
+              "parts": 3,
+              "title": "Il corvo, la cornacchia e Coronide · La svolta",
+              "recap": "Il momento decisivo di il corvo, la cornacchia e coronide.",
+              "minutes": 3
+            },
+            {
+              "id": "ovidio-libro-02-capitolo-11-p1",
               "chapterId": "libro-02-capitolo-11",
-              "title": "Chirone e la profezia di Ociroe",
-              "recap": "Chirone e la profezia di Ociroe. Poi la storia continua con mercurio e batto.",
-              "minutes": 4,
-              "targetWords": 460
+              "part": 0,
+              "parts": 3,
+              "title": "Chirone e la profezia di Ociroe · Prima della svolta",
+              "recap": "Inizia: chirone e la profezia di ociroe.",
+              "minutes": 3
             },
             {
-              "id": "ovidio-s2-e12",
+              "id": "ovidio-libro-02-capitolo-11-p2",
+              "chapterId": "libro-02-capitolo-11",
+              "part": 1,
+              "parts": 3,
+              "title": "Chirone e la profezia di Ociroe · La tensione cresce",
+              "recap": "La vicenda di chirone e la profezia di ociroe prosegue e si complica.",
+              "minutes": 3
+            },
+            {
+              "id": "ovidio-libro-02-capitolo-11-p3",
+              "chapterId": "libro-02-capitolo-11",
+              "part": 2,
+              "parts": 3,
+              "title": "Chirone e la profezia di Ociroe · La svolta",
+              "recap": "Il momento decisivo di chirone e la profezia di ociroe.",
+              "minutes": 3
+            },
+            {
+              "id": "ovidio-libro-02-capitolo-12-p1",
               "chapterId": "libro-02-capitolo-12",
-              "title": "Mercurio e Batto",
-              "recap": "Mercurio e Batto. Poi la storia continua con mercurio ed erse.",
-              "minutes": 4,
-              "targetWords": 460
+              "part": 0,
+              "parts": 3,
+              "title": "Mercurio e Batto · Prima della svolta",
+              "recap": "Inizia: mercurio e batto.",
+              "minutes": 3
             },
             {
-              "id": "ovidio-s2-e13",
+              "id": "ovidio-libro-02-capitolo-12-p2",
+              "chapterId": "libro-02-capitolo-12",
+              "part": 1,
+              "parts": 3,
+              "title": "Mercurio e Batto · La tensione cresce",
+              "recap": "La vicenda di mercurio e batto prosegue e si complica.",
+              "minutes": 3
+            },
+            {
+              "id": "ovidio-libro-02-capitolo-12-p3",
+              "chapterId": "libro-02-capitolo-12",
+              "part": 2,
+              "parts": 3,
+              "title": "Mercurio e Batto · La svolta",
+              "recap": "Il momento decisivo di mercurio e batto.",
+              "minutes": 3
+            },
+            {
+              "id": "ovidio-libro-02-capitolo-13-p1",
               "chapterId": "libro-02-capitolo-13",
-              "title": "Mercurio ed Erse",
-              "recap": "Mercurio ed Erse. Poi la storia continua con l’invidia e la punizione di aglauro.",
-              "minutes": 4,
-              "targetWords": 460
+              "part": 0,
+              "parts": 3,
+              "title": "Mercurio ed Erse · Prima della svolta",
+              "recap": "Inizia: mercurio ed erse.",
+              "minutes": 3
             },
             {
-              "id": "ovidio-s2-e14",
+              "id": "ovidio-libro-02-capitolo-13-p2",
+              "chapterId": "libro-02-capitolo-13",
+              "part": 1,
+              "parts": 3,
+              "title": "Mercurio ed Erse · La tensione cresce",
+              "recap": "La vicenda di mercurio ed erse prosegue e si complica.",
+              "minutes": 3
+            },
+            {
+              "id": "ovidio-libro-02-capitolo-13-p3",
+              "chapterId": "libro-02-capitolo-13",
+              "part": 2,
+              "parts": 3,
+              "title": "Mercurio ed Erse · La svolta",
+              "recap": "Il momento decisivo di mercurio ed erse.",
+              "minutes": 3
+            },
+            {
+              "id": "ovidio-libro-02-capitolo-14-p1",
               "chapterId": "libro-02-capitolo-14",
-              "title": "L’Invidia e la punizione di Aglauro",
-              "recap": "L’Invidia e la punizione di Aglauro. Poi la storia continua con il ratto di europa.",
-              "minutes": 4,
-              "targetWords": 460
+              "part": 0,
+              "parts": 3,
+              "title": "L’Invidia e la punizione di Aglauro · Prima della svolta",
+              "recap": "Inizia: l’invidia e la punizione di aglauro.",
+              "minutes": 3
             },
             {
-              "id": "ovidio-s2-e15",
+              "id": "ovidio-libro-02-capitolo-14-p2",
+              "chapterId": "libro-02-capitolo-14",
+              "part": 1,
+              "parts": 3,
+              "title": "L’Invidia e la punizione di Aglauro · La tensione cresce",
+              "recap": "La vicenda di l’invidia e la punizione di aglauro prosegue e si complica.",
+              "minutes": 3
+            },
+            {
+              "id": "ovidio-libro-02-capitolo-14-p3",
+              "chapterId": "libro-02-capitolo-14",
+              "part": 2,
+              "parts": 3,
+              "title": "L’Invidia e la punizione di Aglauro · La svolta",
+              "recap": "Il momento decisivo di l’invidia e la punizione di aglauro.",
+              "minutes": 3
+            },
+            {
+              "id": "ovidio-libro-02-capitolo-15-p1",
               "chapterId": "libro-02-capitolo-15",
-              "title": "Il ratto di Europa",
-              "recap": "Il ratto di Europa. La storia prosegue nel libro successivo.",
-              "minutes": 4,
-              "targetWords": 460
+              "part": 0,
+              "parts": 3,
+              "title": "Il ratto di Europa · Prima della svolta",
+              "recap": "Inizia: il ratto di europa.",
+              "minutes": 3
+            },
+            {
+              "id": "ovidio-libro-02-capitolo-15-p2",
+              "chapterId": "libro-02-capitolo-15",
+              "part": 1,
+              "parts": 3,
+              "title": "Il ratto di Europa · La tensione cresce",
+              "recap": "La vicenda di il ratto di europa prosegue e si complica.",
+              "minutes": 3
+            },
+            {
+              "id": "ovidio-libro-02-capitolo-15-p3",
+              "chapterId": "libro-02-capitolo-15",
+              "part": 2,
+              "parts": 3,
+              "title": "Il ratto di Europa · La svolta",
+              "recap": "Il momento decisivo di il ratto di europa.",
+              "minutes": 3
             }
           ]
         },
@@ -1569,76 +2073,247 @@
           "title": "Gli dèi e i mortali",
           "episodes": [
             {
-              "id": "ovidio-s3-e01",
+              "id": "ovidio-libro-03-capitolo-01-p1",
               "chapterId": "libro-03-capitolo-01",
-              "title": "Cadmo e l’oracolo",
-              "recap": "Cadmo e l’oracolo. Poi la storia continua con il drago di marte e i guerrieri nati dalla terra.",
-              "minutes": 4,
-              "targetWords": 460
+              "part": 0,
+              "parts": 3,
+              "title": "Cadmo e l’oracolo · Prima della svolta",
+              "recap": "Inizia: cadmo e l’oracolo.",
+              "minutes": 3
             },
             {
-              "id": "ovidio-s3-e02",
+              "id": "ovidio-libro-03-capitolo-01-p2",
+              "chapterId": "libro-03-capitolo-01",
+              "part": 1,
+              "parts": 3,
+              "title": "Cadmo e l’oracolo · La tensione cresce",
+              "recap": "La vicenda di cadmo e l’oracolo prosegue e si complica.",
+              "minutes": 3
+            },
+            {
+              "id": "ovidio-libro-03-capitolo-01-p3",
+              "chapterId": "libro-03-capitolo-01",
+              "part": 2,
+              "parts": 3,
+              "title": "Cadmo e l’oracolo · La svolta",
+              "recap": "Il momento decisivo di cadmo e l’oracolo.",
+              "minutes": 3
+            },
+            {
+              "id": "ovidio-libro-03-capitolo-02-p1",
               "chapterId": "libro-03-capitolo-02",
-              "title": "Il drago di Marte e i guerrieri nati dalla terra",
-              "recap": "Il drago di Marte e i guerrieri nati dalla terra. Poi la storia continua con atteone e diana.",
-              "minutes": 4,
-              "targetWords": 460
+              "part": 0,
+              "parts": 3,
+              "title": "Il drago di Marte e i guerrieri nati dalla terra · Prima della svolta",
+              "recap": "Inizia: il drago di marte e i guerrieri nati dalla terra.",
+              "minutes": 3
             },
             {
-              "id": "ovidio-s3-e03",
+              "id": "ovidio-libro-03-capitolo-02-p2",
+              "chapterId": "libro-03-capitolo-02",
+              "part": 1,
+              "parts": 3,
+              "title": "Il drago di Marte e i guerrieri nati dalla terra · La tensione cresce",
+              "recap": "La vicenda di il drago di marte e i guerrieri nati dalla terra prosegue e si complica.",
+              "minutes": 3
+            },
+            {
+              "id": "ovidio-libro-03-capitolo-02-p3",
+              "chapterId": "libro-03-capitolo-02",
+              "part": 2,
+              "parts": 3,
+              "title": "Il drago di Marte e i guerrieri nati dalla terra · La svolta",
+              "recap": "Il momento decisivo di il drago di marte e i guerrieri nati dalla terra.",
+              "minutes": 3
+            },
+            {
+              "id": "ovidio-libro-03-capitolo-03-p1",
               "chapterId": "libro-03-capitolo-03",
-              "title": "Atteone e Diana",
-              "recap": "Atteone e Diana. Poi la storia continua con giove e semele.",
-              "minutes": 4,
-              "targetWords": 460
+              "part": 0,
+              "parts": 3,
+              "title": "Atteone e Diana · Prima della svolta",
+              "recap": "Inizia: atteone e diana.",
+              "minutes": 3
             },
             {
-              "id": "ovidio-s3-e04",
+              "id": "ovidio-libro-03-capitolo-03-p2",
+              "chapterId": "libro-03-capitolo-03",
+              "part": 1,
+              "parts": 3,
+              "title": "Atteone e Diana · La tensione cresce",
+              "recap": "La vicenda di atteone e diana prosegue e si complica.",
+              "minutes": 3
+            },
+            {
+              "id": "ovidio-libro-03-capitolo-03-p3",
+              "chapterId": "libro-03-capitolo-03",
+              "part": 2,
+              "parts": 3,
+              "title": "Atteone e Diana · La svolta",
+              "recap": "Il momento decisivo di atteone e diana.",
+              "minutes": 3
+            },
+            {
+              "id": "ovidio-libro-03-capitolo-04-p1",
               "chapterId": "libro-03-capitolo-04",
-              "title": "Giove e Semele",
-              "recap": "Giove e Semele. Poi la storia continua con tiresia e il dono della profezia.",
-              "minutes": 4,
-              "targetWords": 460
+              "part": 0,
+              "parts": 3,
+              "title": "Giove e Semele · Prima della svolta",
+              "recap": "Inizia: giove e semele.",
+              "minutes": 3
             },
             {
-              "id": "ovidio-s3-e05",
+              "id": "ovidio-libro-03-capitolo-04-p2",
+              "chapterId": "libro-03-capitolo-04",
+              "part": 1,
+              "parts": 3,
+              "title": "Giove e Semele · La tensione cresce",
+              "recap": "La vicenda di giove e semele prosegue e si complica.",
+              "minutes": 3
+            },
+            {
+              "id": "ovidio-libro-03-capitolo-04-p3",
+              "chapterId": "libro-03-capitolo-04",
+              "part": 2,
+              "parts": 3,
+              "title": "Giove e Semele · La svolta",
+              "recap": "Il momento decisivo di giove e semele.",
+              "minutes": 3
+            },
+            {
+              "id": "ovidio-libro-03-capitolo-05-p1",
               "chapterId": "libro-03-capitolo-05",
-              "title": "Tiresia e il dono della profezia",
-              "recap": "Tiresia e il dono della profezia. Poi la storia continua con eco e narciso.",
-              "minutes": 4,
-              "targetWords": 460
+              "part": 0,
+              "parts": 3,
+              "title": "Tiresia e il dono della profezia · Prima della svolta",
+              "recap": "Inizia: tiresia e il dono della profezia.",
+              "minutes": 3
             },
             {
-              "id": "ovidio-s3-e06",
+              "id": "ovidio-libro-03-capitolo-05-p2",
+              "chapterId": "libro-03-capitolo-05",
+              "part": 1,
+              "parts": 3,
+              "title": "Tiresia e il dono della profezia · La tensione cresce",
+              "recap": "La vicenda di tiresia e il dono della profezia prosegue e si complica.",
+              "minutes": 3
+            },
+            {
+              "id": "ovidio-libro-03-capitolo-05-p3",
+              "chapterId": "libro-03-capitolo-05",
+              "part": 2,
+              "parts": 3,
+              "title": "Tiresia e il dono della profezia · La svolta",
+              "recap": "Il momento decisivo di tiresia e il dono della profezia.",
+              "minutes": 3
+            },
+            {
+              "id": "ovidio-libro-03-capitolo-06-p1",
               "chapterId": "libro-03-capitolo-06",
-              "title": "Eco e Narciso",
-              "recap": "Eco e Narciso. Poi la storia continua con penteo e tiresia.",
-              "minutes": 4,
-              "targetWords": 460
+              "part": 0,
+              "parts": 3,
+              "title": "Eco e Narciso · Prima della svolta",
+              "recap": "Inizia: eco e narciso.",
+              "minutes": 3
             },
             {
-              "id": "ovidio-s3-e07",
+              "id": "ovidio-libro-03-capitolo-06-p2",
+              "chapterId": "libro-03-capitolo-06",
+              "part": 1,
+              "parts": 3,
+              "title": "Eco e Narciso · La tensione cresce",
+              "recap": "La vicenda di eco e narciso prosegue e si complica.",
+              "minutes": 3
+            },
+            {
+              "id": "ovidio-libro-03-capitolo-06-p3",
+              "chapterId": "libro-03-capitolo-06",
+              "part": 2,
+              "parts": 3,
+              "title": "Eco e Narciso · La svolta",
+              "recap": "Il momento decisivo di eco e narciso.",
+              "minutes": 3
+            },
+            {
+              "id": "ovidio-libro-03-capitolo-07-p1",
               "chapterId": "libro-03-capitolo-07",
-              "title": "Penteo e Tiresia",
-              "recap": "Penteo e Tiresia. Poi la storia continua con acete e i marinai trasformati in delfini.",
-              "minutes": 4,
-              "targetWords": 460
+              "part": 0,
+              "parts": 3,
+              "title": "Penteo e Tiresia · Prima della svolta",
+              "recap": "Inizia: penteo e tiresia.",
+              "minutes": 3
             },
             {
-              "id": "ovidio-s3-e08",
+              "id": "ovidio-libro-03-capitolo-07-p2",
+              "chapterId": "libro-03-capitolo-07",
+              "part": 1,
+              "parts": 3,
+              "title": "Penteo e Tiresia · La tensione cresce",
+              "recap": "La vicenda di penteo e tiresia prosegue e si complica.",
+              "minutes": 3
+            },
+            {
+              "id": "ovidio-libro-03-capitolo-07-p3",
+              "chapterId": "libro-03-capitolo-07",
+              "part": 2,
+              "parts": 3,
+              "title": "Penteo e Tiresia · La svolta",
+              "recap": "Il momento decisivo di penteo e tiresia.",
+              "minutes": 3
+            },
+            {
+              "id": "ovidio-libro-03-capitolo-08-p1",
               "chapterId": "libro-03-capitolo-08",
-              "title": "Acete e i marinai trasformati in delfini",
-              "recap": "Acete e i marinai trasformati in delfini. Poi la storia continua con la morte di penteo.",
-              "minutes": 4,
-              "targetWords": 460
+              "part": 0,
+              "parts": 3,
+              "title": "Acete e i marinai trasformati in delfini · Prima della svolta",
+              "recap": "Inizia: acete e i marinai trasformati in delfini.",
+              "minutes": 3
             },
             {
-              "id": "ovidio-s3-e09",
+              "id": "ovidio-libro-03-capitolo-08-p2",
+              "chapterId": "libro-03-capitolo-08",
+              "part": 1,
+              "parts": 3,
+              "title": "Acete e i marinai trasformati in delfini · La tensione cresce",
+              "recap": "La vicenda di acete e i marinai trasformati in delfini prosegue e si complica.",
+              "minutes": 3
+            },
+            {
+              "id": "ovidio-libro-03-capitolo-08-p3",
+              "chapterId": "libro-03-capitolo-08",
+              "part": 2,
+              "parts": 3,
+              "title": "Acete e i marinai trasformati in delfini · La svolta",
+              "recap": "Il momento decisivo di acete e i marinai trasformati in delfini.",
+              "minutes": 3
+            },
+            {
+              "id": "ovidio-libro-03-capitolo-09-p1",
               "chapterId": "libro-03-capitolo-09",
-              "title": "La morte di Penteo",
-              "recap": "La morte di Penteo. La storia prosegue nel libro successivo.",
-              "minutes": 4,
-              "targetWords": 460
+              "part": 0,
+              "parts": 3,
+              "title": "La morte di Penteo · Prima della svolta",
+              "recap": "Inizia: la morte di penteo.",
+              "minutes": 3
+            },
+            {
+              "id": "ovidio-libro-03-capitolo-09-p2",
+              "chapterId": "libro-03-capitolo-09",
+              "part": 1,
+              "parts": 3,
+              "title": "La morte di Penteo · La tensione cresce",
+              "recap": "La vicenda di la morte di penteo prosegue e si complica.",
+              "minutes": 3
+            },
+            {
+              "id": "ovidio-libro-03-capitolo-09-p3",
+              "chapterId": "libro-03-capitolo-09",
+              "part": 2,
+              "parts": 3,
+              "title": "La morte di Penteo · La svolta",
+              "recap": "Il momento decisivo di la morte di penteo.",
+              "minutes": 3
             }
           ]
         },
@@ -1647,76 +2322,247 @@
           "title": "Amore e trasformazione",
           "episodes": [
             {
-              "id": "ovidio-s4-e01",
+              "id": "ovidio-libro-04-capitolo-01-p1",
               "chapterId": "libro-04-capitolo-01",
-              "title": "Le figlie di Minia e Piramo e Tisbe",
-              "recap": "Le figlie di Minia e Piramo e Tisbe. Poi la storia continua con il sole, leucotoe e clizia.",
-              "minutes": 4,
-              "targetWords": 460
+              "part": 0,
+              "parts": 3,
+              "title": "Le figlie di Minia e Piramo e Tisbe · Prima della svolta",
+              "recap": "Inizia: le figlie di minia e piramo e tisbe.",
+              "minutes": 3
             },
             {
-              "id": "ovidio-s4-e02",
+              "id": "ovidio-libro-04-capitolo-01-p2",
+              "chapterId": "libro-04-capitolo-01",
+              "part": 1,
+              "parts": 3,
+              "title": "Le figlie di Minia e Piramo e Tisbe · La tensione cresce",
+              "recap": "La vicenda di le figlie di minia e piramo e tisbe prosegue e si complica.",
+              "minutes": 3
+            },
+            {
+              "id": "ovidio-libro-04-capitolo-01-p3",
+              "chapterId": "libro-04-capitolo-01",
+              "part": 2,
+              "parts": 3,
+              "title": "Le figlie di Minia e Piramo e Tisbe · La svolta",
+              "recap": "Il momento decisivo di le figlie di minia e piramo e tisbe.",
+              "minutes": 3
+            },
+            {
+              "id": "ovidio-libro-04-capitolo-02-p1",
               "chapterId": "libro-04-capitolo-02",
-              "title": "Il Sole, Leucotoe e Clizia",
-              "recap": "Il Sole, Leucotoe e Clizia. Poi la storia continua con salmacide ed ermafrodito.",
-              "minutes": 4,
-              "targetWords": 460
+              "part": 0,
+              "parts": 3,
+              "title": "Il Sole, Leucotoe e Clizia · Prima della svolta",
+              "recap": "Inizia: il sole, leucotoe e clizia.",
+              "minutes": 3
             },
             {
-              "id": "ovidio-s4-e03",
+              "id": "ovidio-libro-04-capitolo-02-p2",
+              "chapterId": "libro-04-capitolo-02",
+              "part": 1,
+              "parts": 3,
+              "title": "Il Sole, Leucotoe e Clizia · La tensione cresce",
+              "recap": "La vicenda di il sole, leucotoe e clizia prosegue e si complica.",
+              "minutes": 3
+            },
+            {
+              "id": "ovidio-libro-04-capitolo-02-p3",
+              "chapterId": "libro-04-capitolo-02",
+              "part": 2,
+              "parts": 3,
+              "title": "Il Sole, Leucotoe e Clizia · La svolta",
+              "recap": "Il momento decisivo di il sole, leucotoe e clizia.",
+              "minutes": 3
+            },
+            {
+              "id": "ovidio-libro-04-capitolo-03-p1",
               "chapterId": "libro-04-capitolo-03",
-              "title": "Salmacide ed Ermafrodito",
-              "recap": "Salmacide ed Ermafrodito. Poi la storia continua con le figlie di minia e la punizione di bacco.",
-              "minutes": 4,
-              "targetWords": 460
+              "part": 0,
+              "parts": 3,
+              "title": "Salmacide ed Ermafrodito · Prima della svolta",
+              "recap": "Inizia: salmacide ed ermafrodito.",
+              "minutes": 3
             },
             {
-              "id": "ovidio-s4-e04",
+              "id": "ovidio-libro-04-capitolo-03-p2",
+              "chapterId": "libro-04-capitolo-03",
+              "part": 1,
+              "parts": 3,
+              "title": "Salmacide ed Ermafrodito · La tensione cresce",
+              "recap": "La vicenda di salmacide ed ermafrodito prosegue e si complica.",
+              "minutes": 3
+            },
+            {
+              "id": "ovidio-libro-04-capitolo-03-p3",
+              "chapterId": "libro-04-capitolo-03",
+              "part": 2,
+              "parts": 3,
+              "title": "Salmacide ed Ermafrodito · La svolta",
+              "recap": "Il momento decisivo di salmacide ed ermafrodito.",
+              "minutes": 3
+            },
+            {
+              "id": "ovidio-libro-04-capitolo-04-p1",
               "chapterId": "libro-04-capitolo-04",
-              "title": "Le figlie di Minia e la punizione di Bacco",
-              "recap": "Le figlie di Minia e la punizione di Bacco. Poi la storia continua con ino e atamante: la vendetta di giunone.",
-              "minutes": 4,
-              "targetWords": 460
+              "part": 0,
+              "parts": 3,
+              "title": "Le figlie di Minia e la punizione di Bacco · Prima della svolta",
+              "recap": "Inizia: le figlie di minia e la punizione di bacco.",
+              "minutes": 3
             },
             {
-              "id": "ovidio-s4-e05",
+              "id": "ovidio-libro-04-capitolo-04-p2",
+              "chapterId": "libro-04-capitolo-04",
+              "part": 1,
+              "parts": 3,
+              "title": "Le figlie di Minia e la punizione di Bacco · La tensione cresce",
+              "recap": "La vicenda di le figlie di minia e la punizione di bacco prosegue e si complica.",
+              "minutes": 3
+            },
+            {
+              "id": "ovidio-libro-04-capitolo-04-p3",
+              "chapterId": "libro-04-capitolo-04",
+              "part": 2,
+              "parts": 3,
+              "title": "Le figlie di Minia e la punizione di Bacco · La svolta",
+              "recap": "Il momento decisivo di le figlie di minia e la punizione di bacco.",
+              "minutes": 3
+            },
+            {
+              "id": "ovidio-libro-04-capitolo-05-p1",
               "chapterId": "libro-04-capitolo-05",
-              "title": "Ino e Atamante: la vendetta di Giunone",
-              "recap": "Ino e Atamante: la vendetta di Giunone. Poi la storia continua con cadmo e armonia.",
-              "minutes": 4,
-              "targetWords": 460
+              "part": 0,
+              "parts": 3,
+              "title": "Ino e Atamante: la vendetta di Giunone · Prima della svolta",
+              "recap": "Inizia: ino e atamante: la vendetta di giunone.",
+              "minutes": 3
             },
             {
-              "id": "ovidio-s4-e06",
+              "id": "ovidio-libro-04-capitolo-05-p2",
+              "chapterId": "libro-04-capitolo-05",
+              "part": 1,
+              "parts": 3,
+              "title": "Ino e Atamante: la vendetta di Giunone · La tensione cresce",
+              "recap": "La vicenda di ino e atamante: la vendetta di giunone prosegue e si complica.",
+              "minutes": 3
+            },
+            {
+              "id": "ovidio-libro-04-capitolo-05-p3",
+              "chapterId": "libro-04-capitolo-05",
+              "part": 2,
+              "parts": 3,
+              "title": "Ino e Atamante: la vendetta di Giunone · La svolta",
+              "recap": "Il momento decisivo di ino e atamante: la vendetta di giunone.",
+              "minutes": 3
+            },
+            {
+              "id": "ovidio-libro-04-capitolo-06-p1",
               "chapterId": "libro-04-capitolo-06",
-              "title": "Cadmo e Armonia",
-              "recap": "Cadmo e Armonia. Poi la storia continua con perseo e atlante.",
-              "minutes": 4,
-              "targetWords": 460
+              "part": 0,
+              "parts": 3,
+              "title": "Cadmo e Armonia · Prima della svolta",
+              "recap": "Inizia: cadmo e armonia.",
+              "minutes": 3
             },
             {
-              "id": "ovidio-s4-e07",
+              "id": "ovidio-libro-04-capitolo-06-p2",
+              "chapterId": "libro-04-capitolo-06",
+              "part": 1,
+              "parts": 3,
+              "title": "Cadmo e Armonia · La tensione cresce",
+              "recap": "La vicenda di cadmo e armonia prosegue e si complica.",
+              "minutes": 3
+            },
+            {
+              "id": "ovidio-libro-04-capitolo-06-p3",
+              "chapterId": "libro-04-capitolo-06",
+              "part": 2,
+              "parts": 3,
+              "title": "Cadmo e Armonia · La svolta",
+              "recap": "Il momento decisivo di cadmo e armonia.",
+              "minutes": 3
+            },
+            {
+              "id": "ovidio-libro-04-capitolo-07-p1",
               "chapterId": "libro-04-capitolo-07",
-              "title": "Perseo e Atlante",
-              "recap": "Perseo e Atlante. Poi la storia continua con perseo e andromeda.",
-              "minutes": 4,
-              "targetWords": 460
+              "part": 0,
+              "parts": 3,
+              "title": "Perseo e Atlante · Prima della svolta",
+              "recap": "Inizia: perseo e atlante.",
+              "minutes": 3
             },
             {
-              "id": "ovidio-s4-e08",
+              "id": "ovidio-libro-04-capitolo-07-p2",
+              "chapterId": "libro-04-capitolo-07",
+              "part": 1,
+              "parts": 3,
+              "title": "Perseo e Atlante · La tensione cresce",
+              "recap": "La vicenda di perseo e atlante prosegue e si complica.",
+              "minutes": 3
+            },
+            {
+              "id": "ovidio-libro-04-capitolo-07-p3",
+              "chapterId": "libro-04-capitolo-07",
+              "part": 2,
+              "parts": 3,
+              "title": "Perseo e Atlante · La svolta",
+              "recap": "Il momento decisivo di perseo e atlante.",
+              "minutes": 3
+            },
+            {
+              "id": "ovidio-libro-04-capitolo-08-p1",
               "chapterId": "libro-04-capitolo-08",
-              "title": "Perseo e Andromeda",
-              "recap": "Perseo e Andromeda. Poi la storia continua con il racconto di perseo: medusa.",
-              "minutes": 4,
-              "targetWords": 460
+              "part": 0,
+              "parts": 3,
+              "title": "Perseo e Andromeda · Prima della svolta",
+              "recap": "Inizia: perseo e andromeda.",
+              "minutes": 3
             },
             {
-              "id": "ovidio-s4-e09",
+              "id": "ovidio-libro-04-capitolo-08-p2",
+              "chapterId": "libro-04-capitolo-08",
+              "part": 1,
+              "parts": 3,
+              "title": "Perseo e Andromeda · La tensione cresce",
+              "recap": "La vicenda di perseo e andromeda prosegue e si complica.",
+              "minutes": 3
+            },
+            {
+              "id": "ovidio-libro-04-capitolo-08-p3",
+              "chapterId": "libro-04-capitolo-08",
+              "part": 2,
+              "parts": 3,
+              "title": "Perseo e Andromeda · La svolta",
+              "recap": "Il momento decisivo di perseo e andromeda.",
+              "minutes": 3
+            },
+            {
+              "id": "ovidio-libro-04-capitolo-09-p1",
               "chapterId": "libro-04-capitolo-09",
-              "title": "Il racconto di Perseo: Medusa",
-              "recap": "Il racconto di Perseo: Medusa. La storia prosegue nel libro successivo.",
-              "minutes": 4,
-              "targetWords": 460
+              "part": 0,
+              "parts": 3,
+              "title": "Il racconto di Perseo: Medusa · Prima della svolta",
+              "recap": "Inizia: il racconto di perseo: medusa.",
+              "minutes": 3
+            },
+            {
+              "id": "ovidio-libro-04-capitolo-09-p2",
+              "chapterId": "libro-04-capitolo-09",
+              "part": 1,
+              "parts": 3,
+              "title": "Il racconto di Perseo: Medusa · La tensione cresce",
+              "recap": "La vicenda di il racconto di perseo: medusa prosegue e si complica.",
+              "minutes": 3
+            },
+            {
+              "id": "ovidio-libro-04-capitolo-09-p3",
+              "chapterId": "libro-04-capitolo-09",
+              "part": 2,
+              "parts": 3,
+              "title": "Il racconto di Perseo: Medusa · La svolta",
+              "recap": "Il momento decisivo di il racconto di perseo: medusa.",
+              "minutes": 3
             }
           ]
         }
