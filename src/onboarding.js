@@ -1,5 +1,6 @@
 import {el,button} from './ui.js';
 import {getSetting,saveSetting} from './progress.js';
+import {analyticsEnabled,setAnalyticsConsent,sendOnboardingAnswers} from './analytics.js?v=analytics-1';
 const KEY='onboarding-v1';
 const QUESTIONS=[
  {title:'Quali cose ti fanno perdere la cognizione del tempo?',hint:'Puoi scegliere fino a due risposte.',max:2,options:['Viaggiare e scoprire luoghi','Capire come funziona la mente','Arte, musica e creatività','Storie e relazioni umane','Misteri ed enigmi','Natura e avventura']},
@@ -22,7 +23,7 @@ export const onboardingCompleted=()=>getSetting(KEY,'')==='done';
 export function showOnboarding(render,home,{editing=false}={}){
  let step=editing?0:-1;const answers=loadAnswers();
  const persist=()=>saveSetting('onboarding-answers',JSON.stringify(answers));
- const finish=()=>{persist();saveSetting(KEY,'done');home()};
+ const finish=()=>{persist();saveSetting(KEY,'done');sendOnboardingAnswers(answers);home()};
  const draw=()=>{
   const header=el('div',{className:'onboard-top'},[
    el('strong',{className:'onboard-brand',text:'REM',attrs:{'aria-label':'REM'}}),
@@ -31,9 +32,13 @@ export function showOnboarding(render,home,{editing=false}={}){
   const bars=el('div',{className:'onboard-progress',attrs:{'aria-label':step<0?'Introduzione':'Domanda '+(step+1)+' di '+QUESTIONS.length}},QUESTIONS.map((_,i)=>el('span',{className:i<=step?'is-active':''})));
   const nodes=[header,bars];
   if(step<0){
+   const consentButton=button(analyticsEnabled()?'✓ Partecipo alla raccolta dati di test':'Partecipo alla raccolta dati di test: no',()=>{setAnalyticsConsent(!analyticsEnabled());draw()});
+   consentButton.setAttribute('aria-pressed',String(analyticsEnabled()));
    nodes.push(el('section',{className:'onboard-intro'},[
     el('h1',{},[document.createTextNode('Ogni storia inizia '),el('span',{text:'da chi la legge.'})]),
     el('p',{text:'Raccontaci qualcosa di te. Ti aiuteremo a scoprire storie che forse non avresti mai cercato.'}),
+    el('p',{text:'Facoltativo: partecipando al test, REM invia a Cloudflare un ID numerico, le risposte al questionario e le attività di lettura/ascolto (libro, formato e data), senza nome o email. Puoi disattivare i futuri invii dal Profilo; i dati già inviati non saranno cancellati automaticamente.'}),
+    consentButton,
     button('Iniziamo',()=>{step=0;draw()},true)
    ]));
   }else{
@@ -65,7 +70,7 @@ export function showOnboarding(render,home,{editing=false}={}){
     el('div',{className:'onboard-actions'},[
      button('← Indietro',()=>{if(editing&&step===0)home();else{step--;draw()}}),next
     ]),
-    el('p',{className:'onboard-privacy',text:editing?'Le modifiche saranno salvate solo quando tocchi «Salva le risposte».':'Le risposte restano su questo dispositivo. Puoi modificarle o saltare il percorso quando vuoi.'})
+    el('p',{className:'onboard-privacy',text:editing?'Le modifiche saranno salvate solo quando tocchi «Salva le risposte».':'Le risposte sono salvate sul dispositivo e, solo se hai aderito alla raccolta dati di test, vengono inviate anche a Cloudflare al completamento. Puoi modificarle o saltare il percorso.'})
    ]));
   }
   render(el('div',{className:'onboard-screen'},nodes));
