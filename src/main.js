@@ -1,4 +1,4 @@
-import {createOvidioAudio} from './ovidio-audio.js?v=2';
+import {createOvidioAudio} from './ovidio-audio.js?v=3';
 import {loadCatalog,loadChapter} from './catalog.js?v=ovidio-chapters-2';
 import {loadEpisodeSegment} from './episode-segments.js?v=pinocchio-122';
 import {createCollectionsView} from './collections-view.js?v=rem-ui-209';
