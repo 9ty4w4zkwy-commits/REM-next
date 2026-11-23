@@ -1334,6 +1334,392 @@
           "file": "libro-04-capitolo-09 2.txt",
           "minutes": 8
         }
+      ],
+      "seasons": [
+        {
+          "number": 1,
+          "title": "Le origini",
+          "episodes": [
+            {
+              "id": "ovidio-s1-e01",
+              "chapterId": "libro-01-capitolo-01",
+              "title": "Prima che esistesse il mondo",
+              "recap": "Prima che esistesse il mondo. Poi la storia continua con le quattro età dell’umanità.",
+              "minutes": 4,
+              "targetWords": 460
+            },
+            {
+              "id": "ovidio-s1-e02",
+              "chapterId": "libro-01-capitolo-02",
+              "title": "Le quattro età dell’umanità",
+              "recap": "Le quattro età dell’umanità. Poi la storia continua con i giganti e la violenza degli uomini.",
+              "minutes": 4,
+              "targetWords": 460
+            },
+            {
+              "id": "ovidio-s1-e03",
+              "chapterId": "libro-01-capitolo-03",
+              "title": "I giganti e la violenza degli uomini",
+              "recap": "I giganti e la violenza degli uomini. Poi la storia continua con licaone: l’empietà e l’ira di giove.",
+              "minutes": 4,
+              "targetWords": 460
+            },
+            {
+              "id": "ovidio-s1-e04",
+              "chapterId": "libro-01-capitolo-04",
+              "title": "Licaone: l’empietà e l’ira di Giove",
+              "recap": "Licaone: l’empietà e l’ira di Giove. Poi la storia continua con il diluvio.",
+              "minutes": 4,
+              "targetWords": 460
+            },
+            {
+              "id": "ovidio-s1-e05",
+              "chapterId": "libro-01-capitolo-05",
+              "title": "Il diluvio",
+              "recap": "Il diluvio. Poi la storia continua con deucalione e pirra: una nuova umanità.",
+              "minutes": 4,
+              "targetWords": 460
+            },
+            {
+              "id": "ovidio-s1-e06",
+              "chapterId": "libro-01-capitolo-06",
+              "title": "Deucalione e Pirra: una nuova umanità",
+              "recap": "Deucalione e Pirra: una nuova umanità. Poi la storia continua con pitone e la vittoria di apollo.",
+              "minutes": 4,
+              "targetWords": 460
+            },
+            {
+              "id": "ovidio-s1-e07",
+              "chapterId": "libro-01-capitolo-07",
+              "title": "Pitone e la vittoria di Apollo",
+              "recap": "Pitone e la vittoria di Apollo. Poi la storia continua con apollo e dafne.",
+              "minutes": 4,
+              "targetWords": 460
+            },
+            {
+              "id": "ovidio-s1-e08",
+              "chapterId": "libro-01-capitolo-08",
+              "title": "Apollo e Dafne",
+              "recap": "Apollo e Dafne. Poi la storia continua con giove e io.",
+              "minutes": 4,
+              "targetWords": 460
+            },
+            {
+              "id": "ovidio-s1-e09",
+              "chapterId": "libro-01-capitolo-09",
+              "title": "Giove e Io",
+              "recap": "Giove e Io. Poi la storia continua con argo, mercurio e la storia di siringa.",
+              "minutes": 4,
+              "targetWords": 460
+            },
+            {
+              "id": "ovidio-s1-e10",
+              "chapterId": "libro-01-capitolo-10",
+              "title": "Argo, Mercurio e la storia di Siringa",
+              "recap": "Argo, Mercurio e la storia di Siringa. Poi la storia continua con la liberazione di io.",
+              "minutes": 4,
+              "targetWords": 460
+            },
+            {
+              "id": "ovidio-s1-e11",
+              "chapterId": "libro-01-capitolo-11",
+              "title": "La liberazione di Io",
+              "recap": "La liberazione di Io. Poi la storia continua con epafo e fetonte.",
+              "minutes": 4,
+              "targetWords": 460
+            },
+            {
+              "id": "ovidio-s1-e12",
+              "chapterId": "libro-01-capitolo-12",
+              "title": "Epafo e Fetonte",
+              "recap": "Epafo e Fetonte. La storia prosegue nel libro successivo.",
+              "minutes": 4,
+              "targetWords": 460
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "title": "Il prezzo del potere",
+          "episodes": [
+            {
+              "id": "ovidio-s2-e01",
+              "chapterId": "libro-02-capitolo-01",
+              "title": "Il palazzo del Sole",
+              "recap": "Il palazzo del Sole. Poi la storia continua con il giuramento e l’avvertimento.",
+              "minutes": 4,
+              "targetWords": 460
+            },
+            {
+              "id": "ovidio-s2-e02",
+              "chapterId": "libro-02-capitolo-02",
+              "title": "Il giuramento e l’avvertimento",
+              "recap": "Il giuramento e l’avvertimento. Poi la storia continua con il carro del sole.",
+              "minutes": 4,
+              "targetWords": 460
+            },
+            {
+              "id": "ovidio-s2-e03",
+              "chapterId": "libro-02-capitolo-03",
+              "title": "Il carro del Sole",
+              "recap": "Il carro del Sole. Poi la storia continua con la terra in fiamme.",
+              "minutes": 4,
+              "targetWords": 460
+            },
+            {
+              "id": "ovidio-s2-e04",
+              "chapterId": "libro-02-capitolo-04",
+              "title": "La terra in fiamme",
+              "recap": "La terra in fiamme. Poi la storia continua con la caduta di fetonte.",
+              "minutes": 4,
+              "targetWords": 460
+            },
+            {
+              "id": "ovidio-s2-e05",
+              "chapterId": "libro-02-capitolo-05",
+              "title": "La caduta di Fetonte",
+              "recap": "La caduta di Fetonte. Poi la storia continua con il pianto delle eliadi.",
+              "minutes": 4,
+              "targetWords": 460
+            },
+            {
+              "id": "ovidio-s2-e06",
+              "chapterId": "libro-02-capitolo-06",
+              "title": "Il pianto delle Eliadi",
+              "recap": "Il pianto delle Eliadi. Poi la storia continua con cigno e la trasformazione.",
+              "minutes": 4,
+              "targetWords": 460
+            },
+            {
+              "id": "ovidio-s2-e07",
+              "chapterId": "libro-02-capitolo-07",
+              "title": "Cigno e la trasformazione",
+              "recap": "Cigno e la trasformazione. Poi la storia continua con il lutto del sole.",
+              "minutes": 4,
+              "targetWords": 460
+            },
+            {
+              "id": "ovidio-s2-e08",
+              "chapterId": "libro-02-capitolo-08",
+              "title": "Il lutto del Sole",
+              "recap": "Il lutto del Sole. Poi la storia continua con giove e callisto.",
+              "minutes": 4,
+              "targetWords": 460
+            },
+            {
+              "id": "ovidio-s2-e09",
+              "chapterId": "libro-02-capitolo-09",
+              "title": "Giove e Callisto",
+              "recap": "Giove e Callisto. Poi la storia continua con il corvo, la cornacchia e coronide.",
+              "minutes": 4,
+              "targetWords": 460
+            },
+            {
+              "id": "ovidio-s2-e10",
+              "chapterId": "libro-02-capitolo-10",
+              "title": "Il corvo, la cornacchia e Coronide",
+              "recap": "Il corvo, la cornacchia e Coronide. Poi la storia continua con chirone e la profezia di ociroe.",
+              "minutes": 4,
+              "targetWords": 460
+            },
+            {
+              "id": "ovidio-s2-e11",
+              "chapterId": "libro-02-capitolo-11",
+              "title": "Chirone e la profezia di Ociroe",
+              "recap": "Chirone e la profezia di Ociroe. Poi la storia continua con mercurio e batto.",
+              "minutes": 4,
+              "targetWords": 460
+            },
+            {
+              "id": "ovidio-s2-e12",
+              "chapterId": "libro-02-capitolo-12",
+              "title": "Mercurio e Batto",
+              "recap": "Mercurio e Batto. Poi la storia continua con mercurio ed erse.",
+              "minutes": 4,
+              "targetWords": 460
+            },
+            {
+              "id": "ovidio-s2-e13",
+              "chapterId": "libro-02-capitolo-13",
+              "title": "Mercurio ed Erse",
+              "recap": "Mercurio ed Erse. Poi la storia continua con l’invidia e la punizione di aglauro.",
+              "minutes": 4,
+              "targetWords": 460
+            },
+            {
+              "id": "ovidio-s2-e14",
+              "chapterId": "libro-02-capitolo-14",
+              "title": "L’Invidia e la punizione di Aglauro",
+              "recap": "L’Invidia e la punizione di Aglauro. Poi la storia continua con il ratto di europa.",
+              "minutes": 4,
+              "targetWords": 460
+            },
+            {
+              "id": "ovidio-s2-e15",
+              "chapterId": "libro-02-capitolo-15",
+              "title": "Il ratto di Europa",
+              "recap": "Il ratto di Europa. La storia prosegue nel libro successivo.",
+              "minutes": 4,
+              "targetWords": 460
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "title": "Gli dèi e i mortali",
+          "episodes": [
+            {
+              "id": "ovidio-s3-e01",
+              "chapterId": "libro-03-capitolo-01",
+              "title": "Cadmo e l’oracolo",
+              "recap": "Cadmo e l’oracolo. Poi la storia continua con il drago di marte e i guerrieri nati dalla terra.",
+              "minutes": 4,
+              "targetWords": 460
+            },
+            {
+              "id": "ovidio-s3-e02",
+              "chapterId": "libro-03-capitolo-02",
+              "title": "Il drago di Marte e i guerrieri nati dalla terra",
+              "recap": "Il drago di Marte e i guerrieri nati dalla terra. Poi la storia continua con atteone e diana.",
+              "minutes": 4,
+              "targetWords": 460
+            },
+            {
+              "id": "ovidio-s3-e03",
+              "chapterId": "libro-03-capitolo-03",
+              "title": "Atteone e Diana",
+              "recap": "Atteone e Diana. Poi la storia continua con giove e semele.",
+              "minutes": 4,
+              "targetWords": 460
+            },
+            {
+              "id": "ovidio-s3-e04",
+              "chapterId": "libro-03-capitolo-04",
+              "title": "Giove e Semele",
+              "recap": "Giove e Semele. Poi la storia continua con tiresia e il dono della profezia.",
+              "minutes": 4,
+              "targetWords": 460
+            },
+            {
+              "id": "ovidio-s3-e05",
+              "chapterId": "libro-03-capitolo-05",
+              "title": "Tiresia e il dono della profezia",
+              "recap": "Tiresia e il dono della profezia. Poi la storia continua con eco e narciso.",
+              "minutes": 4,
+              "targetWords": 460
+            },
+            {
+              "id": "ovidio-s3-e06",
+              "chapterId": "libro-03-capitolo-06",
+              "title": "Eco e Narciso",
+              "recap": "Eco e Narciso. Poi la storia continua con penteo e tiresia.",
+              "minutes": 4,
+              "targetWords": 460
+            },
+            {
+              "id": "ovidio-s3-e07",
+              "chapterId": "libro-03-capitolo-07",
+              "title": "Penteo e Tiresia",
+              "recap": "Penteo e Tiresia. Poi la storia continua con acete e i marinai trasformati in delfini.",
+              "minutes": 4,
+              "targetWords": 460
+            },
+            {
+              "id": "ovidio-s3-e08",
+              "chapterId": "libro-03-capitolo-08",
+              "title": "Acete e i marinai trasformati in delfini",
+              "recap": "Acete e i marinai trasformati in delfini. Poi la storia continua con la morte di penteo.",
+              "minutes": 4,
+              "targetWords": 460
+            },
+            {
+              "id": "ovidio-s3-e09",
+              "chapterId": "libro-03-capitolo-09",
+              "title": "La morte di Penteo",
+              "recap": "La morte di Penteo. La storia prosegue nel libro successivo.",
+              "minutes": 4,
+              "targetWords": 460
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "title": "Amore e trasformazione",
+          "episodes": [
+            {
+              "id": "ovidio-s4-e01",
+              "chapterId": "libro-04-capitolo-01",
+              "title": "Le figlie di Minia e Piramo e Tisbe",
+              "recap": "Le figlie di Minia e Piramo e Tisbe. Poi la storia continua con il sole, leucotoe e clizia.",
+              "minutes": 4,
+              "targetWords": 460
+            },
+            {
+              "id": "ovidio-s4-e02",
+              "chapterId": "libro-04-capitolo-02",
+              "title": "Il Sole, Leucotoe e Clizia",
+              "recap": "Il Sole, Leucotoe e Clizia. Poi la storia continua con salmacide ed ermafrodito.",
+              "minutes": 4,
+              "targetWords": 460
+            },
+            {
+              "id": "ovidio-s4-e03",
+              "chapterId": "libro-04-capitolo-03",
+              "title": "Salmacide ed Ermafrodito",
+              "recap": "Salmacide ed Ermafrodito. Poi la storia continua con le figlie di minia e la punizione di bacco.",
+              "minutes": 4,
+              "targetWords": 460
+            },
+            {
+              "id": "ovidio-s4-e04",
+              "chapterId": "libro-04-capitolo-04",
+              "title": "Le figlie di Minia e la punizione di Bacco",
+              "recap": "Le figlie di Minia e la punizione di Bacco. Poi la storia continua con ino e atamante: la vendetta di giunone.",
+              "minutes": 4,
+              "targetWords": 460
+            },
+            {
+              "id": "ovidio-s4-e05",
+              "chapterId": "libro-04-capitolo-05",
+              "title": "Ino e Atamante: la vendetta di Giunone",
+              "recap": "Ino e Atamante: la vendetta di Giunone. Poi la storia continua con cadmo e armonia.",
+              "minutes": 4,
+              "targetWords": 460
+            },
+            {
+              "id": "ovidio-s4-e06",
+              "chapterId": "libro-04-capitolo-06",
+              "title": "Cadmo e Armonia",
+              "recap": "Cadmo e Armonia. Poi la storia continua con perseo e atlante.",
+              "minutes": 4,
+              "targetWords": 460
+            },
+            {
+              "id": "ovidio-s4-e07",
+              "chapterId": "libro-04-capitolo-07",
+              "title": "Perseo e Atlante",
+              "recap": "Perseo e Atlante. Poi la storia continua con perseo e andromeda.",
+              "minutes": 4,
+              "targetWords": 460
+            },
+            {
+              "id": "ovidio-s4-e08",
+              "chapterId": "libro-04-capitolo-08",
+              "title": "Perseo e Andromeda",
+              "recap": "Perseo e Andromeda. Poi la storia continua con il racconto di perseo: medusa.",
+              "minutes": 4,
+              "targetWords": 460
+            },
+            {
+              "id": "ovidio-s4-e09",
+              "chapterId": "libro-04-capitolo-09",
+              "title": "Il racconto di Perseo: Medusa",
+              "recap": "Il racconto di Perseo: Medusa. La storia prosegue nel libro successivo.",
+              "minutes": 4,
+              "targetWords": 460
+            }
+          ]
+        }
       ]
     }
   ]
