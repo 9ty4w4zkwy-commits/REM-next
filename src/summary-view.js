@@ -1,6 +1,7 @@
 import {el,button} from './ui.js';
 import {getSetting,saveSetting} from './progress.js';
 import {loadChapter} from './catalog.js?v=ovidio-mini-20261123';
+import {createReaderTools} from './reader-tools.js';
 
 // Sintesi estrattiva: usa esclusivamente frasi del capitolo originale.
 // Nessuna trama o evento viene inventato.
@@ -37,7 +38,20 @@ export function summaryView(book,onClose,onContinue){
  const ebook=button('Ebook',()=>setFormat('ebook'));
  const audio=button('Audio',()=>setFormat('audio'));
  formats.append(ebook,audio);
- const output=el('article',{className:'summary-content',attrs:{'aria-live':'polite'}});
+ const output=el('article',{className:'summary-content reading-text',attrs:{'aria-live':'polite'}});
+ const page=el('div',{className:'ebook-page-frame summary-page-frame'},[output]);
+ const readingShell=el('section',{className:'reading-shell summary-reading-shell'});
+ const readerTools=createReaderTools();
+ const full=button('⛶',()=>toggleFullscreen());
+ full.className='summary-fullscreen-toggle';full.setAttribute('aria-label','Attiva schermo intero');full.title='Schermo intero';
+ const exitFull=button('✕',()=>toggleFullscreen(false));
+ exitFull.className='summary-fullscreen-exit';exitFull.setAttribute('aria-label','Esci da schermo intero');
+ const topbar=el('div',{className:'summary-fullscreen-header'},[el('strong',{text:'Riassunto · '+book.title}),exitFull]);
+ let isFull=false;
+ function toggleFullscreen(force){isFull=typeof force==='boolean'?force:!isFull;root.classList.toggle('summary-is-fullscreen',isFull);document.body.classList.toggle('summary-fullscreen-active',isFull);full.setAttribute('aria-pressed',String(isFull));if(isFull)page.scrollTop=0}
+ page.append(full);readingShell.append(topbar,page);readerTools.mount(readingShell);
+ const observer=new MutationObserver(()=>{if(!root.isConnected){document.body.classList.remove('summary-fullscreen-active');readerTools.destroy();observer.disconnect()}});
+ queueMicrotask(()=>observer.observe(document.body,{childList:true,subtree:true}));
  const status=el('p',{className:'summary-status',attrs:{role:'status'}});
  const play=button('▶ Ascolta il riassunto',()=>toggleSpeech());
  const finish=button('Continua dal capitolo successivo →',()=>{stopSpeech();const idx=book.chapters.findIndex(c=>c.id===select.value);onContinue(book.chapters[idx+1]?.id||select.value)},true);
@@ -71,6 +85,6 @@ export function summaryView(book,onClose,onContinue){
   window.speechSynthesis.speak(utterance);speaking=true;play.textContent='■ Ferma audio';
  }
  select.addEventListener('change',renderSummary);
- root.append(title,intro,label,select,el('p',{text:'Scegli il formato del riassunto'}),formats,output,play,status,el('div',{className:'summary-actions'},[back,finish]));
+ root.append(title,intro,label,select,el('p',{text:'Scegli il formato del riassunto'}),formats,readingShell,play,status,el('div',{className:'summary-actions'},[back,finish]));
  renderSummary();return root;
 }
