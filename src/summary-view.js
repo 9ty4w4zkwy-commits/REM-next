@@ -42,9 +42,10 @@ export function summaryView(book,onClose,onContinue){
  const page=el('div',{className:'ebook-page-frame summary-page-frame'},[output]);
  const readingShell=el('section',{className:'reading-shell summary-reading-shell'});
  const readerTools=createReaderTools();
- const full=button('⛶',()=>toggleFullscreen());
+ const fullscreenGlyph=(close=false)=>{const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');svg.setAttribute('viewBox','0 0 24 24');svg.setAttribute('width','22');svg.setAttribute('height','22');svg.setAttribute('fill','none');svg.setAttribute('stroke','currentColor');svg.setAttribute('stroke-width','1.9');svg.setAttribute('stroke-linecap','round');svg.setAttribute('stroke-linejoin','round');svg.setAttribute('aria-hidden','true');const path=document.createElementNS('http://www.w3.org/2000/svg','path');path.setAttribute('d',close?'M3 3l7 7 M10 5v5H5 M21 21l-7-7 M14 19v-5h5':'M10 10L3 3 M3 9V3h6 M14 14l7 7 M21 15v6h-6');svg.append(path);return svg};
+ const full=button('',()=>toggleFullscreen());full.append(fullscreenGlyph());
  full.className='summary-fullscreen-toggle';full.setAttribute('aria-label','Attiva schermo intero');full.title='Schermo intero';
- const exitFull=button('✕',()=>toggleFullscreen(false));
+ const exitFull=button('',()=>toggleFullscreen(false));exitFull.append(fullscreenGlyph(true));
  exitFull.className='summary-fullscreen-exit';exitFull.setAttribute('aria-label','Esci da schermo intero');
  const topbar=el('div',{className:'summary-fullscreen-header'},[el('strong',{text:'Riassunto · '+book.title}),exitFull]);
  let isFull=false;
