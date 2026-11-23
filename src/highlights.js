@@ -105,7 +105,6 @@ export function createHighlights(bookId,chapterId,textNode,onSwitch,onBookmark=(
   marks=[clean];persist();draw();clearTimeout(savedNoticeTimer);selectedQuote='';saveThought.hidden=true;saveThought.disabled=false;saveThought.textContent='Salva nei miei pensieri';clearSelectionPaint();onBookmark(clean.quote,clean.start);
   window.getSelection()?.removeAllRanges();return true;
  }
- let lastMarkTap={time:0,start:-1};
  function removeMarkedPhrase(mark){
   if(!mark||!textNode.contains(mark))return false;
   const before=document.createRange();before.selectNodeContents(textNode);before.setEndBefore(mark);
@@ -120,15 +119,6 @@ export function createHighlights(bookId,chapterId,textNode,onSwitch,onBookmark=(
   return true;
  }
  function markedAt(target){return target?.closest?.('mark.rem-highlight')||null}
- function doubleMarkTap(target){
-  const mark=markedAt(target);if(!mark||!textNode.contains(mark))return false;
-  const range=document.createRange();range.selectNodeContents(textNode);range.setEndBefore(mark);
-  const start=range.toString().length,now=Date.now();
-  if(lastMarkTap.start===start&&now-lastMarkTap.time<420){
-   lastMarkTap={time:0,start:-1};return removeMarkedPhrase(mark);
-  }
-  lastMarkTap={time:now,start};return false;
- }
  let touch=null,lastTouch=0,suppressClickUntil=0;
  function setSaveQuote(quote){clearTimeout(savedNoticeTimer);selectedQuote=quote;saveThought.hidden=false;saveThought.disabled=false;saveThought.textContent='Salva nei miei pensieri'}
  function readNativeSelection(){
@@ -147,10 +137,9 @@ export function createHighlights(bookId,chapterId,textNode,onSwitch,onBookmark=(
  }
  function touchStart(e){
   if(e.touches.length!==1)return;
-  if(markedAt(e.target)&&doubleMarkTap(e.target)){e.preventDefault();touch=null;suppressClickUntil=Date.now()+800;return;}
   clearTimeout(longPressTimer);
   const t=e.touches[0];
-  touch={x:t.clientX,y:t.clientY,moved:false,started:Date.now(),custom:false,scrolling:false};
+  touch={x:t.clientX,y:t.clientY,moved:false,started:Date.now(),custom:false,scrolling:false,mark:enabled?markedAt(e.target):null};
   // Disable native text selection while preserving ordinary vertical page scrolling.
   window.getSelection()?.removeAllRanges();
  }
@@ -176,14 +165,14 @@ export function createHighlights(bookId,chapterId,textNode,onSwitch,onBookmark=(
   if(!touch)return;
   const t=e.changedTouches[0],start=touch;touch=null;
   if(start.custom){e.preventDefault();/* Preserve the last deliberate drag position: touchend may jump to the next word on Safari. */suppressClickUntil=Date.now()+800;return}
-  if(enabled){suppressClickUntil=Date.now()+650;return}
+  if(enabled){if(start.mark&&!start.scrolling&&!start.moved&&Math.hypot(t.clientX-start.x,t.clientY-start.y)<11&&Date.now()-start.started<450){if(removeMarkedPhrase(start.mark))e.preventDefault()}suppressClickUntil=Date.now()+650;return}
   if(start.scrolling||start.moved||Math.hypot(t.clientX-start.x,t.clientY-start.y)>11)return;
   if(Date.now()-start.started>380)return;
   customMode=false;textNode.classList.remove('rem-custom-selecting');clearSelectionPaint();
   if(selectAt(t.clientX,t.clientY)){lastTouch=Date.now();e.preventDefault()}
  }
  function click(e){
-  if(e.detail>=2&&markedAt(e.target)){e.preventDefault();removeMarkedPhrase(markedAt(e.target));return}
+  if(enabled&&markedAt(e.target)&&Date.now()>=suppressClickUntil){e.preventDefault();removeMarkedPhrase(markedAt(e.target));return}
   if(customMode)return;
   if(enabled){if(window.getSelection()?.toString().trim()){selectionMode=true;readNativeSelection()}return}
   if(Date.now()<suppressClickUntil||Date.now()-lastTouch<650)return;
