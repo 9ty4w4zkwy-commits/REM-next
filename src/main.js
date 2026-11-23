@@ -5,7 +5,7 @@ import {createCollectionsView} from './collections-view.js?v=rem-ui-209';
 import {readCollections,isBookSaved,saveBookToCollections,removeSavedBook,attachItem,detachItem,addThought} from './collections-store.js?v=rem-mint-207';
 import {showOnboarding,onboardingCompleted} from './onboarding.js?v=emojis-376';
 import {getProgress,saveProgress,getSetting,saveSetting} from './progress.js';
-import {analyticsEnabled,setAnalyticsConsent,startAnalytics,trackEvent} from './analytics.js?v=analytics-1';
+import {analyticsEnabled,getTesterCode,setAnalyticsConsent,startAnalytics,trackEvent} from './analytics.js?v=analytics-2';
 import {el,button,panel,heading} from './ui.js';
 import {getMode,formatSwitch,paperView,audioView} from './formats.js?v=rem-audio-182';
 import {createReaderTools} from './reader-tools.js?v=rem-ui-245';
@@ -278,8 +278,10 @@ function profile(){
  ]));
  const analyticsToggle=button(analyticsEnabled()?'Disattiva invio dati di test':'Attiva invio dati di test',()=>{setAnalyticsConsent(!analyticsEnabled());profile()});
  analyticsToggle.classList.add('rem-profile-action');
+ const testerCode=getTesterCode();
+ const testerSection=analyticsEnabled()?card('№','Il mio codice tester',testerCode?'Il tuo codice è '+testerCode+'. Comunicalo al team REM per collegare le tue risposte al test.':'Il codice sarà disponibile dopo la prima registrazione. Riapri il Profilo tra qualche secondo.',testerCode?button('Copia '+testerCode,()=>{if(navigator.clipboard?.writeText)void navigator.clipboard.writeText(testerCode).catch(()=>{});else window.prompt('Copia il tuo codice tester',testerCode)}):null):null;
  const privacy=card('◇','Privacy e preferenze','Questionario, libri salvati e progressi restano su questo dispositivo. Solo se scegli di partecipare, REM invia a Cloudflare un ID numerico, le risposte al questionario e le attività di utilizzo (libro, formato e data). Nessun nome o email. Puoi interrompere i futuri invii; disattivare non cancella i dati già raccolti.',analyticsToggle);
- render(el('div',{className:'rem-profile-page'},[backArrow(home,'Torna alla Home'),intro,interests,reading,privacy]));
+ render(el('div',{className:'rem-profile-page'},[backArrow(home,'Torna alla Home'),intro,interests,reading,...(testerSection?[testerSection]:[]),privacy]));
 }
 function library(section='overview',bookId=null){currentView='library';render(createCollectionsView({books,openBook:detail,continueBook:readingEntry,isSavedBook:isBookSaved,coverBook:cover,back:home,initialSection:section,initialBookId:bookId}))}
 function detail(id){
