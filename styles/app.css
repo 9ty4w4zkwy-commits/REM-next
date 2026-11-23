@@ -1861,3 +1861,7 @@ html body.ebook-fullscreen-active .rem-immersive-tool.rem-immersive-font{
  touch-action:manipulation!important;-webkit-user-select:none!important;user-select:none!important;
  -webkit-tap-highlight-color:transparent;
 }
+
+/* Navigazione compatta delle stagioni e degli episodi */
+.season-picker{display:block;width:100%;max-width:520px;padding:13px 16px;border-radius:14px;border:1px solid #638c82;background:#17263b;color:#f6faf8;font:inherit;font-size:16px;margin:10px 0 18px}
+.episodes-dropdown{margin:12px 0 20px}.episodes-dropdown>summary{cursor:pointer;list-style-position:inside;padding:15px 16px;border:1px solid #638c82;border-radius:14px;background:#17263b;color:#f6faf8;font-weight:650}.episodes-dropdown[open]>summary{margin-bottom:14px}
