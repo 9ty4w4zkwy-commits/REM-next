@@ -236,7 +236,7 @@ function searchBooks(){
  currentView='search';
  const input=el('input',{className:'rem-book-search-input',attrs:{type:'search',placeholder:'Titolo, autore, emozione o luogo…','aria-label':'Cerca per titolo, autore, emozione o luogo',autocomplete:'off'}});
  const results=el('div',{className:'rem-search-results'});
- const searchButton=button('🔍',()=>{selectedMood=null;update();input.blur()});searchButton.classList.add('rem-search-submit');searchButton.setAttribute('aria-label','Cerca libri');
+ const searchButton=button('Cerca',()=>{selectedMood=null;selectedPlace=null;update();input.blur()});searchButton.classList.add('rem-search-submit');searchButton.setAttribute('aria-label','Cerca libri');
  const normalize=value=>String(value||'').normalize('NFD').replace(/[\\u0300-\\u036f]/g,'').toLocaleLowerCase('it').replace(/[^a-z0-9 ]/g,' ').replace(/\\s+/g,' ').trim();
  const synonyms={
   sorridere:['ridere','ridi','divertire','divertirmi','divertente','umorismo','allegria','sorriso','sorridere','felice','felicita','leggerezza'],
@@ -251,17 +251,17 @@ function searchBooks(){
   paura:['paura','spaventare','spaventarmi','horror','terrore','inquietante'],
   innamorare:['innamorare','amore','romantico','romantica','romanticismo','innamorarmi']
  };
- const phrases=[{text:'libri che fanno emozionare',emoji:'💗',mood:'emozionare'},{text:'voglio ridere',emoji:'🤣',mood:'sorridere'},{text:'ho voglia di sognare',emoji:'🌙',mood:'sognare'},{text:'libri che fanno riflettere',emoji:'🧠',mood:'riflettere'},{text:'cerco un’avventura',emoji:'🚀',mood:'avventura'}];
+ const phrases=[{text:'Emozionarmi',emoji:'💗',mood:'emozionare'},{text:'Ridere',emoji:'🤣',mood:'sorridere'},{text:'Sognare',emoji:'🌙',mood:'sognare'},{text:'Riflettere',emoji:'🧠',mood:'riflettere'},{text:'Avventura',emoji:'🚀',mood:'avventura'}];
  const suggestions=el('div',{className:'rem-mood-suggestions'});
  suggestions.append(el('p',{className:'rem-mood-label',text:'Oppure cerca per emozione…'}));
  const chipRow=el('div',{className:'rem-mood-chips'});
- let selectedMood=null;const moodChips=[];
- phrases.forEach((phrase,i)=>{const chip=button(phrase.emoji+' '+phrase.text,()=>{selectedMood=selectedMood===phrase.mood?null:phrase.mood;input.value='';update()});chip.classList.add('rem-mood-chip','rem-mood-chip-'+(i+1));chip.setAttribute('aria-pressed','false');moodChips.push({chip,mood:phrase.mood});chipRow.append(chip)});
+ let selectedMood=null;let selectedPlace=null;const moodChips=[];const placeButtons=[];
+ phrases.forEach((phrase,i)=>{const chip=button(phrase.emoji+' '+phrase.text,()=>{selectedMood=selectedMood===phrase.mood?null:phrase.mood;selectedPlace=null;input.value='';update()});chip.classList.add('rem-mood-chip','rem-mood-chip-'+(i+1));chip.setAttribute('aria-pressed','false');moodChips.push({chip,mood:phrase.mood});chipRow.append(chip)});
  suggestions.append(chipRow);
  const placeSuggestions=el('div',{className:'rem-place-suggestions'});
  placeSuggestions.append(el('p',{className:'rem-mood-label',text:'Oppure cerca per luogo…'}));
  const placeChips=el('div',{className:'rem-place-chips'});
- ['🏛️ Roma','🥐 Parigi','💂 Londra','🍃 Toscana'].forEach(label=>{const place=label.slice(label.indexOf(' ')+1);const chip=button(label,()=>{selectedMood=null;input.value=place;update();input.blur()});chip.classList.add('rem-place-chip');placeChips.append(chip)});
+ ['🏛️ Roma','🥐 Parigi','💂 Londra','🍃 Toscana'].forEach(label=>{const place=label.slice(label.indexOf(' ')+1);const chip=button(label,()=>{selectedPlace=selectedPlace===place?null:place;selectedMood=null;input.value='';update()});chip.classList.add('rem-place-chip');chip.setAttribute('aria-pressed','false');placeButtons.push({chip,place});placeChips.append(chip)});
  placeSuggestions.append(placeChips);
  function findMoods(query){
   if(!query)return [];
@@ -271,9 +271,10 @@ function searchBooks(){
  const update=()=>{
   const query=normalize(input.value);results.replaceChildren();
   moodChips.forEach(({chip,mood})=>{const active=mood===selectedMood;chip.classList.toggle('is-selected',active);chip.setAttribute('aria-pressed',String(active))});
+  placeButtons.forEach(({chip,place})=>{const active=place===selectedPlace;chip.classList.toggle('is-selected',active);chip.setAttribute('aria-pressed',String(active))});
   const matchedMoods=selectedMood?[selectedMood]:findMoods(query);
-  const placeQuery=query.replace(/^(libri |storie |romanzi |ambientati |ambientato |ambientate |su |a |in |di |che parlano di )+/,'').trim();
-  const matches=books.filter(book=>selectedMood?(book.moods||[]).includes(selectedMood):!query||normalize(book.title+' '+(book.author||'')).includes(query)||matchedMoods.some(mood=>(book.moods||[]).includes(mood))||(placeQuery.length>2&&(book.locations||[]).some(loc=>normalize(loc)===placeQuery||normalize(loc).includes(placeQuery))));
+  const placeQuery=(selectedPlace?normalize(selectedPlace):query).replace(/^(libri |storie |romanzi |ambientati |ambientato |ambientate |su |a |in |di |che parlano di )+/,'').trim();
+  const matches=books.filter(book=>selectedMood?(book.moods||[]).includes(selectedMood):selectedPlace?(book.locations||[]).some(loc=>normalize(loc)===placeQuery||normalize(loc).includes(placeQuery)):!query||normalize(book.title+' '+(book.author||'')).includes(query)||matchedMoods.some(mood=>(book.moods||[]).includes(mood))||(placeQuery.length>2&&(book.locations||[]).some(loc=>normalize(loc)===placeQuery||normalize(loc).includes(placeQuery))));
   if(!matches.length){results.append(para('Nessun libro trovato. Prova un titolo, un autore, un’emozione o un luogo.','rem-search-empty'));return}
   for(const book of matches){
    const card=button('',()=>detail(book.id));
@@ -289,7 +290,7 @@ function searchBooks(){
    results.append(card);
   }
  };
- input.addEventListener('input',()=>{selectedMood=null;update()});
+ input.addEventListener('input',()=>{selectedMood=null;selectedPlace=null;update()});
  input.addEventListener('keydown',event=>{if(event.key==='Enter'){event.preventDefault();selectedMood=null;update();input.blur()}});
  const back=button('← Torna alla Home',home);back.className='rem-search-back';
  render(el('section',{className:'rem-search-view'},[back,el('h1',{text:'Cerca su REM'}),el('div',{className:'rem-search-field'},[input,searchButton]),suggestions,placeSuggestions,results]));
