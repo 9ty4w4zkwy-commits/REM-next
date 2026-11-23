@@ -2006,3 +2006,17 @@ body.summary-fullscreen-active .summary-shell .summary-reading-shell{margin:0!im
 body.summary-fullscreen-active .summary-shell .summary-page-frame{border-radius:0!important;max-height:none!important}
 body.summary-fullscreen-active .summary-shell .summary-fullscreen-toggle{display:none!important}
 body.summary-fullscreen-active .summary-shell .summary-fullscreen-exit{background:transparent!important;border:0!important;color:#65cfa8!important;display:flex;align-items:center;justify-content:center}
+
+/* Summary polish: white-on-white paper surround and compact proportional controls. */
+.summary-shell .summary-reading-shell{padding:12px!important;margin:12px 0!important;border:1px solid #fff!important;border-radius:20px!important;background:#fff!important;overflow:visible!important}
+.summary-shell .summary-reading-shell>.reader-tools{margin:0 0 12px!important;box-sizing:border-box!important}
+.summary-shell .summary-page-frame{border:0!important;border-radius:16px!important;background:#fff!important}
+.summary-shell .summary-reading-shell[data-theme="sun"] .summary-page-frame{background:#fff!important}
+.summary-shell .reader-tools-row{display:flex!important;align-items:center!important;justify-content:center!important;gap:6px!important;flex-wrap:nowrap!important}
+.summary-shell .reader-tools-row button{box-sizing:border-box!important;flex:0 1 auto!important;min-width:0!important;width:auto!important;max-width:none!important;padding:8px 6px!important;line-height:1.2!important}
+.summary-shell .reader-tools-row .reader-theme-button,.summary-shell .reader-tools-row .reader-focus-button{flex:0 1 76px!important;min-height:74px!important;aspect-ratio:1 / 1!important}
+.summary-shell .reader-tools-row .reader-font-button{flex:0 1 48px!important;min-height:46px!important;aspect-ratio:1 / 1!important}
+.summary-shell .reader-tools-row .reader-tools-divider{flex:0 0 1px!important;margin:0 2px!important}
+@media(max-width:400px){.summary-shell .reader-tools-row{gap:4px!important}.summary-shell .reader-tools-row .reader-theme-button,.summary-shell .reader-tools-row .reader-focus-button{flex-basis:66px!important;min-height:66px!important}.summary-shell .reader-tools-row .reader-font-button{flex-basis:42px!important;min-height:42px!important}.summary-shell .summary-reading-shell{padding:8px!important}}
+body.summary-fullscreen-active .summary-shell .summary-reading-shell{padding:0!important;border:0!important;border-radius:0!important;background:#101e30!important}
+body.summary-fullscreen-active .summary-shell .reader-tools-row button{aspect-ratio:auto!important}
