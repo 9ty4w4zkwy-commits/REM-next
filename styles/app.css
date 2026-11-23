@@ -1994,3 +1994,15 @@ body.summary-fullscreen-active .summary-shell .summary-page-frame{order:1;flex:1
 body.summary-fullscreen-active .summary-shell .summary-fullscreen-toggle{display:none!important}
 body.summary-fullscreen-active .reader-focus-overlay{z-index:10020!important}
 @media(max-width:400px){.summary-shell .summary-reading-shell{padding:10px}.summary-shell .summary-content{padding:24px 16px!important}}
+
+/* Summary refinement: full width, no cream outer border, Ebook-style corner expand. */
+.summary-shell .summary-reading-shell{width:100%!important;max-width:100%!important;box-sizing:border-box!important;padding:0!important;margin:12px 0!important;border:0!important;border-radius:0!important;background:transparent!important;overflow-y:visible!important;max-height:none!important}
+.summary-shell .summary-reading-shell>.reader-tools{margin:0 0 12px!important}
+.summary-shell .summary-page-frame{width:100%!important;max-width:100%!important;box-sizing:border-box!important;border:0!important;border-radius:16px!important;max-height:68dvh!important}
+.summary-shell .summary-content{width:100%!important;box-sizing:border-box!important}
+.summary-shell .summary-fullscreen-toggle{top:12px!important;right:12px!important;width:36px!important;height:36px!important;min-width:36px!important;min-height:36px!important;padding:5px!important;display:flex!important;align-items:center!important;justify-content:center!important;background:transparent!important;border:0!important;box-shadow:none!important;color:#65cfa8!important}
+.summary-shell .summary-fullscreen-toggle svg,.summary-shell .summary-fullscreen-exit svg{display:block;stroke:currentColor}
+body.summary-fullscreen-active .summary-shell .summary-reading-shell{margin:0!important;background:#101e30!important}
+body.summary-fullscreen-active .summary-shell .summary-page-frame{border-radius:0!important;max-height:none!important}
+body.summary-fullscreen-active .summary-shell .summary-fullscreen-toggle{display:none!important}
+body.summary-fullscreen-active .summary-shell .summary-fullscreen-exit{background:transparent!important;border:0!important;color:#65cfa8!important;display:flex;align-items:center;justify-content:center}
