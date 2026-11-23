@@ -1162,9 +1162,280 @@
       "homeSections": [
         "new"
       ],
-      "availability": "preview",
+      "availability": "full",
       "coverImage": "./assets/covers/le_metamorfosi_ovidio_REM.jpg",
-      "chapters": []
+      "chapters": [
+        {
+          "id": "libro-01-capitolo-01",
+          "title": "Libro I · Capitolo 1",
+          "file": "libro-01-capitolo-01 2.txt",
+          "minutes": 8
+        },
+        {
+          "id": "libro-01-capitolo-02",
+          "title": "Libro I · Capitolo 2",
+          "file": "libro-01-capitolo-02 2.txt",
+          "minutes": 8
+        },
+        {
+          "id": "libro-01-capitolo-03",
+          "title": "Libro I · Capitolo 3",
+          "file": "libro-01-capitolo-03 2.txt",
+          "minutes": 8
+        },
+        {
+          "id": "libro-01-capitolo-04",
+          "title": "Libro I · Capitolo 4",
+          "file": "libro-01-capitolo-04 2.txt",
+          "minutes": 8
+        },
+        {
+          "id": "libro-01-capitolo-05",
+          "title": "Libro I · Capitolo 5",
+          "file": "libro-01-capitolo-05 2.txt",
+          "minutes": 8
+        },
+        {
+          "id": "libro-01-capitolo-06",
+          "title": "Libro I · Capitolo 6",
+          "file": "libro-01-capitolo-06 2.txt",
+          "minutes": 8
+        },
+        {
+          "id": "libro-01-capitolo-07",
+          "title": "Libro I · Capitolo 7",
+          "file": "libro-01-capitolo-07 2.txt",
+          "minutes": 8
+        },
+        {
+          "id": "libro-01-capitolo-08",
+          "title": "Libro I · Capitolo 8",
+          "file": "libro-01-capitolo-08 2.txt",
+          "minutes": 8
+        },
+        {
+          "id": "libro-01-capitolo-09",
+          "title": "Libro I · Capitolo 9",
+          "file": "libro-01-capitolo-09 2.txt",
+          "minutes": 8
+        },
+        {
+          "id": "libro-01-capitolo-10",
+          "title": "Libro I · Capitolo 10",
+          "file": "libro-01-capitolo-10 2.txt",
+          "minutes": 8
+        },
+        {
+          "id": "libro-01-capitolo-11",
+          "title": "Libro I · Capitolo 11",
+          "file": "libro-01-capitolo-11 2.txt",
+          "minutes": 8
+        },
+        {
+          "id": "libro-01-capitolo-12",
+          "title": "Libro I · Capitolo 12",
+          "file": "libro-01-capitolo-12 2.txt",
+          "minutes": 8
+        },
+        {
+          "id": "libro-02-capitolo-01",
+          "title": "Libro II · Capitolo 1",
+          "file": "libro-02-capitolo-01 2.txt",
+          "minutes": 8
+        },
+        {
+          "id": "libro-02-capitolo-02",
+          "title": "Libro II · Capitolo 2",
+          "file": "libro-02-capitolo-02 2.txt",
+          "minutes": 8
+        },
+        {
+          "id": "libro-02-capitolo-03",
+          "title": "Libro II · Capitolo 3",
+          "file": "libro-02-capitolo-03 2.txt",
+          "minutes": 8
+        },
+        {
+          "id": "libro-02-capitolo-04",
+          "title": "Libro II · Capitolo 4",
+          "file": "libro-02-capitolo-04 2.txt",
+          "minutes": 8
+        },
+        {
+          "id": "libro-02-capitolo-05",
+          "title": "Libro II · Capitolo 5",
+          "file": "libro-02-capitolo-05 2.txt",
+          "minutes": 8
+        },
+        {
+          "id": "libro-02-capitolo-06",
+          "title": "Libro II · Capitolo 6",
+          "file": "libro-02-capitolo-06 2.txt",
+          "minutes": 8
+        },
+        {
+          "id": "libro-02-capitolo-07",
+          "title": "Libro II · Capitolo 7",
+          "file": "libro-02-capitolo-07 2.txt",
+          "minutes": 8
+        },
+        {
+          "id": "libro-02-capitolo-08",
+          "title": "Libro II · Capitolo 8",
+          "file": "libro-02-capitolo-08 2.txt",
+          "minutes": 8
+        },
+        {
+          "id": "libro-02-capitolo-09",
+          "title": "Libro II · Capitolo 9",
+          "file": "libro-02-capitolo-09 2.txt",
+          "minutes": 8
+        },
+        {
+          "id": "libro-02-capitolo-10",
+          "title": "Libro II · Capitolo 10",
+          "file": "libro-02-capitolo-10 2.txt",
+          "minutes": 8
+        },
+        {
+          "id": "libro-02-capitolo-11",
+          "title": "Libro II · Capitolo 11",
+          "file": "libro-02-capitolo-11 2.txt",
+          "minutes": 8
+        },
+        {
+          "id": "libro-02-capitolo-12",
+          "title": "Libro II · Capitolo 12",
+          "file": "libro-02-capitolo-12 2.txt",
+          "minutes": 8
+        },
+        {
+          "id": "libro-02-capitolo-13",
+          "title": "Libro II · Capitolo 13",
+          "file": "libro-02-capitolo-13 2.txt",
+          "minutes": 8
+        },
+        {
+          "id": "libro-02-capitolo-14",
+          "title": "Libro II · Capitolo 14",
+          "file": "libro-02-capitolo-14 2.txt",
+          "minutes": 8
+        },
+        {
+          "id": "libro-02-capitolo-15",
+          "title": "Libro II · Capitolo 15",
+          "file": "libro-02-capitolo-15 2.txt",
+          "minutes": 8
+        },
+        {
+          "id": "libro-03-capitolo-01",
+          "title": "Libro III · Capitolo 1",
+          "file": "libro-03-capitolo-01 2.txt",
+          "minutes": 8
+        },
+        {
+          "id": "libro-03-capitolo-02",
+          "title": "Libro III · Capitolo 2",
+          "file": "libro-03-capitolo-02 2.txt",
+          "minutes": 8
+        },
+        {
+          "id": "libro-03-capitolo-03",
+          "title": "Libro III · Capitolo 3",
+          "file": "libro-03-capitolo-03 2.txt",
+          "minutes": 8
+        },
+        {
+          "id": "libro-03-capitolo-04",
+          "title": "Libro III · Capitolo 4",
+          "file": "libro-03-capitolo-04 2.txt",
+          "minutes": 8
+        },
+        {
+          "id": "libro-03-capitolo-05",
+          "title": "Libro III · Capitolo 5",
+          "file": "libro-03-capitolo-05 2.txt",
+          "minutes": 8
+        },
+        {
+          "id": "libro-03-capitolo-06",
+          "title": "Libro III · Capitolo 6",
+          "file": "libro-03-capitolo-06 2.txt",
+          "minutes": 8
+        },
+        {
+          "id": "libro-03-capitolo-07",
+          "title": "Libro III · Capitolo 7",
+          "file": "libro-03-capitolo-07 2.txt",
+          "minutes": 8
+        },
+        {
+          "id": "libro-03-capitolo-08",
+          "title": "Libro III · Capitolo 8",
+          "file": "libro-03-capitolo-08 2.txt",
+          "minutes": 8
+        },
+        {
+          "id": "libro-03-capitolo-09",
+          "title": "Libro III · Capitolo 9",
+          "file": "libro-03-capitolo-09 2.txt",
+          "minutes": 8
+        },
+        {
+          "id": "libro-04-capitolo-01",
+          "title": "Libro IV · Capitolo 1",
+          "file": "libro-04-capitolo-01 2.txt",
+          "minutes": 8
+        },
+        {
+          "id": "libro-04-capitolo-02",
+          "title": "Libro IV · Capitolo 2",
+          "file": "libro-04-capitolo-02 2.txt",
+          "minutes": 8
+        },
+        {
+          "id": "libro-04-capitolo-03",
+          "title": "Libro IV · Capitolo 3",
+          "file": "libro-04-capitolo-03 2.txt",
+          "minutes": 8
+        },
+        {
+          "id": "libro-04-capitolo-04",
+          "title": "Libro IV · Capitolo 4",
+          "file": "libro-04-capitolo-04 2.txt",
+          "minutes": 8
+        },
+        {
+          "id": "libro-04-capitolo-05",
+          "title": "Libro IV · Capitolo 5",
+          "file": "libro-04-capitolo-05 2.txt",
+          "minutes": 8
+        },
+        {
+          "id": "libro-04-capitolo-06",
+          "title": "Libro IV · Capitolo 6",
+          "file": "libro-04-capitolo-06 2.txt",
+          "minutes": 8
+        },
+        {
+          "id": "libro-04-capitolo-07",
+          "title": "Libro IV · Capitolo 7",
+          "file": "libro-04-capitolo-07 2.txt",
+          "minutes": 8
+        },
+        {
+          "id": "libro-04-capitolo-08",
+          "title": "Libro IV · Capitolo 8",
+          "file": "libro-04-capitolo-08 2.txt",
+          "minutes": 8
+        },
+        {
+          "id": "libro-04-capitolo-09",
+          "title": "Libro IV · Capitolo 9",
+          "file": "libro-04-capitolo-09 2.txt",
+          "minutes": 8
+        }
+      ]
     }
   ]
 }
