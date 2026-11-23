@@ -947,20 +947,6 @@
       ]
     },
     {
-      "id": "zeno",
-      "title": "La coscienza di Zeno",
-      "author": "Italo Svevo",
-      "description": "Un uomo prova a raccontare se stesso, tra promesse mai mantenute, amori complicati e piccoli grandi autoinganni. Ma quanto possiamo fidarci dei ricordi di chi racconta la propria vita?",
-      "status": "published",
-      "access": "premium",
-      "homeSections": [
-        "new"
-      ],
-      "availability": "preview",
-      "coverImage": "./assets/covers/zeno.jpg",
-      "chapters": []
-    },
-    {
       "id": "mago-di-oz",
       "title": "Il mago di Oz",
       "author": "L. Frank Baum",
@@ -972,20 +958,6 @@
       ],
       "availability": "preview",
       "coverImage": "./assets/covers/PHOTO-2026-11-16-16-30-45%205.jpg",
-      "chapters": []
-    },
-    {
-      "id": "libro-della-giungla",
-      "title": "Il libro della giungla",
-      "author": "Rudyard Kipling",
-      "description": "Nella giungla indiana, Mowgli cresce tra i lupi e impara le leggi della natura. Un'avventura tra libertà, appartenenza e coraggio.",
-      "status": "published",
-      "access": "free",
-      "homeSections": [
-        "new"
-      ],
-      "availability": "preview",
-      "coverImage": "./assets/covers/PHOTO-2026-11-16-16-30-45%204.jpg",
       "chapters": []
     },
     {
