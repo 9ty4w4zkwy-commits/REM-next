@@ -234,8 +234,9 @@ function home(){
 }
 function searchBooks(){
  currentView='search';
- const input=el('input',{className:'rem-book-search-input',attrs:{type:'search',placeholder:'Titolo, autore o emozione…','aria-label':'Cerca per titolo, autore o emozione',autocomplete:'off'}});
+ const input=el('input',{className:'rem-book-search-input',attrs:{type:'search',placeholder:'Titolo, autore, emozione o luogo…','aria-label':'Cerca per titolo, autore, emozione o luogo',autocomplete:'off'}});
  const results=el('div',{className:'rem-search-results'});
+ const searchButton=button('🔍',()=>{selectedMood=null;update();input.blur()});searchButton.classList.add('rem-search-submit');searchButton.setAttribute('aria-label','Cerca libri');
  const normalize=value=>String(value||'').normalize('NFD').replace(/[\\u0300-\\u036f]/g,'').toLocaleLowerCase('it').replace(/[^a-z0-9 ]/g,' ').replace(/\\s+/g,' ').trim();
  const synonyms={
   sorridere:['ridere','ridi','divertire','divertirmi','divertente','umorismo','allegria','sorriso','sorridere','felice','felicita','leggerezza'],
@@ -252,11 +253,16 @@ function searchBooks(){
  };
  const phrases=[{text:'libri che fanno emozionare',emoji:'💗',mood:'emozionare'},{text:'voglio ridere',emoji:'🤣',mood:'sorridere'},{text:'ho voglia di sognare',emoji:'🌙',mood:'sognare'},{text:'libri che fanno riflettere',emoji:'🧠',mood:'riflettere'},{text:'cerco un’avventura',emoji:'🚀',mood:'avventura'}];
  const suggestions=el('div',{className:'rem-mood-suggestions'});
- suggestions.append(el('p',{className:'rem-mood-label',text:'Oppure prova a cercare…'}));
+ suggestions.append(el('p',{className:'rem-mood-label',text:'Oppure cerca per emozione…'}));
  const chipRow=el('div',{className:'rem-mood-chips'});
  let selectedMood=null;const moodChips=[];
  phrases.forEach((phrase,i)=>{const chip=button(phrase.emoji+' '+phrase.text,()=>{selectedMood=selectedMood===phrase.mood?null:phrase.mood;input.value='';update()});chip.classList.add('rem-mood-chip','rem-mood-chip-'+(i+1));chip.setAttribute('aria-pressed','false');moodChips.push({chip,mood:phrase.mood});chipRow.append(chip)});
  suggestions.append(chipRow);
+ const placeSuggestions=el('div',{className:'rem-place-suggestions'});
+ placeSuggestions.append(el('p',{className:'rem-mood-label',text:'Oppure cerca per luogo…'}));
+ const placeChips=el('div',{className:'rem-place-chips'});
+ ['🏛️ Roma','🥐 Parigi','💂 Londra','🍃 Toscana'].forEach(label=>{const place=label.slice(label.indexOf(' ')+1);const chip=button(label,()=>{selectedMood=null;input.value=place;update();input.blur()});chip.classList.add('rem-place-chip');placeChips.append(chip)});
+ placeSuggestions.append(placeChips);
  function findMoods(query){
   if(!query)return [];
   const tokens=query.split(' ').filter(w=>w.length>2);
@@ -266,8 +272,9 @@ function searchBooks(){
   const query=normalize(input.value);results.replaceChildren();
   moodChips.forEach(({chip,mood})=>{const active=mood===selectedMood;chip.classList.toggle('is-selected',active);chip.setAttribute('aria-pressed',String(active))});
   const matchedMoods=selectedMood?[selectedMood]:findMoods(query);
-  const matches=books.filter(book=>selectedMood?(book.moods||[]).includes(selectedMood):!query||normalize(book.title+' '+(book.author||'')).includes(query)||matchedMoods.some(mood=>(book.moods||[]).includes(mood)));
-  if(!matches.length){results.append(para('Nessun libro trovato. Prova un titolo, un autore o un’altra emozione.','rem-search-empty'));return}
+  const placeQuery=query.replace(/^(libri |storie |romanzi |ambientati |ambientato |ambientate |su |a |in |di |che parlano di )+/,'').trim();
+  const matches=books.filter(book=>selectedMood?(book.moods||[]).includes(selectedMood):!query||normalize(book.title+' '+(book.author||'')).includes(query)||matchedMoods.some(mood=>(book.moods||[]).includes(mood))||(placeQuery.length>2&&(book.locations||[]).some(loc=>normalize(loc)===placeQuery||normalize(loc).includes(placeQuery))));
+  if(!matches.length){results.append(para('Nessun libro trovato. Prova un titolo, un autore, un’emozione o un luogo.','rem-search-empty'));return}
   for(const book of matches){
    const card=button('',()=>detail(book.id));
    card.className='rem-search-result';
@@ -276,13 +283,16 @@ function searchBooks(){
    const info=[el('strong',{text:book.title}),el('span',{text:book.author||''})];
    const relevant=(book.moods||[]).filter(mood=>matchedMoods.includes(mood));
    if(relevant.length)info.push(el('span',{className:'rem-search-mood-match',text:'Potrebbe farti '+relevant.join(', ')}));
+   const relevantPlaces=(book.locations||[]).filter(loc=>placeQuery.length>2&&normalize(loc).includes(placeQuery));
+   if(relevantPlaces.length&&!selectedMood)info.push(el('span',{className:'rem-search-mood-match',text:'Luogo della storia: '+relevantPlaces.slice(0,2).join(', ')}));
    card.append(art,el('span',{className:'rem-search-result-info'},info));
    results.append(card);
   }
  };
  input.addEventListener('input',()=>{selectedMood=null;update()});
+ input.addEventListener('keydown',event=>{if(event.key==='Enter'){event.preventDefault();selectedMood=null;update();input.blur()}});
  const back=button('← Torna alla Home',home);back.className='rem-search-back';
- render(el('section',{className:'rem-search-view'},[back,el('h1',{text:'Cerca su REM'}),el('div',{className:'rem-search-field'},[input]),suggestions,results]));
+ render(el('section',{className:'rem-search-view'},[back,el('h1',{text:'Cerca su REM'}),el('div',{className:'rem-search-field'},[input,searchButton]),suggestions,placeSuggestions,results]));
  update();requestAnimationFrame(()=>input.focus({preventScroll:true}));
 }
 function profile(){
