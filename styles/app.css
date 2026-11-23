@@ -1952,3 +1952,11 @@ html body.ebook-fullscreen-active .rem-immersive-tool.rem-immersive-font{
 .rem-search-results .rem-search-result-cover{width:100%!important;aspect-ratio:2/3!important;flex:0 0 auto!important}
 .rem-search-results .rem-search-result-info{flex:1 1 auto!important;box-sizing:border-box!important;justify-content:flex-start!important}
 @media(max-width:390px){.rem-place-chips{gap:12px 9px!important}.rem-place-chip-4{margin-left:8px!important}}
+
+/* Risultati ricerca: solo copertine e suggerimenti nascosti dopo la scelta */
+.rem-search-view [hidden]{display:none!important}
+.rem-search-reset{display:inline-flex!important;align-items:center!important;justify-content:center!important;width:auto!important;margin:13px 0 18px!important;padding:9px 15px!important;border:1px solid #86cdb1!important;border-radius:14px!important;background:#1b3440!important;color:#b3ebd0!important;font-size:15px!important;font-weight:650!important}
+.rem-search-reset[hidden]{display:none!important}
+.rem-search-results .rem-search-result{display:block!important;height:auto!important;align-self:start!important;overflow:hidden!important;padding:0!important;border-radius:16px!important;min-height:0!important}
+.rem-search-results .rem-search-result-cover{display:block!important;width:100%!important;height:auto!important;aspect-ratio:2/3!important;margin:0!important;border:0!important;border-radius:15px!important;overflow:hidden!important}
+.rem-search-results .rem-search-result-cover>img.rem-search-cover-full{width:100%!important;height:100%!important;object-fit:cover!important;object-position:center!important}
