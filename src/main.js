@@ -434,7 +434,7 @@ const sizeSelect=el('select',{attrs:{'aria-label':'Dimensione testo'}});for(cons
  const immersiveNext=tool('Capitolo successivo','icon:forward','arrow',()=>{if(!next.disabled)next.click()});
  immersivePrev.disabled=prev.disabled;immersiveNext.disabled=next.disabled;
  let immersiveFont=Number(getSetting('immersiveFontSize','0'))||0;
- function adjustImmersiveFont(delta){immersiveFont=Math.max(-2,Math.min(5,immersiveFont+delta));saveSetting('immersiveFontSize',String(immersiveFont));text.style.setProperty('--rem-immersive-font-size',(1.18+immersiveFont*.12)+'rem');shrinkTool.disabled=immersiveFont<=-2;growTool.disabled=immersiveFont>=5}
+ function adjustImmersiveFont(delta){immersiveFont=Math.max(-2,Math.min(5,immersiveFont+delta));saveSetting('immersiveFontSize',String(immersiveFont));text.style.setProperty('--rem-immersive-font-size',(1.18+immersiveFont*.12)+'rem');readingShell.style.setProperty('--rem-immersive-heading-font-size',(.92+immersiveFont*.095)+'rem');shrinkTool.disabled=immersiveFont<=-2;growTool.disabled=immersiveFont>=5}
  function setImmersiveTheme(theme){readingShell.classList.toggle('rem-immersive-light',theme==='light');lightTool.setAttribute('aria-pressed',String(theme==='light'));darkTool.setAttribute('aria-pressed',String(theme==='dark'));saveSetting('immersiveTheme',theme)}
  adjustImmersiveFont(0);setImmersiveTheme(getSetting('immersiveTheme','dark')==='light'?'light':'dark');
  readingShell.prepend(immersiveHeader);readingShell.querySelector('.ebook-page-frame')?.append(fullscreenButton);readingShell.append(immersiveToolbar);
