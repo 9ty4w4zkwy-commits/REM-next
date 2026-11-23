@@ -732,3 +732,13 @@ html body.ebook-fullscreen-active .ebook-reading-shell.reading-shell[data-theme=
  background:#0b1526!important;
  background-color:#0b1526!important;
 }
+
+/* v319: chapter title follows the same seven A+/A− reader font levels. */
+.ebook-reading-shell[data-font-size="small"] .ebook-page-heading strong{font-size:1.12rem!important}
+.ebook-reading-shell[data-font-size="normal"] .ebook-page-heading strong{font-size:1.35rem!important}
+.ebook-reading-shell[data-font-size="large"] .ebook-page-heading strong{font-size:1.65rem!important}
+.ebook-reading-shell[data-font-size="xlarge"] .ebook-page-heading strong{font-size:2.02rem!important}
+.ebook-reading-shell[data-font-size="xxlarge"] .ebook-page-heading strong{font-size:2.5rem!important}
+.ebook-reading-shell[data-font-size="xxxlarge"] .ebook-page-heading strong{font-size:2.88rem!important}
+.ebook-reading-shell[data-font-size="max"] .ebook-page-heading strong{font-size:3.3rem!important}
+.ebook-reading-shell .ebook-page-heading strong{line-height:1.17!important;overflow-wrap:anywhere}
