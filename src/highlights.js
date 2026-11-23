@@ -105,6 +105,30 @@ export function createHighlights(bookId,chapterId,textNode,onSwitch,onBookmark=(
   marks=[clean];persist();draw();clearTimeout(savedNoticeTimer);selectedQuote='';saveThought.hidden=true;saveThought.disabled=false;saveThought.textContent='Salva nei miei pensieri';clearSelectionPaint();onBookmark(clean.quote,clean.start);
   window.getSelection()?.removeAllRanges();return true;
  }
+ let lastMarkTap={time:0,start:-1};
+ function removeMarkedPhrase(mark){
+  if(!mark||!textNode.contains(mark))return false;
+  const before=document.createRange();before.selectNodeContents(textNode);before.setEndBefore(mark);
+  const start=before.toString().length;
+  const end=start+mark.textContent.length;
+  const index=marks.findIndex(m=>m.start===start&&m.end===end);
+  if(index<0)return false;
+  marks.splice(index,1);persist();draw();
+  customMode=false;selectionMode=false;selectedQuote='';
+  textNode.classList.remove('rem-custom-selecting');clearSelectionPaint();
+  saveThought.hidden=true;window.getSelection()?.removeAllRanges();
+  return true;
+ }
+ function markedAt(target){return target?.closest?.('mark.rem-highlight')||null}
+ function doubleMarkTap(target){
+  const mark=markedAt(target);if(!mark||!textNode.contains(mark))return false;
+  const range=document.createRange();range.selectNodeContents(textNode);range.setEndBefore(mark);
+  const start=range.toString().length,now=Date.now();
+  if(lastMarkTap.start===start&&now-lastMarkTap.time<420){
+   lastMarkTap={time:0,start:-1};return removeMarkedPhrase(mark);
+  }
+  lastMarkTap={time:now,start};return false;
+ }
  let touch=null,lastTouch=0,suppressClickUntil=0;
  function setSaveQuote(quote){clearTimeout(savedNoticeTimer);selectedQuote=quote;saveThought.hidden=false;saveThought.disabled=false;saveThought.textContent='Salva nei miei pensieri'}
  function readNativeSelection(){
@@ -123,6 +147,7 @@ export function createHighlights(bookId,chapterId,textNode,onSwitch,onBookmark=(
  }
  function touchStart(e){
   if(e.touches.length!==1)return;
+  if(markedAt(e.target)&&doubleMarkTap(e.target)){e.preventDefault();touch=null;suppressClickUntil=Date.now()+800;return;}
   clearTimeout(longPressTimer);
   const t=e.touches[0];
   touch={x:t.clientX,y:t.clientY,moved:false,started:Date.now(),custom:false,scrolling:false};
@@ -158,6 +183,7 @@ export function createHighlights(bookId,chapterId,textNode,onSwitch,onBookmark=(
   if(selectAt(t.clientX,t.clientY)){lastTouch=Date.now();e.preventDefault()}
  }
  function click(e){
+  if(e.detail>=2&&markedAt(e.target)){e.preventDefault();removeMarkedPhrase(markedAt(e.target));return}
   if(customMode)return;
   if(enabled){if(window.getSelection()?.toString().trim()){selectionMode=true;readNativeSelection()}return}
   if(Date.now()<suppressClickUntil||Date.now()-lastTouch<650)return;
