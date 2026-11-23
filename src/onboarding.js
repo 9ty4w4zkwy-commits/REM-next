@@ -6,7 +6,7 @@ const QUESTIONS=[
  {title:'Quale di queste frasi ti rappresenta di più?',hint:'Scegli quella che senti più tua.',max:1,options:['Amo scoprire cose nuove','Mi piace capire tutto a fondo','Sono una persona sognatrice','Amo le sfide','Sono una persona sensibile','Mi piace trovare soluzioni']},
  {title:'Quando hai del tempo libero, cosa scegli più volentieri?',hint:'Scegli la risposta più spontanea.',max:1,options:['Esplorare posti nuovi','Stare con le persone che amo','Creare qualcosa','Imparare qualcosa di nuovo','Stare nella natura','Rilassarmi e ricaricarmi']},
  {title:'Cosa cerchi in un libro, adesso?',hint:'Potrai cambiare questa risposta quando vuoi.',max:1,options:['Evadere','Sorridere','Emozionarmi','Scoprire','Riflettere','Sognare']},
- {title:'Come preferisci vivere una storia?',hint:'Scegli la modalità che ti piace di più.',max:1,options:['A episodi','Ebook','Audiolibri','Libri cartacei',"Un po' di tutto",'Dipende dalla storia']},
+ {title:'Come preferisci vivere una storia?',hint:'Scegli la modalità che ti piace di più.',max:1,options:['A episodi','Ebook','Audiolibri','Libri cartacei','Mi piacciono tutte le modalità','Dipende dalla storia']},
  {title:'In quali momenti ti piacerebbe leggere o ascoltare una storia?',hint:'Puoi scegliere più risposte.',max:6,options:['Al mattino, per iniziare la giornata','Durante gli spostamenti','Durante una pausa','La sera, per rilassarmi','Prima di addormentarmi','Nel weekend o quando ho tempo libero']}
 ];
 const loadAnswers=()=>{try{const a=JSON.parse(getSetting('onboarding-answers','[]'));return Array.isArray(a)?QUESTIONS.map((_,i)=>Array.isArray(a[i])?a[i]:[]):QUESTIONS.map(()=>[])}catch{return QUESTIONS.map(()=>[])}};
