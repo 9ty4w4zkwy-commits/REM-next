@@ -14,7 +14,13 @@
       ],
       "availability": "preview",
       "coverImage": "./assets/covers/1D804752-9969-46DE-AFA2-3796C3282C19.png",
-      "chapters": []
+      "chapters": [],
+      "moods": [
+        "appassionare",
+        "sorprendere",
+        "emozionare",
+        "riflettere"
+      ]
     },
     {
       "id": "alice",
@@ -29,7 +35,12 @@
       ],
       "availability": "preview",
       "coverImage": "./assets/covers/alice.jpg?v=alice-new-20261123",
-      "chapters": []
+      "chapters": [],
+      "moods": [
+        "sognare",
+        "sorridere",
+        "sorprendere"
+      ]
     },
     {
       "id": "dracula",
@@ -44,7 +55,12 @@
       ],
       "availability": "preview",
       "coverImage": "./assets/covers/a_dramatic_gothic_book_cover_a_moody_cinematic_s.png?v=dracula-refresh-20261123b",
-      "chapters": []
+      "chapters": [],
+      "moods": [
+        "paura",
+        "suspense",
+        "appassionare"
+      ]
     },
     {
       "id": "pinocchio",
@@ -871,6 +887,11 @@
             }
           ]
         }
+      ],
+      "moods": [
+        "sorridere",
+        "emozionare",
+        "riflettere"
       ]
     },
     {
@@ -885,7 +906,12 @@
       ],
       "availability": "preview",
       "coverImage": "./assets/covers/PHOTO-2026-11-16-16-30-45%205.jpg",
-      "chapters": []
+      "chapters": [],
+      "moods": [
+        "sognare",
+        "emozionare",
+        "avventura"
+      ]
     },
     {
       "id": "giro-del-mondo",
@@ -899,7 +925,12 @@
       ],
       "availability": "preview",
       "coverImage": "./assets/covers/PHOTO-2026-11-16-16-30-45%202.jpg",
-      "chapters": []
+      "chapters": [],
+      "moods": [
+        "avventura",
+        "sorridere",
+        "sorprendere"
+      ]
     },
     {
       "id": "ventimila-leghe",
@@ -913,7 +944,12 @@
       ],
       "availability": "preview",
       "coverImage": "./assets/covers/PHOTO-2026-11-16-16-30-45%206.jpg",
-      "chapters": []
+      "chapters": [],
+      "moods": [
+        "meravigliare",
+        "avventura",
+        "suspense"
+      ]
     },
     {
       "id": "orgoglio-pregiudizio",
@@ -927,7 +963,12 @@
       ],
       "availability": "preview",
       "coverImage": "./assets/covers/PHOTO-2026-11-16-16-30-45%203.jpg",
-      "chapters": []
+      "chapters": [],
+      "moods": [
+        "innamorare",
+        "sorridere",
+        "emozionare"
+      ]
     },
     {
       "id": "mattia-pascal",
@@ -1049,7 +1090,12 @@
           "minutes": 15
         }
       ],
-      "coverImage": "./assets/covers/mattia-pascal.jpg?v=approved-20261123"
+      "coverImage": "./assets/covers/mattia-pascal.jpg?v=approved-20261123",
+      "moods": [
+        "riflettere",
+        "sorprendere",
+        "sorridere"
+      ]
     },
     {
       "id": "metamorfosi-ovidio",
@@ -2566,6 +2612,12 @@
             }
           ]
         }
+      ],
+      "moods": [
+        "meravigliare",
+        "emozionare",
+        "sorprendere",
+        "riflettere"
       ]
     }
   ]
