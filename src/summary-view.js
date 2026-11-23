@@ -35,7 +35,7 @@ export function summaryView(book,onClose,onContinue){
  book.chapters.forEach(c=>{const opt=document.createElement('option');opt.value=c.id;opt.textContent=c.title;select.append(opt)});
  select.value=getSetting('summary-chapter:'+book.id,book.chapters[0]?.id||'');
  const formats=el('div',{className:'summary-formats'});
- const ebook=button('Ebook',()=>setFormat('ebook'));
+ const ebook=button('Ebook',()=>{});
  formats.append(ebook);
  const output=el('article',{className:'summary-content reading-text',attrs:{'aria-live':'polite'}});
  const page=el('div',{className:'ebook-page-frame summary-page-frame'},[output]);
@@ -75,6 +75,6 @@ export function summaryView(book,onClose,onContinue){
   }catch(error){if(token!==generation||!root.isConnected)return;output.replaceChildren(el('h3',{text:chapter.title}),el('p',{text:'Non è stato possibile caricare il testo del capitolo.'}));status.textContent=error.message||'Errore di caricamento'}
  }
  select.addEventListener('change',renderSummary);
- root.append(title,intro,label,select,el('p',{text:'Scegli il formato del riassunto'}),formats,readingShell,status,el('div',{className:'summary-actions'},[back,finish]));
+ root.append(title,intro,label,select,el('p',{text:'Scegli il formato del riassunto'}),formats,readingShell,el('div',{className:'summary-actions'},[back,finish]));
  renderSummary();return root;
 }
