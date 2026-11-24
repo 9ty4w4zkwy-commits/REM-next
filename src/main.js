@@ -1,5 +1,5 @@
 import {createOvidioAudio} from './ovidio-audio.js?v=4';
-import {loadCatalog,loadChapter} from './catalog.js?v=giro-cover-20261124';
+import {loadCatalog,loadChapter} from './catalog.js?v=balance-4-4-20261124';
 import {loadEpisodeSegment} from './episode-segments.js?v=pinocchio-122';
 import {loadOvidioEpisode} from './ovidio-episodes.js?v=2';
 import {createCollectionsView} from './collections-view.js?v=rem-ui-209';
