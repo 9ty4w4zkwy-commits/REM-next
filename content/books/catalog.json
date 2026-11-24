@@ -932,32 +932,6 @@
       ]
     },
     {
-      "id": "mago-di-oz",
-      "title": "Il mago di Oz",
-      "author": "L. Frank Baum",
-      "description": "Un sentiero di mattoni gialli, una città di smeraldo e tre compagni indimenticabili. Dorothy attraversa un mondo straordinario alla ricerca della strada di casa.",
-      "status": "published",
-      "access": "free",
-      "homeSections": [
-        "new"
-      ],
-      "availability": "preview",
-      "coverImage": "./assets/covers/PHOTO-2026-11-16-16-30-45%205.jpg",
-      "chapters": [],
-      "moods": [
-        "sognare",
-        "emozionare",
-        "avventura"
-      ],
-      "locations": [
-        "kansas",
-        "stati uniti"
-      ],
-      "primaryLocations": [
-        "kansas"
-      ]
-    },
-    {
       "id": "giro-del-mondo",
       "title": "Il giro del mondo in 80 giorni",
       "author": "Jules Verne",
