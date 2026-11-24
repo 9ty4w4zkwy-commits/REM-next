@@ -6,7 +6,7 @@ import {createCollectionsView} from './collections-view.js?v=rem-ui-209';
 import {readCollections,isBookSaved,saveBookToCollections,removeSavedBook,attachItem,detachItem,addThought} from './collections-store.js?v=rem-mint-207';
 import {showOnboarding,onboardingCompleted} from './onboarding.js?v=secure-tester-20261124';
 import {getProgress,saveProgress,getSetting,saveSetting} from './progress.js';
-import {analyticsEnabled,getTesterCode,getTesterRegistrationState,registerTesterCode,recoverTesterCode,setAnalyticsConsent,startAnalytics,trackEvent} from './analytics.js?v=secure-tester-20261124';
+import {analyticsEnabled,getTesterCode,registerTesterCode,setAnalyticsConsent,startAnalytics,trackEvent} from './analytics.js?v=auto-tester-20261124';
 import {el,button,panel,heading} from './ui.js';
 import {chapterPicker} from './chapter-picker.js?v=compact-picker-20261124';
 import {getMode,formatSwitch,paperView,audioView} from './formats.js?v=ios-picker-20261124';
@@ -323,8 +323,7 @@ function profile(){
  const testerCode=getTesterCode();
  const testerActions=el('div',{className:'rem-tester-actions'});
  const testerSection=analyticsEnabled()?card('№','Il mio codice tester',
-  testerCode?'Codice presente sul dispositivo: '+testerCode+'. Verifica in corso…':
-  'Puoi recuperare un codice già esistente oppure richiederne uno nuovo.',testerActions):null;
+  testerCode?'Verifica del codice tester in corso…':'Assegnazione automatica del codice tester in corso…',testerActions):null;
  if(testerSection){
   const message=testerSection.querySelector('.rem-profile-description');
   const showCode=code=>{
@@ -336,50 +335,26 @@ function profile(){
    copy.classList.add('rem-profile-action');
    testerActions.replaceChildren(copy);
   };
-  const showChoices=(info='')=>{
-   message.textContent=info||'Hai già un codice? Recuperalo senza crearne un altro. Se partecipi per la prima volta, richiedi un nuovo numero.';
-   const recover=button('Recupera un codice esistente',()=>{
-    message.textContent='Per recuperare REM-001, genera un codice temporaneo nella tua Dashboard Cloudflare, alla pagina /admin/recovery. Inseriscilo qui sotto; non condividerlo con nessuno.';
-    const field=el('input',{attrs:{type:'text',placeholder:'REM-…',autocomplete:'off',autocapitalize:'characters',spellcheck:'false','aria-label':'Codice temporaneo di recupero'}});
-    field.className='rem-profile-recovery-input';
-    const confirm=button('Conferma recupero',async()=>{
-     confirm.disabled=true;
-     message.textContent='Verifica del codice temporaneo in corso…';
-     const result=await recoverTesterCode(field.value);
-     if(!testerSection.isConnected)return;
-     if(result.status==='registered')showCode(result.code);
-     else{message.textContent=result.message||'Recupero non riuscito.';confirm.disabled=false}
-    },true);
-    const cancel=button('Indietro',()=>showChoices());
-    testerActions.replaceChildren(field,confirm,cancel);
-   });
-   recover.classList.add('rem-profile-action');
-   const create=button('Sono un nuovo tester',async()=>{
-    message.textContent='Registrazione di un nuovo tester in corso…';
-    testerActions.replaceChildren();
-    const result=await registerTesterCode({create:true});
-    if(!testerSection.isConnected)return;
-    if(result.status==='registered')showCode(result.code);
-    else showChoices((result.message||'Registrazione non riuscita.')+' Puoi riprovare senza perdere i tuoi progressi.');
-   });
-   create.classList.add('rem-profile-action');
-   testerActions.replaceChildren(recover,create);
+  const retry=async()=>{
+   message.textContent='Contatto il servizio per completare la registrazione…';
+   testerActions.replaceChildren();
+   const result=await registerTesterCode({create:true});
+   if(!testerSection.isConnected||!analyticsEnabled())return;
+   if(result.status==='registered')showCode(result.code);
+   else showError(result.message);
   };
-  if(testerCode){
-   const validated=registerTesterCode();
-   void validated.then(result=>{
-    if(!testerSection.isConnected)return;
-    if(result.status==='registered')showCode(result.code);
-    else showChoices(result.message||'Il codice salvato non è più valido. Usa la procedura di recupero.');
-   });
-  }else if(['new','awaiting'].includes(getTesterRegistrationState())){
-   message.textContent='Controllo se la registrazione iniziale è stata completata…';
-   void registerTesterCode().then(result=>{
-    if(!testerSection.isConnected)return;
-    if(result.status==='registered')showCode(result.code);
-    else showChoices(result.message||'Non è ancora presente un codice confermato. Puoi recuperarlo o richiederne uno nuovo.');
-   });
-  }else showChoices();
+  const showError=(detail='')=>{
+   message.textContent=(detail&&detail!=='undefined'?detail+' ':'')+
+     'Il codice tester non risulta ancora confermato. Puoi riprovare senza rifare il questionario.';
+   const retryButton=button('Riprova registrazione',()=>{void retry()},true);
+   retryButton.classList.add('rem-profile-action');
+   testerActions.replaceChildren(retryButton);
+  };
+  void registerTesterCode().then(result=>{
+   if(!testerSection.isConnected||!analyticsEnabled())return;
+   if(result.status==='registered')showCode(result.code);
+   else showError(result.status==='needs_retry'?'':result.message);
+  });
  }
  const privacy=el('details',{className:'rem-profile-privacy-details'},[
   el('summary',{text:'◇  Privacy e dati'}),
