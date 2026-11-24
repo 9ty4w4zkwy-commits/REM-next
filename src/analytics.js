@@ -9,10 +9,31 @@ export function getTesterCode(){
  const id=Number(getSetting(ID,''));
  return Number.isSafeInteger(id)&&id>0?'REM-'+String(id).padStart(3,'0'):null;
 }
+export async function registerTesterCode(){
+ if(!analyticsEnabled())return {status:'disabled'};
+ const existing=getTesterCode();
+ if(existing)return {status:'registered',code:existing};
+ try{
+  const id=await testerId();
+  if(!analyticsEnabled())return {status:'disabled'};
+  const code=getTesterCode();
+  if(!id||!code)return {status:'error',message:'Il servizio non ha restituito un codice valido. Riprova tra poco.'};
+  return {status:'registered',code};
+ }catch(error){
+  const offline=typeof navigator!=='undefined'&&navigator.onLine===false;
+  return {status:'error',message:offline?'Il dispositivo risulta offline. Riconnettiti e riprova.':
+   error?.name==='AbortError'?'Il servizio sta impiegando troppo tempo a rispondere. Riprova tra poco.':
+   'Registrazione non riuscita: il servizio di raccolta dati non risponde. Puoi riprovare.'};
+ }
+}
 async function post(path,body){
- const r=await fetch(BASE+path,{method:'POST',mode:'cors',cache:'no-store',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
- if(!r.ok)throw Error('Analytics unavailable');
- return r.json();
+ const controller=new AbortController();
+ const timer=setTimeout(()=>controller.abort(),12000);
+ try{
+  const r=await fetch(BASE+path,{method:'POST',mode:'cors',cache:'no-store',signal:controller.signal,headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
+  if(!r.ok)throw Error('Analytics HTTP '+r.status);
+  return await r.json();
+ }finally{clearTimeout(timer)}
 }
 async function testerId(){
  if(!analyticsEnabled())return null;
