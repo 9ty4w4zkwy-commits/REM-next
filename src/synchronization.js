@@ -1,4 +1,5 @@
 import {el,button} from './ui.js';
+import {chapterPicker} from './chapter-picker.js?v=ios-picker-20261124';
 import {loadChapter} from './catalog.js';
 import {getSetting,saveSetting} from './progress.js';
 
@@ -107,7 +108,7 @@ export function phraseSearch(book,onFound){
  const textPanel=el('div',{className:'rem-paper-method-panel'},[el('p',{text:'Scrivi almeno quattro parole consecutive per una ricerca esatta, oppure descrivi una scena per ottenere suggerimenti orientativi.'})]);
  const chapterSelect=el('select',{attrs:{'aria-label':'Scegli il capitolo del cartaceo'}});
  book.chapters.forEach(c=>chapterSelect.append(el('option',{text:c.title,attrs:{value:c.id}})));
- const chapterPanel=el('div',{className:'rem-paper-method-panel'},[el('label',{text:'Capitolo raggiunto'}),chapterSelect,el('p',{className:'sync-photo-note',text:'Se non riconosci il passaggio, scegli il capitolo manualmente.'})]);
+ const chapterPanel=el('div',{className:'rem-paper-method-panel'},[el('label',{text:'Capitolo raggiunto'}),chapterPicker(chapterSelect),el('p',{className:'sync-photo-note',text:'Se non riconosci il passaggio, scegli il capitolo manualmente.'})]);
  panels.set('photo',photoPanel);panels.set('voice',voicePanel);panels.set('text',textPanel);panels.set('chapter',chapterPanel);
  for(const [id,label] of methods){
   const b=button('',()=>setMethod(id));
