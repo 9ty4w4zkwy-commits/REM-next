@@ -1,0 +1,92 @@
+name: Align Montecristo chapters
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/align-montecristo.yml'
+      - 'scripts/align_montecristo.py'
+permissions:
+  contents: read
+concurrency:
+  group: montecristo-alignment
+  cancel-in-progress: false
+jobs:
+  align:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - first: 1
+            last: 5
+          - first: 6
+            last: 10
+          - first: 11
+            last: 15
+          - first: 16
+            last: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: sudo apt-get update && sudo apt-get install -y ffmpeg
+      - run: pip install openai-whisper
+      - run: python scripts/align_montecristo.py --first ${{ matrix.first }} --last ${{ matrix.last }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: montecristo-${{ matrix.first }}-${{ matrix.last }}
+          path: |
+            audio/montecristo/*.words.json
+            audio/montecristo/capitolo-17.m4a
+          if-no-files-found: error
+  collect:
+    needs: align
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Check original inputs have not changed
+        run: |
+          git diff --quiet "${{ github.sha }}" HEAD -- content/books/montecristo/ audio/montecristo/ scripts/align_montecristo.py
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: montecristo-*
+          merge-multiple: true
+          path: alignment-output
+      - name: Validate maps and build coverage report
+        run: |
+          python - <<'PY'
+          import json, pathlib, shutil
+          root = pathlib.Path('audio/montecristo')
+          out = pathlib.Path('alignment-output')
+          report = []
+          for n in range(1,21):
+              stem = f'capitolo-{n:02d}'
+              source = out / (stem + '.words.json')
+              data = json.loads(source.read_text())
+              assert data['chapter'] == stem
+              words = data['words']
+              assert all(w['offset'] >= 0 and 0 <= w['start'] <= w['end'] <= data['duration'] + .001 for w in words)
+              assert all(a['offset'] < b['offset'] and a['start'] <= b['start'] for a,b in zip(words,words[1:]))
+              report.append({k:data[k] for k in ('chapter','coverage','duration','matched','total')})
+              if data['coverage'] >= .55 and words:
+                  shutil.copyfile(source, root / source.name)
+              else:
+                  print(f"::warning::{stem}: low coverage {data['coverage']:.1%}; map not activated")
+          shutil.copyfile(out/'capitolo-17.m4a', root/'capitolo-17.m4a')
+          (root/'alignment-report.json').write_text(json.dumps(report, indent=2) + '\n')
+          print(json.dumps(report, indent=2))
+          PY
+      - name: Save verified maps and joined chapter
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add audio/montecristo/
+          git diff --cached --quiet || (git commit -m "Add Montecristo word timelines and coverage report" && git push origin main)
