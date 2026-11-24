@@ -999,36 +999,6 @@
       ]
     },
     {
-      "id": "orgoglio-pregiudizio",
-      "title": "Orgoglio e pregiudizio",
-      "author": "Jane Austen",
-      "description": "Tra balli, equivoci e convenzioni sociali, Elizabeth Bennet e Mr Darcy scoprono quanto le prime impressioni possano ingannare.",
-      "status": "published",
-      "access": "premium",
-      "homeSections": [
-        "new"
-      ],
-      "availability": "preview",
-      "coverImage": "./assets/covers/PHOTO-2026-11-16-16-30-45%203.jpg",
-      "chapters": [],
-      "moods": [
-        "innamorare",
-        "sorridere",
-        "emozionare"
-      ],
-      "locations": [
-        "inghilterra",
-        "hertfordshire",
-        "derbyshire",
-        "regno unito"
-      ],
-      "primaryLocations": [
-        "hertfordshire",
-        "derbyshire",
-        "inghilterra"
-      ]
-    },
-    {
       "id": "mattia-pascal",
       "title": "Il fu Mattia Pascal",
       "author": "Luigi Pirandello",
