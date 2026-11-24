@@ -82,6 +82,20 @@ export function phraseSearch(book,onFound){
  const sharedText=el('div',{className:'rem-paper-text-entry'},[el('label',{text:'Frase o descrizione della scena'}),field]);
  const status=el('p',{className:'sync-status',attrs:{role:'status','aria-live':'polite'}});
  const results=el('div',{className:'sync-results rem-paper-matches'});
+ const progressLabel=el('p',{text:'Sto cercando il punto nella storia…'});
+ const progressFill=el('span',{className:'rem-paper-progress-fill'});
+ const progressTrack=el('div',{className:'rem-paper-progress-track',attrs:{role:'progressbar','aria-label':'Ricerca del punto nella storia'}},[progressFill]);
+ const progressBox=el('div',{className:'rem-paper-progress',attrs:{hidden:''}},[progressLabel,progressTrack]);
+ let photoBusy=false;
+ function updateBusy(){
+  const busy=photoBusy||searching;
+  progressBox.hidden=!busy;
+  wrap.setAttribute('aria-busy',String(busy));
+  takePhoto.disabled=busy;choosePhoto.disabled=busy;photo.disabled=busy;library.disabled=busy;
+  find.disabled=busy;
+  for(const b of methodButtons.values())b.disabled=busy;
+ }
+ let photoText='';
  const photo=el('input',{attrs:{type:'file',accept:'image/*',capture:'environment','aria-label':'Fotografa la pagina del libro'}});
  const library=el('input',{attrs:{type:'file',accept:'image/*','aria-label':'Scegli una foto dalla libreria'}});
  photo.hidden=true;library.hidden=true;photo.style.setProperty('display','none','important');library.style.setProperty('display','none','important');
@@ -91,15 +105,15 @@ export function phraseSearch(book,onFound){
  let photoRun=0;
  const handlePhoto=async input=>{
   const file=input.files?.[0];if(!file)return;
-  if(searching){input.value='';return}
-  const run=++photoRun;find.disabled=true;photo.disabled=true;library.disabled=true;takePhoto.disabled=true;choosePhoto.disabled=true;results.replaceChildren();status.textContent='';photoStatus.textContent='Preparazione della foto…';
+  if(searching||photoBusy){input.value='';return}
+  const run=++photoRun;photoBusy=true;photoText='';updateBusy();results.replaceChildren();status.textContent='';photoStatus.textContent='Fotografa una pagina ben illuminata.';
   try{
-   const extracted=await recognizePage(file,message=>{if(run===photoRun&&wrap.isConnected)photoStatus.textContent=message});
+   const extracted=await recognizePage(file);
    if(run!==photoRun||!wrap.isConnected)return;
-   field.value=extracted;photoStatus.textContent='Testo riconosciuto. Puoi correggerlo oppure verificare i passaggi suggeriti.';
-   find.disabled=false;if(active==='photo')find.click();
-  }catch(e){if(run===photoRun)photoStatus.textContent='Riconoscimento non riuscito. Riprova oppure copia il testo con Testo attivo di iPhone e incollalo qui.'}
-  finally{if(run===photoRun){photo.disabled=false;library.disabled=false;takePhoto.disabled=false;choosePhoto.disabled=false;if(!searching)find.disabled=false;photo.value='';library.value=''}}
+   photoText=extracted;photoStatus.textContent='Fotografa una pagina ben illuminata.';
+   photoBusy=false;if(active==='photo'){find.disabled=false;find.click();}
+  }catch(e){if(run===photoRun)photoStatus.textContent='Foto non leggibile. Riprova oppure usa Scrivi.'}
+  finally{if(run===photoRun){photoBusy=false;photo.value='';library.value='';updateBusy()}}
  };
  photo.addEventListener('change',()=>handlePhoto(photo));
  library.addEventListener('change',()=>handlePhoto(library));
@@ -121,7 +135,8 @@ export function phraseSearch(book,onFound){
  }
  function setMethod(id){
   active=id;methodArea.replaceChildren(panels.get(id));
-  sharedText.hidden=id==='chapter';
+  sharedText.hidden=id==='chapter'||id==='photo';
+  find.hidden=id==='photo';
   results.replaceChildren();status.textContent='';
   for(const [key,b] of methodButtons)b.setAttribute('aria-pressed',String(key===id));
  }
@@ -162,9 +177,9 @@ export function phraseSearch(book,onFound){
    const item={chapter:chapterSelect.value,title:chapterSelect.selectedOptions[0]?.textContent||'',offset:0,phrase:'',context:'Inizio del capitolo selezionato',approximate:true};
    showResults([item]);return;
   }
-  const query=field.value.trim();
+  const query=(active==='photo'?photoText:field.value).trim();
   if(!query){status.textContent='Inserisci una frase o una descrizione prima di cercare.';return}
-  if(searching)return;searching=true;find.disabled=true;status.textContent='Sto cercando nei capitoli…';results.replaceChildren();
+  if(searching||photoBusy)return;searching=true;updateBusy();status.textContent='';results.replaceChildren();
   try{
    let matches=[];const chapterTexts=new Map();
    if(normalize(query).split(/\s+/).length>=4){
@@ -179,7 +194,7 @@ export function phraseSearch(book,onFound){
      matches=[strongest];
     }else{
      let semantic=[];
-     try{semantic=await semanticLocations(book,query,message=>{if(wrap.isConnected)status.textContent=message})}catch(e){semanticFailed=true}
+     try{semantic=await semanticLocations(book,query)}catch(e){semanticFailed=true}
      const combined=lexical.map(item=>{
       const related=semantic.find(s=>s.chapter===item.chapter&&Math.abs(s.offset-item.offset)<1800);
       return {...item,rank:item.score+(related?.score||0)*.16};
@@ -193,10 +208,10 @@ export function phraseSearch(book,onFound){
    }
    if(wrap.isConnected){showResults(matches);if(semanticFailed)status.textContent+=' Ricerca semantica non disponibile: è stata usata la ricerca per parole chiave.'}
 
-  }catch(e){status.textContent='Ricerca non riuscita: '+e.message}finally{searching=false;find.disabled=false}
+  }catch(e){status.textContent='Ricerca non riuscita: '+e.message}finally{searching=false;updateBusy()}
  },true);
  find.className='rem-paper-find';
- wrap.append(title,intro,tabs,methodArea,sharedText,el('div',{className:'rem-paper-actions'},[find]),status,results);
+ wrap.append(title,intro,tabs,methodArea,sharedText,el('div',{className:'rem-paper-actions'},[find]),progressBox,status,results);
  setMethod('photo');
  return wrap;
 }
