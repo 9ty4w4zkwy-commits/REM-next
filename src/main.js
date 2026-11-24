@@ -1,5 +1,5 @@
 import {createOvidioAudio} from './ovidio-audio.js?v=4';
-import {loadCatalog,loadChapter} from './catalog.js?v=conte-20-20261124';
+import {loadCatalog,loadChapter} from './catalog.js?v=conte-description-20261124';
 import {loadEpisodeSegment} from './episode-segments.js?v=conte-20-20261124';
 import {loadOvidioEpisode} from './ovidio-episodes.js?v=2';
 import {createCollectionsView} from './collections-view.js?v=rem-ui-209';
