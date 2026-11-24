@@ -28,7 +28,7 @@ export function showOnboarding(render,home,{editing=false}={}){
   const previousScroll=preserveScroll?window.scrollY:0;
   const header=el('div',{className:'onboard-top'},[
    el('strong',{className:'onboard-brand',text:'REM',attrs:{'aria-label':'REM'}}),
-   ...(editing?[button('Annulla',home)]:[])
+   ...(editing?[button('Annulla',home)]:step>=0?[button('Lo faccio più tardi',()=>{persist();saveSetting(KEY,'later');home()})]:[])
   ]);
   const bars=el('div',{className:'onboard-progress',attrs:{'aria-label':step<0?'Introduzione':'Domanda '+(step+1)+' di '+QUESTIONS.length}},QUESTIONS.map((_,i)=>el('span',{className:i<=step?'is-active':''})));
   const nodes=[header,bars];
