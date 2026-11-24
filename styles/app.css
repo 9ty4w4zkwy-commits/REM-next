@@ -2123,3 +2123,23 @@ html body:not(.summary-fullscreen-active) .summary-shell .summary-reading-shell.
 .rem-paper-match>small{color:#b9d8cb}
 .rem-paper-match-actions button:first-child{background:#9ce4c0!important;color:#132638!important}
 .rem-paper-match-actions button:not(:first-child){background:#2a435a!important;color:#e7f6f4!important;border:1px solid #89d7b2!important}
+
+/* v paper-method-icons-20261124: spacious illuminated 2x2 locator selection. */
+html body .rem-paper-locator .rem-paper-methods{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:12px!important}
+html body .rem-paper-locator .rem-paper-method-button{
+ display:flex!important;flex-direction:column!important;justify-content:center!important;align-items:center!important;
+ gap:10px!important;min-height:112px!important;min-width:0!important;
+ border:1.5px solid #668098!important;border-radius:19px!important;
+ padding:15px 8px!important;background:#26374d!important;color:#eaf1f8!important;
+ font-size:clamp(17px,4.3vw,19px)!important;font-weight:700!important;
+ box-shadow:none!important;transition:background-color .16s,border-color .16s,box-shadow .16s,color .16s,transform .16s!important
+}
+html body .rem-paper-locator .rem-paper-method-icon{width:32px!important;height:32px!important;flex:none!important;display:block!important;color:#b5d2df!important;stroke:currentColor!important}
+html body .rem-paper-locator .rem-paper-method-label{display:block!important;line-height:1.25!important;white-space:normal!important;text-align:center!important}
+html body .rem-paper-locator .rem-paper-method-button[aria-pressed="true"]{
+ background:#a2e8c2!important;color:#10273a!important;border:2px solid #d5ffe3!important;
+ box-shadow:0 0 0 2px rgba(133,230,188,.18),0 0 19px rgba(116,229,177,.42)!important
+}
+html body .rem-paper-locator .rem-paper-method-button[aria-pressed="true"] .rem-paper-method-icon{color:#153d39!important}
+html body .rem-paper-locator .rem-paper-method-button:focus-visible{outline:2px solid #defbe8!important;outline-offset:3px!important}
+@media(max-width:360px){html body .rem-paper-locator .rem-paper-method-button{min-height:101px!important;font-size:16px!important;padding:12px 5px!important}html body .rem-paper-locator .rem-paper-method-icon{width:29px!important;height:29px!important}}
