@@ -196,9 +196,7 @@ export function phraseSearch(book,onFound){
   }catch(e){status.textContent='Ricerca non riuscita: '+e.message}finally{searching=false;find.disabled=false}
  },true);
  find.className='rem-paper-find';
- const fallback=button('Scegli direttamente il capitolo',()=>setMethod('chapter'));
- fallback.className='rem-paper-fallback';
- wrap.append(title,intro,tabs,methodArea,sharedText,el('div',{className:'rem-paper-actions'},[find,fallback]),status,results);
+ wrap.append(title,intro,tabs,methodArea,sharedText,el('div',{className:'rem-paper-actions'},[find]),status,results);
  setMethod('photo');
  return wrap;
 }

@@ -2211,3 +2211,6 @@ html body .rem-chapter-picker-list{min-height:0!important;max-height:none!import
 html body .rem-chapter-picker-option{min-height:56px!important;padding:11px 15px!important;gap:8px!important;font-size:clamp(15px,3.8vw,18px)!important;line-height:1.35!important}
 html body .rem-chapter-picker-check{width:22px!important;font-size:20px!important}
 @media(max-width:370px){html body .rem-chapter-picker-overlay{padding:20px 24px!important}html body .rem-chapter-picker-dialog{max-height:52dvh!important}}
+
+/* Direct episode cards: use the page scroll, not a nested touch scroller. */
+.rem-episode-list-open{display:grid;gap:14px;min-width:0;margin:12px 0 20px}.rem-episode-list-open .episode-card{min-width:0}.episode-card .episode-title-open{display:block;text-align:left;background:transparent;border:0;padding:0;color:inherit;font:inherit;line-height:inherit;cursor:pointer;white-space:normal;touch-action:manipulation}.episode-card .episode-title-open:focus-visible{outline:2px solid #80d4ae;outline-offset:4px}.rem-episode-list-open .episode-actions button{touch-action:manipulation}
