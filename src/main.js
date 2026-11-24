@@ -338,7 +338,7 @@ function profile(){
   const retry=async()=>{
    message.textContent='Contatto il servizio per completare la registrazione…';
    testerActions.replaceChildren();
-   const result=await registerTesterCode({create:true});
+   const result=await registerTesterCode({create:!getTesterCode()});
    if(!testerSection.isConnected||!analyticsEnabled())return;
    if(result.status==='registered')showCode(result.code);
    else showError(result.message);
