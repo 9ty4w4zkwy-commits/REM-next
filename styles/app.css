@@ -2088,3 +2088,13 @@ html body .summary-shell .summary-reading-shell.reading-shell[data-theme="moon"]
   padding:0 3px!important;
  }
 }
+
+/* Summary outer frame follows reader theme, avoiding a white surround in dark mode. */
+html body:not(.summary-fullscreen-active) .summary-shell .summary-reading-shell.reading-shell[data-theme="moon"]{
+  background:#142234!important;background-color:#142234!important;
+  border-color:#142234!important;color:#f3eee4!important;
+}
+html body:not(.summary-fullscreen-active) .summary-shell .summary-reading-shell.reading-shell[data-theme="sun"]{
+  background:#fff!important;background-color:#fff!important;
+  border-color:#fff!important;color:#191c21!important;
+}
