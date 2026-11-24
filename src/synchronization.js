@@ -29,7 +29,8 @@ export async function findPhrase(book,query){
 // Return likely story locations when editions use different wording.
 // These are editorial suggestions, never word-accurate matches.
 async function findStoryLocations(book,query){
- const terms=[...new Set(normalize(query).split(/\s+/).filter(x=>x.length>3))];
+ const stop=new Set(['della','delle','degli','dallo','dalla','anche','questo','questa','quello','quella','sono','stato','stata','quando','mentre','prima','dopo','come','dove','dentro','avrebbe','essere','aveva','avevano','dalla','nella','nelle','tutti','tutte','molto','perche','storia']);
+ const terms=[...new Set(normalize(query).split(/\s+/).filter(x=>x.length>3&&!stop.has(x)))];
  if(!terms.length)return [];
  const candidates=[];
  for(const chapter of book.chapters){
@@ -37,10 +38,12 @@ async function findStoryLocations(book,query){
   try{content=await loadChapter(book,chapter)}catch{continue}
   const paragraphs=content.split(/\n\s*\n/);
   const heading=normalize(chapter.title||'');
-  let start=0;
+  let nextStart=0;
   for(const paragraph of paragraphs){
+   const start=Math.max(0,content.indexOf(paragraph,nextStart));
+   nextStart=start+paragraph.length;
    const clean=normalize(paragraph);
-   if(clean.length<20){start+=paragraph.length+2;continue}
+   if(clean.length<20)continue
    const overlap=terms.filter(t=>clean.includes(t)).length;
    const headingOverlap=terms.filter(t=>heading.includes(t)).length;
    const score=overlap+headingOverlap*2;
@@ -50,7 +53,6 @@ async function findStoryLocations(book,query){
     const offset=Math.max(0,start+Math.min(match,paragraph.length-1));
     candidates.push({chapter:chapter.id,title:chapter.title,offset,phrase:paragraph.trim().slice(0,110),context:paragraph.replace(/\s+/g,' ').slice(0,180),score,approximate:true});
    }
-   start+=paragraph.length+2;
   }
  }
  return candidates.sort((a,b)=>b.score-a.score).slice(0,4);
