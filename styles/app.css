@@ -2059,3 +2059,17 @@ body.rem-onboarding-gate .onboard-screen{max-width:680px;width:100%;min-height:1
 .onboard-intro .onboard-consent-actions button{width:100%!important;min-height:56px!important;box-sizing:border-box!important;margin:0!important;border-radius:16px!important;padding:1rem!important;white-space:normal!important}
 .onboard-intro .onboard-consent-actions button.primary{background:#86dfb2!important;color:#102333!important;border:0!important;font-weight:800!important}
 .onboard-intro .onboard-consent-actions button:not(.primary){background:#23364c!important;color:#f3f6f9!important;border:1px solid #60768d!important}
+
+/* v summary-contrast-20261124: pair summary text colour with page background in both reader themes. */
+html body .summary-shell .summary-reading-shell.reading-shell[data-theme="sun"] .summary-page-frame.ebook-page-frame,
+html body .summary-shell .summary-reading-shell.reading-shell[data-theme="sun"] .summary-content.reading-text{
+ background:#fff!important;background-color:#fff!important;color:#191c21!important;color-scheme:light!important;
+}
+html body .summary-shell .summary-reading-shell.reading-shell[data-theme="moon"] .summary-page-frame.ebook-page-frame,
+html body .summary-shell .summary-reading-shell.reading-shell[data-theme="moon"] .summary-content.reading-text{
+ background:#142234!important;background-color:#142234!important;color:#f3eee4!important;color-scheme:dark!important;
+}
+html body .summary-shell .summary-reading-shell.reading-shell[data-theme="sun"] .summary-content h3,
+html body .summary-shell .summary-reading-shell.reading-shell[data-theme="sun"] .summary-content p{color:#191c21!important}
+html body .summary-shell .summary-reading-shell.reading-shell[data-theme="moon"] .summary-content h3,
+html body .summary-shell .summary-reading-shell.reading-shell[data-theme="moon"] .summary-content p{color:#f3eee4!important}
