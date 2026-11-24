@@ -7,7 +7,7 @@
       "author": "Alexandre Dumas",
       "description": "Un giovane tradito, una libertà perduta e un segreto nascosto tra le mura di una prigione. Quando il destino gli offre una seconda possibilità, la sete di vendetta rischia di cambiare ogni cosa.",
       "status": "published",
-      "access": "free",
+      "access": "premium",
       "homeSections": [
         "recommended",
         "new"
@@ -65,7 +65,7 @@
       "author": "Bram Stoker",
       "description": "Un castello isolato, un conte misterioso e un'ombra che attraversa la notte. Quando il terrore si insinua nelle vite di chi lo incontra, distinguere il reale dall'incubo diventa impossibile.",
       "status": "published",
-      "access": "free",
+      "access": "premium",
       "homeSections": [
         "recommended",
         "new"
@@ -937,7 +937,7 @@
       "author": "Jules Verne",
       "description": "Una scommessa impossibile porta Phileas Fogg e Passepartout attraverso continenti, imprevisti e incontri sorprendenti, in una corsa contro il tempo.",
       "status": "published",
-      "access": "free",
+      "access": "premium",
       "homeSections": [
         "new"
       ],
