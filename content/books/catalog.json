@@ -1782,73 +1782,85 @@
           "id": "libro-01-capitolo-01",
           "title": "Libro I · Capitolo 1 — Prima che esistesse il mondo",
           "file": "libro-01-capitolo-01 2.txt",
-          "minutes": 8
+          "minutes": 8,
+          "summary": "Il racconto delle Metamorfosi comincia prima della nascita del mondo ordinato, quando terra, acqua, aria e fuoco sono ancora mescolati in una massa confusa chiamata caos. Nessun elemento possiede un luogo preciso e le forze della natura si ostacolano a vicenda. Un potere divino interviene a separarle e a dare forma all'universo. Il cielo si distingue dalla terra, le acque trovano il proprio corso e i venti vengono disposti nelle diverse regioni. Compaiono montagne, pianure, fiumi, mari e stagioni, ciascuno con un equilibrio che rende possibile la vita. Gli animali occupano gli spazi adatti alla loro natura. Infine nasce l'essere umano, forse creato dal dio ordinatore o modellato da Prometeo. A differenza degli altri viventi, l'uomo può alzare lo sguardo verso il cielo. Ovidio presenta così un mondo che nasce da una grande trasformazione e annuncia il tema che attraverserà tutta l'opera."
         },
         {
           "id": "libro-01-capitolo-02",
           "title": "Libro I · Capitolo 2 — Le quattro età dell’umanità",
           "file": "libro-01-capitolo-02 2.txt",
-          "minutes": 8
+          "minutes": 8,
+          "summary": "All'inizio dell'umanità esiste l'età dell'oro, un tempo di pace in cui gli uomini vivono senza paura, guerre o leggi imposte con la forza. La terra offre spontaneamente i suoi frutti e nessuno sente il bisogno di possedere ciò che appartiene agli altri. Quando il potere passa da Saturno a Giove comincia l'età dell'argento: arrivano le stagioni, il freddo e il caldo, e gli uomini devono costruire ripari e lavorare la terra. Nell'età del bronzo la natura umana diventa più aspra e incline alla violenza. Infine l'età del ferro porta con sé avidità, inganno e sfiducia. Gli uomini scavano per cercare ricchezze, varcano i mari per conquistarne altre e si combattono. Anche i legami familiari vengono corrotti dall'interesse e dalla paura. Il capitolo racconta il progressivo allontanamento dall'innocenza originaria e prepara la reazione degli dèi davanti alla malvagità umana."
         },
         {
           "id": "libro-01-capitolo-03",
           "title": "Libro I · Capitolo 3 — I giganti e la violenza degli uomini",
           "file": "libro-01-capitolo-03 2.txt",
-          "minutes": 8
+          "minutes": 8,
+          "summary": "La violenza degli uomini raggiunge il suo culmine nel mito dei Giganti, creature che non si accontentano di vivere sulla terra e vogliono assalire il regno degli dèi. Per arrivare fino al cielo accumulano montagne una sopra l'altra, tentando di costruire una via verso le dimore divine. Giove interviene prima che l'impresa riesca: scaglia i fulmini contro quella costruzione smisurata e provoca il crollo delle rocce. I Giganti vengono schiacciati dalle stesse montagne che avevano sollevato. Ma la loro sconfitta non cancella la violenza. La Terra, intrisa del sangue dei propri figli, dà origine a una nuova stirpe dall'aspetto umano. Questi esseri ereditano però l'inclinazione dei Giganti alla ferocia e alle stragi. Il racconto mostra come la ribellione contro l'ordine divino continui a lasciare conseguenze sulla terra, anche dopo la sconfitta di chi l'ha provocata."
         },
         {
           "id": "libro-01-capitolo-04",
           "title": "Libro I · Capitolo 4 — Licaone: l’empietà e l’ira di Giove",
           "file": "libro-01-capitolo-04 2.txt",
-          "minutes": 8
+          "minutes": 8,
+          "summary": "Giove osserva dal cielo l'umanità diventata sempre più violenta e decide di riunire gli dèi per discutere una punizione. A convincerlo è soprattutto la vicenda di Licaone, sovrano che ha sfidato apertamente la sua autorità. Il dio era sceso sulla terra in forma umana per verificare di persona la malvagità degli uomini, ma Licaone aveva reagito cercando di ucciderlo durante il sonno. Non contento, aveva anche preparato un pasto mostruoso per mettere alla prova l'identità del visitatore. Giove riconosce l'inganno, distrugge la casa del sovrano e lo trasforma in un lupo, lasciando che il suo aspetto rifletta la ferocia che già possedeva. Tornato tra gli dèi, annuncia di voler cancellare l'umanità corrotta. Alcune divinità temono però che la terra rimanga deserta. Il capitolo si chiude sull'imminenza di un castigo che minaccia l'intero mondo."
         },
         {
           "id": "libro-01-capitolo-05",
           "title": "Libro I · Capitolo 5 — Il diluvio",
           "file": "libro-01-capitolo-05 2.txt",
-          "minutes": 8
+          "minutes": 8,
+          "summary": "Giove decide di distruggere l'umanità non con il fuoco, che potrebbe incendiare anche il cielo, ma con un diluvio. Libera piogge incessanti e chiede a Nettuno di far straripare i corsi d'acqua. I fiumi rompono gli argini, il mare avanza sulla terra e ogni confine tra campi, città e coste scompare. Le navi passano sopra luoghi che prima erano strade e i pesci nuotano tra gli alberi sommersi. Uomini e animali cercano invano di salvarsi sui punti più alti, ma le acque raggiungono quasi ogni cosa. La catastrofe cancella le opere e le abitudini dell'umanità. Sopravvivono soltanto Deucalione e Pirra, due persone giuste che affrontano la tempesta su una piccola imbarcazione. Trasportati dalle onde, raggiungono infine le alture del Parnaso. Il mondo è diventato un'immensa distesa d'acqua, ma la loro sopravvivenza rende possibile un nuovo inizio."
         },
         {
           "id": "libro-01-capitolo-06",
           "title": "Libro I · Capitolo 6 — Deucalione e Pirra: una nuova umanità",
           "file": "libro-01-capitolo-06 2.txt",
-          "minutes": 8
+          "minutes": 8,
+          "summary": "Quando il diluvio si placa, Deucalione e Pirra scoprono di essere rimasti soli in un mondo devastato. La loro salvezza commuove gli dèi, che lasciano ritirare le acque, ma la coppia non sa come ricostruire l'umanità. Si rivolge allora a un oracolo, dal quale riceve un'indicazione apparentemente incomprensibile: gettare dietro le spalle le ossa della propria grande madre. Deucalione comprende che la madre comune è la Terra e che le sue ossa sono le pietre. I due cominciano quindi a lanciarle alle proprie spalle, seguendo l'ordine divino. Le pietre si ammorbidiscono e prendono gradualmente forma umana: da quelle lanciate da Deucalione nascono uomini, da quelle di Pirra nascono donne. Intanto il calore del sole risveglia le forze vitali del suolo ancora umido e compaiono altre creature. La nuova umanità nasce così dalla durezza della pietra e dalla perseveranza dei due sopravvissuti."
         },
         {
           "id": "libro-01-capitolo-07",
           "title": "Libro I · Capitolo 7 — Pitone e la vittoria di Apollo",
           "file": "libro-01-capitolo-07 2.txt",
-          "minutes": 8
+          "minutes": 8,
+          "summary": "Dopo il diluvio la terra ancora umida genera creature nuove, alcune delle quali sconosciute e mostruose. Fra queste appare Pitone, un enorme serpente che sembra conservare la violenza del caos da cui il mondo è appena uscito. Apollo decide di affrontarlo e lo colpisce ripetutamente con le frecce fino a ucciderlo. È una vittoria straordinaria, perché il dio non aveva ancora impiegato le sue armi contro un nemico tanto terribile. Per conservare il ricordo dell'impresa, Apollo istituisce dei giochi solenni chiamati Pizi, nei quali gli atleti potranno distinguersi per forza e abilità. Ai vincitori viene assegnata una corona di quercia. L'alloro, destinato a diventare il simbolo del dio, non appartiene ancora alla sua storia. La conclusione del racconto prepara infatti un'altra trasformazione: Apollo, pieno d'orgoglio per il trionfo sul serpente, sta per scoprire che non tutte le ferite possono essere inflitte o respinte con un arco."
         },
         {
           "id": "libro-01-capitolo-08",
           "title": "Libro I · Capitolo 8 — Apollo e Dafne",
           "file": "libro-01-capitolo-08 2.txt",
-          "minutes": 8
+          "minutes": 8,
+          "summary": "Dopo aver ucciso Pitone, Apollo si mostra troppo sicuro della propria superiorità e deride le armi di Cupido. Il giovane dio dell'amore reagisce usando due frecce diverse: una fa nascere in Apollo una passione irresistibile per Dafne, l'altra rende la ninfa incapace di ricambiarlo. Dafne, figlia del fiume Peneo, desidera vivere libera e lontana dal matrimonio. Apollo la insegue nei boschi, cercando inutilmente di convincerla, mentre lei fugge sempre più spaventata. Quando sta per essere raggiunta, Dafne invoca l'aiuto del padre e chiede di perdere l'aspetto che ha suscitato il desiderio del dio. Il suo corpo si trasforma allora in un albero di alloro: i piedi diventano radici, le braccia rami e il volto scompare sotto la corteccia. Apollo non ottiene l'amore della giovane, ma consacra l'alloro al proprio culto. La metamorfosi conserva così il rifiuto di Dafne e trasforma una fuga disperata in un simbolo destinato a durare."
         },
         {
           "id": "libro-01-capitolo-09",
           "title": "Libro I · Capitolo 9 — Giove e Io",
           "file": "libro-01-capitolo-09 2.txt",
-          "minutes": 8
+          "minutes": 8,
+          "summary": "Giove si innamora di Io, figlia del dio fluviale Inaco, e cerca di nascondere il proprio comportamento a Giunone. Per sottrarsi allo sguardo della moglie copre la terra con una nube innaturale, ma la dea si insospettisce e scende a controllare. Giove trasforma allora Io in una giovenca, sperando che il nuovo aspetto nasconda la verità. Giunone capisce che qualcosa non va e pretende che l'animale le venga donato. Lo affida poi alla sorveglianza di Argo, un custode con cento occhi, capace di vegliare anche mentre riposa. Io conserva il pensiero e i ricordi umani ma non riesce più a parlare o a compiere gesti familiari. Quando incontra il padre, tenta disperatamente di farsi riconoscere. Riesce a comunicare la propria identità, ma nemmeno Inaco può liberarla. La trasformazione, nata come espediente di Giove, si è trasformata in una lunga prigionia per la giovane."
         },
         {
           "id": "libro-01-capitolo-10",
           "title": "Libro I · Capitolo 10 — Argo, Mercurio e la storia di Siringa",
           "file": "libro-01-capitolo-10 2.txt",
-          "minutes": 8
+          "minutes": 8,
+          "summary": "Io è ancora prigioniera nel corpo di una giovenca, sorvegliata senza tregua da Argo. Giove, impietosito dalle sue sofferenze, manda Mercurio a liberarla. Il dio si presenta al custode come un pastore e comincia a suonare una musica dolce per attirarne l'attenzione e provocarne il sonno. Argo, incuriosito da uno strumento insolito, ascolta anche la storia della ninfa Siringa. La giovane aveva respinto l'amore di Pan e, inseguita fino a un fiume, era stata trasformata in canne. Il dio aveva poi ricavato da quelle canne uno strumento musicale. Il racconto e la melodia fanno lentamente chiudere gli occhi di Argo. Quando anche gli ultimi restano addormentati, Mercurio lo uccide e pone fine alla sua sorveglianza. Io viene così liberata dal guardiano, ma non ha ancora riacquistato la forma umana. La gelosia di Giunone non ha smesso di perseguitarla."
         },
         {
           "id": "libro-01-capitolo-11",
           "title": "Libro I · Capitolo 11 — La liberazione di Io",
           "file": "libro-01-capitolo-11 2.txt",
-          "minutes": 8
+          "minutes": 8,
+          "summary": "Dopo l'uccisione di Argo, Giunone non rinuncia a punire Io. La dea conserva gli occhi del suo fedele custode come ornamento del pavone e manda un nuovo tormento contro la giovane trasformata in giovenca. Io è costretta a fuggire senza sosta attraverso terre lontane, sempre incapace di parlare e di tornare alla vita di prima. Il suo viaggio doloroso termina sulle rive del Nilo, in Egitto, dove cade in ginocchio e implora finalmente misericordia. Giove intercede presso Giunone e ottiene che la persecuzione cessi. Poco a poco il corpo della giovane si trasforma di nuovo: il pelo scompare, le corna si ritirano e la voce umana ritorna. Io recupera la propria identità dopo aver attraversato la paura e la solitudine. In Egitto riceverà onori divini e il suo destino, nato da una violenza subita, prenderà una forma inattesa."
         },
         {
           "id": "libro-01-capitolo-12",
           "title": "Libro I · Capitolo 12 — Epafo e Fetonte",
           "file": "libro-01-capitolo-12 2.txt",
-          "minutes": 8
+          "minutes": 8,
+          "summary": "Dopo aver ritrovato l'aspetto umano, Io vive in Egitto e diventa oggetto di venerazione. Suo figlio Epafo, nato dall'unione con Giove, cresce con la certezza della propria origine divina. Un giorno discute con Fetonte, che si vanta di essere figlio del Sole. Epafo mette in dubbio questa discendenza e ferisce profondamente l'orgoglio del ragazzo. Fetonte torna dalla madre Climene e le chiede una prova che possa smentire l'accusa. La donna conferma che il padre è davvero Febo, il dio che percorre il cielo guidando il carro luminoso. Per convincere il figlio, lo invita a presentarsi direttamente al palazzo del Sole e a chiedere spiegazioni. Fetonte decide di affrontare il viaggio senza indugiare. Attraversa terre lontane e si dirige verso la dimora del dio, deciso a ottenere una certezza che nessuno possa più contestare. La disputa fra due giovani apre così una vicenda destinata ad avere conseguenze per tutto il mondo."
         },
         {
           "id": "libro-02-capitolo-01",
