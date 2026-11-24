@@ -1,4 +1,5 @@
-import {recognizePage,semanticLocations} from './paper-intelligence.js?v=paper-index-20261124';
+import {rankScenes} from './paper-scene-rank.js?v=paper-scene-20261124';
+import {recognizePage,semanticLocations} from './paper-intelligence.js?v=paper-scene-20261124';
 import {el,button} from './ui.js';
 import {chapterPicker} from './chapter-picker.js?v=compact-picker-20261124';
 import {loadChapter} from './catalog.js';
@@ -31,34 +32,15 @@ export async function findPhrase(book,query,chapterTexts=new Map()){
 
 // Return likely story locations when editions use different wording.
 // These are editorial suggestions, never word-accurate matches.
-async function findStoryLocations(book,query){
- const stop=new Set(['della','delle','degli','dallo','dalla','anche','questo','questa','quello','quella','sono','stato','stata','quando','mentre','prima','dopo','come','dove','dentro','avrebbe','essere','aveva','avevano','dalla','nella','nelle','tutti','tutte','molto','perche','storia']);
- const terms=[...new Set(normalize(query).split(/\s+/).filter(x=>x.length>3&&!stop.has(x)))];
- if(!terms.length)return [];
- const candidates=[];
+async function findStoryLocations(book,query,chapterTexts=new Map()){
+ const chapters=[];
  for(const chapter of book.chapters){
-  let content;
-  try{content=await loadChapter(book,chapter)}catch{continue}
-  const paragraphs=content.split(/\n\s*\n/);
-  const heading=normalize(chapter.title||'');
-  let nextStart=0;
-  for(const paragraph of paragraphs){
-   const start=Math.max(0,content.indexOf(paragraph,nextStart));
-   nextStart=start+paragraph.length;
-   const clean=normalize(paragraph);
-   if(clean.length<20)continue
-   const overlap=terms.filter(t=>clean.includes(t)).length;
-   const headingOverlap=terms.filter(t=>heading.includes(t)).length;
-   const score=overlap+headingOverlap*2;
-   if(score>=Math.min(2,terms.length)){
-    const first=terms.find(t=>clean.includes(t));
-    const match=first?clean.indexOf(first):0;
-    const offset=Math.max(0,start+Math.min(match,paragraph.length-1));
-    candidates.push({chapter:chapter.id,title:chapter.title,offset,phrase:paragraph.trim().slice(0,110),context:paragraph.replace(/\s+/g,' ').slice(0,180),score,approximate:true});
-   }
-  }
+  try{
+   if(!chapterTexts.has(chapter.id))chapterTexts.set(chapter.id,await loadChapter(book,chapter));
+   chapters.push({...chapter,content:chapterTexts.get(chapter.id)});
+  }catch{}
  }
- return candidates.sort((a,b)=>b.score-a.score).slice(0,4);
+ return rankScenes(chapters,query);
 }
 export function phraseSearch(book,onFound){
  const wrap=el('section',{className:'sync-search rem-paper-locator'});
@@ -181,19 +163,27 @@ export function phraseSearch(book,onFound){
    if(normalize(query).split(/\s+/).length>=4){
     const exact=await findPhrase(book,query,chapterTexts);
     matches=(exact.matches||[]).slice(0,4);
-    if(!matches.length&&normalize(query).split(' ').length>=20){
-     const tokens=normalize(query).split(' ');
-     for(const from of [0,Math.floor(tokens.length/3),Math.floor(tokens.length/2)]){
-      const anchor=await findPhrase(book,tokens.slice(from,from+10).join(' '),chapterTexts);
-      if(anchor.matches?.length===1){matches=anchor.matches.map(x=>({...x,approximate:true}));break}
-     }
-    }
    }
    let semanticFailed=false;
    if(!matches.length){
-    try{matches=await semanticLocations(book,query,message=>{if(wrap.isConnected)status.textContent=message})}catch(e){semanticFailed=true}
+    const lexical=await findStoryLocations(book,query,chapterTexts);
+    const strongest=lexical[0];
+    if(strongest&&strongest.coverage>=.52&&strongest.shared>=3&&(!lexical[1]||strongest.score>lexical[1].score*1.16)){
+     matches=[strongest];
+    }else{
+     let semantic=[];
+     try{semantic=await semanticLocations(book,query,message=>{if(wrap.isConnected)status.textContent=message})}catch(e){semanticFailed=true}
+     const combined=lexical.map(item=>{
+      const related=semantic.find(s=>s.chapter===item.chapter&&Math.abs(s.offset-item.offset)<1800);
+      return {...item,rank:item.score+(related?.score||0)*.16};
+     });
+     for(const item of semantic){
+      if(!combined.some(s=>s.chapter===item.chapter&&Math.abs(s.offset-item.offset)<1800))combined.push({...item,rank:item.score*.38});
+     }
+     combined.sort((a,b)=>b.rank-a.rank);
+     matches=combined.filter((item,i)=>item.rank>=combined[0].rank*.80&&!combined.slice(0,i).some(s=>s.chapter===item.chapter&&Math.abs(s.offset-item.offset)<1800)).slice(0,3);
+    }
    }
-   if(!matches.length)matches=await findStoryLocations(book,query);
    if(wrap.isConnected){showResults(matches);if(semanticFailed)status.textContent+=' Ricerca semantica non disponibile: è stata usata la ricerca per parole chiave.'}
 
   }catch(e){status.textContent='Ricerca non riuscita: '+e.message}finally{searching=false;find.disabled=false}

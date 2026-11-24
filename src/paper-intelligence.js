@@ -29,7 +29,22 @@ export async function recognizePage(file,onProgress=()=>{}){
  let worker;
  try{
   worker=await lib.createWorker('ita',1,{logger:m=>{if(m.status==='recognizing text')onProgress('Lettura foto: '+Math.round(m.progress*100)+'%');else onProgress('Preparazione riconoscimento testo…')}});
-  const result=await worker.recognize(canvas);
+  const rotate=(angle)=>{
+   const c=document.createElement('canvas');const sideways=Math.abs(angle)===90;
+   c.width=sideways?canvas.height:canvas.width;c.height=sideways?canvas.width:canvas.height;
+   const ctx=c.getContext('2d');ctx.translate(c.width/2,c.height/2);ctx.rotate(angle*Math.PI/180);ctx.drawImage(canvas,-canvas.width/2,-canvas.height/2);return c;
+  };
+  const quality=r=>{const words=r.data.text.match(/[\p{L}]{3,}/gu)||[];return (r.data.confidence||0)*Math.min(1,words.length/60)};
+  let result=await worker.recognize(canvas);
+  if(quality(result)<65){
+   for(const angle of [-90,90,180]){
+    onProgress('Verifica orientamento della pagina…');
+    const rotated=rotate(angle);const attempt=await worker.recognize(rotated);rotated.width=rotated.height=1;
+    if(quality(attempt)>quality(result))result=attempt;
+    if(quality(result)>=80)break;
+   }
+  }
+  if(quality(result)<45)throw Error('Foto poco leggibile');
   const text=result.data.text.replace(/-\s*\n\s*/g,'').replace(/\s+/g,' ').trim();
   if(text.split(' ').length<8)throw Error('Testo insufficiente: fotografa la pagina con più luce e nitidezza');
   return text;
