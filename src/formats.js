@@ -1,7 +1,7 @@
 import {loadWordTimeline,secondsForOffset,offsetForSeconds} from './audio-word-timeline.js';
 import {getSetting,saveSetting} from './progress.js';
 import {el,button,panel} from './ui.js';
-import {chapterPicker} from './chapter-picker.js?v=ios-picker-20261124';
+import {chapterPicker} from './chapter-picker.js?v=compact-picker-20261124';
 const ICON_PATHS={
 paper:['M12 7c-2.5-2-5.5-2.6-9-2v14c3.5-.6 6.5 0 9 2','M12 7c2.5-2 5.5-2.6 9-2v14c-3.5-.6-6.5 0-9 2','M12 7v14'],
 ebook:['M6 2.5h12a2 2 0 0 1 2 2v15a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-15a2 2 0 0 1 2-2Z','M10 18.5h4'],
