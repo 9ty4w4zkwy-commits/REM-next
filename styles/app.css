@@ -2183,3 +2183,20 @@ html body .paper-sync-shell .paper-resume-note>p:last-child{margin-bottom:0!impo
 .rem-profile-page .rem-tester-actions .rem-profile-action{width:100%;max-width:100%;min-height:48px;white-space:normal;text-align:center}
 .rem-profile-page .rem-profile-recovery-input{width:100%;max-width:100%;min-height:50px;box-sizing:border-box;border:1px solid #7994a8;border-radius:13px;background:#142942;color:#f7fbff;padding:12px 14px;font:inherit;letter-spacing:.035em}
 .rem-profile-page .rem-profile-recovery-input:focus-visible{outline:2px solid #a5e5c4;outline-offset:2px}
+
+/* Cross-platform iPhone-like chapter dropdown, November 2026 */
+.rem-chapter-picker{position:relative;min-width:0;width:100%}
+.rem-chapter-picker-native{position:absolute!important;width:1px!important;height:1px!important;opacity:0!important;pointer-events:none!important;clip-path:inset(50%)!important;overflow:hidden!important}
+html body .rem-chapter-picker-trigger{display:flex!important;align-items:center!important;justify-content:space-between!important;gap:12px!important;box-sizing:border-box!important;width:100%!important;min-width:0!important;min-height:52px!important;padding:12px 16px!important;color:#f8faff!important;background:#1b2c43!important;border:1.5px solid #86daba!important;border-radius:13px!important;box-shadow:0 0 0 2px rgba(134,218,186,.13)!important;text-align:left!important;font:inherit!important;font-size:clamp(15px,4vw,18px)!important;font-weight:500!important;white-space:normal!important}
+.rem-chapter-picker-value{display:block;min-width:0;flex:1;white-space:normal;line-height:1.35}
+.rem-chapter-picker-arrow{flex:none;font-size:1.35rem;color:#e5f9f3}
+.rem-chapter-picker-overlay{position:fixed;inset:0;z-index:2147483640;display:flex;align-items:center;justify-content:center;padding:20px max(18px,env(safe-area-inset-right)) 20px max(18px,env(safe-area-inset-left));background:rgba(8,14,25,.42);overscroll-behavior:contain}
+.rem-chapter-picker-dialog{box-sizing:border-box;width:min(440px,100%);max-height:min(70dvh,690px);border-radius:30px;overflow:hidden;background:rgba(246,247,251,.94);-webkit-backdrop-filter:blur(24px) saturate(145%);backdrop-filter:blur(24px) saturate(145%);border:1px solid rgba(255,255,255,.55);box-shadow:0 16px 50px rgba(0,0,0,.28)}
+.rem-chapter-picker-list{max-height:min(70dvh,690px);overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+html body .rem-chapter-picker-option{display:flex!important;align-items:center!important;gap:12px!important;box-sizing:border-box!important;width:100%!important;min-height:64px!important;padding:14px 20px!important;margin:0!important;background:transparent!important;border:0!important;border-bottom:1px solid rgba(60,65,80,.16)!important;border-radius:0!important;box-shadow:none!important;color:#141923!important;font:inherit!important;font-size:clamp(17px,4.2vw,20px)!important;font-weight:400!important;line-height:1.4!important;text-align:left!important;white-space:normal!important}
+html body .rem-chapter-picker-option:last-child{border-bottom:0!important}
+html body .rem-chapter-picker-option.is-selected{font-weight:500!important}
+.rem-chapter-picker-check{display:inline-flex;flex:none;justify-content:center;align-items:center;width:26px;font-size:23px;font-weight:750;color:#1a242f}
+.rem-chapter-picker-option-text{flex:1;min-width:0;overflow-wrap:anywhere}
+html body .rem-chapter-picker-option:focus-visible{outline:3px solid #76a6f3!important;outline-offset:-4px!important;background:rgba(150,185,242,.2)!important}
+@media(prefers-reduced-motion:reduce){.rem-chapter-picker-dialog{scroll-behavior:auto}}
