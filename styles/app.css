@@ -2177,3 +2177,9 @@ html body .paper-sync-shell .paper-resume-note{display:block!important;color:#cb
 html body .paper-sync-shell .paper-resume-note>strong{display:block!important;color:#F2B8C6!important;margin:0 0 6px!important;font-size:.88rem!important}
 html body .paper-sync-shell .paper-resume-note>p{margin:0 0 8px!important;color:#cbd2df!important;font-size:inherit!important;line-height:inherit!important}
 html body .paper-sync-shell .paper-resume-note>p:last-child{margin-bottom:0!important}
+
+/* tester credentials and recovery field — 2026-11-24 */
+.rem-profile-page .rem-tester-actions{display:flex;flex-direction:column;align-items:stretch;gap:12px;margin-top:12px;max-width:100%}
+.rem-profile-page .rem-tester-actions .rem-profile-action{width:100%;max-width:100%;min-height:48px;white-space:normal;text-align:center}
+.rem-profile-page .rem-profile-recovery-input{width:100%;max-width:100%;min-height:50px;box-sizing:border-box;border:1px solid #7994a8;border-radius:13px;background:#142942;color:#f7fbff;padding:12px 14px;font:inherit;letter-spacing:.035em}
+.rem-profile-page .rem-profile-recovery-input:focus-visible{outline:2px solid #a5e5c4;outline-offset:2px}
