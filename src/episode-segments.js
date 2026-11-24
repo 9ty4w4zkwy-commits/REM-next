@@ -1,6 +1,6 @@
 // Narrative episode segments. Every chapter is partitioned at a paragraph boundary.
 // All source characters remain in their original order; no text is rewritten.
-import {loadChapter} from './catalog.js?v=pinocchio-121';
+import {loadChapter} from './catalog.js?v=conte-20-20261124';
 export function episodeUnits(book){
  if(book.id!=='pinocchio')return (book.seasons||[]).flatMap(s=>s.episodes);
  return book.seasons.flatMap(s=>s.episodes);
@@ -25,6 +25,7 @@ export async function loadEpisodeSegment(book,episode){
  const chapter=book.chapters.find(c=>c.id===episode.chapterId);
  if(!chapter)throw Error('Capitolo dell’episodio non trovato');
  const full=await loadChapter(book,chapter);
- const {start,end}=segmentRange(full,episode.part||0,episode.parts||1);
+ const {start,end}=book.id==='montecristo'&&Number.isSafeInteger(episode.start)&&Number.isSafeInteger(episode.end)?{start:episode.start,end:episode.end}:segmentRange(full,episode.part||0,episode.parts||1);
+ if(start<0||end>full.length||end<=start)throw Error('Limiti episodio non validi');
  return {content:full.slice(start,end),start,end,chapterId:chapter.id};
 }

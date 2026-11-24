@@ -1,0 +1,395 @@
+{
+  "bookId": "montecristo",
+  "source": "Il_Conte_di_Montecristo_Capitoli_001-020_revisionato(2).epub",
+  "chapterCount": 20,
+  "episodeCount": 55,
+  "units": "UTF-16 JavaScript string offsets",
+  "note": "Episode start inclusive, end exclusive; offsets refer to the exact chapter .txt text. Audio word timing not yet supplied.",
+  "episodes": [
+    {
+      "episodeId": "capitolo-01-parte-01",
+      "chapterId": "capitolo-01",
+      "start": 0,
+      "end": 5569,
+      "characters": 5569
+    },
+    {
+      "episodeId": "capitolo-01-parte-02",
+      "chapterId": "capitolo-01",
+      "start": 5569,
+      "end": 11332,
+      "characters": 5763
+    },
+    {
+      "episodeId": "capitolo-01-parte-03",
+      "chapterId": "capitolo-01",
+      "start": 11332,
+      "end": 17009,
+      "characters": 5677
+    },
+    {
+      "episodeId": "capitolo-02-parte-01",
+      "chapterId": "capitolo-02",
+      "start": 0,
+      "end": 6515,
+      "characters": 6515
+    },
+    {
+      "episodeId": "capitolo-02-parte-02",
+      "chapterId": "capitolo-02",
+      "start": 6515,
+      "end": 12766,
+      "characters": 6251
+    },
+    {
+      "episodeId": "capitolo-03-parte-01",
+      "chapterId": "capitolo-03",
+      "start": 0,
+      "end": 5974,
+      "characters": 5974
+    },
+    {
+      "episodeId": "capitolo-03-parte-02",
+      "chapterId": "capitolo-03",
+      "start": 5974,
+      "end": 11813,
+      "characters": 5839
+    },
+    {
+      "episodeId": "capitolo-03-parte-03",
+      "chapterId": "capitolo-03",
+      "start": 11813,
+      "end": 17946,
+      "characters": 6133
+    },
+    {
+      "episodeId": "capitolo-04-parte-01",
+      "chapterId": "capitolo-04",
+      "start": 0,
+      "end": 5834,
+      "characters": 5834
+    },
+    {
+      "episodeId": "capitolo-04-parte-02",
+      "chapterId": "capitolo-04",
+      "start": 5834,
+      "end": 11596,
+      "characters": 5762
+    },
+    {
+      "episodeId": "capitolo-05-parte-01",
+      "chapterId": "capitolo-05",
+      "start": 0,
+      "end": 8075,
+      "characters": 8075
+    },
+    {
+      "episodeId": "capitolo-05-parte-02",
+      "chapterId": "capitolo-05",
+      "start": 8075,
+      "end": 16482,
+      "characters": 8407
+    },
+    {
+      "episodeId": "capitolo-05-parte-03",
+      "chapterId": "capitolo-05",
+      "start": 16482,
+      "end": 24550,
+      "characters": 8068
+    },
+    {
+      "episodeId": "capitolo-06-parte-01",
+      "chapterId": "capitolo-06",
+      "start": 0,
+      "end": 7228,
+      "characters": 7228
+    },
+    {
+      "episodeId": "capitolo-06-parte-02",
+      "chapterId": "capitolo-06",
+      "start": 7228,
+      "end": 14496,
+      "characters": 7268
+    },
+    {
+      "episodeId": "capitolo-06-parte-03",
+      "chapterId": "capitolo-06",
+      "start": 14496,
+      "end": 21788,
+      "characters": 7292
+    },
+    {
+      "episodeId": "capitolo-07-parte-01",
+      "chapterId": "capitolo-07",
+      "start": 0,
+      "end": 8192,
+      "characters": 8192
+    },
+    {
+      "episodeId": "capitolo-07-parte-02",
+      "chapterId": "capitolo-07",
+      "start": 8192,
+      "end": 15781,
+      "characters": 7589
+    },
+    {
+      "episodeId": "capitolo-07-parte-03",
+      "chapterId": "capitolo-07",
+      "start": 15781,
+      "end": 24663,
+      "characters": 8882
+    },
+    {
+      "episodeId": "capitolo-08-parte-01",
+      "chapterId": "capitolo-08",
+      "start": 0,
+      "end": 8220,
+      "characters": 8220
+    },
+    {
+      "episodeId": "capitolo-08-parte-02",
+      "chapterId": "capitolo-08",
+      "start": 8220,
+      "end": 16313,
+      "characters": 8093
+    },
+    {
+      "episodeId": "capitolo-08-parte-03",
+      "chapterId": "capitolo-08",
+      "start": 16313,
+      "end": 24250,
+      "characters": 7937
+    },
+    {
+      "episodeId": "capitolo-09-parte-01",
+      "chapterId": "capitolo-09",
+      "start": 0,
+      "end": 6896,
+      "characters": 6896
+    },
+    {
+      "episodeId": "capitolo-09-parte-02",
+      "chapterId": "capitolo-09",
+      "start": 6896,
+      "end": 13171,
+      "characters": 6275
+    },
+    {
+      "episodeId": "capitolo-10-parte-01",
+      "chapterId": "capitolo-10",
+      "start": 0,
+      "end": 6142,
+      "characters": 6142
+    },
+    {
+      "episodeId": "capitolo-10-parte-02",
+      "chapterId": "capitolo-10",
+      "start": 6142,
+      "end": 12377,
+      "characters": 6235
+    },
+    {
+      "episodeId": "capitolo-11-parte-01",
+      "chapterId": "capitolo-11",
+      "start": 0,
+      "end": 7779,
+      "characters": 7779
+    },
+    {
+      "episodeId": "capitolo-11-parte-02",
+      "chapterId": "capitolo-11",
+      "start": 7779,
+      "end": 15682,
+      "characters": 7903
+    },
+    {
+      "episodeId": "capitolo-12-parte-01",
+      "chapterId": "capitolo-12",
+      "start": 0,
+      "end": 7086,
+      "characters": 7086
+    },
+    {
+      "episodeId": "capitolo-12-parte-02",
+      "chapterId": "capitolo-12",
+      "start": 7086,
+      "end": 14420,
+      "characters": 7334
+    },
+    {
+      "episodeId": "capitolo-13-parte-01",
+      "chapterId": "capitolo-13",
+      "start": 0,
+      "end": 6560,
+      "characters": 6560
+    },
+    {
+      "episodeId": "capitolo-13-parte-02",
+      "chapterId": "capitolo-13",
+      "start": 6560,
+      "end": 13201,
+      "characters": 6641
+    },
+    {
+      "episodeId": "capitolo-13-parte-03",
+      "chapterId": "capitolo-13",
+      "start": 13201,
+      "end": 19867,
+      "characters": 6666
+    },
+    {
+      "episodeId": "capitolo-14-parte-01",
+      "chapterId": "capitolo-14",
+      "start": 0,
+      "end": 6851,
+      "characters": 6851
+    },
+    {
+      "episodeId": "capitolo-14-parte-02",
+      "chapterId": "capitolo-14",
+      "start": 6851,
+      "end": 14470,
+      "characters": 7619
+    },
+    {
+      "episodeId": "capitolo-14-parte-03",
+      "chapterId": "capitolo-14",
+      "start": 14470,
+      "end": 21791,
+      "characters": 7321
+    },
+    {
+      "episodeId": "capitolo-15-parte-01",
+      "chapterId": "capitolo-15",
+      "start": 0,
+      "end": 7914,
+      "characters": 7914
+    },
+    {
+      "episodeId": "capitolo-15-parte-02",
+      "chapterId": "capitolo-15",
+      "start": 7914,
+      "end": 15580,
+      "characters": 7666
+    },
+    {
+      "episodeId": "capitolo-15-parte-03",
+      "chapterId": "capitolo-15",
+      "start": 15580,
+      "end": 23672,
+      "characters": 8092
+    },
+    {
+      "episodeId": "capitolo-15-parte-04",
+      "chapterId": "capitolo-15",
+      "start": 23672,
+      "end": 31163,
+      "characters": 7491
+    },
+    {
+      "episodeId": "capitolo-16-parte-01",
+      "chapterId": "capitolo-16",
+      "start": 0,
+      "end": 6551,
+      "characters": 6551
+    },
+    {
+      "episodeId": "capitolo-16-parte-02",
+      "chapterId": "capitolo-16",
+      "start": 6551,
+      "end": 12911,
+      "characters": 6360
+    },
+    {
+      "episodeId": "capitolo-16-parte-03",
+      "chapterId": "capitolo-16",
+      "start": 12911,
+      "end": 19640,
+      "characters": 6729
+    },
+    {
+      "episodeId": "capitolo-17-parte-01",
+      "chapterId": "capitolo-17",
+      "start": 0,
+      "end": 9389,
+      "characters": 9389
+    },
+    {
+      "episodeId": "capitolo-17-parte-02",
+      "chapterId": "capitolo-17",
+      "start": 9389,
+      "end": 19078,
+      "characters": 9689
+    },
+    {
+      "episodeId": "capitolo-17-parte-03",
+      "chapterId": "capitolo-17",
+      "start": 19078,
+      "end": 28972,
+      "characters": 9894
+    },
+    {
+      "episodeId": "capitolo-17-parte-04",
+      "chapterId": "capitolo-17",
+      "start": 28972,
+      "end": 38312,
+      "characters": 9340
+    },
+    {
+      "episodeId": "capitolo-18-parte-01",
+      "chapterId": "capitolo-18",
+      "start": 0,
+      "end": 6698,
+      "characters": 6698
+    },
+    {
+      "episodeId": "capitolo-18-parte-02",
+      "chapterId": "capitolo-18",
+      "start": 6698,
+      "end": 13932,
+      "characters": 7234
+    },
+    {
+      "episodeId": "capitolo-18-parte-03",
+      "chapterId": "capitolo-18",
+      "start": 13932,
+      "end": 21225,
+      "characters": 7293
+    },
+    {
+      "episodeId": "capitolo-19-parte-01",
+      "chapterId": "capitolo-19",
+      "start": 0,
+      "end": 7228,
+      "characters": 7228
+    },
+    {
+      "episodeId": "capitolo-19-parte-02",
+      "chapterId": "capitolo-19",
+      "start": 7228,
+      "end": 13989,
+      "characters": 6761
+    },
+    {
+      "episodeId": "capitolo-19-parte-03",
+      "chapterId": "capitolo-19",
+      "start": 13989,
+      "end": 21522,
+      "characters": 7533
+    },
+    {
+      "episodeId": "capitolo-20-parte-01",
+      "chapterId": "capitolo-20",
+      "start": 0,
+      "end": 5616,
+      "characters": 5616
+    },
+    {
+      "episodeId": "capitolo-20-parte-02",
+      "chapterId": "capitolo-20",
+      "start": 5616,
+      "end": 10819,
+      "characters": 5203
+    }
+  ]
+}

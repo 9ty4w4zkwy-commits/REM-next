@@ -5,16 +5,117 @@
       "id": "montecristo",
       "title": "Il conte di Montecristo",
       "author": "Alexandre Dumas",
-      "description": "Un giovane tradito, una libertà perduta e un segreto nascosto tra le mura di una prigione. Quando il destino gli offre una seconda possibilità, la sete di vendetta rischia di cambiare ogni cosa.",
+      "description": "Un giovane tradito, una libertà perduta e un segreto nascosto tra le mura di una prigione. Quando il destino gli offre una seconda possibilità, la sete di vendetta rischia di cambiare ogni cosa. Su REM sono disponibili i primi 20 capitoli in italiano contemporaneo; l'opera proseguirà con i capitoli successivi.",
       "status": "published",
       "access": "premium",
       "homeSections": [
         "recommended",
         "new"
       ],
-      "availability": "preview",
+      "availability": "partial",
       "coverImage": "./assets/covers/1D804752-9969-46DE-AFA2-3796C3282C19.png",
-      "chapters": [],
+      "chapters": [
+        {
+          "id": "capitolo-01",
+          "title": "Capitolo 1 · Marsiglia. L’arrivo",
+          "file": "capitolo-01.txt"
+        },
+        {
+          "id": "capitolo-02",
+          "title": "Capitolo 2 · Il padre e il figlio",
+          "file": "capitolo-02.txt"
+        },
+        {
+          "id": "capitolo-03",
+          "title": "Capitolo 3 · I Catalani",
+          "file": "capitolo-03.txt"
+        },
+        {
+          "id": "capitolo-04",
+          "title": "Capitolo 4 · Il complotto",
+          "file": "capitolo-04.txt"
+        },
+        {
+          "id": "capitolo-05",
+          "title": "Capitolo 5 · Il pranzo di fidanzamento",
+          "file": "capitolo-05.txt"
+        },
+        {
+          "id": "capitolo-06",
+          "title": "Capitolo 6 · Il sostituto del procuratore del re",
+          "file": "capitolo-06.txt"
+        },
+        {
+          "id": "capitolo-07",
+          "title": "Capitolo 7 · L’interrogatorio",
+          "file": "capitolo-07.txt"
+        },
+        {
+          "id": "capitolo-08",
+          "title": "Capitolo 8 · Il castello d’If",
+          "file": "capitolo-08.txt"
+        },
+        {
+          "id": "capitolo-09",
+          "title": "Capitolo 9 · La sera del fidanzamento",
+          "file": "capitolo-09.txt"
+        },
+        {
+          "id": "capitolo-10",
+          "title": "Capitolo 10 · Il piccolo studio delle Tuileries",
+          "file": "capitolo-10.txt"
+        },
+        {
+          "id": "capitolo-11",
+          "title": "Capitolo 11 · Il lupo di Corsica",
+          "file": "capitolo-11.txt"
+        },
+        {
+          "id": "capitolo-12",
+          "title": "Capitolo 12 · Il padre e il figlio",
+          "file": "capitolo-12.txt"
+        },
+        {
+          "id": "capitolo-13",
+          "title": "Capitolo 13 · I cento giorni",
+          "file": "capitolo-13.txt"
+        },
+        {
+          "id": "capitolo-14",
+          "title": "Capitolo 14 · Il prigioniero furioso e il prigioniero pazzo",
+          "file": "capitolo-14.txt"
+        },
+        {
+          "id": "capitolo-15",
+          "title": "Capitolo 15 · Il numero 34 e il numero 27",
+          "file": "capitolo-15.txt"
+        },
+        {
+          "id": "capitolo-16",
+          "title": "Capitolo 16 · Lo scienziato",
+          "file": "capitolo-16.txt"
+        },
+        {
+          "id": "capitolo-17",
+          "title": "Capitolo 17 · La camera dello scienziato",
+          "file": "capitolo-17.txt"
+        },
+        {
+          "id": "capitolo-18",
+          "title": "Capitolo 18 · Il tesoro",
+          "file": "capitolo-18.txt"
+        },
+        {
+          "id": "capitolo-19",
+          "title": "Capitolo 19 · Il terzo accesso",
+          "file": "capitolo-19.txt"
+        },
+        {
+          "id": "capitolo-20",
+          "title": "Capitolo 20 · Il cimitero del castello d’If",
+          "file": "capitolo-20.txt"
+        }
+      ],
       "moods": [
         "appassionare",
         "sorprendere",
@@ -32,6 +133,527 @@
         "marsiglia",
         "parigi",
         "francia"
+      ],
+      "seasons": [
+        {
+          "number": 1,
+          "title": "Capitoli 1–5",
+          "episodes": [
+            {
+              "id": "capitolo-01-parte-01",
+              "chapterId": "capitolo-01",
+              "title": "Marsiglia. L’arrivo · Parte 1",
+              "start": 0,
+              "end": 5569,
+              "part": 0,
+              "parts": 3
+            },
+            {
+              "id": "capitolo-01-parte-02",
+              "chapterId": "capitolo-01",
+              "title": "Marsiglia. L’arrivo · Parte 2",
+              "start": 5569,
+              "end": 11332,
+              "part": 1,
+              "parts": 3
+            },
+            {
+              "id": "capitolo-01-parte-03",
+              "chapterId": "capitolo-01",
+              "title": "Marsiglia. L’arrivo · Parte 3",
+              "start": 11332,
+              "end": 17009,
+              "part": 2,
+              "parts": 3
+            },
+            {
+              "id": "capitolo-02-parte-01",
+              "chapterId": "capitolo-02",
+              "title": "Il padre e il figlio · Parte 1",
+              "start": 0,
+              "end": 6515,
+              "part": 0,
+              "parts": 2
+            },
+            {
+              "id": "capitolo-02-parte-02",
+              "chapterId": "capitolo-02",
+              "title": "Il padre e il figlio · Parte 2",
+              "start": 6515,
+              "end": 12766,
+              "part": 1,
+              "parts": 2
+            },
+            {
+              "id": "capitolo-03-parte-01",
+              "chapterId": "capitolo-03",
+              "title": "I Catalani · Parte 1",
+              "start": 0,
+              "end": 5974,
+              "part": 0,
+              "parts": 3
+            },
+            {
+              "id": "capitolo-03-parte-02",
+              "chapterId": "capitolo-03",
+              "title": "I Catalani · Parte 2",
+              "start": 5974,
+              "end": 11813,
+              "part": 1,
+              "parts": 3
+            },
+            {
+              "id": "capitolo-03-parte-03",
+              "chapterId": "capitolo-03",
+              "title": "I Catalani · Parte 3",
+              "start": 11813,
+              "end": 17946,
+              "part": 2,
+              "parts": 3
+            },
+            {
+              "id": "capitolo-04-parte-01",
+              "chapterId": "capitolo-04",
+              "title": "Il complotto · Parte 1",
+              "start": 0,
+              "end": 5834,
+              "part": 0,
+              "parts": 2
+            },
+            {
+              "id": "capitolo-04-parte-02",
+              "chapterId": "capitolo-04",
+              "title": "Il complotto · Parte 2",
+              "start": 5834,
+              "end": 11596,
+              "part": 1,
+              "parts": 2
+            },
+            {
+              "id": "capitolo-05-parte-01",
+              "chapterId": "capitolo-05",
+              "title": "Il pranzo di fidanzamento · Parte 1",
+              "start": 0,
+              "end": 8075,
+              "part": 0,
+              "parts": 3
+            },
+            {
+              "id": "capitolo-05-parte-02",
+              "chapterId": "capitolo-05",
+              "title": "Il pranzo di fidanzamento · Parte 2",
+              "start": 8075,
+              "end": 16482,
+              "part": 1,
+              "parts": 3
+            },
+            {
+              "id": "capitolo-05-parte-03",
+              "chapterId": "capitolo-05",
+              "title": "Il pranzo di fidanzamento · Parte 3",
+              "start": 16482,
+              "end": 24550,
+              "part": 2,
+              "parts": 3
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "title": "Capitoli 6–10",
+          "episodes": [
+            {
+              "id": "capitolo-06-parte-01",
+              "chapterId": "capitolo-06",
+              "title": "Il sostituto del procuratore del re · Parte 1",
+              "start": 0,
+              "end": 7228,
+              "part": 0,
+              "parts": 3
+            },
+            {
+              "id": "capitolo-06-parte-02",
+              "chapterId": "capitolo-06",
+              "title": "Il sostituto del procuratore del re · Parte 2",
+              "start": 7228,
+              "end": 14496,
+              "part": 1,
+              "parts": 3
+            },
+            {
+              "id": "capitolo-06-parte-03",
+              "chapterId": "capitolo-06",
+              "title": "Il sostituto del procuratore del re · Parte 3",
+              "start": 14496,
+              "end": 21788,
+              "part": 2,
+              "parts": 3
+            },
+            {
+              "id": "capitolo-07-parte-01",
+              "chapterId": "capitolo-07",
+              "title": "L’interrogatorio · Parte 1",
+              "start": 0,
+              "end": 8192,
+              "part": 0,
+              "parts": 3
+            },
+            {
+              "id": "capitolo-07-parte-02",
+              "chapterId": "capitolo-07",
+              "title": "L’interrogatorio · Parte 2",
+              "start": 8192,
+              "end": 15781,
+              "part": 1,
+              "parts": 3
+            },
+            {
+              "id": "capitolo-07-parte-03",
+              "chapterId": "capitolo-07",
+              "title": "L’interrogatorio · Parte 3",
+              "start": 15781,
+              "end": 24663,
+              "part": 2,
+              "parts": 3
+            },
+            {
+              "id": "capitolo-08-parte-01",
+              "chapterId": "capitolo-08",
+              "title": "Il castello d’If · Parte 1",
+              "start": 0,
+              "end": 8220,
+              "part": 0,
+              "parts": 3
+            },
+            {
+              "id": "capitolo-08-parte-02",
+              "chapterId": "capitolo-08",
+              "title": "Il castello d’If · Parte 2",
+              "start": 8220,
+              "end": 16313,
+              "part": 1,
+              "parts": 3
+            },
+            {
+              "id": "capitolo-08-parte-03",
+              "chapterId": "capitolo-08",
+              "title": "Il castello d’If · Parte 3",
+              "start": 16313,
+              "end": 24250,
+              "part": 2,
+              "parts": 3
+            },
+            {
+              "id": "capitolo-09-parte-01",
+              "chapterId": "capitolo-09",
+              "title": "La sera del fidanzamento · Parte 1",
+              "start": 0,
+              "end": 6896,
+              "part": 0,
+              "parts": 2
+            },
+            {
+              "id": "capitolo-09-parte-02",
+              "chapterId": "capitolo-09",
+              "title": "La sera del fidanzamento · Parte 2",
+              "start": 6896,
+              "end": 13171,
+              "part": 1,
+              "parts": 2
+            },
+            {
+              "id": "capitolo-10-parte-01",
+              "chapterId": "capitolo-10",
+              "title": "Il piccolo studio delle Tuileries · Parte 1",
+              "start": 0,
+              "end": 6142,
+              "part": 0,
+              "parts": 2
+            },
+            {
+              "id": "capitolo-10-parte-02",
+              "chapterId": "capitolo-10",
+              "title": "Il piccolo studio delle Tuileries · Parte 2",
+              "start": 6142,
+              "end": 12377,
+              "part": 1,
+              "parts": 2
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "title": "Capitoli 11–15",
+          "episodes": [
+            {
+              "id": "capitolo-11-parte-01",
+              "chapterId": "capitolo-11",
+              "title": "Il lupo di Corsica · Parte 1",
+              "start": 0,
+              "end": 7779,
+              "part": 0,
+              "parts": 2
+            },
+            {
+              "id": "capitolo-11-parte-02",
+              "chapterId": "capitolo-11",
+              "title": "Il lupo di Corsica · Parte 2",
+              "start": 7779,
+              "end": 15682,
+              "part": 1,
+              "parts": 2
+            },
+            {
+              "id": "capitolo-12-parte-01",
+              "chapterId": "capitolo-12",
+              "title": "Il padre e il figlio · Parte 1",
+              "start": 0,
+              "end": 7086,
+              "part": 0,
+              "parts": 2
+            },
+            {
+              "id": "capitolo-12-parte-02",
+              "chapterId": "capitolo-12",
+              "title": "Il padre e il figlio · Parte 2",
+              "start": 7086,
+              "end": 14420,
+              "part": 1,
+              "parts": 2
+            },
+            {
+              "id": "capitolo-13-parte-01",
+              "chapterId": "capitolo-13",
+              "title": "I cento giorni · Parte 1",
+              "start": 0,
+              "end": 6560,
+              "part": 0,
+              "parts": 3
+            },
+            {
+              "id": "capitolo-13-parte-02",
+              "chapterId": "capitolo-13",
+              "title": "I cento giorni · Parte 2",
+              "start": 6560,
+              "end": 13201,
+              "part": 1,
+              "parts": 3
+            },
+            {
+              "id": "capitolo-13-parte-03",
+              "chapterId": "capitolo-13",
+              "title": "I cento giorni · Parte 3",
+              "start": 13201,
+              "end": 19867,
+              "part": 2,
+              "parts": 3
+            },
+            {
+              "id": "capitolo-14-parte-01",
+              "chapterId": "capitolo-14",
+              "title": "Il prigioniero furioso e il prigioniero pazzo · Parte 1",
+              "start": 0,
+              "end": 6851,
+              "part": 0,
+              "parts": 3
+            },
+            {
+              "id": "capitolo-14-parte-02",
+              "chapterId": "capitolo-14",
+              "title": "Il prigioniero furioso e il prigioniero pazzo · Parte 2",
+              "start": 6851,
+              "end": 14470,
+              "part": 1,
+              "parts": 3
+            },
+            {
+              "id": "capitolo-14-parte-03",
+              "chapterId": "capitolo-14",
+              "title": "Il prigioniero furioso e il prigioniero pazzo · Parte 3",
+              "start": 14470,
+              "end": 21791,
+              "part": 2,
+              "parts": 3
+            },
+            {
+              "id": "capitolo-15-parte-01",
+              "chapterId": "capitolo-15",
+              "title": "Il numero 34 e il numero 27 · Parte 1",
+              "start": 0,
+              "end": 7914,
+              "part": 0,
+              "parts": 4
+            },
+            {
+              "id": "capitolo-15-parte-02",
+              "chapterId": "capitolo-15",
+              "title": "Il numero 34 e il numero 27 · Parte 2",
+              "start": 7914,
+              "end": 15580,
+              "part": 1,
+              "parts": 4
+            },
+            {
+              "id": "capitolo-15-parte-03",
+              "chapterId": "capitolo-15",
+              "title": "Il numero 34 e il numero 27 · Parte 3",
+              "start": 15580,
+              "end": 23672,
+              "part": 2,
+              "parts": 4
+            },
+            {
+              "id": "capitolo-15-parte-04",
+              "chapterId": "capitolo-15",
+              "title": "Il numero 34 e il numero 27 · Parte 4",
+              "start": 23672,
+              "end": 31163,
+              "part": 3,
+              "parts": 4
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "title": "Capitoli 16–20",
+          "episodes": [
+            {
+              "id": "capitolo-16-parte-01",
+              "chapterId": "capitolo-16",
+              "title": "Lo scienziato · Parte 1",
+              "start": 0,
+              "end": 6551,
+              "part": 0,
+              "parts": 3
+            },
+            {
+              "id": "capitolo-16-parte-02",
+              "chapterId": "capitolo-16",
+              "title": "Lo scienziato · Parte 2",
+              "start": 6551,
+              "end": 12911,
+              "part": 1,
+              "parts": 3
+            },
+            {
+              "id": "capitolo-16-parte-03",
+              "chapterId": "capitolo-16",
+              "title": "Lo scienziato · Parte 3",
+              "start": 12911,
+              "end": 19640,
+              "part": 2,
+              "parts": 3
+            },
+            {
+              "id": "capitolo-17-parte-01",
+              "chapterId": "capitolo-17",
+              "title": "La camera dello scienziato · Parte 1",
+              "start": 0,
+              "end": 9389,
+              "part": 0,
+              "parts": 4
+            },
+            {
+              "id": "capitolo-17-parte-02",
+              "chapterId": "capitolo-17",
+              "title": "La camera dello scienziato · Parte 2",
+              "start": 9389,
+              "end": 19078,
+              "part": 1,
+              "parts": 4
+            },
+            {
+              "id": "capitolo-17-parte-03",
+              "chapterId": "capitolo-17",
+              "title": "La camera dello scienziato · Parte 3",
+              "start": 19078,
+              "end": 28972,
+              "part": 2,
+              "parts": 4
+            },
+            {
+              "id": "capitolo-17-parte-04",
+              "chapterId": "capitolo-17",
+              "title": "La camera dello scienziato · Parte 4",
+              "start": 28972,
+              "end": 38312,
+              "part": 3,
+              "parts": 4
+            },
+            {
+              "id": "capitolo-18-parte-01",
+              "chapterId": "capitolo-18",
+              "title": "Il tesoro · Parte 1",
+              "start": 0,
+              "end": 6698,
+              "part": 0,
+              "parts": 3
+            },
+            {
+              "id": "capitolo-18-parte-02",
+              "chapterId": "capitolo-18",
+              "title": "Il tesoro · Parte 2",
+              "start": 6698,
+              "end": 13932,
+              "part": 1,
+              "parts": 3
+            },
+            {
+              "id": "capitolo-18-parte-03",
+              "chapterId": "capitolo-18",
+              "title": "Il tesoro · Parte 3",
+              "start": 13932,
+              "end": 21225,
+              "part": 2,
+              "parts": 3
+            },
+            {
+              "id": "capitolo-19-parte-01",
+              "chapterId": "capitolo-19",
+              "title": "Il terzo accesso · Parte 1",
+              "start": 0,
+              "end": 7228,
+              "part": 0,
+              "parts": 3
+            },
+            {
+              "id": "capitolo-19-parte-02",
+              "chapterId": "capitolo-19",
+              "title": "Il terzo accesso · Parte 2",
+              "start": 7228,
+              "end": 13989,
+              "part": 1,
+              "parts": 3
+            },
+            {
+              "id": "capitolo-19-parte-03",
+              "chapterId": "capitolo-19",
+              "title": "Il terzo accesso · Parte 3",
+              "start": 13989,
+              "end": 21522,
+              "part": 2,
+              "parts": 3
+            },
+            {
+              "id": "capitolo-20-parte-01",
+              "chapterId": "capitolo-20",
+              "title": "Il cimitero del castello d’If · Parte 1",
+              "start": 0,
+              "end": 5616,
+              "part": 0,
+              "parts": 2
+            },
+            {
+              "id": "capitolo-20-parte-02",
+              "chapterId": "capitolo-20",
+              "title": "Il cimitero del castello d’If · Parte 2",
+              "start": 5616,
+              "end": 10819,
+              "part": 1,
+              "parts": 2
+            }
+          ]
+        }
       ]
     },
     {
