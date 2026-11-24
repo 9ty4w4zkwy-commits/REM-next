@@ -4,7 +4,7 @@ import {loadEpisodeSegment} from './episode-segments.js?v=pinocchio-122';
 import {loadOvidioEpisode} from './ovidio-episodes.js?v=2';
 import {createCollectionsView} from './collections-view.js?v=rem-ui-209';
 import {readCollections,isBookSaved,saveBookToCollections,removeSavedBook,attachItem,detachItem,addThought} from './collections-store.js?v=rem-mint-207';
-import {showOnboarding,onboardingCompleted} from './onboarding.js?v=full-screen-consent-20261124';
+import {showOnboarding,onboardingCompleted} from './onboarding.js?v=question-skip-20261124';
 import {getProgress,saveProgress,getSetting,saveSetting} from './progress.js';
 import {analyticsEnabled,getTesterCode,setAnalyticsConsent,startAnalytics,trackEvent} from './analytics.js?v=analytics-2';
 import {el,button,panel,heading} from './ui.js';
@@ -563,4 +563,4 @@ const sizeSelect=el('select',{attrs:{'aria-label':'Dimensione testo'}});for(cons
 }
 }catch(error){if(text.isConnected)text.textContent='Impossibile caricare il capitolo: '+error.message}finally{requestAnimationFrame(()=>{requestAnimationFrame(()=>{readerRestoring=false})})}}
 document.getElementById('brand').onclick=home;document.getElementById('navHome').onclick=home;document.getElementById('navLibrary').onclick=()=>library();document.getElementById('navProfile').onclick=profile;document.getElementById('navSearch').onclick=searchBooks;
-try{books=await loadCatalog();startAnalytics();if(onboardingCompleted())home();else showOnboarding(render,home)}catch(error){render(heading('REM Next','ERRORE'),para('Impossibile caricare il catalogo: '+error.message),para('Avvia l’app tramite un server web, non aprendo index.html come file locale.'))}
+try{books=await loadCatalog();startAnalytics();if(onboardingCompleted()||getSetting('onboarding-v1','')==='later')home();else showOnboarding(render,home)}catch(error){render(heading('REM Next','ERRORE'),para('Impossibile caricare il catalogo: '+error.message),para('Avvia l’app tramite un server web, non aprendo index.html come file locale.'))}
