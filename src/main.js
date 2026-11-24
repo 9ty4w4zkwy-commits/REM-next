@@ -4,7 +4,7 @@ import {loadEpisodeSegment} from './episode-segments.js?v=pinocchio-122';
 import {loadOvidioEpisode} from './ovidio-episodes.js?v=2';
 import {createCollectionsView} from './collections-view.js?v=rem-ui-209';
 import {readCollections,isBookSaved,saveBookToCollections,removeSavedBook,attachItem,detachItem,addThought} from './collections-store.js?v=rem-mint-207';
-import {showOnboarding,onboardingCompleted} from './onboarding.js?v=question-skip-20261124';
+import {showOnboarding,onboardingCompleted} from './onboarding.js?v=shared-tester-registration-20261124';
 import {getProgress,saveProgress,getSetting,saveSetting} from './progress.js';
 import {analyticsEnabled,getTesterCode,registerTesterCode,setAnalyticsConsent,startAnalytics,trackEvent} from './analytics.js?v=tester-registration-20261124';
 import {el,button,panel,heading} from './ui.js';
