@@ -1,6 +1,6 @@
 import {el,button} from './ui.js';
 import {getSetting,saveSetting} from './progress.js';
-import {setAnalyticsConsent,sendOnboardingAnswers} from './analytics.js?v=analytics-2';
+import {setAnalyticsConsent,sendOnboardingAnswers} from './analytics.js?v=tester-registration-20261124';
 const KEY='onboarding-v1';
 const QUESTIONS=[
  {title:'Quali cose ti fanno perdere la cognizione del tempo?',hint:'Puoi scegliere fino a due risposte.',max:2,options:['Viaggiare e scoprire luoghi','Capire come funziona la mente','Arte, musica e creatività','Storie e relazioni umane','Misteri ed enigmi','Natura e avventura']},
