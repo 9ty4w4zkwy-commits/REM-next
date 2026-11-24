@@ -12,7 +12,7 @@ import {getMode,formatSwitch,paperView,audioView} from './formats.js?v=rem-audio
 import {createReaderTools} from './reader-tools.js?v=rem-ui-245';
 import {createHighlights} from './highlights.js?v=single-remove-1';
 import {createEbookJourney} from './ebook-journey.js?v=rem-ebook-91';
-import {phraseSearch,getPhrase,savePhrase} from './synchronization.js?v=rem-switch-68';
+import {phraseSearch,getPhrase,savePhrase} from './synchronization.js?v=paper-locator-20261124';
 import {HOME_SECTIONS,booksForHomeSection} from './home-config.js?v=rem-ui-159';
 import {summaryView} from './summary-view.js?v=summary-reader-white-20261123b';
 const app=document.getElementById('app');let books=[];let currentView='home';let resumeFromHomeId=null;let activeReaderTools=null;let activeHighlights=null;let activeAudioPlayer=null;
