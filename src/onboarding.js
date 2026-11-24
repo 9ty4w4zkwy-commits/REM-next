@@ -28,7 +28,7 @@ export function showOnboarding(render,home,{editing=false}={}){
   const previousScroll=preserveScroll?window.scrollY:0;
   const header=el('div',{className:'onboard-top'},[
    el('strong',{className:'onboard-brand',text:'REM',attrs:{'aria-label':'REM'}}),
-   button(editing?'Annulla':'Lo faccio più tardi',()=>{if(!editing){persist();saveSetting(KEY,'later')}home()})
+   ...(editing?[button('Annulla',home)]:[])
   ]);
   const bars=el('div',{className:'onboard-progress',attrs:{'aria-label':step<0?'Introduzione':'Domanda '+(step+1)+' di '+QUESTIONS.length}},QUESTIONS.map((_,i)=>el('span',{className:i<=step?'is-active':''})));
   const nodes=[header,bars];
@@ -37,8 +37,10 @@ export function showOnboarding(render,home,{editing=false}={}){
     el('h1',{},[document.createTextNode('Ogni storia inizia '),el('span',{text:'da chi la legge.'})]),
     el('p',{text:'Raccontaci qualcosa di te per aiutarti a scoprire nuove storie.'}),
     el('p',{text:'Acconsento alla raccolta dei dati relativi alle mie risposte e all’utilizzo dell’app per partecipare al test di REM.'}),
-    button('Acconsento e inizio',()=>{setAnalyticsConsent(true);step=0;draw()},true),
-    button('Continua senza partecipare',()=>{setAnalyticsConsent(false);step=0;draw()}),
+    el('div',{className:'onboard-consent-actions'},[
+     button('Acconsento e inizio',()=>{setAnalyticsConsent(true);step=0;draw()},true),
+     button('Continua senza partecipare',()=>{setAnalyticsConsent(false);step=0;draw()})
+    ]),
     el('p',{className:'onboard-privacy',text:'Puoi interrompere la raccolta dal Profilo.'}),
     el('details',{className:'onboard-privacy'},[
      el('summary',{text:'Informativa privacy'}),
