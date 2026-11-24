@@ -1,4 +1,4 @@
-import {recognizePage,semanticLocations} from './paper-intelligence.js?v=paper-semantic-20261124';
+import {recognizePage,semanticLocations} from './paper-intelligence.js?v=paper-index-20261124';
 import {el,button} from './ui.js';
 import {chapterPicker} from './chapter-picker.js?v=compact-picker-20261124';
 import {loadChapter} from './catalog.js';
@@ -11,11 +11,12 @@ export function savePhrase(bookId,chapterId,phrase,offset){
 }
 export function getPhrase(bookId){try{return JSON.parse(getSetting('sync-point:'+bookId,'null'))}catch{return null}}
 const normalize=s=>s.toLocaleLowerCase('it').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[’‘]/g,"'").replace(/[^\p{L}\p{N}']+/gu,' ').trim();
-export async function findPhrase(book,query){
+export async function findPhrase(book,query,chapterTexts=new Map()){
  const needle=normalize(query);if(needle.split(/\s+/).filter(Boolean).length<4)return {error:'Inserisci almeno quattro parole consecutive.'};
  const matches=[];
  for(const chapter of book.chapters){
-  const content=await loadChapter(book,chapter);
+  if(!chapterTexts.has(chapter.id))chapterTexts.set(chapter.id,await loadChapter(book,chapter));
+  const content=chapterTexts.get(chapter.id);
   const tokens=[...content.matchAll(/[\p{L}\p{N}]+(?:['’][\p{L}\p{N}]+)*/gu)].map(m=>({word:normalize(m[0]),start:m.index}));
   const wanted=needle.split(' ');
   for(let i=0;i<=tokens.length-wanted.length;i++){
@@ -176,14 +177,14 @@ export function phraseSearch(book,onFound){
   if(!query){status.textContent='Inserisci una frase o una descrizione prima di cercare.';return}
   if(searching)return;searching=true;find.disabled=true;status.textContent='Sto cercando nei capitoli…';results.replaceChildren();
   try{
-   let matches=[];
+   let matches=[];const chapterTexts=new Map();
    if(normalize(query).split(/\s+/).length>=4){
-    const exact=await findPhrase(book,query);
+    const exact=await findPhrase(book,query,chapterTexts);
     matches=(exact.matches||[]).slice(0,4);
     if(!matches.length&&normalize(query).split(' ').length>=20){
      const tokens=normalize(query).split(' ');
      for(const from of [0,Math.floor(tokens.length/3),Math.floor(tokens.length/2)]){
-      const anchor=await findPhrase(book,tokens.slice(from,from+10).join(' '));
+      const anchor=await findPhrase(book,tokens.slice(from,from+10).join(' '),chapterTexts);
       if(anchor.matches?.length===1){matches=anchor.matches.map(x=>({...x,approximate:true}));break}
      }
     }

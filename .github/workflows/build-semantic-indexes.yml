@@ -1,0 +1,68 @@
+name: Build REM semantic indexes
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/build-semantic-indexes.yml'
+      - 'scripts/build_semantic_index.mjs'
+      - 'src/catalog.js'
+      - 'content/books/**/*.txt'
+permissions:
+  contents: read
+concurrency:
+  group: rem-semantic-indexes
+  cancel-in-progress: false
+jobs:
+  index:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    strategy:
+      fail-fast: false
+      matrix:
+        book: [montecristo, pinocchio, mattia-pascal, metamorfosi-ovidio]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm install --no-save --package-lock=false @huggingface/transformers@3.7.2 jsdom@26.1.0
+      - run: node scripts/build_semantic_index.mjs ${{ matrix.book }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: semantic-${{ matrix.book }}
+          path: content/semantic/${{ matrix.book }}.json
+          if-no-files-found: error
+  publish:
+    needs: index
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - run: git diff --quiet "${{ github.sha }}" HEAD -- content/books/ src/catalog.js src/paper-intelligence.js scripts/build_semantic_index.mjs
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: semantic-*
+          merge-multiple: true
+          path: content/semantic
+      - name: Verify all four indexes
+        run: |
+          node --input-type=module <<'JS'
+          import {readFileSync} from 'node:fs';
+          const catalog=JSON.parse(readFileSync('content/books/catalog.json','utf8'));
+          for(const id of ['montecristo','pinocchio','mattia-pascal','metamorfosi-ovidio']){
+            const book=catalog.books.find(b=>b.id===id);
+            const index=JSON.parse(readFileSync('content/semantic/'+id+'.json','utf8'));
+            if(index.book!==id||index.dimension!==384||index.version!==1||!index.rows.length||!book.chapters.every(c=>index.hashes[c.id]&&index.rows.some(r=>r.chapter===c.id)))throw Error('Incomplete index: '+id);
+            console.log(id,index.rows.length);
+          }
+          JS
+      - run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add content/semantic/
+          git diff --cached --quiet || (git commit -m "Publish four precomputed semantic indexes" && git push origin main)

@@ -62,26 +62,28 @@ async function embed(extractor,texts){
  const tensor=await extractor(texts,{pooling:'mean',normalize:true});
  return tensor.tolist();
 }
-async function buildIndex(book,extractor,progress){
- const rows=[];
- for(let i=0;i<book.chapters.length;i++){
-  const chapter=book.chapters[i];
-  progress('Analisi semantica del libro: capitolo '+(i+1)+' di '+book.chapters.length+'…');
-  const windows=passageWindows(await loadChapter(book,chapter),chapter);
-  for(let j=0;j<windows.length;j+=4){
-   const batch=windows.slice(j,j+4);
-   const vectors=await embed(extractor,batch.map(w=>'passage: '+w.text));
-   batch.forEach((w,k)=>{const {text,...location}=w;rows.push({...location,vector:Float32Array.from(vectors[k])})});
-   await new Promise(resolve=>setTimeout(resolve,0));
-  }
- }
- return rows;
+async function loadIndex(book){
+ const response=await fetch('./content/semantic/'+encodeURIComponent(book.id)+'.json',{cache:'no-cache'});
+ if(!response.ok)throw Error('Indice semantico in preparazione');
+ const index=await response.json();
+ if(index.version!==1||index.model!=='Xenova/multilingual-e5-small:q8'||index.book!==book.id||!Array.isArray(index.rows)||!index.rows.length||index.dimension!==384)throw Error('Indice semantico non valido');
+ const chapters=new Map(book.chapters.map(c=>[c.id,c]));
+ const rows=index.rows.map(row=>{
+  if(!chapters.has(row.chapter)||!Number.isSafeInteger(row.offset)||row.offset<0||typeof row.context!=='string'||!Array.isArray(row.vector)||row.vector.length!==384||!row.vector.every(Number.isFinite))throw Error('Passaggio non valido');
+  return {...row,title:chapters.get(row.chapter).title,vector:Float32Array.from(row.vector)};
+ });
+ return {rows,hashes:index.hashes};
+}
+async function textHash(text){
+ const digest=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(text));
+ return Array.from(new Uint8Array(digest),b=>b.toString(16).padStart(2,'0')).join('');
 }
 export async function semanticLocations(book,query,progress=()=>{}){
- progress('Caricamento del modello linguistico locale (primo utilizzo più lento)…');
+ progress('Caricamento indice semantico già preparato…');
+ if(!indexes.has(book.id))indexes.set(book.id,loadIndex(book).catch(e=>{indexes.delete(book.id);throw e}));
+ const {rows,hashes}=await indexes.get(book.id);
+ progress('Caricamento modello linguistico locale…');
  const extractor=await model();
- if(!indexes.has(book.id))indexes.set(book.id,buildIndex(book,extractor,progress).catch(e=>{indexes.delete(book.id);throw e}));
- const rows=await indexes.get(book.id);
  progress('Confronto dei passaggi…');
  const [q]=await embed(extractor,['query: '+query.slice(0,1800)]);
  const ranked=rows.map(({vector,...location})=>({ ...location,score:vector.reduce((sum,x,i)=>sum+x*q[i],0),approximate:true,semantic:true})).sort((a,b)=>b.score-a.score);
@@ -91,5 +93,16 @@ export async function semanticLocations(book,query,progress=()=>{}){
   if(chosen.some(x=>x.chapter===row.chapter&&Math.abs(x.offset-row.offset)<900))continue;
   chosen.push(row);if(chosen.length===4)break;
  }
- return chosen;
+ const verified=[];
+ const checked=new Map();
+ for(const item of chosen){
+  if(!checked.has(item.chapter)){
+   const chapter=book.chapters.find(c=>c.id===item.chapter);
+   const content=await loadChapter(book,chapter);
+   checked.set(item.chapter,await textHash(content)===hashes[item.chapter]?content:null);
+  }
+  const content=checked.get(item.chapter);
+  if(content&&item.offset<content.length&&content.slice(item.offset,item.offset+item.phrase.length)===item.phrase)verified.push(item);
+ }
+ return verified;
 }
