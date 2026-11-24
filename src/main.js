@@ -234,7 +234,7 @@ function home(){
 }
 function searchBooks(){
  currentView='search';
- const input=el('input',{className:'rem-book-search-input',attrs:{type:'search',placeholder:'Titolo, autore, emozione o luogo…','aria-label':'Cerca per titolo, autore, emozione o luogo',autocomplete:'off'}});
+ const input=el('input',{className:'rem-book-search-input',attrs:{type:'search',placeholder:'Titolo, autore, emozione, luogo','aria-label':'Cerca per titolo, autore, emozione o luogo',autocomplete:'off'}});
  const results=el('div',{className:'rem-search-results'});
  const resetSearch=button('←',()=>{selectedMood=null;selectedPlace=null;input.value='';update();window.scrollTo({top:0,behavior:'smooth'})});resetSearch.classList.add('rem-search-reset');resetSearch.setAttribute('aria-label','Nuova ricerca');resetSearch.setAttribute('title','Nuova ricerca');resetSearch.hidden=true;
  const searchButton=button('Cerca',()=>{selectedMood=null;selectedPlace=null;update();input.blur()});searchButton.classList.add('rem-search-submit');searchButton.setAttribute('aria-label','Cerca libri');
