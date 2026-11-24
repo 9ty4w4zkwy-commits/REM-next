@@ -137,7 +137,7 @@
       "seasons": [
         {
           "number": 1,
-          "title": "Capitoli 1–5",
+          "title": "Capitoli 1–10",
           "episodes": [
             {
               "id": "capitolo-01-parte-01",
@@ -255,13 +255,7 @@
               "end": 24550,
               "part": 2,
               "parts": 3
-            }
-          ]
-        },
-        {
-          "number": 2,
-          "title": "Capitoli 6–10",
-          "episodes": [
+            },
             {
               "id": "capitolo-06-parte-01",
               "chapterId": "capitolo-06",
@@ -382,8 +376,8 @@
           ]
         },
         {
-          "number": 3,
-          "title": "Capitoli 11–15",
+          "number": 2,
+          "title": "Capitoli 11–20",
           "episodes": [
             {
               "id": "capitolo-11-parte-01",
@@ -510,13 +504,7 @@
               "end": 31163,
               "part": 3,
               "parts": 4
-            }
-          ]
-        },
-        {
-          "number": 4,
-          "title": "Capitoli 16–20",
-          "episodes": [
+            },
             {
               "id": "capitolo-16-parte-01",
               "chapterId": "capitolo-16",
