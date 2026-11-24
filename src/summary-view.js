@@ -1,36 +1,26 @@
 import {el,button} from './ui.js';
 import {chapterPicker} from './chapter-picker.js?v=compact-picker-20261124';
 import {getSetting,saveSetting} from './progress.js';
-import {loadChapter} from './catalog.js?v=ovidio-mini-20261123';
 import {createReaderTools} from './reader-tools.js';
 
-// Sintesi estrattiva: usa esclusivamente frasi del capitolo originale.
-// Nessuna trama o evento viene inventato.
-function extractSummary(source){
- const clean=source.replace(/\r/g,'').replace(/\s+/g,' ').trim();
- const sentences=clean.match(/[^.!?…]+(?:[.!?…]+|$)/g)?.map(s=>s.trim()).filter(s=>s.length>25)||[];
- if(!sentences.length)return clean.slice(0,1200);
- const target=190;
- const indices=new Set();
- const n=sentences.length;
- const bands=[[0,Math.ceil(n*.3)],[Math.floor(n*.3),Math.ceil(n*.7)],[Math.floor(n*.7),n]];
- let count=0;
- for(const [start,end] of bands){
-  const quota=Math.ceil(target/3);
-  let bandWords=0;
-  for(let i=start;i<end;i++){
-   const words=sentences[i].split(/\s+/).length;
-   if(bandWords>=quota)break;
-   indices.add(i);bandWords+=words;count+=words;
-  }
- }
- return [...indices].sort((a,b)=>a-b).map(i=>sentences[i]).join('\n\n');
+// Riassunti editoriali: terza persona, cronologia degli eventi, niente dialoghi ricopiati.
+// Per un capitolo non ancora curato non mostrare frammenti automatici e incoerenti.
+function narrativeParagraphs(value){
+ const str=String(value||'').trim();
+ if(!str)return [];
+ const explicit=str.split(/\n\s*\n/).map(x=>x.trim()).filter(Boolean);
+ if(explicit.length>1)return explicit;
+ const sentences=str.match(/[^.!?…]+(?:[.!?…]+|$)/g)?.map(x=>x.trim()).filter(Boolean)||[];
+ if(sentences.length<5)return [str];
+ const chunks=[];
+ const groupSize=Math.max(2,Math.ceil(sentences.length/4));
+ for(let i=0;i<sentences.length;i+=groupSize)chunks.push(sentences.slice(i,i+groupSize).join(' '));
+ return chunks;
 }
-const cache=new Map();
 export function summaryView(book,onClose,onContinue){
  const root=el('section',{className:'summary-shell'});
  const title=el('h2',{text:'Il tuo riassunto'});
- const intro=el('p',{text:'Scegli un capitolo del libro completo. La sintesi seleziona i passaggi essenziali dal testo originale, senza aggiungere eventi.'});
+ const intro=el('p',{text:'Scegli un capitolo del libro completo. Il riassunto racconta in terza persona gli avvenimenti principali del capitolo, in ordine e senza dialoghi o anticipazioni.'});
  const label=el('label',{text:'Capitolo da riassumere'});
  const select=document.createElement('select');select.setAttribute('aria-label','Capitolo da riassumere');
  book.chapters.forEach(c=>{const opt=document.createElement('option');opt.value=c.id;opt.textContent=c.title;select.append(opt)});
@@ -68,11 +58,11 @@ export function summaryView(book,onClose,onContinue){
   if(!chapter){status.textContent='Nessun capitolo disponibile.';return}
   try{
    const key=book.id+':'+chapter.id;
-   if(!cache.has(key))cache.set(key,loadChapter(book,chapter).then(text=>chapter.summary?.trim()||extractSummary(text)).catch(err=>{cache.delete(key);throw err}));
+   if(!cache.has(key))cache.set(key,Promise.resolve(chapter.summary?.trim()||''));
    const result=await cache.get(key);if(token!==generation||!root.isConnected)return;
-   currentText=result;output.replaceChildren(el('h3',{text:chapter.title}),el('p',{text:result}));
+   currentText=result;output.replaceChildren(el('h3',{text:chapter.title}),...(result?narrativeParagraphs(result).map(part=>el('p',{text:part})):[el('p',{text:'Il riassunto narrativo di questo capitolo è in preparazione.'})]));
    status.textContent='';
-   finish.disabled=false;
+   finish.disabled=!result;
   }catch(error){if(token!==generation||!root.isConnected)return;output.replaceChildren(el('h3',{text:chapter.title}),el('p',{text:'Non è stato possibile caricare il testo del capitolo.'}));status.textContent=error.message||'Errore di caricamento'}
  }
  select.addEventListener('change',renderSummary);
