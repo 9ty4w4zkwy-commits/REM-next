@@ -8,7 +8,7 @@ import {showOnboarding,onboardingCompleted} from './onboarding.js?v=secure-teste
 import {getProgress,saveProgress,getSetting,saveSetting} from './progress.js';
 import {analyticsEnabled,getTesterCode,getTesterRegistrationState,registerTesterCode,recoverTesterCode,setAnalyticsConsent,startAnalytics,trackEvent} from './analytics.js?v=secure-tester-20261124';
 import {el,button,panel,heading} from './ui.js';
-import {chapterPicker} from './chapter-picker.js?v=ios-picker-20261124';
+import {chapterPicker} from './chapter-picker.js?v=compact-picker-20261124';
 import {getMode,formatSwitch,paperView,audioView} from './formats.js?v=ios-picker-20261124';
 import {createReaderTools} from './reader-tools.js?v=rem-ui-245';
 import {createHighlights} from './highlights.js?v=single-remove-1';
