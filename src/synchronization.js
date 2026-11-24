@@ -83,20 +83,27 @@ export function phraseSearch(book,onFound){
  const status=el('p',{className:'sync-status',attrs:{role:'status','aria-live':'polite'}});
  const results=el('div',{className:'sync-results rem-paper-matches'});
  const photo=el('input',{attrs:{type:'file',accept:'image/*',capture:'environment','aria-label':'Fotografa la pagina del libro'}});
+ const library=el('input',{attrs:{type:'file',accept:'image/*','aria-label':'Scegli una foto dalla libreria'}});
+ photo.hidden=true;library.hidden=true;
+ const takePhoto=button('Scatta una foto',()=>photo.click());
+ const choosePhoto=button('Scegli dalla libreria',()=>library.click());
  const photoStatus=el('p',{className:'sync-photo-note',text:'Fotografa una pagina ben illuminata. Il riconoscimento avviene sul dispositivo; al primo utilizzo vengono scaricati i modelli necessari.'});
  let photoRun=0;
- photo.addEventListener('change',async()=>{
-  const file=photo.files?.[0];if(!file)return;
-  const run=++photoRun;find.disabled=true;photo.disabled=true;results.replaceChildren();status.textContent='';photoStatus.textContent='Preparazione della foto…';
+ const handlePhoto=async input=>{
+  const file=input.files?.[0];if(!file)return;
+  if(searching){input.value='';return}
+  const run=++photoRun;find.disabled=true;photo.disabled=true;library.disabled=true;takePhoto.disabled=true;choosePhoto.disabled=true;results.replaceChildren();status.textContent='';photoStatus.textContent='Preparazione della foto…';
   try{
    const extracted=await recognizePage(file,message=>{if(run===photoRun&&wrap.isConnected)photoStatus.textContent=message});
    if(run!==photoRun||!wrap.isConnected)return;
    field.value=extracted;photoStatus.textContent='Testo riconosciuto. Puoi correggerlo oppure verificare i passaggi suggeriti.';
    find.disabled=false;if(active==='photo')find.click();
   }catch(e){if(run===photoRun)photoStatus.textContent='Riconoscimento non riuscito. Riprova oppure copia il testo con Testo attivo di iPhone e incollalo qui.'}
-  finally{if(run===photoRun){photo.disabled=false;if(!searching)find.disabled=false;photo.value=''}}
- });
- const photoPanel=el('div',{className:'rem-paper-method-panel'},[el('strong',{text:'Fotografa una pagina'}),photo,photoStatus]);
+  finally{if(run===photoRun){photo.disabled=false;library.disabled=false;takePhoto.disabled=false;choosePhoto.disabled=false;if(!searching)find.disabled=false;photo.value='';library.value=''}}
+ };
+ photo.addEventListener('change',()=>handlePhoto(photo));
+ library.addEventListener('change',()=>handlePhoto(library));
+ const photoPanel=el('div',{className:'rem-paper-method-panel'},[el('strong',{text:'Fotografa una pagina'}),el('div',{className:'rem-paper-match-actions'},[takePhoto,choosePhoto]),photo,library,photoStatus]);
  const voiceButton=button('🎙️ Avvia dettatura',()=>startVoice());
  const voiceNote=el('p',{className:'sync-photo-note',text:'Leggi ad alta voce alcune righe oppure racconta la scena. Il riconoscimento vocale del browser può usare servizi esterni; non salviamo registrazioni audio.'});
  const voicePanel=el('div',{className:'rem-paper-method-panel'},[voiceButton,voiceNote]);
