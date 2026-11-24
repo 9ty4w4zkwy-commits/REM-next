@@ -12,6 +12,20 @@ globalThis.fetch=async (url,options)=>{
   const path=decodeURIComponent(url.split('?')[0]);
   return new Response(await readFile(path),{status:200});
  }
+ if(typeof url==='string'&&url.startsWith('https://it.wikisource.org/w/api.php')){
+  const headers=new Headers(options?.headers);
+  headers.set('User-Agent','REMNextSemanticIndexer/1.0 (https://github.com/9ty4w4zkwy-commits/REM-next; public-domain text indexing)');
+  headers.set('Api-User-Agent',headers.get('User-Agent'));
+  let response;
+  for(let attempt=0;attempt<3;attempt++){
+   response=await networkFetch(url,{...options,headers});
+   if(response.ok)return response;
+   console.warn('Wikisource HTTP',response.status,'attempt',attempt+1);
+   if(![429,500,502,503,504].includes(response.status))break;
+   await new Promise(r=>setTimeout(r,2000*(attempt+1)));
+  }
+  return response;
+ }
  return networkFetch(url,options);
 };
 const ids=['montecristo','pinocchio','mattia-pascal','metamorfosi-ovidio'];

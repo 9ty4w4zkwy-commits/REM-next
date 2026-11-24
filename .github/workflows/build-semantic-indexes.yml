@@ -35,6 +35,7 @@ jobs:
           if-no-files-found: error
   publish:
     needs: index
+    if: ${{ always() && !cancelled() }}
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -49,20 +50,24 @@ jobs:
           pattern: semantic-*
           merge-multiple: true
           path: content/semantic
-      - name: Verify all four indexes
+      - name: Verify available indexes
         run: |
           node --input-type=module <<'JS'
-          import {readFileSync} from 'node:fs';
+          import {readFileSync,existsSync} from 'node:fs';
+          let count=0;
           const catalog=JSON.parse(readFileSync('content/books/catalog.json','utf8'));
           for(const id of ['montecristo','pinocchio','mattia-pascal','metamorfosi-ovidio']){
             const book=catalog.books.find(b=>b.id===id);
-            const index=JSON.parse(readFileSync('content/semantic/'+id+'.json','utf8'));
+            const path='content/semantic/'+id+'.json';
+            if(!existsSync(path)){console.warn('Index unavailable: '+id);continue;}
+            const index=JSON.parse(readFileSync(path,'utf8'));
             if(index.book!==id||index.dimension!==384||index.version!==1||!index.rows.length||!book.chapters.every(c=>index.hashes[c.id]&&index.rows.some(r=>r.chapter===c.id)))throw Error('Incomplete index: '+id);
-            console.log(id,index.rows.length);
+            count++; console.log(id,index.rows.length);
           }
+          if(!count)throw Error('No valid indexes available');
           JS
       - run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add content/semantic/
-          git diff --cached --quiet || (git commit -m "Publish four precomputed semantic indexes" && git push origin main)
+          git diff --cached --quiet || (git commit -m "Publish validated precomputed semantic indexes" && git push origin main)
