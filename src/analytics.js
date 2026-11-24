@@ -6,6 +6,9 @@ const CONSENT='analytics-consent-v1';
 const ID='analytics-tester-id-v1';
 const TOKEN='analytics-tester-token-v2';
 const ENROLLMENT='analytics-tester-enrollment-v2';
+// One automatic registration attempt per browser without a credential.
+// Avoid silent repeated INSERTs when a network response is lost.
+const AUTO_ATTEMPT='analytics-tester-auto-attempt-v3';
 const validId=id=>Number.isSafeInteger(id)&&id>0;
 const validToken=token=>typeof token==='string'&&/^[a-f0-9]{64}$/.test(token);
 let pending=null;
@@ -43,8 +46,8 @@ function friendlyError(error){
  if(error?.status===403)return 'Il servizio ha rifiutato il dominio del sito. Contatta chi gestisce REM.';
  return 'Registrazione non riuscita: '+(error?.message||'servizio non disponibile')+'.';
 }
-// A missing credential is never replaced automatically for an existing profile:
-// the person may need to recover REM-001 on the new domain.
+// Opted-in participants receive a code automatically, including legacy visits.
+// A failed/uncertain request is not silently retried, to avoid duplicate IDs.
 async function ensureTester({create=false}={}){
  if(!analyticsEnabled())return null;
  if(pending)return pending;
@@ -61,13 +64,14 @@ async function ensureTester({create=false}={}){
   // Single explicit/first-consent registration attempt; do not retry
   // invisibly after a lost response and accidentally allocate multiple IDs.
   saveSetting(ENROLLMENT,'awaiting');
+  saveSetting(AUTO_ATTEMPT,'started');
   return storeCredential(await post('/api/testers',{}));
  })();
  try{return await pending}finally{pending=null}
 }
 export async function registerTesterCode({create=false}={}){
  if(!analyticsEnabled())return {status:'disabled'};
- if(!validToken(getSetting(TOKEN,''))&&!create&&!pending)return {status:'needs_choice'};
+ if(!validToken(getSetting(TOKEN,''))&&!create&&!pending)return {status:'needs_retry'};
  try{
   const id=await ensureTester({create});
   const code=getTesterCode();
@@ -92,7 +96,7 @@ export function trackEvent(event_type,details={}){
  if(!analyticsEnabled())return;
  void (async()=>{
   try{
-   const create=getSetting(ENROLLMENT,'')==='new';
+   const create=!validToken(getSetting(TOKEN,''))&&!getSetting(AUTO_ATTEMPT,'');
    const tester_id=await ensureTester({create});
    const token=getSetting(TOKEN,'');
    if(tester_id&&validToken(token)&&analyticsEnabled())await post('/api/events',{token,event_type,...details});
@@ -104,7 +108,7 @@ export function sendOnboardingAnswers(answers){
  const snapshot=answers.map(a=>a.slice());
  void (async()=>{
   try{
-   const create=getSetting(ENROLLMENT,'')==='new';
+   const create=!validToken(getSetting(TOKEN,''))&&!getSetting(AUTO_ATTEMPT,'');
    const tester_id=await ensureTester({create});
    const token=getSetting(TOKEN,'');
    if(tester_id&&validToken(token)&&analyticsEnabled())await post('/api/onboarding',{token,answers:snapshot});
