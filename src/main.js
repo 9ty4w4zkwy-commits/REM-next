@@ -1,5 +1,5 @@
 import {createOvidioAudio} from './ovidio-audio.js?v=4';
-import {loadCatalog,loadChapter} from './catalog.js?v=conte-episode-titles-20261124';
+import {loadCatalog,loadChapter} from './catalog.js?v=narrative-119-20261124';
 import {loadEpisodeSegment} from './episode-segments.js?v=conte-20-20261124';
 import {loadOvidioEpisode} from './ovidio-episodes.js?v=2';
 import {createCollectionsView} from './collections-view.js?v=rem-ui-209';
@@ -15,7 +15,7 @@ import {createHighlights} from './highlights.js?v=single-remove-1';
 import {createEbookJourney} from './ebook-journey.js?v=rem-ebook-91';
 import {phraseSearch,getPhrase,savePhrase} from './synchronization.js?v=ios-picker-20261124';
 import {HOME_SECTIONS,booksForHomeSection} from './home-config.js?v=rem-ui-159';
-import {summaryView} from './summary-view.js?v=ios-picker-20261124';
+import {summaryView} from './summary-view.js?v=narrative-119-20261124';
 const app=document.getElementById('app');let books=[];let currentView='home';let resumeFromHomeId=null;let activeReaderTools=null;let activeHighlights=null;let activeAudioPlayer=null;
 const render=(...nodes)=>{document.body.classList.toggle('rem-onboarding-gate',!onboardingCompleted()&&nodes.some(node=>node?.classList?.contains('onboard-screen')));document.body.classList.remove('ebook-fullscreen-active');if(activeAudioPlayer){activeAudioPlayer.stopAudio?.();activeAudioPlayer=null}if(activeHighlights){activeHighlights.destroy();activeHighlights=null}if(activeReaderTools){activeReaderTools.destroy();activeReaderTools=null}document.querySelectorAll('body > .format-switch-bottom').forEach(dock=>dock.remove());app.replaceChildren(...nodes);const readerDock=app.querySelector(':scope > .format-switch-bottom');if(readerDock)document.body.append(readerDock);for(const [id,active] of [['navHome',currentView==='home'],['navLibrary',currentView==='library'],['navProfile',currentView==='profile']]){const nav=document.getElementById(id);nav?.classList.toggle('is-active',active);if(active)nav?.setAttribute('aria-current','page');else nav?.removeAttribute('aria-current')}window.scrollTo({top:0,left:0,behavior:'instant'});document.documentElement.scrollTop=0;document.body.scrollTop=0};
 const para=(text,cls='')=>el('p',{text,className:cls});
