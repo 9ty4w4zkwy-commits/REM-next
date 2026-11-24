@@ -63,8 +63,32 @@ export function phraseSearch(book,onFound){
  const intro=el('p',{text:'La tua edizione cartacea può essere diversa: cercheremo il passaggio corrispondente o una scena vicina. Potrai sempre scegliere il capitolo.'});
  const tabs=el('div',{className:'rem-paper-methods',attrs:{role:'group','aria-label':'Come indicare il punto'}});
  const methods=[
-  ['photo','📷 Fotografa'],['voice','🎙️ Leggi'],['text','✍️ Scrivi'],['chapter','📖 Capitolo']
+  ['photo','Fotografa'],['voice','Leggi'],['text','Scrivi'],['chapter','Capitolo']
  ];
+ const icons={
+  photo:['rect|3|6|18|15|2','circle|12|13.5|4','path|M8 6l1.3-2h5.4L16 6'],
+  voice:['rect|9|2|6|13|3','path|M5 10a7 7 0 0 0 14 0 M12 17v5 M8 22h8'],
+  text:['path|M12 20h9 M4 20l4.5-1 11-11a2.12 2.12 0 0 0-3-3l-11 11L4 20Z'],
+  chapter:['path|M12 7c-2.5-2-5.5-2.6-9-2v14c3.5-.6 6.5 0 9 2 M12 7c2.5-2 5.5-2.6 9-2v14c-3.5-.6-6.5 0-9 2 M12 7v14']
+ };
+ const methodIcon=id=>{
+  const ns='http://www.w3.org/2000/svg';
+  const svg=document.createElementNS(ns,'svg');
+  svg.classList.add('rem-paper-method-icon');
+  svg.setAttribute('viewBox','0 0 24 24');
+  svg.setAttribute('fill','none');svg.setAttribute('stroke','currentColor');
+  svg.setAttribute('stroke-width','1.8');svg.setAttribute('stroke-linecap','round');svg.setAttribute('stroke-linejoin','round');
+  svg.setAttribute('aria-hidden','true');
+  for(const data of icons[id]){
+   const [kind,...values]=data.split('|');
+   const n=document.createElementNS(ns,kind);
+   if(kind==='path')n.setAttribute('d',values[0]);
+   if(kind==='rect'){['x','y','width','height','rx'].forEach((attr,i)=>n.setAttribute(attr,values[i]))}
+   if(kind==='circle'){['cx','cy','r'].forEach((attr,i)=>n.setAttribute(attr,values[i]))}
+   svg.append(n);
+  }
+  return svg;
+ };
  const methodButtons=new Map();
  const panels=new Map();
  const methodArea=el('div',{className:'rem-paper-method-area'});
@@ -86,8 +110,11 @@ export function phraseSearch(book,onFound){
  const chapterPanel=el('div',{className:'rem-paper-method-panel'},[el('label',{text:'Capitolo raggiunto'}),chapterSelect,el('p',{className:'sync-photo-note',text:'Se non riconosci il passaggio, scegli il capitolo manualmente.'})]);
  panels.set('photo',photoPanel);panels.set('voice',voicePanel);panels.set('text',textPanel);panels.set('chapter',chapterPanel);
  for(const [id,label] of methods){
-  const b=button(label,()=>setMethod(id));
-  b.className='rem-paper-method-button';methodButtons.set(id,b);tabs.append(b);
+  const b=button('',()=>setMethod(id));
+  b.className='rem-paper-method-button';
+  b.setAttribute('aria-label',label);
+  b.append(methodIcon(id),el('span',{className:'rem-paper-method-label',text:label}));
+  methodButtons.set(id,b);tabs.append(b);
  }
  function setMethod(id){
   active=id;methodArea.replaceChildren(panels.get(id));
