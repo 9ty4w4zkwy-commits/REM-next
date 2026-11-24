@@ -14,7 +14,7 @@ import {getMode,formatSwitch,paperView,audioView} from './formats.js?v=ios-picke
 import {createReaderTools} from './reader-tools.js?v=rem-ui-245';
 import {createHighlights} from './highlights.js?v=single-remove-1';
 import {createEbookJourney} from './ebook-journey.js?v=rem-ebook-91';
-import {phraseSearch,getPhrase,savePhrase} from './synchronization.js?v=ios-picker-20261124';
+import {phraseSearch,getPhrase,savePhrase} from './synchronization.js?v=paper-semantic-20261124';
 import {HOME_SECTIONS,booksForHomeSection} from './home-config.js?v=rem-ui-159';
 import {summaryView} from './summary-view.js?v=narrative-119-render-fix-20261124';
 const app=document.getElementById('app');let books=[];let currentView='home';let resumeFromHomeId=null;let activeReaderTools=null;let activeHighlights=null;let activeAudioPlayer=null;
@@ -502,7 +502,7 @@ if(mode==='audio'){
  }catch(error){if(shell.isConnected)shell.append(el('p',{text:'Impossibile caricare l’audio: '+error.message}))}
  return;
 }
-if(mode==='paper'){const search=phraseSearch(book,(item,target='ebook')=>{if(item?.chapter&&Number.isFinite(item.offset)&&target==='audio'&&(id==='metamorfosi-ovidio'||id==='montecristo'))saveSetting('audio-text-sync:'+id,JSON.stringify({chapter:item.chapter,source:'ebook',offset:item.offset,selected:true}));saveSetting('format:'+id,target);reader(id,item?.chapter||chapter?.id,target,item?.offset??null,false,null)});const point=getPhrase(id);
+if(mode==='paper'){const search=phraseSearch(book,(item,target='ebook')=>{if(item?.chapter&&Number.isFinite(item.offset)&&target==='audio'&&(id==='metamorfosi-ovidio'||id==='montecristo'||id==='pinocchio'))saveSetting('audio-text-sync:'+id,JSON.stringify({chapter:item.chapter,source:'ebook',offset:item.offset,selected:true}));saveSetting('format:'+id,target);reader(id,item?.chapter||chapter?.id,target,item?.offset??null,false,null)});const point=getPhrase(id);
  const resumeChapter=book.chapters.find(c=>c.id===point?.chapter)||chapter;
  const paperResume=resumeChapter?el('aside',{className:'paper-resume-card'},[
   el('h2',{text:'Riprendi sul cartaceo'}),

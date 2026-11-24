@@ -1,3 +1,4 @@
+import {recognizePage,semanticLocations} from './paper-intelligence.js?v=paper-semantic-20261124';
 import {el,button} from './ui.js';
 import {chapterPicker} from './chapter-picker.js?v=compact-picker-20261124';
 import {loadChapter} from './catalog.js';
@@ -99,8 +100,19 @@ export function phraseSearch(book,onFound){
  const status=el('p',{className:'sync-status',attrs:{role:'status','aria-live':'polite'}});
  const results=el('div',{className:'sync-results rem-paper-matches'});
  const photo=el('input',{attrs:{type:'file',accept:'image/*',capture:'environment','aria-label':'Fotografa la pagina del libro'}});
- const photoStatus=el('p',{className:'sync-photo-note',text:'La foto resta sul tuo telefono. Per ora usa Testo attivo di iPhone per copiare qualche riga dalla foto, poi incollala qui sotto. Il riconoscimento diretto dentro REM arriverà successivamente.'});
- photo.addEventListener('change',()=>{photoStatus.textContent=photo.files?.length?'Foto selezionata. Aprila nell’app Foto, tieni premuto sul testo e copia alcune righe; poi incollale nel campo sottostante. REM non carica la foto su un server.':'La foto resta sul dispositivo.'});
+ const photoStatus=el('p',{className:'sync-photo-note',text:'Fotografa una pagina ben illuminata. Il riconoscimento avviene sul dispositivo; al primo utilizzo vengono scaricati i modelli necessari.'});
+ let photoRun=0;
+ photo.addEventListener('change',async()=>{
+  const file=photo.files?.[0];if(!file)return;
+  const run=++photoRun;find.disabled=true;photo.disabled=true;results.replaceChildren();status.textContent='';photoStatus.textContent='Preparazione della foto…';
+  try{
+   const extracted=await recognizePage(file,message=>{if(run===photoRun&&wrap.isConnected)photoStatus.textContent=message});
+   if(run!==photoRun||!wrap.isConnected)return;
+   field.value=extracted;photoStatus.textContent='Testo riconosciuto. Puoi correggerlo oppure verificare i passaggi suggeriti.';
+   find.disabled=false;if(active==='photo')find.click();
+  }catch(e){if(run===photoRun)photoStatus.textContent='Riconoscimento non riuscito. Riprova oppure copia il testo con Testo attivo di iPhone e incollalo qui.'}
+  finally{if(run===photoRun){photo.disabled=false;if(!searching)find.disabled=false;photo.value=''}}
+ });
  const photoPanel=el('div',{className:'rem-paper-method-panel'},[el('strong',{text:'Fotografa una pagina'}),photo,photoStatus]);
  const voiceButton=button('🎙️ Avvia dettatura',()=>startVoice());
  const voiceNote=el('p',{className:'sync-photo-note',text:'Leggi ad alta voce alcune righe oppure racconta la scena. Il riconoscimento vocale del browser può usare servizi esterni; non salviamo registrazioni audio.'});
@@ -140,12 +152,12 @@ export function phraseSearch(book,onFound){
  function showResults(matches){
   results.replaceChildren();
   if(!matches.length){status.textContent='Nessuna corrispondenza affidabile. Prova a indicare il capitolo oppure una frase più lunga.';return}
-  status.textContent=matches[0].approximate?'Possibili punti della storia: scegli quello che riconosci. La posizione è indicativa.':'Testo individuato: verifica il passaggio prima di continuare.';
+  status.textContent=matches[0].approximate?'Possibili scene corrispondenti: scegli quella che riconosci. La posizione è indicativa, anche tra traduzioni diverse.':'Testo individuato: verifica il passaggio prima di continuare.';
   for(const item of matches){
    const card=el('section',{className:'rem-paper-match'},[
     el('strong',{text:item.title}),
     el('p',{text:item.context||item.phrase}),
-    ...(item.approximate?[el('small',{text:'Corrispondenza orientativa: da verificare'})]:[]),
+    ...(item.approximate?[el('small',{text:'Corrispondenza orientativa: verifica il passaggio'})]:[]),
     el('div',{className:'rem-paper-match-actions'},[
      button('Continua in Ebook',()=>choose(item,'ebook'),true),
      button('Continua in Audio',()=>choose(item,'audio'))
@@ -154,6 +166,7 @@ export function phraseSearch(book,onFound){
    results.append(card);
   }
  }
+ let searching=false;
  const find=button('Trova il punto',async()=>{
   if(active==='chapter'){
    const item={chapter:chapterSelect.value,title:chapterSelect.selectedOptions[0]?.textContent||'',offset:0,phrase:'',context:'Inizio del capitolo selezionato',approximate:true};
@@ -161,16 +174,28 @@ export function phraseSearch(book,onFound){
   }
   const query=field.value.trim();
   if(!query){status.textContent='Inserisci una frase o una descrizione prima di cercare.';return}
-  find.disabled=true;status.textContent='Sto cercando nei capitoli…';results.replaceChildren();
+  if(searching)return;searching=true;find.disabled=true;status.textContent='Sto cercando nei capitoli…';results.replaceChildren();
   try{
    let matches=[];
    if(normalize(query).split(/\s+/).length>=4){
     const exact=await findPhrase(book,query);
     matches=(exact.matches||[]).slice(0,4);
+    if(!matches.length&&normalize(query).split(' ').length>=20){
+     const tokens=normalize(query).split(' ');
+     for(const from of [0,Math.floor(tokens.length/3),Math.floor(tokens.length/2)]){
+      const anchor=await findPhrase(book,tokens.slice(from,from+10).join(' '));
+      if(anchor.matches?.length===1){matches=anchor.matches.map(x=>({...x,approximate:true}));break}
+     }
+    }
+   }
+   let semanticFailed=false;
+   if(!matches.length){
+    try{matches=await semanticLocations(book,query,message=>{if(wrap.isConnected)status.textContent=message})}catch(e){semanticFailed=true}
    }
    if(!matches.length)matches=await findStoryLocations(book,query);
-   showResults(matches);
-  }catch(e){status.textContent='Ricerca non riuscita: '+e.message}finally{find.disabled=false}
+   if(wrap.isConnected){showResults(matches);if(semanticFailed)status.textContent+=' Ricerca semantica non disponibile: è stata usata la ricerca per parole chiave.'}
+
+  }catch(e){status.textContent='Ricerca non riuscita: '+e.message}finally{searching=false;find.disabled=false}
  },true);
  find.className='rem-paper-find';
  const fallback=button('Scegli direttamente il capitolo',()=>setMethod('chapter'));
