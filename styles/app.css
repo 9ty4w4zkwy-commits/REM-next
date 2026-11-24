@@ -2221,3 +2221,6 @@ html body .rem-chapter-picker-check{width:22px!important;font-size:20px!importan
 
 /* Equal-sized continuation buttons, scoped to search result cards. */
 .rem-paper-match .rem-paper-match-actions{display:grid;grid-template-columns:minmax(0,1fr);gap:10px;width:100%}.rem-paper-match .rem-paper-match-actions>button{width:100%!important;min-height:46px!important;box-sizing:border-box;justify-self:stretch;text-align:center}
+
+/* Match photo picker button dimensions, preserving the primary/secondary palette. */
+.rem-paper-method-panel .rem-paper-match-actions{display:grid;grid-template-columns:minmax(0,1fr);gap:10px;width:100%}.rem-paper-method-panel .rem-paper-match-actions>button{width:100%!important;min-height:46px!important;box-sizing:border-box;justify-self:stretch;text-align:center}
