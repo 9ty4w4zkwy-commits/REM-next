@@ -6,7 +6,7 @@ import {createCollectionsView} from './collections-view.js?v=rem-ui-209';
 import {readCollections,isBookSaved,saveBookToCollections,removeSavedBook,attachItem,detachItem,addThought} from './collections-store.js?v=rem-mint-207';
 import {showOnboarding,onboardingCompleted} from './onboarding.js?v=question-skip-20261124';
 import {getProgress,saveProgress,getSetting,saveSetting} from './progress.js';
-import {analyticsEnabled,getTesterCode,setAnalyticsConsent,startAnalytics,trackEvent} from './analytics.js?v=analytics-2';
+import {analyticsEnabled,getTesterCode,registerTesterCode,setAnalyticsConsent,startAnalytics,trackEvent} from './analytics.js?v=tester-registration-20261124';
 import {el,button,panel,heading} from './ui.js';
 import {getMode,formatSwitch,paperView,audioView} from './formats.js?v=rem-audio-182';
 import {createReaderTools} from './reader-tools.js?v=rem-ui-245';
@@ -320,7 +320,34 @@ function profile(){
  const analyticsToggle=button(analyticsEnabled()?'Disattiva invio dati di test':'Attiva invio dati di test',()=>{setAnalyticsConsent(!analyticsEnabled());profile()});
  analyticsToggle.classList.add('rem-profile-action');
  const testerCode=getTesterCode();
- const testerSection=analyticsEnabled()?card('№','Il mio codice tester',testerCode?'Il tuo codice è '+testerCode+'.':'Il codice sarà disponibile dopo la prima registrazione. Riapri il Profilo tra qualche secondo.',testerCode?button('Copia '+testerCode,()=>{if(navigator.clipboard?.writeText)void navigator.clipboard.writeText(testerCode).catch(()=>{});else window.prompt('Copia il tuo codice tester',testerCode)}):null):null;
+ const testerActions=el('div',{className:'rem-tester-actions'});
+ const testerSection=analyticsEnabled()?card('№','Il mio codice tester',testerCode?'Il tuo codice è '+testerCode+'.':'Registrazione del codice tester in corso…',testerActions):null;
+ if(testerSection){
+  const message=testerSection.querySelector('.rem-profile-description');
+  const showCode=code=>{
+   message.textContent='Il tuo codice tester è '+code+'. Conservalo per identificare le tue attività nella Dashboard.';
+   const copy=button('Copia '+code,()=>{
+    if(navigator.clipboard?.writeText)void navigator.clipboard.writeText(code).catch(()=>{window.prompt('Copia il tuo codice tester',code)});
+    else window.prompt('Copia il tuo codice tester',code);
+   });
+   copy.classList.add('rem-profile-action');testerActions.replaceChildren(copy);
+  };
+  const register=async()=>{
+   if(!testerSection.isConnected||!analyticsEnabled())return;
+   message.textContent='Contatto il servizio per assegnare il codice tester…';
+   testerActions.replaceChildren();
+   const result=await registerTesterCode();
+   if(!testerSection.isConnected||!analyticsEnabled())return;
+   if(result.status==='registered')showCode(result.code);
+   else if(result.status==='error'){
+    message.textContent=result.message+' Il codice è necessario per associare correttamente i dati del test.';
+    const retry=button('Riprova registrazione',register,true);
+    retry.classList.add('rem-profile-action');testerActions.replaceChildren(retry);
+   }
+  };
+  if(testerCode)showCode(testerCode);
+  else queueMicrotask(()=>{if(testerSection.isConnected)void register()});
+ }
  const privacy=el('details',{className:'rem-profile-privacy-details'},[
   el('summary',{text:'◇  Privacy e dati'}),
   card('◇','Privacy e preferenze','Questionario, libri salvati e progressi restano su questo dispositivo. Solo se scegli di partecipare, REM invia a Cloudflare un ID numerico, le risposte al questionario e le attività di utilizzo (libro, formato e data). Nessun nome o email. Puoi interrompere i futuri invii; disattivare non cancella i dati già raccolti.',analyticsToggle)
