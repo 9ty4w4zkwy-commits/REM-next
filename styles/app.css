@@ -2073,3 +2073,18 @@ html body .summary-shell .summary-reading-shell.reading-shell[data-theme="sun"] 
 html body .summary-shell .summary-reading-shell.reading-shell[data-theme="sun"] .summary-content p{color:#191c21!important}
 html body .summary-shell .summary-reading-shell.reading-shell[data-theme="moon"] .summary-content h3,
 html body .summary-shell .summary-reading-shell.reading-shell[data-theme="moon"] .summary-content p{color:#f3eee4!important}
+
+/* v search-spacing-20261124: keep focused outline clear of Search button. */
+@media(max-width:650px){
+ html body .rem-search-view .rem-search-field{gap:14px!important;align-items:stretch!important}
+ html body .rem-search-view .rem-book-search-input{
+  min-width:0!important;flex:1 1 0!important;width:0!important;
+  padding-inline:9px!important;font-size:clamp(14px,3.85vw,16px)!important;
+  letter-spacing:-.035em!important;text-overflow:clip!important;
+ }
+ html body .rem-search-view .rem-book-search-input::placeholder{font-size:inherit!important;letter-spacing:inherit!important}
+ html body .rem-search-view .rem-search-submit{
+  flex:0 0 60px!important;width:60px!important;min-width:60px!important;
+  padding:0 3px!important;
+ }
+}
