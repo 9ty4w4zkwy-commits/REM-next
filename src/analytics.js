@@ -67,7 +67,7 @@ async function ensureTester({create=false}={}){
 }
 export async function registerTesterCode({create=false}={}){
  if(!analyticsEnabled())return {status:'disabled'};
- if(!validToken(getSetting(TOKEN,''))&&!create)return {status:'needs_choice'};
+ if(!validToken(getSetting(TOKEN,''))&&!create&&!pending)return {status:'needs_choice'};
  try{
   const id=await ensureTester({create});
   const code=getTesterCode();
