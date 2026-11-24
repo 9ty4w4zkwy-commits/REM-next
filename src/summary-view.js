@@ -25,9 +25,11 @@ export function summaryView(book,onClose,onContinue){
  const select=document.createElement('select');select.setAttribute('aria-label','Capitolo da riassumere');
  book.chapters.forEach(c=>{const opt=document.createElement('option');opt.value=c.id;opt.textContent=c.title;select.append(opt)});
  select.value=getSetting('summary-chapter:'+book.id,book.chapters[0]?.id||'');
+ if(!select.value&&book.chapters.length)select.value=book.chapters[0].id;
  const formats=el('div',{className:'summary-formats'});
- const ebook=button('Ebook',()=>{});
- formats.append(ebook);
+ const ebook=button('Ebook',()=>stopSpeech());
+ const audio=button('Ascolta',()=>playSummary());
+ formats.append(ebook,audio);
  const output=el('article',{className:'summary-content reading-text',attrs:{'aria-live':'polite'}});
  const page=el('div',{className:'ebook-page-frame summary-page-frame'},[output]);
  const readingShell=el('section',{className:'reading-shell summary-reading-shell'});
@@ -41,31 +43,36 @@ export function summaryView(book,onClose,onContinue){
  let isFull=false;
  function toggleFullscreen(force){isFull=typeof force==='boolean'?force:!isFull;root.classList.toggle('summary-is-fullscreen',isFull);document.body.classList.toggle('summary-fullscreen-active',isFull);full.setAttribute('aria-pressed',String(isFull));if(isFull)page.scrollTop=0}
  page.append(full);readingShell.append(topbar,page);readerTools.mount(readingShell);
- const observer=new MutationObserver(()=>{if(!root.isConnected){document.body.classList.remove('summary-fullscreen-active');readerTools.destroy();observer.disconnect()}});
+ const observer=new MutationObserver(()=>{if(!root.isConnected){document.body.classList.remove('summary-fullscreen-active');stopSpeech();readerTools.destroy();observer.disconnect()}});
  queueMicrotask(()=>observer.observe(document.body,{childList:true,subtree:true}));
  const status=el('p',{className:'summary-status',attrs:{role:'status'}});
  const finish=button('Continua dal capitolo successivo →',()=>{stopSpeech();const idx=book.chapters.findIndex(c=>c.id===select.value);onContinue(book.chapters[idx+1]?.id||select.value)},true);
  const back=button('← Torna al libro',()=>{stopSpeech();onClose()});
- let currentText='',generation=0;
- function stopSpeech(){if('speechSynthesis' in window)window.speechSynthesis.cancel()}
+ let currentText='',speech=null;
+ function resetSpeech(){speech=null;audio.textContent='Ascolta';audio.setAttribute('aria-pressed','false')}
+ function stopSpeech(){const active=speech;resetSpeech();if(active&&'speechSynthesis' in window)window.speechSynthesis.cancel()}
+ function playSummary(){
+  if(speech){stopSpeech();return}
+  if(!currentText||!('speechSynthesis' in window)||!('SpeechSynthesisUtterance' in window))return;
+  window.speechSynthesis.cancel();
+  const utterance=new SpeechSynthesisUtterance(current()?.title+'. '+currentText);
+  utterance.lang='it-IT';utterance.rate=.95;speech=utterance;
+  utterance.onend=()=>{if(speech===utterance)resetSpeech()};
+  utterance.onerror=()=>{if(speech===utterance){resetSpeech();status.textContent='Ascolto non disponibile. Puoi leggere il riassunto.'}};
+  audio.textContent='Ferma ascolto';audio.setAttribute('aria-pressed','true');status.textContent='';
+  try{window.speechSynthesis.speak(utterance)}catch{resetSpeech();status.textContent='Ascolto non disponibile. Puoi leggere il riassunto.'}
+ }
  function current(){return book.chapters.find(c=>c.id===select.value)}
- async function renderSummary(){
-  const token=++generation;stopSpeech();saveSetting('summary-chapter:'+book.id,select.value);
-  const chapter=current();currentText='';output.replaceChildren(el('h3',{text:chapter?.title||''}),el('p',{text:'Preparazione della sintesi…'}));
-  status.textContent='';finish.disabled=true;
-  ebook.classList.add('is-selected');
-  ebook.setAttribute('aria-pressed','true');
-  if(!chapter){status.textContent='Nessun capitolo disponibile.';return}
-  try{
-   const key=book.id+':'+chapter.id;
-   if(!cache.has(key))cache.set(key,Promise.resolve(chapter.summary?.trim()||''));
-   const result=await cache.get(key);if(token!==generation||!root.isConnected)return;
-   currentText=result;output.replaceChildren(el('h3',{text:chapter.title}),...(result?narrativeParagraphs(result).map(part=>el('p',{text:part})):[el('p',{text:'Il riassunto narrativo di questo capitolo è in preparazione.'})]));
-   status.textContent='';
-   finish.disabled=!result;
-  }catch(error){if(token!==generation||!root.isConnected)return;output.replaceChildren(el('h3',{text:chapter.title}),el('p',{text:'Non è stato possibile caricare il testo del capitolo.'}));status.textContent=error.message||'Errore di caricamento'}
+ function renderSummary(){
+  stopSpeech();saveSetting('summary-chapter:'+book.id,select.value);
+  const chapter=current();currentText=typeof chapter?.summary==='string'?chapter.summary.trim():'';
+  output.replaceChildren(el('h3',{text:chapter?.title||''}),...(currentText?narrativeParagraphs(currentText).map(part=>el('p',{text:part})):[el('p',{text:chapter?'Il riassunto narrativo di questo capitolo è in preparazione.':'Nessun capitolo disponibile.'})]));
+  status.textContent='';
+  finish.disabled=!currentText;
+  audio.disabled=!currentText||!('speechSynthesis' in window)||!('SpeechSynthesisUtterance' in window);
+  ebook.classList.add('is-selected');ebook.setAttribute('aria-pressed','true');
  }
  select.addEventListener('change',renderSummary);
- root.append(title,intro,label,chapterPicker(select),el('p',{text:'Scegli il formato del riassunto'}),formats,readingShell,el('div',{className:'summary-actions'},[back,finish]));
+ root.append(title,intro,label,chapterPicker(select),el('p',{text:'Scegli il formato del riassunto'}),formats,readingShell,status,el('div',{className:'summary-actions'},[back,finish]));
  renderSummary();return root;
 }
