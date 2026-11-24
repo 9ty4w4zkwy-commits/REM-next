@@ -4,7 +4,7 @@ import {loadEpisodeSegment} from './episode-segments.js?v=pinocchio-122';
 import {loadOvidioEpisode} from './ovidio-episodes.js?v=2';
 import {createCollectionsView} from './collections-view.js?v=rem-ui-209';
 import {readCollections,isBookSaved,saveBookToCollections,removeSavedBook,attachItem,detachItem,addThought} from './collections-store.js?v=rem-mint-207';
-import {showOnboarding,onboardingCompleted} from './onboarding.js?v=short-consent-20261123';
+import {showOnboarding,onboardingCompleted} from './onboarding.js?v=full-screen-consent-20261124';
 import {getProgress,saveProgress,getSetting,saveSetting} from './progress.js';
 import {analyticsEnabled,getTesterCode,setAnalyticsConsent,startAnalytics,trackEvent} from './analytics.js?v=analytics-2';
 import {el,button,panel,heading} from './ui.js';
@@ -16,7 +16,7 @@ import {phraseSearch,getPhrase,savePhrase} from './synchronization.js?v=rem-swit
 import {HOME_SECTIONS,booksForHomeSection} from './home-config.js?v=rem-ui-159';
 import {summaryView} from './summary-view.js?v=summary-reader-white-20261123b';
 const app=document.getElementById('app');let books=[];let currentView='home';let resumeFromHomeId=null;let activeReaderTools=null;let activeHighlights=null;let activeAudioPlayer=null;
-const render=(...nodes)=>{document.body.classList.remove('ebook-fullscreen-active');if(activeAudioPlayer){activeAudioPlayer.stopAudio?.();activeAudioPlayer=null}if(activeHighlights){activeHighlights.destroy();activeHighlights=null}if(activeReaderTools){activeReaderTools.destroy();activeReaderTools=null}app.replaceChildren(...nodes);for(const [id,active] of [['navHome',currentView==='home'],['navLibrary',currentView==='library'],['navProfile',currentView==='profile']]){const nav=document.getElementById(id);nav?.classList.toggle('is-active',active);if(active)nav?.setAttribute('aria-current','page');else nav?.removeAttribute('aria-current')}window.scrollTo({top:0,left:0,behavior:'instant'});document.documentElement.scrollTop=0;document.body.scrollTop=0};
+const render=(...nodes)=>{document.body.classList.toggle('rem-onboarding-gate',!onboardingCompleted()&&nodes.some(node=>node?.classList?.contains('onboard-screen')));document.body.classList.remove('ebook-fullscreen-active');if(activeAudioPlayer){activeAudioPlayer.stopAudio?.();activeAudioPlayer=null}if(activeHighlights){activeHighlights.destroy();activeHighlights=null}if(activeReaderTools){activeReaderTools.destroy();activeReaderTools=null}app.replaceChildren(...nodes);for(const [id,active] of [['navHome',currentView==='home'],['navLibrary',currentView==='library'],['navProfile',currentView==='profile']]){const nav=document.getElementById(id);nav?.classList.toggle('is-active',active);if(active)nav?.setAttribute('aria-current','page');else nav?.removeAttribute('aria-current')}window.scrollTo({top:0,left:0,behavior:'instant'});document.documentElement.scrollTop=0;document.body.scrollTop=0};
 const para=(text,cls='')=>el('p',{text,className:cls});
 const backArrow=(onClick,label='Torna indietro')=>{const b=button('←',onClick);b.classList.add('reader-back','quiet-back');b.setAttribute('aria-label',label);return b};
 const pathLink=(label,onClick)=>{const b=button(label,onClick);b.classList.add('story-path-link');return b};
@@ -563,4 +563,4 @@ const sizeSelect=el('select',{attrs:{'aria-label':'Dimensione testo'}});for(cons
 }
 }catch(error){if(text.isConnected)text.textContent='Impossibile caricare il capitolo: '+error.message}finally{requestAnimationFrame(()=>{requestAnimationFrame(()=>{readerRestoring=false})})}}
 document.getElementById('brand').onclick=home;document.getElementById('navHome').onclick=home;document.getElementById('navLibrary').onclick=()=>library();document.getElementById('navProfile').onclick=profile;document.getElementById('navSearch').onclick=searchBooks;
-try{books=await loadCatalog();startAnalytics();if(onboardingCompleted()||getSetting('onboarding-v1','')==='later')home();else showOnboarding(render,home)}catch(error){render(heading('REM Next','ERRORE'),para('Impossibile caricare il catalogo: '+error.message),para('Avvia l’app tramite un server web, non aprendo index.html come file locale.'))}
+try{books=await loadCatalog();startAnalytics();if(onboardingCompleted())home();else showOnboarding(render,home)}catch(error){render(heading('REM Next','ERRORE'),para('Impossibile caricare il catalogo: '+error.message),para('Avvia l’app tramite un server web, non aprendo index.html come file locale.'))}
