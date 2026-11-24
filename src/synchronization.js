@@ -84,10 +84,10 @@ export function phraseSearch(book,onFound){
  const results=el('div',{className:'sync-results rem-paper-matches'});
  const photo=el('input',{attrs:{type:'file',accept:'image/*',capture:'environment','aria-label':'Fotografa la pagina del libro'}});
  const library=el('input',{attrs:{type:'file',accept:'image/*','aria-label':'Scegli una foto dalla libreria'}});
- photo.hidden=true;library.hidden=true;
+ photo.hidden=true;library.hidden=true;photo.style.setProperty('display','none','important');library.style.setProperty('display','none','important');
  const takePhoto=button('Scatta una foto',()=>photo.click());
  const choosePhoto=button('Scegli dalla libreria',()=>library.click());
- const photoStatus=el('p',{className:'sync-photo-note',text:'Fotografa una pagina ben illuminata. Il riconoscimento avviene sul dispositivo; al primo utilizzo vengono scaricati i modelli necessari.'});
+ const photoStatus=el('p',{className:'sync-photo-note',text:'Fotografa una pagina ben illuminata.'});
  let photoRun=0;
  const handlePhoto=async input=>{
   const file=input.files?.[0];if(!file)return;
