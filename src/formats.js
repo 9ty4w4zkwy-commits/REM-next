@@ -1,6 +1,7 @@
 import {loadWordTimeline,secondsForOffset,offsetForSeconds} from './audio-word-timeline.js';
 import {getSetting,saveSetting} from './progress.js';
 import {el,button,panel} from './ui.js';
+import {chapterPicker} from './chapter-picker.js?v=ios-picker-20261124';
 const ICON_PATHS={
 paper:['M12 7c-2.5-2-5.5-2.6-9-2v14c3.5-.6 6.5 0 9 2','M12 7c2.5-2 5.5-2.6 9-2v14c-3.5-.6-6.5 0-9 2','M12 7v14'],
 ebook:['M6 2.5h12a2 2 0 0 1 2 2v15a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-15a2 2 0 0 1 2-2Z','M10 18.5h4'],
@@ -10,7 +11,7 @@ function formatIcon(id){const ns='http://www.w3.org/2000/svg';const svg=document
 const MODES=[['ebook','Ebook'],['paper','Cartaceo'],['audio','Audio']];
 export function getMode(bookId){const mode=getSetting('format:'+bookId,'ebook');return MODES.some(([id])=>id===mode)?mode:'ebook'}
 export function formatSwitch(bookId,selected,onSelect){return el('div',{className:'format-switch',attrs:{role:'group','aria-label':'Formato di lettura'}},MODES.map(([id,label])=>{const b=button(label,()=>{saveSetting('format:'+bookId,id);onSelect(id)},id===selected);b.setAttribute('aria-pressed',String(id===selected));b.dataset.format=id;b.prepend(formatIcon(id));return b}))}
-export function paperView(book,chapter,onChapter){const intro=el('p',{text:'Stai leggendo la copia cartacea? Seleziona il capitolo raggiunto. Il progresso viene salvato solo su questo dispositivo.'});const select=el('select',{attrs:{'aria-label':'Capitolo raggiunto sul cartaceo'}});for(const c of book.chapters)select.append(el('option',{text:c.title,attrs:{value:c.id}}));select.value=chapter?.id||book.chapters[0]?.id||'';select.addEventListener('change',()=>onChapter(select.value));return el('section',{className:'format-mode-panel'},[el('p',{className:'eyebrow',text:'REM · CARTACEO'}),el('h2',{text:'Continua sul tuo libro cartaceo'}),intro,el('label',{text:'Capitolo raggiunto'}),select,el('p',{className:'format-mode-note',text:'Per passare subito a Ebook o Audio, usa i tre pulsanti in basso. La ricerca precisa da foto, pagina o frase arriverà nel prossimo step.'})])}
+export function paperView(book,chapter,onChapter){const intro=el('p',{text:'Stai leggendo la copia cartacea? Seleziona il capitolo raggiunto. Il progresso viene salvato solo su questo dispositivo.'});const select=el('select',{attrs:{'aria-label':'Capitolo raggiunto sul cartaceo'}});for(const c of book.chapters)select.append(el('option',{text:c.title,attrs:{value:c.id}}));select.value=chapter?.id||book.chapters[0]?.id||'';select.addEventListener('change',()=>onChapter(select.value));return el('section',{className:'format-mode-panel'},[el('p',{className:'eyebrow',text:'REM · CARTACEO'}),el('h2',{text:'Continua sul tuo libro cartaceo'}),intro,el('label',{text:'Capitolo raggiunto'}),chapterPicker(select),el('p',{className:'format-mode-note',text:'Per passare subito a Ebook o Audio, usa i tre pulsanti in basso. La ricerca precisa da foto, pagina o frase arriverà nel prossimo step.'})])}
 // Local chapter-audio preview: no third-party recording is published by REM Next.
 // Selecting a chapter file plays it on-device and saves its actual playback time.
 // Store private test audio only inside this browser; never upload recordings to GitHub Pages.
