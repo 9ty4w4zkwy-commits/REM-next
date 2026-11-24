@@ -1,0 +1,142 @@
+[
+  {
+    "chapter": "capitolo-01",
+    "coverage": 0.911,
+    "duration": 1098.923,
+    "matched": 2458,
+    "total": 2699
+  },
+  {
+    "chapter": "capitolo-02",
+    "coverage": 0.932,
+    "duration": 833.029,
+    "matched": 1962,
+    "total": 2106
+  },
+  {
+    "chapter": "capitolo-03",
+    "coverage": 0.945,
+    "duration": 1180.531,
+    "matched": 2703,
+    "total": 2859
+  },
+  {
+    "chapter": "capitolo-04",
+    "coverage": 0.924,
+    "duration": 774.286,
+    "matched": 1671,
+    "total": 1809
+  },
+  {
+    "chapter": "capitolo-05",
+    "coverage": 0.928,
+    "duration": 1604.23,
+    "matched": 3565,
+    "total": 3840
+  },
+  {
+    "chapter": "capitolo-06",
+    "coverage": 0.928,
+    "duration": 1403.166,
+    "matched": 3169,
+    "total": 3415
+  },
+  {
+    "chapter": "capitolo-07",
+    "coverage": 0.934,
+    "duration": 1570.695,
+    "matched": 3589,
+    "total": 3842
+  },
+  {
+    "chapter": "capitolo-08",
+    "coverage": 0.947,
+    "duration": 1549.8,
+    "matched": 3660,
+    "total": 3866
+  },
+  {
+    "chapter": "capitolo-09",
+    "coverage": 0.941,
+    "duration": 841.434,
+    "matched": 1988,
+    "total": 2113
+  },
+  {
+    "chapter": "capitolo-10",
+    "coverage": 0.934,
+    "duration": 816.293,
+    "matched": 1849,
+    "total": 1979
+  },
+  {
+    "chapter": "capitolo-11",
+    "coverage": 0.93,
+    "duration": 1015.737,
+    "matched": 2280,
+    "total": 2452
+  },
+  {
+    "chapter": "capitolo-12",
+    "coverage": 0.931,
+    "duration": 935.483,
+    "matched": 2174,
+    "total": 2334
+  },
+  {
+    "chapter": "capitolo-13",
+    "coverage": 0.913,
+    "duration": 1274.629,
+    "matched": 2817,
+    "total": 3085
+  },
+  {
+    "chapter": "capitolo-14",
+    "coverage": 0.942,
+    "duration": 1399.114,
+    "matched": 3204,
+    "total": 3400
+  },
+  {
+    "chapter": "capitolo-15",
+    "coverage": 0.947,
+    "duration": 2015.398,
+    "matched": 4756,
+    "total": 5023
+  },
+  {
+    "chapter": "capitolo-16",
+    "coverage": 0.931,
+    "duration": 1257.986,
+    "matched": 2916,
+    "total": 3133
+  },
+  {
+    "chapter": "capitolo-17",
+    "coverage": 0.931,
+    "duration": 2473.984,
+    "matched": 5642,
+    "total": 6058
+  },
+  {
+    "chapter": "capitolo-18",
+    "coverage": 0.944,
+    "duration": 1357.835,
+    "matched": 3191,
+    "total": 3382
+  },
+  {
+    "chapter": "capitolo-19",
+    "coverage": 0.951,
+    "duration": 1383.76,
+    "matched": 3299,
+    "total": 3468
+  },
+  {
+    "chapter": "capitolo-20",
+    "coverage": 0.942,
+    "duration": 688.467,
+    "matched": 1688,
+    "total": 1791
+  }
+]
