@@ -2048,3 +2048,14 @@ html body:not(.summary-fullscreen-active) .summary-shell .summary-reading-shell 
 }
 html body:not(.summary-fullscreen-active) .summary-shell .summary-reading-shell .summary-content{background:#ffffff!important;background-color:#ffffff!important}
 html body:not(.summary-fullscreen-active) .summary-shell .summary-reading-shell>.reader-tools{background:#203046!important}
+
+/* REM onboarding entry gate: full-screen, no main navigation before consent choice and questions. */
+html body.rem-onboarding-gate{background:#0b1322!important;min-height:100dvh!important}
+body.rem-onboarding-gate header.top,
+body.rem-onboarding-gate>footer{display:none!important}
+body.rem-onboarding-gate main#app{display:block!important;width:100%!important;max-width:none!important;min-height:100dvh!important;margin:0!important;padding:0!important;background:#0b1322!important;box-sizing:border-box!important}
+body.rem-onboarding-gate .onboard-screen{max-width:680px;width:100%;min-height:100dvh;box-sizing:border-box;padding:calc(env(safe-area-inset-top,0px) + 24px) clamp(18px,5vw,34px) calc(env(safe-area-inset-bottom,0px) + 44px)!important;margin:0 auto!important}
+.onboard-intro .onboard-consent-actions{display:flex;flex-direction:column;align-items:stretch;gap:18px;margin:2.4rem 0 0}
+.onboard-intro .onboard-consent-actions button{width:100%!important;min-height:56px!important;box-sizing:border-box!important;margin:0!important;border-radius:16px!important;padding:1rem!important;white-space:normal!important}
+.onboard-intro .onboard-consent-actions button.primary{background:#86dfb2!important;color:#102333!important;border:0!important;font-weight:800!important}
+.onboard-intro .onboard-consent-actions button:not(.primary){background:#23364c!important;color:#f3f6f9!important;border:1px solid #60768d!important}
