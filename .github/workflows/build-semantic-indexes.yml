@@ -26,7 +26,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - run: npm install --no-save --package-lock=false @huggingface/transformers@3.7.2 jsdom@26.1.0
+      - run: npm install --no-save --package-lock=false @huggingface/transformers@3.7.2 jsdom@26.1.0 --onnxruntime-node-install-cuda=skip
       - run: node scripts/build_semantic_index.mjs ${{ matrix.book }}
       - uses: actions/upload-artifact@v4
         with:
