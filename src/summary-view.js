@@ -1,5 +1,5 @@
 import {el,button} from './ui.js';
-import {chapterPicker} from './chapter-picker.js?v=ios-picker-20261124';
+import {chapterPicker} from './chapter-picker.js?v=compact-picker-20261124';
 import {getSetting,saveSetting} from './progress.js';
 import {loadChapter} from './catalog.js?v=ovidio-mini-20261123';
 import {createReaderTools} from './reader-tools.js';
