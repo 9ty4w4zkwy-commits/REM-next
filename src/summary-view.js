@@ -1,4 +1,5 @@
 import {el,button} from './ui.js';
+import {chapterPicker} from './chapter-picker.js?v=ios-picker-20261124';
 import {getSetting,saveSetting} from './progress.js';
 import {loadChapter} from './catalog.js?v=ovidio-mini-20261123';
 import {createReaderTools} from './reader-tools.js';
@@ -75,6 +76,6 @@ export function summaryView(book,onClose,onContinue){
   }catch(error){if(token!==generation||!root.isConnected)return;output.replaceChildren(el('h3',{text:chapter.title}),el('p',{text:'Non è stato possibile caricare il testo del capitolo.'}));status.textContent=error.message||'Errore di caricamento'}
  }
  select.addEventListener('change',renderSummary);
- root.append(title,intro,label,select,el('p',{text:'Scegli il formato del riassunto'}),formats,readingShell,el('div',{className:'summary-actions'},[back,finish]));
+ root.append(title,intro,label,chapterPicker(select),el('p',{text:'Scegli il formato del riassunto'}),formats,readingShell,el('div',{className:'summary-actions'},[back,finish]));
  renderSummary();return root;
 }
