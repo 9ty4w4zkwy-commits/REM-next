@@ -74,7 +74,8 @@ const rememberEpisode=(id,ep)=>saveSetting('episode-current:'+id,ep.id);
 
 /* Recap always uses completed story material before the selected episode; never the next episode's preview. */
 function episodeRecap(book,episode){
- const prior=allEpisodes(book).slice(0,allEpisodes(book).findIndex(ep=>ep.id===episode.id));
+ const currentChapterId=episode.chapterId||episode.id;
+ const prior=allEpisodes(book).slice(0,allEpisodes(book).findIndex(ep=>ep.id===episode.id)).filter(ep=>(ep.chapterId||ep.id)!==currentChapterId);
  if(!prior.length)return null;
  const seen=new Set();
  const parts=prior.map(ep=>{
@@ -83,7 +84,7 @@ function episodeRecap(book,episode){
   seen.add(chapter.id);
   return {title:ep.title||chapter.title,text:chapter.summary||chapter.recap||''};
  }).filter(part=>part?.text);
- return parts.length?parts:null;
+ return parts.length?parts.slice(-2):null;
 }
 function recapPrompt(book,episode,mode='ebook'){
  const parts=episodeRecap(book,episode);if(!parts)return null;
