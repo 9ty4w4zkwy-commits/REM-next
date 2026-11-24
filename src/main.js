@@ -6,7 +6,7 @@ import {createCollectionsView} from './collections-view.js?v=rem-ui-209';
 import {readCollections,isBookSaved,saveBookToCollections,removeSavedBook,attachItem,detachItem,addThought} from './collections-store.js?v=rem-mint-207';
 import {showOnboarding,onboardingCompleted} from './onboarding.js?v=shared-tester-registration-20261124';
 import {getProgress,saveProgress,getSetting,saveSetting} from './progress.js';
-import {analyticsEnabled,getTesterCode,registerTesterCode,setAnalyticsConsent,startAnalytics,trackEvent} from './analytics.js?v=tester-registration-20261124';
+import {analyticsEnabled,getTesterCode,getTesterRegistrationState,registerTesterCode,recoverTesterCode,setAnalyticsConsent,startAnalytics,trackEvent} from './analytics.js?v=secure-tester-20261124';
 import {el,button,panel,heading} from './ui.js';
 import {getMode,formatSwitch,paperView,audioView} from './formats.js?v=rem-audio-182';
 import {createReaderTools} from './reader-tools.js?v=rem-ui-245';
@@ -321,32 +321,64 @@ function profile(){
  analyticsToggle.classList.add('rem-profile-action');
  const testerCode=getTesterCode();
  const testerActions=el('div',{className:'rem-tester-actions'});
- const testerSection=analyticsEnabled()?card('№','Il mio codice tester',testerCode?'Il tuo codice è '+testerCode+'.':'Registrazione del codice tester in corso…',testerActions):null;
+ const testerSection=analyticsEnabled()?card('№','Il mio codice tester',
+  testerCode?'Codice presente sul dispositivo: '+testerCode+'. Verifica in corso…':
+  'Puoi recuperare un codice già esistente oppure richiederne uno nuovo.',testerActions):null;
  if(testerSection){
   const message=testerSection.querySelector('.rem-profile-description');
   const showCode=code=>{
-   message.textContent='Il tuo codice tester è '+code+'. Conservalo per identificare le tue attività nella Dashboard.';
+   message.textContent='Il tuo codice tester è '+code+'. Le tue attività saranno associate a questo numero nella Dashboard.';
    const copy=button('Copia '+code,()=>{
-    if(navigator.clipboard?.writeText)void navigator.clipboard.writeText(code).catch(()=>{window.prompt('Copia il tuo codice tester',code)});
-    else window.prompt('Copia il tuo codice tester',code);
+    if(navigator.clipboard?.writeText)void navigator.clipboard.writeText(code).catch(()=>{window.prompt('Copia il codice tester',code)});
+    else window.prompt('Copia il codice tester',code);
    });
-   copy.classList.add('rem-profile-action');testerActions.replaceChildren(copy);
+   copy.classList.add('rem-profile-action');
+   testerActions.replaceChildren(copy);
   };
-  const register=async()=>{
-   if(!testerSection.isConnected||!analyticsEnabled())return;
-   message.textContent='Contatto il servizio per assegnare il codice tester…';
-   testerActions.replaceChildren();
-   const result=await registerTesterCode();
-   if(!testerSection.isConnected||!analyticsEnabled())return;
-   if(result.status==='registered')showCode(result.code);
-   else if(result.status==='error'){
-    message.textContent=result.message+' Il codice è necessario per associare correttamente i dati del test.';
-    const retry=button('Riprova registrazione',register,true);
-    retry.classList.add('rem-profile-action');testerActions.replaceChildren(retry);
-   }
+  const showChoices=(info='')=>{
+   message.textContent=info||'Hai già un codice? Recuperalo senza crearne un altro. Se partecipi per la prima volta, richiedi un nuovo numero.';
+   const recover=button('Recupera un codice esistente',()=>{
+    message.textContent='Per recuperare REM-001, genera un codice temporaneo nella tua Dashboard Cloudflare, alla pagina /admin/recovery. Inseriscilo qui sotto; non condividerlo con nessuno.';
+    const field=el('input',{attrs:{type:'text',placeholder:'REM-…',autocomplete:'off',autocapitalize:'characters',spellcheck:'false','aria-label':'Codice temporaneo di recupero'}});
+    field.className='rem-profile-recovery-input';
+    const confirm=button('Conferma recupero',async()=>{
+     confirm.disabled=true;
+     message.textContent='Verifica del codice temporaneo in corso…';
+     const result=await recoverTesterCode(field.value);
+     if(!testerSection.isConnected)return;
+     if(result.status==='registered')showCode(result.code);
+     else{message.textContent=result.message||'Recupero non riuscito.';confirm.disabled=false}
+    },true);
+    const cancel=button('Indietro',()=>showChoices());
+    testerActions.replaceChildren(field,confirm,cancel);
+   });
+   recover.classList.add('rem-profile-action');
+   const create=button('Sono un nuovo tester',async()=>{
+    message.textContent='Registrazione di un nuovo tester in corso…';
+    testerActions.replaceChildren();
+    const result=await registerTesterCode({create:true});
+    if(!testerSection.isConnected)return;
+    if(result.status==='registered')showCode(result.code);
+    else showChoices((result.message||'Registrazione non riuscita.')+' Puoi riprovare senza perdere i tuoi progressi.');
+   });
+   create.classList.add('rem-profile-action');
+   testerActions.replaceChildren(recover,create);
   };
-  if(testerCode)showCode(testerCode);
-  else queueMicrotask(()=>{if(testerSection.isConnected)void register()});
+  if(testerCode){
+   const validated=registerTesterCode();
+   void validated.then(result=>{
+    if(!testerSection.isConnected)return;
+    if(result.status==='registered')showCode(result.code);
+    else showChoices(result.message||'Il codice salvato non è più valido. Usa la procedura di recupero.');
+   });
+  }else if(['new','awaiting'].includes(getTesterRegistrationState())){
+   message.textContent='Controllo se la registrazione iniziale è stata completata…';
+   void registerTesterCode().then(result=>{
+    if(!testerSection.isConnected)return;
+    if(result.status==='registered')showCode(result.code);
+    else showChoices(result.message||'Non è ancora presente un codice confermato. Puoi recuperarlo o richiederne uno nuovo.');
+   });
+  }else showChoices();
  }
  const privacy=el('details',{className:'rem-profile-privacy-details'},[
   el('summary',{text:'◇  Privacy e dati'}),
