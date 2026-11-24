@@ -122,6 +122,18 @@ export function setAnalyticsConsent(enabled){
   if(!wasEnabled&&!validToken(getSetting(TOKEN,''))&&
       getSetting(ENROLLMENT,'')==='')saveSetting(ENROLLMENT,'new');
   trackEvent('app_open');
+  syncSavedOnboarding();
  }
 }
-export function startAnalytics(){if(analyticsEnabled())trackEvent('app_open')}
+// Existing testers may have completed onboarding before the new token flow.
+function syncSavedOnboarding(){
+ try{
+  const answers=JSON.parse(getSetting('onboarding-answers','[]'));
+  if(Array.isArray(answers)&&answers.length===6&&answers.every(a=>Array.isArray(a)&&a.length))sendOnboardingAnswers(answers);
+ }catch{}
+}
+export function startAnalytics(){
+ if(!analyticsEnabled())return;
+ trackEvent('app_open');
+ syncSavedOnboarding();
+}
