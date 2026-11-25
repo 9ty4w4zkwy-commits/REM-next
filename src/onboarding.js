@@ -50,7 +50,7 @@ export function showOnboarding(render,home,{editing=false}={}){
   }else{
    const q=QUESTIONS[step],chosen=answers[step];
    const choices=el('div',{className:'onboard-options'},q.options.map((option,optionIndex)=>{
-    const parts=option.split('|');
+    const parts=(step===4&&option==='A episodi'?'Storie a piccoli capitoli':option).split('|');
     const b=button(parts[0],()=>{
      const index=chosen.indexOf(option);
      if(index>=0)chosen.splice(index,1);
