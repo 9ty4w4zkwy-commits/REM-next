@@ -396,8 +396,8 @@ function detail(id){
  }else{
   const choose=path=>{saveSetting('reading-path:'+id,path);path==='episodes'?episodes(id):reader(id)};
   nodes.push(el('div',{className:'rem-cinema-path-actions'},[
-   button('A episodi',()=>choose('episodes'),true),
-   button('A capitoli',()=>choose('normal'))
+   button('A capitoli',()=>choose('normal')),
+   button('A episodi',()=>choose('episodes'),true)
   ]));
   nodes.push(para('↻  Cambia modalità o formato in qualsiasi momento, senza perdere il segnalibro.','rem-cinema-path-note'));
   if(getProgress(id))nodes.push(button('Riprendi dal segnalibro',()=>readingEntry(id)));
