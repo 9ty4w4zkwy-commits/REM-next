@@ -256,7 +256,7 @@ main{max-width:1180px;padding:0 24px 70px}
 .onboard-brand{font-size:1.7rem;letter-spacing:.15em;font-weight:900;color:#f5f4ef}
 .onboard-brand::after{content:'·';color:#86dfb2}
 .onboard-top button{background:transparent!important;color:#c4d1dc!important;border:1px solid #5c7289!important;border-radius:13px!important;padding:.65rem .85rem!important;font-size:.87rem!important}
-.onboard-progress{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:.5rem;margin-bottom:2.2rem}
+.onboard-progress{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);width:100%;gap:.5rem;margin-bottom:2.2rem}
 .onboard-progress span{height:6px;background:#34465a;border-radius:99px}
 .onboard-progress span.is-active{background:#86dfb2}
 .onboard-intro h1,.onboard-question h1{font-family:Georgia,serif;font-size:clamp(2rem,6vw,3rem);line-height:1.12;letter-spacing:-.025em;margin:0 0 1.3rem;color:#f5f4ef}
