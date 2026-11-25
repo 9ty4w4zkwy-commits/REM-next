@@ -11,7 +11,7 @@ const QUESTIONS=[
 const OPTION_EMOJIS=[
  ['🌍','🧠','🎨','❤️','🔍','🌿'],
  ['✨','🔬','☁️','🏆','💗','💡'],
- ['💊','📱','🎧','📚','🌈','✨'],
+ ['📖','📱','🎧','📚','🌈','✨'],
  ['⏱️','🚆','☕','🍳','🌙','🛋️']
 ];
 const loadAnswers=()=>{try{const a=JSON.parse(getSetting('onboarding-answers','[]'));return Array.isArray(a)?QUESTIONS.map((_,i)=>{const value=a.length===6?a[[0,1,4,5][i]]:a[i];return Array.isArray(value)?value:[]}):QUESTIONS.map(()=>[])}catch{return QUESTIONS.map(()=>[])}};
@@ -46,7 +46,7 @@ export function showOnboarding(render,home,{editing=false}={}){
   }else{
    const q=QUESTIONS[step],chosen=answers[step];
    const choices=el('div',{className:'onboard-options'},q.options.map((option,optionIndex)=>{
-    const parts=(step===2&&option==='A episodi'?'Pillole':option).split('|');
+    const parts=(step===2&&option==='A episodi'?'Storie a piccoli capitoli':option).split('|');
     const b=button(parts[0],()=>{
      const index=chosen.indexOf(option);
      if(index>=0)chosen.splice(index,1);
