@@ -5,7 +5,7 @@ import {loadEpisodeSegment} from './episode-segments.js?v=conte-20-20261124';
 import {loadOvidioEpisode} from './ovidio-episodes.js?v=2';
 import {createCollectionsView} from './collections-view.js?v=rem-ui-209';
 import {readCollections,isBookSaved,saveBookToCollections,removeSavedBook,attachItem,detachItem,addThought} from './collections-store.js?v=rem-mint-207';
-import {showOnboarding,onboardingCompleted} from './onboarding.js?v=pillole-20261125';
+import {showOnboarding,onboardingCompleted} from './onboarding.js?v=auto-advance-20261125';
 import {getProgress,saveProgress,getSetting,saveSetting} from './progress.js';
 import {analyticsEnabled,getTesterCode,registerTesterCode,setAnalyticsConsent,startAnalytics,trackEvent} from './analytics.js?v=onboarding-four-20261125';
 import {el,button,panel,heading} from './ui.js';

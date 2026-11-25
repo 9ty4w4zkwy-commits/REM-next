@@ -52,7 +52,13 @@ export function showOnboarding(render,home,{editing=false}={}){
      if(index>=0)chosen.splice(index,1);
      else if(q.max===1)answers[step]=[option];
      else if(chosen.length<q.max)chosen.push(option);
-     if(!editing)persist();draw(true);
+     if(!editing)persist();
+     // Advance only after a new selection reaches the allowed count.
+     // Keep the final multi-select question and explicit save/finish action.
+     if(index<0&&step<QUESTIONS.length-1&&answers[step].length===q.max){
+      step++;draw();window.scrollTo({top:0,left:0,behavior:'instant'});return;
+     }
+     draw(true);
     });
     b.textContent='';
     b.append(el('span',{className:'onboard-option-emoji',text:OPTION_EMOJIS[step][optionIndex],attrs:{'aria-hidden':'true'}}),el('span',{className:'onboard-option-title',text:parts[0]}));
