@@ -11,7 +11,7 @@ import {analyticsEnabled,getTesterCode,registerTesterCode,setAnalyticsConsent,st
 import {el,button,panel,heading} from './ui.js';
 import {chapterPicker} from './chapter-picker.js?v=compact-picker-20261124';
 import {getMode,formatSwitch,paperView,audioView} from './formats.js?v=ios-picker-20261124';
-import {createReaderTools} from './reader-tools.js?v=rem-ui-245';
+import {createReaderTools} from './reader-tools.js?v=focus-title-clean-20261125';
 import {createHighlights} from './highlights.js?v=single-remove-1';
 import {createEbookJourney} from './ebook-journey.js?v=rem-ebook-91';
 import {phraseSearch,getPhrase,savePhrase} from './synchronization.js?v=paper-progress-20261124';

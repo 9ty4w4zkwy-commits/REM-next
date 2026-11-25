@@ -9,7 +9,6 @@ export function createReaderTools({focusOnly=false}={}){
  if(!SIZES.includes(state.size))state.size='normal';
  let ticker=null, shell=null;
  const root=el('section',{className:'reader-tools'});
- const title=el('strong',{className:'reader-tools-title',text:'Focus mode'});
  const row=el('div',{className:'reader-tools-row'});
  const sun=button('',()=>setTheme('sun'));sun.classList.add('reader-theme-button');{const icon=document.createElementNS('http://www.w3.org/2000/svg','svg');icon.setAttribute('viewBox','0 0 24 24');icon.setAttribute('width','25');icon.setAttribute('height','25');icon.setAttribute('fill','none');icon.setAttribute('stroke','currentColor');icon.setAttribute('stroke-width','1.8');icon.setAttribute('stroke-linecap','round');icon.setAttribute('stroke-linejoin','round');icon.setAttribute('aria-hidden','true');const circle=document.createElementNS('http://www.w3.org/2000/svg','circle');circle.setAttribute('cx','12');circle.setAttribute('cy','12');circle.setAttribute('r','4');icon.append(circle);const rays=document.createElementNS('http://www.w3.org/2000/svg','path');rays.setAttribute('d','M12 2v2 M12 20v2 M4.93 4.93l1.42 1.42 M17.65 17.65l1.42 1.42 M2 12h2 M20 12h2 M4.93 19.07l1.42-1.42 M17.65 6.35l1.42-1.42');icon.append(rays);const wrapper=el('span',{className:'reader-theme-icon reader-sun-vector'});wrapper.append(icon);sun.append(wrapper,el('span',{text:'Chiaro'}));}
  const moon=button('',()=>setTheme('moon'));moon.classList.add('reader-theme-button');moon.append(el('span',{text:'☾',className:'reader-theme-icon'}),el('span',{text:'Scuro'}));
@@ -53,7 +52,7 @@ export function createReaderTools({focusOnly=false}={}){
   clock.textContent=String(Math.floor(state.seconds/60)).padStart(2,'0')+':'+String(state.seconds%60).padStart(2,'0');
   if(shell){shell.dataset.theme=state.theme;shell.dataset.fontSize=state.size;shell.classList.toggle('focus-active',state.focus)}
  }
- if(focusOnly){root.classList.add('reader-tools-focus-only');root.append(focus)}else{row.append(sun,moon,divider,smaller,bigger,focus);root.append(title,row)}
+ if(focusOnly){root.classList.add('reader-tools-focus-only');root.append(focus)}else{row.append(sun,moon,divider,smaller,bigger,focus);root.append(row)}
  presets.append(five,ten);actions.append(start,cancel);
  dialog.append(heading,question,presets,custom,customBox,notice,actions);
  overlay.append(dialog);
