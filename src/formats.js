@@ -142,15 +142,16 @@ export function audioView({bookId,chapter,content,onPosition,segmentStart=0}={})
  play.classList.add('rem-audio-play');const restart=button('↺ Ricomincia',()=>{stop();position=0;persist();startAudio()});
  restart.classList.add('rem-audio-restart');const persist=()=>{saveSetting(key,JSON.stringify({chapter:chapter.id,offset:position}));onPosition?.(position)};
  const update=()=>{if(seeking)return;progress.value=String(Math.round(position/content.length*100));progress.style.setProperty('--audio-progress',progress.value+'%');status.textContent=playing?'Riproduzione in corso':'Punto salvato';updateClock(position)};
- function stop(){session++;synth.cancel();playing=false;setPlay(false,'Riprendi');update();persist()}
+ function stop(){session++;synth.cancel();wrap.dataset.analyticsSpeaking='false';playing=false;setPlay(false,'Riprendi');update();persist()}
  function startAudio(){
   if(!content.trim())return;
   session++;const token=session;synth.cancel();playing=true;setPlay(true,'Pausa');
   utterance=new SpeechSynthesisUtterance(content.slice(position));utterance.lang='it-IT';utterance.rate=0.95;
   const origin=position;
+  utterance.onstart=()=>{if(token===session)wrap.dataset.analyticsSpeaking='true'};
   utterance.onboundary=e=>{if(token!==session)return;if(Number.isFinite(e.charIndex)){position=Math.min(content.length,origin+e.charIndex);persist();update()}};
-  utterance.onend=()=>{if(token!==session)return;playing=false;position=content.length-1;persist();setPlay(false,'Riascolta');update()};
-  utterance.onerror=()=>{if(token!==session)return;playing=false;play.textContent='▶ Riprendi';status.textContent='Riproduzione interrotta. Puoi riprovare.'};
+  utterance.onend=()=>{if(token!==session)return;wrap.dataset.analyticsSpeaking='false';playing=false;position=content.length-1;persist();setPlay(false,'Riascolta');update()};
+  utterance.onerror=()=>{if(token!==session)return;wrap.dataset.analyticsSpeaking='false';playing=false;play.textContent='▶ Riprendi';status.textContent='Riproduzione interrotta. Puoi riprovare.'};
   update();synth.speak(utterance);
  }
  let seeking=false;
