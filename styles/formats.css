@@ -755,3 +755,9 @@ html body .ebook-reading-shell .reader-tools.reader-tools-collapsible:not(.is-op
 .ebook-reading-shell .reader-tools-collapsible>.reader-tools-toggle{display:inline-flex!important;align-items:center;gap:8px;min-height:40px!important;width:auto!important;max-width:100%;padding:5px 8px!important;border:0!important;background:transparent!important;box-shadow:none!important;color:inherit!important;font-size:.98rem!important;font-weight:500!important;opacity:.85}
 .ebook-reading-shell .reader-tools-collapsible.is-open>.reader-tools-toggle{margin-bottom:10px}
 .reader-tools-toggle-symbol{font-size:1.12rem;font-weight:700}.reader-tools-toggle-chevron{display:inline-block;transition:transform .15s ease}.reader-tools-collapsible.is-open .reader-tools-toggle-chevron{transform:rotate(180deg)}
+
+/* Unified, thin vector chevrons for reading settings and chapter picker. */
+.reader-tools-toggle-chevron,.rem-chapter-picker-arrow{display:inline-flex!important;align-items:center;justify-content:center;flex:0 0 18px;width:18px;height:18px;font-size:0!important;line-height:0!important;color:inherit;transition:transform .2s ease}
+.reader-tools-toggle-chevron::before,.rem-chapter-picker-arrow::before{content:"";display:block;width:8px;height:8px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;box-sizing:border-box;transform:translateY(-2px) rotate(45deg);border-radius:0 0 1px 0}
+.reader-tools-toggle[aria-expanded="true"] .reader-tools-toggle-chevron,.rem-chapter-picker-trigger[aria-expanded="true"] .rem-chapter-picker-arrow{transform:rotate(180deg)}
+@media(prefers-reduced-motion:reduce){.reader-tools-toggle-chevron,.rem-chapter-picker-arrow{transition:none!important}}
