@@ -104,14 +104,14 @@ export function trackEvent(event_type,details={}){
  })();
 }
 export function sendOnboardingAnswers(answers){
- if(!analyticsEnabled()||!Array.isArray(answers)||answers.length!==6||!answers.every(a=>Array.isArray(a)&&a.length))return;
+ if(!analyticsEnabled()||!Array.isArray(answers)||![4,6].includes(answers.length)||!answers.every(a=>Array.isArray(a)&&a.length))return;
  const snapshot=answers.map(a=>a.slice());
  void (async()=>{
   try{
    const create=!validToken(getSetting(TOKEN,''))&&!getSetting(AUTO_ATTEMPT,'');
    const tester_id=await ensureTester({create});
    const token=getSetting(TOKEN,'');
-   if(tester_id&&validToken(token)&&analyticsEnabled())await post('/api/onboarding',{token,answers:snapshot});
+   if(tester_id&&validToken(token)&&analyticsEnabled())await post('/api/onboarding',{token,answers:snapshot,...(snapshot.length===4?{questionnaire_version:2,question_ids:[1,2,5,6]}:{})});
   }catch{}
  })();
 }
@@ -129,7 +129,7 @@ export function setAnalyticsConsent(enabled){
 function syncSavedOnboarding(){
  try{
   const answers=JSON.parse(getSetting('onboarding-answers','[]'));
-  if(Array.isArray(answers)&&answers.length===6&&answers.every(a=>Array.isArray(a)&&a.length))sendOnboardingAnswers(answers);
+  if(Array.isArray(answers)&&[4,6].includes(answers.length)&&answers.every(a=>Array.isArray(a)&&a.length))sendOnboardingAnswers(answers);
  }catch{}
 }
 export function startAnalytics(){
