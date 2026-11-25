@@ -389,17 +389,17 @@ function detail(id){
  ]);
  const nodes=[backArrow(home,'Torna alla Home'),el('div',{className:'rem-cinema-detail'},[
   info,
-  el('p',{className:'rem-cinema-modes-intro',text:'Un’unica storia, due modi di viverla: a episodi oppure in lettura integrale e continua.'})
+  el('p',{className:'rem-cinema-modes-intro',text:'Un’unica storia, due modi di viverla: a episodi o a capitoli. In entrambe le modalità puoi passare liberamente da ebook ad audio o cartaceo.'})
  ])];
  if(book.availability==='preview'){
   nodes.push(para('Questo libro è attualmente disponibile come anteprima. La lettura arriverà prossimamente.','preview-notice'));
  }else{
   const choose=path=>{saveSetting('reading-path:'+id,path);path==='episodes'?episodes(id):reader(id)};
   nodes.push(el('div',{className:'rem-cinema-path-actions'},[
-   button('Lettura a episodi',()=>choose('episodes'),true),
-   button('Lettura continua',()=>choose('normal'))
+   button('A episodi',()=>choose('episodes'),true),
+   button('A capitoli',()=>choose('normal'))
   ]));
-  nodes.push(para('↻  Puoi cambiare modalità di lettura in qualsiasi momento senza perdere il segnalibro.','rem-cinema-path-note'));
+  nodes.push(para('↻  Cambia modalità o formato in qualsiasi momento, senza perdere il segnalibro.','rem-cinema-path-note'));
   if(getProgress(id))nodes.push(button('Riprendi dal segnalibro',()=>readingEntry(id)));
   if(id==='libro-demo'){const reset=button('Ricomincia la demo',()=>resetDemo(id));reset.classList.add('demo-reset-link');nodes.push(reset)}
  }
