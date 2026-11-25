@@ -10,7 +10,7 @@ import {getProgress,saveProgress,getSetting,saveSetting} from './progress.js';
 import {analyticsEnabled,getTesterCode,registerTesterCode,setAnalyticsConsent,startAnalytics,trackEvent} from './analytics.js?v=auto-tester-20261124';
 import {el,button,panel,heading} from './ui.js';
 import {chapterPicker} from './chapter-picker.js?v=compact-picker-20261124';
-import {getMode,formatSwitch,paperView,audioView} from './formats.js?v=ios-picker-20261124';
+import {getMode,formatSwitch,paperView,audioView} from './formats.js?v=format-order-20261125';
 import {createReaderTools} from './reader-tools.js?v=focus-title-clean-20261125';
 import {createHighlights} from './highlights.js?v=single-remove-1';
 import {createEbookJourney} from './ebook-journey.js?v=rem-ebook-91';

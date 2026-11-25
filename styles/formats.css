@@ -123,9 +123,9 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 .format-switch-bottom{position:sticky;bottom:env(safe-area-inset-bottom,0px);z-index:20;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px;padding:8px;background:rgba(12,27,48,.96);border:1px solid #304b63;border-radius:18px;margin:20px 0 12px;box-shadow:0 8px 24px #0006}
 .format-switch-bottom button{display:flex;align-items:center;justify-content:center;flex-direction:column;min-width:0;min-height:66px;border:0!important;border-radius:12px!important;background:transparent!important;color:#d5e0ec!important;font-size:.92rem}
 .format-switch-bottom button::before{content:'▣';display:block;font-size:1.3rem;line-height:1.4;color:#80d9aa}
-.format-switch-bottom button:nth-child(1)::before{content:'▤'}
-.format-switch-bottom button:nth-child(2)::before{content:'▣'}
-.format-switch-bottom button:nth-child(3)::before{content:'♫'}
+.format-switch-bottom button[data-format="paper"]::before{content:'▤'}
+.format-switch-bottom button[data-format="ebook"]::before{content:'▣'}
+.format-switch-bottom button[data-format="audio"]::before{content:'♫'}
 .format-switch-bottom button[aria-pressed="true"]{background:#25476c!important;color:white!important;box-shadow:none!important}
 .format-switch-bottom button[aria-pressed="true"]::before{color:#9acaff}
 .reading-shell .reading-text .rem-highlight{background:rgba(128,217,170,.55)!important;color:inherit!important;border:2px solid #54b78b;border-radius:7px;padding:0 2px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
@@ -193,7 +193,7 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 /* v20 — bottom bar faithful to REM 5.6 screenshot: no individual outlines */
 .format-switch-bottom{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:0!important;padding:8px max(12px,env(safe-area-inset-right)) calc(8px + env(safe-area-inset-bottom)) max(12px,env(safe-area-inset-left))!important;background:rgba(13,30,54,.94)!important;border-top:1px solid #315270!important;box-shadow:none!important}
 .format-switch-bottom button{min-height:70px!important;min-width:0!important;background:transparent!important;border:0!important;outline:0!important;box-shadow:none!important;border-radius:17px!important;display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;gap:5px!important;color:#d7e1ee!important;font-weight:700!important;font-size:1rem!important;transform:none!important}
-.format-switch-bottom button[data-format="paper"]{order:1}.format-switch-bottom button[data-format="ebook"]{order:2}.format-switch-bottom button[data-format="audio"]{order:3}
+.format-switch-bottom button[data-format="ebook"]{order:1}.format-switch-bottom button[data-format="audio"]{order:2}.format-switch-bottom button[data-format="paper"]{order:3}
 .format-switch-bottom button[aria-pressed="true"]{background:#21466d!important;color:#fff!important;border:0!important;box-shadow:none!important}
 .format-switch-bottom button::before{display:none!important;content:none!important}
 .format-switch-bottom .format-icon{display:block;width:27px;height:27px;color:#80d9aa;flex:none}
@@ -606,13 +606,13 @@ body:not(.ebook-immersive-active) .ebook-reading-shell .ebook-page-frame .readin
 .audio-sync-shell .rem-audio-player > .format-mode-note:last-of-type{font-size:11px!important;font-weight:400!important;line-height:1.45!important;letter-spacing:0!important;color:#a3afbc!important;text-align:center!important;margin:9px 0 2px!important;opacity:.88!important}
 
 /* v215: Ebook icon in the bottom format dock is pink, including active mode */
-.format-switch-bottom button:nth-child(2),
-.format-switch-bottom button:nth-child(2) svg,
-.format-switch-bottom button:nth-child(2) svg *{--ebook-pink:#f3a5ca}
-.format-switch-bottom button:nth-child(2)::before{color:#f3a5ca!important}
-.format-switch-bottom button:nth-child(2) svg{color:#f3a5ca!important;stroke:#f3a5ca!important}
-.format-switch-bottom button:nth-child(2) svg [stroke]:not([stroke="none"]){stroke:#f3a5ca!important}
-.format-switch-bottom button:nth-child(2)[aria-pressed="true"]::before{color:#f3a5ca!important}
+.format-switch-bottom button[data-format="ebook"],
+.format-switch-bottom button[data-format="ebook"] svg,
+.format-switch-bottom button[data-format="ebook"] svg *{--ebook-pink:#f3a5ca}
+.format-switch-bottom button[data-format="ebook"]::before{color:#f3a5ca!important}
+.format-switch-bottom button[data-format="ebook"] svg{color:#f3a5ca!important;stroke:#f3a5ca!important}
+.format-switch-bottom button[data-format="ebook"] svg [stroke]:not([stroke="none"]){stroke:#f3a5ca!important}
+.format-switch-bottom button[data-format="ebook"][aria-pressed="true"]::before{color:#f3a5ca!important}
 
 /* v216: correct colors by format ID, not by button position */
 .format-switch-bottom button[data-format="paper"] svg{color:#91e2b8!important;stroke:#91e2b8!important}
