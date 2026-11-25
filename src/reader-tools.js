@@ -3,7 +3,7 @@ import {el,button} from './ui.js';
 
 // Self-contained reader presentation. Focus overlay is mounted inside the reader.
 const SIZES=['small','normal','large','xlarge','xxlarge','xxxlarge','max'];
-export function createReaderTools({focusOnly=false}={}){
+export function createReaderTools({focusOnly=false,collapsible=false}={}){
  const state={theme:getSetting('reader-theme','moon'),size:getSetting('reader-size','normal'),focus:false,seconds:0,running:false,choice:5};
  if(!['sun','moon'].includes(state.theme))state.theme='moon';
  if(!SIZES.includes(state.size))state.size='normal';
@@ -52,7 +52,19 @@ export function createReaderTools({focusOnly=false}={}){
   clock.textContent=String(Math.floor(state.seconds/60)).padStart(2,'0')+':'+String(state.seconds%60).padStart(2,'0');
   if(shell){shell.dataset.theme=state.theme;shell.dataset.fontSize=state.size;shell.classList.toggle('focus-active',state.focus)}
  }
- if(focusOnly){root.classList.add('reader-tools-focus-only');root.append(focus)}else{row.append(sun,moon,divider,smaller,bigger,focus);root.append(row)}
+ if(focusOnly){root.classList.add('reader-tools-focus-only');root.append(focus)}else{
+  row.append(sun,moon,divider,smaller,bigger,focus);
+  if(collapsible){
+   root.classList.add('reader-tools-collapsible');
+   const toggle=button('',()=>{const open=row.hidden;row.hidden=!open;root.classList.toggle('is-open',open);toggle.setAttribute('aria-expanded',String(open))});
+   toggle.classList.add('reader-tools-toggle');
+   toggle.setAttribute('aria-expanded','false');
+   toggle.setAttribute('aria-controls','rem-reader-settings-panel');
+   row.id='rem-reader-settings-panel';row.hidden=true;
+   toggle.append(el('span',{text:'Aa',className:'reader-tools-toggle-symbol','attrs':{'aria-hidden':'true'}}),el('span',{text:'Impostazioni di lettura'}),el('span',{text:'⌄',className:'reader-tools-toggle-chevron',attrs:{'aria-hidden':'true'}}));
+   root.append(toggle,row);
+  }else root.append(row);
+ }
  presets.append(five,ten);actions.append(start,cancel);
  dialog.append(heading,question,presets,custom,customBox,notice,actions);
  overlay.append(dialog);
