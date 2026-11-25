@@ -742,3 +742,9 @@ html body.ebook-fullscreen-active .ebook-reading-shell.reading-shell[data-theme=
 .ebook-reading-shell[data-font-size="xxxlarge"] .ebook-page-heading strong{font-size:2.88rem!important}
 .ebook-reading-shell[data-font-size="max"] .ebook-page-heading strong{font-size:3.3rem!important}
 .ebook-reading-shell .ebook-page-heading strong{line-height:1.17!important;overflow-wrap:anywhere}
+
+/* REM format icons: mint on the sides, pink in the center. */
+.format-switch-bottom button[data-format="ebook"],.format-switch-bottom button[data-format="paper"]{--rem-format-icon:#91e2b8}
+.format-switch-bottom button[data-format="audio"]{--rem-format-icon:#f3a5ca}
+.format-switch-bottom button[data-format] .format-icon,.format-switch-bottom button[data-format] .format-icon [stroke]:not([stroke="none"]){color:var(--rem-format-icon)!important;stroke:var(--rem-format-icon)!important}
+.format-switch-bottom button[data-format]::before,.format-switch-bottom button[data-format][aria-pressed="true"]::before{color:var(--rem-format-icon)!important}
