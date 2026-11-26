@@ -2,7 +2,6 @@ import {button,el} from './ui.js';
 import {getSetting,saveSetting} from './progress.js';
 
 const speeds=[.75,1,1.25,1.5,2];
-let sleepDeadline=0;
 
 function audioTime(seconds){
  if(!Number.isFinite(seconds))return '–:––';
@@ -13,7 +12,7 @@ function audioTime(seconds){
 const iconPaths={
  play:'M7 4.5a1 1 0 0 1 1.5-.9l13 7.5a1 1 0 0 1 0 1.8l-13 7.5a1 1 0 0 1-1.5-.9Z',
  pause:'M5 4h4a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1Zm10 0h4a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1Z',
- moon:'M12 2.8a9.3 9.3 0 1 0 9.2 11.6A7.4 7.4 0 0 1 12 2.8Z',
+ clock:'M12 3a9 9 0 1 0 0 18 9 9 0 1 0 0-18Zm0 4v5h5',
  rewind:'M9 2 6 5l3 3 M6 5a8.6 8.6 0 1 1-2.6 6.1',
  forward:'M15 2l3 3-3 3 M18 5a8.6 8.6 0 1 0 2.6 6.1'
 };
@@ -26,20 +25,22 @@ function transportIcon(name){
  svg.setAttribute('focusable','false');
  const path=document.createElementNS(ns,'path');
  path.setAttribute('d',iconPaths[name]);
- if(name==='rewind'||name==='forward'){
+ if(name==='rewind'||name==='forward'||name==='clock'){
   path.setAttribute('fill','none');
   path.setAttribute('stroke','currentColor');
   path.setAttribute('stroke-width','1.75');
   path.setAttribute('stroke-linecap','round');
   path.setAttribute('stroke-linejoin','round');
+  svg.append(path);
+  if(name==='clock')return svg;
   const label=document.createElementNS(ns,'text');
   label.setAttribute('x','12');
-  label.setAttribute('y','13');
+  label.setAttribute('y','12.6');
   label.setAttribute('dominant-baseline','central');
   label.setAttribute('text-anchor','middle');
   label.setAttribute('fill','currentColor');
   label.textContent=name==='rewind'?'15':'30';
-  svg.append(path,label);
+  svg.append(label);
  }else{
   path.setAttribute('fill','currentColor');
   svg.append(path);
@@ -88,9 +89,13 @@ function transcriptView(content){
  }};
 }
 
-export function mountPodcastControls(player,content){
+export function mountPodcastControls(player,content,focus){
  const audio=player.querySelector('audio[controls]');
- if(!audio)return;
+ focus.className='rem-podcast-focus';
+ focus.replaceChildren(transportIcon('clock'));
+ focus.setAttribute('aria-label','Focus');
+ focus.title='Focus';
+ if(!audio){(player.querySelector('.rem-audio-actions')||player).append(focus);return}
  const transcript=transcriptView(content);
  const feedback=el('p',{className:'rem-audio-feedback',attrs:{role:'status'}});
  const play=button('',async()=>{
@@ -132,36 +137,16 @@ export function mountPodcastControls(player,content){
   speed.setAttribute('aria-label','Velocità '+rate+'×. Tocca per cambiarla');
  }
  speed.className='rem-podcast-speed';
- const sleep=el('select',{className:'rem-podcast-sleep',attrs:{'aria-label':'Timer di spegnimento'}},
-  [['','Disattivato'],['15','15 min'],['30','30 min'],['45','45 min'],['60','60 min']].map(([value,text])=>el('option',{text,attrs:{value}})));
- const sleepControl=el('div',{className:'rem-podcast-timer'},[transportIcon('moon'),sleep]);
- let sleepTimer;
- function showSleepState(){sleepControl.classList.toggle('is-active',Boolean(sleep.value))}
- function scheduleSleep(){
-  clearTimeout(sleepTimer);
-  const remaining=sleepDeadline-Date.now();
-  if(remaining<=0){sleepDeadline=0;sleep.value='';showSleepState();return}
-  sleepTimer=setTimeout(()=>{sleepDeadline=0;sleep.value='';showSleepState();audio.pause()},remaining);
- }
- sleep.addEventListener('change',()=>{
-  sleepDeadline=Number(sleep.value)?Date.now()+Number(sleep.value)*60000:0;
-  showSleepState();
-  scheduleSleep();
- });
- if(sleepDeadline>Date.now())sleep.value=String([15,30,45,60].find(minutes=>minutes*60000>=sleepDeadline-Date.now())??60);
- showSleepState();
- scheduleSleep();
  let frame=null;
  const stop=player.stopAudio?.bind(player);
  player.stopAudio=()=>{
-  clearTimeout(sleepTimer);
   stopFollowing();
   stop?.();
  };
 
  const elapsed=el('span');
  const remaining=el('span');
- const seek=el('input',{attrs:{type:'range',min:'0',max:'0',step:'0.1','aria-label':'Posizione nell’audio'}});
+ const seek=el('input',{className:'rem-podcast-seek',attrs:{type:'range',min:'0',max:'0',step:'0.1','aria-label':'Posizione nell’audio'}});
  const update=()=>{
   const [start,end]=playbackWindow();
   const ready=audio.readyState>=1&&Number.isFinite(end)&&end>start;
@@ -173,6 +158,7 @@ export function mountPodcastControls(player,content){
   seek.disabled=back.disabled=forward.disabled=!ready;
   seek.max=String(ready?end-start:0);
   seek.value=String(position);
+  seek.style.setProperty('--rem-podcast-progress',ready?(position/(end-start)*100)+'%':'0%');
   seek.setAttribute('aria-valuetext',audioTime(position));
   elapsed.textContent=audioTime(position);
   remaining.textContent=ready?'−'+audioTime(end-start-position):'–:––';
@@ -204,7 +190,7 @@ export function mountPodcastControls(player,content){
  audio.addEventListener('loadedmetadata',setRate);
  setRate();
 
- const transport=el('div',{className:'rem-podcast-transport'},[speed,back,play,forward,sleepControl]);
+ const transport=el('div',{className:'rem-podcast-transport'},[speed,back,play,forward,focus]);
  const controls=el('div',{className:'rem-audio-controls'},[
   transcript.root,seek,el('div',{className:'rem-audio-times'},[elapsed,remaining]),transport,feedback
  ]);

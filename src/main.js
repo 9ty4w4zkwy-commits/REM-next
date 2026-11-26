@@ -1,4 +1,4 @@
-import {mountPodcastControls} from './audio-controls.js?v=word-follow-controls-20261126';
+import {mountPodcastControls} from './audio-controls.js?v=mint-focus-controls-20261126';
 import {mountImmersiveReader} from './immersive-reader.js?v=1';
 import {recordModeChoice,recordSwitch,startUsage,stopUsage} from './usage-metrics.js?v=1';
 import {createJekyllAudio} from './jekyll-audio.js?v=podcast-reader-20261126';
@@ -480,12 +480,13 @@ if(mode==='audio'){
  const shell=el('section',{className:'reading-shell audio-sync-shell'});
  render(el('div',{className:'rem-reader-heading'},[heading(book.title,'UN LIBRO, TANTI MODI DI VIVERLO')]),...(episodeHeading?[episodeHeading]:[]),audioPicker,...audioChapterHeading,shell,finishControl(id),pathChange,quickSwitch);
  activeReaderTools=createReaderTools({focusOnly:true});activeReaderTools.mount(shell);
- shell.querySelector('.reader-tools-focus-only').prepend(nav);
+ const audioTools=shell.querySelector('.reader-tools-focus-only');
+ audioTools.prepend(nav);
  try{
   const segment=inEpisode&&episode?((book.id==='pinocchio'||(book.id==='montecristo'||book.id==='la-bella-estate'||book.id==='jekyll-hyde'))?await loadEpisodeSegment(book,episode):book.id==='metamorfosi-ovidio'?await loadOvidioEpisode(book,episode):null):null;const content=segment?.content??await loadChapter(book,chapter);if(!shell.isConnected)return;
   const point=getPhrase(id);if(id!=='pinocchio'&&point?.chapter===chapter.id&&Number.isFinite(Number(point.offset)))saveSetting('audio-position:'+id,JSON.stringify({chapter:chapter.id,offset:Math.max(0,(Number(point.offset)||0)-(segment?.start||0))}));const player=(id==='montecristo'||id==='la-bella-estate'||id==='jekyll-hyde')?await (id==='jekyll-hyde'?createJekyllAudio:id==='la-bella-estate'?createBellaEstateAudio:createMontecristoAudio)({chapter,content,segmentStart:segment?.start||0,segmentEnd:segment?.end??null,seekOffset,onPosition:offset=>{saveProgress(id,chapter.id);const local=offset-(segment?.start||0);if(local>=0&&local<content.length)savePhrase(id,chapter.id,content.slice(local,local+90).trim(),offset)},onNext:()=>{const units=inEpisode?allEpisodes(book):book.chapters;const index=units.findIndex(c=>c.id===(inEpisode?episode?.id:chapter.id));const next=units[index+1];if(next){const nextChapter=inEpisode?next.chapterId:next.id;saveProgress(id,nextChapter);reader(id,nextChapter,'audio',null,inEpisode,inEpisode?next.id:null)}else saveSetting(id+'-auto-continue','false')}}):id==='metamorfosi-ovidio'?await createOvidioAudio({chapter,content,segmentStart:segment?.start||0,segmentEnd:segment?.end||null,onPosition:offset=>{saveProgress(id,chapter.id);if(offset>=0&&offset<content.length)savePhrase(id,chapter.id,content.slice(Math.max(0,offset-(segment?.start||0)),Math.max(0,offset-(segment?.start||0))+90).trim(),offset)},onNext:()=>{const units=inEpisode?allEpisodes(book):book.chapters;const index=units.findIndex(c=>c.id===(inEpisode?episode?.id:chapter.id));const next=units[index+1];if(next){const nextChapter=inEpisode?next.chapterId:next.id;saveProgress(id,nextChapter);reader(id,nextChapter,'audio',0,inEpisode,inEpisode?next.id:null)}else saveProgress(id,chapter.id)}}):audioView({bookId:id,chapter,content,segmentStart:segment?.start||0,onPosition:offset=>{if(offset>=0&&offset<content.length){const excerpt=content.slice(offset,Math.min(content.length,offset+90)).trim();savePhrase(id,chapter.id,excerpt,offset+(segment?.start||0))}saveProgress(id,chapter.id)}});
   if(!shell.isConnected){player.stopAudio?.();return}
-  mountPodcastControls(player,content);
+  mountPodcastControls(player,content,audioTools.querySelector('.reader-focus-button'));
   const units=inEpisode?allEpisodes(book):book.chapters;
   const unitIndex=inEpisode?units.findIndex(item=>item.id===episode?.id):units.findIndex(item=>item.id===chapter.id);
   const moveAudio=direction=>{

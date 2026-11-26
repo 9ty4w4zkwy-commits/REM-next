@@ -812,29 +812,39 @@ html body.ebook-fullscreen-active .ebook-reading-shell>.rem-immersive-reveal:foc
 .audio-sync-shell .rem-audio-transcript .is-current{color:#102437;background:#a0e3c2;border-radius:3px}
 .audio-sync-shell .rem-audio-controls > input[type="range"]{height:36px}
 .audio-sync-shell .rem-audio-times{font-size:.85rem}
+.audio-sync-shell .reader-tools-focus-only .reader-focus-button{display:none!important}
 .audio-sync-shell .rem-podcast-transport{
- display:grid;grid-template-columns:repeat(2,minmax(44px,1fr)) minmax(56px,1.35fr) repeat(2,minmax(44px,1fr));
+ display:grid;grid-template-columns:repeat(2,minmax(44px,1fr)) minmax(52px,1.3fr) repeat(2,minmax(44px,1fr));
  align-items:center;justify-items:center;gap:2px;margin:12px 0 8px;touch-action:manipulation;
 }
 .audio-sync-shell .rem-podcast-transport button,
-.audio-sync-shell .rem-podcast-timer{
- display:grid;place-items:center;min-width:48px;min-height:52px;padding:0;touch-action:manipulation;
- background:transparent;color:#e9f1f8;border:0;border-radius:10px;box-shadow:none;
+.audio-sync-shell .rem-podcast-focus{
+ display:grid;place-items:center;min-width:44px;min-height:54px;padding:0;touch-action:manipulation;
+ background:transparent;color:#a0e3c2;border:0;border-radius:10px;box-shadow:none;
 }
-.audio-sync-shell .rem-podcast-transport .rem-podcast-play{width:68px;height:66px;color:#b8ead4}
+.audio-sync-shell .rem-podcast-transport .rem-podcast-play{width:64px;height:66px}
 .audio-sync-shell .rem-podcast-play svg{width:52px;height:52px}
-.audio-sync-shell .rem-podcast-skip svg{width:44px;height:44px}
-.audio-sync-shell .rem-podcast-skip text{font:750 8.5px system-ui,sans-serif}
-.audio-sync-shell .rem-podcast-transport .rem-podcast-speed{font-size:1.3rem;font-weight:700;color:#b9cbda}
-.audio-sync-shell .rem-podcast-timer{position:relative;color:#b9cbda}
-.audio-sync-shell .rem-podcast-timer.is-active{color:#a0e3c2}
-.audio-sync-shell .rem-podcast-timer.is-active::after{
- content:'';position:absolute;top:7px;right:8px;width:5px;height:5px;border-radius:50%;background:currentColor;pointer-events:none;
-}
-.audio-sync-shell .rem-podcast-timer svg{width:27px;height:27px;pointer-events:none}
-.audio-sync-shell .rem-podcast-sleep{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer}
+.audio-sync-shell .rem-podcast-skip svg{width:50px;height:50px}
+.audio-sync-shell .rem-podcast-skip text{font:750 7.8px system-ui,sans-serif}
+.audio-sync-shell .rem-podcast-transport .rem-podcast-speed{font-size:clamp(1.17rem,5.6vw,1.55rem);font-weight:750;line-height:1}
+.audio-sync-shell .rem-podcast-focus svg{width:32px;height:32px}
 .audio-sync-shell .rem-podcast-transport button:focus-visible,
-.audio-sync-shell .rem-podcast-timer:has(:focus-visible){outline:2px solid #a0e3c2;outline-offset:2px}
+.audio-sync-shell .rem-podcast-focus:focus-visible{outline:2px solid #a0e3c2;outline-offset:2px}
+.audio-sync-shell .rem-audio-controls > input.rem-podcast-seek{
+ -webkit-appearance:none;appearance:none;background:transparent;border:0;padding:0;touch-action:pan-y;
+}
+.audio-sync-shell .rem-podcast-seek::-webkit-slider-runnable-track{
+ height:5px;border-radius:99px;background:linear-gradient(to right,#a0e3c2 var(--rem-podcast-progress,0%),#44556b var(--rem-podcast-progress,0%));
+}
+.audio-sync-shell .rem-podcast-seek::-moz-range-track{
+ height:5px;border-radius:99px;background:linear-gradient(to right,#a0e3c2 var(--rem-podcast-progress,0%),#44556b var(--rem-podcast-progress,0%));
+}
+.audio-sync-shell .rem-podcast-seek::-webkit-slider-thumb{
+ -webkit-appearance:none;appearance:none;width:17px;height:17px;margin-top:-6px;border:0;border-radius:50%;background:#a0e3c2;
+}
+.audio-sync-shell .rem-podcast-seek::-moz-range-thumb{
+ width:17px;height:17px;border:0;border-radius:50%;background:#a0e3c2;
+}
 body.ebook-fullscreen-active .summary-shell .summary-content{background:transparent!important;color:inherit!important}
 body.ebook-fullscreen-active .summary-shell .summary-page-frame.ebook-page-frame{
  background:transparent!important;border-radius:0!important;
