@@ -10,7 +10,7 @@ export const HOME_SECTIONS=[
 export function booksForHomeSection(id,books,getProgress,getReadingPath=()=>'',getEpisode=()=>null){
  switch(id){
   case 'recommended': return books.filter(b=>b.homeSections?.includes('recommended'));
-  case 'continue': return books.filter(b=>Boolean(getProgress(b.id)));
+  case 'continue': return books.filter(b=>b.availability!=='preview'&&Boolean(getProgress(b.id)));
   case 'free': return books.filter(b=>b.access==='free');
   case 'premium': return books.filter(b=>b.access==='premium');
   case 'new': return books.filter(b=>b.homeSections?.includes('new'));

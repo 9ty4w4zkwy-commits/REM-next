@@ -1668,140 +1668,13 @@
       "id": "mattia-pascal",
       "title": "Il fu Mattia Pascal",
       "author": "Luigi Pirandello",
-      "description": "Mattia Pascal scopre di essere stato dichiarato morto per errore. È l'occasione per ricominciare da zero, ma vivere senza la propria identità sarà davvero una liberazione? Testo originale del 1904, disponibile in lettura.",
+      "description": "Mattia Pascal scopre di essere stato dichiarato morto per errore. È l'occasione per ricominciare da zero, ma vivere senza la propria identità sarà davvero una liberazione?",
       "status": "published",
       "access": "free",
       "homeSections": [
         "new"
       ],
-      "chapters": [
-        {
-          "id": "capitolo-1",
-          "title": "1. Premessa",
-          "file": "capitolo-1.txt",
-          "minutes": 15,
-          "summary": "Mattia Pascal apre il proprio racconto con una certezza apparentemente banale: per molti anni ha saputo almeno come si chiamava. Questa informazione, che di solito nessuno considera importante, ha assunto per lui un valore particolare a causa di una vicenda eccezionale. Il protagonista si presenta come custode di una biblioteca comunale poco frequentata, sistemata in una chiesa sconsacrata e piena di libri dimenticati. Nonostante il suo scarso entusiasmo per la lettura, decide di mettere per iscritto la propria storia, incoraggiato da don Eligio, un sacerdote che conosce il suo caso. Mattia avverte però che non sta per raccontare una vita normale: la sua identità ha subito cambiamenti tanto strani da rendergli difficile perfino spiegare chi sia. Lascerà il manoscritto nella biblioteca, con la richiesta che venga letto soltanto molti anni dopo la sua ultima morte. L'inizio introduce così il tema centrale del romanzo: la difficoltà di riconoscere se stessi quando il mondo ci considera qualcun altro."
-        },
-        {
-          "id": "capitolo-2",
-          "title": "2. Premessa seconda (filosofica) a mo' di scusa",
-          "file": "capitolo-2.txt",
-          "minutes": 15,
-          "summary": "Prima di raccontare la propria vita, Mattia Pascal riflette con don Eligio sul valore delle storie individuali. Secondo il protagonista, la scoperta di Copernico ha cambiato radicalmente il modo in cui gli esseri umani possono considerare se stessi. Se la Terra non è più il centro immobile dell'universo, anche le grandi imprese e le sofferenze degli uomini appaiono minuscole rispetto all'immensità del cosmo. Mattia usa questa idea per mettere in dubbio l'importanza dei romanzi e dei racconti pieni di particolari quotidiani. Eppure ha deciso di scrivere proprio la propria vicenda, perché la considera talmente singolare da meritare un'eccezione. Nel dialogo con il sacerdote emergono l'ironia, lo scetticismo e l'inquietudine che caratterizzano il suo modo di guardare il mondo. Il capitolo non presenta ancora nuovi eventi, ma spiega perché il narratore sente il bisogno di raccontare ciò che gli è successo e, nello stesso tempo, dubita del significato di ogni racconto umano."
-        },
-        {
-          "id": "capitolo-3",
-          "title": "3. La casa e la talpa",
-          "file": "capitolo-3.txt",
-          "minutes": 15,
-          "summary": "Mattia torna con la memoria all'infanzia, quando la sua famiglia possedeva una discreta fortuna. Dopo la morte del padre, però, la madre affida l'amministrazione dei beni a Batta Malagna, un uomo apparentemente fidato che approfitta dell'incarico per arricchirsi. Mattia e il fratello Roberto crescono senza imparare a gestire il patrimonio e senza ricevere un'educazione capace di prepararli alla vita. La madre, affettuosa ma poco pratica, non riesce a riconoscere il pericolo rappresentato dall'amministratore. Anche il precettore Pinzone contribuisce al disordine, lasciando che i due ragazzi si abituino a fare ciò che vogliono. Nel corso degli anni case e terreni vengono progressivamente sottratti alla famiglia, mentre Malagna aumenta la propria ricchezza. Quando i fratelli diventano adulti, è ormai difficile rimediare. Il capitolo mostra come la rovina economica di Mattia non dipenda da un unico incidente, ma dall'avidità altrui e dall'incapacità dei familiari di difendere ciò che possiedono."
-        },
-        {
-          "id": "capitolo-4",
-          "title": "4. Fu così",
-          "file": "capitolo-4.txt",
-          "minutes": 15,
-          "summary": "La vita sentimentale di Mattia si intreccia con gli intrighi di Batta Malagna, l'amministratore che ha dissipato il patrimonio della famiglia. Malagna, rimasto vedovo, ha sposato la giovane Oliva, ma non riesce ad avere figli e attribuisce a lei ogni responsabilità. Mattia conosce bene la ragazza e finisce coinvolto in una vicenda che rende ancora più complicati i rapporti fra le persone. Nel frattempo il suo amico Pomino è innamorato di Romilda Pescatore e chiede a Mattia di aiutarlo ad avvicinarla. Ma il tentativo produce un risultato inatteso: Mattia si lascia coinvolgere con Romilda, mentre i progetti matrimoniali diventano oggetto di calcoli e pressioni familiari. La madre di Romilda e lo stesso Malagna partecipano a manovre che rendono sempre più difficile distinguere l'amore dall'interesse. Alla fine Mattia si ritrova avviato verso un matrimonio che non nasce da una scelta serena. Il capitolo racconta la rete di equivoci e responsabilità che lo conduce a perdere il controllo del proprio futuro."
-        },
-        {
-          "id": "capitolo-5",
-          "title": "5. Maturazione",
-          "file": "capitolo-5.txt",
-          "minutes": 15,
-          "summary": "Il matrimonio di Mattia con Romilda non porta la felicità sperata. La giovane vive sotto l'influenza della madre, la vedova Pescatore, che tratta il genero con durezza e rende insopportabile la convivenza. La casa diventa teatro di litigi continui e la situazione economica è ormai molto difficile. Anche la madre di Mattia, già provata dalla perdita del patrimonio, viene coinvolta nelle tensioni domestiche e deve sopportare umiliazioni. Zia Scolastica interviene per portarla via da un ambiente tanto ostile. Intanto Mattia cerca di resistere, ma gli avvenimenti accumulano nuove sofferenze: la vita coniugale è segnata dalla nascita dei figli e da lutti dolorosi. Le difficoltà economiche, la perdita degli affetti e l'impossibilità di costruire un rapporto sereno con Romilda spengono nel protagonista qualsiasi speranza di riscatto. Il capitolo mostra come un matrimonio nato da circostanze confuse possa trasformarsi in una prigione quotidiana."
-        },
-        {
-          "id": "capitolo-6",
-          "title": "6. Tac tac tac...",
-          "file": "capitolo-6.txt",
-          "minutes": 15,
-          "summary": "Schiacciato dai problemi familiari, Mattia si allontana da casa e raggiunge Montecarlo, dove scopre il mondo del gioco d'azzardo. In un primo momento osserva i tavoli della roulette e i comportamenti dei giocatori, divisi fra speranza, superstizione e paura di perdere tutto. Poi decide di tentare la sorte. Dopo alcune giocate, comincia a vincere somme sempre più importanti e si lascia trascinare dall'eccitazione. Attorno a lui incontra persone che inseguono la fortuna come una promessa di salvezza, ma anche esempi tragici di chi non riesce a sopportare la sconfitta. La roulette diventa così un'immagine del caso che governa molte decisioni umane. Mattia finisce per ottenere una vincita considerevole, capace di cambiare la sua situazione economica. Tuttavia il denaro non cancella il ricordo della casa da cui è fuggito né il timore di dovervi ritornare. Il vero cambiamento della sua vita sta ancora per verificarsi."
-        },
-        {
-          "id": "capitolo-7",
-          "title": "7. Cambio treno",
-          "file": "capitolo-7.txt",
-          "minutes": 15,
-          "summary": "Durante il viaggio di ritorno da Montecarlo, Mattia Pascal riflette su come utilizzare il denaro vinto alla roulette. La fortuna potrebbe permettergli di pagare i debiti e di risollevarsi, ma tornare da Romilda e dalla suocera significherebbe affrontare di nuovo la vita che lo ha reso infelice. Sul treno compra un giornale e vi legge una notizia sconvolgente: nel suo paese è stato ritrovato un cadavere che tutti hanno riconosciuto come il suo. La moglie e altri conoscenti lo credono morto. Dopo il primo stupore, Mattia comprende che quell'errore gli offre una possibilità inattesa di libertà. Per la legge e per la comunità, la sua esistenza è già terminata. Nessuno lo aspetta e nessuno può più costringerlo a riprendere il vecchio ruolo di marito e debitore. Decide quindi di non tornare a Miragno e di lasciare che la notizia della morte rimanga incontestata. Inizia così la sua seconda vita."
-        },
-        {
-          "id": "capitolo-8",
-          "title": "8. Adriano Meis",
-          "file": "capitolo-8.txt",
-          "minutes": 15,
-          "summary": "Mattia decide di sfruttare la falsa notizia della propria morte per diventare un'altra persona. Deve però inventarsi un nome, una storia e un aspetto che non permettano a nessuno di riconoscerlo. Durante un viaggio ascolta casualmente due viaggiatori discutere e ricava dalle loro parole il nome Adriano Meis. Da quel momento comincia a costruire una biografia immaginaria, scegliendo luoghi d'origine, ricordi e particolari con cui rispondere alle domande degli sconosciuti. Cambia anche il modo di presentarsi e prova l'ebbrezza di non avere più legami con la famiglia, il paese e i debiti della vita precedente. All'inizio quella libertà gli sembra assoluta. Presto, però, emerge la difficoltà di vivere senza un passato verificabile: ogni nuova relazione richiede ulteriori menzogne e ogni particolare inventato può essere messo in discussione. Adriano Meis è un uomo libero soltanto finché gli altri non gli chiedono di dimostrare chi sia."
-        },
-        {
-          "id": "capitolo-9",
-          "title": "9. Un po' di nebbia",
-          "file": "capitolo-9.txt",
-          "minutes": 15,
-          "summary": "Adriano Meis viaggia e soggiorna in diverse città, sperimentando la libertà ottenuta dopo la presunta morte di Mattia Pascal. Ma il continuo spostarsi senza una casa e senza legami comincia a pesargli. Vorrebbe parlare con le persone, costruire amicizie e sentirsi parte della vita comune, ma ogni conversazione rischia di esporre le contraddizioni della biografia inventata. Durante un incontro con un uomo socievole, per esempio, deve rispondere a domande semplicissime sulla propria provenienza e si accorge di non poter parlare con naturalezza. Più cerca di mostrarsi spontaneo, più è costretto a inventare altri dettagli. La solitudine che inizialmente considerava un vantaggio diventa così una forma di isolamento. Adriano può andare dove vuole, ma non riesce a essere davvero conosciuto da nessuno. Mattia comincia a capire che un'identità non consiste soltanto in un nome scelto a piacere: dipende anche da una storia condivisa con gli altri."
-        },
-        {
-          "id": "capitolo-10",
-          "title": "10. Acquasantiera e portacenere",
-          "file": "capitolo-10.txt",
-          "minutes": 15,
-          "summary": "Stanco di viaggiare senza radici, Adriano Meis decide di stabilirsi a Roma e prende una camera in casa di Anselmo Paleari. Il padrone di casa è un uomo gentile ma assorbito da studi filosofici e dall'interesse per le sedute spiritiche. La figlia Adriana, timida e profondamente religiosa, si occupa della vita domestica e colpisce subito il nuovo inquilino per la sua delicatezza. Nella stessa casa vivono anche la signorina Caporale e si avverte l'influenza di Terenzio Papiano, cognato di Adriana, coinvolto in affari poco chiari. Adriano osserva con curiosità quell'ambiente, così diverso dalla solitudine degli alberghi in cui ha vissuto. Un piccolo episodio, lo scambio di un'acquasantiera usata per errore come portacenere, rivela la distanza fra le abitudini di Adriano e la sensibilità di Adriana. Il protagonista comincia a desiderare la vicinanza degli altri, senza sapere quanto la propria identità inventata possa complicare quei rapporti."
-        },
-        {
-          "id": "capitolo-11",
-          "title": "11. Di sera, guardando il fiume",
-          "file": "capitolo-11.txt",
-          "minutes": 15,
-          "summary": "La vita romana di Adriano Meis si riempie di passeggiate, osservazioni e riflessioni sul rapporto fra gli uomini e il mondo che li circonda. Durante le uscite serali guarda la città e il fiume, interrogandosi sul significato della storia, della fede e delle abitudini quotidiane. Nella casa dei Paleari comincia intanto a partecipare alle conversazioni familiari e racconta i propri viaggi, inventando o adattando particolari per non rivelare il passato. Parlare con gli altri gli procura un piacere che non aveva previsto, ma lo costringe anche a mantenere in vita la finzione di Adriano Meis. La signorina Caporale dimostra un interesse crescente per lui, mentre Adriana lo attrae per la sua sincerità e discrezione. Mattia si rende conto che la solitudine volontaria è diventata una privazione. Vorrebbe vivere relazioni autentiche, ma deve continuare a fingere proprio con le persone da cui desidera essere compreso."
-        },
-        {
-          "id": "capitolo-12",
-          "title": "12. L'occhio a Papiano",
-          "file": "capitolo-12.txt",
-          "minutes": 15,
-          "summary": "In casa Paleari, Adriano conosce più da vicino Terenzio Papiano, un uomo invadente e abile nell'approfittare degli altri. Il cognato di Adriana cerca di scoprire chi sia davvero il nuovo inquilino, facendo domande e offrendo cortesie che sembrano nascondere secondi fini. Adriano, costretto a proteggere la propria falsa identità, avverte quelle attenzioni come una minaccia. Scopre inoltre che Papiano esercita una forte influenza sulla famiglia e ha avuto responsabilità in affari che hanno danneggiato la signorina Caporale. La sua presenza rende difficile anche il rapporto fra Adriano e Adriana, che vive in una condizione di timidezza e subordinazione. Il protagonista reagisce con crescente irritazione e si accorge di provare per la giovane qualcosa di più di una semplice simpatia. La possibilità di innamorarsi riporta però in primo piano la contraddizione della sua nuova vita: Adriano Meis può desiderare un futuro, ma non possiede un'identità legale con cui costruirlo."
-        },
-        {
-          "id": "capitolo-13",
-          "title": "13. Il lanternino",
-          "file": "capitolo-13.txt",
-          "minutes": 15,
-          "summary": "Adriano si sottopone a un intervento per correggere il difetto dell'occhio che lo lega ancora all'aspetto di Mattia Pascal. Durante la convalescenza, trascorsa al buio, riceve le visite e le attenzioni di Anselmo Paleari. Il padrone di casa gli espone la propria teoria dei lanternini: ogni essere umano, secondo lui, porta dentro di sé una piccola luce che dà forma al mondo e alle convinzioni, ma che può spegnersi o cambiare. La riflessione sulla fragilità delle certezze colpisce Adriano, la cui intera esistenza dipende ormai da un'identità inventata. Intanto nella casa vengono preparate nuove sedute spiritiche, alle quali dovrebbe partecipare anche Adriana. Adriano sospetta che Papiano e gli altri sfruttino la credulità di Paleari per inscenare fenomeni misteriosi. Nonostante la diffidenza, è attratto soprattutto dall'occasione di stare vicino ad Adriana. Il capitolo intreccia così il problema filosofico dell'identità a una situazione domestica piena di segreti e sentimenti."
-        },
-        {
-          "id": "capitolo-14",
-          "title": "14. Le prodezze di Max",
-          "file": "capitolo-14.txt",
-          "minutes": 15,
-          "summary": "Durante una seduta spiritica organizzata in casa Paleari, i partecipanti si raccolgono al buio intorno a un tavolino. La signorina Caporale finge o crede di comunicare con uno spirito chiamato Max, mentre Papiano guida gli esperimenti con grande sicurezza. Si susseguono colpi, rumori, contatti misteriosi e altri fenomeni che Adriano osserva con sospetto. Per lui la seduta è soprattutto un'occasione di stare accanto ad Adriana, alla quale riesce a manifestare il proprio affetto. Ma l'oscurità che permette i gesti più intimi favorisce anche manovre sospette. Adriano comincia a pensare che qualcuno stia approfittando della confusione per agire alle sue spalle. L'esperienza oscilla fra la comicità delle pretese spiritiche e l'inquietudine di un possibile inganno. Il protagonista sente di essersi legato sempre più profondamente ad Adriana, proprio mentre la sua vita costruita su una menzogna diventa più difficile da sostenere."
-        },
-        {
-          "id": "capitolo-15",
-          "title": "15. Io e l'ombra mia",
-          "file": "capitolo-15.txt",
-          "minutes": 15,
-          "summary": "Adriano Meis si accorge che una somma importante di denaro è scomparsa dalla sua camera e sospetta che Papiano sia coinvolto nel furto. Adriana, indignata, vorrebbe che il responsabile fosse denunciato e che l'onore della famiglia venisse difeso. Ma Adriano è costretto a fermarla. Rivolgersi alla polizia significherebbe dimostrare la propria identità, e lui non possiede documenti che possano attestare l'esistenza di Adriano Meis. La stessa difficoltà si presenta nei sentimenti: ama Adriana, ma non può sposarla legalmente senza rivelare di essere Mattia Pascal, un uomo considerato morto e ancora legato al precedente matrimonio. Una situazione che all'inizio gli sembrava la massima libertà diventa così una trappola. Adriano non può chiedere giustizia per un torto subito né progettare apertamente un futuro con la donna che ama. Comincia a riconoscersi in un'ombra, presente agli occhi degli altri ma priva di un posto nella vita civile."
-        },
-        {
-          "id": "capitolo-16",
-          "title": "16. Il ritratto di Minerva",
-          "file": "capitolo-16.txt",
-          "minutes": 15,
-          "summary": "La tensione in casa Paleari aumenta dopo la sparizione del denaro. Per impedire che il caso arrivi alle autorità, Adriano finge di aver ritrovato la somma e cerca di mettere a tacere i sospetti, anche se crede di conoscere il responsabile. Il comportamento di Papiano e le relazioni fra gli altri ospiti continuano però a turbarlo. Durante una visita a una famiglia conosciuta nella casa, Adriano si trova coinvolto in una situazione umiliante, segnata da provocazioni e rivalità. Desidererebbe reagire come qualsiasi altro uomo, difendere il proprio onore e chiedere soddisfazione, ma torna a scontrarsi con l'impossibilità di rendere verificabile il proprio nome. Comprende che la seconda vita non può più continuare: ogni tentativo di inserirsi davvero nel mondo lo conduce a un nuovo vicolo cieco. Decide allora di far scomparire anche Adriano Meis, lasciando credere a un suicidio. Per tornare a vivere come Mattia Pascal, deve inscenare una seconda morte."
-        },
-        {
-          "id": "capitolo-17",
-          "title": "17. Rincarnazione",
-          "file": "capitolo-17.txt",
-          "minutes": 15,
-          "summary": "Dopo aver organizzato la falsa scomparsa di Adriano Meis, Mattia Pascal lascia Roma e prende il treno, tormentato dal pensiero di Adriana e delle persone che ha abbandonato. La nuova morte inventata dovrebbe consentirgli di recuperare il proprio nome originario, ma non sa quale vita lo attenda. Prima di tornare a Miragno decide di fermarsi e di visitare il fratello Roberto, per verificare come verrà accolto il suo ritorno. Roberto è sconvolto nel vederlo vivo e quasi non riesce a credere alla sua presenza. Poi gli rivela una notizia decisiva: Romilda, convinta che Mattia fosse morto, ha sposato il vecchio amico Pomino. Per il protagonista la scoperta è insieme liberatoria e angosciante. La legge e le convenzioni potrebbero considerare nullo il nuovo matrimonio, riportandolo al ruolo che aveva cercato di abbandonare. Dopo due identità e due morti apparenti, Mattia si trova quindi ancora una volta incapace di decidere liberamente quale posto occupare."
-        },
-        {
-          "id": "capitolo-18",
-          "title": "18. Il fu Mattia Pascal",
-          "file": "capitolo-18.txt",
-          "minutes": 15,
-          "summary": "Mattia Pascal torna a Miragno e si presenta alla casa di Pomino, dove Romilda vive dopo averlo creduto morto. Il suo arrivo provoca stupore e paura: la donna si è rifatta una vita e ha avuto una bambina dal nuovo marito. Mattia potrebbe rivendicare il proprio posto, ma comprende che distruggere quella famiglia non gli restituirebbe la felicità perduta. Decide quindi di lasciare Romilda e Pomino insieme, rinunciando a riprendere il matrimonio. Quando si mostra in paese, scopre che il suo ritorno suscita meno attenzione di quanto avesse immaginato e che la vita degli altri è andata avanti senza di lui. Riprende a frequentare la biblioteca dove era stato impiegato e racconta la propria storia a don Eligio. Ogni tanto va al cimitero a visitare la tomba del morto scambiato per lui. Non riesce più a definirsi semplicemente Mattia Pascal, ma neppure Adriano Meis. La sua identità resta quella paradossale di un uomo vivo che tutti hanno già conosciuto come morto."
-        }
-      ],
+      "chapters": [],
       "coverImage": "./assets/covers/mattia-pascal.jpg?v=approved-20261123",
       "moods": [
         "riflettere",
@@ -1817,7 +1690,8 @@
         "liguria",
         "roma",
         "italia"
-      ]
+      ],
+      "availability": "preview"
     },
     {
       "id": "metamorfosi-ovidio",
