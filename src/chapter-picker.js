@@ -25,9 +25,7 @@ export function chapterPicker(select){
   const overlay=document.createElement('div');overlay.className='rem-chapter-picker-overlay';
   const dialog=document.createElement('section');dialog.className='rem-chapter-picker-dialog';
   dialog.setAttribute('role','dialog');dialog.setAttribute('aria-modal','true');dialog.setAttribute('aria-label',title);
-  const footer=document.createElement('div');footer.className='rem-chapter-picker-footer';
   const dismiss=document.createElement('button');dismiss.type='button';dismiss.className='rem-chapter-picker-dismiss';dismiss.textContent='✕';dismiss.setAttribute('aria-label','Chiudi il menu senza cambiare capitolo');
-  footer.append(dismiss);
   const list=document.createElement('div');list.className='rem-chapter-picker-list';list.setAttribute('role','listbox');
   list.setAttribute('aria-label',title);
   let selectedButton=null;
@@ -38,7 +36,7 @@ export function chapterPicker(select){
   };
   const keyboard=e=>{
    if(e.key==='Escape'){e.preventDefault();close()}
-   if(e.key==='Tab'){e.preventDefault();const items=[...list.querySelectorAll('button'),dismiss];const idx=items.indexOf(document.activeElement);items[(idx+(e.shiftKey?-1:1)+items.length)%items.length]?.focus()}
+   if(e.key==='Tab'){e.preventDefault();const items=[dismiss,...list.querySelectorAll('button')];const idx=items.indexOf(document.activeElement);items[(idx+(e.shiftKey?-1:1)+items.length)%items.length]?.focus()}
   };
   for(const option of select.options){
    const row=document.createElement('button');row.type='button';row.className='rem-chapter-picker-option';
@@ -60,11 +58,11 @@ export function chapterPicker(select){
   }
   dismiss.addEventListener('click',()=>close());
   overlay.addEventListener('rem-close-picker',()=>close(false),{once:true});
-  dialog.append(list,footer);overlay.append(dialog);
+  dialog.append(dismiss,list);overlay.append(dialog);
   overlay.addEventListener('click',e=>{if(e.target===overlay)close()});
   document.body.append(overlay);trigger.setAttribute('aria-expanded','true');
   document.addEventListener('keydown',keyboard);
-  (selectedButton||list.querySelector('button'))?.focus({preventScroll:true});
+  (selectedButton||list.querySelector('button')||dismiss).focus({preventScroll:true});
   if(selectedButton)list.scrollTop=Math.max(0,selectedButton.offsetTop-list.offsetTop-list.clientHeight/2+selectedButton.clientHeight/2);
  });
  return wrapper;

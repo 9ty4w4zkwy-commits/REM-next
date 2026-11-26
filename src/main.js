@@ -14,14 +14,14 @@ import {showOnboarding,onboardingCompleted} from './onboarding.js?v=chapters-res
 import {getProgress,saveProgress,getSetting,saveSetting} from './progress.js';
 import {analyticsEnabled,getTesterCode,registerTesterCode,setAnalyticsConsent,startAnalytics,trackEvent} from './analytics.js?v=onboarding-four-20261125';
 import {el,button,panel,heading} from './ui.js';
-import {chapterPicker} from './chapter-picker.js?v=simple-chapter-list-20261126';
+import {chapterPicker} from './chapter-picker.js?v=picker-close-above-20261126';
 import {getMode,formatSwitch,paperView,audioView} from './formats.js?v=podcast-reader-20261126';
 import {createReaderTools} from './reader-tools.js?v=immersive-focus-mint-20261126';
 import {createHighlights} from './highlights.js?v=single-remove-1';
 import {createEbookJourney} from './ebook-journey.js?v=rem-ebook-91';
 import {phraseSearch,getPhrase,savePhrase} from './synchronization.js?v=paper-progress-20261124';
 import {HOME_SECTIONS,booksForHomeSection} from './home-config.js?v=bella-estate-preview-20261126';
-import {summaryView} from './summary-view.js?v=immersive-focus-mint-20261126';
+import {summaryView} from './summary-view.js?v=picker-close-above-20261126';
 const app=document.getElementById('app');let books=[];let currentView='home';let resumeFromHomeId=null;let activeReaderTools=null;let activeHighlights=null;let activeAudioPlayer=null;
 const render=(...nodes)=>{stopUsage();document.body.classList.toggle('rem-onboarding-gate',!onboardingCompleted()&&nodes.some(node=>node?.classList?.contains('onboard-screen')));document.body.classList.remove('ebook-fullscreen-active');if(activeAudioPlayer){activeAudioPlayer.stopAudio?.();activeAudioPlayer=null}if(activeHighlights){activeHighlights.destroy();activeHighlights=null}if(activeReaderTools){activeReaderTools.destroy();activeReaderTools=null}document.querySelectorAll('body > .format-switch-bottom').forEach(dock=>dock.remove());app.replaceChildren(...nodes);const readerDock=app.querySelector(':scope > .format-switch-bottom');if(readerDock)document.body.append(readerDock);for(const [id,active] of [['navHome',currentView==='home'],['navLibrary',currentView==='library'],['navProfile',currentView==='profile']]){const nav=document.getElementById(id);nav?.classList.toggle('is-active',active);if(active)nav?.setAttribute('aria-current','page');else nav?.removeAttribute('aria-current')}window.scrollTo({top:0,left:0,behavior:'instant'});document.documentElement.scrollTop=0;document.body.scrollTop=0};
 const para=(text,cls='')=>el('p',{text,className:cls});
