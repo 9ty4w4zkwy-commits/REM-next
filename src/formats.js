@@ -1,3 +1,4 @@
+import {audioSourceUrl} from './audio-source.js?v=1';
 import {loadWordTimeline,secondsForOffset,offsetForSeconds} from './audio-word-timeline.js';
 import {getSetting,saveSetting} from './progress.js';
 import {el,button,panel} from './ui.js';
@@ -58,7 +59,7 @@ function localChapterAudioView({bookId,chapter,onPosition,content,segmentStart=0
   },{once:true});
  };
  // Publicly licensed audio is preferred when available; local files remain a fallback.
- const publicSrc='./audio/pinocchio/'+expected;
+ const publicSrc=audioSourceUrl(chapter,'./audio/pinocchio/'+expected,'pinocchio/'+expected);
  if(Number.isInteger(number)&&number>=1&&number<=36){
   // GitHub release assets are cross-origin: Safari may reject HEAD checks due to CORS.
   // Let the native audio element request the file directly instead.

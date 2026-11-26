@@ -1,3 +1,4 @@
+import {audioSourceUrl} from './audio-source.js?v=1';
 import {getSetting,saveSetting} from './progress.js';
 import {secondsForOffset,offsetForSeconds} from './audio-word-timeline.js';
 
@@ -69,6 +70,6 @@ export async function createBellaEstateAudio({chapter,content,segmentStart=0,seg
  audio.addEventListener('ended',finish);
  audio.addEventListener('error',()=>{if(!disposed)status.textContent='Audio non disponibile: riprova tra poco.'});
  section.stopAudio=()=>{persist(true);disposed=true;audio.pause();audio.removeAttribute('src');audio.load()};
- audio.src=ROOT+chapter.id+'.m4a';
+ audio.src=audioSourceUrl(chapter,ROOT+chapter.id+'.m4a','la-bella-estate/'+chapter.id+'.m4a');
  return section;
 }

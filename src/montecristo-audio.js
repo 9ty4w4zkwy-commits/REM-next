@@ -1,3 +1,4 @@
+import {audioSourceUrl} from './audio-source.js?v=1';
 import {getSetting,saveSetting} from './progress.js';
 import {secondsForOffset,offsetForSeconds} from './audio-word-timeline.js';
 
@@ -8,7 +9,7 @@ const AUTO='montecristo-auto-continue';
 const cache=new Map();
 function setting(key){try{return JSON.parse(getSetting(key,'null'))}catch{return null}}
 async function timelineFor(chapter){
- if(!/^capitolo-(0[1-9]|1[0-9]|20)$/.test(chapter.id))throw Error('Capitolo audio non riconosciuto');
+ if(!/^capitolo-(0[1-9]|[1-9]\d|1[01]\d|120)$/.test(chapter.id))throw Error('Capitolo audio non riconosciuto');
  if(!cache.has(chapter.id))cache.set(chapter.id,fetch(ROOT+chapter.id+'.words.json',{cache:'no-store'}).then(r=>{
   if(!r.ok)throw Error('Mappatura non disponibile');return r.json();
  }).then(t=>{
@@ -69,6 +70,6 @@ export async function createMontecristoAudio({chapter,content,segmentStart=0,seg
  audio.addEventListener('ended',finish);
  audio.addEventListener('error',()=>{if(!disposed)status.textContent='Audio non disponibile: riprova tra poco.'});
  section.stopAudio=()=>{persist(true);disposed=true;audio.pause();audio.removeAttribute('src');audio.load()};
- audio.src=ROOT+chapter.id+'.m4a';
+ audio.src=audioSourceUrl(chapter,ROOT+chapter.id+'.m4a','montecristo/'+chapter.id+'.m4a');
  return section;
 }

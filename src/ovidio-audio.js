@@ -1,3 +1,4 @@
+import {audioSourceUrl} from './audio-source.js?v=1';
 import {getSetting,saveSetting} from './progress.js';
 
 const ROOT='./content/books/metamorfosi-ovidio/';
@@ -18,13 +19,15 @@ export async function loadOvidioTimeline(chapter){
 function clock(t){const n=Math.max(0,Math.floor(t||0));return String(Math.floor(n/60)).padStart(2,'0')+':'+String(n%60).padStart(2,'0')}
 export async function createOvidioAudio({chapter,content,segmentStart=0,segmentEnd=null,onPosition,onNext}){
   const book=Number(chapter.id.match(/^libro-(\d+)/)?.[1]);
-  if(!TRACKS[book])throw Error('Libro audio non riconosciuto');
+  if(!Number.isInteger(book)||book<1||book>15)throw Error('Libro audio non riconosciuto');
   const timeline=await loadOvidioTimeline(chapter);
   const isSegment=segmentEnd!==null;
   const words=isSegment?timeline.words.filter(w=>w.offset>=segmentStart&&w.offset<segmentEnd):timeline.words;
   if(!words.length)throw Error('Audio sincronizzato non disponibile per questo segmento');
   const boundaries=timeline.partDurations||[];
-  const tracks=TRACKS[book];
+  const tracks=chapter.audioSource==='r2'?timeline.parts:TRACKS[book];
+  if(!Array.isArray(tracks)||!tracks.length||tracks.some(t=>typeof t!=='string'||!t||t.includes('/')||t.includes('\\')))throw Error('Tracce audio non valide');
+  if(chapter.audioSource==='r2'&&(boundaries.length!==tracks.length||boundaries.some(d=>!Number.isFinite(d)||d<=0)))throw Error('Durata delle tracce R2 non valida');
   const section=document.createElement('section');
   section.className='format-mode-panel rem-audio-player rem-ovidio-player';
   const status=document.createElement('p');status.className='rem-audio-status';status.textContent='Audio sincronizzato · '+Math.round(timeline.coverage*100)+'% parole abbinate';
@@ -69,7 +72,7 @@ export async function createOvidioAudio({chapter,content,segmentStart=0,segmentE
     requested=local;
     if(index!==currentPart){
       currentPart=index;
-      player.src=ROOT+'audio/'+encodeURIComponent(tracks[index]);
+      player.src=audioSourceUrl(chapter,ROOT+'audio/'+encodeURIComponent(tracks[index]),'metamorfosi-ovidio/'+tracks[index]);
       player.load();
       player.addEventListener('loadedmetadata',function loaded(){player.removeEventListener('loadedmetadata',loaded);if(!disposed){player.currentTime=Math.min(requested,Math.max(0,(player.duration||requested+1)-.1));if(autoplay)player.play().catch(()=>{})}});
     }else if(player.readyState>=1){player.currentTime=Math.min(local,Math.max(0,(player.duration||local+1)-.1));if(autoplay)player.play().catch(()=>{})}
