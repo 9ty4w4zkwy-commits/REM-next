@@ -3278,15 +3278,299 @@
       "homeSections": [
         "new"
       ],
-      "availability": "preview",
+      "availability": "full",
       "coverImage": "./assets/covers/la_bella_estate_in_atelier.png",
-      "chapters": [],
-      "moods": [],
+      "chapters": [
+        {
+          "id": "capitolo-01",
+          "title": "Capitolo 1",
+          "file": "capitolo-01.txt",
+          "minutes": 9,
+          "summary": "Ginia ricorda la felicità delle serate estive trascorse con le amiche. Le passeggiate, il ballo e le gite in barca alimentano il suo desiderio di libertà. Il comportamento di Rosa e Pino le rivela però un mondo di rapporti sentimentali che ancora fatica a comprendere."
+        },
+        {
+          "id": "capitolo-02",
+          "title": "Capitolo 2",
+          "file": "capitolo-02.txt",
+          "minutes": 9,
+          "summary": "Ginia si avvicina ad Amelia, una ragazza più grande che ha lavorato come modella per pittori. Affascinata dalla sua indipendenza, le confida il desiderio di assistere a una seduta di pittura. Amelia promette di introdurla in quell’ambiente."
+        },
+        {
+          "id": "capitolo-03",
+          "title": "Capitolo 3",
+          "file": "capitolo-03.txt",
+          "minutes": 11,
+          "summary": "L’amicizia con Amelia porta Ginia nello studio di Barbetta. Il pittore disegna diversi schizzi del suo volto, mentre i ritratti di Amelia suscitano nella ragazza imbarazzo e curiosità. Ginia scopre il fascino e il disagio di essere osservata da un artista."
+        },
+        {
+          "id": "capitolo-04",
+          "title": "Capitolo 4",
+          "file": "capitolo-04.txt",
+          "minutes": 10,
+          "summary": "Ginia torna nello studio per vedere Amelia posare. L’esperienza la turba e cambia il suo modo di guardare l’amica. In seguito, le insinuazioni di Massimo su Severino e Amelia accendono nuovi dubbi e gelosie."
+        },
+        {
+          "id": "capitolo-05",
+          "title": "Capitolo 5",
+          "file": "capitolo-05.txt",
+          "minutes": 10,
+          "summary": "Amelia torna a cercare Ginia e le due riprendono a frequentarsi. Ginia la raggiunge al caffè e conosce Guido e Rodrigues. Nello studio dei pittori, fra pioggia, oscurità e conversazioni, scopre un ambiente molto diverso dalla sua vita quotidiana."
+        },
+        {
+          "id": "capitolo-06",
+          "title": "Capitolo 6",
+          "file": "capitolo-06.txt",
+          "minutes": 8,
+          "summary": "Ginia vorrebbe rivedere i dipinti di Guido alla luce del giorno. Tornata nello studio, trova Amelia e Rodrigues e osserva con crescente curiosità il loro rapporto. Dietro una tenda scopre il letto e il piccolo spazio privato dello studio."
+        },
+        {
+          "id": "capitolo-07",
+          "title": "Capitolo 7",
+          "file": "capitolo-07.txt",
+          "minutes": 7,
+          "summary": "Ginia cerca Guido nello studio senza farsi accompagnare da Amelia. Parlando di pittura e delle loro conoscenze, si sente attratta dal giovane e spera di suscitare il suo interesse. Approfitta di un pomeriggio festivo per tornare a cercarlo."
+        },
+        {
+          "id": "capitolo-08",
+          "title": "Capitolo 8",
+          "file": "capitolo-08.txt",
+          "minutes": 8,
+          "summary": "Ginia trascorre un pomeriggio felice con Guido e Rodrigues. Cerca poi di sapere da Amelia qualcosa del suo passato con Guido. A casa, immagina una vita insieme al pittore e rimpiange la luce dell’estate ormai lontana."
+        },
+        {
+          "id": "capitolo-09",
+          "title": "Capitolo 9",
+          "file": "capitolo-09.txt",
+          "minutes": 10,
+          "summary": "Amelia propone a Ginia di posare insieme per una pittrice, ma Ginia rifiuta. Con l’arrivo del freddo, la ragazza si isola e spera di incontrare Guido. Quando torna nello studio con gli amici, il desiderio di restare sola con lui diventa irresistibile."
+        },
+        {
+          "id": "capitolo-10",
+          "title": "Capitolo 10",
+          "file": "capitolo-10.txt",
+          "minutes": 8,
+          "summary": "Dopo la serata nello studio, Ginia cerca di capire i propri sentimenti e torna da Guido. La sua commozione si scontra con la leggerezza del pittore. Amelia la mette in guardia e, durante una passeggiata, la sorprende con un bacio."
+        },
+        {
+          "id": "capitolo-11",
+          "title": "Capitolo 11",
+          "file": "capitolo-11.txt",
+          "minutes": 9,
+          "summary": "Ginia ascolta Guido raccontare il passato dello studio e dei suoi amici. Teme che lui possa perdere interesse per lei e si convince che diventare la sua modella potrebbe avvicinarli. Davanti allo specchio confronta la propria timidezza con la sicurezza di Amelia."
+        },
+        {
+          "id": "capitolo-12",
+          "title": "Capitolo 12",
+          "file": "capitolo-12.txt",
+          "minutes": 9,
+          "summary": "La partenza di Guido lascia Ginia inquieta e desiderosa di rivederlo. Cerca la compagnia di Amelia, ma un incontro domenicale e le parole dell’amica la confondono. Una sera Amelia le confessa i propri sentimenti e le rivela di essere malata di sifilide."
+        },
+        {
+          "id": "capitolo-13",
+          "title": "Capitolo 13",
+          "file": "capitolo-13.txt",
+          "minutes": 7,
+          "summary": "La confessione di Amelia sconvolge Ginia, che teme anche per la propria salute. Cerca rassicurazioni da Rodrigues e gli chiede notizie del ritorno di Guido. Il colloquio la lascia turbata dal comportamento dell’uomo e dalle condizioni dell’amica."
+        },
+        {
+          "id": "capitolo-14",
+          "title": "Capitolo 14",
+          "file": "capitolo-14.txt",
+          "minutes": 6,
+          "summary": "Ginia cerca di aiutare Amelia e prepara lo studio per il ritorno di Guido. Quando finalmente lo incontra, il suo atteggiamento inizialmente distante la ferisce. Un successivo gesto di affetto le restituisce la speranza e la convince a tornare da lui quella sera."
+        },
+        {
+          "id": "capitolo-15",
+          "title": "Capitolo 15",
+          "file": "capitolo-15.txt",
+          "minutes": 8,
+          "summary": "Ginia trova nello studio di Guido un’altra modella. Nonostante la gelosia, continua a desiderare la vicinanza del pittore. Intanto riprende a frequentare Amelia, che la incoraggia a non lasciarsi intimidire e la accompagna nuovamente nello studio."
+        },
+        {
+          "id": "capitolo-16",
+          "title": "Capitolo 16",
+          "file": "capitolo-16.txt",
+          "minutes": 9,
+          "summary": "Una serata trascorsa insieme nello studio sembra riportare l’allegria di un tempo. In seguito Ginia osserva Guido disegnare Amelia e decide di posare a sua volta. Superando la vergogna, accetta di farsi ritrarre davanti al camino."
+        },
+        {
+          "id": "capitolo-17",
+          "title": "Capitolo 17",
+          "file": "capitolo-17.txt",
+          "minutes": 8,
+          "summary": "Ginia scopre che Rodrigues era nascosto nello studio mentre posava e si sente umiliata. Si allontana dal mondo di Guido e attraversa giorni di solitudine. Quando Amelia torna a trovarla, le due riprendono a parlarsi e Ginia accetta di uscire con lei."
+        }
+      ],
+      "moods": [
+        "emozionare",
+        "riflettere"
+      ],
       "locations": [
         "torino",
         "italia"
       ],
-      "primaryLocations": []
+      "primaryLocations": [],
+      "seasons": [
+        {
+          "number": 1,
+          "title": "La bella estate",
+          "episodes": [
+            {
+              "id": "capitolo-01",
+              "chapterId": "capitolo-01",
+              "title": "L’estate senza fine",
+              "part": 0,
+              "parts": 1,
+              "minutes": 9,
+              "recap": "Ginia ricorda la felicità delle serate estive trascorse con le amiche. Le passeggiate, il ballo e le gite in barca alimentano il suo desiderio di libertà. Il comportamento di Rosa e Pino le rivela però un mondo di rapporti sentimentali che ancora fatica a comprendere."
+            },
+            {
+              "id": "capitolo-02",
+              "chapterId": "capitolo-02",
+              "title": "Il mondo di Amelia",
+              "part": 0,
+              "parts": 1,
+              "minutes": 9,
+              "recap": "Ginia si avvicina ad Amelia, una ragazza più grande che ha lavorato come modella per pittori. Affascinata dalla sua indipendenza, le confida il desiderio di assistere a una seduta di pittura. Amelia promette di introdurla in quell’ambiente."
+            },
+            {
+              "id": "capitolo-03",
+              "chapterId": "capitolo-03",
+              "title": "Il primo ritratto",
+              "part": 0,
+              "parts": 1,
+              "minutes": 11,
+              "recap": "L’amicizia con Amelia porta Ginia nello studio di Barbetta. Il pittore disegna diversi schizzi del suo volto, mentre i ritratti di Amelia suscitano nella ragazza imbarazzo e curiosità. Ginia scopre il fascino e il disagio di essere osservata da un artista."
+            },
+            {
+              "id": "capitolo-04",
+              "chapterId": "capitolo-04",
+              "title": "Lo sguardo del pittore",
+              "part": 0,
+              "parts": 1,
+              "minutes": 10,
+              "recap": "Ginia torna nello studio per vedere Amelia posare. L’esperienza la turba e cambia il suo modo di guardare l’amica. In seguito, le insinuazioni di Massimo su Severino e Amelia accendono nuovi dubbi e gelosie."
+            },
+            {
+              "id": "capitolo-05",
+              "chapterId": "capitolo-05",
+              "title": "Una sera nello studio",
+              "part": 0,
+              "parts": 1,
+              "minutes": 10,
+              "recap": "Amelia torna a cercare Ginia e le due riprendono a frequentarsi. Ginia la raggiunge al caffè e conosce Guido e Rodrigues. Nello studio dei pittori, fra pioggia, oscurità e conversazioni, scopre un ambiente molto diverso dalla sua vita quotidiana."
+            },
+            {
+              "id": "capitolo-06",
+              "chapterId": "capitolo-06",
+              "title": "Dietro la tenda",
+              "part": 0,
+              "parts": 1,
+              "minutes": 8,
+              "recap": "Ginia vorrebbe rivedere i dipinti di Guido alla luce del giorno. Tornata nello studio, trova Amelia e Rodrigues e osserva con crescente curiosità il loro rapporto. Dietro una tenda scopre il letto e il piccolo spazio privato dello studio."
+            },
+            {
+              "id": "capitolo-07",
+              "chapterId": "capitolo-07",
+              "title": "Un incontro con Guido",
+              "part": 0,
+              "parts": 1,
+              "minutes": 7,
+              "recap": "Ginia cerca Guido nello studio senza farsi accompagnare da Amelia. Parlando di pittura e delle loro conoscenze, si sente attratta dal giovane e spera di suscitare il suo interesse. Approfitta di un pomeriggio festivo per tornare a cercarlo."
+            },
+            {
+              "id": "capitolo-08",
+              "chapterId": "capitolo-08",
+              "title": "I colori del desiderio",
+              "part": 0,
+              "parts": 1,
+              "minutes": 8,
+              "recap": "Ginia trascorre un pomeriggio felice con Guido e Rodrigues. Cerca poi di sapere da Amelia qualcosa del suo passato con Guido. A casa, immagina una vita insieme al pittore e rimpiange la luce dell’estate ormai lontana."
+            },
+            {
+              "id": "capitolo-09",
+              "chapterId": "capitolo-09",
+              "title": "La fine dell’estate",
+              "part": 0,
+              "parts": 1,
+              "minutes": 10,
+              "recap": "Amelia propone a Ginia di posare insieme per una pittrice, ma Ginia rifiuta. Con l’arrivo del freddo, la ragazza si isola e spera di incontrare Guido. Quando torna nello studio con gli amici, il desiderio di restare sola con lui diventa irresistibile."
+            },
+            {
+              "id": "capitolo-10",
+              "chapterId": "capitolo-10",
+              "title": "Un amore inquieto",
+              "part": 0,
+              "parts": 1,
+              "minutes": 8,
+              "recap": "Dopo la serata nello studio, Ginia cerca di capire i propri sentimenti e torna da Guido. La sua commozione si scontra con la leggerezza del pittore. Amelia la mette in guardia e, durante una passeggiata, la sorprende con un bacio."
+            },
+            {
+              "id": "capitolo-11",
+              "chapterId": "capitolo-11",
+              "title": "Il desiderio di essere scelta",
+              "part": 0,
+              "parts": 1,
+              "minutes": 9,
+              "recap": "Ginia ascolta Guido raccontare il passato dello studio e dei suoi amici. Teme che lui possa perdere interesse per lei e si convince che diventare la sua modella potrebbe avvicinarli. Davanti allo specchio confronta la propria timidezza con la sicurezza di Amelia."
+            },
+            {
+              "id": "capitolo-12",
+              "chapterId": "capitolo-12",
+              "title": "La confessione di Amelia",
+              "part": 0,
+              "parts": 1,
+              "minutes": 9,
+              "recap": "La partenza di Guido lascia Ginia inquieta e desiderosa di rivederlo. Cerca la compagnia di Amelia, ma un incontro domenicale e le parole dell’amica la confondono. Una sera Amelia le confessa i propri sentimenti e le rivela di essere malata di sifilide."
+            },
+            {
+              "id": "capitolo-13",
+              "chapterId": "capitolo-13",
+              "title": "Paura e confidenze",
+              "part": 0,
+              "parts": 1,
+              "minutes": 7,
+              "recap": "La confessione di Amelia sconvolge Ginia, che teme anche per la propria salute. Cerca rassicurazioni da Rodrigues e gli chiede notizie del ritorno di Guido. Il colloquio la lascia turbata dal comportamento dell’uomo e dalle condizioni dell’amica."
+            },
+            {
+              "id": "capitolo-14",
+              "chapterId": "capitolo-14",
+              "title": "Il ritorno di Guido",
+              "part": 0,
+              "parts": 1,
+              "minutes": 6,
+              "recap": "Ginia cerca di aiutare Amelia e prepara lo studio per il ritorno di Guido. Quando finalmente lo incontra, il suo atteggiamento inizialmente distante la ferisce. Un successivo gesto di affetto le restituisce la speranza e la convince a tornare da lui quella sera."
+            },
+            {
+              "id": "capitolo-15",
+              "chapterId": "capitolo-15",
+              "title": "Una presenza inattesa",
+              "part": 0,
+              "parts": 1,
+              "minutes": 8,
+              "recap": "Ginia trova nello studio di Guido un’altra modella. Nonostante la gelosia, continua a desiderare la vicinanza del pittore. Intanto riprende a frequentare Amelia, che la incoraggia a non lasciarsi intimidire e la accompagna nuovamente nello studio."
+            },
+            {
+              "id": "capitolo-16",
+              "chapterId": "capitolo-16",
+              "title": "La posa davanti al fuoco",
+              "part": 0,
+              "parts": 1,
+              "minutes": 9,
+              "recap": "Una serata trascorsa insieme nello studio sembra riportare l’allegria di un tempo. In seguito Ginia osserva Guido disegnare Amelia e decide di posare a sua volta. Superando la vergogna, accetta di farsi ritrarre davanti al camino."
+            },
+            {
+              "id": "capitolo-17",
+              "chapterId": "capitolo-17",
+              "title": "Dove vuoi, portami tu",
+              "part": 0,
+              "parts": 1,
+              "minutes": 8,
+              "recap": "Ginia scopre che Rodrigues era nascosto nello studio mentre posava e si sente umiliata. Si allontana dal mondo di Guido e attraversa giorni di solitudine. Quando Amelia torna a trovarla, le due riprendono a parlarsi e Ginia accetta di uscire con lei."
+            }
+          ]
+        }
+      ]
     }
   ]
 }

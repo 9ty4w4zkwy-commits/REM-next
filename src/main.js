@@ -2,7 +2,7 @@ import {recordModeChoice,recordSwitch,startUsage,stopUsage} from './usage-metric
 import {createBellaEstateAudio} from './bella-estate-audio.js?v=1';
 import {createMontecristoAudio} from './montecristo-audio.js?v=montecristo-sync-20261124';
 import {createOvidioAudio} from './ovidio-audio.js?v=4';
-import {loadCatalog,loadChapter} from './catalog.js?v=bella-estate-preview-20261126';
+import {loadCatalog,loadChapter} from './catalog.js?v=bella-estate-full-20261126';
 import {loadEpisodeSegment} from './episode-segments.js?v=conte-20-20261124';
 import {loadOvidioEpisode} from './ovidio-episodes.js?v=2';
 import {createCollectionsView} from './collections-view.js?v=rem-ui-209';
