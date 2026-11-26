@@ -30,7 +30,7 @@ export async function createBellaEstateAudio({chapter,content,segmentStart=0,seg
  const section=document.createElement('section');section.className='format-mode-panel rem-audio-player';
  const status=document.createElement('p');status.className='rem-audio-status';status.textContent='Audio sincronizzato';
  const audio=document.createElement('audio');audio.controls=true;audio.preload='metadata';audio.style.width='100%';
- const note=document.createElement('p');note.className='format-mode-note';note.textContent='Audiolibro sincronizzato con il testo.';
+ const note=document.createElement('p');note.className='format-mode-note';note.style.fontSize='0.7rem';note.textContent='Contenuto generato con AI.';
  section.append(status,audio,note);
  const saved=setting(KEY),sync=setting(SYNC);
  const auto=getSetting(AUTO,'false')==='true';saveSetting(AUTO,'false');

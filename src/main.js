@@ -1,9 +1,9 @@
 import {recordModeChoice,recordSwitch,startUsage,stopUsage} from './usage-metrics.js?v=1';
-import {createBellaEstateAudio} from './bella-estate-audio.js?v=hybrid-audio-20261126';
+import {createBellaEstateAudio} from './bella-estate-audio.js?v=bella-episodes-audio-picker-20261126';
 import {createMontecristoAudio} from './montecristo-audio.js?v=hybrid-audio-20261126';
 import {createOvidioAudio} from './ovidio-audio.js?v=hybrid-audio-20261126';
-import {loadCatalog,loadChapter} from './catalog.js?v=hybrid-audio-20261126';
-import {loadEpisodeSegment} from './episode-segments.js?v=conte-20-20261124';
+import {loadCatalog,loadChapter} from './catalog.js?v=bella-episodes-audio-picker-20261126';
+import {loadEpisodeSegment} from './episode-segments.js?v=bella-episodes-audio-picker-20261126';
 import {loadOvidioEpisode} from './ovidio-episodes.js?v=2';
 import {createCollectionsView} from './collections-view.js?v=rem-ui-209';
 import {readCollections,isBookSaved,saveBookToCollections,removeSavedBook,attachItem,detachItem,addThought} from './collections-store.js?v=rem-mint-207';
@@ -77,6 +77,7 @@ const rememberEpisode=(id,ep)=>saveSetting('episode-current:'+id,ep.id);
 
 /* Recap always uses completed story material before the selected episode; never the next episode's preview. */
 function episodeRecap(book,episode){
+ if(book.id==='la-bella-estate'){const units=allEpisodes(book);const index=units.findIndex(ep=>ep.id===episode.id);if(index<=0)return null;return units.slice(Math.max(0,index-2),index).filter(ep=>ep.recap).map(ep=>({title:ep.title,text:ep.recap}));}
  const currentChapterId=episode.chapterId||episode.id;
  const prior=allEpisodes(book).slice(0,allEpisodes(book).findIndex(ep=>ep.id===episode.id)).filter(ep=>(ep.chapterId||ep.id)!==currentChapterId);
  if(!prior.length)return null;
@@ -478,8 +479,15 @@ async function reader(id,chapterId,modeOverride,seekOffset=null,episodic=false,e
 if(mode==='audio'){
  const audioChapterTitle=inEpisode&&episode?episodeLabel(episode)+' · '+episode.title:chapterDisplayTitle(book,chapter);
  const audioChapterHeading=el('h2',{className:'rem-audio-chapter-heading',text:audioChapterTitle});
+ const audioSelect=el('select',{attrs:{'aria-label':inEpisode?'Scegli episodio':'Scegli capitolo'}});
+ const audioUnits=inEpisode?allEpisodes(book):book.chapters;
+ for(const unit of audioUnits)audioSelect.append(el('option',{text:inEpisode?episodeLabel(unit)+' · '+unit.title:chapterDisplayTitle(book,unit),attrs:{value:unit.id}}));
+ audioSelect.value=inEpisode?episode?.id:chapter.id;
+ audioSelect.addEventListener('change',()=>{const target=audioUnits.find(u=>u.id===audioSelect.value);if(!target)return;const nextChapter=inEpisode?target.chapterId:target.id;const offset=inEpisode?target.start??0:0;saveProgress(id,nextChapter);saveSetting('audio-text-sync:'+id,JSON.stringify({chapter:nextChapter,source:'ebook',offset,selected:true}));reader(id,nextChapter,'audio',offset,inEpisode,inEpisode?target.id:null)});
+ const audioPicker=el('div',{className:'reader-controls'},[chapterPicker(audioSelect)]);
+
  const shell=el('section',{className:'reading-shell audio-sync-shell'});
- render(nav,el('div',{className:'rem-reader-heading'},[heading(book.title,'UN LIBRO, TANTI MODI DI VIVERLO')]),...(episodeHeading?[episodeHeading]:[]),audioChapterHeading,shell,readingExtras,finishControl(id),pathChange,quickSwitch);
+ render(nav,el('div',{className:'rem-reader-heading'},[heading(book.title,'UN LIBRO, TANTI MODI DI VIVERLO')]),...(episodeHeading?[episodeHeading]:[]),audioPicker,audioChapterHeading,shell,readingExtras,finishControl(id),pathChange,quickSwitch);
  activeReaderTools=createReaderTools({focusOnly:true});activeReaderTools.mount(shell);
  try{
   const segment=inEpisode&&episode?((book.id==='pinocchio'||(book.id==='montecristo'||book.id==='la-bella-estate'))?await loadEpisodeSegment(book,episode):book.id==='metamorfosi-ovidio'?await loadOvidioEpisode(book,episode):null):null;const content=segment?.content??await loadChapter(book,chapter);if(!shell.isConnected)return;
