@@ -25,7 +25,7 @@ export async function loadEpisodeSegment(book,episode){
  const chapter=book.chapters.find(c=>c.id===episode.chapterId);
  if(!chapter)throw Error('Capitolo dell’episodio non trovato');
  const full=await loadChapter(book,chapter);
- const {start,end}=(book.id==='montecristo'||book.id==='la-bella-estate')&&Number.isSafeInteger(episode.start)&&Number.isSafeInteger(episode.end)?{start:episode.start,end:episode.end}:segmentRange(full,episode.part||0,episode.parts||1);
+ const {start,end}=(book.id==='montecristo'||book.id==='la-bella-estate'||book.id==='jekyll-hyde')&&Number.isSafeInteger(episode.start)&&Number.isSafeInteger(episode.end)?{start:episode.start,end:episode.end}:segmentRange(full,episode.part||0,episode.parts||1);
  if(start<0||end>full.length||end<=start)throw Error('Limiti episodio non validi');
  return {content:full.slice(start,end),start,end,chapterId:chapter.id};
 }

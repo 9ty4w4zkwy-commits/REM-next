@@ -3803,9 +3803,90 @@
       "homeSections": [
         "new"
       ],
-      "availability": "preview",
+      "availability": "full",
       "coverImage": "./assets/covers/copertina_gotica_di_jekyll_e_hyde.png",
-      "chapters": [],
+      "chapters": [
+        {
+          "id": "capitolo-01",
+          "title": "Capitolo 1 - Storia di una porta",
+          "file": "capitolo-01.txt",
+          "audioSource": "r2",
+          "minutes": 13,
+          "summary": "Durante una passeggiata, Enfield racconta a Utterson di aver visto un uomo calpestare una bambina. Enfield racconta come l'uomo, Hyde, risarcì la famiglia con un assegno firmato da una persona rispettabile. I due amici decidono di non parlarne più."
+        },
+        {
+          "id": "capitolo-02",
+          "title": "Capitolo 2 - Alla ricerca del signor Hyde",
+          "file": "capitolo-02.txt",
+          "audioSource": "r2",
+          "minutes": 16,
+          "summary": "Utterson esamina il testamento di Jekyll, che favorisce Hyde anche in caso di scomparsa. Lanyon non sa spiegargli il legame fra i due. Tormentato dal racconto di Enfield, Utterson sorveglia la porta e riesce finalmente a parlare con Hyde. L'avvocato visita la casa di Jekyll e scopre che Hyde vi ha libero accesso. Teme che il suo amico sia in pericolo."
+        },
+        {
+          "id": "capitolo-03",
+          "title": "Capitolo 3 - Il dottor Jekyll è perfettamente tranquillo",
+          "file": "capitolo-03.txt",
+          "audioSource": "r2",
+          "minutes": 4,
+          "summary": "Dopo un pranzo fra amici, Utterson affronta Jekyll sul testamento. Il dottore lo rassicura e gli strappa la promessa di aiutare Hyde dopo la sua morte."
+        },
+        {
+          "id": "capitolo-04",
+          "title": "Capitolo 4 - L’assassinio di sir Danvers Carew",
+          "file": "capitolo-04.txt",
+          "audioSource": "r2",
+          "minutes": 9,
+          "summary": "Una cameriera assiste all'assassinio di Carew. Utterson riconosce il bastone e accompagna la polizia verso l'abitazione di Hyde. Nella casa di Hyde vengono trovati indizi del delitto, ma l'uomo è scomparso e le ricerche non permettono di rintracciarlo."
+        },
+        {
+          "id": "capitolo-05",
+          "title": "Capitolo 5 - La lettera",
+          "file": "capitolo-05.txt",
+          "audioSource": "r2",
+          "minutes": 9,
+          "summary": "Jekyll dichiara di aver chiuso ogni rapporto con Hyde e mostra a Utterson una lettera che promette la fuga del ricercato. Poole nega che sia stata consegnata una lettera a mano. Guest nota una somiglianza fra le grafie di Jekyll e Hyde; Utterson teme una falsificazione."
+        },
+        {
+          "id": "capitolo-06",
+          "title": "Capitolo 6 - La morte del dottor Lanyon",
+          "file": "capitolo-06.txt",
+          "audioSource": "r2",
+          "minutes": 8,
+          "summary": "Con Hyde scomparso, Jekyll ritrova per qualche tempo la serenità. Poi si isola nuovamente. Lanyon, sconvolto da un segreto, muore lasciando a Utterson un documento da aprire solo a determinate condizioni."
+        },
+        {
+          "id": "capitolo-07",
+          "title": "Capitolo 7 - L’episodio della finestra",
+          "file": "capitolo-07.txt",
+          "audioSource": "r2",
+          "minutes": 3,
+          "summary": "Utterson ed Enfield incontrano Jekyll alla finestra. Un improvviso mutamento della sua espressione li lascia sconvolti."
+        },
+        {
+          "id": "capitolo-08",
+          "title": "Capitolo 8 - L’ultima notte",
+          "file": "capitolo-08.txt",
+          "audioSource": "r2",
+          "minutes": 21,
+          "summary": "Il domestico di Jekyll chiede aiuto a Utterson e lo conduce alla casa, dove una voce insolita proviene dallo studio chiuso. Poole racconta le richieste disperate di una sostanza e descrive la figura mascherata che ha intravisto, sospettando che sia Hyde. Utterson e Poole entrano nello studio e trovano Hyde morto. Cercano invano Jekyll negli ambienti del laboratorio. Utterson trova documenti lasciati da Jekyll e torna a casa per leggere le rivelazioni che potrebbero spiegare il mistero."
+        },
+        {
+          "id": "capitolo-09",
+          "title": "Capitolo 9 - La rivelazione del dottor Lanyon",
+          "file": "capitolo-09.txt",
+          "audioSource": "r2",
+          "minutes": 14,
+          "summary": "Lanyon racconta di aver ricevuto una lettera urgente da Jekyll e di aver recuperato dal laboratorio il cassetto indicato. Lanyon esamina le sostanze e attende il visitatore misterioso, il cui aspetto e comportamento lo inquietano. Il visitatore beve la pozione e si trasforma davanti a Lanyon, rivelando il segreto che sconvolge definitivamente il medico."
+        },
+        {
+          "id": "capitolo-10",
+          "title": "Capitolo 10 - La confessione di Henry Jekyll",
+          "file": "capitolo-10.txt",
+          "audioSource": "r2",
+          "minutes": 34,
+          "summary": "Jekyll racconta il conflitto fra le proprie inclinazioni e le ricerche che lo conducono a sperimentare una pozione su se stesso. La trasformazione gli permette di assumere una seconda identità. Jekyll organizza la propria doppia vita credendo di poterla controllare. Le azioni di Hyde diventano sempre più crudeli e Jekyll scopre che la trasformazione non dipende più soltanto dalla sua volontà. Jekyll tenta di rinunciare a Hyde, ma cede nuovamente alla tentazione. Il delitto di Carew lo costringe a cercare rifugio nella propria identità rispettabile. Nonostante il tentativo di riscattarsi, Jekyll si trasforma improvvisamente lontano da casa e deve ricorrere all’aiuto di Lanyon. Jekyll perde progressivamente il controllo delle trasformazioni e non riesce a riprodurre la pozione. Affida alle sue ultime pagine il racconto della propria fine."
+        }
+      ],
       "moods": [
         "paura",
         "suspense",
@@ -3818,6 +3899,289 @@
       ],
       "primaryLocations": [
         "londra"
+      ],
+      "seasons": [
+        {
+          "number": 1,
+          "title": "Lo strano caso del dottor Jekyll e Mr Hyde",
+          "episodes": [
+            {
+              "id": "capitolo-01-parte-01",
+              "chapterId": "capitolo-01",
+              "title": "La porta misteriosa",
+              "start": 0,
+              "end": 5395,
+              "part": 0,
+              "parts": 2,
+              "minutes": 5,
+              "recap": "Durante una passeggiata, Enfield racconta a Utterson di aver visto un uomo calpestare una bambina."
+            },
+            {
+              "id": "capitolo-01-parte-02",
+              "chapterId": "capitolo-01",
+              "title": "Un assegno inquietante",
+              "start": 5395,
+              "end": 13136,
+              "part": 1,
+              "parts": 2,
+              "minutes": 8,
+              "recap": "Enfield racconta come l'uomo, Hyde, risarcì la famiglia con un assegno firmato da una persona rispettabile. I due amici decidono di non parlarne più."
+            },
+            {
+              "id": "capitolo-02-parte-01",
+              "chapterId": "capitolo-02",
+              "title": "Un testamento insolito",
+              "start": 0,
+              "end": 4928,
+              "part": 0,
+              "parts": 3,
+              "minutes": 5,
+              "recap": "Utterson esamina il testamento di Jekyll, che favorisce Hyde anche in caso di scomparsa. Lanyon non sa spiegargli il legame fra i due."
+            },
+            {
+              "id": "capitolo-02-parte-02",
+              "chapterId": "capitolo-02",
+              "title": "L'incontro con Hyde",
+              "start": 4928,
+              "end": 11073,
+              "part": 1,
+              "parts": 3,
+              "minutes": 6,
+              "recap": "Tormentato dal racconto di Enfield, Utterson sorveglia la porta e riesce finalmente a parlare con Hyde."
+            },
+            {
+              "id": "capitolo-02-parte-03",
+              "chapterId": "capitolo-02",
+              "title": "Il timore per Jekyll",
+              "start": 11073,
+              "end": 16585,
+              "part": 2,
+              "parts": 3,
+              "minutes": 5,
+              "recap": "L'avvocato visita la casa di Jekyll e scopre che Hyde vi ha libero accesso. Teme che il suo amico sia in pericolo."
+            },
+            {
+              "id": "capitolo-03-parte-01",
+              "chapterId": "capitolo-03",
+              "title": "La promessa di Utterson",
+              "start": 0,
+              "end": 3878,
+              "part": 0,
+              "parts": 1,
+              "minutes": 4,
+              "recap": "Dopo un pranzo fra amici, Utterson affronta Jekyll sul testamento. Il dottore lo rassicura e gli strappa la promessa di aiutare Hyde dopo la sua morte."
+            },
+            {
+              "id": "capitolo-04-parte-01",
+              "chapterId": "capitolo-04",
+              "title": "Un delitto sconvolge Londra",
+              "start": 0,
+              "end": 4503,
+              "part": 0,
+              "parts": 2,
+              "minutes": 4,
+              "recap": "Una cameriera assiste all'assassinio di Carew. Utterson riconosce il bastone e accompagna la polizia verso l'abitazione di Hyde."
+            },
+            {
+              "id": "capitolo-04-parte-02",
+              "chapterId": "capitolo-04",
+              "title": "La ricerca del fuggitivo",
+              "start": 4503,
+              "end": 9289,
+              "part": 1,
+              "parts": 2,
+              "minutes": 4,
+              "recap": "Nella casa di Hyde vengono trovati indizi del delitto, ma l'uomo è scomparso e le ricerche non permettono di rintracciarlo."
+            },
+            {
+              "id": "capitolo-05-parte-01",
+              "chapterId": "capitolo-05",
+              "title": "La lettera di Hyde",
+              "start": 0,
+              "end": 4697,
+              "part": 0,
+              "parts": 2,
+              "minutes": 5,
+              "recap": "Jekyll dichiara di aver chiuso ogni rapporto con Hyde e mostra a Utterson una lettera che promette la fuga del ricercato."
+            },
+            {
+              "id": "capitolo-05-parte-02",
+              "chapterId": "capitolo-05",
+              "title": "Due grafie troppo simili",
+              "start": 4697,
+              "end": 9405,
+              "part": 1,
+              "parts": 2,
+              "minutes": 4,
+              "recap": "Poole nega che sia stata consegnata una lettera a mano. Guest nota una somiglianza fra le grafie di Jekyll e Hyde; Utterson teme una falsificazione."
+            },
+            {
+              "id": "capitolo-06-parte-01",
+              "chapterId": "capitolo-06",
+              "title": "La malattia di Lanyon",
+              "start": 0,
+              "end": 7688,
+              "part": 0,
+              "parts": 1,
+              "minutes": 8,
+              "recap": "Con Hyde scomparso, Jekyll ritrova per qualche tempo la serenità. Poi si isola nuovamente. Lanyon, sconvolto da un segreto, muore lasciando a Utterson un documento da aprire solo a determinate condizioni."
+            },
+            {
+              "id": "capitolo-07-parte-01",
+              "chapterId": "capitolo-07",
+              "title": "Il terrore alla finestra",
+              "start": 0,
+              "end": 2760,
+              "part": 0,
+              "parts": 1,
+              "minutes": 3,
+              "recap": "Utterson ed Enfield incontrano Jekyll alla finestra. Un improvviso mutamento della sua espressione li lascia sconvolti."
+            },
+            {
+              "id": "capitolo-08-parte-01",
+              "chapterId": "capitolo-08",
+              "title": "La visita di Poole",
+              "start": 0,
+              "end": 5117,
+              "part": 0,
+              "parts": 4,
+              "minutes": 5,
+              "recap": "Il domestico di Jekyll chiede aiuto a Utterson e lo conduce alla casa, dove una voce insolita proviene dallo studio chiuso."
+            },
+            {
+              "id": "capitolo-08-parte-02",
+              "chapterId": "capitolo-08",
+              "title": "Una medicina introvabile",
+              "start": 5117,
+              "end": 10509,
+              "part": 1,
+              "parts": 4,
+              "minutes": 5,
+              "recap": "Poole racconta le richieste disperate di una sostanza e descrive la figura mascherata che ha intravisto, sospettando che sia Hyde."
+            },
+            {
+              "id": "capitolo-08-parte-03",
+              "chapterId": "capitolo-08",
+              "title": "Oltre la porta chiusa",
+              "start": 10509,
+              "end": 16073,
+              "part": 2,
+              "parts": 4,
+              "minutes": 5,
+              "recap": "Utterson e Poole entrano nello studio e trovano Hyde morto. Cercano invano Jekyll negli ambienti del laboratorio."
+            },
+            {
+              "id": "capitolo-08-parte-04",
+              "chapterId": "capitolo-08",
+              "title": "Le ultime carte",
+              "start": 16073,
+              "end": 21036,
+              "part": 3,
+              "parts": 4,
+              "minutes": 5,
+              "recap": "Utterson trova documenti lasciati da Jekyll e torna a casa per leggere le rivelazioni che potrebbero spiegare il mistero."
+            },
+            {
+              "id": "capitolo-09-parte-01",
+              "chapterId": "capitolo-09",
+              "title": "La richiesta di Jekyll",
+              "start": 0,
+              "end": 5026,
+              "part": 0,
+              "parts": 3,
+              "minutes": 5,
+              "recap": "Lanyon racconta di aver ricevuto una lettera urgente da Jekyll e di aver recuperato dal laboratorio il cassetto indicato."
+            },
+            {
+              "id": "capitolo-09-parte-02",
+              "chapterId": "capitolo-09",
+              "title": "Il visitatore di mezzanotte",
+              "start": 5026,
+              "end": 9426,
+              "part": 1,
+              "parts": 3,
+              "minutes": 4,
+              "recap": "Lanyon esamina le sostanze e attende il visitatore misterioso, il cui aspetto e comportamento lo inquietano."
+            },
+            {
+              "id": "capitolo-09-parte-03",
+              "chapterId": "capitolo-09",
+              "title": "La rivelazione",
+              "start": 9426,
+              "end": 14319,
+              "part": 2,
+              "parts": 3,
+              "minutes": 5,
+              "recap": "Il visitatore beve la pozione e si trasforma davanti a Lanyon, rivelando il segreto che sconvolge definitivamente il medico."
+            },
+            {
+              "id": "capitolo-10-parte-01",
+              "chapterId": "capitolo-10",
+              "title": "Le due nature dell’uomo",
+              "start": 0,
+              "end": 5734,
+              "part": 0,
+              "parts": 6,
+              "minutes": 5,
+              "recap": "Jekyll racconta il conflitto fra le proprie inclinazioni e le ricerche che lo conducono a sperimentare una pozione su se stesso."
+            },
+            {
+              "id": "capitolo-10-parte-02",
+              "chapterId": "capitolo-10",
+              "title": "La nascita di Hyde",
+              "start": 5734,
+              "end": 12323,
+              "part": 1,
+              "parts": 6,
+              "minutes": 6,
+              "recap": "La trasformazione gli permette di assumere una seconda identità. Jekyll organizza la propria doppia vita credendo di poterla controllare."
+            },
+            {
+              "id": "capitolo-10-parte-03",
+              "chapterId": "capitolo-10",
+              "title": "Un potere che sfugge",
+              "start": 12323,
+              "end": 18149,
+              "part": 2,
+              "parts": 6,
+              "minutes": 5,
+              "recap": "Le azioni di Hyde diventano sempre più crudeli e Jekyll scopre che la trasformazione non dipende più soltanto dalla sua volontà."
+            },
+            {
+              "id": "capitolo-10-parte-04",
+              "chapterId": "capitolo-10",
+              "title": "La scelta impossibile",
+              "start": 18149,
+              "end": 24064,
+              "part": 3,
+              "parts": 6,
+              "minutes": 6,
+              "recap": "Jekyll tenta di rinunciare a Hyde, ma cede nuovamente alla tentazione. Il delitto di Carew lo costringe a cercare rifugio nella propria identità rispettabile."
+            },
+            {
+              "id": "capitolo-10-parte-05",
+              "chapterId": "capitolo-10",
+              "title": "La trasformazione inattesa",
+              "start": 24064,
+              "end": 29725,
+              "part": 4,
+              "parts": 6,
+              "minutes": 6,
+              "recap": "Nonostante il tentativo di riscattarsi, Jekyll si trasforma improvvisamente lontano da casa e deve ricorrere all’aiuto di Lanyon."
+            },
+            {
+              "id": "capitolo-10-parte-06",
+              "chapterId": "capitolo-10",
+              "title": "L’ultima confessione",
+              "start": 29725,
+              "end": 36104,
+              "part": 5,
+              "parts": 6,
+              "minutes": 6,
+              "recap": "Jekyll perde progressivamente il controllo delle trasformazioni e non riesce a riprodurre la pozione. Affida alle sue ultime pagine il racconto della propria fine."
+            }
+          ]
+        }
       ]
     }
   ]
