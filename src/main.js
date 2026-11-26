@@ -1,4 +1,4 @@
-import {mountPodcastControls} from './audio-controls.js?v=mint-focus-controls-20261126';
+import {mountPodcastControls} from './audio-controls.js?v=centered-skip-icons-20261126';
 import {mountImmersiveReader} from './immersive-reader.js?v=1';
 import {recordModeChoice,recordSwitch,startUsage,stopUsage} from './usage-metrics.js?v=1';
 import {createJekyllAudio} from './jekyll-audio.js?v=podcast-reader-20261126';

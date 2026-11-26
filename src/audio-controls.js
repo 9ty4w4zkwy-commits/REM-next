@@ -13,8 +13,7 @@ const iconPaths={
  play:'M7 4.5a1 1 0 0 1 1.5-.9l13 7.5a1 1 0 0 1 0 1.8l-13 7.5a1 1 0 0 1-1.5-.9Z',
  pause:'M5 4h4a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1Zm10 0h4a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1Z',
  clock:'M12 3a9 9 0 1 0 0 18 9 9 0 1 0 0-18Zm0 4v5h5',
- rewind:'M9 2 6 5l3 3 M6 5a8.6 8.6 0 1 1-2.6 6.1',
- forward:'M15 2l3 3-3 3 M18 5a8.6 8.6 0 1 0 2.6 6.1'
+ skip:'M15.6 5.3A8.5 8.5 0 1 1 12 4.5'
 };
 
 function transportIcon(name){
@@ -24,7 +23,7 @@ function transportIcon(name){
  svg.setAttribute('aria-hidden','true');
  svg.setAttribute('focusable','false');
  const path=document.createElementNS(ns,'path');
- path.setAttribute('d',iconPaths[name]);
+ path.setAttribute('d',iconPaths[name==='rewind'||name==='forward'?'skip':name]);
  if(name==='rewind'||name==='forward'||name==='clock'){
   path.setAttribute('fill','none');
   path.setAttribute('stroke','currentColor');
@@ -33,10 +32,19 @@ function transportIcon(name){
   path.setAttribute('stroke-linejoin','round');
   svg.append(path);
   if(name==='clock')return svg;
+  path.setAttribute('stroke-width','1.55');
+  const tip=document.createElementNS(ns,'path');
+  tip.setAttribute('d','M10.5 2.2 14.2 4.5 10.5 6.8Z');
+  tip.setAttribute('fill','currentColor');
+  if(name==='rewind'){
+   const mirror='translate(24 0) scale(-1 1)';
+   path.setAttribute('transform',mirror);
+   tip.setAttribute('transform',mirror);
+  }
+  svg.append(tip);
   const label=document.createElementNS(ns,'text');
   label.setAttribute('x','12');
-  label.setAttribute('y','12.6');
-  label.setAttribute('dominant-baseline','central');
+  label.setAttribute('y','15.75');
   label.setAttribute('text-anchor','middle');
   label.setAttribute('fill','currentColor');
   label.textContent=name==='rewind'?'15':'30';
