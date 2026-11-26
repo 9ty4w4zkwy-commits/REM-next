@@ -813,19 +813,28 @@ html body.ebook-fullscreen-active .ebook-reading-shell>.rem-immersive-reveal:foc
 .audio-sync-shell .rem-audio-controls > input[type="range"]{height:36px}
 .audio-sync-shell .rem-audio-times{font-size:.85rem}
 .audio-sync-shell .rem-podcast-transport{
- display:grid;grid-template-columns:repeat(2,minmax(44px,1fr)) minmax(56px,1.25fr) repeat(2,minmax(44px,1fr));
- align-items:center;justify-items:center;gap:2px;margin:6px 0;
+ display:grid;grid-template-columns:repeat(2,minmax(44px,1fr)) minmax(56px,1.35fr) repeat(2,minmax(44px,1fr));
+ align-items:center;justify-items:center;gap:2px;margin:12px 0 8px;
 }
 .audio-sync-shell .rem-podcast-transport button,
-.audio-sync-shell .rem-podcast-sleep{
- min-width:44px;min-height:44px;padding:4px;border:0;border-radius:12px;
- background:transparent;color:#dcebf6;font-size:.95rem;font-weight:700;box-shadow:none;
+.audio-sync-shell .rem-podcast-timer{
+ display:grid;place-items:center;min-width:44px;min-height:44px;padding:0;
+ background:transparent;color:#e9f1f8;border:0;border-radius:10px;box-shadow:none;
 }
-.audio-sync-shell .rem-podcast-transport .rem-podcast-play{
- width:56px;height:56px;background:#a0e3c2;color:#102437;border-radius:50%;font-size:1.35rem;
+.audio-sync-shell .rem-podcast-transport .rem-podcast-play{width:62px;height:58px;color:#b8ead4}
+.audio-sync-shell .rem-podcast-play svg{width:39px;height:39px}
+.audio-sync-shell .rem-podcast-skip svg{width:32px;height:32px}
+.audio-sync-shell .rem-podcast-skip text{font:700 8px system-ui,sans-serif}
+.audio-sync-shell .rem-podcast-transport .rem-podcast-speed{font-size:.92rem;font-weight:650;color:#b9cbda}
+.audio-sync-shell .rem-podcast-timer{position:relative;color:#b9cbda}
+.audio-sync-shell .rem-podcast-timer.is-active{color:#a0e3c2}
+.audio-sync-shell .rem-podcast-timer.is-active::after{
+ content:'';position:absolute;top:7px;right:8px;width:5px;height:5px;border-radius:50%;background:currentColor;pointer-events:none;
 }
-.audio-sync-shell .rem-podcast-sleep{max-width:100%;text-align:center;appearance:none}
-.audio-sync-shell .rem-podcast-sleep option{background:#192639;color:#e3edf5}
+.audio-sync-shell .rem-podcast-timer svg{width:21px;height:21px;pointer-events:none}
+.audio-sync-shell .rem-podcast-sleep{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer}
+.audio-sync-shell .rem-podcast-transport button:focus-visible,
+.audio-sync-shell .rem-podcast-timer:has(:focus-visible){outline:2px solid #a0e3c2;outline-offset:2px}
 body.ebook-fullscreen-active .summary-shell .summary-content{background:transparent!important;color:inherit!important}
 body.ebook-fullscreen-active .summary-shell .summary-page-frame.ebook-page-frame{
  background:transparent!important;border-radius:0!important;
