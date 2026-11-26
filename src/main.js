@@ -126,7 +126,7 @@ const resumeLabel=book=>{const path=getSetting('reading-path:'+book.id,'');if(pa
 
 function resetDemo(id){if(!confirm('Ricominciare la demo da zero? Verranno cancellati il segnalibro e la scelta di lettura della sola demo.'))return;try{localStorage.removeItem('rem-next-v1:'+id);for(const key of ['reading-path:','format:','sync-point:','episode-current:','episode-season:',episodeKey('')])localStorage.removeItem('rem-next-v1:setting:'+key+id)}catch{}chooseReadingPath(id)}
 
-const comingSoon=book=>book.availability==='preview'&&!book.chapters?.length;
+const comingSoon=book=>book.id!=='jekyll-hyde'&&book.availability==='preview'&&!book.chapters?.length;
 const comingSoonLabel=()=>el('span',{className:'rem-coming-soon',text:'IN ARRIVO'});
 const cover=book=>{const visual=el('div',{className:'cover '+(book.coverStyle==='classic'?'classic':'forest')},[el('div',{className:'cover-art',attrs:{'aria-hidden':'true'}},[el('span',{className:'art-orbit'}),el('span',{className:'art-moon'}),el('span',{className:'art-horizon'})]),el('span',{className:'cover-imprint',text:'R E M  /  STORIES'}),el('div',{className:'cover-copy'},[el('strong',{text:book.title}),el('small',{text:book.author||''})])]);if(book.coverImage){const img=el('img',{className:'cover-photo',attrs:{src:book.coverImage,alt:'Copertina di '+book.title,loading:'lazy'}});img.addEventListener('load',()=>visual.classList.add('has-cover-image'));img.addEventListener('error',()=>img.remove());visual.append(img)}if(comingSoon(book))visual.append(comingSoonLabel());return visual};
 
