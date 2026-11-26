@@ -1,6 +1,6 @@
 import {mountImmersiveReader} from './immersive-reader.js?v=1';
 import {el,button} from './ui.js';
-import {chapterPicker} from './chapter-picker.js?v=compact-picker-20261124';
+import {chapterPicker} from './chapter-picker.js?v=simple-chapter-list-20261126';
 import {getSetting,saveSetting} from './progress.js';
 import {createReaderTools} from './reader-tools.js';
 

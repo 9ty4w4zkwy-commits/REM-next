@@ -25,10 +25,9 @@ export function chapterPicker(select){
   const overlay=document.createElement('div');overlay.className='rem-chapter-picker-overlay';
   const dialog=document.createElement('section');dialog.className='rem-chapter-picker-dialog';
   dialog.setAttribute('role','dialog');dialog.setAttribute('aria-modal','true');dialog.setAttribute('aria-label',title);
-  const header=document.createElement('div');header.className='rem-chapter-picker-header';
-  const heading=document.createElement('span');heading.textContent=title;heading.className='rem-chapter-picker-heading';
+  const footer=document.createElement('div');footer.className='rem-chapter-picker-footer';
   const dismiss=document.createElement('button');dismiss.type='button';dismiss.className='rem-chapter-picker-dismiss';dismiss.textContent='✕';dismiss.setAttribute('aria-label','Chiudi il menu senza cambiare capitolo');
-  header.append(heading,dismiss);
+  footer.append(dismiss);
   const list=document.createElement('div');list.className='rem-chapter-picker-list';list.setAttribute('role','listbox');
   list.setAttribute('aria-label',title);
   let selectedButton=null;
@@ -39,7 +38,7 @@ export function chapterPicker(select){
   };
   const keyboard=e=>{
    if(e.key==='Escape'){e.preventDefault();close()}
-   if(e.key==='Tab'){e.preventDefault();const items=[dismiss,...list.querySelectorAll('button')];const idx=items.indexOf(document.activeElement);items[(idx+(e.shiftKey?-1:1)+items.length)%items.length]?.focus()}
+   if(e.key==='Tab'){e.preventDefault();const items=[...list.querySelectorAll('button'),dismiss];const idx=items.indexOf(document.activeElement);items[(idx+(e.shiftKey?-1:1)+items.length)%items.length]?.focus()}
   };
   for(const option of select.options){
    const row=document.createElement('button');row.type='button';row.className='rem-chapter-picker-option';
@@ -47,10 +46,8 @@ export function chapterPicker(select){
    const selected=option.value===select.value;
    row.setAttribute('aria-selected',String(selected));
    if(selected){row.classList.add('is-selected');selectedButton=row}
-   const check=document.createElement('span');check.className='rem-chapter-picker-check';check.textContent=selected?'✓':'';
-   check.setAttribute('aria-hidden','true');
    const text=document.createElement('span');text.className='rem-chapter-picker-option-text';text.textContent=option.textContent;
-   row.append(check,text);
+   row.append(text);
    row.addEventListener('click',()=>{
     if(select.value!==option.value){
      select.value=option.value;
@@ -63,7 +60,7 @@ export function chapterPicker(select){
   }
   dismiss.addEventListener('click',()=>close());
   overlay.addEventListener('rem-close-picker',()=>close(false),{once:true});
-  dialog.append(header,list);overlay.append(dialog);
+  dialog.append(list,footer);overlay.append(dialog);
   overlay.addEventListener('click',e=>{if(e.target===overlay)close()});
   document.body.append(overlay);trigger.setAttribute('aria-expanded','true');
   document.addEventListener('keydown',keyboard);

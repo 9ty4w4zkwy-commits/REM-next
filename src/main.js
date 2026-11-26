@@ -14,14 +14,14 @@ import {showOnboarding,onboardingCompleted} from './onboarding.js?v=chapters-res
 import {getProgress,saveProgress,getSetting,saveSetting} from './progress.js';
 import {analyticsEnabled,getTesterCode,registerTesterCode,setAnalyticsConsent,startAnalytics,trackEvent} from './analytics.js?v=onboarding-four-20261125';
 import {el,button,panel,heading} from './ui.js';
-import {chapterPicker} from './chapter-picker.js?v=compact-picker-20261124';
+import {chapterPicker} from './chapter-picker.js?v=simple-chapter-list-20261126';
 import {getMode,formatSwitch,paperView,audioView} from './formats.js?v=podcast-reader-20261126';
 import {createReaderTools} from './reader-tools.js?v=immersive-theme-20261126';
 import {createHighlights} from './highlights.js?v=single-remove-1';
 import {createEbookJourney} from './ebook-journey.js?v=rem-ebook-91';
 import {phraseSearch,getPhrase,savePhrase} from './synchronization.js?v=paper-progress-20261124';
 import {HOME_SECTIONS,booksForHomeSection} from './home-config.js?v=bella-estate-preview-20261126';
-import {summaryView} from './summary-view.js?v=podcast-reader-20261126';
+import {summaryView} from './summary-view.js?v=simple-chapter-list-20261126';
 const app=document.getElementById('app');let books=[];let currentView='home';let resumeFromHomeId=null;let activeReaderTools=null;let activeHighlights=null;let activeAudioPlayer=null;
 const render=(...nodes)=>{stopUsage();document.body.classList.toggle('rem-onboarding-gate',!onboardingCompleted()&&nodes.some(node=>node?.classList?.contains('onboard-screen')));document.body.classList.remove('ebook-fullscreen-active');if(activeAudioPlayer){activeAudioPlayer.stopAudio?.();activeAudioPlayer=null}if(activeHighlights){activeHighlights.destroy();activeHighlights=null}if(activeReaderTools){activeReaderTools.destroy();activeReaderTools=null}document.querySelectorAll('body > .format-switch-bottom').forEach(dock=>dock.remove());app.replaceChildren(...nodes);const readerDock=app.querySelector(':scope > .format-switch-bottom');if(readerDock)document.body.append(readerDock);for(const [id,active] of [['navHome',currentView==='home'],['navLibrary',currentView==='library'],['navProfile',currentView==='profile']]){const nav=document.getElementById(id);nav?.classList.toggle('is-active',active);if(active)nav?.setAttribute('aria-current','page');else nav?.removeAttribute('aria-current')}window.scrollTo({top:0,left:0,behavior:'instant'});document.documentElement.scrollTop=0;document.body.scrollTop=0};
 const para=(text,cls='')=>el('p',{text,className:cls});
@@ -469,7 +469,6 @@ function openSummary(id,chapterId,mode,inEpisode,episodeId){
 }
 async function reader(id,chapterId,modeOverride,seekOffset=null,episodic=false,episodeId=null){const book=findBook(id);if(!book)return library();if(id==='mattia-pascal')return detail(id);currentView='reader';const mode=modeOverride||getMode(id);const saved=getProgress(id);const requestedEpisode=episodeId?allEpisodes(book).find(ep=>ep.id===episodeId):null;const chapter=book.chapters.find(c=>c.id===(requestedEpisode?.chapterId||chapterId))||book.chapters.find(c=>c.id===saved?.chapter)||book.chapters[0];if(chapter)trackEvent(mode==='audio'?'audio_open':mode==='paper'?'paper_open':'ebook_open',{book_id:id,chapter_id:chapter.id});const inEpisode=mode!=='paper'&&(episodic||getSetting('reading-path:'+id,'normal')==='episodes');if(mode==='paper')saveSetting('reading-path:'+id,'normal');const returnHome=resumeFromHomeId===id&&!inEpisode;const nav=button('←',()=>mode==='audio'?detail(id):inEpisode?episodes(id):returnHome?home():detail(id));nav.classList.add('reader-back');nav.setAttribute('aria-label',mode==='audio'?'Torna alla scheda libro':inEpisode?'Torna agli episodi':returnHome?'Torna alla Home':'Torna alla scheda libro');const pathChange=pathLink(inEpisode?'Passa a lettura continua':'Passa a episodi',()=>{saveSetting('reading-path:'+id,inEpisode?'normal':'episodes');inEpisode?reader(id,chapter?.id,mode):episodes(id)});const episode= inEpisode?(allEpisodes(book).find(ep=>ep.id===episodeId)||currentEpisode(book)||episodeForChapter(book,chapter?.id)):null;if(episode)rememberEpisode(id,episode);const episodeHeading=episode?el('div',{className:'episode-reader-context'},[el('span',{text:episodeLabel(episode)}),el('strong',{text:episode.title||'Episodio'}),...(mode==='ebook'&&episodeRecap(book,episode)?[recapPrompt(book,episode)]:[])]):null;let prepareAudioSwitch=null;const switchFormat=next=>{recordSwitch(id,chapter?.id,mode,next,inEpisode?'episodes':'normal');if(next==='audio'&&mode==='ebook')prepareAudioSwitch?.();saveSetting('format:'+id,next);reader(id,chapter?.id,next,null,inEpisode,episode?.id)};const switcher=formatSwitch(id,mode,switchFormat);const quickSwitch=formatSwitch(id,mode,switchFormat);quickSwitch.classList.add('format-switch-bottom');if(!chapter)return render(nav,el('div',{className:'rem-reader-heading'},[heading(book.title,'UN LIBRO, TANTI MODI DI VIVERLO')]),switcher,para('Questo libro non contiene capitoli.'),pathChange);
 if(mode==='audio'){
- const audioChapterHeading=episodeHeading?[]:[el('h2',{className:'rem-audio-chapter-heading',text:chapterDisplayTitle(book,chapter)})];
  const audioSelect=el('select',{attrs:{'aria-label':inEpisode?'Scegli episodio':'Scegli capitolo'}});
  const audioUnits=inEpisode?allEpisodes(book):book.chapters;
  for(const unit of audioUnits)audioSelect.append(el('option',{text:inEpisode?episodeLabel(unit)+' · '+unit.title:chapterDisplayTitle(book,unit),attrs:{value:unit.id}}));
@@ -478,7 +477,7 @@ if(mode==='audio'){
  const audioPicker=el('div',{className:'reader-controls'},[chapterPicker(audioSelect)]);
 
  const shell=el('section',{className:'reading-shell audio-sync-shell'});
- render(el('div',{className:'rem-reader-heading'},[heading(book.title,'UN LIBRO, TANTI MODI DI VIVERLO')]),...(episodeHeading?[episodeHeading]:[]),audioPicker,...audioChapterHeading,shell,finishControl(id),pathChange,quickSwitch);
+ render(el('div',{className:'rem-reader-heading'},[heading(book.title,'UN LIBRO, TANTI MODI DI VIVERLO')]),...(episodeHeading?[episodeHeading]:[]),audioPicker,shell,finishControl(id),pathChange,quickSwitch);
  activeReaderTools=createReaderTools({focusOnly:true});activeReaderTools.mount(shell);
  const audioTools=shell.querySelector('.reader-tools-focus-only');
  audioTools.prepend(nav);
