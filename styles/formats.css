@@ -849,3 +849,20 @@ body.ebook-fullscreen-active .summary-shell .summary-content{background:transpar
 body.ebook-fullscreen-active .summary-shell .summary-page-frame.ebook-page-frame{
  background:transparent!important;border-radius:0!important;
 }
+
+.rem-cinema-path-actions button:first-child,
+.rem-cinema-path-actions button:last-child{
+ background:transparent;color:#fff;border:1px solid #a8e7d6;
+}
+.rem-cinema-path-actions button:active{
+ background:#64dfa9;color:#09241f;
+}
+.audio-sync-shell .rem-podcast-volume{
+ display:grid;grid-template-columns:20px minmax(0,1fr) 22px;gap:12px;align-items:center;color:#a0e3c2;
+}
+.audio-sync-shell .rem-podcast-volume svg{width:100%;height:auto}
+.audio-sync-shell .rem-podcast-volume input{
+ -webkit-appearance:none;appearance:none;width:100%;min-width:0;height:36px;margin:0;
+ background:transparent;border:0;padding:0;cursor:pointer;touch-action:pan-y;
+}
+.audio-sync-shell .rem-podcast-volume-hint{margin:0;text-align:center;color:#b9cbda;font-size:.8rem}

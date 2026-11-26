@@ -13,7 +13,9 @@ const iconPaths={
  play:'M7 4.5a1 1 0 0 1 1.5-.9l13 7.5a1 1 0 0 1 0 1.8l-13 7.5a1 1 0 0 1-1.5-.9Z',
  pause:'M5 4h4a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1Zm10 0h4a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1Z',
  clock:'M12 3a9 9 0 1 0 0 18 9 9 0 1 0 0-18Zm0 4v5h5',
- skip:'M15.6 5.3A8.5 8.5 0 1 1 12 4.5'
+ skip:'M15.6 5.3A8.5 8.5 0 1 1 12 4.5',
+ speakerLow:'M3 9h4l5-4v14l-5-4H3Zm12 .5a4 4 0 0 1 0 5',
+ speakerHigh:'M2 9h4l5-4v14l-5-4H2Zm12 .5a4 4 0 0 1 0 5m2-8a8 8 0 0 1 0 11m2-14a12 12 0 0 1 0 17'
 };
 
 function transportIcon(name){
@@ -24,14 +26,14 @@ function transportIcon(name){
  svg.setAttribute('focusable','false');
  const path=document.createElementNS(ns,'path');
  path.setAttribute('d',iconPaths[name==='rewind'||name==='forward'?'skip':name]);
- if(name==='rewind'||name==='forward'||name==='clock'){
+ if(name==='rewind'||name==='forward'||name==='clock'||name.startsWith('speaker')){
   path.setAttribute('fill','none');
   path.setAttribute('stroke','currentColor');
   path.setAttribute('stroke-width','1.75');
   path.setAttribute('stroke-linecap','round');
   path.setAttribute('stroke-linejoin','round');
   svg.append(path);
-  if(name==='clock')return svg;
+  if(name==='clock'||name.startsWith('speaker'))return svg;
   path.setAttribute('stroke-width','1.55');
   const tip=document.createElementNS(ns,'path');
   tip.setAttribute('d','M10.5 2.2 14.2 4.5 10.5 6.8Z');
@@ -54,6 +56,32 @@ function transportIcon(name){
   svg.append(path);
  }
  return svg;
+}
+
+function volumeControl(audio){
+ const probe=document.createElement('audio');
+ probe.volume=.5;
+ if(probe.volume!==.5){
+  return el('p',{className:'rem-podcast-volume-hint',text:'Volume: usa i tasti del dispositivo.'});
+ }
+ const key='audiobook-volume';
+ const saved=Number(getSetting(key,'1'));
+ if(Number.isFinite(saved)&&saved>=0&&saved<=1)audio.volume=saved;
+ const slider=el('input',{className:'rem-podcast-seek',attrs:{type:'range',min:'0',max:'1',step:'.01','aria-label':'Volume audiolibro'}});
+ const update=()=>{
+  slider.value=String(audio.volume);
+  const percent=Math.round(audio.volume*100)+'%';
+  slider.style.setProperty('--rem-podcast-progress',percent);
+  slider.setAttribute('aria-valuetext',percent);
+ };
+ slider.addEventListener('input',()=>{
+  audio.volume=Number(slider.value);
+  saveSetting(key,String(audio.volume));
+  update();
+ });
+ audio.addEventListener('volumechange',update);
+ update();
+ return el('div',{className:'rem-podcast-volume'},[transportIcon('speakerLow'),slider,transportIcon('speakerHigh')]);
 }
 
 function transcriptView(content){
@@ -200,7 +228,7 @@ export function mountPodcastControls(player,content,focus){
 
  const transport=el('div',{className:'rem-podcast-transport'},[speed,back,play,forward,focus]);
  const controls=el('div',{className:'rem-audio-controls'},[
-  transcript.root,seek,el('div',{className:'rem-audio-times'},[elapsed,remaining]),transport,feedback
+  transcript.root,seek,el('div',{className:'rem-audio-times'},[elapsed,remaining]),transport,volumeControl(audio),feedback
  ]);
  audio.before(controls);
  audio.controls=false;
