@@ -38,8 +38,9 @@ export function createReaderTools({focusOnly=false,collapsible=false}={}){
  const pause=button('Pausa',()=>{if(state.running){stopTimer();pause.textContent='Riprendi'}else{state.running=true;startTimer();pause.textContent='Pausa'}update()});
  const end=button('Termina',()=>{state.focus=false;stopTimer();state.seconds=0;update()});
  function choose(n,hide=true){state.choice=n;if(hide)customBox.hidden=true;update()}
- function openDialog(){overlay.hidden=false;update();five.focus()}
- function closeDialog(){overlay.hidden=true;focus.focus()}
+ let focusReturn=focus;
+ function openDialog(trigger=focus){focusReturn=trigger;overlay.hidden=false;update();five.focus()}
+ function closeDialog(){overlay.hidden=true;focusReturn.focus()}
  function setTheme(value){state.theme=value;saveSetting('reader-theme',value);update()}
  function setSize(delta){state.size=SIZES[Math.max(0,Math.min(SIZES.length-1,SIZES.indexOf(state.size)+delta))];saveSetting('reader-size',state.size);update()}
  function stopTimer(){clearInterval(ticker);ticker=null;state.running=false}
@@ -73,5 +74,5 @@ export function createReaderTools({focusOnly=false,collapsible=false}={}){
  activeBar.append(el('span',{text:'Focus attivo'}),clock,pause,end);
  function mount(target){shell=target;shell.classList.add('reader-shell');shell.prepend(activeBar);if(focusOnly){const heading=shell.querySelector(':scope > h2');if(heading)heading.after(root);else shell.prepend(root)}else shell.prepend(root);document.body.append(overlay);overlay.hidden=true;activeBar.hidden=true;update()}
  function destroy(){stopTimer();overlay.remove()}
- update();return {mount,destroy,setTheme};
+ update();return {mount,destroy,setTheme,openFocus:openDialog};
 }
