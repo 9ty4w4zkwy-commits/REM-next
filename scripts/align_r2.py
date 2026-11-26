@@ -95,19 +95,20 @@ def align(book, text_paths, tracks, output_dir, model, chapter_mode):
 
 def main():
     p=argparse.ArgumentParser()
-    p.add_argument("--book", choices=["montecristo","metamorfosi-ovidio"], required=True)
+    p.add_argument("--book", choices=["montecristo","metamorfosi-ovidio","jekyll-hyde"], required=True)
     p.add_argument("--first",type=int,required=True)
     p.add_argument("--last",type=int,required=True)
     p.add_argument("--tracks",default="")
     args=p.parse_args()
     root=Path("content/books")/args.book
-    if args.book=="montecristo":
-        if not 21<=args.first<=args.last<=120:
-            p.error("Select chapters 21–120")
+    if args.book in ("montecristo","jekyll-hyde"):
+        lo, hi = (21,120) if args.book=="montecristo" else (1,10)
+        if not lo<=args.first<=args.last<=hi:
+            p.error(f"Select chapters {lo}–{hi}")
         model=whisper.load_model("small")
         for n in range(args.first,args.last+1):
             stem=f"capitolo-{n:02d}"
-            align(args.book,[root/(stem+".txt")],[stem+".m4a"],Path("audio/montecristo"),model,True)
+            align(args.book,[root/(stem+".txt")],[stem+".m4a"],Path("audio")/args.book,model,True)
     else:
         if not 5<=args.first==args.last<=15:
             p.error("Select one Ovidio book 5–15")

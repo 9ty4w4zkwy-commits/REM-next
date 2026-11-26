@@ -6,14 +6,15 @@ on:
         type: choice
         options:
           - montecristo
+          - jekyll-hyde
           - metamorfosi-ovidio
         required: true
       first:
-        description: 'First Montecristo chapter or Ovidio book number'
+        description: 'First chapter or Ovidio book number'
         required: true
         type: number
       last:
-        description: 'Last Montecristo chapter or same Ovidio book number'
+        description: 'Last chapter or same Ovidio book number'
         required: true
         type: number
       tracks:
