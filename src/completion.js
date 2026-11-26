@@ -49,7 +49,11 @@ export function celebrateProgress({book,unit,index,total,episodic,onOpen,onConti
  const dots=Math.min(total+1,9);
  const progress=el('div',{className:'rem-completion-trail',attrs:{role:'img','aria-label':(index+1)+' di '+total}},[
   ...Array.from({length:dots},(_,i)=>el('span',{className:i/(dots-1)<=(index+1)/total?'is-reached':''})),
-  el('i',{attrs:{'aria-hidden':'true'}})
+  el('div',{className:'rem-completion-landing',attrs:{'aria-hidden':'true'}},[
+   el('i',{className:'rem-completion-ring'}),
+   ...Array.from({length:8},(_,i)=>el('i',{className:'rem-completion-flare',attrs:{style:'--spark:'+i}}))
+  ]),
+  el('div',{className:'rem-completion-runner',attrs:{'aria-hidden':'true'}},[el('i')])
  ]);
  progress.style.setProperty('--from',(index/total*100)+'%');
  progress.style.setProperty('--to',((index+1)/total*100)+'%');
@@ -57,10 +61,13 @@ export function celebrateProgress({book,unit,index,total,episodic,onOpen,onConti
  const art=el('div',{className:'rem-completion-art',attrs:{'aria-hidden':'true'}},[
   el('div',{className:'rem-completion-book'},[
    el('div',{className:'rem-completion-pages'}),
-   el('div',{className:'rem-completion-cover'},book.coverImage?
-    [el('img',{attrs:{src:book.coverImage,alt:''}})]:[el('span',{text:book.title})])
+   el('div',{className:'rem-completion-cover'},[
+    el('span',{className:'rem-completion-book-wordmark',text:'REM'}),
+    el('span',{className:'rem-completion-book-ornament'})
+   ]),
+   el('div',{className:'rem-completion-bookmark'})
   ]),
-  ...Array.from({length:8},(_,i)=>el('i',{className:'rem-completion-spark',attrs:{style:'--spark:'+i}}))
+  ...Array.from({length:12},(_,i)=>el('i',{className:'rem-completion-ribbon',attrs:{style:'--spark:'+i}}))
  ]);
  const dialog=el('dialog',{className:'rem-completion-dialog',attrs:{'aria-labelledby':'rem-completion-title'}});
  const close=action=>{dialog.close();dialog.remove();action()};

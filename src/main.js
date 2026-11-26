@@ -1,4 +1,4 @@
-import {celebrateProgress} from './completion.js?v=completion-celebration-20261126';
+import {celebrateProgress} from './completion.js?v=completion-festival-20261126';
 import {mountPodcastControls} from './audio-controls.js?v=hide-ios-volume-20261126';
 import {mountImmersiveReader} from './immersive-reader.js?v=immersive-focus-mint-20261126';
 import {recordModeChoice,recordSwitch,startUsage,stopUsage} from './usage-metrics.js?v=1';
