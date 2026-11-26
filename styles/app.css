@@ -2224,3 +2224,7 @@ html body .rem-chapter-picker-check{width:22px!important;font-size:20px!importan
 
 /* Match photo picker button dimensions, preserving the primary/secondary palette. */
 .rem-paper-method-panel .rem-paper-match-actions{display:grid;grid-template-columns:minmax(0,1fr);gap:10px;width:100%}.rem-paper-method-panel .rem-paper-match-actions>button{width:100%!important;min-height:46px!important;box-sizing:border-box;justify-self:stretch;text-align:center}
+
+/* Coming soon: compact pink ribbon at the bottom of preview covers. */
+.rem-search-result-cover{position:relative}
+.rem-coming-soon{position:absolute;z-index:6;bottom:0;left:50%;transform:translateX(-50%);display:block;max-width:95%;padding:5px 12px;background:#ed8eab;color:#20101a;border-radius:5px 5px 0 0;font:800 clamp(10px,2.7vw,12px)/1.15 system-ui,-apple-system,sans-serif;letter-spacing:.045em;white-space:nowrap;pointer-events:none;text-align:center;box-shadow:0 -1px 6px #0002}
