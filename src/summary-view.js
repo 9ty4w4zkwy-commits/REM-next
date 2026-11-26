@@ -1,3 +1,4 @@
+import {mountImmersiveReader} from './immersive-reader.js?v=1';
 import {el,button} from './ui.js';
 import {chapterPicker} from './chapter-picker.js?v=compact-picker-20261124';
 import {getSetting,saveSetting} from './progress.js';
@@ -27,18 +28,19 @@ export function summaryView(book,onClose,onContinue){
  if(!select.value&&book.chapters.length)select.value=book.chapters[0].id;
  const output=el('article',{className:'summary-content reading-text',attrs:{'aria-live':'polite'}});
  const page=el('div',{className:'ebook-page-frame summary-page-frame'},[output]);
- const readingShell=el('section',{className:'reading-shell summary-reading-shell'});
+ const readingShell=el('section',{className:'reading-shell ebook-reading-shell summary-reading-shell'});
  const readerTools=createReaderTools();
- const fullscreenGlyph=(close=false)=>{const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');svg.setAttribute('viewBox','0 0 24 24');svg.setAttribute('width','22');svg.setAttribute('height','22');svg.setAttribute('fill','none');svg.setAttribute('stroke','currentColor');svg.setAttribute('stroke-width','1.9');svg.setAttribute('stroke-linecap','round');svg.setAttribute('stroke-linejoin','round');svg.setAttribute('aria-hidden','true');const path=document.createElementNS('http://www.w3.org/2000/svg','path');path.setAttribute('d',close?'M3 3l7 7 M10 5v5H5 M21 21l-7-7 M14 19v-5h5':'M10 10L3 3 M3 9V3h6 M14 14l7 7 M21 15v6h-6');svg.append(path);return svg};
- const full=button('',()=>toggleFullscreen());full.append(fullscreenGlyph());
- full.className='summary-fullscreen-toggle';full.setAttribute('aria-label','Attiva schermo intero');full.title='Schermo intero';
- const exitFull=button('',()=>toggleFullscreen(false));exitFull.append(fullscreenGlyph(true));
- exitFull.className='summary-fullscreen-exit';exitFull.setAttribute('aria-label','Esci da schermo intero');
- const topbar=el('div',{className:'summary-fullscreen-header'},[el('strong',{text:'Riassunto · '+book.title}),exitFull]);
- let isFull=false;
- function toggleFullscreen(force){isFull=typeof force==='boolean'?force:!isFull;root.classList.toggle('summary-is-fullscreen',isFull);document.body.classList.toggle('summary-fullscreen-active',isFull);full.setAttribute('aria-pressed',String(isFull));if(isFull)page.scrollTop=0}
- page.append(full);readingShell.append(topbar,page);readerTools.mount(readingShell);
- const observer=new MutationObserver(()=>{if(!root.isConnected){document.body.classList.remove('summary-fullscreen-active');readerTools.destroy();observer.disconnect()}});
+ const move=delta=>{
+  select.selectedIndex+=delta;
+  renderSummary();
+  output.scrollTop=0;
+ };
+ const prev=button('',()=>move(-1));
+ const next=button('',()=>move(1));
+ readingShell.append(page);
+ readerTools.mount(readingShell);
+ const immersive=mountImmersiveReader({readingShell,text:output,readingUnitTitle:'Riassunto · '+book.title,prev,next,getReaderTools:()=>readerTools,onFullscreen:open=>readingShell.classList.toggle('summary-reading-shell',!open)});
+ const observer=new MutationObserver(()=>{if(!root.isConnected){readerTools.destroy();observer.disconnect()}});
  queueMicrotask(()=>observer.observe(document.body,{childList:true,subtree:true}));
  const finish=button('Continua dal capitolo successivo →',()=>{const idx=book.chapters.findIndex(c=>c.id===select.value);onContinue(book.chapters[idx+1]?.id||select.value)},true);
  const back=button('← Torna al libro',onClose);
@@ -48,6 +50,9 @@ export function summaryView(book,onClose,onContinue){
   const chapter=current();const currentText=typeof chapter?.summary==='string'?chapter.summary.trim():'';
   output.replaceChildren(el('h3',{text:chapter?.title||''}),...(currentText?narrativeParagraphs(currentText).map(part=>el('p',{text:part})):[el('p',{text:chapter?'Il riassunto narrativo di questo capitolo è in preparazione.':'Nessun capitolo disponibile.'})]));
   finish.disabled=!currentText;
+  prev.disabled=select.selectedIndex<=0;
+  next.disabled=select.selectedIndex<0||select.selectedIndex>=select.options.length-1;
+  immersive.updateNavigation();
  }
  select.addEventListener('change',renderSummary);
  root.append(title,label,chapterPicker(select),readingShell,el('div',{className:'summary-actions'},[back,finish]));

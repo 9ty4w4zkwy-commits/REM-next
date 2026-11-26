@@ -39,6 +39,8 @@ export async function createMontecristoAudio({chapter,content,segmentStart=0,seg
  else if(!auto&&saved?.chapter===chapter.id&&saved.seconds>=start&&saved.seconds<end)target=saved.seconds;
  target=Math.max(start,Math.min(target,Math.max(start,end-.1)));
  let disposed=false,started=false,completed=false,ready=false,lastSaved=-Infinity;
+ section.readAlongOffset=()=>{const offset=offsetForSeconds(t,audio.currentTime);return Number.isInteger(offset)?offset-segmentStart:null};
+ section.playbackWindow=()=>[start,end];
  function persist(force=false){
   if(!ready||disposed||completed||!started)return;
   const time=Math.max(start,Math.min(audio.currentTime,end));

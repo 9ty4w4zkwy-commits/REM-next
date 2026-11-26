@@ -115,6 +115,7 @@ function localChapterAudioView({bookId,chapter,onPosition,content,segmentStart=0
  audio.addEventListener('ended',()=>{if(!hasPlayed)return;saveSetting(key,JSON.stringify({chapter:chapter.id,seconds:0,duration:audio.duration||null}));note.textContent='Capitolo completato.'});
  if(Number.isInteger(number)&&number>=1&&number<=36){wrap.append(note,audio,picker)}else{wrap.append(el('p',{className:'eyebrow',text:'REM · AUDIO · PROVA PRIVATA'}),note,el('label',{text:'Importa i capitoli M4A una sola volta'}),picker,audio,el('p',{className:'format-mode-note',text:'I file audio sono salvati solo nel browser di questo dispositivo, non pubblicati sul sito. Safari può cancellarli se liberi spazio o elimini i dati del sito: conserva una copia originale. Il segnalibro audio è basato sul tempo reale.'}));}
  wrap.append(el('p',{className:'format-mode-note',text:'Narrazione audio generata con intelligenza artificiale.'}));
+ wrap.readAlongOffset=()=>{const offset=offsetForSeconds(timeline,audio.currentTime);return Number.isInteger(offset)?offset-segmentStart:null};
  wrap.stopAudio=()=>{disposed=true;persist();audio.pause();audio.removeAttribute('src');audio.load();if(url)URL.revokeObjectURL(url)};
  return wrap;
 }
