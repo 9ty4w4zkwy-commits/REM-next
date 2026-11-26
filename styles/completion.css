@@ -1,0 +1,47 @@
+.rem-completion-dialog{
+ width:min(440px,calc(100% - 28px));max-width:none;max-height:calc(100dvh - 28px);
+ padding:0;border:1px solid #456077;border-radius:26px;color:#f5f2ed;
+ background:radial-gradient(ellipse at 50% 35%,#1d3a47 0%,#132438 47%,#0f1a2c 80%);
+ box-shadow:0 24px 80px #040915b3;overscroll-behavior:contain;
+}
+.rem-completion-dialog::backdrop{background:#070e1bd9}
+.rem-completion-body{display:grid;gap:12px;padding:24px;text-align:center}
+.rem-completion-body p,.rem-completion-body h2{margin:0}
+.rem-completion-body .rem-completion-eyebrow{color:#a0e3c2;font-size:.81rem;font-weight:700}
+.rem-completion-body h2{font:700 clamp(1.7rem,6.6vw,2.4rem)/1.08 Georgia,serif;color:#fff4ea}
+.rem-completion-body .rem-completion-tagline{color:#f2b8c6;font:italic 1.15rem Georgia,serif}
+.rem-completion-art{position:relative;display:grid;place-items:center;min-height:142px;perspective:520px}
+.rem-completion-book{position:relative;width:90px;height:120px;transform:rotate(-12deg);filter:drop-shadow(8px 13px 10px #050d19a8)}
+.rem-completion-pages{position:absolute;inset:5px -5px -5px 5px;background:#d8cab2;border-radius:3px 8px 8px 3px;border-bottom:4px solid #8e7d65}
+.rem-completion-cover{position:absolute;inset:0;display:grid;place-items:center;overflow:hidden;padding:0;border:1px solid #87b0ad;border-radius:3px 7px 7px 3px;background:#20384e;transform-origin:left center;animation:rem-completion-close .8s cubic-bezier(.16,.85,.25,1.15) both}
+.rem-completion-cover img{width:100%;height:100%;object-fit:cover}
+.rem-completion-cover span{padding:10px;font:700 .8rem Georgia,serif}
+.rem-completion-spark{position:absolute;left:50%;top:50%;width:4px;height:13px;border-radius:8px;background:#64dfa9;opacity:0;animation:rem-completion-spark .72s .48s ease-out both}
+.rem-completion-spark:nth-child(odd){background:#f2b8c6}
+@keyframes rem-completion-close{from{transform:rotateY(-77deg)}to{transform:rotateY(0)}}
+@keyframes rem-completion-spark{
+ 0%{opacity:0;transform:rotate(calc(var(--spark)*45deg + 12deg)) translateY(-45px) scale(.5)}
+ 30%{opacity:1}
+ 100%{opacity:0;transform:rotate(calc(var(--spark)*45deg + 12deg)) translateY(-82px) scale(.65)}
+}
+.rem-completion-trail{position:relative;display:flex;justify-content:space-between;align-items:center;width:78%;margin:1px auto;height:16px}
+.rem-completion-trail::before{content:'';position:absolute;left:3px;right:3px;height:2px;background:#506274}
+.rem-completion-trail span{z-index:1;width:8px;height:8px;background:#718196;border-radius:50%}
+.rem-completion-trail span.is-reached{background:#a0e3c2}
+.rem-completion-trail i{position:absolute;z-index:2;left:var(--to);width:15px;height:15px;border-radius:50%;background:#64dfa9;box-shadow:0 0 15px #64dfa9;transform:translateX(-50%);animation:rem-completion-travel 1s .45s cubic-bezier(.22,.75,.22,1) both}
+@keyframes rem-completion-travel{from{left:var(--from)}to{left:var(--to)}}
+.rem-completion-remaining{color:#cfdaea}
+.rem-completion-week{background:#192d44;border:1px solid #3c526a;border-radius:17px;padding:13px}
+.rem-completion-week-heading{display:flex;justify-content:space-between;gap:8px;font-size:.8rem}
+.rem-completion-week-heading span{color:#c7d4e5}
+.rem-completion-week-days{display:grid;grid-template-columns:repeat(7,1fr);margin:11px 0 0;padding:0;list-style:none}
+.rem-completion-week-days li{display:grid;justify-items:center;gap:4px;color:#b9c9dc;font-size:.7rem}
+.rem-completion-week-days li::before{content:'';width:13px;height:13px;box-sizing:border-box;border:1px solid #7890a7;border-radius:50%}
+.rem-completion-week-days li.is-read::before{border-color:#64dfa9;background:#64dfa9}
+.rem-completion-actions{display:grid;gap:6px;margin-top:3px}
+.rem-completion-actions button{width:100%;min-height:44px;border-radius:13px}
+.rem-completion-actions button.primary{background:#64dfa9;color:#09241f;border:0;font-weight:750}
+.rem-completion-actions button:not(.primary){background:transparent;color:#e2dce6;border-color:transparent}
+@media(prefers-reduced-motion:reduce){
+ .rem-completion-cover,.rem-completion-spark,.rem-completion-trail i{animation:none}
+}
