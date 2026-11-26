@@ -64,9 +64,7 @@ function volumeControl(audio){
  // On iOS the property can round-trip even though it does not change the output.
  const probe=document.createElement('audio');
  probe.volume=.5;
- if(appleMobile||probe.volume!==.5){
-  return el('p',{className:'rem-podcast-volume-hint',text:'Volume: usa i tasti del dispositivo.'});
- }
+ if(appleMobile||probe.volume!==.5)return null;
  const key='audiobook-volume';
  const saved=Number(getSetting(key,'1'));
  if(Number.isFinite(saved)&&saved>=0&&saved<=1)audio.volume=saved;
@@ -230,8 +228,9 @@ export function mountPodcastControls(player,content,focus){
  setRate();
 
  const transport=el('div',{className:'rem-podcast-transport'},[speed,back,play,forward,focus]);
+ const volume=volumeControl(audio);
  const controls=el('div',{className:'rem-audio-controls'},[
-  transcript.root,seek,el('div',{className:'rem-audio-times'},[elapsed,remaining]),transport,volumeControl(audio),feedback
+  transcript.root,seek,el('div',{className:'rem-audio-times'},[elapsed,remaining]),transport,...(volume?[volume]:[]),feedback
  ]);
  audio.before(controls);
  audio.controls=false;

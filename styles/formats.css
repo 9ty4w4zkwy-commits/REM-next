@@ -865,4 +865,3 @@ body.ebook-fullscreen-active .summary-shell .summary-page-frame.ebook-page-frame
  -webkit-appearance:none;appearance:none;width:100%;min-width:0;height:36px;margin:0;
  background:transparent;border:0;padding:0;cursor:pointer;touch-action:pan-y;
 }
-.audio-sync-shell .rem-podcast-volume-hint{margin:0;text-align:center;color:#b9cbda;font-size:.8rem}
