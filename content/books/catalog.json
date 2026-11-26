@@ -3792,6 +3792,33 @@
           ]
         }
       ]
+    },
+    {
+      "id": "jekyll-hyde",
+      "title": "Lo strano caso del dottor Jekyll e Mr Hyde",
+      "author": "Robert Louis Stevenson",
+      "description": "Nella Londra vittoriana, l’avvocato Utterson indaga sul misterioso legame fra il rispettabile dottor Jekyll e l’inquietante signor Hyde. Un racconto gotico sul confine fra bene e male e sulla natura segreta dell’identità.",
+      "status": "published",
+      "access": "free",
+      "homeSections": [
+        "new"
+      ],
+      "availability": "preview",
+      "coverImage": "./assets/covers/copertina_gotica_di_jekyll_e_hyde.png",
+      "chapters": [],
+      "moods": [
+        "paura",
+        "suspense",
+        "riflettere"
+      ],
+      "locations": [
+        "londra",
+        "inghilterra",
+        "regno unito"
+      ],
+      "primaryLocations": [
+        "londra"
+      ]
     }
   ]
 }

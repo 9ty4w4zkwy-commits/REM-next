@@ -2,7 +2,7 @@ import {recordModeChoice,recordSwitch,startUsage,stopUsage} from './usage-metric
 import {createBellaEstateAudio} from './bella-estate-audio.js?v=bella-episodes-audio-picker-20261126';
 import {createMontecristoAudio} from './montecristo-audio.js?v=hybrid-audio-20261126';
 import {createOvidioAudio} from './ovidio-audio.js?v=hybrid-audio-20261126';
-import {loadCatalog,loadChapter} from './catalog.js?v=bella-episodes-audio-picker-20261126';
+import {loadCatalog,loadChapter} from './catalog.js?v=jekyll-preview-20261126';
 import {loadEpisodeSegment} from './episode-segments.js?v=bella-episodes-audio-picker-20261126';
 import {loadOvidioEpisode} from './ovidio-episodes.js?v=2';
 import {createCollectionsView} from './collections-view.js?v=rem-ui-209';
