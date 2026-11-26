@@ -59,9 +59,12 @@ function transportIcon(name){
 }
 
 function volumeControl(audio){
+ const appleMobile=/iPhone|iPad|iPod/.test(navigator.userAgent)||
+  (navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
+ // On iOS the property can round-trip even though it does not change the output.
  const probe=document.createElement('audio');
  probe.volume=.5;
- if(probe.volume!==.5){
+ if(appleMobile||probe.volume!==.5){
   return el('p',{className:'rem-podcast-volume-hint',text:'Volume: usa i tasti del dispositivo.'});
  }
  const key='audiobook-volume';
