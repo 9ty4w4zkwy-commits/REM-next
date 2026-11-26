@@ -28,10 +28,9 @@ export async function createBellaEstateAudio({chapter,content,segmentStart=0,seg
  const nextAnchor=segmentEnd===null?null:t.words.find(w=>w.offset>=segmentEnd);
  const end=nextAnchor?nextAnchor.start:t.duration;
  const section=document.createElement('section');section.className='format-mode-panel rem-audio-player';
- const status=document.createElement('p');status.className='rem-audio-status';status.textContent='Audio sincronizzato';
+ const status=document.createElement('p');status.className='rem-audio-status';status.setAttribute('role','status');
  const audio=document.createElement('audio');audio.controls=true;audio.preload='metadata';audio.style.width='100%';
- const note=document.createElement('p');note.className='format-mode-note';note.style.fontSize='0.7rem';note.textContent='Contenuto generato con AI.';
- section.append(status,audio,note);
+ section.append(status,audio);
  const saved=setting(KEY),sync=setting(SYNC);
  const auto=getSetting(AUTO,'false')==='true';saveSetting(AUTO,'false');
  let target=start;
@@ -63,7 +62,7 @@ export async function createBellaEstateAudio({chapter,content,segmentStart=0,seg
   audio.currentTime=Math.min(target,Math.max(0,audio.duration-.1));ready=true;
   if(auto)audio.play().catch(()=>{status.textContent='Premi Play per continuare'});
  },{once:true});
- audio.addEventListener('play',()=>{started=true;if(!completed)status.textContent='Audio sincronizzato'});
+ audio.addEventListener('play',()=>{started=true;if(!completed)status.textContent=''});
  audio.addEventListener('seeking',()=>{if(!ready||disposed||completed)return;if(audio.currentTime<start)audio.currentTime=start;else if(audio.currentTime>=end)audio.currentTime=Math.max(start,end-.1)});
  audio.addEventListener('timeupdate',()=>{if(!ready||disposed||completed)return;if(audio.currentTime>=end-.05&&started&&!audio.paused){finish();return}persist()});
  audio.addEventListener('pause',()=>persist(true));

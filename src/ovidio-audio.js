@@ -30,7 +30,6 @@ export async function createOvidioAudio({chapter,content,segmentStart=0,segmentE
   if(chapter.audioSource==='r2'&&(boundaries.length!==tracks.length||boundaries.some(d=>!Number.isFinite(d)||d<=0)))throw Error('Durata delle tracce R2 non valida');
   const section=document.createElement('section');
   section.className='format-mode-panel rem-audio-player rem-ovidio-player';
-  const status=document.createElement('p');status.className='rem-audio-status';status.textContent='Audio sincronizzato · '+Math.round(timeline.coverage*100)+'% parole abbinate';
   const player=document.createElement('audio');player.preload='metadata';player.controls=true;player.style.width='100%';
   const text=document.createElement('div');text.className='rem-ovidio-transcript';text.setAttribute('aria-label','Testo sincronizzato con la narrazione');
   text.style.cssText='font-family:Georgia,serif;font-size:1.15rem;line-height:1.85;white-space:pre-wrap;max-height:55vh;overflow:auto;padding:16px 6px;color:inherit';
@@ -90,8 +89,7 @@ export async function createOvidioAudio({chapter,content,segmentStart=0,segmentE
   player.addEventListener('timeupdate',highlight);
   player.addEventListener('play',()=>{hasStarted=true});
   player.addEventListener('ended',()=>{if(disposed)return;if(currentPart<tracks.length-1&&absolute()<last-1){seekAbsolute(partStarts[currentPart+1],true)}else {saveSetting('ovidio-auto-continue','true');onNext?.()}});
-  const note=document.createElement('p');note.className='format-mode-note';note.textContent='Tocca una parola per ascoltare da quel punto. Le parole abbinate si illuminano durante la riproduzione.';
-  section.append(status,player);
+  section.append(player);
   section.stopAudio=()=>{if(!disposed&&currentPart>=0){const time=absolute();saveSetting(key,JSON.stringify({chapter:chapter.id,seconds:time}));const item=words.reduce((last,w)=>w.start<=time?w:last,words[0]);saveSetting('audio-text-sync:metamorfosi-ovidio',JSON.stringify({chapter:chapter.id,source:'audio',offset:item.offset}));onPosition?.(item.offset)}disposed=true;player.pause();player.removeAttribute('src');player.load()};
   seekAbsolute(Math.max(start,Math.min(initial,last)),continuePlaying);
   return section;

@@ -795,3 +795,13 @@ html body.ebook-fullscreen-active .ebook-reading-shell>.rem-immersive-reveal{
 html body.ebook-fullscreen-active .ebook-reading-shell.rem-immersive-light>.rem-immersive-reveal{color:#364c54!important}
 html body.ebook-fullscreen-active .ebook-reading-shell.rem-immersive-controls-open>.rem-immersive-reveal{visibility:hidden!important;pointer-events:none!important}
 html body.ebook-fullscreen-active .ebook-reading-shell>.rem-immersive-reveal:focus-visible{opacity:1!important;outline:2px solid currentColor!important}
+
+.audio-sync-shell .rem-audio-status:empty,
+.audio-sync-shell .rem-audio-feedback:empty{display:none}
+.audio-sync-shell .rem-audio-controls{display:grid;gap:8px;width:100%;margin:12px 0}
+.audio-sync-shell .rem-audio-controls > button{width:100%;min-height:60px;background:#83dcb1;color:#102437;font-size:1.2rem;font-weight:750;border:0;border-radius:14px}
+.audio-sync-shell .rem-audio-controls > input[type="range"]{width:100%;height:44px;margin:0;accent-color:#83dcb1;cursor:pointer}
+.audio-sync-shell .rem-audio-times{display:flex;justify-content:space-between;color:#c8d7e4;font-variant-numeric:tabular-nums}
+.audio-sync-shell .rem-audio-native > summary{display:flex;align-items:center;min-height:44px;cursor:pointer;color:#c8d7e4}
+.audio-sync-shell .rem-audio-native > summary::before{content:'+';margin-right:8px}
+.audio-sync-shell .rem-audio-native[open] > summary::before{content:'−'}

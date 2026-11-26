@@ -1,8 +1,9 @@
+import {enlargeAudioControls} from './audio-controls.js?v=1';
 import {recordModeChoice,recordSwitch,startUsage,stopUsage} from './usage-metrics.js?v=1';
-import {createJekyllAudio} from './jekyll-audio.js?v=jekyll-20261126';
-import {createBellaEstateAudio} from './bella-estate-audio.js?v=bella-episodes-audio-picker-20261126';
-import {createMontecristoAudio} from './montecristo-audio.js?v=hybrid-audio-20261126';
-import {createOvidioAudio} from './ovidio-audio.js?v=hybrid-audio-20261126';
+import {createJekyllAudio} from './jekyll-audio.js?v=audio-feedback-20261126';
+import {createBellaEstateAudio} from './bella-estate-audio.js?v=audio-feedback-20261126';
+import {createMontecristoAudio} from './montecristo-audio.js?v=audio-feedback-20261126';
+import {createOvidioAudio} from './ovidio-audio.js?v=audio-feedback-20261126';
 import {loadCatalog,loadChapter} from './catalog.js?v=jekyll-20261126';
 import {loadEpisodeSegment} from './episode-segments.js?v=jekyll-20261126';
 import {loadOvidioEpisode} from './ovidio-episodes.js?v=2';
@@ -19,7 +20,7 @@ import {createHighlights} from './highlights.js?v=single-remove-1';
 import {createEbookJourney} from './ebook-journey.js?v=rem-ebook-91';
 import {phraseSearch,getPhrase,savePhrase} from './synchronization.js?v=paper-progress-20261124';
 import {HOME_SECTIONS,booksForHomeSection} from './home-config.js?v=bella-estate-preview-20261126';
-import {summaryView} from './summary-view.js?v=narrative-119-render-fix-20261124';
+import {summaryView} from './summary-view.js?v=audio-feedback-20261126';
 const app=document.getElementById('app');let books=[];let currentView='home';let resumeFromHomeId=null;let activeReaderTools=null;let activeHighlights=null;let activeAudioPlayer=null;
 const render=(...nodes)=>{stopUsage();document.body.classList.toggle('rem-onboarding-gate',!onboardingCompleted()&&nodes.some(node=>node?.classList?.contains('onboard-screen')));document.body.classList.remove('ebook-fullscreen-active');if(activeAudioPlayer){activeAudioPlayer.stopAudio?.();activeAudioPlayer=null}if(activeHighlights){activeHighlights.destroy();activeHighlights=null}if(activeReaderTools){activeReaderTools.destroy();activeReaderTools=null}document.querySelectorAll('body > .format-switch-bottom').forEach(dock=>dock.remove());app.replaceChildren(...nodes);const readerDock=app.querySelector(':scope > .format-switch-bottom');if(readerDock)document.body.append(readerDock);for(const [id,active] of [['navHome',currentView==='home'],['navLibrary',currentView==='library'],['navProfile',currentView==='profile']]){const nav=document.getElementById(id);nav?.classList.toggle('is-active',active);if(active)nav?.setAttribute('aria-current','page');else nav?.removeAttribute('aria-current')}window.scrollTo({top:0,left:0,behavior:'instant'});document.documentElement.scrollTop=0;document.body.scrollTop=0};
 const para=(text,cls='')=>el('p',{text,className:cls});
@@ -482,6 +483,7 @@ if(mode==='audio'){
  try{
   const segment=inEpisode&&episode?((book.id==='pinocchio'||(book.id==='montecristo'||book.id==='la-bella-estate'||book.id==='jekyll-hyde'))?await loadEpisodeSegment(book,episode):book.id==='metamorfosi-ovidio'?await loadOvidioEpisode(book,episode):null):null;const content=segment?.content??await loadChapter(book,chapter);if(!shell.isConnected)return;
   const point=getPhrase(id);if(id!=='pinocchio'&&point?.chapter===chapter.id&&Number.isFinite(Number(point.offset)))saveSetting('audio-position:'+id,JSON.stringify({chapter:chapter.id,offset:Math.max(0,(Number(point.offset)||0)-(segment?.start||0))}));const player=(id==='montecristo'||id==='la-bella-estate'||id==='jekyll-hyde')?await (id==='jekyll-hyde'?createJekyllAudio:id==='la-bella-estate'?createBellaEstateAudio:createMontecristoAudio)({chapter,content,segmentStart:segment?.start||0,segmentEnd:segment?.end??null,seekOffset,onPosition:offset=>{saveProgress(id,chapter.id);const local=offset-(segment?.start||0);if(local>=0&&local<content.length)savePhrase(id,chapter.id,content.slice(local,local+90).trim(),offset)},onNext:()=>{const units=inEpisode?allEpisodes(book):book.chapters;const index=units.findIndex(c=>c.id===(inEpisode?episode?.id:chapter.id));const next=units[index+1];if(next){const nextChapter=inEpisode?next.chapterId:next.id;saveProgress(id,nextChapter);reader(id,nextChapter,'audio',null,inEpisode,inEpisode?next.id:null)}else saveSetting(id+'-auto-continue','false')}}):id==='metamorfosi-ovidio'?await createOvidioAudio({chapter,content,segmentStart:segment?.start||0,segmentEnd:segment?.end||null,onPosition:offset=>{saveProgress(id,chapter.id);if(offset>=0&&offset<content.length)savePhrase(id,chapter.id,content.slice(Math.max(0,offset-(segment?.start||0)),Math.max(0,offset-(segment?.start||0))+90).trim(),offset)},onNext:()=>{const units=inEpisode?allEpisodes(book):book.chapters;const index=units.findIndex(c=>c.id===(inEpisode?episode?.id:chapter.id));const next=units[index+1];if(next){const nextChapter=inEpisode?next.chapterId:next.id;saveProgress(id,nextChapter);reader(id,nextChapter,'audio',0,inEpisode,inEpisode?next.id:null)}else saveProgress(id,chapter.id)}}):audioView({bookId:id,chapter,content,segmentStart:segment?.start||0,onPosition:offset=>{if(offset>=0&&offset<content.length){const excerpt=content.slice(offset,Math.min(content.length,offset+90)).trim();savePhrase(id,chapter.id,excerpt,offset+(segment?.start||0))}saveProgress(id,chapter.id)}});
+  enlargeAudioControls(player);
   const units=inEpisode?allEpisodes(book):book.chapters;
   const unitIndex=inEpisode?units.findIndex(item=>item.id===episode?.id):units.findIndex(item=>item.id===chapter.id);
   const moveAudio=direction=>{
