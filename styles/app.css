@@ -2227,4 +2227,4 @@ html body .rem-chapter-picker-check{width:22px!important;font-size:20px!importan
 
 /* Coming soon: compact pink ribbon at the bottom of preview covers. */
 .rem-search-result-cover{position:relative}
-.rem-coming-soon{position:absolute;z-index:6;bottom:0;left:50%;transform:translateX(-50%);display:block;max-width:95%;padding:5px 12px;background:#ed8eab;color:#20101a;border-radius:5px 5px 0 0;font:800 clamp(10px,2.7vw,12px)/1.15 system-ui,-apple-system,sans-serif;letter-spacing:.045em;white-space:nowrap;pointer-events:none;text-align:center;box-shadow:0 -1px 6px #0002}
+.rem-coming-soon{position:absolute;z-index:6;bottom:0;left:0;right:0;width:100%;display:block;padding:5px 4px;background:#F2B8C6;color:#fff;border-radius:0;font:800 clamp(10px,2.7vw,12px)/1.15 system-ui,-apple-system,sans-serif;letter-spacing:.045em;white-space:nowrap;pointer-events:none;text-align:center;box-shadow:0 -1px 6px #0002}
