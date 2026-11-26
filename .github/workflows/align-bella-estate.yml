@@ -1,0 +1,106 @@
+name: Align La bella estate chapters
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/align-bella-estate.yml'
+      - 'scripts/align_bella_estate.py'
+      - 'content/books/la-bella-estate/**'
+permissions:
+  contents: read
+concurrency:
+  group: bella-estate-alignment
+  cancel-in-progress: false
+jobs:
+  check-inputs:
+    runs-on: ubuntu-latest
+    outputs:
+      ready: ${{ steps.check.outputs.ready }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: check
+        run: |
+          ready=true
+          for n in $(seq -w 1 17); do
+            test -s "content/books/la-bella-estate/capitolo-$n.txt" && test -s "audio/la-bella-estate/capitolo-$n.m4a" || ready=false
+          done
+          echo "ready=$ready" >> "$GITHUB_OUTPUT"
+  align:
+    needs: check-inputs
+    if: needs.check-inputs.outputs.ready == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - first: 1
+            last: 5
+          - first: 6
+            last: 10
+          - first: 11
+            last: 15
+          - first: 16
+            last: 17
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: sudo apt-get update && sudo apt-get install -y ffmpeg
+      - run: pip install openai-whisper
+      - run: python scripts/align_bella_estate.py --first ${{ matrix.first }} --last ${{ matrix.last }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: bella-estate-${{ matrix.first }}-${{ matrix.last }}
+          path: |
+            audio/la-bella-estate/*.words.json
+          if-no-files-found: error
+  collect:
+    needs: align
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Check original inputs have not changed
+        run: |
+          git diff --quiet "${{ github.sha }}" HEAD -- content/books/la-bella-estate/ audio/la-bella-estate/ scripts/align_bella_estate.py
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: bella-estate-*
+          merge-multiple: true
+          path: alignment-output
+      - name: Validate maps and build coverage report
+        run: |
+          python - <<'PY'
+          import json, pathlib, shutil
+          root = pathlib.Path('audio/la-bella-estate')
+          out = pathlib.Path('alignment-output')
+          report = []
+          for n in range(1,18):
+              stem = f'capitolo-{n:02d}'
+              source = out / (stem + '.words.json')
+              data = json.loads(source.read_text())
+              assert data['chapter'] == stem
+              words = data['words']
+              assert all(w['offset'] >= 0 and 0 <= w['start'] <= w['end'] <= data['duration'] + .001 for w in words)
+              assert all(a['offset'] < b['offset'] and a['start'] <= b['start'] for a,b in zip(words,words[1:]))
+              report.append({k:data[k] for k in ('chapter','coverage','duration','matched','total')})
+              if data['coverage'] >= .55 and words:
+                  shutil.copyfile(source, root / source.name)
+              else:
+                  print(f"::warning::{stem}: low coverage {data['coverage']:.1%}; map not activated")
+          (root/'alignment-report.json').write_text(json.dumps(report, indent=2) + '\n')
+          print(json.dumps(report, indent=2))
+          PY
+      - name: Save verified maps
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add audio/la-bella-estate/
+          git diff --cached --quiet || (git commit -m "Add La bella estate word timelines and coverage report" && git push origin main)
