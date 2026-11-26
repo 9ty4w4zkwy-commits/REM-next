@@ -34,7 +34,8 @@ function transportIcon(name){
   path.setAttribute('stroke-linejoin','round');
   const label=document.createElementNS(ns,'text');
   label.setAttribute('x','12');
-  label.setAttribute('y','16.7');
+  label.setAttribute('y','13');
+  label.setAttribute('dominant-baseline','central');
   label.setAttribute('text-anchor','middle');
   label.setAttribute('fill','currentColor');
   label.textContent=name==='rewind'?'15':'30';
@@ -48,19 +49,20 @@ function transportIcon(name){
 
 function transcriptView(content){
  const root=el('div',{className:'rem-audio-transcript',attrs:{tabindex:'0','aria-label':'Testo del brano'}});
- const chunks=[...content.matchAll(/\S[^.!?…\n]*(?:[.!?…]+[”»"’]?|(?=\n|$))/gu)];
  const entries=[];
+ const fragment=document.createDocumentFragment();
  let cursor=0;
- for(const chunk of chunks){
-  root.append(document.createTextNode(content.slice(cursor,chunk.index)));
-  const node=el('span',{text:chunk[0]});
-  root.append(node);
-  cursor=chunk.index+chunk[0].length;
-  entries.push({start:chunk.index,node});
+ for(const word of content.matchAll(/[\p{L}\p{N}][\p{L}\p{M}\p{N}]*(?:[’'][\p{L}\p{N}][\p{L}\p{M}\p{N}]*)*/gu)){
+  fragment.append(document.createTextNode(content.slice(cursor,word.index)));
+  const node=el('span',{text:word[0]});
+  fragment.append(node);
+  cursor=word.index+word[0].length;
+  entries.push({start:word.index,end:cursor,node});
  }
- root.append(document.createTextNode(content.slice(cursor)));
+ fragment.append(document.createTextNode(content.slice(cursor)));
+ root.append(fragment);
  let active=null;
- return {root,follow(offset){
+ return {root,follow(offset,reveal=false){
   let low=0,high=entries.length;
   if(Number.isInteger(offset)){
    while(low<high){
@@ -68,16 +70,20 @@ function transcriptView(content){
     if(entries[mid].start<=offset)low=mid+1;else high=mid;
    }
   }
-  const next=entries[low-1]?.node;
-  if(active===next)return;
-  active?.classList.remove('is-current');
-  active=next;
+  const entry=entries[low-1];
+  const next=entry&&offset<entry.end?entry.node:null;
+  if(active===next&&!reveal)return;
+  if(active!==next){
+   active?.classList.remove('is-current');
+   active=next;
+   active?.classList.add('is-current');
+  }
   if(!active)return;
-  active.classList.add('is-current');
   const box=root.getBoundingClientRect();
   const line=active.getBoundingClientRect();
-  if(line.top<box.top||line.bottom>box.bottom){
-   root.scrollTop+=line.top-box.top-root.clientHeight*.25;
+  const relativeTop=line.top-box.top;
+  if(relativeTop<0||line.bottom-box.top>root.clientHeight*.72){
+   root.scrollTop+=relativeTop-root.clientHeight*.28;
   }
  }};
 }
@@ -145,9 +151,11 @@ export function mountPodcastControls(player,content){
  if(sleepDeadline>Date.now())sleep.value=String([15,30,45,60].find(minutes=>minutes*60000>=sleepDeadline-Date.now())??60);
  showSleepState();
  scheduleSleep();
+ let frame=null;
  const stop=player.stopAudio?.bind(player);
  player.stopAudio=()=>{
   clearTimeout(sleepTimer);
+  stopFollowing();
   stop?.();
  };
 
@@ -168,8 +176,27 @@ export function mountPodcastControls(player,content){
   seek.setAttribute('aria-valuetext',audioTime(position));
   elapsed.textContent=audioTime(position);
   remaining.textContent=ready?'−'+audioTime(end-start-position):'–:––';
-  if(ready)transcript.follow(player.readAlongOffset?.());
+  if(ready)followText();
  };
+ function followText(reveal=false){
+  transcript.follow(player.readAlongOffset?.(),reveal);
+ }
+ function followPlayback(){
+  frame=null;
+  if(audio.paused||!player.isConnected)return;
+  if(!audio.seeking&&audio.readyState>=2)followText();
+  frame=requestAnimationFrame(followPlayback);
+ }
+ function startFollowing(){
+  if(frame===null)frame=requestAnimationFrame(followPlayback);
+ }
+ function stopFollowing(){
+  if(frame!==null)cancelAnimationFrame(frame);
+  frame=null;
+ }
+ audio.addEventListener('playing',startFollowing);
+ for(const event of ['pause','ended','emptied','error'])audio.addEventListener(event,stopFollowing);
+ audio.addEventListener('seeked',()=>followText(true));
  seek.addEventListener('input',()=>jump(playbackWindow()[0]+Number(seek.value)));
  for(const event of ['loadstart','loadedmetadata','durationchange','timeupdate','seeked','play','pause','ended','emptied','error']){
   audio.addEventListener(event,update);
@@ -188,4 +215,5 @@ export function mountPodcastControls(player,content){
  if(previousNote?.textContent==='Narrazione audio generata con intelligenza artificiale.')previousNote.remove();
  player.append(el('p',{className:'format-mode-note',text:'Audio sincronizzato e generato con AI.'}));
  update();
+ requestAnimationFrame(()=>{if(player.isConnected){followText(true);if(!audio.paused)startFollowing()}});
 }
