@@ -3267,6 +3267,26 @@
         "mediterraneo"
       ],
       "primaryLocations": []
+    },
+    {
+      "id": "la-bella-estate",
+      "title": "La bella estate",
+      "author": "Cesare Pavese",
+      "description": "Ginia sogna la libertà e scopre un mondo nuovo attraverso l’amicizia con Amelia e l’incontro con giovani artisti. Un’estate di desideri, illusioni e scoperte che segna il passaggio all’età adulta.",
+      "status": "published",
+      "access": "free",
+      "homeSections": [
+        "new"
+      ],
+      "availability": "preview",
+      "coverImage": "./assets/covers/la_bella_estate_in_atelier.png",
+      "chapters": [],
+      "moods": [],
+      "locations": [
+        "torino",
+        "italia"
+      ],
+      "primaryLocations": []
     }
   ]
 }
