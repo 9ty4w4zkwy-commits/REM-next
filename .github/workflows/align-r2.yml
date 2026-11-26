@@ -1,0 +1,51 @@
+name: Align new R2 audiobooks
+on:
+  workflow_dispatch:
+    inputs:
+      book:
+        type: choice
+        options:
+          - montecristo
+          - metamorfosi-ovidio
+        required: true
+      first:
+        description: 'First Montecristo chapter or Ovidio book number'
+        required: true
+        type: number
+      last:
+        description: 'Last Montecristo chapter or same Ovidio book number'
+        required: true
+        type: number
+      tracks:
+        description: 'Ovidio only: exact R2 filenames, comma separated, in playback order'
+        type: string
+        required: false
+permissions:
+  contents: read
+jobs:
+  align:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: sudo apt-get update && sudo apt-get install -y ffmpeg
+      - run: pip install openai-whisper
+      - name: Align original R2 recording
+        env:
+          BOOK: ${{ inputs.book }}
+          FIRST: ${{ inputs.first }}
+          LAST: ${{ inputs.last }}
+          TRACKS: ${{ inputs.tracks }}
+        run: python scripts/align_r2.py --book "$BOOK" --first "$FIRST" --last "$LAST" --tracks "$TRACKS"
+      - name: Export only generated maps for review
+        run: |
+          mkdir -p r2-alignment-output
+          git ls-files -m -o --exclude-standard -z | python -c 'import sys,pathlib,shutil; paths=[pathlib.Path(p.decode()) for p in sys.stdin.buffer.read().split(b"\0") if p and p.endswith(b".words.json")]; assert paths,"No maps generated"; [(pathlib.Path("r2-alignment-output")/p.parent).mkdir(parents=True,exist_ok=True) for p in paths]; [shutil.copyfile(p,pathlib.Path("r2-alignment-output")/p) for p in paths]'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: r2-word-maps
+          path: r2-alignment-output/
+          if-no-files-found: error
