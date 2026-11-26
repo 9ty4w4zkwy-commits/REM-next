@@ -35,7 +35,7 @@ function weeklyRecap(){
  ]);
 }
 
-export function celebrateProgress({book,unit,index,total,episodic,onOpen,onContinue,onLeave}){
+export function celebrateProgress({book,unit,index,total,episodic,onContinue,onLeave}){
  if(index<0||index>=total){onContinue();return}
  const key='rem-celebrated:'+book.id+':'+(episodic?'episode:':'chapter:')+unit.id;
  if(getSetting(key,'')==='yes'){onContinue();return}
@@ -49,10 +49,7 @@ export function celebrateProgress({book,unit,index,total,episodic,onOpen,onConti
  const dots=Math.min(total+1,9);
  const progress=el('div',{className:'rem-completion-trail',attrs:{role:'img','aria-label':(index+1)+' di '+total}},[
   ...Array.from({length:dots},(_,i)=>el('span',{className:i/(dots-1)<=(index+1)/total?'is-reached':''})),
-  el('div',{className:'rem-completion-landing',attrs:{'aria-hidden':'true'}},[
-   el('i',{className:'rem-completion-ring'}),
-   ...Array.from({length:8},(_,i)=>el('i',{className:'rem-completion-flare',attrs:{style:'--spark:'+i}}))
-  ]),
+  el('i',{className:'rem-completion-ring',attrs:{'aria-hidden':'true'}}),
   el('div',{className:'rem-completion-runner',attrs:{'aria-hidden':'true'}},[el('i')])
  ]);
  progress.style.setProperty('--from',(index/total*100)+'%');
@@ -67,7 +64,10 @@ export function celebrateProgress({book,unit,index,total,episodic,onOpen,onConti
    ]),
    el('div',{className:'rem-completion-bookmark'})
   ]),
-  ...Array.from({length:12},(_,i)=>el('i',{className:'rem-completion-ribbon',attrs:{style:'--spark:'+i}}))
+  el('div',{className:'rem-completion-popper'},[
+   el('span',{text:'🎉'}),
+   ...Array.from({length:10},(_,i)=>el('i',{className:'rem-completion-ribbon',attrs:{style:'--spark:'+i}}))
+  ])
  ]);
  const dialog=el('dialog',{className:'rem-completion-dialog',attrs:{'aria-labelledby':'rem-completion-title'}});
  const close=action=>{dialog.close();dialog.remove();action()};
@@ -77,8 +77,10 @@ export function celebrateProgress({book,unit,index,total,episodic,onOpen,onConti
  dialog.append(el('div',{className:'rem-completion-body'},[
   el('p',{className:'rem-completion-eyebrow',text:book.title}),
   el('h2',{attrs:{id:'rem-completion-title'},text:name+' '+(index+1)+' completato!'}),
-  el('p',{className:'rem-completion-tagline',text:'Il libro ora ti segue!'}),
-  art,progress,
+  el('p',{className:'rem-completion-congrats',text:'Congratulazioni!'}),
+  art,
+  el('p',{className:'rem-completion-tagline',text:'Il libro ti segue!'}),
+  progress,
   el('p',{className:'rem-completion-remaining',text:remainingLabel}),
   week,
   el('div',{className:'rem-completion-actions'},[
@@ -87,6 +89,6 @@ export function celebrateProgress({book,unit,index,total,episodic,onOpen,onConti
  ]));
  document.body.append(dialog);
  if(typeof dialog.showModal!=='function'){dialog.remove();onContinue();return}
- onOpen?.();
  dialog.showModal();
+ requestAnimationFrame(()=>requestAnimationFrame(()=>{if(dialog.open)dialog.classList.add('is-celebrating')}));
 }
