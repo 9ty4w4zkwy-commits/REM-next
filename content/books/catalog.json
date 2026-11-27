@@ -1871,7 +1871,8 @@
         {
           "id": "capitolo-15",
           "title": "Capitolo 15 · Nel quale la sacca delle banconote si alleggerisce ancora di qualche migliaio di sterline",
-          "file": "capitolo-15.txt"
+          "file": "capitolo-15.txt",
+          "audioSource": "r2"
         },
         {
           "id": "capitolo-16",
@@ -1912,7 +1913,8 @@
         {
           "id": "capitolo-22",
           "title": "Capitolo 22 · Nel quale Gambalesta impara che il denaro serve anche agli antipodi",
-          "file": "capitolo-22.txt"
+          "file": "capitolo-22.txt",
+          "audioSource": "r2"
         },
         {
           "id": "capitolo-23",
@@ -2028,7 +2030,7 @@
         "stati uniti"
       ],
       "primaryLocations": [],
-      "audioAvailable": false
+      "audioAvailable": true
     },
     {
       "id": "ventimila-leghe",
