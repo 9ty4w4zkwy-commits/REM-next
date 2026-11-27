@@ -1,0 +1,48 @@
+name: Montecristo ReadFlow 21–49
+on:
+  push:
+    branches: [readflow-montecristo-21-49]
+    paths: [.github/workflows/montecristo-readflow-21-49.yml]
+permissions:
+  contents: read
+jobs:
+  align:
+    name: Capitolo ${{ matrix.chapter }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    strategy:
+      fail-fast: false
+      max-parallel: 12
+      matrix:
+        chapter: [21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: sudo apt-get update && sudo apt-get install -y ffmpeg
+      - run: pip install openai-whisper
+      - name: Align original recording against the REM text
+        env:
+          CHAPTER: ${{ matrix.chapter }}
+        run: python scripts/align_r2.py --book montecristo --first "$CHAPTER" --last "$CHAPTER"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: montecristo-${{ matrix.chapter }}
+          path: audio/montecristo/capitolo-${{ matrix.chapter }}.words.json
+          if-no-files-found: error
+  collect:
+    needs: align
+    if: ${{ always() && !cancelled() }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: montecristo-*
+          merge-multiple: true
+          path: audio/montecristo
+      - uses: actions/upload-artifact@v4
+        with:
+          name: montecristo-readflow-21-49
+          path: audio/montecristo/
+          if-no-files-found: error
