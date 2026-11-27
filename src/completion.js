@@ -49,6 +49,17 @@ function confettiBurst(){
  );
 }
 
+function completionTagline(){
+ const phrase='Il libro che ti segue!';
+ let letterIndex=0;
+ const words=phrase.split(' ').map(word=>el('span',{className:'rem-completion-typed-word',attrs:{'aria-hidden':'true'}},
+  Array.from(word,letter=>el('span',{text:letter,attrs:{style:'--letter:'+letterIndex++}}))
+ ));
+ return el('p',{className:'rem-completion-tagline',attrs:{'aria-label':phrase}},
+  words.flatMap((word,index)=>index?[document.createTextNode(' '),word]:[word])
+ );
+}
+
 export function celebrateProgress({book,unit,index,total,episodic,onContinue,onLeave,actionLabel,onAlready}){
  if(index<0||index>=total){onContinue();return}
  const key='rem-celebrated:'+book.id+':'+(episodic?'episode:':'chapter:')+unit.id;
@@ -78,7 +89,7 @@ export function celebrateProgress({book,unit,index,total,episodic,onContinue,onL
   el('p',{className:'rem-completion-eyebrow',text:book.title}),
   el('h2',{attrs:{id:'rem-completion-title'},text:name+' '+(index+1)+' completato!'}),
   el('p',{className:'rem-completion-congrats',text:'Congratulazioni!'}),
-  el('p',{className:'rem-completion-tagline',text:'Il libro ti segue!'}),
+  completionTagline(),
   progress,
   week,
   el('div',{className:'rem-completion-actions'},[
