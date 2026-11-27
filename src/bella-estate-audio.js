@@ -34,7 +34,7 @@ export async function createBellaEstateAudio({chapter,content,segmentStart=0,seg
  const saved=setting(KEY),sync=setting(SYNC);
  const auto=getSetting(AUTO,'false')==='true';saveSetting(AUTO,'false');
  let target=start;
- if(Number.isFinite(seekOffset)&&seekOffset>=segmentStart&&(segmentEnd===null||seekOffset<segmentEnd))target=secondsForOffset(t,seekOffset)??start;
+ if(Number.isFinite(seekOffset)&&seekOffset>=segmentStart&&(segmentEnd===null||seekOffset<segmentEnd))target=seekOffset===segmentStart?start:(secondsForOffset(t,seekOffset)??start);
  else if(sync?.chapter===chapter.id&&sync.source==='ebook'&&Number.isFinite(sync.offset)&&sync.offset>=segmentStart&&(segmentEnd===null||sync.offset<segmentEnd))target=secondsForOffset(t,sync.offset)??start;
  else if(!auto&&saved?.chapter===chapter.id&&saved.seconds>=start&&saved.seconds<end)target=saved.seconds;
  target=Math.max(start,Math.min(target,Math.max(start,end-.1)));
