@@ -46,10 +46,10 @@ function localChapterAudioView({bookId,chapter,onPosition,content,segmentStart=0
  const picker=el('input',{attrs:{type:'file',multiple:'',accept:'.m4a,.mp4,audio/mp4','aria-label':'Importa i capitoli audio M4A'}});
  picker.style.maxWidth='100%';
  const audio=document.createElement('audio');audio.controls=true;audio.preload='metadata';audio.style.width='100%';
- let url=null,disposed=false,timeline=null,hasPlayed=false,lastSaved=-1,finished=false;
+ let url=null,disposed=false,timeline=null,hasPlayed=false,lastSaved=-1,finished=false,segmentEndTime=null;
  const playbackStart=()=>segmentStart>0?secondsForOffset(timeline,segmentStart)??0:0;
- const playbackEnd=()=>segmentEnd===null||segmentEnd>timeline?.words?.at(-1)?.offset?audio.duration:secondsForOffset(timeline,segmentEnd)??audio.duration;
- loadWordTimeline(chapter.id).then(data=>{timeline=data;if(!disposed)restorePosition()}).catch(()=>{if(!disposed)note.textContent='Mappa parole non disponibile: puoi ascoltare, ma la sincronizzazione precisa è sospesa.'});
+ const playbackEnd=()=>segmentEndTime??audio.duration;
+ loadWordTimeline(chapter.id).then(data=>{timeline=data;if(segmentEnd!==null)segmentEndTime=data.words.find(word=>word.offset>=segmentEnd)?.start??null;if(!disposed)restorePosition()}).catch(()=>{if(!disposed)note.textContent='Mappa parole non disponibile: puoi ascoltare, ma la sincronizzazione precisa è sospesa.'});
  const restorePosition=()=>{if(disposed||!audio.duration||!timeline)return;try{const sync=JSON.parse(getSetting(syncKey,'null'));const saved=JSON.parse(getSetting(key,'null'));const seconds=sync?.chapter===chapter.id&&sync.source==='ebook'?secondsForOffset(timeline,sync.offset):saved?.chapter===chapter.id?saved.seconds:null;if(Number.isFinite(seconds)||segmentStart>0)audio.currentTime=Math.max(playbackStart(),Math.min(seconds??playbackStart(),Math.max(playbackStart(),playbackEnd()-.1)))}catch{}};
  const attach=file=>{
   if(disposed)return;
@@ -115,7 +115,7 @@ function localChapterAudioView({bookId,chapter,onPosition,content,segmentStart=0
  };
  audio.addEventListener('timeupdate',persist);audio.addEventListener('pause',persist);
  const finish=()=>{
-  if(disposed||finished||!hasPlayed||(segmentEnd!==null&&!timeline))return;
+  if(disposed||finished||!hasPlayed)return;
   finished=true;
   audio.pause();
   saveSetting(key,JSON.stringify({chapter:chapter.id,seconds:0,duration:audio.duration||null}));

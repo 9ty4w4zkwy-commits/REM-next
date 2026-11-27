@@ -16,7 +16,7 @@ import {getProgress,saveProgress,getSetting,saveSetting} from './progress.js';
 import {analyticsEnabled,getTesterCode,registerTesterCode,setAnalyticsConsent,startAnalytics,trackEvent} from './analytics.js?v=onboarding-four-20261125';
 import {el,button,panel,heading} from './ui.js';
 import {chapterPicker} from './chapter-picker.js?v=picker-close-above-20261126';
-import {getMode,formatSwitch,paperView,audioView} from './formats.js?v=completion-flag-20261127';
+import {getMode,formatSwitch,paperView,audioView} from './formats.js?v=completion-flag-20261127-2';
 import {createReaderTools} from './reader-tools.js?v=immersive-focus-mint-20261126';
 import {createHighlights} from './highlights.js?v=single-remove-1';
 import {createEbookJourney} from './ebook-journey.js?v=rem-ebook-91';
@@ -152,7 +152,7 @@ function recapPrompt(book,episode){
 
 const resumeLabel=book=>{const path=getSetting('reading-path:'+book.id,'');if(path==='episodes'){const ep=currentEpisode(book);return ep?'Riprendi da '+episodeLabel(ep):'Scopri gli episodi'}return getProgress(book.id)?'Continua a leggere':'Scopri il libro'};
 
-function resetDemo(id){if(!confirm('Ricominciare la demo da zero? Verranno cancellati il segnalibro e la scelta di lettura della sola demo.'))return;try{localStorage.removeItem('rem-next-v1:'+id);for(const key of ['reading-path:','format:','sync-point:','episode-current:','episode-season:',episodeKey('')])localStorage.removeItem('rem-next-v1:setting:'+key+id)}catch{}chooseReadingPath(id)}
+function resetDemo(id){if(!confirm('Ricominciare la demo da zero? Verranno cancellati il segnalibro e la scelta di lettura della sola demo.'))return;try{localStorage.removeItem('rem-next-v1:'+id);for(const key of ['reading-path:','format:','sync-point:','episode-current:','episode-season:',completionKey('',true),completionKey('',false)])localStorage.removeItem('rem-next-v1:setting:'+key+id)}catch{}chooseReadingPath(id)}
 
 const comingSoon=book=>book.id!=='jekyll-hyde'&&book.availability==='preview'&&!book.chapters?.length;
 const comingSoonLabel=()=>el('span',{className:'rem-coming-soon',text:'IN ARRIVO'});
