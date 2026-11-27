@@ -79,7 +79,7 @@
 .rem-completion-toggle:focus-visible{outline:2px solid #a0e3c2;outline-offset:2px}
 .rem-episode-card-heading{display:flex;align-items:center;justify-content:space-between;gap:4px}
 .rem-episode-card-heading .episode-code{margin:0}
-.rem-episode-card-heading .rem-completion-toggle{margin:0;justify-content:flex-end}
+.rem-episode-card-heading .rem-completion-toggle{margin:0;flex-direction:row-reverse;justify-content:flex-start}
 .rem-episode-card-heading .rem-completion-toggle[aria-pressed="false"] .rem-completion-toggle-label{display:none}
 .rem-chapter-picker-completed{
  flex:none;display:grid;place-items:center;width:22px;height:22px;border-radius:50%;
