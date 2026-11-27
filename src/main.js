@@ -1,6 +1,6 @@
 import {mountPodcastControls} from './audio-controls.js?v=audio-dock-20261127';
 import {mountImmersiveReader} from './immersive-reader.js?v=immersive-focus-mint-20261126';
-import {recordModeChoice,recordSwitch,startUsage,stopUsage} from './usage-metrics.js?v=1';
+import {recordModeChoice,recordSwitch,startUsage,stopUsage,usageMetricsEnabled,setUsageMetricsConsent} from './usage-metrics.js?v=reporting-20261127';
 import {createJekyllAudio} from './jekyll-audio.js?v=podcast-reader-20261126';
 import {createBellaEstateAudio} from './bella-estate-audio.js?v=podcast-reader-20261126';
 import {createMontecristoAudio} from './montecristo-audio.js?v=podcast-reader-20261126';
@@ -10,9 +10,9 @@ import {loadEpisodeSegment} from './episode-segments.js?v=jekyll-20261126';
 import {loadOvidioEpisode} from './ovidio-episodes.js?v=2';
 import {createCollectionsView} from './collections-view.js?v=rem-ui-209';
 import {readCollections,isBookSaved,saveBookToCollections,removeSavedBook,attachItem,detachItem,addThought} from './collections-store.js?v=rem-mint-207';
-import {showOnboarding,onboardingCompleted} from './onboarding.js?v=chapters-restored-20261125';
+import {showOnboarding,onboardingCompleted} from './onboarding.js?v=reporting-20261127';
 import {getProgress,saveProgress,getSetting,saveSetting} from './progress.js';
-import {analyticsEnabled,getTesterCode,registerTesterCode,setAnalyticsConsent,startAnalytics,trackEvent} from './analytics.js?v=onboarding-four-20261125';
+import {analyticsEnabled,getTesterCode,registerTesterCode,setAnalyticsConsent,startAnalytics,trackEvent} from './analytics.js?v=reporting-20261127';
 import {el,button,panel,heading} from './ui.js';
 import {chapterPicker} from './chapter-picker.js?v=round-completion-check-20261127';
 import {getMode,formatSwitch,paperView,audioView} from './formats.js?v=completion-flag-20261127-2';
@@ -343,7 +343,7 @@ function profile(){
   el('div',{},[el('span',{text:'Dimensione del testo'}),el('strong',{text:({'small':'Piccola','normal':'Normale','large':'Grande','xlarge':'Molto grande'})[getSetting('fontSize','normal')]||'Normale'})]),
   el('div',{},[el('span',{text:'La tua Biblioteca'}),button('Apri →',()=>library())])
  ]));
- const analyticsToggle=button(analyticsEnabled()?'Disattiva invio dati di test':'Attiva invio dati di test',()=>{setAnalyticsConsent(!analyticsEnabled());profile()});
+ const analyticsToggle=button(analyticsEnabled()?'Disattiva invio dati di test':'Attiva invio dati di test',()=>{if(analyticsEnabled())setUsageMetricsConsent(false);setAnalyticsConsent(!analyticsEnabled());profile()});
  analyticsToggle.classList.add('rem-profile-action');
  const testerCode=getTesterCode();
  const testerActions=el('div',{className:'rem-tester-actions'});
@@ -381,11 +381,18 @@ function profile(){
    else showError(result.status==='needs_retry'?'':result.message);
   });
  }
+ const usageToggle=button(usageMetricsEnabled()?'Disattiva conteggio di lettura e ascolto':'Attiva conteggio di lettura e ascolto',()=>{
+  setUsageMetricsConsent(!usageMetricsEnabled());
+  profile();
+ });
+ usageToggle.classList.add('rem-profile-action');
+ const usageSection=analyticsEnabled()?card('◷','Tempi di lettura e ascolto',
+  'Se attivi il conteggio, REM invia a Cloudflare, insieme al tuo codice tester, la durata delle sessioni Ebook e Audio, i cambi di formato e la scelta tra capitoli ed episodi.',usageToggle):null;
  const privacy=el('details',{className:'rem-profile-privacy-details'},[
   el('summary',{text:'◇  Privacy e dati'}),
   card('◇','Privacy e preferenze','Questionario, libri salvati e progressi restano su questo dispositivo. Solo se scegli di partecipare, REM invia a Cloudflare un ID numerico, le risposte al questionario e le attività di utilizzo (libro, formato e data). Nessun nome o email. Puoi interrompere i futuri invii; disattivare non cancella i dati già raccolti.',analyticsToggle)
  ]);
- render(el('div',{className:'rem-profile-page'},[backArrow(home,'Torna alla Home'),intro,interests,reading,...(testerSection?[testerSection]:[]),privacy]));
+ render(el('div',{className:'rem-profile-page'},[backArrow(home,'Torna alla Home'),intro,interests,reading,...(testerSection?[testerSection]:[]),...(usageSection?[usageSection]:[]),privacy]));
 }
 function library(section='overview',bookId=null){currentView='library';render(createCollectionsView({books,openBook:detail,continueBook:readingEntry,isSavedBook:isBookSaved,coverBook:cover,back:home,initialSection:section,initialBookId:bookId}))}
 function detail(id){

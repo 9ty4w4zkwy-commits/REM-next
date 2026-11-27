@@ -19,11 +19,11 @@ export function getTesterCode(){
  const id=Number(getSetting(ID,''));
  return validId(id)?'REM-'+String(id).padStart(3,'0'):null;
 }
-async function post(path,body){
+async function post(path,body,{keepalive=false}={}){
  const controller=new AbortController();
  const timer=setTimeout(()=>controller.abort(),12000);
  try{
-  const response=await fetch(BASE+path,{method:'POST',mode:'cors',cache:'no-store',signal:controller.signal,headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
+  const response=await fetch(BASE+path,{method:'POST',mode:'cors',cache:'no-store',keepalive,signal:controller.signal,headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
   const data=await response.json().catch(()=>({}));
   if(!response.ok){const error=new Error(data.error||'Servizio non disponibile');error.status=response.status;throw error}
   return data;
@@ -92,14 +92,19 @@ export async function recoverTesterCode(recoveryCode){
  }catch(error){return {status:'error',message:friendlyError(error)}}
  finally{pending=null}
 }
-export function trackEvent(event_type,details={}){
- if(!analyticsEnabled())return;
+export function trackEvent(event_type,details={},{keepalive=false,canSend=analyticsEnabled}={}){
+ if(!analyticsEnabled()||!canSend())return;
  void (async()=>{
   try{
-   const create=!validToken(getSetting(TOKEN,''))&&!getSetting(AUTO_ATTEMPT,'');
-   const tester_id=await ensureTester({create});
+   const storedToken=getSetting(TOKEN,'');
+   if(!keepalive||!validToken(storedToken)){
+    const create=!validToken(storedToken)&&!getSetting(AUTO_ATTEMPT,'');
+    if(!await ensureTester({create}))return;
+   }
    const token=getSetting(TOKEN,'');
-   if(tester_id&&validToken(token)&&analyticsEnabled())await post('/api/events',{token,event_type,...details});
+   if(validToken(token)&&analyticsEnabled()&&canSend()){
+    await post('/api/events',{token,event_type,...details},{keepalive});
+   }
   }catch{}
  })();
 }

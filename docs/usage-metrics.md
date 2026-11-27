@@ -1,4 +1,10 @@
-# Beta usage metrics — staged, not enabled
-METRICS_READY in src/usage-metrics.js remains false until the existing Cloudflare Worker schema, event allowlist, dashboard and consent flow are reviewed. Do not activate before confirming acceptance of event types and fields, opt-in for expanded data collection, and end-to-end tests.
-Events: format_switch (book_id, chapter_id, from_format, to_format, reading_path); reading_path_choice (book_id, reading_path); usage_session_start/end (book_id, chapter_id, format, reading_path, session_id; end includes duration_seconds); usage_time (same context plus incremental duration_seconds). Sum only usage_time, never session_end duration as well. A session currently means one reader unit, not a whole app visit. Ebook measures estimated visible engaged time with a two-minute inactivity cutoff; audio samples playback, including background where browser timers permit. Short playback and suspended timers can be undercounted. No paper reading time can be measured. No new data is sent while disabled. Worker should validate fields, bound duration, authenticate tester token, enforce consent and deduplicate retried events if retry support is added. Existing questionnaire 4-answer compatibility also needs checking.
-Dashboard: switches grouped by direction/tester/book, summed seconds by format, format shares, path choices, unit sessions and average duration. Whole-app sessions require additional definition. Test pause, background, seek, idle, navigation, consent revocation and duplicate events before enabling.
+# Beta usage metrics
+
+Testers can enable reading and listening metrics from their profile after opting into test data collection. The additional option covers Ebook and Audio durations, format changes, and the choice between chapters and episodes. Turning off test data collection also clears this option.
+
+- `format_switch` records the book, unit, source and destination formats, and reading path.
+- `reading_path_choice` records the book and reading path.
+- `usage_session_start` and `usage_session_end` identify a session for one reader unit. The end event includes its total duration.
+- `usage_time` sends incremental whole seconds during use and on pause, exit, or visibility changes. Sum these events for time totals and use completed sessions for average duration.
+
+Ebook time estimates visible engagement with a two-minute inactivity cutoff. For recorded audio, the media position and playback rate measure listening time, excluding pauses and seeks. Synthesized speech uses periodic sampling, so suspended browser timers can undercount it. Paper reading time is unavailable.
