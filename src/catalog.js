@@ -1,4 +1,5 @@
 const BASE='./content/books/';
+export const chapterHasAudio=(book,chapter)=>book.audioAvailable!==false||chapter?.audioSource==='r2';
 export function validateCatalog(data){
  if(!data||data.schemaVersion!==1||!Array.isArray(data.books))throw Error('Catalogo non valido: schemaVersion 1 e books[] richiesti');
  const ids=new Set();

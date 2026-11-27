@@ -2,7 +2,7 @@ import {rankScenes} from './paper-scene-rank.js?v=paper-scene-20261124';
 import {recognizePage,semanticLocations} from './paper-intelligence.js?v=paper-scene-20261124';
 import {el,button} from './ui.js';
 import {chapterPicker} from './chapter-picker.js?v=compact-picker-20261124';
-import {loadChapter} from './catalog.js';
+import {loadChapter,chapterHasAudio} from './catalog.js?v=giro-readflow-20261127';
 import {getSetting,saveSetting} from './progress.js';
 
 // A phrase bookmark is independent of the reader UI and of the current format.
@@ -165,7 +165,7 @@ export function phraseSearch(book,onFound){
     ...(item.approximate?[el('small',{text:'Corrispondenza orientativa: verifica il passaggio'})]:[]),
     el('div',{className:'rem-paper-match-actions'},[
      button('Continua in Ebook',()=>choose(item,'ebook'),true),
-     ...(book.audioAvailable!==false?[button('Continua in Audio',()=>choose(item,'audio'))]:[])
+     ...(chapterHasAudio(book,book.chapters.find(chapter=>chapter.id===item.chapter))?[button('Continua in Audio',()=>choose(item,'audio'))]:[])
     ])
    ]);
    results.append(card);

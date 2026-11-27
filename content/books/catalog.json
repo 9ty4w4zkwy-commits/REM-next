@@ -1787,72 +1787,86 @@
         {
           "id": "capitolo-01",
           "title": "Capitolo 1 · Nel quale Phileas Fogg e Gambalesta si accettano a vicenda, l’uno come padrone, l’altro come servitore",
-          "file": "capitolo-01.txt"
+          "file": "capitolo-01.txt",
+          "audioSource": "r2"
         },
         {
           "id": "capitolo-02",
           "title": "Capitolo 2 · Nel quale Gambalesta si convince di aver finalmente trovato il suo ideale",
-          "file": "capitolo-02.txt"
+          "file": "capitolo-02.txt",
+          "audioSource": "r2"
         },
         {
           "id": "capitolo-03",
           "title": "Capitolo 3 · Nel quale si avvia una conversazione che potrà costare cara a Phileas Fogg",
-          "file": "capitolo-03.txt"
+          "file": "capitolo-03.txt",
+          "audioSource": "r2"
         },
         {
           "id": "capitolo-04",
           "title": "Capitolo 4 · Nel quale Phileas Fogg sbalordisce Gambalesta, il suo domestico",
-          "file": "capitolo-04.txt"
+          "file": "capitolo-04.txt",
+          "audioSource": "r2"
         },
         {
           "id": "capitolo-05",
           "title": "Capitolo 5 · Nel quale un nuovo titolo compare sulla piazza di Londra",
-          "file": "capitolo-05.txt"
+          "file": "capitolo-05.txt",
+          "audioSource": "r2"
         },
         {
           "id": "capitolo-06",
           "title": "Capitolo 6 · Nel quale l’agente Fix mostra un’impazienza più che legittima",
-          "file": "capitolo-06.txt"
+          "file": "capitolo-06.txt",
+          "audioSource": "r2"
         },
         {
           "id": "capitolo-07",
           "title": "Capitolo 7 · Che dimostra ancora una volta l’inutilità dei passaporti in materia di polizia",
-          "file": "capitolo-07.txt"
+          "file": "capitolo-07.txt",
+          "audioSource": "r2"
         },
         {
           "id": "capitolo-08",
           "title": "Capitolo 8 · Nel quale Gambalesta parla forse un po’ più del necessario",
-          "file": "capitolo-08.txt"
+          "file": "capitolo-08.txt",
+          "audioSource": "r2"
         },
         {
           "id": "capitolo-09",
           "title": "Capitolo 9 · Dove il Mar Rosso e il Mar delle Indie si mostrano favorevoli ai piani di Phileas Fogg",
-          "file": "capitolo-09.txt"
+          "file": "capitolo-09.txt",
+          "audioSource": "r2"
         },
         {
           "id": "capitolo-10",
           "title": "Capitolo 10 · Dove Gambalesta è felicissimo di perdere soltanto le scarpe",
-          "file": "capitolo-10.txt"
+          "file": "capitolo-10.txt",
+          "audioSource": "r2"
         },
         {
           "id": "capitolo-11",
           "title": "Capitolo 11 · Dove Phileas Fogg compra una cavalcatura a un prezzo favoloso",
-          "file": "capitolo-11.txt"
+          "file": "capitolo-11.txt",
+          "audioSource": "r2"
         },
         {
           "id": "capitolo-12",
           "title": "Capitolo 12 · Nel quale Phileas Fogg e i suoi compagni si avventurano attraverso le foreste dell’India, e ciò che ne segue",
-          "file": "capitolo-12.txt"
+          "file": "capitolo-12.txt",
+          "audioSource": "r2"
         },
         {
           "id": "capitolo-13",
           "title": "Capitolo 13 · Nel quale Gambalesta dimostra ancora una volta che la fortuna sorride agli audaci",
-          "file": "capitolo-13.txt"
+          "file": "capitolo-13.txt",
+          "audioSource": "r2"
         },
         {
           "id": "capitolo-14",
           "title": "Capitolo 14 · Nel quale Phileas Fogg discende tutta la splendida valle del Gange senza nemmeno pensare a guardarla",
-          "file": "capitolo-14.txt"
+          "file": "capitolo-14.txt",
+          "audioSource": "r2"
         },
         {
           "id": "capitolo-15",
@@ -1862,32 +1876,38 @@
         {
           "id": "capitolo-16",
           "title": "Capitolo 16 · Nel quale Fix finge di non sapere niente",
-          "file": "capitolo-16.txt"
+          "file": "capitolo-16.txt",
+          "audioSource": "r2"
         },
         {
           "id": "capitolo-17",
           "title": "Capitolo 17 · Nel quale si parla un po’ di tutto durante la traversata da Singapore a Hong Kong",
-          "file": "capitolo-17.txt"
+          "file": "capitolo-17.txt",
+          "audioSource": "r2"
         },
         {
           "id": "capitolo-18",
           "title": "Capitolo 18 · Nel quale Phileas Fogg, Gambalesta e Fix vanno ciascuno per la propria strada",
-          "file": "capitolo-18.txt"
+          "file": "capitolo-18.txt",
+          "audioSource": "r2"
         },
         {
           "id": "capitolo-19",
           "title": "Capitolo 19 · Nel quale Gambalesta prende troppo a cuore gli interessi del suo padrone, e ciò che ne segue",
-          "file": "capitolo-19.txt"
+          "file": "capitolo-19.txt",
+          "audioSource": "r2"
         },
         {
           "id": "capitolo-20",
           "title": "Capitolo 20 · Nel quale Fix entra in rapporto diretto con Phileas Fogg",
-          "file": "capitolo-20.txt"
+          "file": "capitolo-20.txt",
+          "audioSource": "r2"
         },
         {
           "id": "capitolo-21",
           "title": "Capitolo 21 · Nel quale il padrone della «Tankadera» rischia di perdere un premio di duecento sterline",
-          "file": "capitolo-21.txt"
+          "file": "capitolo-21.txt",
+          "audioSource": "r2"
         },
         {
           "id": "capitolo-22",
@@ -1897,77 +1917,92 @@
         {
           "id": "capitolo-23",
           "title": "Capitolo 23 · Nel quale il naso di Gambalesta si allunga a dismisura",
-          "file": "capitolo-23.txt"
+          "file": "capitolo-23.txt",
+          "audioSource": "r2"
         },
         {
           "id": "capitolo-24",
           "title": "Capitolo 24 · Durante il quale si compie la traversata dell’Oceano Pacifico",
-          "file": "capitolo-24.txt"
+          "file": "capitolo-24.txt",
+          "audioSource": "r2"
         },
         {
           "id": "capitolo-25",
           "title": "Capitolo 25 · Nel quale si dà un’occhiata a San Francisco in un giorno di comizio",
-          "file": "capitolo-25.txt"
+          "file": "capitolo-25.txt",
+          "audioSource": "r2"
         },
         {
           "id": "capitolo-26",
           "title": "Capitolo 26 · Nel quale si prende il treno espresso della Ferrovia del Pacifico",
-          "file": "capitolo-26.txt"
+          "file": "capitolo-26.txt",
+          "audioSource": "r2"
         },
         {
           "id": "capitolo-27",
           "title": "Capitolo 27 · Nel quale Gambalesta segue, alla velocità di venti miglia all’ora, un corso di storia mormone",
-          "file": "capitolo-27.txt"
+          "file": "capitolo-27.txt",
+          "audioSource": "r2"
         },
         {
           "id": "capitolo-28",
           "title": "Capitolo 28 · Nel quale Gambalesta non riesce a far ascoltare la voce della ragione",
-          "file": "capitolo-28.txt"
+          "file": "capitolo-28.txt",
+          "audioSource": "r2"
         },
         {
           "id": "capitolo-29",
           "title": "Capitolo 29 · Nel quale si raccontano fatti che accadono soltanto sulle ferrovie americane",
-          "file": "capitolo-29.txt"
+          "file": "capitolo-29.txt",
+          "audioSource": "r2"
         },
         {
           "id": "capitolo-30",
           "title": "Capitolo 30 · Nel quale Phileas Fogg fa semplicemente il suo dovere",
-          "file": "capitolo-30.txt"
+          "file": "capitolo-30.txt",
+          "audioSource": "r2"
         },
         {
           "id": "capitolo-31",
           "title": "Capitolo 31 · Nel quale l’ispettore Fix prende molto sul serio gli interessi di Phileas Fogg",
-          "file": "capitolo-31.txt"
+          "file": "capitolo-31.txt",
+          "audioSource": "r2"
         },
         {
           "id": "capitolo-32",
           "title": "Capitolo 32 · Nel quale Phileas Fogg lotta corpo a corpo con la sfortuna",
-          "file": "capitolo-32.txt"
+          "file": "capitolo-32.txt",
+          "audioSource": "r2"
         },
         {
           "id": "capitolo-33",
           "title": "Capitolo 33 · Nel quale Phileas Fogg si mostra all’altezza della situazione",
-          "file": "capitolo-33.txt"
+          "file": "capitolo-33.txt",
+          "audioSource": "r2"
         },
         {
           "id": "capitolo-34",
           "title": "Capitolo 34 · Nel quale Phileas Fogg perde le staffe",
-          "file": "capitolo-34.txt"
+          "file": "capitolo-34.txt",
+          "audioSource": "r2"
         },
         {
           "id": "capitolo-35",
           "title": "Capitolo 35 · Nel quale Gambalesta non si fa ripetere due volte l’ordine del suo padrone",
-          "file": "capitolo-35.txt"
+          "file": "capitolo-35.txt",
+          "audioSource": "r2"
         },
         {
           "id": "capitolo-36",
           "title": "Capitolo 36 · Nel quale le azioni di Phileas Fogg tornano a salire sulla piazza di Londra",
-          "file": "capitolo-36.txt"
+          "file": "capitolo-36.txt",
+          "audioSource": "r2"
         },
         {
           "id": "capitolo-37",
           "title": "Capitolo 37 · Nel quale si calcola che cosa Phileas Fogg ha guadagnato facendo il giro del mondo",
-          "file": "capitolo-37.txt"
+          "file": "capitolo-37.txt",
+          "audioSource": "r2"
         }
       ],
       "moods": [

@@ -2,26 +2,27 @@ import {audioSourceUrl} from './audio-source.js?v=1';
 import {getSetting,saveSetting} from './progress.js';
 import {secondsForOffset,offsetForSeconds} from './audio-word-timeline.js';
 
-const ROOT='./audio/montecristo/';
-const KEY='montecristo-audio-position';
-const SYNC='audio-text-sync:montecristo';
-const AUTO='montecristo-auto-continue';
 const cache=new Map();
 function setting(key){try{return JSON.parse(getSetting(key,'null'))}catch{return null}}
-async function timelineFor(chapter){
+async function timelineFor(root,chapter){
  if(!/^capitolo-(0[1-9]|[1-9]\d|1[01]\d|120)$/.test(chapter.id))throw Error('Capitolo audio non riconosciuto');
- if(!cache.has(chapter.id))cache.set(chapter.id,fetch(ROOT+chapter.id+'.words.json',{cache:'no-store'}).then(r=>{
+ const url=root+chapter.id+'.words.json';
+ if(!cache.has(url))cache.set(url,fetch(url,{cache:'no-store'}).then(r=>{
   if(!r.ok)throw Error('Mappatura non disponibile');return r.json();
  }).then(t=>{
   if(t.chapter!==chapter.id||t.coverage<.55||!Number.isFinite(t.duration)||!Array.isArray(t.words)||!t.words.length)throw Error('Mappatura non valida');
   let offset=-1,start=-1;
   for(const w of t.words){if(!Number.isInteger(w.offset)||w.offset<=offset||!Number.isFinite(w.start)||w.start<start||!Number.isFinite(w.end)||w.end<w.start||w.end>t.duration+.01)throw Error('Mappatura non ordinata');offset=w.offset;start=w.start}
   return t;
- }).catch(e=>{cache.delete(chapter.id);throw e}));
- return cache.get(chapter.id);
+ }).catch(e=>{cache.delete(url);throw e}));
+ return cache.get(url);
 }
-export async function createMontecristoAudio({chapter,content,segmentStart=0,segmentEnd=null,onPosition,onNext,seekOffset=null}){
- const t=await timelineFor(chapter);
+export async function createMontecristoAudio({bookId='montecristo',chapter,content,segmentStart=0,segmentEnd=null,onPosition,onNext,seekOffset=null}){
+ const ROOT='./audio/'+bookId+'/';
+ const KEY=bookId+'-audio-position';
+ const SYNC='audio-text-sync:'+bookId;
+ const AUTO=bookId+'-auto-continue';
+ const t=await timelineFor(ROOT,chapter);
  const words=t.words.filter(w=>w.offset>=segmentStart&&(segmentEnd===null||w.offset<segmentEnd));
  if(!words.length)throw Error('Nessuna parola abbinata in questo episodio');
  const start=segmentStart===0?0:words[0].start;
@@ -71,6 +72,6 @@ export async function createMontecristoAudio({chapter,content,segmentStart=0,seg
  audio.addEventListener('ended',finish);
  audio.addEventListener('error',()=>{if(!disposed)status.textContent='Audio non disponibile: riprova tra poco.'});
  section.stopAudio=()=>{persist(true);disposed=true;audio.pause();audio.removeAttribute('src');audio.load()};
- audio.src=audioSourceUrl(chapter,ROOT+chapter.id+'.m4a','montecristo/'+chapter.id+'.m4a');
+ audio.src=audioSourceUrl(chapter,ROOT+chapter.id+'.m4a',bookId+'/'+chapter.id+'.m4a');
  return section;
 }
