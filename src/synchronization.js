@@ -165,7 +165,7 @@ export function phraseSearch(book,onFound){
     ...(item.approximate?[el('small',{text:'Corrispondenza orientativa: verifica il passaggio'})]:[]),
     el('div',{className:'rem-paper-match-actions'},[
      button('Continua in Ebook',()=>choose(item,'ebook'),true),
-     button('Continua in Audio',()=>choose(item,'audio'))
+     ...(book.audioAvailable!==false?[button('Continua in Audio',()=>choose(item,'audio'))]:[])
     ])
    ]);
    results.append(card);
