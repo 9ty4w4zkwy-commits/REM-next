@@ -1,0 +1,55 @@
+name: Prepare Montecristo chapters 21–49
+on:
+  push:
+    branches: [readflow-montecristo-21-49]
+    paths: [.github/workflows/prepare-montecristo-21-49.yml]
+permissions:
+  actions: read
+  contents: write
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: 90763b042a0fe762883088b6774b8203c3d11df3
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Download verified maps
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh run download 45975582769 --name montecristo-readflow-21-49-verified --dir release-maps
+      - name: Assemble chapter catalog and word maps
+        run: |
+          python - <<'PYTHON'
+          from hashlib import sha256
+          from pathlib import Path
+          import json
+          chapters = [{'id': 'capitolo-21', 'title': 'Capitolo 21 · L’isola di Tiboulen', 'file': 'capitolo-21.txt', 'audioSource': 'r2'}, {'id': 'capitolo-22', 'title': 'Capitolo 22 · I contrabbandieri', 'file': 'capitolo-22.txt', 'audioSource': 'r2'}, {'id': 'capitolo-23', 'title': 'Capitolo 23 · L’isola di Montecristo', 'file': 'capitolo-23.txt', 'audioSource': 'r2'}, {'id': 'capitolo-24', 'title': 'Capitolo 24 · L’abbagliamento', 'file': 'capitolo-24.txt', 'audioSource': 'r2'}, {'id': 'capitolo-25', 'title': 'Capitolo 25 · Lo sconosciuto', 'file': 'capitolo-25.txt', 'audioSource': 'r2'}, {'id': 'capitolo-26', 'title': 'Capitolo 26 · La locanda del Ponte di Gard', 'file': 'capitolo-26.txt', 'audioSource': 'r2'}, {'id': 'capitolo-27', 'title': 'Capitolo 27 · Il racconto', 'file': 'capitolo-27.txt', 'audioSource': 'r2'}, {'id': 'capitolo-28', 'title': 'Capitolo 28 · I registri delle prigioni', 'file': 'capitolo-28.txt', 'audioSource': 'r2'}, {'id': 'capitolo-29', 'title': 'Capitolo 29 · La casa Morrel', 'file': 'capitolo-29.txt', 'audioSource': 'r2'}, {'id': 'capitolo-30', 'title': 'Capitolo 30 · Il 5 settembre', 'file': 'capitolo-30.txt', 'audioSource': 'r2'}, {'id': 'capitolo-31', 'title': 'Capitolo 31 · Italia — Sindbad il marinaio', 'file': 'capitolo-31.txt', 'audioSource': 'r2'}, {'id': 'capitolo-32', 'title': 'Capitolo 32 · Il risveglio', 'file': 'capitolo-32.txt', 'audioSource': 'r2'}, {'id': 'capitolo-33', 'title': 'Capitolo 33 · I briganti', 'file': 'capitolo-33.txt', 'audioSource': 'r2'}, {'id': 'capitolo-34', 'title': 'Capitolo 34 · Le apparizioni', 'file': 'capitolo-34.txt', 'audioSource': 'r2'}, {'id': 'capitolo-35', 'title': 'Capitolo 35 · Il patibolo', 'file': 'capitolo-35.txt', 'audioSource': 'r2'}, {'id': 'capitolo-36', 'title': 'Capitolo 36 · Il carnevale di Roma', 'file': 'capitolo-36.txt', 'audioSource': 'r2'}, {'id': 'capitolo-37', 'title': 'Capitolo 37 · Le catacombe di San Sebastiano', 'file': 'capitolo-37.txt', 'audioSource': 'r2'}, {'id': 'capitolo-38', 'title': 'Capitolo 38 · L’appuntamento', 'file': 'capitolo-38.txt', 'audioSource': 'r2'}, {'id': 'capitolo-39', 'title': 'Capitolo 39 · La colazione', 'file': 'capitolo-39.txt', 'audioSource': 'r2'}, {'id': 'capitolo-40', 'title': 'Capitolo 40 · La presentazione', 'file': 'capitolo-40.txt', 'audioSource': 'r2'}, {'id': 'capitolo-41', 'title': 'Capitolo 41 · Bertuccio', 'file': 'capitolo-41.txt', 'audioSource': 'r2'}, {'id': 'capitolo-42', 'title': 'Capitolo 42 · La casa d’Auteuil', 'file': 'capitolo-42.txt', 'audioSource': 'r2'}, {'id': 'capitolo-43', 'title': 'Capitolo 43 · La vendetta', 'file': 'capitolo-43.txt', 'audioSource': 'r2'}, {'id': 'capitolo-44', 'title': 'Capitolo 44 · La pioggia di sangue', 'file': 'capitolo-44.txt', 'audioSource': 'r2'}, {'id': 'capitolo-45', 'title': 'Capitolo 45 · Il credito illimitato', 'file': 'capitolo-45.txt', 'audioSource': 'r2'}, {'id': 'capitolo-46', 'title': 'Capitolo 46 · La pariglia grigio pomellata', 'file': 'capitolo-46.txt', 'audioSource': 'r2'}, {'id': 'capitolo-47', 'title': 'Capitolo 47 · Ideologia', 'file': 'capitolo-47.txt', 'audioSource': 'r2'}, {'id': 'capitolo-48', 'title': 'Capitolo 48 · Haydée', 'file': 'capitolo-48.txt', 'audioSource': 'r2'}, {'id': 'capitolo-49', 'title': 'Capitolo 49 · La famiglia Morrel', 'file': 'capitolo-49.txt', 'audioSource': 'r2'}]
+          expected = {'capitolo-21.words.json': 'e3c65105643c2fe365a57601589f2d0891f4483e281098ffb8994f981d347a6f', 'capitolo-22.words.json': '7a6c1fae4d402f607384fdc910ca4c155ec38a92488177d859bc05da73770208', 'capitolo-23.words.json': 'e6f90414535f9408e415af9aabd9cca16cf74bb7be447c393c1195b5e9987fdf', 'capitolo-24.words.json': '3e8dc9c25492a00110fdb7ea147b61902e2a3886048179c68277e83f0f42698d', 'capitolo-25.words.json': '9f46e593b8e67103ea6972add0c330b2fcc4bd1a5e38929a1a4966b9401429ab', 'capitolo-26.words.json': '7297159b3aa92be726e04064ec29b1c0b426b0040af198f506ff4aae73803408', 'capitolo-27.words.json': 'de18cdba0b6bc497152eb2663cc7a906c66319d5b96661935abf8e691111a6c4', 'capitolo-28.words.json': '93a3faa16754ece487518f83fb8eb7b10f294e9fef8fe90f7473748fa9d6b5d9', 'capitolo-29.words.json': 'd1fa536c2e9fae85238f683c46c08fe43bda847072fab5fed77b62e35423dc9b', 'capitolo-30.words.json': '9ff3d612afd5c423e18eed056cee83bed428e5cef6e8cfedb4535ca8bb2cea66', 'capitolo-31.words.json': 'f0eed32ea7ba9f49aa0f88aa813c175e19b5f0514b2972b1625657346bbc6332', 'capitolo-32.words.json': '4fe6cf005b31af461138d387a0ec6d5087ac94016ab67f299bc8c16824b06ac3', 'capitolo-33.words.json': '4dfbd9b8708046dfedf5f9c7551ad03e28a23853b0950fd917542e8778621b81', 'capitolo-34.words.json': 'bb684d2a527268d7b7a2722c94e23244db9d2424bc13e7cb2e531722762731f9', 'capitolo-35.words.json': '0f4fe9839206dac886bcc55e700c0e39a7e9e1b369d40b70b6f6dc88dbf353d3', 'capitolo-36.words.json': 'e9599ddafa153d972b5b1280e13a6986f81f31ea0d8ec9e0c49362d14d923f39', 'capitolo-37.words.json': '51ba14a02f76981a85a8893fc28377fbe28256f1544771cad69e3b909003a7a4', 'capitolo-38.words.json': 'c8f28284a8f58325947ac658373e0aa94ad8490710bb2a3f14af33c4996be2f0', 'capitolo-39.words.json': '4de253ff344fd5b8a7c337e4417989f8cf8bb497cc9c521c6289cf88fe35ce5b', 'capitolo-40.words.json': 'ee89639a32573204029a1c93998f56093682cf7f4ea6afe26433d46bdda4224a', 'capitolo-41.words.json': 'ced89870f04cb0c66a39c3617f730c6107d02a31bd309c664e0ab89fd2c1befc', 'capitolo-42.words.json': '116b50c7040ebfd5c00d550631dde6ad79c1e51b84f77bde4810c1c1b2e42219', 'capitolo-43.words.json': 'b62c93916bab000726a24cf0a079822fcd0722a73ec6d289df22c7c32d873f13', 'capitolo-45.words.json': '868b442fa2af742f82e50e724f42803d31826c313cd473f4a32a9c57d08f9117', 'capitolo-44.words.json': '63ec6d748d1f5146cc2b58e28dc1102b23fcd2904f90846a9debc2084a7a305a', 'capitolo-46.words.json': 'f595eba67534f6a9b98e56f9a9a685145630d3ed2eb4872634b1b0ba02cd7bff', 'capitolo-47.words.json': '7fafd3b4cd7d62cf9096a225871933861eb5d580e9c181093a1c425c2f7e1d7c', 'capitolo-48.words.json': 'a8050d84f4eca37734913c63a236435ac7067ac8d90b8bbeaddb1771f9e5447a', 'capitolo-49.words.json': 'f57e75203fcb1963350b92153ad60904c453d0da6b7232fd51cf31f0bb60fe62'}
+          path = Path("content/books/catalog.json")
+          catalog = json.loads(path.read_text())
+          book = next(book for book in catalog["books"] if book["id"] == "montecristo")
+          assert [c["id"] for c in book["chapters"]] == [f"capitolo-{n:02}" for n in range(1,21)]
+          assert set(expected) == {entry["id"] + ".words.json" for entry in chapters}
+          for entry in chapters:
+              name = entry["id"] + ".words.json"
+              source = Path("release-maps") / name
+              assert sha256(source.read_bytes()).hexdigest() == expected[name], name
+              assert (Path("content/books/montecristo") / entry["file"]).is_file(), entry
+              dest = Path("audio/montecristo") / name
+              assert not dest.exists(), dest
+              dest.write_bytes(source.read_bytes())
+          book["chapters"].extend(chapters)
+          path.write_text(json.dumps(catalog, ensure_ascii=False, indent=2) + "\n")
+          PYTHON
+      - run: npm test
+      - name: Stage release commit
+        run: |
+          git add content/books/catalog.json audio/montecristo/capitolo-{21..49}.words.json
+          git diff --cached --check
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Publish synchronized Montecristo chapters 21–49"
+          git push origin HEAD:refs/heads/montecristo-chapters-21-49
