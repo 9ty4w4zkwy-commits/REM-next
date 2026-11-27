@@ -2030,7 +2030,1187 @@
         "stati uniti"
       ],
       "primaryLocations": [],
-      "audioAvailable": true
+      "audioAvailable": true,
+      "previousEpisodes": [
+        {
+          "id": "capitolo-01",
+          "chapterId": "capitolo-01",
+          "start": 0,
+          "end": 9574
+        },
+        {
+          "id": "capitolo-02",
+          "chapterId": "capitolo-02",
+          "start": 0,
+          "end": 7723
+        },
+        {
+          "id": "capitolo-03",
+          "chapterId": "capitolo-03",
+          "start": 0,
+          "end": 13410
+        },
+        {
+          "id": "capitolo-04",
+          "chapterId": "capitolo-04",
+          "start": 0,
+          "end": 6604
+        },
+        {
+          "id": "capitolo-05",
+          "chapterId": "capitolo-05",
+          "start": 0,
+          "end": 6394
+        },
+        {
+          "id": "capitolo-06",
+          "chapterId": "capitolo-06",
+          "start": 0,
+          "end": 9030
+        },
+        {
+          "id": "capitolo-07",
+          "chapterId": "capitolo-07",
+          "start": 0,
+          "end": 4846
+        },
+        {
+          "id": "capitolo-08",
+          "chapterId": "capitolo-08",
+          "start": 0,
+          "end": 6326
+        },
+        {
+          "id": "capitolo-09",
+          "chapterId": "capitolo-09",
+          "start": 0,
+          "end": 10823
+        },
+        {
+          "id": "capitolo-10",
+          "chapterId": "capitolo-10",
+          "start": 0,
+          "end": 10464
+        },
+        {
+          "id": "capitolo-11",
+          "chapterId": "capitolo-11",
+          "start": 0,
+          "end": 17038
+        },
+        {
+          "id": "capitolo-12",
+          "chapterId": "capitolo-12",
+          "start": 0,
+          "end": 13312
+        },
+        {
+          "id": "capitolo-13",
+          "chapterId": "capitolo-13",
+          "start": 0,
+          "end": 12765
+        },
+        {
+          "id": "capitolo-14",
+          "chapterId": "capitolo-14",
+          "start": 0,
+          "end": 13002
+        },
+        {
+          "id": "capitolo-15",
+          "chapterId": "capitolo-15",
+          "start": 0,
+          "end": 12075
+        },
+        {
+          "id": "capitolo-16",
+          "chapterId": "capitolo-16",
+          "start": 0,
+          "end": 10351
+        },
+        {
+          "id": "capitolo-17",
+          "chapterId": "capitolo-17",
+          "start": 0,
+          "end": 12583
+        },
+        {
+          "id": "capitolo-18",
+          "chapterId": "capitolo-18",
+          "start": 0,
+          "end": 9085
+        },
+        {
+          "id": "capitolo-19",
+          "chapterId": "capitolo-19",
+          "start": 0,
+          "end": 13295
+        },
+        {
+          "id": "capitolo-20",
+          "chapterId": "capitolo-20",
+          "start": 0,
+          "end": 11010
+        },
+        {
+          "id": "capitolo-21",
+          "chapterId": "capitolo-21",
+          "start": 0,
+          "end": 16705
+        },
+        {
+          "id": "capitolo-22",
+          "chapterId": "capitolo-22",
+          "start": 0,
+          "end": 12986
+        },
+        {
+          "id": "capitolo-23",
+          "chapterId": "capitolo-23",
+          "start": 0,
+          "end": 11908
+        },
+        {
+          "id": "capitolo-24",
+          "chapterId": "capitolo-24",
+          "start": 0,
+          "end": 11685
+        },
+        {
+          "id": "capitolo-25",
+          "chapterId": "capitolo-25",
+          "start": 0,
+          "end": 12778
+        },
+        {
+          "id": "capitolo-26",
+          "chapterId": "capitolo-26",
+          "start": 0,
+          "end": 10954
+        },
+        {
+          "id": "capitolo-27",
+          "chapterId": "capitolo-27",
+          "start": 0,
+          "end": 12655
+        },
+        {
+          "id": "capitolo-28",
+          "chapterId": "capitolo-28",
+          "start": 0,
+          "end": 15970
+        },
+        {
+          "id": "capitolo-29",
+          "chapterId": "capitolo-29",
+          "start": 0,
+          "end": 13112
+        },
+        {
+          "id": "capitolo-30",
+          "chapterId": "capitolo-30",
+          "start": 0,
+          "end": 13598
+        },
+        {
+          "id": "capitolo-31",
+          "chapterId": "capitolo-31",
+          "start": 0,
+          "end": 11567
+        },
+        {
+          "id": "capitolo-32",
+          "chapterId": "capitolo-32",
+          "start": 0,
+          "end": 7321
+        },
+        {
+          "id": "capitolo-33",
+          "chapterId": "capitolo-33",
+          "start": 0,
+          "end": 15647
+        },
+        {
+          "id": "capitolo-34",
+          "chapterId": "capitolo-34",
+          "start": 0,
+          "end": 6218
+        },
+        {
+          "id": "capitolo-35",
+          "chapterId": "capitolo-35",
+          "start": 0,
+          "end": 9739
+        },
+        {
+          "id": "capitolo-36",
+          "chapterId": "capitolo-36",
+          "start": 0,
+          "end": 7051
+        },
+        {
+          "id": "capitolo-37",
+          "chapterId": "capitolo-37",
+          "start": 0,
+          "end": 5757
+        }
+      ],
+      "seasons": [
+        {
+          "number": 1,
+          "title": "La scommessa",
+          "episodes": [
+            {
+              "id": "capitolo-01-micro-01",
+              "chapterId": "capitolo-01",
+              "start": 0,
+              "end": 4521,
+              "seconds": 276,
+              "minutes": 5,
+              "title": "L’enigma di Savile Row"
+            },
+            {
+              "id": "capitolo-01-micro-02",
+              "chapterId": "capitolo-01",
+              "start": 4521,
+              "end": 9574,
+              "seconds": 287,
+              "minutes": 5,
+              "title": "Un nuovo domestico"
+            },
+            {
+              "id": "capitolo-02-micro-01",
+              "chapterId": "capitolo-02",
+              "start": 0,
+              "end": 3845,
+              "seconds": 230,
+              "minutes": 4,
+              "title": "Il passato di Gambalesta"
+            },
+            {
+              "id": "capitolo-02-micro-02",
+              "chapterId": "capitolo-02",
+              "start": 3845,
+              "end": 7723,
+              "seconds": 227,
+              "minutes": 4,
+              "title": "Una casa regolata a orologio"
+            },
+            {
+              "id": "capitolo-03-micro-01",
+              "chapterId": "capitolo-03",
+              "start": 0,
+              "end": 4677,
+              "seconds": 270,
+              "minutes": 4,
+              "title": "Il furto alla Banca d’Inghilterra"
+            },
+            {
+              "id": "capitolo-03-micro-02",
+              "chapterId": "capitolo-03",
+              "start": 4677,
+              "end": 8993,
+              "seconds": 250,
+              "minutes": 4,
+              "title": "La notizia al tavolo da whist"
+            },
+            {
+              "id": "capitolo-03-micro-03",
+              "chapterId": "capitolo-03",
+              "start": 8993,
+              "end": 13410,
+              "seconds": 248,
+              "minutes": 4,
+              "title": "La scommessa degli ottanta giorni"
+            },
+            {
+              "id": "capitolo-04-micro-01",
+              "chapterId": "capitolo-04",
+              "start": 0,
+              "end": 3065,
+              "seconds": 198,
+              "minutes": 3,
+              "title": "Una valigia in dieci minuti"
+            },
+            {
+              "id": "capitolo-04-micro-02",
+              "chapterId": "capitolo-04",
+              "start": 3065,
+              "end": 6604,
+              "seconds": 194,
+              "minutes": 3,
+              "title": "Il treno della sera"
+            },
+            {
+              "id": "capitolo-05-micro-01",
+              "chapterId": "capitolo-05",
+              "start": 0,
+              "end": 3194,
+              "seconds": 185,
+              "minutes": 3,
+              "title": "Londra scopre la scommessa"
+            },
+            {
+              "id": "capitolo-05-micro-02",
+              "chapterId": "capitolo-05",
+              "start": 3194,
+              "end": 6394,
+              "seconds": 185,
+              "minutes": 3,
+              "title": "Un telegramma da Suez"
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "title": "Da Suez all’India",
+          "episodes": [
+            {
+              "id": "capitolo-06-micro-01",
+              "chapterId": "capitolo-06",
+              "start": 0,
+              "end": 4480,
+              "seconds": 264,
+              "minutes": 4,
+              "title": "Il sospetto dell’ispettore Fix"
+            },
+            {
+              "id": "capitolo-06-micro-02",
+              "chapterId": "capitolo-06",
+              "start": 4480,
+              "end": 9030,
+              "seconds": 253,
+              "minutes": 4,
+              "title": "Una pista sul molo"
+            },
+            {
+              "id": "capitolo-07-micro-01",
+              "chapterId": "capitolo-07",
+              "start": 0,
+              "end": 4846,
+              "seconds": 298,
+              "minutes": 5,
+              "title": "Il timbro sul passaporto"
+            },
+            {
+              "id": "capitolo-08-micro-01",
+              "chapterId": "capitolo-08",
+              "start": 0,
+              "end": 3011,
+              "seconds": 196,
+              "minutes": 3,
+              "title": "L’orologio di Greenwich"
+            },
+            {
+              "id": "capitolo-08-micro-02",
+              "chapterId": "capitolo-08",
+              "start": 3011,
+              "end": 6326,
+              "seconds": 189,
+              "minutes": 3,
+              "title": "Un padrone assunto da poco"
+            },
+            {
+              "id": "capitolo-09-micro-01",
+              "chapterId": "capitolo-09",
+              "start": 0,
+              "end": 3335,
+              "seconds": 203,
+              "minutes": 3,
+              "title": "Da Suez verso Aden"
+            },
+            {
+              "id": "capitolo-09-micro-02",
+              "chapterId": "capitolo-09",
+              "start": 3335,
+              "end": 6825,
+              "seconds": 214,
+              "minutes": 4,
+              "title": "Fogg e Fix sul Mongolia"
+            },
+            {
+              "id": "capitolo-09-micro-03",
+              "chapterId": "capitolo-09",
+              "start": 6825,
+              "end": 10823,
+              "seconds": 211,
+              "minutes": 4,
+              "title": "Una sosta ad Aden"
+            },
+            {
+              "id": "capitolo-10-micro-01",
+              "chapterId": "capitolo-10",
+              "start": 0,
+              "end": 4804,
+              "seconds": 294,
+              "minutes": 5,
+              "title": "La rotta delle ferrovie indiane"
+            },
+            {
+              "id": "capitolo-10-micro-02",
+              "chapterId": "capitolo-10",
+              "start": 4804,
+              "end": 10464,
+              "seconds": 300,
+              "minutes": 5,
+              "title": "Gambalesta a Bombay"
+            },
+            {
+              "id": "capitolo-11-micro-01",
+              "chapterId": "capitolo-11",
+              "start": 0,
+              "end": 4260,
+              "seconds": 247,
+              "minutes": 4,
+              "title": "Un ufficiale sul treno"
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "title": "Attraverso l’India",
+          "episodes": [
+            {
+              "id": "capitolo-11-micro-02",
+              "chapterId": "capitolo-11",
+              "start": 4260,
+              "end": 8457,
+              "seconds": 240,
+              "minutes": 4,
+              "title": "Di notte attraverso i Ghati"
+            },
+            {
+              "id": "capitolo-11-micro-03",
+              "chapterId": "capitolo-11",
+              "start": 8457,
+              "end": 12538,
+              "seconds": 243,
+              "minutes": 4,
+              "title": "Il binario interrotto"
+            },
+            {
+              "id": "capitolo-11-micro-04",
+              "chapterId": "capitolo-11",
+              "start": 12538,
+              "end": 17038,
+              "seconds": 247,
+              "minutes": 4,
+              "title": "Un elefante per proseguire"
+            },
+            {
+              "id": "capitolo-12-micro-01",
+              "chapterId": "capitolo-12",
+              "start": 0,
+              "end": 4186,
+              "seconds": 253,
+              "minutes": 4,
+              "title": "La scorciatoia nella giungla"
+            },
+            {
+              "id": "capitolo-12-micro-02",
+              "chapterId": "capitolo-12",
+              "start": 4186,
+              "end": 8763,
+              "seconds": 266,
+              "minutes": 4,
+              "title": "Le torce nella foresta"
+            },
+            {
+              "id": "capitolo-12-micro-03",
+              "chapterId": "capitolo-12",
+              "start": 8763,
+              "end": 13312,
+              "seconds": 271,
+              "minutes": 5,
+              "title": "La sorte di Auda"
+            },
+            {
+              "id": "capitolo-13-micro-01",
+              "chapterId": "capitolo-13",
+              "start": 0,
+              "end": 3976,
+              "seconds": 247,
+              "minutes": 4,
+              "title": "Un piano rischioso"
+            },
+            {
+              "id": "capitolo-13-micro-02",
+              "chapterId": "capitolo-13",
+              "start": 3976,
+              "end": 8357,
+              "seconds": 253,
+              "minutes": 4,
+              "title": "In attesa nell’oscurità"
+            },
+            {
+              "id": "capitolo-13-micro-03",
+              "chapterId": "capitolo-13",
+              "start": 8357,
+              "end": 12765,
+              "seconds": 260,
+              "minutes": 4,
+              "title": "Gambalesta si avvicina al rogo"
+            },
+            {
+              "id": "capitolo-14-micro-01",
+              "chapterId": "capitolo-14",
+              "start": 0,
+              "end": 4182,
+              "seconds": 248,
+              "minutes": 4,
+              "title": "La corsa verso Allahabad"
+            },
+            {
+              "id": "capitolo-14-micro-02",
+              "chapterId": "capitolo-14",
+              "start": 4182,
+              "end": 8529,
+              "seconds": 253,
+              "minutes": 4,
+              "title": "Un dono per la guida"
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "title": "Verso Hong Kong",
+          "episodes": [
+            {
+              "id": "capitolo-14-micro-03",
+              "chapterId": "capitolo-14",
+              "start": 8529,
+              "end": 13002,
+              "seconds": 255,
+              "minutes": 4,
+              "title": "La proposta per Auda"
+            },
+            {
+              "id": "capitolo-15-micro-01",
+              "chapterId": "capitolo-15",
+              "start": 0,
+              "end": 3840,
+              "seconds": 235,
+              "minutes": 4,
+              "title": "Una sorpresa alla stazione"
+            },
+            {
+              "id": "capitolo-15-micro-02",
+              "chapterId": "capitolo-15",
+              "start": 3840,
+              "end": 7906,
+              "seconds": 239,
+              "minutes": 4,
+              "title": "Le scarpe come prova"
+            },
+            {
+              "id": "capitolo-15-micro-03",
+              "chapterId": "capitolo-15",
+              "start": 7906,
+              "end": 12075,
+              "seconds": 240,
+              "minutes": 4,
+              "title": "La cauzione di Fogg"
+            },
+            {
+              "id": "capitolo-16-micro-01",
+              "chapterId": "capitolo-16",
+              "start": 0,
+              "end": 3486,
+              "seconds": 202,
+              "minutes": 3,
+              "title": "A bordo del Rangoon"
+            },
+            {
+              "id": "capitolo-16-micro-02",
+              "chapterId": "capitolo-16",
+              "start": 3486,
+              "end": 6986,
+              "seconds": 198,
+              "minutes": 3,
+              "title": "Le inquietudini di Fix"
+            },
+            {
+              "id": "capitolo-16-micro-03",
+              "chapterId": "capitolo-16",
+              "start": 6986,
+              "end": 10351,
+              "seconds": 200,
+              "minutes": 3,
+              "title": "Una conversazione in mare"
+            },
+            {
+              "id": "capitolo-17-micro-01",
+              "chapterId": "capitolo-17",
+              "start": 0,
+              "end": 4135,
+              "seconds": 243,
+              "minutes": 4,
+              "title": "Una chiacchierata sul ponte"
+            },
+            {
+              "id": "capitolo-17-micro-02",
+              "chapterId": "capitolo-17",
+              "start": 4135,
+              "end": 8336,
+              "seconds": 244,
+              "minutes": 4,
+              "title": "Una sosta a Singapore"
+            },
+            {
+              "id": "capitolo-17-micro-03",
+              "chapterId": "capitolo-17",
+              "start": 8336,
+              "end": 12583,
+              "seconds": 244,
+              "minutes": 4,
+              "title": "Fix cambia strategia"
+            },
+            {
+              "id": "capitolo-18-micro-01",
+              "chapterId": "capitolo-18",
+              "start": 0,
+              "end": 4405,
+              "seconds": 261,
+              "minutes": 4,
+              "title": "Vento contrario verso Hong Kong"
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "title": "La Tankadera",
+          "episodes": [
+            {
+              "id": "capitolo-18-micro-02",
+              "chapterId": "capitolo-18",
+              "start": 4405,
+              "end": 9085,
+              "seconds": 265,
+              "minutes": 4,
+              "title": "L’approdo a Hong Kong"
+            },
+            {
+              "id": "capitolo-19-micro-01",
+              "chapterId": "capitolo-19",
+              "start": 0,
+              "end": 4653,
+              "seconds": 275,
+              "minutes": 5,
+              "title": "Un parente da cercare"
+            },
+            {
+              "id": "capitolo-19-micro-02",
+              "chapterId": "capitolo-19",
+              "start": 4653,
+              "end": 9110,
+              "seconds": 270,
+              "minutes": 4,
+              "title": "Nella fumeria d’oppio"
+            },
+            {
+              "id": "capitolo-19-micro-03",
+              "chapterId": "capitolo-19",
+              "start": 9110,
+              "end": 13295,
+              "seconds": 260,
+              "minutes": 4,
+              "title": "Fix scopre le sue carte"
+            },
+            {
+              "id": "capitolo-20-micro-01",
+              "chapterId": "capitolo-20",
+              "start": 0,
+              "end": 3709,
+              "seconds": 222,
+              "minutes": 4,
+              "title": "Una partenza mancata"
+            },
+            {
+              "id": "capitolo-20-micro-02",
+              "chapterId": "capitolo-20",
+              "start": 3709,
+              "end": 7233,
+              "seconds": 215,
+              "minutes": 4,
+              "title": "Il prezzo di una traversata"
+            },
+            {
+              "id": "capitolo-20-micro-03",
+              "chapterId": "capitolo-20",
+              "start": 7233,
+              "end": 11010,
+              "seconds": 223,
+              "minutes": 4,
+              "title": "Il pilota della Tankadera"
+            },
+            {
+              "id": "capitolo-21-micro-01",
+              "chapterId": "capitolo-21",
+              "start": 0,
+              "end": 3960,
+              "seconds": 233,
+              "minutes": 4,
+              "title": "Ottocento miglia in mare"
+            },
+            {
+              "id": "capitolo-21-micro-02",
+              "chapterId": "capitolo-21",
+              "start": 3960,
+              "end": 7930,
+              "seconds": 234,
+              "minutes": 4,
+              "title": "La prima notte a bordo"
+            },
+            {
+              "id": "capitolo-21-micro-03",
+              "chapterId": "capitolo-21",
+              "start": 7930,
+              "end": 12117,
+              "seconds": 246,
+              "minutes": 4,
+              "title": "La burrasca"
+            },
+            {
+              "id": "capitolo-21-micro-04",
+              "chapterId": "capitolo-21",
+              "start": 12117,
+              "end": 16705,
+              "seconds": 242,
+              "minutes": 4,
+              "title": "Un segnale al largo"
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "title": "Dal Giappone all’America",
+          "episodes": [
+            {
+              "id": "capitolo-22-micro-01",
+              "chapterId": "capitolo-22",
+              "start": 0,
+              "end": 4072,
+              "seconds": 253,
+              "minutes": 4,
+              "title": "Il risveglio sul Carnatic"
+            },
+            {
+              "id": "capitolo-22-micro-02",
+              "chapterId": "capitolo-22",
+              "start": 4072,
+              "end": 8329,
+              "seconds": 251,
+              "minutes": 4,
+              "title": "Una traversata senza il padrone"
+            },
+            {
+              "id": "capitolo-22-micro-03",
+              "chapterId": "capitolo-22",
+              "start": 8329,
+              "end": 12986,
+              "seconds": 266,
+              "minutes": 4,
+              "title": "Solo per le strade di Yokohama"
+            },
+            {
+              "id": "capitolo-23-micro-01",
+              "chapterId": "capitolo-23",
+              "start": 0,
+              "end": 3830,
+              "seconds": 222,
+              "minutes": 4,
+              "title": "In cerca di un pasto"
+            },
+            {
+              "id": "capitolo-23-micro-02",
+              "chapterId": "capitolo-23",
+              "start": 3830,
+              "end": 7688,
+              "seconds": 224,
+              "minutes": 4,
+              "title": "L’offerta dell’onorevole Batulcar"
+            },
+            {
+              "id": "capitolo-23-micro-03",
+              "chapterId": "capitolo-23",
+              "start": 7688,
+              "end": 11908,
+              "seconds": 241,
+              "minutes": 4,
+              "title": "La piramide dei nasi"
+            },
+            {
+              "id": "capitolo-24-micro-01",
+              "chapterId": "capitolo-24",
+              "start": 0,
+              "end": 3900,
+              "seconds": 230,
+              "minutes": 4,
+              "title": "Come Fogg raggiunse il Giappone"
+            },
+            {
+              "id": "capitolo-24-micro-02",
+              "chapterId": "capitolo-24",
+              "start": 3900,
+              "end": 7842,
+              "seconds": 229,
+              "minutes": 4,
+              "title": "Sulla rotta del Pacifico"
+            },
+            {
+              "id": "capitolo-24-micro-03",
+              "chapterId": "capitolo-24",
+              "start": 7842,
+              "end": 11685,
+              "seconds": 227,
+              "minutes": 4,
+              "title": "Un patto con Fix"
+            },
+            {
+              "id": "capitolo-25-micro-01",
+              "chapterId": "capitolo-25",
+              "start": 0,
+              "end": 4292,
+              "seconds": 251,
+              "minutes": 4,
+              "title": "L’arrivo a San Francisco"
+            },
+            {
+              "id": "capitolo-25-micro-02",
+              "chapterId": "capitolo-25",
+              "start": 4292,
+              "end": 8459,
+              "seconds": 250,
+              "minutes": 4,
+              "title": "La folla si raduna"
+            }
+          ]
+        },
+        {
+          "number": 7,
+          "title": "Da San Francisco alle Montagne Rocciose",
+          "episodes": [
+            {
+              "id": "capitolo-25-micro-03",
+              "chapterId": "capitolo-25",
+              "start": 8459,
+              "end": 12778,
+              "seconds": 256,
+              "minutes": 4,
+              "title": "La rissa in città"
+            },
+            {
+              "id": "capitolo-26-micro-01",
+              "chapterId": "capitolo-26",
+              "start": 0,
+              "end": 3529,
+              "seconds": 208,
+              "minutes": 3,
+              "title": "Da oceano a oceano"
+            },
+            {
+              "id": "capitolo-26-micro-02",
+              "chapterId": "capitolo-26",
+              "start": 3529,
+              "end": 7175,
+              "seconds": 205,
+              "minutes": 3,
+              "title": "La corsa del Pacific Express"
+            },
+            {
+              "id": "capitolo-26-micro-03",
+              "chapterId": "capitolo-26",
+              "start": 7175,
+              "end": 10954,
+              "seconds": 211,
+              "minutes": 4,
+              "title": "I bisonti sui binari"
+            },
+            {
+              "id": "capitolo-27-micro-01",
+              "chapterId": "capitolo-27",
+              "start": 0,
+              "end": 4284,
+              "seconds": 260,
+              "minutes": 4,
+              "title": "Una conferenza in carrozza"
+            },
+            {
+              "id": "capitolo-27-micro-02",
+              "chapterId": "capitolo-27",
+              "start": 4284,
+              "end": 8503,
+              "seconds": 247,
+              "minutes": 4,
+              "title": "Gli ultimi ascoltatori"
+            },
+            {
+              "id": "capitolo-27-micro-03",
+              "chapterId": "capitolo-27",
+              "start": 8503,
+              "end": 12655,
+              "seconds": 236,
+              "minutes": 4,
+              "title": "Una sosta a Ogden"
+            },
+            {
+              "id": "capitolo-28-micro-01",
+              "chapterId": "capitolo-28",
+              "start": 0,
+              "end": 4151,
+              "seconds": 243,
+              "minutes": 4,
+              "title": "La neve sui binari"
+            },
+            {
+              "id": "capitolo-28-micro-02",
+              "chapterId": "capitolo-28",
+              "start": 4151,
+              "end": 8152,
+              "seconds": 239,
+              "minutes": 4,
+              "title": "Una partita in carrozza"
+            },
+            {
+              "id": "capitolo-28-micro-03",
+              "chapterId": "capitolo-28",
+              "start": 8152,
+              "end": 12212,
+              "seconds": 232,
+              "minutes": 4,
+              "title": "Un ponte pericolante"
+            },
+            {
+              "id": "capitolo-28-micro-04",
+              "chapterId": "capitolo-28",
+              "start": 12212,
+              "end": 15970,
+              "seconds": 231,
+              "minutes": 4,
+              "title": "La corsa sul ponte"
+            }
+          ]
+        },
+        {
+          "number": 8,
+          "title": "La corsa attraverso l’America",
+          "episodes": [
+            {
+              "id": "capitolo-29-micro-01",
+              "chapterId": "capitolo-29",
+              "start": 0,
+              "end": 4240,
+              "seconds": 257,
+              "minutes": 4,
+              "title": "Verso Fort Kearney"
+            },
+            {
+              "id": "capitolo-29-micro-02",
+              "chapterId": "capitolo-29",
+              "start": 4240,
+              "end": 8570,
+              "seconds": 264,
+              "minutes": 4,
+              "title": "Un duello sul treno"
+            },
+            {
+              "id": "capitolo-29-micro-03",
+              "chapterId": "capitolo-29",
+              "start": 8570,
+              "end": 13112,
+              "seconds": 262,
+              "minutes": 4,
+              "title": "Fermare il convoglio"
+            },
+            {
+              "id": "capitolo-30-micro-01",
+              "chapterId": "capitolo-30",
+              "start": 0,
+              "end": 4499,
+              "seconds": 277,
+              "minutes": 5,
+              "title": "Tre viaggiatori scomparsi"
+            },
+            {
+              "id": "capitolo-30-micro-02",
+              "chapterId": "capitolo-30",
+              "start": 4499,
+              "end": 9101,
+              "seconds": 271,
+              "minutes": 5,
+              "title": "Fogg parte alla ricerca"
+            },
+            {
+              "id": "capitolo-30-micro-03",
+              "chapterId": "capitolo-30",
+              "start": 9101,
+              "end": 13598,
+              "seconds": 267,
+              "minutes": 4,
+              "title": "La lunga attesa a Fort Kearney"
+            },
+            {
+              "id": "capitolo-31-micro-01",
+              "chapterId": "capitolo-31",
+              "start": 0,
+              "end": 3725,
+              "seconds": 225,
+              "minutes": 4,
+              "title": "Una slitta a vela"
+            },
+            {
+              "id": "capitolo-31-micro-02",
+              "chapterId": "capitolo-31",
+              "start": 3725,
+              "end": 7602,
+              "seconds": 221,
+              "minutes": 4,
+              "title": "A tutta velocità sul ghiaccio"
+            },
+            {
+              "id": "capitolo-31-micro-03",
+              "chapterId": "capitolo-31",
+              "start": 7602,
+              "end": 11567,
+              "seconds": 230,
+              "minutes": 4,
+              "title": "L’ultimo tratto verso Omaha"
+            },
+            {
+              "id": "capitolo-32-micro-01",
+              "chapterId": "capitolo-32",
+              "start": 0,
+              "end": 3786,
+              "seconds": 221,
+              "minutes": 4,
+              "title": "Il China è già partito"
+            },
+            {
+              "id": "capitolo-32-micro-02",
+              "chapterId": "capitolo-32",
+              "start": 3786,
+              "end": 7321,
+              "seconds": 206,
+              "minutes": 3,
+              "title": "Una proposta al capitano Speedy"
+            }
+          ]
+        },
+        {
+          "number": 9,
+          "title": "L’Atlantico e l’ultima corsa",
+          "episodes": [
+            {
+              "id": "capitolo-33-micro-01",
+              "chapterId": "capitolo-33",
+              "start": 0,
+              "end": 4002,
+              "seconds": 235,
+              "minutes": 4,
+              "title": "Una nuova rotta per l’Henrietta"
+            },
+            {
+              "id": "capitolo-33-micro-02",
+              "chapterId": "capitolo-33",
+              "start": 4002,
+              "end": 7759,
+              "seconds": 222,
+              "minutes": 4,
+              "title": "Speedy nella sua cabina"
+            },
+            {
+              "id": "capitolo-33-micro-03",
+              "chapterId": "capitolo-33",
+              "start": 7759,
+              "end": 11681,
+              "seconds": 229,
+              "minutes": 4,
+              "title": "Il prezzo del combustibile"
+            },
+            {
+              "id": "capitolo-33-micro-04",
+              "chapterId": "capitolo-33",
+              "start": 11681,
+              "end": 15647,
+              "seconds": 229,
+              "minutes": 4,
+              "title": "Una deviazione per Queenstown"
+            },
+            {
+              "id": "capitolo-34-micro-01",
+              "chapterId": "capitolo-34",
+              "start": 0,
+              "end": 3110,
+              "seconds": 188,
+              "minutes": 3,
+              "title": "Nella guardina della dogana"
+            },
+            {
+              "id": "capitolo-34-micro-02",
+              "chapterId": "capitolo-34",
+              "start": 3110,
+              "end": 6218,
+              "seconds": 187,
+              "minutes": 3,
+              "title": "Una corsa verso Londra"
+            },
+            {
+              "id": "capitolo-35-micro-01",
+              "chapterId": "capitolo-35",
+              "start": 0,
+              "end": 4937,
+              "seconds": 290,
+              "minutes": 5,
+              "title": "Il mattino a Savile Row"
+            },
+            {
+              "id": "capitolo-35-micro-02",
+              "chapterId": "capitolo-35",
+              "start": 4937,
+              "end": 9739,
+              "seconds": 288,
+              "minutes": 5,
+              "title": "Auda prende la parola"
+            },
+            {
+              "id": "capitolo-36-micro-01",
+              "chapterId": "capitolo-36",
+              "start": 0,
+              "end": 3549,
+              "seconds": 215,
+              "minutes": 4,
+              "title": "Il Reform Club aspetta"
+            },
+            {
+              "id": "capitolo-36-micro-02",
+              "chapterId": "capitolo-36",
+              "start": 3549,
+              "end": 7051,
+              "seconds": 208,
+              "minutes": 3,
+              "title": "Gli ultimi secondi"
+            },
+            {
+              "id": "capitolo-37-micro-01",
+              "chapterId": "capitolo-37",
+              "start": 0,
+              "end": 2883,
+              "seconds": 180,
+              "minutes": 3,
+              "title": "Fogg sulla soglia"
+            },
+            {
+              "id": "capitolo-37-micro-02",
+              "chapterId": "capitolo-37",
+              "start": 2883,
+              "end": 5757,
+              "seconds": 176,
+              "minutes": 3,
+              "title": "Il giorno che mancava"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "ventimila-leghe",
@@ -3811,383 +4991,578 @@
       "seasons": [
         {
           "number": 1,
-          "title": "La bella estate",
+          "title": "L’estate di Ginia",
           "episodes": [
             {
-              "id": "capitolo-01",
+              "id": "capitolo-01-micro-01",
               "chapterId": "capitolo-01",
-              "title": "Le notti della giovinezza",
               "start": 0,
-              "end": 4831,
-              "part": 0,
-              "parts": 2,
-              "minutes": 5,
-              "recap": "Ginia vive con entusiasmo le serate estive e osserva il comportamento delle amiche."
+              "end": 4553,
+              "seconds": 257,
+              "minutes": 4,
+              "title": "Le sere erano sempre una festa"
             },
             {
-              "id": "capitolo-01-parte-02",
+              "id": "capitolo-01-micro-02",
               "chapterId": "capitolo-01",
-              "title": "Una domenica in barca",
-              "start": 4831,
+              "start": 4553,
               "end": 9085,
-              "part": 1,
-              "parts": 2,
+              "seconds": 253,
               "minutes": 4,
+              "title": "Una domenica con Rosa e Pino",
               "recap": "Le uscite in compagnia e il rapporto fra Rosa e Pino fanno emergere le inquietudini di Ginia."
             },
             {
-              "id": "capitolo-02",
+              "id": "capitolo-02-micro-01",
               "chapterId": "capitolo-02",
-              "title": "Una ragazza diversa",
               "start": 0,
-              "end": 4522,
-              "part": 0,
-              "parts": 2,
+              "end": 4660,
+              "seconds": 267,
               "minutes": 4,
+              "title": "Amelia fa un’altra vita",
               "recap": "Ginia scopre che Amelia conduce una vita diversa dalla sua e ha lavorato come modella."
             },
             {
-              "id": "capitolo-02-parte-02",
+              "id": "capitolo-02-micro-02",
               "chapterId": "capitolo-02",
-              "title": "La promessa di Amelia",
-              "start": 4522,
+              "start": 4660,
               "end": 9363,
-              "part": 1,
-              "parts": 2,
+              "seconds": 272,
               "minutes": 5,
-              "recap": "Le due si avvicinano e Ginia le chiede di accompagnarla da un pittore."
+              "title": "Un invito in collina"
             },
             {
-              "id": "capitolo-03",
+              "id": "capitolo-03-micro-01",
               "chapterId": "capitolo-03",
-              "title": "Un’amicizia più stretta",
               "start": 0,
-              "end": 5562,
-              "part": 0,
-              "parts": 2,
-              "minutes": 5,
-              "recap": "Ginia conosce meglio le difficoltà di Amelia, che trova una nuova occasione di lavoro."
+              "end": 3856,
+              "seconds": 213,
+              "minutes": 4,
+              "title": "Amelia all’atelier"
             },
             {
-              "id": "capitolo-03-parte-02",
+              "id": "capitolo-03-micro-02",
               "chapterId": "capitolo-03",
-              "title": "Nello studio di Barbetta",
-              "start": 5562,
+              "start": 3856,
+              "end": 7569,
+              "seconds": 214,
+              "minutes": 4,
+              "title": "Dietro le tende dello studio"
+            },
+            {
+              "id": "capitolo-03-micro-03",
+              "chapterId": "capitolo-03",
+              "start": 7569,
               "end": 11263,
-              "part": 1,
-              "parts": 2,
-              "minutes": 5,
-              "recap": "Ginia entra nello studio e scopre i propri ritratti e quelli di Amelia."
+              "seconds": 215,
+              "minutes": 4,
+              "title": "I disegni di Rodrigues"
             },
             {
-              "id": "capitolo-04",
+              "id": "capitolo-04-micro-01",
               "chapterId": "capitolo-04",
-              "title": "Amelia davanti al pittore",
               "start": 0,
-              "end": 5328,
-              "part": 0,
-              "parts": 2,
+              "end": 5240,
+              "seconds": 300,
               "minutes": 5,
-              "recap": "Ginia assiste alla seduta di pittura e ne rimane turbata."
+              "title": "Amelia davanti al cavalletto"
             },
             {
-              "id": "capitolo-04-parte-02",
+              "id": "capitolo-04-micro-02",
               "chapterId": "capitolo-04",
-              "title": "Il dubbio su Severino",
-              "start": 5328,
+              "start": 5240,
               "end": 10522,
-              "part": 1,
-              "parts": 2,
+              "seconds": 300,
               "minutes": 5,
+              "title": "Le clienti dell’atelier",
               "recap": "Finita l’estate, le parole di Massimo fanno nascere in Ginia nuovi sospetti."
             },
             {
-              "id": "capitolo-05",
+              "id": "capitolo-05-micro-01",
               "chapterId": "capitolo-05",
-              "title": "Il caffè sotto i portici",
               "start": 0,
-              "end": 4670,
-              "part": 0,
-              "parts": 2,
-              "minutes": 4,
-              "recap": "Amelia torna da Ginia e la introduce nelle sue nuove abitudini al caffè."
+              "end": 3463,
+              "seconds": 201,
+              "minutes": 3,
+              "title": "Un cappello per Amelia"
             },
             {
-              "id": "capitolo-05-parte-02",
+              "id": "capitolo-05-micro-02",
               "chapterId": "capitolo-05",
-              "title": "La stanza nella pioggia",
-              "start": 4670,
+              "start": 3463,
+              "end": 7048,
+              "seconds": 206,
+              "minutes": 3,
+              "title": "I discorsi delle modelle"
+            },
+            {
+              "id": "capitolo-05-micro-03",
+              "chapterId": "capitolo-05",
+              "start": 7048,
               "end": 10699,
-              "part": 1,
-              "parts": 2,
-              "minutes": 6,
-              "recap": "Ginia conosce Guido e Rodrigues e trascorre una serata nel loro studio."
-            },
-            {
-              "id": "capitolo-06",
-              "chapterId": "capitolo-06",
-              "title": "Conversazioni sull’arte",
-              "start": 0,
-              "end": 3833,
-              "part": 0,
-              "parts": 2,
+              "seconds": 210,
               "minutes": 4,
+              "title": "La luce spenta nello studio"
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "title": "Nello studio dei pittori",
+          "episodes": [
+            {
+              "id": "capitolo-06-micro-01",
+              "chapterId": "capitolo-06",
+              "start": 0,
+              "end": 4122,
+              "seconds": 235,
+              "minutes": 4,
+              "title": "Dopo la pioggia",
               "recap": "Ginia parla con Amelia dei pittori e desidera rivedere i quadri di Guido."
             },
             {
-              "id": "capitolo-06-parte-02",
+              "id": "capitolo-06-micro-02",
               "chapterId": "capitolo-06",
-              "title": "I segreti dello studio",
-              "start": 3833,
+              "start": 4122,
               "end": 8292,
-              "part": 1,
-              "parts": 2,
+              "seconds": 237,
               "minutes": 4,
-              "recap": "Ginia incontra Rodrigues e osserva con curiosità gli spazi privati dello studio."
+              "title": "Il taccuino di Rodrigues"
             },
             {
-              "id": "capitolo-07",
+              "id": "capitolo-07-micro-01",
               "chapterId": "capitolo-07",
-              "title": "Una visita a Guido",
               "start": 0,
-              "end": 3764,
-              "part": 0,
-              "parts": 2,
-              "minutes": 4,
-              "recap": "Ginia raggiunge Guido senza Amelia e cerca di attirare la sua attenzione."
+              "end": 3510,
+              "seconds": 206,
+              "minutes": 3,
+              "title": "Un pomeriggio con Guido"
             },
             {
-              "id": "capitolo-07-parte-02",
+              "id": "capitolo-07-micro-02",
               "chapterId": "capitolo-07",
-              "title": "Mi piaci, Ginetta",
-              "start": 3764,
+              "start": 3510,
               "end": 7321,
-              "part": 1,
-              "parts": 2,
-              "minutes": 3,
+              "seconds": 214,
+              "minutes": 4,
+              "title": "Il ritratto che Ginia aspetta",
               "recap": "Le parole di Guido incoraggiano Ginia a tornare nello studio."
             },
             {
-              "id": "capitolo-08",
+              "id": "capitolo-08-micro-01",
               "chapterId": "capitolo-08",
-              "title": "Un pomeriggio felice",
               "start": 0,
-              "end": 4383,
-              "part": 0,
-              "parts": 2,
+              "end": 4180,
+              "seconds": 243,
               "minutes": 4,
-              "recap": "Ginia trascorre un pomeriggio nello studio con Guido e Rodrigues."
+              "title": "Una voce dietro la porta"
             },
             {
-              "id": "capitolo-08-parte-02",
+              "id": "capitolo-08-micro-02",
               "chapterId": "capitolo-08",
-              "title": "Sogni nella notte",
-              "start": 4383,
+              "start": 4180,
               "end": 8397,
-              "part": 1,
-              "parts": 2,
+              "seconds": 240,
               "minutes": 4,
+              "title": "Due ragazze sul ponte",
               "recap": "Ginia interroga Amelia sul passato di Guido e immagina una vita insieme a lui."
             },
             {
-              "id": "capitolo-09",
+              "id": "capitolo-09-micro-01",
               "chapterId": "capitolo-09",
-              "title": "Una proposta rifiutata",
               "start": 0,
-              "end": 5120,
-              "part": 0,
-              "parts": 2,
-              "minutes": 5,
-              "recap": "Amelia propone di posare insieme per una pittrice, ma Ginia non accetta."
+              "end": 3366,
+              "seconds": 199,
+              "minutes": 3,
+              "title": "Arrivare prima di Amelia"
             },
             {
-              "id": "capitolo-09-parte-02",
+              "id": "capitolo-09-micro-02",
               "chapterId": "capitolo-09",
-              "title": "Il ritorno allo studio",
-              "start": 5120,
+              "start": 3366,
+              "end": 6839,
+              "seconds": 200,
+              "minutes": 3,
+              "title": "Le serate senza Rosa"
+            },
+            {
+              "id": "capitolo-09-micro-03",
+              "chapterId": "capitolo-09",
+              "start": 6839,
               "end": 10474,
-              "part": 1,
-              "parts": 2,
-              "minutes": 5,
-              "recap": "Ginia attraversa giorni di solitudine e torna a cercare la vicinanza di Guido."
+              "seconds": 210,
+              "minutes": 4,
+              "title": "Una telefonata all’atelier"
             },
             {
-              "id": "capitolo-10",
+              "id": "capitolo-10-micro-01",
               "chapterId": "capitolo-10",
-              "title": "Le lacrime di Ginia",
               "start": 0,
-              "end": 4480,
-              "part": 0,
-              "parts": 2,
+              "end": 4214,
+              "seconds": 247,
               "minutes": 4,
-              "recap": "Dopo la serata con Guido, Ginia torna a trovarlo e si commuove."
+              "title": "Quattro amici fino al tram"
             },
             {
-              "id": "capitolo-10-parte-02",
+              "id": "capitolo-10-micro-02",
               "chapterId": "capitolo-10",
-              "title": "Il bacio di Amelia",
-              "start": 4480,
+              "start": 4214,
               "end": 8511,
-              "part": 1,
-              "parts": 2,
+              "seconds": 247,
               "minutes": 4,
+              "title": "Le tele nello studio",
               "recap": "Ginia cerca certezze nel rapporto con Guido; Amelia la sorprende durante una passeggiata."
             },
             {
-              "id": "capitolo-11",
+              "id": "capitolo-11-micro-01",
               "chapterId": "capitolo-11",
-              "title": "I ricordi di Guido",
               "start": 0,
-              "end": 4424,
-              "part": 0,
-              "parts": 2,
+              "end": 4381,
+              "seconds": 258,
               "minutes": 4,
-              "recap": "Ginia ascolta Guido raccontare gli amici e le serate del passato."
-            },
+              "title": "Una cravatta per Guido"
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "title": "La fine dell’estate",
+          "episodes": [
             {
-              "id": "capitolo-11-parte-02",
+              "id": "capitolo-11-micro-02",
               "chapterId": "capitolo-11",
-              "title": "Davanti allo specchio",
-              "start": 4424,
+              "start": 4381,
               "end": 8853,
-              "part": 1,
-              "parts": 2,
+              "seconds": 252,
               "minutes": 4,
+              "title": "I ricordi di Guido",
               "recap": "Ginia riflette sul rapporto con Guido e sul desiderio di diventare la sua modella."
             },
             {
-              "id": "capitolo-12",
+              "id": "capitolo-12-micro-01",
               "chapterId": "capitolo-12",
-              "title": "Una domenica senza Guido",
               "start": 0,
               "end": 4495,
-              "part": 0,
-              "parts": 2,
+              "seconds": 263,
               "minutes": 4,
+              "title": "L’ultima sera prima della partenza",
               "recap": "La partenza di Guido lascia Ginia inquieta; Amelia la coinvolge in una gita."
             },
             {
-              "id": "capitolo-12-parte-02",
+              "id": "capitolo-12-micro-02",
               "chapterId": "capitolo-12",
-              "title": "Una confessione inattesa",
               "start": 4495,
               "end": 8966,
-              "part": 1,
-              "parts": 2,
+              "seconds": 261,
               "minutes": 4,
+              "title": "Di nuovo all’atelier",
               "recap": "Ginia torna da sola e, qualche giorno dopo, Amelia le confida i propri sentimenti e la malattia."
             },
             {
-              "id": "capitolo-13",
+              "id": "capitolo-13-micro-01",
               "chapterId": "capitolo-13",
-              "title": "La paura della malattia",
               "start": 0,
               "end": 3659,
-              "part": 0,
-              "parts": 2,
+              "seconds": 213,
               "minutes": 4,
+              "title": "La confidenza di Amelia",
               "recap": "Ginia ascolta Amelia e teme le conseguenze della sua confessione."
             },
             {
-              "id": "capitolo-13-parte-02",
+              "id": "capitolo-13-micro-02",
               "chapterId": "capitolo-13",
-              "title": "Le rassicurazioni di Rodrigues",
               "start": 3659,
               "end": 7296,
-              "part": 1,
-              "parts": 2,
+              "seconds": 214,
               "minutes": 4,
+              "title": "I sospetti di Ginia",
               "recap": "Ginia cerca conforto e informazioni da Rodrigues, ma il suo comportamento la turba."
             },
             {
-              "id": "capitolo-14",
+              "id": "capitolo-14-micro-01",
               "chapterId": "capitolo-14",
-              "title": "Preparativi per il ritorno",
               "start": 0,
-              "end": 3256,
-              "part": 0,
-              "parts": 2,
+              "end": 3245,
+              "seconds": 191,
               "minutes": 3,
-              "recap": "Ginia frequenta Rodrigues e si occupa dello studio in attesa di Guido."
+              "title": "Rodrigues al caffè"
             },
             {
-              "id": "capitolo-14-parte-02",
+              "id": "capitolo-14-micro-02",
               "chapterId": "capitolo-14",
-              "title": "Finalmente Guido",
-              "start": 3256,
+              "start": 3245,
               "end": 6580,
-              "part": 1,
-              "parts": 2,
+              "seconds": 194,
               "minutes": 3,
+              "title": "Un incontro sotto l’impermeabile",
               "recap": "Ginia ritrova Guido e, dopo un incontro incerto, riceve il suo invito a tornare."
             },
             {
-              "id": "capitolo-15",
+              "id": "capitolo-15-micro-01",
               "chapterId": "capitolo-15",
-              "title": "L’altra modella",
               "start": 0,
               "end": 3843,
-              "part": 0,
-              "parts": 2,
+              "seconds": 228,
               "minutes": 4,
+              "title": "Chi c’è nello studio?",
               "recap": "Ginia incontra una ragazza nello studio e cerca di ritrovare la vicinanza di Guido."
             },
             {
-              "id": "capitolo-15-parte-02",
+              "id": "capitolo-15-micro-02",
               "chapterId": "capitolo-15",
-              "title": "La vita da innamorata",
               "start": 3843,
               "end": 8075,
-              "part": 1,
-              "parts": 2,
+              "seconds": 241,
               "minutes": 4,
+              "title": "La vita da innamorata",
               "recap": "Ginia si sente legata a Guido e Amelia la convince a tornare nello studio."
             },
             {
-              "id": "capitolo-16",
+              "id": "capitolo-16-micro-01",
               "chapterId": "capitolo-16",
-              "title": "Una serata davanti al camino",
               "start": 0,
               "end": 4446,
-              "part": 0,
-              "parts": 2,
+              "seconds": 262,
               "minutes": 4,
+              "title": "Una visita fuori programma",
               "recap": "Ginia cerca di ritrovare l’allegria della compagnia dei pittori."
             },
             {
-              "id": "capitolo-16-parte-02",
+              "id": "capitolo-16-micro-02",
               "chapterId": "capitolo-16",
-              "title": "Il coraggio di posare",
               "start": 4446,
               "end": 8960,
-              "part": 1,
-              "parts": 2,
+              "seconds": 267,
               "minutes": 4,
+              "title": "Ginia aspetta una risposta",
               "recap": "Ginia osserva Amelia e decide di farsi ritrarre da Guido."
             },
             {
-              "id": "capitolo-17",
+              "id": "capitolo-17-micro-01",
               "chapterId": "capitolo-17",
-              "title": "L’umiliazione",
               "start": 0,
-              "end": 4038,
-              "part": 0,
-              "parts": 2,
+              "end": 4150,
+              "seconds": 245,
               "minutes": 4,
+              "title": "La fiamma e i passi",
               "recap": "Ginia scopre la presenza di Rodrigues e lascia lo studio sconvolta."
             },
             {
-              "id": "capitolo-17-parte-02",
+              "id": "capitolo-17-micro-02",
               "chapterId": "capitolo-17",
-              "title": "Portami tu",
-              "start": 4038,
+              "start": 4150,
               "end": 8380,
-              "part": 1,
-              "parts": 2,
+              "seconds": 247,
               "minutes": 4,
-              "recap": "Dopo giorni di solitudine, Ginia ritrova Amelia e accetta di uscire con lei."
+              "title": "Le stagioni di Ginia"
             }
           ]
+        }
+      ],
+      "previousEpisodes": [
+        {
+          "id": "capitolo-01",
+          "chapterId": "capitolo-01",
+          "start": 0,
+          "end": 4831
+        },
+        {
+          "id": "capitolo-01-parte-02",
+          "chapterId": "capitolo-01",
+          "start": 4831,
+          "end": 9085
+        },
+        {
+          "id": "capitolo-02",
+          "chapterId": "capitolo-02",
+          "start": 0,
+          "end": 4522
+        },
+        {
+          "id": "capitolo-02-parte-02",
+          "chapterId": "capitolo-02",
+          "start": 4522,
+          "end": 9363
+        },
+        {
+          "id": "capitolo-03",
+          "chapterId": "capitolo-03",
+          "start": 0,
+          "end": 5562
+        },
+        {
+          "id": "capitolo-03-parte-02",
+          "chapterId": "capitolo-03",
+          "start": 5562,
+          "end": 11263
+        },
+        {
+          "id": "capitolo-04",
+          "chapterId": "capitolo-04",
+          "start": 0,
+          "end": 5328
+        },
+        {
+          "id": "capitolo-04-parte-02",
+          "chapterId": "capitolo-04",
+          "start": 5328,
+          "end": 10522
+        },
+        {
+          "id": "capitolo-05",
+          "chapterId": "capitolo-05",
+          "start": 0,
+          "end": 4670
+        },
+        {
+          "id": "capitolo-05-parte-02",
+          "chapterId": "capitolo-05",
+          "start": 4670,
+          "end": 10699
+        },
+        {
+          "id": "capitolo-06",
+          "chapterId": "capitolo-06",
+          "start": 0,
+          "end": 3833
+        },
+        {
+          "id": "capitolo-06-parte-02",
+          "chapterId": "capitolo-06",
+          "start": 3833,
+          "end": 8292
+        },
+        {
+          "id": "capitolo-07",
+          "chapterId": "capitolo-07",
+          "start": 0,
+          "end": 3764
+        },
+        {
+          "id": "capitolo-07-parte-02",
+          "chapterId": "capitolo-07",
+          "start": 3764,
+          "end": 7321
+        },
+        {
+          "id": "capitolo-08",
+          "chapterId": "capitolo-08",
+          "start": 0,
+          "end": 4383
+        },
+        {
+          "id": "capitolo-08-parte-02",
+          "chapterId": "capitolo-08",
+          "start": 4383,
+          "end": 8397
+        },
+        {
+          "id": "capitolo-09",
+          "chapterId": "capitolo-09",
+          "start": 0,
+          "end": 5120
+        },
+        {
+          "id": "capitolo-09-parte-02",
+          "chapterId": "capitolo-09",
+          "start": 5120,
+          "end": 10474
+        },
+        {
+          "id": "capitolo-10",
+          "chapterId": "capitolo-10",
+          "start": 0,
+          "end": 4480
+        },
+        {
+          "id": "capitolo-10-parte-02",
+          "chapterId": "capitolo-10",
+          "start": 4480,
+          "end": 8511
+        },
+        {
+          "id": "capitolo-11",
+          "chapterId": "capitolo-11",
+          "start": 0,
+          "end": 4424
+        },
+        {
+          "id": "capitolo-11-parte-02",
+          "chapterId": "capitolo-11",
+          "start": 4424,
+          "end": 8853
+        },
+        {
+          "id": "capitolo-12",
+          "chapterId": "capitolo-12",
+          "start": 0,
+          "end": 4495
+        },
+        {
+          "id": "capitolo-12-parte-02",
+          "chapterId": "capitolo-12",
+          "start": 4495,
+          "end": 8966
+        },
+        {
+          "id": "capitolo-13",
+          "chapterId": "capitolo-13",
+          "start": 0,
+          "end": 3659
+        },
+        {
+          "id": "capitolo-13-parte-02",
+          "chapterId": "capitolo-13",
+          "start": 3659,
+          "end": 7296
+        },
+        {
+          "id": "capitolo-14",
+          "chapterId": "capitolo-14",
+          "start": 0,
+          "end": 3256
+        },
+        {
+          "id": "capitolo-14-parte-02",
+          "chapterId": "capitolo-14",
+          "start": 3256,
+          "end": 6580
+        },
+        {
+          "id": "capitolo-15",
+          "chapterId": "capitolo-15",
+          "start": 0,
+          "end": 3843
+        },
+        {
+          "id": "capitolo-15-parte-02",
+          "chapterId": "capitolo-15",
+          "start": 3843,
+          "end": 8075
+        },
+        {
+          "id": "capitolo-16",
+          "chapterId": "capitolo-16",
+          "start": 0,
+          "end": 4446
+        },
+        {
+          "id": "capitolo-16-parte-02",
+          "chapterId": "capitolo-16",
+          "start": 4446,
+          "end": 8960
+        },
+        {
+          "id": "capitolo-17",
+          "chapterId": "capitolo-17",
+          "start": 0,
+          "end": 4038
+        },
+        {
+          "id": "capitolo-17-parte-02",
+          "chapterId": "capitolo-17",
+          "start": 4038,
+          "end": 8380
         }
       ]
     },
@@ -4301,284 +5676,450 @@
       "seasons": [
         {
           "number": 1,
-          "title": "Lo strano caso del dottor Jekyll e Mr Hyde",
+          "title": "Sulle tracce di Hyde",
           "episodes": [
             {
-              "id": "capitolo-01-parte-01",
+              "id": "capitolo-01-micro-01",
               "chapterId": "capitolo-01",
-              "title": "La porta misteriosa",
               "start": 0,
-              "end": 5395,
-              "part": 0,
-              "parts": 2,
-              "minutes": 5,
-              "recap": "Durante una passeggiata, Enfield racconta a Utterson di aver visto un uomo calpestare una bambina."
+              "end": 4345,
+              "seconds": 253,
+              "minutes": 4,
+              "title": "La passeggiata di Utterson"
             },
             {
-              "id": "capitolo-01-parte-02",
+              "id": "capitolo-01-micro-02",
               "chapterId": "capitolo-01",
-              "title": "Un assegno inquietante",
-              "start": 5395,
+              "start": 4345,
+              "end": 8798,
+              "seconds": 257,
+              "minutes": 4,
+              "title": "Un incontro alle tre del mattino"
+            },
+            {
+              "id": "capitolo-01-micro-03",
+              "chapterId": "capitolo-01",
+              "start": 8798,
               "end": 13136,
-              "part": 1,
-              "parts": 2,
-              "minutes": 8,
-              "recap": "Enfield racconta come l'uomo, Hyde, risarcì la famiglia con un assegno firmato da una persona rispettabile. I due amici decidono di non parlarne più."
+              "seconds": 254,
+              "minutes": 4,
+              "title": "L’assegno e la porta"
             },
             {
-              "id": "capitolo-02-parte-01",
+              "id": "capitolo-02-micro-01",
               "chapterId": "capitolo-02",
-              "title": "Un testamento insolito",
               "start": 0,
-              "end": 4928,
-              "part": 0,
-              "parts": 3,
-              "minutes": 5,
-              "recap": "Utterson esamina il testamento di Jekyll, che favorisce Hyde anche in caso di scomparsa. Lanyon non sa spiegargli il legame fra i due."
+              "end": 4184,
+              "seconds": 247,
+              "minutes": 4,
+              "title": "Il testamento del dottor Jekyll"
             },
             {
-              "id": "capitolo-02-parte-02",
+              "id": "capitolo-02-micro-02",
               "chapterId": "capitolo-02",
-              "title": "L'incontro con Hyde",
-              "start": 4928,
-              "end": 11073,
-              "part": 1,
-              "parts": 3,
-              "minutes": 6,
-              "recap": "Tormentato dal racconto di Enfield, Utterson sorveglia la porta e riesce finalmente a parlare con Hyde."
+              "start": 4184,
+              "end": 8442,
+              "seconds": 243,
+              "minutes": 4,
+              "title": "L’incubo dell’avvocato"
             },
             {
-              "id": "capitolo-02-parte-03",
+              "id": "capitolo-02-micro-03",
               "chapterId": "capitolo-02",
-              "title": "Il timore per Jekyll",
-              "start": 11073,
+              "start": 8442,
+              "end": 12404,
+              "seconds": 233,
+              "minutes": 4,
+              "title": "Finalmente, il signor Hyde"
+            },
+            {
+              "id": "capitolo-02-micro-04",
+              "chapterId": "capitolo-02",
+              "start": 12404,
               "end": 16585,
-              "part": 2,
-              "parts": 3,
-              "minutes": 5,
-              "recap": "L'avvocato visita la casa di Jekyll e scopre che Hyde vi ha libero accesso. Teme che il suo amico sia in pericolo."
+              "seconds": 243,
+              "minutes": 4,
+              "title": "Alla porta di Jekyll"
             },
             {
-              "id": "capitolo-03-parte-01",
+              "id": "capitolo-03-micro-01",
               "chapterId": "capitolo-03",
-              "title": "La promessa di Utterson",
               "start": 0,
               "end": 3878,
-              "part": 0,
-              "parts": 1,
+              "seconds": 236,
               "minutes": 4,
+              "title": "Una promessa dopo pranzo",
               "recap": "Dopo un pranzo fra amici, Utterson affronta Jekyll sul testamento. Il dottore lo rassicura e gli strappa la promessa di aiutare Hyde dopo la sua morte."
             },
             {
-              "id": "capitolo-04-parte-01",
+              "id": "capitolo-04-micro-01",
               "chapterId": "capitolo-04",
-              "title": "Un delitto sconvolge Londra",
               "start": 0,
               "end": 4503,
-              "part": 0,
-              "parts": 2,
+              "seconds": 266,
               "minutes": 4,
+              "title": "Un delitto nella notte",
               "recap": "Una cameriera assiste all'assassinio di Carew. Utterson riconosce il bastone e accompagna la polizia verso l'abitazione di Hyde."
             },
             {
-              "id": "capitolo-04-parte-02",
+              "id": "capitolo-04-micro-02",
               "chapterId": "capitolo-04",
-              "title": "La ricerca del fuggitivo",
               "start": 4503,
               "end": 9289,
-              "part": 1,
-              "parts": 2,
+              "seconds": 269,
               "minutes": 4,
+              "title": "L’ispettore a Soho",
               "recap": "Nella casa di Hyde vengono trovati indizi del delitto, ma l'uomo è scomparso e le ricerche non permettono di rintracciarlo."
-            },
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "title": "Dietro la porta chiusa",
+          "episodes": [
             {
-              "id": "capitolo-05-parte-01",
+              "id": "capitolo-05-micro-01",
               "chapterId": "capitolo-05",
-              "title": "La lettera di Hyde",
               "start": 0,
-              "end": 4697,
-              "part": 0,
-              "parts": 2,
+              "end": 4545,
+              "seconds": 276,
               "minutes": 5,
-              "recap": "Jekyll dichiara di aver chiuso ogni rapporto con Hyde e mostra a Utterson una lettera che promette la fuga del ricercato."
+              "title": "Jekyll fa una promessa"
             },
             {
-              "id": "capitolo-05-parte-02",
+              "id": "capitolo-05-micro-02",
               "chapterId": "capitolo-05",
-              "title": "Due grafie troppo simili",
-              "start": 4697,
+              "start": 4545,
               "end": 9405,
-              "part": 1,
-              "parts": 2,
-              "minutes": 4,
+              "seconds": 278,
+              "minutes": 5,
+              "title": "Due grafie a confronto",
               "recap": "Poole nega che sia stata consegnata una lettera a mano. Guest nota una somiglianza fra le grafie di Jekyll e Hyde; Utterson teme una falsificazione."
             },
             {
-              "id": "capitolo-06-parte-01",
+              "id": "capitolo-06-micro-01",
               "chapterId": "capitolo-06",
-              "title": "La malattia di Lanyon",
               "start": 0,
-              "end": 7688,
-              "part": 0,
-              "parts": 1,
-              "minutes": 8,
-              "recap": "Con Hyde scomparso, Jekyll ritrova per qualche tempo la serenità. Poi si isola nuovamente. Lanyon, sconvolto da un segreto, muore lasciando a Utterson un documento da aprire solo a determinate condizioni."
+              "end": 3687,
+              "seconds": 228,
+              "minutes": 4,
+              "title": "Lanyon irriconoscibile"
             },
             {
-              "id": "capitolo-07-parte-01",
+              "id": "capitolo-06-micro-02",
+              "chapterId": "capitolo-06",
+              "start": 3687,
+              "end": 7688,
+              "seconds": 234,
+              "minutes": 4,
+              "title": "Una busta da tenere chiusa"
+            },
+            {
+              "id": "capitolo-07-micro-01",
               "chapterId": "capitolo-07",
-              "title": "Il terrore alla finestra",
               "start": 0,
               "end": 2760,
-              "part": 0,
-              "parts": 1,
+              "seconds": 168,
               "minutes": 3,
+              "title": "Il dottore alla finestra",
               "recap": "Utterson ed Enfield incontrano Jekyll alla finestra. Un improvviso mutamento della sua espressione li lascia sconvolti."
             },
             {
-              "id": "capitolo-08-parte-01",
+              "id": "capitolo-08-micro-01",
               "chapterId": "capitolo-08",
-              "title": "La visita di Poole",
               "start": 0,
-              "end": 5117,
-              "part": 0,
-              "parts": 4,
-              "minutes": 5,
-              "recap": "Il domestico di Jekyll chiede aiuto a Utterson e lo conduce alla casa, dove una voce insolita proviene dallo studio chiuso."
-            },
-            {
-              "id": "capitolo-08-parte-02",
-              "chapterId": "capitolo-08",
-              "title": "Una medicina introvabile",
-              "start": 5117,
-              "end": 10509,
-              "part": 1,
-              "parts": 4,
-              "minutes": 5,
-              "recap": "Poole racconta le richieste disperate di una sostanza e descrive la figura mascherata che ha intravisto, sospettando che sia Hyde."
-            },
-            {
-              "id": "capitolo-08-parte-03",
-              "chapterId": "capitolo-08",
-              "title": "Oltre la porta chiusa",
-              "start": 10509,
-              "end": 16073,
-              "part": 2,
-              "parts": 4,
-              "minutes": 5,
-              "recap": "Utterson e Poole entrano nello studio e trovano Hyde morto. Cercano invano Jekyll negli ambienti del laboratorio."
-            },
-            {
-              "id": "capitolo-08-parte-04",
-              "chapterId": "capitolo-08",
-              "title": "Le ultime carte",
-              "start": 16073,
-              "end": 21036,
-              "part": 3,
-              "parts": 4,
-              "minutes": 5,
-              "recap": "Utterson trova documenti lasciati da Jekyll e torna a casa per leggere le rivelazioni che potrebbero spiegare il mistero."
-            },
-            {
-              "id": "capitolo-09-parte-01",
-              "chapterId": "capitolo-09",
-              "title": "La richiesta di Jekyll",
-              "start": 0,
-              "end": 5026,
-              "part": 0,
-              "parts": 3,
-              "minutes": 5,
-              "recap": "Lanyon racconta di aver ricevuto una lettera urgente da Jekyll e di aver recuperato dal laboratorio il cassetto indicato."
-            },
-            {
-              "id": "capitolo-09-parte-02",
-              "chapterId": "capitolo-09",
-              "title": "Il visitatore di mezzanotte",
-              "start": 5026,
-              "end": 9426,
-              "part": 1,
-              "parts": 3,
+              "end": 4096,
+              "seconds": 253,
               "minutes": 4,
+              "title": "La visita di Poole"
+            },
+            {
+              "id": "capitolo-08-micro-02",
+              "chapterId": "capitolo-08",
+              "start": 4096,
+              "end": 8359,
+              "seconds": 246,
+              "minutes": 4,
+              "title": "Una voce dietro la porta"
+            },
+            {
+              "id": "capitolo-08-micro-03",
+              "chapterId": "capitolo-08",
+              "start": 8359,
+              "end": 12543,
+              "seconds": 246,
+              "minutes": 4,
+              "title": "L’uomo con la maschera"
+            },
+            {
+              "id": "capitolo-08-micro-04",
+              "chapterId": "capitolo-08",
+              "start": 12543,
+              "end": 16659,
+              "seconds": 247,
+              "minutes": 4,
+              "title": "L’ascia e il gabinetto"
+            },
+            {
+              "id": "capitolo-08-micro-05",
+              "chapterId": "capitolo-08",
+              "start": 16659,
+              "end": 21036,
+              "seconds": 247,
+              "minutes": 4,
+              "title": "Le carte sul tavolo"
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "title": "Le confessioni",
+          "episodes": [
+            {
+              "id": "capitolo-09-micro-01",
+              "chapterId": "capitolo-09",
+              "start": 0,
+              "end": 4628,
+              "seconds": 274,
+              "minutes": 5,
+              "title": "La raccomandata di Jekyll"
+            },
+            {
+              "id": "capitolo-09-micro-02",
+              "chapterId": "capitolo-09",
+              "start": 4628,
+              "end": 9426,
+              "seconds": 277,
+              "minutes": 5,
+              "title": "Un visitatore a mezzanotte",
               "recap": "Lanyon esamina le sostanze e attende il visitatore misterioso, il cui aspetto e comportamento lo inquietano."
             },
             {
-              "id": "capitolo-09-parte-03",
+              "id": "capitolo-09-micro-03",
               "chapterId": "capitolo-09",
-              "title": "La rivelazione",
               "start": 9426,
               "end": 14319,
-              "part": 2,
-              "parts": 3,
+              "seconds": 283,
               "minutes": 5,
+              "title": "La scelta di Lanyon",
               "recap": "Il visitatore beve la pozione e si trasforma davanti a Lanyon, rivelando il segreto che sconvolge definitivamente il medico."
             },
             {
-              "id": "capitolo-10-parte-01",
+              "id": "capitolo-10-micro-01",
               "chapterId": "capitolo-10",
-              "title": "Le due nature dell’uomo",
               "start": 0,
-              "end": 5734,
-              "part": 0,
-              "parts": 6,
+              "end": 5015,
+              "seconds": 289,
               "minutes": 5,
-              "recap": "Jekyll racconta il conflitto fra le proprie inclinazioni e le ricerche che lo conducono a sperimentare una pozione su se stesso."
+              "title": "Le due nature di Jekyll"
             },
             {
-              "id": "capitolo-10-parte-02",
+              "id": "capitolo-10-micro-02",
               "chapterId": "capitolo-10",
-              "title": "La nascita di Hyde",
-              "start": 5734,
-              "end": 12323,
-              "part": 1,
-              "parts": 6,
-              "minutes": 6,
-              "recap": "La trasformazione gli permette di assumere una seconda identità. Jekyll organizza la propria doppia vita credendo di poterla controllare."
-            },
-            {
-              "id": "capitolo-10-parte-03",
-              "chapterId": "capitolo-10",
-              "title": "Un potere che sfugge",
-              "start": 12323,
-              "end": 18149,
-              "part": 2,
-              "parts": 6,
+              "start": 5015,
+              "end": 10280,
+              "seconds": 299,
               "minutes": 5,
-              "recap": "Le azioni di Hyde diventano sempre più crudeli e Jekyll scopre che la trasformazione non dipende più soltanto dalla sua volontà."
+              "title": "Il primo esperimento"
             },
             {
-              "id": "capitolo-10-parte-04",
+              "id": "capitolo-10-micro-03",
               "chapterId": "capitolo-10",
-              "title": "La scelta impossibile",
-              "start": 18149,
-              "end": 24064,
-              "part": 3,
-              "parts": 6,
-              "minutes": 6,
-              "recap": "Jekyll tenta di rinunciare a Hyde, ma cede nuovamente alla tentazione. Il delitto di Carew lo costringe a cercare rifugio nella propria identità rispettabile."
+              "start": 10280,
+              "end": 15482,
+              "seconds": 294,
+              "minutes": 5,
+              "title": "Il peso della doppia vita"
             },
             {
-              "id": "capitolo-10-parte-05",
+              "id": "capitolo-10-micro-04",
               "chapterId": "capitolo-10",
-              "title": "La trasformazione inattesa",
-              "start": 24064,
-              "end": 29725,
-              "part": 4,
-              "parts": 6,
-              "minutes": 6,
-              "recap": "Nonostante il tentativo di riscattarsi, Jekyll si trasforma improvvisamente lontano da casa e deve ricorrere all’aiuto di Lanyon."
+              "start": 15482,
+              "end": 20668,
+              "seconds": 298,
+              "minutes": 5,
+              "title": "Un risveglio inatteso"
             },
             {
-              "id": "capitolo-10-parte-06",
+              "id": "capitolo-10-micro-05",
               "chapterId": "capitolo-10",
-              "title": "L’ultima confessione",
-              "start": 29725,
+              "start": 20668,
+              "end": 25770,
+              "seconds": 290,
+              "minutes": 5,
+              "title": "Il ritorno di Hyde"
+            },
+            {
+              "id": "capitolo-10-micro-06",
+              "chapterId": "capitolo-10",
+              "start": 25770,
+              "end": 30869,
+              "seconds": 294,
+              "minutes": 5,
+              "title": "Una trasformazione al parco"
+            },
+            {
+              "id": "capitolo-10-micro-07",
+              "chapterId": "capitolo-10",
+              "start": 30869,
               "end": 36104,
-              "part": 5,
-              "parts": 6,
-              "minutes": 6,
-              "recap": "Jekyll perde progressivamente il controllo delle trasformazioni e non riesce a riprodurre la pozione. Affida alle sue ultime pagine il racconto della propria fine."
+              "seconds": 297,
+              "minutes": 5,
+              "title": "L’ultima confessione"
             }
           ]
+        }
+      ],
+      "previousEpisodes": [
+        {
+          "id": "capitolo-01-parte-01",
+          "chapterId": "capitolo-01",
+          "start": 0,
+          "end": 5395
+        },
+        {
+          "id": "capitolo-01-parte-02",
+          "chapterId": "capitolo-01",
+          "start": 5395,
+          "end": 13136
+        },
+        {
+          "id": "capitolo-02-parte-01",
+          "chapterId": "capitolo-02",
+          "start": 0,
+          "end": 4928
+        },
+        {
+          "id": "capitolo-02-parte-02",
+          "chapterId": "capitolo-02",
+          "start": 4928,
+          "end": 11073
+        },
+        {
+          "id": "capitolo-02-parte-03",
+          "chapterId": "capitolo-02",
+          "start": 11073,
+          "end": 16585
+        },
+        {
+          "id": "capitolo-03-parte-01",
+          "chapterId": "capitolo-03",
+          "start": 0,
+          "end": 3878
+        },
+        {
+          "id": "capitolo-04-parte-01",
+          "chapterId": "capitolo-04",
+          "start": 0,
+          "end": 4503
+        },
+        {
+          "id": "capitolo-04-parte-02",
+          "chapterId": "capitolo-04",
+          "start": 4503,
+          "end": 9289
+        },
+        {
+          "id": "capitolo-05-parte-01",
+          "chapterId": "capitolo-05",
+          "start": 0,
+          "end": 4697
+        },
+        {
+          "id": "capitolo-05-parte-02",
+          "chapterId": "capitolo-05",
+          "start": 4697,
+          "end": 9405
+        },
+        {
+          "id": "capitolo-06-parte-01",
+          "chapterId": "capitolo-06",
+          "start": 0,
+          "end": 7688
+        },
+        {
+          "id": "capitolo-07-parte-01",
+          "chapterId": "capitolo-07",
+          "start": 0,
+          "end": 2760
+        },
+        {
+          "id": "capitolo-08-parte-01",
+          "chapterId": "capitolo-08",
+          "start": 0,
+          "end": 5117
+        },
+        {
+          "id": "capitolo-08-parte-02",
+          "chapterId": "capitolo-08",
+          "start": 5117,
+          "end": 10509
+        },
+        {
+          "id": "capitolo-08-parte-03",
+          "chapterId": "capitolo-08",
+          "start": 10509,
+          "end": 16073
+        },
+        {
+          "id": "capitolo-08-parte-04",
+          "chapterId": "capitolo-08",
+          "start": 16073,
+          "end": 21036
+        },
+        {
+          "id": "capitolo-09-parte-01",
+          "chapterId": "capitolo-09",
+          "start": 0,
+          "end": 5026
+        },
+        {
+          "id": "capitolo-09-parte-02",
+          "chapterId": "capitolo-09",
+          "start": 5026,
+          "end": 9426
+        },
+        {
+          "id": "capitolo-09-parte-03",
+          "chapterId": "capitolo-09",
+          "start": 9426,
+          "end": 14319
+        },
+        {
+          "id": "capitolo-10-parte-01",
+          "chapterId": "capitolo-10",
+          "start": 0,
+          "end": 5734
+        },
+        {
+          "id": "capitolo-10-parte-02",
+          "chapterId": "capitolo-10",
+          "start": 5734,
+          "end": 12323
+        },
+        {
+          "id": "capitolo-10-parte-03",
+          "chapterId": "capitolo-10",
+          "start": 12323,
+          "end": 18149
+        },
+        {
+          "id": "capitolo-10-parte-04",
+          "chapterId": "capitolo-10",
+          "start": 18149,
+          "end": 24064
+        },
+        {
+          "id": "capitolo-10-parte-05",
+          "chapterId": "capitolo-10",
+          "start": 24064,
+          "end": 29725
+        },
+        {
+          "id": "capitolo-10-parte-06",
+          "chapterId": "capitolo-10",
+          "start": 29725,
+          "end": 36104
         }
       ]
     },
