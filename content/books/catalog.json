@@ -1775,15 +1775,201 @@
       "id": "giro-del-mondo",
       "title": "Il giro del mondo in 80 giorni",
       "author": "Jules Verne",
-      "description": "Una scommessa impossibile porta Phileas Fogg e Passepartout attraverso continenti, imprevisti e incontri sorprendenti, in una corsa contro il tempo.",
+      "description": "Una scommessa impossibile porta Phileas Fogg e Passepartout (Gambalesta nella traduzione) attraverso continenti, imprevisti e incontri sorprendenti, in una corsa contro il tempo. Edizione italiana Treves del 1873, trascritta da Wikisource.",
       "status": "published",
       "access": "premium",
       "homeSections": [
         "new"
       ],
-      "availability": "preview",
+      "availability": "full",
       "coverImage": "./assets/covers/il_giro_del_mondo_80_giorni_nuova_copertina.jpg",
-      "chapters": [],
+      "chapters": [
+        {
+          "id": "capitolo-01",
+          "title": "Capitolo 1 · Nel quale Phileas Fogg e Gambalesta si accettano reciprocamente, l’uno come padrone, l’altro come servitore",
+          "file": "capitolo-01.txt"
+        },
+        {
+          "id": "capitolo-02",
+          "title": "Capitolo 2 · Nel quale Gambalesta è convinto d’aver finalmente trovato il suo ideale",
+          "file": "capitolo-02.txt"
+        },
+        {
+          "id": "capitolo-03",
+          "title": "Capitolo 3 · Nel quale s’impegna una conversazione che potrà costar caro a Phileas Fogg",
+          "file": "capitolo-03.txt"
+        },
+        {
+          "id": "capitolo-04",
+          "title": "Capitolo 4 · Nel quale Phileas Fogg sbalordisce Gambalesta, suo servo",
+          "file": "capitolo-04.txt"
+        },
+        {
+          "id": "capitolo-05",
+          "title": "Capitolo 5 · Nel quale un nuovo valore comparisce sulla piazza di Londra",
+          "file": "capitolo-05.txt"
+        },
+        {
+          "id": "capitolo-06",
+          "title": "Capitolo 6 · Nel quale l’agente Fix mostra un’impazienza più che legittima",
+          "file": "capitolo-06.txt"
+        },
+        {
+          "id": "capitolo-07",
+          "title": "Capitolo 7 · Che prova una volta di più l’inutilità dei passaporti in materia di polizia",
+          "file": "capitolo-07.txt"
+        },
+        {
+          "id": "capitolo-08",
+          "title": "Capitolo 8 · Nel quale Gambalesta parla forse un po’ più del bisogno",
+          "file": "capitolo-08.txt"
+        },
+        {
+          "id": "capitolo-09",
+          "title": "Capitolo 9 · Dove il mar rosso e il mar delle indie si mostrano propizii ai disegni di Phileas Fogg",
+          "file": "capitolo-09.txt"
+        },
+        {
+          "id": "capitolo-10",
+          "title": "Capitolo 10 · Dove Gambalesta è felicissimo di non perdere che le scarpe",
+          "file": "capitolo-10.txt"
+        },
+        {
+          "id": "capitolo-11",
+          "title": "Capitolo 11 · Dove Phileas Fogg compra a prezzo favoloso una cavalcatura",
+          "file": "capitolo-11.txt"
+        },
+        {
+          "id": "capitolo-12",
+          "title": "Capitolo 12 · Nel quale Phileas Fogg e i suoi compagni si avventurano attraverso le foreste dell’India, e se ne vedono le conseguenze",
+          "file": "capitolo-12.txt"
+        },
+        {
+          "id": "capitolo-13",
+          "title": "Capitolo 13 · Nel quale Gambalesta prova una volta di più che la fortuna arride agli audaci",
+          "file": "capitolo-13.txt"
+        },
+        {
+          "id": "capitolo-14",
+          "title": "Capitolo 14 · Nel quale Phileas Fogg scende tutta l’ammirabile vallata del Gange senza nemmeno pensare a guardarla",
+          "file": "capitolo-14.txt"
+        },
+        {
+          "id": "capitolo-15",
+          "title": "Capitolo 15 · Nel quale il sacco delle banconote si alleggerisce ancora di alcune migliaia di sterline",
+          "file": "capitolo-15.txt"
+        },
+        {
+          "id": "capitolo-16",
+          "title": "Capitolo 16 · Nel quale Fix fa l’indiano",
+          "file": "capitolo-16.txt"
+        },
+        {
+          "id": "capitolo-17",
+          "title": "Capitolo 17 · Nel quale si tratta un po’ di tutto durante il tragitto da Singapore a Hong-Kong",
+          "file": "capitolo-17.txt"
+        },
+        {
+          "id": "capitolo-18",
+          "title": "Capitolo 18 · Nel quale i signori fogg, Gambalesta e Fix vanno pei loro affari per strade diverse",
+          "file": "capitolo-18.txt"
+        },
+        {
+          "id": "capitolo-19",
+          "title": "Capitolo 19 · Nel quale Gambalesta piglia un interesse troppo vivo pel suo padrone, e quel che ne succede",
+          "file": "capitolo-19.txt"
+        },
+        {
+          "id": "capitolo-20",
+          "title": "Capitolo 20 · Nel quale Fix entra direttamente in relazione con Phileas Fogg",
+          "file": "capitolo-20.txt"
+        },
+        {
+          "id": "capitolo-21",
+          "title": "Capitolo 21 · Nel quale si teme che il padrone della «Tankadera» perda un premio di duecento sterline",
+          "file": "capitolo-21.txt"
+        },
+        {
+          "id": "capitolo-22",
+          "title": "Capitolo 22 · Nel quale Gambalesta impara che il danaro è necessario anco agli antipodi",
+          "file": "capitolo-22.txt"
+        },
+        {
+          "id": "capitolo-23",
+          "title": "Capitolo 23 · Nel quale il naso di Gambalesta si allunga smisuratamente",
+          "file": "capitolo-23.txt"
+        },
+        {
+          "id": "capitolo-24",
+          "title": "Capitolo 24 · Durante il quale si compie la traversata dell’Oceano Pacifico",
+          "file": "capitolo-24.txt"
+        },
+        {
+          "id": "capitolo-25",
+          "title": "Capitolo 25 · Nel quale si dà un’occhiatina a San Francisco in un giorno di meeting",
+          "file": "capitolo-25.txt"
+        },
+        {
+          "id": "capitolo-26",
+          "title": "Capitolo 26 · Nel quale si piglia il treno espresso della ferrovia del Pacifico",
+          "file": "capitolo-26.txt"
+        },
+        {
+          "id": "capitolo-27",
+          "title": "Capitolo 27 · Nel quale Gambalesta segue, con una celerità di venti miglia all’ora, un corso di storia mormona",
+          "file": "capitolo-27.txt"
+        },
+        {
+          "id": "capitolo-28",
+          "title": "Capitolo 28 · Nel quale Gambalesta non riesce a far intendere il linguaggio della ragione",
+          "file": "capitolo-28.txt"
+        },
+        {
+          "id": "capitolo-29",
+          "title": "Capitolo 29 · Nel quale si narrano cose che capitano unicamente sulle ferrovie americane",
+          "file": "capitolo-29.txt"
+        },
+        {
+          "id": "capitolo-30",
+          "title": "Capitolo 30 · Nel quale Phileas Fogg fa semplicemente il suo dovere",
+          "file": "capitolo-30.txt"
+        },
+        {
+          "id": "capitolo-31",
+          "title": "Capitolo 31 · Nel quale l’ispettore Fix piglia molto sul serio gl’interessi di Phileas Fogg",
+          "file": "capitolo-31.txt"
+        },
+        {
+          "id": "capitolo-32",
+          "title": "Capitolo 32 · Nel quale Phileas Fogg lotta a corpo a corpo con la mala sorte",
+          "file": "capitolo-32.txt"
+        },
+        {
+          "id": "capitolo-33",
+          "title": "Capitolo 33 · Nel quale Phileas Fogg si mostra all’altezza delle circostanze",
+          "file": "capitolo-33.txt"
+        },
+        {
+          "id": "capitolo-34",
+          "title": "Capitolo 34 · Nel quale Phileas Fogg va fuor dei gangheri",
+          "file": "capitolo-34.txt"
+        },
+        {
+          "id": "capitolo-35",
+          "title": "Capitolo 35 · Nel quale Gambalesta non si fa ripetere due volte l’ordine del suo padrone",
+          "file": "capitolo-35.txt"
+        },
+        {
+          "id": "capitolo-36",
+          "title": "Capitolo 36 · Nel quale Phileas Fogg fa di nuovo aggio sulla piazza di Londra",
+          "file": "capitolo-36.txt"
+        },
+        {
+          "id": "capitolo-37",
+          "title": "Capitolo 37 · Nel quale si calcola quel che Phileas Fogg ha guadagnato a fare il giro del mondo",
+          "file": "capitolo-37.txt"
+        }
+      ],
       "moods": [
         "avventura",
         "sorridere",
