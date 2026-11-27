@@ -1,0 +1,93 @@
+name: Verify Montecristo ReadFlow 21–49
+on:
+  push:
+    branches: [readflow-montecristo-21-49]
+    paths: [.github/workflows/montecristo-verify-21-49.yml]
+permissions:
+  actions: read
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 175
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: 90763b042a0fe762883088b6774b8203c3d11df3
+      - name: Wait for alignment and download maps
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          for attempt in {1..169}; do
+            status=$(gh api "repos/$GITHUB_REPOSITORY/actions/runs/45973631420" --jq .status)
+            if [[ "$status" == completed ]]; then
+              gh run download 45973631420 --name montecristo-readflow-21-49 --dir maps
+              exit 0
+            fi
+            sleep 60
+          done
+          exit 1
+      - name: Verify text offsets, audio checksums and timings
+        run: |
+          python - <<'PYTHON'
+          import json, os, re
+          from pathlib import Path
+          manifest = {
+              "capitolo-21": ("a92b134877d6341cd1dc703538007d1a76f749395512f9c36b05e19224eddf05", 1576.064),
+              "capitolo-22": ("8cb56677b0af19f37f7b64f97a2049f59a135d4ef1bc5dafcc4ab9ef9baf700c", 1041.408),
+              "capitolo-23": ("d84266922896af9d9864ecf2b41d3a8c7a9072617f5d58841cbe338c0b549163", 1044.48),
+              "capitolo-24": ("46ee9735c63033b6c076dc9bb3a777f4fb8b294a03c5571858f74921bf14ccec", 1276.629333),
+              "capitolo-25": ("5f461461155634e8a72e789b2f057f2e279f2236d7d4a8b2eec18920e5711b40", 844.117333),
+              "capitolo-26": ("f2ae66b86f34611b8f3499a3bf08a1996ce1986ea44fbe923772a321ca2f2127", 1622.997333),
+              "capitolo-27": ("b68ffaedd765363290c458ac0e5b6abdc0832699bf05a26721a89f3b6c4464a7", 1666.517333),
+              "capitolo-28": ("c1fe7b814fbbad0923af48a842d01e0ce129deca07e09271a847a26f38884d9d", 784.768),
+              "capitolo-29": ("0f80fd2f467e7ca8ee1733379026387ffd827c8d657e9de6b71d70194acbf1b3", 1703.125333),
+              "capitolo-30": ("193cf29ee9b875abf0d30b9a442846a1462cb2a518880007746df4a62d0f4fb4", 1975.509333),
+              "capitolo-31": ("e6feb34e6546c41e3388e5858bec558805ac93b1a3bdfb9591d015d813b11baa", 3127.850667),
+              "capitolo-32": ("d09478fac32530fb8c803078d8300ed3f4c0e4e950d689146b5277c576b4edf3", 782.762667),
+              "capitolo-33": ("d418699c0d924ed66a9fa59192653bdcd240c98a7b5cbba45d5be96b73e44e1c", 3142.058667),
+              "capitolo-34": ("a6975fc7067b2a8b8f8952b177f9ea649f5448e43358c0e568e13756fcc773fb", 2772.821333),
+              "capitolo-35": ("eccd3ff9803d325780fab571ff7612dbc8b9d9212298eb89287b2303269a7c14", 1927.722667),
+              "capitolo-36": ("f170fe30d10a8521d135655078c4ac4a5f8dcfd4ac848641174bc484ef956de8", 2433.152),
+              "capitolo-37": ("7d9d90616d86e927a7f730cb8ae3689b96d55813b3d08e064baadbc9f4906d50", 2049.792),
+              "capitolo-38": ("0d548ab0961b82a3a0326426e07f655776c8c8d3077d1c362f95acc79d559336", 833.792),
+              "capitolo-39": ("d93bcf91c283fdced7b55598fed620c7dabf88b212bcbbc167999a44d3f50756", 4107.861333),
+              "capitolo-40": ("3643b6f26178e88c44f8cc82b905dc49c744b8c27a19a1c38cdbd391136baa39", 1808.384),
+              "capitolo-41": ("7e9952457e88093d4c3c2efc2a110fa944120e6873b0ca25ded8c4eb8f8a9658", 603.946667),
+              "capitolo-42": ("b03c64fd467ecea91dce6e445c47f269112e7edc9c08e31b7b86ac836978c885", 884.181333),
+              "capitolo-43": ("5ddf6c12a5e452425facc75c3762b7142d4d6ec20efc42b75e469c0986519c51", 2986.752),
+              "capitolo-44": ("2e318e1be969d164b24a17666376bb912d89ab9c4847961653f67221ac94a753", 1499.008),
+              "capitolo-45": ("718bedc0f0b1558e97db719d6794c6e3f1f377409ac5b3abfb24d82e5f8c7b98", 1572.906667),
+              "capitolo-46": ("7a8c3c706376735f2ca5328c5e91328d6fab0446d8277dfccb3704404070d811", 1509.717333),
+              "capitolo-47": ("8f323d9e9e6ad37b117a7cda4db93ab55ffe4d74bece919200370ca1ac760f82", 1446.784),
+              "capitolo-48": ("f7bb357bbb51c3fc0d403918cdc752a89e23c31029348f29b44bad07aba651c5", 396.970667),
+              "capitolo-49": ("2d177f1c3bc3ef2147e845b70372722dd23f2001adf15db393585bdb25e0fe50", 1272.242667),
+          }
+          maps = Path("maps")
+          files = {path.stem.removesuffix(".words"): path for path in maps.glob("*.words.json")}
+          assert files.keys() == manifest.keys(), f"Missing: {manifest.keys() - files.keys()}; unexpected: {files.keys() - manifest.keys()}"
+          rows = ["| Capitolo | Parole abbinate |", "|---|---:|"]
+          for stem, (digest, duration) in sorted(manifest.items()):
+              data = json.loads(files[stem].read_text())
+              text = (Path("content/books/montecristo") / f"{stem}.txt").read_bytes().decode("utf-8")
+              offsets = [0]
+              for char in text:
+                  offsets.append(offsets[-1] + (2 if ord(char) > 0xffff else 1))
+              tokens = {offsets[m.start()] for m in re.finditer(r"[^\W_]+(?:['’][^\W_]+)*", text)}
+              words = data["words"]
+              assert data["chapter"] == stem and data["method"] == "whisper-small-word-timestamps", stem
+              assert data["audioSha256"] == [digest] and data["parts"] == [f"{stem}.m4a"], stem
+              assert abs(data["duration"] - duration) < .002 and abs(data["partDurations"][0] - duration) < .002, stem
+              assert data["matched"] == len(words) and data["total"] == len(tokens), stem
+              assert data["coverage"] >= .55 and abs(data["coverage"] - len(words) / len(tokens)) <= .001, stem
+              assert all(w["offset"] in tokens and 0 <= w["start"] <= w["end"] <= duration + .001 for w in words), stem
+              assert all(a["offset"] < b["offset"] and a["start"] <= b["start"] for a, b in zip(words, words[1:])), stem
+              rows.append(f"| {stem.removeprefix('capitolo-')} | {data['coverage']:.1%} |")
+          with open(os.environ["GITHUB_STEP_SUMMARY"], "a") as summary:
+              summary.write("\n".join(rows) + "\n")
+          PYTHON
+      - uses: actions/upload-artifact@v4
+        with:
+          name: montecristo-readflow-21-49-verified
+          path: maps/
+          if-no-files-found: error
