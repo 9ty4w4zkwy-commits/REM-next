@@ -1,5 +1,5 @@
-import {celebrateProgress} from './completion.js?v=completion-satin-progress-20261127';
-import {mountPodcastControls} from './audio-controls.js?v=hide-ios-volume-20261126';
+import {celebrateProgress} from './completion.js?v=audio-dock-20261127';
+import {mountPodcastControls} from './audio-controls.js?v=audio-dock-20261127';
 import {mountImmersiveReader} from './immersive-reader.js?v=immersive-focus-mint-20261126';
 import {recordModeChoice,recordSwitch,startUsage,stopUsage} from './usage-metrics.js?v=1';
 import {createJekyllAudio} from './jekyll-audio.js?v=podcast-reader-20261126';
@@ -517,7 +517,8 @@ if(mode==='audio'){
  const audioPicker=el('div',{className:'reader-controls'},[chapterPicker(audioSelect,()=>completedUnits(id,inEpisode))]);
 
  const shell=el('section',{className:'reading-shell audio-sync-shell'});
- render(el('div',{className:'rem-reader-heading'},[heading(book.title,'UN LIBRO, TANTI MODI DI VIVERLO')]),...(episodeHeading?[episodeHeading]:[]),audioPicker,shell,finishControl(id),pathChange,quickSwitch);
+ const audioDock=el('section',{className:'rem-audio-dock',attrs:{hidden:'','aria-label':'Comandi audiolibro'}});
+ render(audioDock,el('div',{className:'rem-reader-heading'},[heading(book.title,'UN LIBRO, TANTI MODI DI VIVERLO')]),...(episodeHeading?[episodeHeading]:[]),audioPicker,shell,finishControl(id),pathChange,quickSwitch);
  activeReaderTools=createReaderTools({focusOnly:true});activeReaderTools.mount(shell);
  const audioTools=shell.querySelector('.reader-tools-focus-only');
  audioTools.prepend(nav);
@@ -538,7 +539,7 @@ if(mode==='audio'){
   };
  const point=getPhrase(id);if(id!=='pinocchio'&&point?.chapter===chapter.id&&Number.isFinite(Number(point.offset)))saveSetting('audio-position:'+id,JSON.stringify({chapter:chapter.id,offset:Math.max(0,(Number(point.offset)||0)-(segment?.start||0))}));const player=(id==='montecristo'||id==='la-bella-estate'||id==='jekyll-hyde')?await (id==='jekyll-hyde'?createJekyllAudio:id==='la-bella-estate'?createBellaEstateAudio:createMontecristoAudio)({chapter,content,segmentStart:segment?.start||0,segmentEnd:segment?.end??null,seekOffset,onPosition:offset=>{saveProgress(id,chapter.id);const local=offset-(segment?.start||0);if(local>=0&&local<content.length)savePhrase(id,chapter.id,content.slice(local,local+90).trim(),offset)},onNext:finishAudio}):id==='metamorfosi-ovidio'?await createOvidioAudio({chapter,content,segmentStart:segment?.start||0,segmentEnd:segment?.end||null,onPosition:offset=>{saveProgress(id,chapter.id);if(offset>=0&&offset<content.length)savePhrase(id,chapter.id,content.slice(Math.max(0,offset-(segment?.start||0)),Math.max(0,offset-(segment?.start||0))+90).trim(),offset)},onNext:finishAudio}):audioView({bookId:id,chapter,content,segmentStart:segment?.start||0,segmentEnd:segment?.end??null,onNext:finishAudio,onPosition:offset=>{if(offset>=0&&offset<content.length){const excerpt=content.slice(offset,Math.min(content.length,offset+90)).trim();savePhrase(id,chapter.id,excerpt,offset+(segment?.start||0))}saveProgress(id,chapter.id)}});
   if(!shell.isConnected){player.stopAudio?.();return}
-  mountPodcastControls(player,content,audioTools.querySelector('.reader-focus-button'));
+  mountPodcastControls(player,content,audioTools.querySelector('.reader-focus-button'),audioDock);
   const units=audioUnitsCurrent;
   const unitIndex=audioUnitIndex;
   const moveAudio=direction=>{

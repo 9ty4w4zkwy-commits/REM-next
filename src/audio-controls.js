@@ -126,7 +126,7 @@ function transcriptView(content){
  }};
 }
 
-export function mountPodcastControls(player,content,focus){
+export function mountPodcastControls(player,content,focus,dock){
  const audio=player.querySelector('audio[controls]');
  focus.className='rem-podcast-focus';
  focus.replaceChildren(transportIcon('clock'));
@@ -230,9 +230,25 @@ export function mountPodcastControls(player,content,focus){
  const transport=el('div',{className:'rem-podcast-transport'},[speed,back,play,forward,focus]);
  const volume=volumeControl(audio);
  const controls=el('div',{className:'rem-audio-controls'},[
-  transcript.root,seek,el('div',{className:'rem-audio-times'},[elapsed,remaining]),transport,...(volume?[volume]:[]),feedback
+  seek,el('div',{className:'rem-audio-times'},[elapsed,remaining]),transport,...(volume?[volume]:[]),feedback
  ]);
- audio.before(controls);
+ const header=document.querySelector('header.top');
+ const positionDock=()=>{
+  const headerStyle=header?getComputedStyle(header):null;
+  const headerHeight=header?.getBoundingClientRect().height||0;
+  dock.style.setProperty('--rem-audio-dock-top',headerStyle?.position==='sticky'||headerStyle?.position==='fixed'?headerHeight+'px':'0px');
+ };
+ positionDock();
+ const headerObserver=header&&typeof ResizeObserver==='function'?new ResizeObserver(positionDock):null;
+ headerObserver?.observe(header);
+ const stopDockPlayback=player.stopAudio?.bind(player);
+ player.stopAudio=()=>{
+  headerObserver?.disconnect();
+  stopDockPlayback?.();
+ };
+ dock.replaceChildren(controls);
+ dock.hidden=false;
+ audio.before(transcript.root);
  audio.controls=false;
  audio.hidden=true;
  const previousNote=player.querySelector(':scope > .format-mode-note:last-child');

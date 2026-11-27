@@ -797,10 +797,10 @@ html body.ebook-fullscreen-active .ebook-reading-shell.rem-immersive-controls-op
 html body.ebook-fullscreen-active .ebook-reading-shell>.rem-immersive-reveal:focus-visible{opacity:1!important;outline:2px solid currentColor!important}
 
 .audio-sync-shell .rem-audio-status:empty,
-.audio-sync-shell .rem-audio-feedback:empty{display:none}
-.audio-sync-shell .rem-audio-controls{display:grid;gap:8px;width:100%;margin:12px 0}
-.audio-sync-shell .rem-audio-controls > input[type="range"]{width:100%;height:44px;margin:0;accent-color:#83dcb1;cursor:pointer}
-.audio-sync-shell .rem-audio-times{display:flex;justify-content:space-between;color:#c8d7e4;font-variant-numeric:tabular-nums}
+.rem-audio-dock .rem-audio-feedback:empty{display:none}
+.rem-audio-dock .rem-audio-controls{display:grid;gap:8px;width:100%;margin:12px 0}
+.rem-audio-dock .rem-audio-controls > input[type="range"]{width:100%;height:44px;margin:0;accent-color:#83dcb1;cursor:pointer}
+.rem-audio-dock .rem-audio-times{display:flex;justify-content:space-between;color:#c8d7e4;font-variant-numeric:tabular-nums}
 
 .audio-sync-shell .reader-tools-focus-only{display:flex;align-items:center;gap:12px}
 .audio-sync-shell .reader-tools-focus-only .reader-back{margin:0;min-width:44px;min-height:44px}
@@ -810,39 +810,39 @@ html body.ebook-fullscreen-active .ebook-reading-shell>.rem-immersive-reveal:foc
  font:1.15rem/1.65 Georgia,serif;color:#b9c9d8;overflow-anchor:none;
 }
 .audio-sync-shell .rem-audio-transcript .is-current{color:#102437;background:#a0e3c2;border-radius:3px}
-.audio-sync-shell .rem-audio-controls > input[type="range"]{height:36px}
-.audio-sync-shell .rem-audio-times{font-size:.85rem}
+.rem-audio-dock .rem-audio-controls > input[type="range"]{height:36px}
+.rem-audio-dock .rem-audio-times{font-size:.85rem}
 .audio-sync-shell .reader-tools-focus-only .reader-focus-button{display:none!important}
-.audio-sync-shell .rem-podcast-transport{
+.rem-audio-dock .rem-podcast-transport{
  display:grid;grid-template-columns:repeat(2,minmax(44px,1fr)) minmax(52px,1.3fr) repeat(2,minmax(44px,1fr));
  align-items:center;justify-items:center;gap:2px;margin:12px 0 8px;touch-action:manipulation;
 }
-.audio-sync-shell .rem-podcast-transport button,
-.audio-sync-shell .rem-podcast-focus{
+.rem-audio-dock .rem-podcast-transport button,
+.rem-audio-dock .rem-podcast-focus{
  display:grid;place-items:center;min-width:44px;min-height:54px;padding:0;touch-action:manipulation;
  background:transparent;color:#a0e3c2;border:0;border-radius:10px;box-shadow:none;
 }
-.audio-sync-shell .rem-podcast-transport .rem-podcast-play{width:64px;height:66px}
-.audio-sync-shell .rem-podcast-play svg{width:52px;height:52px}
-.audio-sync-shell .rem-podcast-skip svg{width:50px;height:50px}
-.audio-sync-shell .rem-podcast-skip text{font:750 7.8px system-ui,sans-serif}
-.audio-sync-shell .rem-podcast-transport .rem-podcast-speed{font-size:clamp(1.17rem,5.6vw,1.55rem);font-weight:750;line-height:1}
-.audio-sync-shell .rem-podcast-focus svg{width:32px;height:32px}
-.audio-sync-shell .rem-podcast-transport button:focus-visible,
-.audio-sync-shell .rem-podcast-focus:focus-visible{outline:2px solid #a0e3c2;outline-offset:2px}
-.audio-sync-shell .rem-audio-controls > input.rem-podcast-seek{
+.rem-audio-dock .rem-podcast-transport .rem-podcast-play{width:64px;height:66px}
+.rem-audio-dock .rem-podcast-play svg{width:52px;height:52px}
+.rem-audio-dock .rem-podcast-skip svg{width:50px;height:50px}
+.rem-audio-dock .rem-podcast-skip text{font:750 7.8px system-ui,sans-serif}
+.rem-audio-dock .rem-podcast-transport .rem-podcast-speed{font-size:clamp(1.17rem,5.6vw,1.55rem);font-weight:750;line-height:1}
+.rem-audio-dock .rem-podcast-focus svg{width:32px;height:32px}
+.rem-audio-dock .rem-podcast-transport button:focus-visible,
+.rem-audio-dock .rem-podcast-focus:focus-visible{outline:2px solid #a0e3c2;outline-offset:2px}
+.rem-audio-dock .rem-audio-controls > input.rem-podcast-seek{
  -webkit-appearance:none;appearance:none;background:transparent;border:0;padding:0;touch-action:pan-y;
 }
-.audio-sync-shell .rem-podcast-seek::-webkit-slider-runnable-track{
+.rem-audio-dock .rem-podcast-seek::-webkit-slider-runnable-track{
  height:5px;border-radius:99px;background:linear-gradient(to right,#a0e3c2 var(--rem-podcast-progress,0%),#44556b var(--rem-podcast-progress,0%));
 }
-.audio-sync-shell .rem-podcast-seek::-moz-range-track{
+.rem-audio-dock .rem-podcast-seek::-moz-range-track{
  height:5px;border-radius:99px;background:linear-gradient(to right,#a0e3c2 var(--rem-podcast-progress,0%),#44556b var(--rem-podcast-progress,0%));
 }
-.audio-sync-shell .rem-podcast-seek::-webkit-slider-thumb{
+.rem-audio-dock .rem-podcast-seek::-webkit-slider-thumb{
  -webkit-appearance:none;appearance:none;width:17px;height:17px;margin-top:-6px;border:0;border-radius:50%;background:#a0e3c2;
 }
-.audio-sync-shell .rem-podcast-seek::-moz-range-thumb{
+.rem-audio-dock .rem-podcast-seek::-moz-range-thumb{
  width:17px;height:17px;border:0;border-radius:50%;background:#a0e3c2;
 }
 body.ebook-fullscreen-active .summary-shell .summary-content{background:transparent!important;color:inherit!important}
@@ -857,11 +857,24 @@ body.ebook-fullscreen-active .summary-shell .summary-page-frame.ebook-page-frame
 .rem-cinema-path-actions button:active{
  background:#64dfa9;color:#09241f;
 }
-.audio-sync-shell .rem-podcast-volume{
+.rem-audio-dock .rem-podcast-volume{
  display:grid;grid-template-columns:20px minmax(0,1fr) 22px;gap:12px;align-items:center;color:#a0e3c2;
 }
-.audio-sync-shell .rem-podcast-volume svg{width:100%;height:auto}
-.audio-sync-shell .rem-podcast-volume input{
+.rem-audio-dock .rem-podcast-volume svg{width:100%;height:auto}
+.rem-audio-dock .rem-podcast-volume input{
  -webkit-appearance:none;appearance:none;width:100%;min-width:0;height:36px;margin:0;
  background:transparent;border:0;padding:0;cursor:pointer;touch-action:pan-y;
 }
+
+.rem-audio-dock{
+ position:sticky;top:var(--rem-audio-dock-top,0px);z-index:90;
+ margin:0 0 16px;padding:4px clamp(8px,3vw,16px) 2px;color:#e3edf8;
+ background:#142236;border:1px solid #405b74;border-radius:16px;
+ box-shadow:0 6px 16px #0b142755;
+}
+.rem-audio-dock[hidden]{display:none}
+.rem-audio-dock .rem-audio-controls{margin:0;gap:0}
+.rem-audio-dock .rem-audio-controls > input[type="range"]{height:30px}
+.rem-audio-dock .rem-podcast-transport{margin:2px 0}
+.rem-audio-dock .rem-podcast-transport .rem-podcast-play{height:54px}
+.rem-audio-dock .rem-podcast-volume input{height:28px}
