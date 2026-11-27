@@ -4544,6 +4544,32 @@
           ]
         }
       ]
+    },
+    {
+      "id": "anna-karenina",
+      "title": "Anna Karenina",
+      "author": "Lev Tolstoj",
+      "description": "Nella Russia dell’Ottocento, Anna Karenina si innamora del conte Vronskij. La loro relazione mette in crisi la sua famiglia e il suo posto nella società.",
+      "coverImage": "./assets/covers/a_cinematic_detailed_book_cover_for_anna_karen.png",
+      "status": "published",
+      "availability": "preview",
+      "homeSections": [
+        "new"
+      ],
+      "chapters": []
+    },
+    {
+      "id": "delitto-e-castigo",
+      "title": "Delitto e castigo",
+      "author": "Fëdor Dostoevskij",
+      "description": "A San Pietroburgo, lo studente Raskol’nikov commette un delitto convinto di poterlo giustificare. Il peso della colpa mette alla prova le sue certezze.",
+      "coverImage": "./assets/covers/delitto_e_castigo_sotto_la_pioggia.png",
+      "status": "published",
+      "availability": "preview",
+      "homeSections": [
+        "new"
+      ],
+      "chapters": []
     }
   ]
 }
