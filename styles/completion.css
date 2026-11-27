@@ -83,14 +83,28 @@
 }
 
 .rem-completion-toggle{
- display:block;margin:12px auto;min-height:44px;border:1px solid #78b9a2;border-radius:12px;
- background:#15273b;color:#bcecd5;padding:8px 14px;font-weight:700;
+ display:flex;align-items:center;justify-content:center;gap:7px;margin:12px auto;min-height:44px;min-width:44px;
+ padding:4px 8px;border:0;border-radius:8px;background:transparent;color:#c7dfd9;box-shadow:none;
+ font:700 .83rem/1.2 system-ui,sans-serif;touch-action:manipulation;
 }
-.rem-completion-toggle[aria-pressed="true"]{background:#a0e3c2;color:#102637;border-color:#a0e3c2}
-.episode-actions .rem-completion-toggle{margin:0}
+.rem-completion-check{
+ display:grid;place-items:center;flex:none;width:21px;height:21px;border:1px solid #85b4aa;
+ border-radius:50%;font-size:14px;line-height:1;color:transparent;
+}
+.rem-completion-toggle[aria-pressed="true"]{color:#a0e3c2}
+.rem-completion-toggle[aria-pressed="true"] .rem-completion-check{background:#a0e3c2;border-color:#a0e3c2;color:#102637}
+.rem-completion-toggle:focus-visible{outline:2px solid #a0e3c2;outline-offset:2px}
+.rem-episode-card-heading{display:flex;align-items:center;justify-content:space-between;gap:4px}
+.rem-episode-card-heading .episode-code{margin:0}
+.rem-episode-card-heading .rem-completion-toggle{margin:0;justify-content:flex-end}
+.rem-episode-card-heading .rem-completion-toggle[aria-pressed="false"] .rem-completion-toggle-label{display:none}
+.rem-chapter-picker-completed{
+ flex:none;display:grid;place-items:center;width:22px;height:22px;border-radius:50%;
+ color:#164e3a;background:#c4efdc;font:750 14px/1 system-ui,sans-serif;
+}
 body.ebook-fullscreen-active .ebook-reading-shell > .rem-completion-toggle{display:none}
 html body.ebook-fullscreen-active .ebook-reading-shell.rem-immersive-controls-open > .rem-completion-toggle{
- display:block;position:absolute;right:9px;bottom:calc(env(safe-area-inset-bottom,0px) + 70px);z-index:14;margin:0;
+ display:flex;position:absolute;right:9px;bottom:calc(env(safe-area-inset-bottom,0px) + 70px);z-index:14;margin:0;background:#15273b;
 }
 html body.ebook-fullscreen-active .ebook-reading-shell.focus-active.rem-immersive-controls-open > .rem-completion-toggle{
  bottom:calc(env(safe-area-inset-bottom,0px) + 130px);

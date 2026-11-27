@@ -1,6 +1,6 @@
 import {mountImmersiveReader} from './immersive-reader.js?v=immersive-focus-mint-20261126';
 import {el,button} from './ui.js';
-import {chapterPicker} from './chapter-picker.js?v=picker-close-above-20261126';
+import {chapterPicker} from './chapter-picker.js?v=round-completion-check-20261127';
 import {getSetting,saveSetting} from './progress.js';
 import {createReaderTools} from './reader-tools.js?v=immersive-focus-mint-20261126';
 
@@ -18,7 +18,7 @@ function narrativeParagraphs(value){
  for(let i=0;i<sentences.length;i+=groupSize)chunks.push(sentences.slice(i,i+groupSize).join(' '));
  return chunks;
 }
-export function summaryView(book,onClose,onContinue){
+export function summaryView(book,onClose,onContinue,getCompleted){
  const root=el('section',{className:'summary-shell'});
  const title=el('h2',{text:'Il tuo riassunto'});
  const label=el('label',{text:'Capitolo da riassumere'});
@@ -55,6 +55,6 @@ export function summaryView(book,onClose,onContinue){
   immersive.updateNavigation();
  }
  select.addEventListener('change',renderSummary);
- root.append(title,label,chapterPicker(select),readingShell,el('div',{className:'summary-actions'},[back,finish]));
+ root.append(title,label,chapterPicker(select,getCompleted),readingShell,el('div',{className:'summary-actions'},[back,finish]));
  renderSummary();return root;
 }

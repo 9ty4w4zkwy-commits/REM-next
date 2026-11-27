@@ -1,6 +1,6 @@
 // Uniform chapter/episode picker across iOS, Android and desktop.
 // Keeps the native <select> in the DOM as the source of truth and dispatches change.
-export function chapterPicker(select){
+export function chapterPicker(select,getCompleted){
  const wrapper=document.createElement('div');
  wrapper.className='rem-chapter-picker';
  const trigger=document.createElement('button');
@@ -38,6 +38,7 @@ export function chapterPicker(select){
    if(e.key==='Escape'){e.preventDefault();close()}
    if(e.key==='Tab'){e.preventDefault();const items=[dismiss,...list.querySelectorAll('button')];const idx=items.indexOf(document.activeElement);items[(idx+(e.shiftKey?-1:1)+items.length)%items.length]?.focus()}
   };
+  const completed=getCompleted?.();
   for(const option of select.options){
    const row=document.createElement('button');row.type='button';row.className='rem-chapter-picker-option';
    row.setAttribute('role','option');
@@ -46,6 +47,12 @@ export function chapterPicker(select){
    if(selected){row.classList.add('is-selected');selectedButton=row}
    const text=document.createElement('span');text.className='rem-chapter-picker-option-text';text.textContent=option.textContent;
    row.append(text);
+   if(completed?.[option.value]){
+    const check=document.createElement('span');check.className='rem-chapter-picker-completed';check.textContent='✓';
+    check.setAttribute('aria-hidden','true');
+    row.setAttribute('aria-label',option.textContent+', completato');
+    row.append(check);
+   }
    row.addEventListener('click',()=>{
     if(select.value!==option.value){
      select.value=option.value;

@@ -15,14 +15,14 @@ import {showOnboarding,onboardingCompleted} from './onboarding.js?v=chapters-res
 import {getProgress,saveProgress,getSetting,saveSetting} from './progress.js';
 import {analyticsEnabled,getTesterCode,registerTesterCode,setAnalyticsConsent,startAnalytics,trackEvent} from './analytics.js?v=onboarding-four-20261125';
 import {el,button,panel,heading} from './ui.js';
-import {chapterPicker} from './chapter-picker.js?v=picker-close-above-20261126';
+import {chapterPicker} from './chapter-picker.js?v=round-completion-check-20261127';
 import {getMode,formatSwitch,paperView,audioView} from './formats.js?v=completion-flag-20261127-2';
 import {createReaderTools} from './reader-tools.js?v=immersive-focus-mint-20261126';
 import {createHighlights} from './highlights.js?v=single-remove-1';
 import {createEbookJourney} from './ebook-journey.js?v=rem-ebook-91';
 import {phraseSearch,getPhrase,savePhrase} from './synchronization.js?v=paper-progress-20261124';
 import {HOME_SECTIONS,booksForHomeSection} from './home-config.js?v=bella-estate-preview-20261126';
-import {summaryView} from './summary-view.js?v=picker-close-above-20261126';
+import {summaryView} from './summary-view.js?v=round-completion-check-20261127';
 const app=document.getElementById('app');let books=[];let currentView='home';let resumeFromHomeId=null;let activeReaderTools=null;let activeHighlights=null;let activeAudioPlayer=null;
 const render=(...nodes)=>{stopUsage();document.body.classList.toggle('rem-onboarding-gate',!onboardingCompleted()&&nodes.some(node=>node?.classList?.contains('onboard-screen')));document.body.classList.remove('ebook-fullscreen-active');if(activeAudioPlayer){activeAudioPlayer.stopAudio?.();activeAudioPlayer=null}if(activeHighlights){activeHighlights.destroy();activeHighlights=null}if(activeReaderTools){activeReaderTools.destroy();activeReaderTools=null}document.querySelectorAll('body > .format-switch-bottom').forEach(dock=>dock.remove());app.replaceChildren(...nodes);const readerDock=app.querySelector(':scope > .format-switch-bottom');if(readerDock)document.body.append(readerDock);for(const [id,active] of [['navHome',currentView==='home'],['navLibrary',currentView==='library'],['navProfile',currentView==='profile']]){const nav=document.getElementById(id);nav?.classList.toggle('is-active',active);if(active)nav?.setAttribute('aria-current','page');else nav?.removeAttribute('aria-current')}window.scrollTo({top:0,left:0,behavior:'instant'});document.documentElement.scrollTop=0;document.body.scrollTop=0};
 const para=(text,cls='')=>el('p',{text,className:cls});
@@ -97,10 +97,14 @@ function completionToggle(book,unit,episodic,onContinue,actionLabel){
   completeUnit(book,unit,episodic,onContinue,()=>{},actionLabel,()=>{});
   update();
  });
+ const check=el('span',{className:'rem-completion-check',text:'✓',attrs:{'aria-hidden':'true'}});
+ const label=el('span',{className:'rem-completion-toggle-label',attrs:{'aria-hidden':'true'}});
  control.classList.add('rem-completion-toggle');
+ control.append(check,label);
+ control.setAttribute('aria-label','Segna come completato');
  function update(){
   const done=Boolean(completedUnits(book.id,episodic)[unit.id]);
-  control.textContent=done?'✓ Completato':'✓ Segna come completato';
+  label.textContent=done?'Completato':'Segna come completato';
   control.setAttribute('aria-pressed',String(done));
  }
  update();
@@ -477,15 +481,17 @@ function episodes(id,selectedSeason){
   return el('article',{className:'episode-card'},[
    el('span',{className:'episode-number',text:String(i+1)}),
    el('div',{className:'episode-info'},[
-    el('p',{className:'episode-code',text:episodeLabel(item)}),
+    el('div',{className:'rem-episode-card-heading'},[
+     el('p',{className:'episode-code',text:episodeLabel(item)}),
+     completionToggle(book,item,true,()=>{},'Torna agli episodi')
+    ]),
     el('h3',{},[el('button',{className:'episode-title-open',text:ep.title||('Episodio '+(i+1)),onClick:()=>open('ebook'),attrs:{type:'button','aria-label':'Leggi '+(ep.title||('episodio '+(i+1)))}})]),
     para(ep.recap||'Il recap di questo episodio sarà disponibile presto.','episode-recap'),
     el('div',{className:'episode-meta'},[el('span',{text:ep.minutes?'circa '+ep.minutes+' min':'Durata da definire'}),...(isCurrent?[el('span',{className:'episode-current',text:'Sei qui'})]:[])]),
     el('div',{className:'episode-actions'},[
      button('Ebook',()=>open('ebook')),
      button('Audio',()=>open('audio')),
-     button('Cartaceo',()=>open('paper')),
-     completionToggle(book,item,true,()=>{},'Torna agli episodi')
+     button('Cartaceo',()=>open('paper'))
     ]),
    ])
   ]);
@@ -501,7 +507,7 @@ function openSummary(id,chapterId,mode,inEpisode,episodeId){
  if(chapterId)saveSetting('summary-chapter:'+id,chapterId);
  const goBack=()=>reader(id,chapterId,mode,null,inEpisode,episodeId);
  const continueAt=nextId=>{saveProgress(id,nextId);reader(id,nextId,mode,null,inEpisode,episodeId)};
- render(button('← Torna alla storia',goBack),heading(book.title,'RIASSUNTI · LIBRO COMPLETO'),summaryView(book,goBack,continueAt));
+ render(button('← Torna alla storia',goBack),heading(book.title,'RIASSUNTI · LIBRO COMPLETO'),summaryView(book,goBack,continueAt,()=>completedUnits(id,false)));
 }
 async function reader(id,chapterId,modeOverride,seekOffset=null,episodic=false,episodeId=null){const book=findBook(id);if(!book)return library();if(id==='mattia-pascal')return detail(id);currentView='reader';const mode=modeOverride||getMode(id);const saved=getProgress(id);const requestedEpisode=episodeId?allEpisodes(book).find(ep=>ep.id===episodeId):null;const chapter=book.chapters.find(c=>c.id===(requestedEpisode?.chapterId||chapterId))||book.chapters.find(c=>c.id===saved?.chapter)||book.chapters[0];if(chapter)trackEvent(mode==='audio'?'audio_open':mode==='paper'?'paper_open':'ebook_open',{book_id:id,chapter_id:chapter.id});const inEpisode=mode!=='paper'&&(episodic||getSetting('reading-path:'+id,'normal')==='episodes');if(mode==='paper')saveSetting('reading-path:'+id,'normal');const returnHome=resumeFromHomeId===id&&!inEpisode;const nav=button('←',()=>mode==='audio'?detail(id):inEpisode?episodes(id):returnHome?home():detail(id));nav.classList.add('reader-back');nav.setAttribute('aria-label',mode==='audio'?'Torna alla scheda libro':inEpisode?'Torna agli episodi':returnHome?'Torna alla Home':'Torna alla scheda libro');const pathChange=pathLink(inEpisode?'Passa a lettura continua':'Passa a episodi',()=>{saveSetting('reading-path:'+id,inEpisode?'normal':'episodes');inEpisode?reader(id,chapter?.id,mode):episodes(id)});const episode= inEpisode?(allEpisodes(book).find(ep=>ep.id===episodeId)||currentEpisode(book)||episodeForChapter(book,chapter?.id)):null;if(episode)rememberEpisode(id,episode);const episodeHeading=episode?el('div',{className:'episode-reader-context'},[el('span',{text:episodeLabel(episode)}),el('strong',{text:episode.title||'Episodio'}),...(mode==='ebook'&&episodeRecap(book,episode)?[recapPrompt(book,episode)]:[])]):null;let prepareAudioSwitch=null;const switchFormat=next=>{recordSwitch(id,chapter?.id,mode,next,inEpisode?'episodes':'normal');if(next==='audio'&&mode==='ebook')prepareAudioSwitch?.();saveSetting('format:'+id,next);reader(id,chapter?.id,next,null,inEpisode,episode?.id)};const switcher=formatSwitch(id,mode,switchFormat);const quickSwitch=formatSwitch(id,mode,switchFormat);quickSwitch.classList.add('format-switch-bottom');if(!chapter)return render(nav,el('div',{className:'rem-reader-heading'},[heading(book.title,'UN LIBRO, TANTI MODI DI VIVERLO')]),switcher,para('Questo libro non contiene capitoli.'),pathChange);
 if(mode==='audio'){
@@ -510,7 +516,7 @@ if(mode==='audio'){
  for(const unit of audioUnits)audioSelect.append(el('option',{text:inEpisode?episodeLabel(unit)+' · '+unit.title:chapterDisplayTitle(book,unit),attrs:{value:unit.id}}));
  audioSelect.value=inEpisode?episode?.id:chapter.id;
  audioSelect.addEventListener('change',()=>{const target=audioUnits.find(u=>u.id===audioSelect.value);if(!target)return;const nextChapter=inEpisode?target.chapterId:target.id;const offset=inEpisode?target.start??0:0;saveProgress(id,nextChapter);saveSetting('audio-text-sync:'+id,JSON.stringify({chapter:nextChapter,source:'ebook',offset,selected:true}));reader(id,nextChapter,'audio',offset,inEpisode,inEpisode?target.id:null)});
- const audioPicker=el('div',{className:'reader-controls'},[chapterPicker(audioSelect)]);
+ const audioPicker=el('div',{className:'reader-controls'},[chapterPicker(audioSelect,()=>completedUnits(id,inEpisode))]);
 
  const shell=el('section',{className:'reading-shell audio-sync-shell'});
  render(el('div',{className:'rem-reader-heading'},[heading(book.title,'UN LIBRO, TANTI MODI DI VIVERLO')]),...(episodeHeading?[episodeHeading]:[]),audioPicker,shell,finishControl(id),pathChange,quickSwitch);
@@ -587,7 +593,7 @@ if(mode==='paper'){const search=phraseSearch(book,(item,target='ebook')=>{record
  };const shell=el('section',{className:'reading-shell paper-sync-shell'},[...(paperResume?[paperResume]:[]),el('h2',{text:'Da dove ripartiamo?'}),el('p',{text:'Scegli il formato e continua la tua lettura. Per ritrovare il punto nel cartaceo, fotografa la pagina oppure scrivi le ultime parole che hai letto.'}),search,el('p',{className:'switch-context',text:'Scegli uno dei metodi qui sopra per ritrovare il punto della tua storia.'}),completionToggle(book,resumeChapter,false,()=>{},'Torna al cartaceo')]);render(nav,el('div',{className:'rem-reader-heading'},[heading(book.title,'UN LIBRO, TANTI MODI DI VIVERLO')]),...(episodeHeading?[episodeHeading]:[]),shell,finishControl(id),pathChange,quickSwitch);return}
 const readingUnitTitle=inEpisode&&episode?episodeLabel(episode)+' · '+(episode.title||'') : chapterDisplayTitle(book,chapter);
 const chapterSelect=el('select',{attrs:{'aria-label':'Scegli episodio o capitolo'}});if(inEpisode){for(const ep of allEpisodes(book))chapterSelect.append(el('option',{text:episodeLabel(ep)+' · '+ep.title,attrs:{value:ep.id}}));chapterSelect.value=episode?.id||'';chapterSelect.addEventListener('change',()=>{const ep=allEpisodes(book).find(e=>e.id===chapterSelect.value);if(ep)reader(id,ep.chapterId,'ebook',null,true,ep.id)})}else{for(const c of book.chapters)chapterSelect.append(el('option',{text:chapterDisplayTitle(book,c),attrs:{value:c.id}}));chapterSelect.value=chapter.id;chapterSelect.addEventListener('change',()=>reader(id,chapterSelect.value,'ebook'))}
-const sizeSelect=el('select',{attrs:{'aria-label':'Dimensione testo'}});for(const [value,label] of [['normal','Normale'],['large','Grande'],['xlarge','Molto grande']])sizeSelect.append(el('option',{text:label,attrs:{value}}));sizeSelect.value=getSetting('fontSize','normal');const text=el('article',{className:'reading-text '+sizeSelect.value});sizeSelect.addEventListener('change',()=>{saveSetting('fontSize',sizeSelect.value);text.className='reading-text '+sizeSelect.value});const controls=el('div',{className:'reader-controls'},[chapterPicker(chapterSelect)]);const idx=book.chapters.findIndex(c=>c.id===chapter.id);const epIndex=inEpisode&&episode?allEpisodes(book).findIndex(e=>e.id===episode.id):-1;const episodeList=inEpisode?allEpisodes(book):[];const prev=button('←',()=>{const ep=episodeList[epIndex-1];reader(id,ep?.chapterId||book.chapters[idx-1]?.id,'ebook',null,inEpisode,ep?.id||null)});prev.setAttribute('aria-label','Capitolo precedente');const advance=()=>{const ep=episodeList[epIndex+1];reader(id,ep?.chapterId||book.chapters[idx+1]?.id,'ebook',null,inEpisode,ep?.id||null)};
+const sizeSelect=el('select',{attrs:{'aria-label':'Dimensione testo'}});for(const [value,label] of [['normal','Normale'],['large','Grande'],['xlarge','Molto grande']])sizeSelect.append(el('option',{text:label,attrs:{value}}));sizeSelect.value=getSetting('fontSize','normal');const text=el('article',{className:'reading-text '+sizeSelect.value});sizeSelect.addEventListener('change',()=>{saveSetting('fontSize',sizeSelect.value);text.className='reading-text '+sizeSelect.value});const controls=el('div',{className:'reader-controls'},[chapterPicker(chapterSelect,()=>completedUnits(id,inEpisode))]);const idx=book.chapters.findIndex(c=>c.id===chapter.id);const epIndex=inEpisode&&episode?allEpisodes(book).findIndex(e=>e.id===episode.id):-1;const episodeList=inEpisode?allEpisodes(book):[];const prev=button('←',()=>{const ep=episodeList[epIndex-1];reader(id,ep?.chapterId||book.chapters[idx-1]?.id,'ebook',null,inEpisode,ep?.id||null)});prev.setAttribute('aria-label','Capitolo precedente');const advance=()=>{const ep=episodeList[epIndex+1];reader(id,ep?.chapterId||book.chapters[idx+1]?.id,'ebook',null,inEpisode,ep?.id||null)};
 const next=button('→',advance);next.setAttribute('aria-label','Capitolo successivo');prev.disabled=inEpisode?epIndex<=0:idx===0;next.disabled=inEpisode?epIndex>=episodeList.length-1:idx===book.chapters.length-1;const journey=createEbookJourney(id,target=>switchFormat(target));const readingShell=el('section',{className:'reading-shell ebook-reading-shell'},[journey.root,controls,el('h2',{className:'ebook-chapter-heading',text:readingUnitTitle}),el('div',{className:'ebook-page-frame'},[el('div',{className:'ebook-page-heading'},[el('strong',{text:readingUnitTitle})]),text]),el('div',{className:'chapter-actions ebook-chapter-nav'},[prev,next])]);journey.enableImmersive(readingShell);
  readingShell.querySelector('.ebook-chapter-nav').before(completionToggle(book,inEpisode&&episode?episode:chapter,Boolean(inEpisode&&episode),()=>next.disabled?detail(id):advance()));
  const {immersiveToolbar,controlsHandle}=mountImmersiveReader({readingShell,text,readingUnitTitle,prev,next,switchFormat,getReaderTools:()=>activeReaderTools});
