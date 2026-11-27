@@ -1,4 +1,4 @@
-import {mountPodcastControls} from './audio-controls.js?v=audio-navigation-20261127';
+import {mountPodcastControls} from './audio-controls.js?v=audio-lockscreen-20261127';
 import {mountImmersiveReader} from './immersive-reader.js?v=immersive-focus-mint-20261126';
 import {recordModeChoice,recordSwitch,startUsage,stopUsage,usageMetricsEnabled,setUsageMetricsConsent} from './usage-metrics.js?v=reporting-20261127';
 import {createJekyllAudio} from './jekyll-audio.js?v=podcast-reader-20261126';
@@ -551,7 +551,7 @@ if(mode==='audio'){
   previousAudio.setAttribute('aria-label',inEpisode?'Episodio precedente':'Capitolo precedente');
   nextAudio.setAttribute('aria-label',inEpisode?'Episodio successivo':'Capitolo successivo');
   const audioNavigation=el('nav',{className:'rem-audio-dock-navigation',attrs:{'aria-label':inEpisode?'Navigazione episodi':'Navigazione capitoli'}},[previousAudio,nextAudio]);
-  mountPodcastControls(player,content,audioTools.querySelector('.reader-focus-button'),audioDock,{previous,next});
+  mountPodcastControls(player,content,audioTools.querySelector('.reader-focus-button'),audioDock);
   audioDock.append(audioNavigation);
   audioDock.hidden=false;
   shell.append(player,el('div',{className:'audio-inline-switches'},[button('Passa a Ebook',()=>switchFormat('ebook')),button('Passa a Cartaceo',()=>switchFormat('paper'))]));activeAudioPlayer=player;startUsage(player,{book_id:id,chapter_id:chapter.id,format:'audio',reading_path:inEpisode?'episodes':'normal'});

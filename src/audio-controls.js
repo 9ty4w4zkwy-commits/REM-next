@@ -126,7 +126,7 @@ function transcriptView(content){
  }};
 }
 
-export function mountPodcastControls(player,content,focus,dock,{previous,next}={}){
+export function mountPodcastControls(player,content,focus,dock){
  const audio=player.querySelector('audio[controls]');
  focus.className='rem-podcast-focus';
  focus.replaceChildren(transportIcon('clock'));
@@ -241,18 +241,9 @@ export function mountPodcastControls(player,content,focus,dock,{previous,next}={
  positionDock();
  const headerObserver=header&&typeof ResizeObserver==='function'?new ResizeObserver(positionDock):null;
  headerObserver?.observe(header);
- const mediaSession=globalThis.navigator?.mediaSession;
- const trackActions=[['previoustrack',previous],['nexttrack',next]];
- const setTrackActions=enabled=>{
-  for(const [action,handler] of trackActions){
-   try{mediaSession?.setActionHandler(action,enabled?handler||null:null)}catch{}
-  }
- };
- setTrackActions(true);
  const stopDockPlayback=player.stopAudio?.bind(player);
  player.stopAudio=()=>{
   headerObserver?.disconnect();
-  setTrackActions(false);
   stopDockPlayback?.();
  };
  dock.replaceChildren(controls);
