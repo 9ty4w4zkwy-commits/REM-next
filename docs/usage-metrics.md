@@ -1,6 +1,6 @@
 # Beta usage metrics
 
-Testers can enable reading and listening metrics at onboarding or from their profile, as part of voluntary test participation. The additional option covers Ebook and Audio durations, format changes, and the choice between chapters and episodes. Turning off test data collection also clears this option.
+Testers can enable reading and listening metrics at onboarding or from their profile, as part of voluntary test participation. The onboarding confirmation covers Ebook and Audio durations, format changes, and the choice between chapters and episodes. The count can be turned off in the profile. Turning off test data collection also clears this option.
 
 - `format_switch` records the book, unit, source and destination formats, and reading path.
 - `reading_path_choice` records the book and reading path.

@@ -18,7 +18,7 @@ const OPTION_EMOJIS=[
 const loadAnswers=()=>{try{const a=JSON.parse(getSetting('onboarding-answers','[]'));return Array.isArray(a)?QUESTIONS.map((_,i)=>{const value=a.length===6?a[[0,1,4,5][i]]:a[i];return Array.isArray(value)?value:[]}):QUESTIONS.map(()=>[])}catch{return QUESTIONS.map(()=>[])}};
 export const onboardingCompleted=()=>getSetting(KEY,'')==='done';
 export function showOnboarding(render,home,{editing=false}={}){
- let step=editing?0:-1,includeUsage=false;const answers=loadAnswers();
+ let step=editing?0:-1;const answers=loadAnswers();
  const persist=()=>saveSetting('onboarding-answers',JSON.stringify(answers));
  const finish=()=>{persist();saveSetting(KEY,'done');sendOnboardingAnswers(answers);home()};
  const draw=(preserveScroll=false)=>{
@@ -30,11 +30,8 @@ export function showOnboarding(render,home,{editing=false}={}){
   const bars=el('div',{className:'onboard-progress',attrs:{'aria-label':step<0?'Introduzione':'Domanda '+(step+1)+' di '+QUESTIONS.length}},QUESTIONS.map((_,i)=>el('span',{className:i<=step?'is-active':''})));
   const nodes=[header,bars];
   if(step<0){
-   const usageConsent=el('input',{attrs:{type:'checkbox',style:'flex:none;accent-color:#86dfb2'}});
-   usageConsent.checked=includeUsage;
    const continueWithConsent=participate=>{
-    includeUsage=participate&&usageConsent.checked;
-    setUsageMetricsConsent(includeUsage);
+    setUsageMetricsConsent(participate);
     setAnalyticsConsent(participate);
     step=0;
     draw();
@@ -42,11 +39,7 @@ export function showOnboarding(render,home,{editing=false}={}){
    nodes.push(el('section',{className:'onboard-intro'},[
     el('h1',{},[document.createTextNode('Ogni storia inizia '),el('span',{text:'da chi la legge.'})]),
     el('p',{text:'Raccontaci qualcosa di te per aiutarti a scoprire nuove storie.'}),
-    el('p',{text:'Acconsento alla raccolta dei dati relativi alle mie risposte e all’utilizzo dell’app per partecipare al test di REM.'}),
-    el('label',{attrs:{style:'display:flex;align-items:flex-start;gap:.65rem;margin-top:1rem'}},[
-     usageConsent,
-     el('span',{text:'Acconsento anche al conteggio dei tempi di lettura e ascolto, dei cambi di formato e della scelta tra capitoli ed episodi.'})
-    ]),
+    el('p',{text:'Acconsento alla raccolta delle mie risposte e delle attività di test, inclusi i tempi di lettura e ascolto, i cambi di formato e la scelta tra capitoli ed episodi.'}),
     el('div',{className:'onboard-consent-actions'},[
      button('Acconsento e inizio',()=>continueWithConsent(true),true),
      button('Continua senza partecipare',()=>continueWithConsent(false))
@@ -54,7 +47,7 @@ export function showOnboarding(render,home,{editing=false}={}){
     el('p',{className:'onboard-privacy',text:'Puoi interrompere la raccolta dal Profilo.'}),
     el('details',{className:'onboard-privacy'},[
      el('summary',{text:'Informativa privacy'}),
-     el('p',{text:'Se partecipi al test, REM invia a Cloudflare un codice numerico, le risposte alle quattro domande e le attività nell’app (libri aperti, modalità ebook/audio e date). Se selezioni anche la casella, REM invia le durate delle sessioni Ebook e Audio, i cambi di formato e la scelta tra capitoli ed episodi. Non chiediamo nome o email. La raccolta è facoltativa: puoi usare REM senza partecipare e interrompere i futuri invii dal Profilo. Disattivare non cancella automaticamente i dati già inviati.'})
+     el('p',{text:'Se partecipi al test, REM invia a Cloudflare un codice numerico, le risposte alle quattro domande e le attività nell’app (libri aperti, modalità ebook/audio e date). REM invia anche le durate delle sessioni Ebook e Audio, i cambi di formato e la scelta tra capitoli ed episodi. Non chiediamo nome o email. La raccolta è facoltativa: puoi usare REM senza partecipare e interrompere i futuri invii dal Profilo. Disattivare non cancella automaticamente i dati già inviati.'})
     ])
    ]));
   }else{
