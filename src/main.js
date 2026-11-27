@@ -1,4 +1,4 @@
-import {celebrateProgress} from './completion.js?v=completion-mint-arrival-20261127';
+import {celebrateProgress} from './completion.js?v=completion-satin-progress-20261127';
 import {mountPodcastControls} from './audio-controls.js?v=hide-ios-volume-20261126';
 import {mountImmersiveReader} from './immersive-reader.js?v=immersive-focus-mint-20261126';
 import {recordModeChoice,recordSwitch,startUsage,stopUsage} from './usage-metrics.js?v=1';
@@ -83,7 +83,7 @@ function completeUnit(book,unit,episodic,onContinue,onLeave,actionLabel,onAlread
  const index=units.findIndex(item=>item.id===unit.id);
  if(index<0){onContinue();return}
  setUnitCompleted(book.id,episodic,unit.id,true);
- celebrateProgress({book,unit,index,total:units.length,episodic,onContinue,onLeave,actionLabel,onAlready});
+ celebrateProgress({book,unit,index,units,completed:completedUnits(book.id,episodic),episodic,onContinue,onLeave,actionLabel,onAlready});
 }
 function completionToggle(book,unit,episodic,onContinue,actionLabel){
  const control=button('',()=>{

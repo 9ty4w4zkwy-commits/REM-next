@@ -60,7 +60,19 @@ function completionTagline(){
  );
 }
 
-export function celebrateProgress({book,unit,index,total,episodic,onContinue,onLeave,actionLabel,onAlready}){
+const congratulations=['Congratulazioni!','Complimenti!','Ottimo lavoro!','Una tappa in più!','Che bel traguardo!'];
+
+function nextCongratulations(){
+ const key='rem-last-congratulations';
+ const previous=getSetting(key,'');
+ const choices=congratulations.filter(message=>message!==previous);
+ const message=choices[Math.floor(Math.random()*choices.length)];
+ saveSetting(key,message);
+ return message;
+}
+
+export function celebrateProgress({book,unit,index,units,completed,episodic,onContinue,onLeave,actionLabel,onAlready}){
+ const total=units.length;
  if(index<0||index>=total){onContinue();return}
  const key='rem-celebrated:'+book.id+':'+(episodic?'episode:':'chapter:')+unit.id;
  if(getSetting(key,'')==='yes'){onAlready();return}
@@ -69,16 +81,13 @@ export function celebrateProgress({book,unit,index,total,episodic,onContinue,onL
 
  const name=episodic?'Episodio':'Capitolo';
  const hasNext=index+1<total;
- const trailSize=6;
- const trailStart=index-index%trailSize;
- const steps=Math.min(trailSize,total-trailStart);
- const step=index-trailStart;
- const progress=el('div',{className:'rem-completion-trail',attrs:{role:'img','aria-label':(index+1)+' di '+total}},[
-  ...Array.from({length:steps+1},(_,i)=>el('span',{className:i<=step?'is-reached':i===step+1?'is-new':''})),
+ const progress=el('div',{className:'rem-completion-trail',attrs:{role:'img','aria-label':name+' '+(index+1)+' di '+total}},[
+  ...units.map((item,i)=>el('span',{className:i===index?'is-new':completed[item.id]?'is-reached':''})),
   el('i',{className:'rem-completion-runner',attrs:{'aria-hidden':'true'}})
  ]);
- progress.style.setProperty('--from',(step/steps*100)+'%');
- progress.style.setProperty('--to',((step+1)/steps*100)+'%');
+ progress.style.setProperty('--steps',String(total));
+ progress.style.setProperty('--from',(Math.max(0,index-.5)/total*100)+'%');
+ progress.style.setProperty('--to',((index+.5)/total*100)+'%');
 
  const dialog=el('dialog',{className:'rem-completion-dialog',attrs:{'aria-labelledby':'rem-completion-title'}});
  const close=action=>{dialog.close();dialog.remove();action()};
@@ -88,7 +97,7 @@ export function celebrateProgress({book,unit,index,total,episodic,onContinue,onL
  dialog.append(confettiBurst(),el('div',{className:'rem-completion-body'},[
   el('p',{className:'rem-completion-eyebrow',text:book.title}),
   el('h2',{attrs:{id:'rem-completion-title'},text:name+' '+(index+1)+' completato!'}),
-  el('p',{className:'rem-completion-congrats',text:'Congratulazioni!'}),
+  el('p',{className:'rem-completion-congrats',text:nextCongratulations()}),
   completionTagline(),
   progress,
   week,
