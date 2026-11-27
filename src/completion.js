@@ -35,7 +35,21 @@ function weeklyRecap(){
  ]);
 }
 
-export function celebrateProgress({book,unit,index,total,remaining,episodic,onContinue,onLeave,actionLabel,onAlready}){
+function confettiBurst(){
+ return el('div',{className:'rem-completion-confetti',attrs:{'aria-hidden':'true'}},
+  Array.from({length:44},(_,i)=>{
+   const right=i>=22;
+   const lane=i%22;
+   const x=(right?-1:1)*(9+lane%11*6.8);
+   const y=-52+(lane*17%70);
+   const spin=(right?-1:1)*(160+lane%5*95);
+   const style='--x:'+x+'vw;--y:'+y+'vh;--spin:'+spin+'deg;--delay:'+(lane%6*28)+'ms';
+   return el('i',{className:right?'is-right':'',attrs:{style}});
+  })
+ );
+}
+
+export function celebrateProgress({book,unit,index,total,episodic,onContinue,onLeave,actionLabel,onAlready}){
  if(index<0||index>=total){onContinue();return}
  const key='rem-celebrated:'+book.id+':'+(episodic?'episode:':'chapter:')+unit.id;
  if(getSetting(key,'')==='yes'){onAlready();return}
@@ -44,44 +58,28 @@ export function celebrateProgress({book,unit,index,total,remaining,episodic,onCo
 
  const name=episodic?'Episodio':'Capitolo';
  const hasNext=index+1<total;
- const remainingLabel=remaining===0?'Hai completato tutte le tappe disponibili.':remaining===1?
-  'Manca 1 '+name.toLowerCase()+'.':'Mancano '+remaining+(episodic?' episodi.':' capitoli.');
- const dots=Math.min(total+1,9);
+ const trailSize=6;
+ const trailStart=index-index%trailSize;
+ const steps=Math.min(trailSize,total-trailStart);
+ const step=index-trailStart;
  const progress=el('div',{className:'rem-completion-trail',attrs:{role:'img','aria-label':(index+1)+' di '+total}},[
-  ...Array.from({length:dots},(_,i)=>el('span',{className:i/(dots-1)<=(index+1)/total?'is-reached':''})),
-  el('i',{className:'rem-completion-ring',attrs:{'aria-hidden':'true'}}),
-  el('div',{className:'rem-completion-runner',attrs:{'aria-hidden':'true'}},[el('i')])
+  ...Array.from({length:steps+1},(_,i)=>el('span',{className:i<=step?'is-reached':i===step+1?'is-new':''})),
+  el('i',{className:'rem-completion-runner',attrs:{'aria-hidden':'true'}})
  ]);
- progress.style.setProperty('--from',(index/total*100)+'%');
- progress.style.setProperty('--to',((index+1)/total*100)+'%');
+ progress.style.setProperty('--from',(step/steps*100)+'%');
+ progress.style.setProperty('--to',((step+1)/steps*100)+'%');
 
- const art=el('div',{className:'rem-completion-art',attrs:{'aria-hidden':'true'}},[
-  el('div',{className:'rem-completion-book'},[
-   el('div',{className:'rem-completion-pages'}),
-   el('div',{className:'rem-completion-cover'},[
-    el('span',{className:'rem-completion-book-wordmark',text:'REM'}),
-    el('span',{className:'rem-completion-book-ornament'})
-   ]),
-   el('div',{className:'rem-completion-bookmark'})
-  ]),
-  el('div',{className:'rem-completion-popper'},[
-   el('span',{text:'🎉'}),
-   ...Array.from({length:10},(_,i)=>el('i',{className:'rem-completion-ribbon',attrs:{style:'--spark:'+i}}))
-  ])
- ]);
  const dialog=el('dialog',{className:'rem-completion-dialog',attrs:{'aria-labelledby':'rem-completion-title'}});
  const close=action=>{dialog.close();dialog.remove();action()};
  const next=button(actionLabel||(hasNext?'Continua ora':'Torna alla scheda del libro'),()=>close(onContinue),true);
  next.setAttribute('autofocus','');
  dialog.addEventListener('cancel',event=>{event.preventDefault();close(onLeave)});
- dialog.append(el('div',{className:'rem-completion-body'},[
+ dialog.append(confettiBurst(),el('div',{className:'rem-completion-body'},[
   el('p',{className:'rem-completion-eyebrow',text:book.title}),
   el('h2',{attrs:{id:'rem-completion-title'},text:name+' '+(index+1)+' completato!'}),
   el('p',{className:'rem-completion-congrats',text:'Congratulazioni!'}),
-  art,
   el('p',{className:'rem-completion-tagline',text:'Il libro ti segue!'}),
   progress,
-  el('p',{className:'rem-completion-remaining',text:remainingLabel}),
   week,
   el('div',{className:'rem-completion-actions'},[
    next,...(hasNext&&!actionLabel?[button('Riprendi più tardi',()=>close(onLeave))]:[])
@@ -90,5 +88,5 @@ export function celebrateProgress({book,unit,index,total,remaining,episodic,onCo
  document.body.append(dialog);
  if(typeof dialog.showModal!=='function'){dialog.remove();onContinue();return}
  dialog.showModal();
- requestAnimationFrame(()=>requestAnimationFrame(()=>{if(dialog.open)dialog.classList.add('is-celebrating')}));
+ dialog.classList.add('is-celebrating');
 }
