@@ -81,3 +81,17 @@
  .rem-completion-runner{left:var(--to)}
  .rem-completion-cover,.is-celebrating .rem-completion-ribbon,.is-celebrating .rem-completion-runner,.is-celebrating .rem-completion-runner i,.is-celebrating .rem-completion-ring{animation:none}
 }
+
+.rem-completion-toggle{
+ display:block;margin:12px auto;min-height:44px;border:1px solid #78b9a2;border-radius:12px;
+ background:#15273b;color:#bcecd5;padding:8px 14px;font-weight:700;
+}
+.rem-completion-toggle[aria-pressed="true"]{background:#a0e3c2;color:#102637;border-color:#a0e3c2}
+.episode-actions .rem-completion-toggle{margin:0}
+body.ebook-fullscreen-active .ebook-reading-shell > .rem-completion-toggle{display:none}
+html body.ebook-fullscreen-active .ebook-reading-shell.rem-immersive-controls-open > .rem-completion-toggle{
+ display:block;position:absolute;right:9px;bottom:calc(env(safe-area-inset-bottom,0px) + 70px);z-index:14;margin:0;
+}
+html body.ebook-fullscreen-active .ebook-reading-shell.focus-active.rem-immersive-controls-open > .rem-completion-toggle{
+ bottom:calc(env(safe-area-inset-bottom,0px) + 130px);
+}

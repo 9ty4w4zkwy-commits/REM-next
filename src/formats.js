@@ -35,7 +35,7 @@ async function storedAudio(id,blob){
   tx.oncomplete=()=>db.close();
  });
 }
-function localChapterAudioView({bookId,chapter,onPosition,content,segmentStart=0}){
+function localChapterAudioView({bookId,chapter,onPosition,content,segmentStart=0,segmentEnd=null,onNext}){
  const wrap=el('section',{className:'format-mode-panel rem-audio-player'});
  const key='audio-real-position:'+bookId;
  const syncKey='audio-text-sync:'+bookId;
@@ -46,9 +46,11 @@ function localChapterAudioView({bookId,chapter,onPosition,content,segmentStart=0
  const picker=el('input',{attrs:{type:'file',multiple:'',accept:'.m4a,.mp4,audio/mp4','aria-label':'Importa i capitoli audio M4A'}});
  picker.style.maxWidth='100%';
  const audio=document.createElement('audio');audio.controls=true;audio.preload='metadata';audio.style.width='100%';
- let url=null,disposed=false,timeline=null,hasPlayed=false,lastSaved=-1;
+ let url=null,disposed=false,timeline=null,hasPlayed=false,lastSaved=-1,finished=false;
+ const playbackStart=()=>segmentStart>0?secondsForOffset(timeline,segmentStart)??0:0;
+ const playbackEnd=()=>segmentEnd===null||segmentEnd>timeline?.words?.at(-1)?.offset?audio.duration:secondsForOffset(timeline,segmentEnd)??audio.duration;
  loadWordTimeline(chapter.id).then(data=>{timeline=data;if(!disposed)restorePosition()}).catch(()=>{if(!disposed)note.textContent='Mappa parole non disponibile: puoi ascoltare, ma la sincronizzazione precisa è sospesa.'});
- const restorePosition=()=>{if(disposed||!audio.duration||!timeline)return;try{const sync=JSON.parse(getSetting(syncKey,'null'));const saved=JSON.parse(getSetting(key,'null'));const seconds=sync?.chapter===chapter.id&&sync.source==='ebook'?secondsForOffset(timeline,sync.offset):saved?.chapter===chapter.id?saved.seconds:null;if(Number.isFinite(seconds))audio.currentTime=Math.min(seconds,Math.max(0,audio.duration-.5))}catch{}};
+ const restorePosition=()=>{if(disposed||!audio.duration||!timeline)return;try{const sync=JSON.parse(getSetting(syncKey,'null'));const saved=JSON.parse(getSetting(key,'null'));const seconds=sync?.chapter===chapter.id&&sync.source==='ebook'?secondsForOffset(timeline,sync.offset):saved?.chapter===chapter.id?saved.seconds:null;if(Number.isFinite(seconds)||segmentStart>0)audio.currentTime=Math.max(playbackStart(),Math.min(seconds??playbackStart(),Math.max(playbackStart(),playbackEnd()-.1)))}catch{}};
  const attach=file=>{
   if(disposed)return;
   if(url)URL.revokeObjectURL(url);
@@ -98,7 +100,7 @@ function localChapterAudioView({bookId,chapter,onPosition,content,segmentStart=0
   if(errors&&!disposed)note.textContent+=' Alcuni file non sono stati memorizzati: verifica lo spazio libero.';
   picker.value='';
  });
- audio.addEventListener('play',()=>{hasPlayed=true});
+ audio.addEventListener('play',()=>{hasPlayed=true;finished=false});
  const persist=()=>{
   if(!hasPlayed)return;
   if(!Number.isFinite(audio.currentTime)||Math.abs(audio.currentTime-lastSaved)<2)return;
@@ -112,15 +114,26 @@ function localChapterAudioView({bookId,chapter,onPosition,content,segmentStart=0
   }
  };
  audio.addEventListener('timeupdate',persist);audio.addEventListener('pause',persist);
- audio.addEventListener('ended',()=>{if(!hasPlayed)return;saveSetting(key,JSON.stringify({chapter:chapter.id,seconds:0,duration:audio.duration||null}));note.textContent='Capitolo completato.'});
+ const finish=()=>{
+  if(disposed||finished||!hasPlayed||(segmentEnd!==null&&!timeline))return;
+  finished=true;
+  audio.pause();
+  saveSetting(key,JSON.stringify({chapter:chapter.id,seconds:0,duration:audio.duration||null}));
+  onNext?.();
+ };
+ audio.addEventListener('ended',finish);
+ audio.addEventListener('timeupdate',()=>{
+  if(segmentEnd!==null&&timeline&&!audio.paused&&!audio.seeking&&audio.currentTime>=playbackEnd()-.05)finish();
+ });
+ wrap.playbackWindow=()=>[playbackStart(),playbackEnd()];
  if(Number.isInteger(number)&&number>=1&&number<=36){wrap.append(note,audio,picker)}else{wrap.append(el('p',{className:'eyebrow',text:'REM · AUDIO · PROVA PRIVATA'}),note,el('label',{text:'Importa i capitoli M4A una sola volta'}),picker,audio,el('p',{className:'format-mode-note',text:'I file audio sono salvati solo nel browser di questo dispositivo, non pubblicati sul sito. Safari può cancellarli se liberi spazio o elimini i dati del sito: conserva una copia originale. Il segnalibro audio è basato sul tempo reale.'}));}
  wrap.append(el('p',{className:'format-mode-note',text:'Narrazione audio generata con intelligenza artificiale.'}));
  wrap.readAlongOffset=()=>{const offset=offsetForSeconds(timeline,audio.currentTime);return Number.isInteger(offset)?offset-segmentStart:null};
  wrap.stopAudio=()=>{disposed=true;persist();audio.pause();audio.removeAttribute('src');audio.load();if(url)URL.revokeObjectURL(url)};
  return wrap;
 }
-export function audioView({bookId,chapter,content,onPosition,segmentStart=0}={}){
- if(bookId==='pinocchio'&&/^capitolo-\d+$/.test(chapter?.id||''))return localChapterAudioView({bookId,chapter,onPosition,content,segmentStart});
+export function audioView({bookId,chapter,content,onPosition,segmentStart=0,segmentEnd=null,onNext}={}){
+ if(bookId==='pinocchio'&&/^capitolo-\d+$/.test(chapter?.id||''))return localChapterAudioView({bookId,chapter,onPosition,content,segmentStart,segmentEnd,onNext});
  const wrap=el('section',{className:'format-mode-panel rem-audio-player'});
  if(!content||!('speechSynthesis' in window)){
   wrap.append(el('p',{text:'La riproduzione vocale non è disponibile su questo dispositivo.'}));return wrap;
@@ -152,7 +165,7 @@ export function audioView({bookId,chapter,content,onPosition,segmentStart=0}={})
   const origin=position;
   utterance.onstart=()=>{if(token===session)wrap.dataset.analyticsSpeaking='true'};
   utterance.onboundary=e=>{if(token!==session)return;if(Number.isFinite(e.charIndex)){position=Math.min(content.length,origin+e.charIndex);persist();update()}};
-  utterance.onend=()=>{if(token!==session)return;wrap.dataset.analyticsSpeaking='false';playing=false;position=content.length-1;persist();setPlay(false,'Riascolta');update()};
+  utterance.onend=()=>{if(token!==session)return;wrap.dataset.analyticsSpeaking='false';playing=false;position=content.length-1;persist();setPlay(false,'Riascolta');update();onNext?.()};
   utterance.onerror=()=>{if(token!==session)return;wrap.dataset.analyticsSpeaking='false';playing=false;play.textContent='▶ Riprendi';status.textContent='Riproduzione interrotta. Puoi riprovare.'};
   update();synth.speak(utterance);
  }

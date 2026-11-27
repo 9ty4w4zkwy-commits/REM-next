@@ -35,16 +35,16 @@ function weeklyRecap(){
  ]);
 }
 
-export function celebrateProgress({book,unit,index,total,episodic,onContinue,onLeave}){
+export function celebrateProgress({book,unit,index,total,remaining,episodic,onContinue,onLeave,actionLabel,onAlready}){
  if(index<0||index>=total){onContinue();return}
  const key='rem-celebrated:'+book.id+':'+(episodic?'episode:':'chapter:')+unit.id;
- if(getSetting(key,'')==='yes'){onContinue();return}
+ if(getSetting(key,'')==='yes'){onAlready();return}
  const week=weeklyRecap();
  saveSetting(key,'yes');
 
  const name=episodic?'Episodio':'Capitolo';
- const remaining=total-index-1;
- const remainingLabel=remaining===0?'Sei arrivato all’ultima tappa del percorso.':remaining===1?
+ const hasNext=index+1<total;
+ const remainingLabel=remaining===0?'Hai completato tutte le tappe disponibili.':remaining===1?
   'Manca 1 '+name.toLowerCase()+'.':'Mancano '+remaining+(episodic?' episodi.':' capitoli.');
  const dots=Math.min(total+1,9);
  const progress=el('div',{className:'rem-completion-trail',attrs:{role:'img','aria-label':(index+1)+' di '+total}},[
@@ -71,7 +71,7 @@ export function celebrateProgress({book,unit,index,total,episodic,onContinue,onL
  ]);
  const dialog=el('dialog',{className:'rem-completion-dialog',attrs:{'aria-labelledby':'rem-completion-title'}});
  const close=action=>{dialog.close();dialog.remove();action()};
- const next=button(remaining?'Continua ora':'Torna alla scheda del libro',()=>close(onContinue),true);
+ const next=button(actionLabel||(hasNext?'Continua ora':'Torna alla scheda del libro'),()=>close(onContinue),true);
  next.setAttribute('autofocus','');
  dialog.addEventListener('cancel',event=>{event.preventDefault();close(onLeave)});
  dialog.append(el('div',{className:'rem-completion-body'},[
@@ -84,7 +84,7 @@ export function celebrateProgress({book,unit,index,total,episodic,onContinue,onL
   el('p',{className:'rem-completion-remaining',text:remainingLabel}),
   week,
   el('div',{className:'rem-completion-actions'},[
-   next,...(remaining?[button('Riprendi più tardi',()=>close(onLeave))]:[])
+   next,...(hasNext&&!actionLabel?[button('Riprendi più tardi',()=>close(onLeave))]:[])
   ])
  ]));
  document.body.append(dialog);
